@@ -5,8 +5,9 @@ Linear algebra minicourses, a la carte
 
 ```mermaid
   graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
+      Matrix Methods --> Vector Spaces;
+      Matrix Methods --> Linear Transformations;
+	  Matrix Methods --> Geometry;
+	  Matrix Methods --> LLM;
+      
 ```

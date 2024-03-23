@@ -9,5 +9,5 @@ Linear algebra minicourses, a la carte
       Matrix-Methods --> Linear-Transformations;
 	  Matrix-Methods --> Geometry;
 	  Matrix-Methods --> LLM;
-      
+	  Matrix-Methods --> Markov-Chains;
 ```

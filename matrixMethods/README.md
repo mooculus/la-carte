@@ -5,7 +5,7 @@
 * Understand definitions and geometric interpretations of vectors. 
 * Perform basic operations: vector addition, scalar multiplication, and dot product. 
 * Introduce matrices: definitions, types, and basic operations (addition, subtraction, scalar multiplication). 
-* View a matrix as a function on vectors, bo 
+* View a matrix as a function on vectors, both on the left and right
 
 ## Lecture 2: Systems of Linear Equations and Gaussian Elimination 
 ### Learning Outcomes: 

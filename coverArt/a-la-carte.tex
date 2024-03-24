@@ -1,0 +1,55 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{gillius}
+\usepackage{graphics}
+\usepackage{xcolor}
+\begin{document}
+
+
+\def\llx{.56}
+\def\lly{-.96}
+
+\def\lax{.76}
+\def\lay{-.96}
+
+
+
+\def\blx{.4}
+\def\bly{.13}
+
+\def\bax{3.75}
+\def\bay{.13}
+
+\def\alcx{.06}
+\def\alcy{-1}
+
+\begin{tikzpicture}
+  \foreach \x in {1,1.05,...,3}
+           {
+             \pgfmathparse{\x*\x*\x*\x + 19}
+             \node[opacity=.2,black!\pgfmathresult!white] at ({\llx+(\blx-\llx)*(\x-1)/2},{\lly+(\bly-\lly)*(\x-1)/2}) {\scalebox{\x}{\bfseries\sffamily\textit{L}}};
+             \node[opacity=.2,black!\pgfmathresult!white] at ({\lax+(\bax-\lax)*(\x-1)/2},{\lay+(\bay-\lay)*(\x-1)/2}) {\scalebox{\x}{\bfseries\sffamily\textit{A}}};
+           }
+           \node[right,black!40!white] at (\alcx,\alcy) {\bfseries\sffamily\textit{\`a LA carte presents:}};
+                      
+           \node[right,black] at (-.05,-.05) {\scalebox{3}{\bfseries\sffamily\phantom{\textit{L}inear} \textit{A}lgebra}};
+           \node[right,black!40!white] at (0,0) {\scalebox{3}{\bfseries\sffamily\phantom{\textit{L}inear} \textit{A}lgebra}};
+
+           \node[right,black] at (.02,-.07) {\scalebox{3}{\bfseries\sffamily\textit{L}inear \phantom{\textit{A}lgebra}}};
+           \node[right,black!40!white] at (0,0) {\scalebox{3}{\bfseries\sffamily\textit{L}inear \phantom{\textit{A}lgebra}}};
+
+           
+           \node[right,black!40!white] at (.05,-2.45)  {\scalebox{7}{\bfseries\sffamily Matrix}};
+           \node[right] at (0,-2.5)  {\scalebox{7}{\bfseries\sffamily Matrix}};
+
+           \node[right,black!40!white] at (.95,-5.05)  {\scalebox{7}{\bfseries\sffamily Methods}};
+           \node[right] at (1,-5)  {\scalebox{7}{\bfseries\sffamily Methods}};
+           %% \node[red] at (\llx,\lly) {\bfseries\sffamily\textit{L}};
+           %% \node[red] at (\lax,\lay) {\bfseries\sffamily\textit{A}};
+           %% \node[blue] at (\blx,\bly) {\scalebox{3}{\bfseries\sffamily\textit{L}}};
+           %% \node[blue] at (\bax,\bay) {\scalebox{3}{\bfseries\sffamily\textit{A}}};
+\end{tikzpicture}
+
+\end{document}

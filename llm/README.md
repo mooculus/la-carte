@@ -1,3 +1,4 @@
+(Disclaminer: these current headings/outcomes are filler)
 # Large language models 
 
 ## Lecture 1: Introduction to Natural Language Processing (NLP) and Linear Algebra

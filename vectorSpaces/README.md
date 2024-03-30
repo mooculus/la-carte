@@ -1,3 +1,4 @@
+(Disclaminer: these current headings/outcomes are filler)
 # Vector Spaces 
 
 ## Lecture 1: Fundamentals of Vector Spaces 

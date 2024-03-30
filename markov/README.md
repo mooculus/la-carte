@@ -1,3 +1,4 @@
+(Disclaminer: these current headings/outcomes are filler)
 # Markov chains
 
 ## Lecture 1: Introduction to Probability and Stochastic Processes

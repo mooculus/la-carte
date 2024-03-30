@@ -1,3 +1,4 @@
+(Disclaminer: these current headings/outcomes are filler)
 # Linear Transformations 
 
 ## Lecture 1: Foundations of Linear Transformations 

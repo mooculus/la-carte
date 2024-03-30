@@ -1,3 +1,4 @@
+(Disclaminer: these current headings/outcomes are filler)
 # Geometry 
 
 ## Lecture 1: Foundations of Geometric Algebra 

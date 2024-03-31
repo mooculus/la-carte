@@ -15,5 +15,20 @@ Perhaps the second row conclucludes with least squares; with Linear-Transformati
 	  Linear-Transformations-and-Abstract-Vector-Spaces --> Markov-Chains;
 	  Geometry --> Markov-Chains;
 	  Eigenvectors-and-eigenvalues ---> Markov-Chains;
+	  
+	  Linear-Transformations-and-Abstract-Vector-Spaces --> Proofs;
+	  Geometry --> Proofs;
+	  Eigenvectors-and-eigenvalues ---> Proofs;
+	  
+	  Linear-Transformations-and-Abstract-Vector-Spaces --> Spreadsheets;
+	  Geometry --> Spreadsheets;
+	  Eigenvectors-and-eigenvalues ---> Spreadsheets;
+	  
+	  
+	   Linear-Transformations-and-Abstract-Vector-Spaces --> Octave;
+	  Geometry --> Octave;
+	  Eigenvectors-and-eigenvalues ---> Octave;
+	  
+	  
 
 ```

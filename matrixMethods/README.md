@@ -1,3 +1,4 @@
+(Disclaminer: these current headings/outcomes are filler)
 # Matrix methods AKA: Linear arithmetic 
 
 ## Lecture 1: Introduction to Vectors and Basic Operations 

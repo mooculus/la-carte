@@ -52,10 +52,6 @@ times that it makes sense to add data:
   are real numbers that represent actual amounts of money, and their
   total gives meaningful information about financial status or
   performance.
-\item[Quantities of Items] If a warehouse $A$ has $200$ units of
-  product, warehouse $B$ has $300$ units of product, and warehouse $C$
-  has $500$ units of product, the total inventory is $1000$ units when
-  these figures are added together.
 \item[Time Spent on Tasks] Adding the duration of time spent on
   various activities throughout a day gives a total time spent. For
   example, if you spend $1$ hour on emails, $2$ hours in class, and
@@ -101,7 +97,14 @@ give some notation for vectors.
   \[
   \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{Black}}{1442655},\underset{\text{American Indian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
   \]
-\item[As a row vector] A row vectored is 
+\item[As a row vector] A row vectored is a lot like an ordered tuple,
+  except we do not use a comma to separate entires. Instead, we use a
+  space.  Suppose a bookstore sells a variety of books in a month, say
+  199 Science Fiction, 249 Fantasy, 141 Mystery, 304 Romance, 251
+  Historical. We can express this data as a row vector:
+  \[
+  \vec{s} = \begin{pmatrix}199 & 249 & 141 & 304 & 251 \end{pmatrix} 
+  \]
 \item[As a column vector] 
 \end{description}
 
@@ -173,19 +176,43 @@ Onto the examples!
 \item Suppose that the annual percentage growth rate of Ohio is
   currently $0.1\%$. Assuming this is even across all demographics,
   what might the population data look like for Ohio in 2025?
-  \begin{solution}
-    We'll use the properites of vectors to solve this problem.
-    \begin{enumerate}
-    \item To find the combined demographics of Michigan, Ohio, and
-      Indiana we compute
+\end{enumerate}
+\begin{solution}
+  We'll use the properites of vectors to solve this problem.
+  \begin{enumerate}
+  \item To find the combined demographics of Michigan, Ohio, and
+    Indiana we compute
     \[
-     \vec{p}_{\texttt{MI}} + \vec{p}_{\texttt{OH}} + \vec{p}_{\texttt{IN}}
-     \]
-   \item To find the ... 
+    \vec{p}_{\texttt{MI}} + \vec{p}_{\texttt{OH}} + \vec{p}_{\texttt{IN}}
+    \]
+  \item To find the population growth of each demographic, we use the scalar, $1.001$ to find
+    \[
+    1.001 \vec{p}_{\texttt{OH}} = 
+    \]
+  \end{enumerate}
+\end{solution}
+\end{example}
+
+
+
+\begin{example}[Financial Transactions]
+  A bookstore sells a variety of books. We'll express the number of
+  each type of book sold in one month as a row vector
+  \[
+  \vec{s} = \begin{pmatrix}199 & 249 & 141 & 304 & 251 \end{pmatrix} 
+  \]
+  with the entires represeting the categories: Science Fiction,
+  Fantasy, Mystery, Romance, Historical in that order.  If each book
+  costs the bookstore $\$6$ from the wholesaler, and each book sells
+  for $\$9$, what is the profit for each category?
+  \begin{solution}
+    Using the properties of vectors, we wish to compute
+    \[
+    9\vec{s}-6\vec{s} = 
+    \]
   \end{solution}
   
 \end{example}
-
 
 
 

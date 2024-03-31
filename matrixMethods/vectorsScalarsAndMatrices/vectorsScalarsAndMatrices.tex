@@ -20,7 +20,7 @@
 
 \section{Vectors and scalars}
 
-In mathematics, we study (amoung other things) numbers. In many cases,
+In mathematics, we study (among other things) numbers. In many cases,
 these numbers represent real-world data. Sometimes it ``makes sense''
 to add data and sometimes it doesn't.
 \paragraph{When it does not make sense to add data}
@@ -40,7 +40,7 @@ For some of the categories above, the \textit{average} can be
 meaningful; or perhaps if each quantity is thought of as
 `displacement' or `duration,' summing might be meaningful. However,
 without additional (pun intended!) stipulations, summing the types of
-quantites above is not meaningful. On the other hand, there's lots of
+quantities above is not meaningful. On the other hand, there's lots of
 times that it makes sense to add data:
 \paragraph{When it makes sense to add data}
 \begin{description}
@@ -53,15 +53,14 @@ times that it makes sense to add data:
   total gives meaningful information about financial status or
   performance.
 \item[Time Spent on Tasks] Adding the duration of time spent on
-  various activities throughout a day gives a total time spent. For
-  example, if you spend $1$ hour on emails, $2$ hours in class, and
-  $3$ hours working on a project, your total work time for the day is
-  $6$ hours.
+  various activities on day gives a total time spent. We all have busy
+  lives, and time is a very precious commodity. Hence, it is good to
+  understand how we spend our time.
 \item[Distances] If you walk $3$ miles in the morning and another $2$
   miles in the evening, adding these distances gives a meaningful
   total of $5$ miles walked in a day.
 \end{description}
-Often when it make sense to \textit{add} quantites, it make sense to
+Often when it make sense to \textit{add} quantities, it make sense to
 \textit{scale} them as well. For example with population, you could
 ask for the population of a city with $3$ times the population, or
 half the population. Similar \textit{scaling} examples exist for all
@@ -88,25 +87,46 @@ give some notation for vectors.
 \paragraph{Ways data can be stored in a vector}
 \begin{description}
 \item[As an ordered tuple] An ordered pair is just a pair of numbers
-  $(a,b)$ delinated by parenthesis with the entires separated by a
+  $(a,b)$ delineated by parenthesis with the entries separated by a
   comma. It's called ``ordered'' because $(a,b) \ne (b,a)$. An \textit{ordered
   tuple} is just a list of an arbitrary, but fixed, number of elements
-  that is ordered like an orderd pair. As an example, we could
+  that is ordered like an ordered pair. As an example, we could
   represent the \link[demographic information]{https://worldpopulationreview.com/states/states-by-race} for Ohio as an vector
   represented by an ordered tuple:
   \[
   \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{Black}}{1442655},\underset{\text{American Indian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
   \]
-\item[As a row vector] A row vectored is a lot like an ordered tuple,
-  except we do not use a comma to separate entires. Instead, we use a
+\item[As a row vector] A row vector is a lot like an ordered tuple,
+  except we do not use a comma to separate entries. Instead, we use a
   space.  Suppose a bookstore sells a variety of books in a month, say
   199 Science Fiction, 249 Fantasy, 141 Mystery, 304 Romance, 251
   Historical. We can express this data as a row vector:
   \[
   \vec{s} = \begin{pmatrix}199 & 249 & 141 & 304 & 251 \end{pmatrix} 
   \]
-\item[As a column vector] 
+\item[As a column vector] A column vector is just like a row vector,
+  except is it written vertically:
+  \[
+  \vec{w}_{\texttt{TR}} = \begin{pmatrix}
+  0.5\\ 4 \\ 0 \\ 1\end{pmatrix}
+  \]
+  Above, we could suppose that $\vec{w}_{\texttt{TR}}$ represents the
+  fact that someone spends $0.5$ hours on emails, $4$ hours in class,
+  $0$ hours on projects, and $1$ hour exercising on Tuesdays and
+  Thursdays.
 \end{description}
+
+
+\begin{definition}
+  To switch a row vector into a column vector and vice versa, we use the \dfn{transpose} operation:
+  \[
+  \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}^\transpose =
+  \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
+  \quad\text{and}\quad
+  \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^\transpose =
+  \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
+  \]
+\end{definition}
 
 Once we have data encoded as vectors, we can describe some general
 information about them. In particular, we can think about their
@@ -178,7 +198,7 @@ Onto the examples!
   what might the population data look like for Ohio in 2025?
 \end{enumerate}
 \begin{solution}
-  We'll use the properites of vectors to solve this problem.
+  We'll use the properties of vectors to solve this problem.
   \begin{enumerate}
   \item To find the combined demographics of Michigan, Ohio, and
     Indiana we compute
@@ -201,10 +221,10 @@ Onto the examples!
   \[
   \vec{s} = \begin{pmatrix}199 & 249 & 141 & 304 & 251 \end{pmatrix} 
   \]
-  with the entires represeting the categories: Science Fiction,
+  with the entries representing the categories: Science Fiction,
   Fantasy, Mystery, Romance, Historical in that order.  If each book
-  costs the bookstore $\$6$ from the wholesaler, and each book sells
-  for $\$9$, what is the profit for each category?
+  costs the bookstore $6$ dollars from the wholesaler, and each book sells
+  for $9$ dollars, what is the profit for each category?
   \begin{solution}
     Using the properties of vectors, we wish to compute
     \[
@@ -212,6 +232,19 @@ Onto the examples!
     \]
   \end{solution}
   
+\end{example}
+
+
+
+\begin{example}[Time Spent on Tasks]
+  On Mondays, Wednesdays, and Fridays, suppose you spend you spend $1$
+  hour on emails, $2$ hours in class, and $3$ hours working on a
+  project. On Tuesdays and Thursdays, you spend $1$ hour on emails,
+  $4$ hours in class, and $1$ hour exercising. We can express each day
+  as a column vector:
+  \[
+ \vec{w}_{\texttt{MWF}} =
+  \]
 \end{example}
 
 
@@ -537,7 +570,7 @@ reveals why scalars are called \textit{scalars}.
 \end{question}
 
 
-\section{Matrices store and tranform data}
+\section{Matrices store and transform data}
 
 
 \subsection{Matrices store data}

@@ -46,7 +46,8 @@ times that it makes sense to add data:
 \begin{description}
 \item[Population Counts] Adding the populations of different regions,
   cities, or countries to find the total population of a larger
-  area.
+  area. Answers to questions like these help us understand our
+  society and are important to many people.
 \item[Financial Transactions] Summing daily sales to find total
   monthly sales, or adding up all expenses to find total costs. These
   are real numbers that represent actual amounts of money, and their
@@ -56,7 +57,7 @@ times that it makes sense to add data:
   various activities on day gives a total time spent. We all have busy
   lives, and time is a very precious commodity. Hence, it is good to
   understand how we spend our time.
-\item[Distances] If you walk $3$ miles in the morning and another $2$
+\item[Distances] (BADBAD needs to be rewritten in light of examples below)If you walk $3$ miles in the morning and another $2$
   miles in the evening, adding these distances gives a meaningful
   total of $5$ miles walked in a day.
 \end{description}
@@ -108,7 +109,14 @@ give some notation for vectors.
   except is it written vertically:
   \[
   \vec{w}_{\texttt{TR}} = \begin{pmatrix}
-  0.5\\ 4 \\ 0 \\ 1\end{pmatrix}
+    0.5\\ 4 \\ 0 \\ 1\end{pmatrix}
+    \qquad
+    \begin{array}{l}
+    \text{Emails}\\
+    \text{Classes}\\
+    \text{Project}\\
+    \text{Exercising}
+  \end{array}
   \]
   Above, we could suppose that $\vec{w}_{\texttt{TR}}$ represents the
   fact that someone spends $0.5$ hours on emails, $4$ hours in class,
@@ -128,9 +136,10 @@ give some notation for vectors.
   \]
 \end{definition}
 
-Once we have data encoded as vectors, we can describe some general
-information about them. In particular, we can think about their
-dimension and their components.
+Once we have data represented as vectors encoded as ordered tuples,
+row vectors, or column vectors, we can describe some general
+information about the vectors. In particular, we can think about their
+\textit{dimension} and their \textit{components}.
 
 \begin{definition}
 The \dfn{dimension} of a vector is the number of entries. Each
@@ -163,6 +172,29 @@ individual entry of a vector is called a \dfn{component}.
     \end{prompt}
   \end{question}
 \end{question}
+
+When we express vectors as ordered tuples, row vectors, or column
+vectors we add them in a componentwise fashion.
+\begin{align*}
+  (1,2,3) + (4,5,6) &= (5,7,9)\\
+  \begin{pmatrix} 1 & 2 & 3   \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6   \end{pmatrix} &= \begin{pmatrix} 5 & 7 & 9   \end{pmatrix}\\
+  \begin{pmatrix} 1\\ 2\\ 3   \end{pmatrix} + \begin{pmatrix} 4\\ 5\\ 6   \end{pmatrix} &= \begin{pmatrix} 5\\ 7\\ 9   \end{pmatrix}
+\end{align*}
+
+We can also multiply
+vectors by a \dfn{scalar} (a number), by multiplying each component by
+the scalar.
+
+
+
+
+\begin{question}
+  \[
+  4\cdot \vector{2 , 4 , 0 , 1} = \vector{\answer{8}, \answer{16} , \answer{0} , \answer{4}}
+  \]	
+\end{question}
+
+
 
 
 
@@ -239,11 +271,31 @@ Onto the examples!
 \begin{example}[Time Spent on Tasks]
   On Mondays, Wednesdays, and Fridays, suppose you spend you spend $1$
   hour on emails, $2$ hours in class, and $3$ hours working on a
-  project. On Tuesdays and Thursdays, you spend $1$ hour on emails,
+  project. On Tuesdays and Thursdays, you spend $1/2$ hour on emails,
   $4$ hours in class, and $1$ hour exercising. We can express each day
   as a column vector:
   \[
- \vec{w}_{\texttt{MWF}} =
+  \vec{w}_{\texttt{MWF}} =
+  \begin{pmatrix}
+    1 \\
+    2 \\
+    3 \\
+    0
+  \end{pmatrix}
+  \qquad
+  \vec{w}_{\texttt{TR}} =
+  \begin{pmatrix}
+    0.5\\
+    4\\
+    0\\
+    1
+  \end{pmatrix} \qquad
+  \begin{array}{l}
+    \text{Emails}\\
+    \text{Classes}\\
+    \text{Project}\\
+    \text{Exercising}
+  \end{array}
   \]
 \end{example}
 
@@ -450,14 +502,6 @@ Hence,
 
 
 
-We can also multiply vectors by a \dfn{scalar} (a number), by
-multiplying each component by the scalar:
-
-\begin{question}
-  \[
-  4\cdot \vector{2 , 4 , 0 , 1} = \vector{\answer{8}, \answer{16} , \answer{0} , \answer{4}}
-  \]	
-\end{question}
 
 \begin{question}
   True or False: Multiplying a vector by a nonzero scalar will not
@@ -520,53 +564,6 @@ multiplying each component by the scalar:
        \end{tikzpicture}
     \end{image}
   \end{feedback}
-\end{question}
-
-Thinking about how the magnitude of a vector changes when we multiply by a scalar 
-reveals why scalars are called \textit{scalars}.
-
-\begin{onlineOnly}
-  You can use this interactive to see how scalars affect vectors.
-  \begin{center}
-    \geogebra{WYNdzcGP}{800}{600}%https://www.geogebra.org/m/WYNdzcGP
-  \end{center}
-\end{onlineOnly}
-
-\begin{question}
-  Consider a vector
-  \[
-  \vec{v} = \vector{a,b,c}.
-  \]
-  What is the magnitude of $\vec{v}$?
-  \begin{prompt}
-    \[
-    |\vec{v}| = \answer{\sqrt{a^2+b^2+c^2}}
-    \]
-  \end{prompt}
-  \begin{question}
-    What is the magnitude of $6\cdot\vec{v}$?
-    \begin{prompt}
-      \[
-      |6\cdot\vec{v}| = \answer{6}\cdot\sqrt{a^2+b^2+c^2}
-      \]
-    \end{prompt}
-    \begin{question}
-    What is the magnitude of $-6\cdot\vec{v}$?
-    \begin{prompt}
-      \[
-      |-6\cdot\vec{v}| = \answer{6}\cdot\sqrt{a^2+b^2+c^2}
-      \]
-    \end{prompt}
-    \begin{feedback}
-      If $s$ is a positive constant, and $\vec{v}$ is a vector, then
-      vector $s\cdot\vec{v}$ points in the same direction as
-      $\vec{v}$, but its length is scaled by a factor of $s$.  If $s$
-      is negative, then $s\cdot\vec{v}$ points in the opposite
-      direction of $\vec{v}$, and its length is scaled by a factor of
-      $|s|$.
-    \end{feedback}
-  \end{question}
-  \end{question}
 \end{question}
 
 

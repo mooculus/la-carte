@@ -70,7 +70,7 @@ numbers used to scale vectors are called \textit{scalars}.
 
 
 \begin{definition}
-  We say data represents \dfn{vectors} $\vec{v}$ and $\vec{w}$ if
+  We say data represented by \dfn{vectors} $\vec{v}$ and $\vec{w}$ if
   \[
   s\vec{v}\quad\text{and}\quad s\vec{w}
   \]
@@ -119,9 +119,9 @@ give some notation for vectors.
   \end{array}
   \]
   Above, we could suppose that $\vec{w}_{\texttt{TR}}$ represents the
-  fact that someone spends $0.5$ hours on emails, $4$ hours in class,
-  $0$ hours on projects, and $1$ hour exercising on Tuesdays and
-  Thursdays.
+  fact that on Tuesdays and Thursdays, someone spends $0.5$ hours on
+  emails, $4$ hours in class, $0$ hours on projects, and $1$ hour
+  exercising.
 \end{description}
 
 
@@ -181,29 +181,21 @@ vectors we add them in a componentwise fashion.
   \begin{pmatrix} 1\\ 2\\ 3   \end{pmatrix} + \begin{pmatrix} 4\\ 5\\ 6   \end{pmatrix} &= \begin{pmatrix} 5\\ 7\\ 9   \end{pmatrix}
 \end{align*}
 
-We can also multiply
-vectors by a \dfn{scalar} (a number), by multiplying each component by
-the scalar.
-
-
-
-
-\begin{question}
-  \[
-  4\cdot \vector{2 , 4 , 0 , 1} = \vector{\answer{8}, \answer{16} , \answer{0} , \answer{4}}
-  \]	
-\end{question}
-
-
-
-
-
-Onto the examples!
+We can also multiply vectors by a \dfn{scalar} (a number), by
+multiplying each component by the scalar.
+\begin{align*}
+  5\cdot   (1,2,3) &= (5,10,15)\\
+  5\cdot \begin{pmatrix} 1 & 2 & 3   \end{pmatrix}  &= \begin{pmatrix} 5 & 10 & 15   \end{pmatrix}\\
+  5\cdot  \begin{pmatrix} 1\\ 2\\ 3   \end{pmatrix} &= \begin{pmatrix} 5\\ 10\\ 15   \end{pmatrix}
+\end{align*}
+Now that we know the basics, onto the examples!
 
 \begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
   The Midwest of the United States consists of $12$ states. We can
-  express the \link[demographics]{https://worldpopulationreview.com/states/states-by-race} of each state as a vector represented by an
-  ordered tuple. The ordered tuple for Ohio looks like:
+  express the $2023$
+  \link[demographics]{https://worldpopulationreview.com/states/states-by-race}
+  of each state as a vector represented by an ordered tuple. The
+  ordered tuple for Ohio looks like:
   \[
   \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{Black}}{1442655},\underset{\text{American Indian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866}).
   \]

@@ -298,7 +298,7 @@ Now that we know the basics, onto the examples!
 
 
 
-\begin{example}
+\begin{example}[Velocities]
   Airplanes can use true bearings for navigation. Here's the idea, the direction is given by degrees from North:
   
 \begin{center}
@@ -331,11 +331,12 @@ Now that we know the basics, onto the examples!
 
 So traveling North would be a (true) bearing of $0^\circ$, while
 traveling West would be a bearing of $270^\circ$. Now suppose a plane
-is flying at a bearing of $310^\circ$ at $125$
+is flying at a bearing of $330^\circ$ at $125$
 \link[knots]{https://en.wikipedia.org/wiki/Knot_(unit)}.
 \begin{enumerate}
-\item
-\item
+\item If the plane starts at $(0,0)$, what are the coordinates of the
+  plane after it has traveled for $3$ hours?
+\item 
 \item
 \end{enumerate}
 
@@ -343,10 +344,25 @@ is flying at a bearing of $310^\circ$ at $125$
 While it makes sense (separately) to add speeds and angles, we cannot
 directly make a vector from this information because there is no
 obvious way to ``add'' ordered tuples of speed and angle. However, we
-can convert true bearings to cartesian coordinates
-
+can convert a true bearing of $\beta$ along with a speed $v$ to
+cartesian coordinates by writing:
+\[
+\begin{pmatrix}v\cdot \sin(\beta)\\ v \cdot \cos(\beta)\end{pmatrix}
+\]
+Armed with this, we are ready to solve the problem.
+\begin{enumerate}
+\item Converting the planes bearing and speed to a vector in cartesian coordinates, we have
+  \[
+  \vec{p} = \begin{pmatrix}125\cdot \sin(330^\circ)\\ 125 \cdot \cos(330^\circ)\end{pmatrix}
+  \]
+To find the the coordinates of the plane after it has traveled for $3$
+hours, we use $3$ as a scalar to write
+\begin{align*}
+  3\vec{p} &= \begin{pmatrix}\answer[given]{375}\cdot \sin(330^\circ)\\ \answer[given]{375} \cdot \cos(330^\circ)\end{pmatrix}\\
+  &= \begin{pmatrix}\answer[given]{-187.5}\\ \answer[given]{324.76} \end{pmatrix}\\
+\end{align*}
   
-  \begin{image}
+\begin{image}
   \begin{tikzpicture}
     \begin{axis}[
         xmin=-1,xmax=5,ymin=-1,ymax=4,
@@ -372,6 +388,7 @@ can convert true bearings to cartesian coordinates
     \end{axis}
 \end{tikzpicture}
   \end{image}
+\end{enumerate}
 
 \end{solution}
 \end{example}

@@ -5,20 +5,6 @@
 \author{Bart Snapp}
 %%OpenAI. (2023). ChatGPT (Mar 14 version) [Large language model]. https://chat.openai.com/chat
 
-\usepackage{mdframed} % For framing content
-%\usepackage{ifthen}   % For conditional statements
-
-% Define the 'concept' environment with an optional header
-\newenvironment{concept}[1][]{%
-  \begin{mdframed}[linecolor=black, linewidth=2pt, innertopmargin=5pt, innerbottommargin=5pt, skipabove=12pt, skipbelow=12pt]%
-    \noindent\large\textbf{#1}\normalsize%
-}{%
-  \end{mdframed}%
-}
-
-
-
-
 \title{Vectors, scalars, and matrices}
 
 
@@ -351,14 +337,18 @@ Now that we know the basics, onto the examples!
 \end{center}
 
 So traveling North would be a (true) bearing of $0^\circ$, while
-traveling West would be a bearing of $270^\circ$. Now suppose a plane
-is flying at a bearing of $330^\circ$ at $125$
+traveling West would be a bearing of $270^\circ$.
 \link[knots]{https://en.wikipedia.org/wiki/Knot_(unit)}.
 \begin{enumerate}
-\item If the plane starts at $(0,0)$, what are the coordinates of the
-  plane after it has traveled for $3$ hours?
-\item 
-\item
+\item Suppose a plane starts at $(0,0)$ and its destination is reached
+  by following true bearing $280^\circ$ for $3$ hours at $125$ knots.
+  What are the coordinates of planes destination?
+\item Suppose further there is wind blowing at $35$ knots in the true
+  bearing of $110^\circ$. In this case, what are the coordinates of
+  the plane after it has traveled on bearing $280^\circ$ at $125
+  knots$ for $3$ hours?
+\item What course and speed should the pilot set to arrive at the
+  destination on-time?
 \end{enumerate}
 
 \begin{solution}
@@ -372,9 +362,17 @@ cartesian coordinates by writing:
 \]
 Armed with this, we are ready to solve the problem.
 \begin{enumerate}
-\item Converting the planes bearing and speed to a vector in cartesian coordinates, we have
+\item Here is a schematic drawing of what is happening:
+%% A schematic diagram showing a vector at a 330 degree angle with a
+%% vertical line, made in a clockwise fashion. The vectors' length is labeled 125
   \[
-  \vec{p} = \begin{pmatrix}125\cdot \sin(330^\circ)\\ 125 \cdot \cos(330^\circ)\end{pmatrix}
+IMAGE
+  \]
+  
+  Converting the planes bearing and speed to a vector in cartesian
+  coordinates, we have
+  \[
+  \vec{p} = \begin{pmatrix}125\cdot \sin(280^\circ)\\ 125 \cdot \cos(280^\circ)\end{pmatrix}
   \]
 To find the the coordinates of the plane after it has traveled for $3$
 hours, we use $3$ as a scalar to write
@@ -382,33 +380,7 @@ hours, we use $3$ as a scalar to write
   3\vec{p} &= \begin{pmatrix}\answer[given]{375}\cdot \sin(330^\circ)\\ \answer[given]{375} \cdot \cos(330^\circ)\end{pmatrix}\\
   &= \begin{pmatrix}\answer[given]{-187.5}\\ \answer[given]{324.76} \end{pmatrix}\\
 \end{align*}
-  
-\begin{image}
-  \begin{tikzpicture}
-    \begin{axis}[
-        xmin=-1,xmax=5,ymin=-1,ymax=4,
-            axis lines=center,
-            %ticks=none,
-            unit vector ratio*=1 1 1,
-            xlabel=$x$, ylabel=$y$,
-            ytick={-2,-1,...,7},
-	    %yticklabels={$0.5$,$1$,$1.5$,$2$},
-	    xtick={-2,-1,...,10},
-	    %xticklabels={$0.5$,$1$,$1.5$,$2$},
-	    grid = major,
-            every axis y label/.style={at=(current axis.above origin),anchor=south},
-            every axis x label/.style={at=(current axis.right of origin),anchor=west},
-          ]
-          \addplot[very thick,penColor,->] plot coordinates {(1,2) (4,3)};
-          \addplot[very thick,penColor2,->] plot coordinates {(0,0) (1,2)};
-          \addplot[ultra thick,penColor3,->] plot coordinates {(0,0) (4,3)};
-
-           \node[left] at (axis cs:.5, 1) [penColor2] {$\vec{v}$};
-           \node[above] at (axis cs:2.5, 2.5 ) [penColor] {$\vec{w}$};
-           \node[below right] at (axis cs:2, 1.5 ) [penColor3] {$\vec{v}+\vec{w}$};
-    \end{axis}
-\end{tikzpicture}
-  \end{image}
+\item 
 \end{enumerate}
 
 \end{solution}

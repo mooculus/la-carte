@@ -365,9 +365,13 @@ Armed with this, we are ready to solve the problem.
 \item Here is a schematic drawing of what is happening:
 %% A schematic diagram showing a vector at a 330 degree angle with a
 %% vertical line, made in a clockwise fashion. The vectors' length is labeled 125
-  \[
-IMAGE
-  \]
+ \begin{tikzpicture}[scale=6]
+  \filldraw[fill=green!20!white, draw=green!50!black]
+    (0,0) -- (0mm,3mm) arc (90:-190:3mm) -- (0,0);
+\end{tikzpicture}   
+
+
+
   
   Converting the planes bearing and speed to a vector in cartesian
   coordinates, we have
@@ -380,7 +384,13 @@ hours, we use $3$ as a scalar to write
   3\vec{p} &= \begin{pmatrix}\answer[given]{375}\cdot \sin(330^\circ)\\ \answer[given]{375} \cdot \cos(330^\circ)\end{pmatrix}\\
   &= \begin{pmatrix}\answer[given]{-187.5}\\ \answer[given]{324.76} \end{pmatrix}\\
 \end{align*}
-\item 
+\item
+
+ \begin{tikzpicture}[scale=6]
+  \filldraw[fill=green!20!white, draw=green!50!black]
+    (0,0) -- (0mm,3mm) arc (90:-20:3mm) -- (0,0);
+\end{tikzpicture}   
+  
 \end{enumerate}
 
 \end{solution}
@@ -389,6 +399,32 @@ hours, we use $3$ as a scalar to write
 
 
 \section{Matrices store and transform data}
+
+
+In mathematics, a matrix is just a big rectangular array of numbers
+\[
+eg
+\]
+We give the `dimensions' of a matrix by stating its number of rows and colums:
+\[
+diagram rows columns
+\]
+Rows come first and columns come second.
+
+\begin{question}
+  Which matrix below is a $3\times 2$ matrix?
+  \[
+  write more
+  \]
+\end{question}
+
+
+In fact $n$-dimensional row vectors are just $1\times n$ matrices and
+$n$-dimensional column vectors are just $n\times 1$ matrices.
+
+
+\subsection{Multiplying matrices}
+
 
 
 \subsection{Matrices store data}

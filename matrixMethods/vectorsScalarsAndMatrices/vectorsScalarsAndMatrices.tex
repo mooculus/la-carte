@@ -120,7 +120,7 @@ vectors.
     \begin{array}{l}
     \text{Emails}\\
     \text{Classes}\\
-    \text{Project}\\
+    \text{Projects}\\
     \text{Exercising}
   \end{array}
   \]
@@ -230,7 +230,7 @@ Now that we know the basics, onto the examples!
   and Indiana?
 \item Suppose that the annual percentage growth rate of Ohio is
   currently $0.1\%$. Assuming this is even across all demographics,
-  what might the population data look like for Ohio in 2025?
+  what might the population data look like for Ohio in $2025$?
 \end{enumerate}
 \begin{solution}
   We'll use the properties of vectors to solve this problem.
@@ -273,8 +273,8 @@ Now that we know the basics, onto the examples!
 
 \begin{example}[Time Spent on Tasks]
   On Mondays, Wednesdays, and Fridays, suppose you spend you spend $1$
-  hour on emails, $2$ hours in class, and $3$ hours working on a
-  project. On Tuesdays and Thursdays, you spend $1/2$ hour on emails,
+  hour on emails, $2$ hours in class, and $3$ hours working on
+  projects. On Tuesdays and Thursdays, you spend $1/2$ hour on emails,
   $4$ hours in class, and $1$ hour exercising. We can express each day
   as a column vector:
   \[
@@ -296,10 +296,18 @@ Now that we know the basics, onto the examples!
   \begin{array}{l}
     \text{Emails}\\
     \text{Classes}\\
-    \text{Project}\\
+    \text{Projects}\\
     \text{Exercising}
   \end{array}
   \]
+  How much time is spent on emails, classes, projects, and exercising
+  per work week?
+  \begin{solution}
+    Here we simply compute:
+    \[
+    3 \vec{w}_{\texttt{MWF}} + 2  \vec{w}_{\texttt{TR}}  = 
+    \]
+  \end{solution}
 \end{example}
 
 
@@ -345,10 +353,10 @@ traveling West would be a bearing of $270^\circ$.
   What are the coordinates of planes destination?
 \item Suppose further there is wind blowing at $35$ knots in the true
   bearing of $110^\circ$. In this case, what are the coordinates of
-  the plane after it has traveled on bearing $280^\circ$ at $125
-  knots$ for $3$ hours?
-\item What course and speed should the pilot set to arrive at the
-  destination on-time?
+  the plane after it has traveled on bearing $280^\circ$ at $125$
+  knots for $3$ hours?
+%% \item What course and speed should the pilot set to arrive at the
+%%   destination on-time?
 \end{enumerate}
 
 \begin{solution}
@@ -362,34 +370,70 @@ cartesian coordinates by writing:
 \]
 Armed with this, we are ready to solve the problem.
 \begin{enumerate}
-\item Here is a schematic drawing of what is happening:
-%% A schematic diagram showing a vector at a 330 degree angle with a
-%% vertical line, made in a clockwise fashion. The vectors' length is labeled 125
- \begin{tikzpicture}[scale=6]
-  \filldraw[fill=green!20!white, draw=green!50!black]
-    (0,0) -- (0mm,3mm) arc (90:-190:3mm) -- (0,0);
-\end{tikzpicture}   
-
-
-
-  
-  Converting the planes bearing and speed to a vector in cartesian
+\item  Converting the planes bearing and speed to a vector in cartesian
   coordinates, we have
   \[
   \vec{p} = \begin{pmatrix}125\cdot \sin(280^\circ)\\ 125 \cdot \cos(280^\circ)\end{pmatrix}
   \]
+  Here is a schematic drawing of what is happening:
+  
+  \begin{center}
+    %% A schematic diagram showing a vector at a 330 degree angle with a
+    %% vertical line, made in a clockwise fashion. The vectors' length is labeled 125
+    \begin{tikzpicture}[scale=2.5]
+      \filldraw[fill=black!2!white,draw=none]
+      (0,0) -- (0mm,3mm) arc (90:-190:3mm) -- (0,0);
+
+      \draw[draw=white!50!black,->]
+      (0mm,3mm) arc (90:-185:3mm);
+      
+      \draw[<->,ultra thick] ({1.5*sin(280)},{1.5*cos(280)}) -- (0,0) -- (0,.5);
+      
+      \node[below right] at (0,0) {$\scriptstyle 280^\circ$};
+      \node[right] at (0,.5) {\bf N};
+      \node[above]  at ({.75*sin(280)},{.75*cos(280)}) {$125$};
+      \node[below]  at ({.75*sin(280)},{.75*cos(280)}) {$\vec{p}$};
+      \node[left] at ({1.5*sin(280)},{1.5*cos(280)}) {$\begin{pmatrix}\scriptstyle 125\cdot \sin(280^\circ)\\ \scriptstyle 125 \cdot \cos(280^\circ)\end{pmatrix}$};
+    \end{tikzpicture}   
+  \end{center}
+
+  
+ 
 To find the the coordinates of the plane after it has traveled for $3$
 hours, we use $3$ as a scalar to write
 \begin{align*}
-  3\vec{p} &= \begin{pmatrix}\answer[given]{375}\cdot \sin(330^\circ)\\ \answer[given]{375} \cdot \cos(330^\circ)\end{pmatrix}\\
-  &= \begin{pmatrix}\answer[given]{-187.5}\\ \answer[given]{324.76} \end{pmatrix}\\
+  3\vec{p} &= \begin{pmatrix}\answer[given]{375}\cdot \sin(280^\circ)\\ \answer[given]{375} \cdot \cos(280^\circ)\end{pmatrix}\\
+  &= \begin{pmatrix}\answer[given]{-369.30}\\ \answer[given]{65.12} \end{pmatrix}\\
 \end{align*}
-\item
+\item Now supposing that the wind blowing at $35$ knots in the true
+  bearing of $110^\circ$, we have something like this:
+  \begin{center}
+    %% A schematic diagram showing a vector at a 330 degree angle with a
+    %% vertical line, made in a clockwise fashion. The vectors' length is labeled 125
+    \begin{tikzpicture}[scale=2.5]
+      \filldraw[fill=black!2!white,draw=none]
+      (0,0) -- (0mm,3mm) arc (90:-20:3mm) -- (0,0);
 
- \begin{tikzpicture}[scale=6]
-  \filldraw[fill=green!20!white, draw=green!50!black]
-    (0,0) -- (0mm,3mm) arc (90:-20:3mm) -- (0,0);
-\end{tikzpicture}   
+      \draw[draw=white!50!black,->]
+      (0mm,3mm) arc (90:-15:3mm);
+      
+      \draw[<->,ultra thick] ({1.5*sin(110)},{1.5*cos(110)}) -- (0,0) -- (0,.5);
+      
+      \node[above right] at (0,0) {$\scriptstyle 110^\circ$};
+      \node[right] at (0,.5) {\bf N};
+      \node[above]  at ({.75*sin(110)},{.75*cos(110)}) {$35$};
+      \node[below]  at ({.75*sin(110)},{.75*cos(110)}) {$\vec w$};
+      \node[right] at ({1.5*sin(110)},{1.5*cos(110)}) {$\begin{pmatrix}\scriptstyle 35\cdot \sin(110^\circ)\\ \scriptstyle 35 \cdot \cos(110^\circ)\end{pmatrix}$};
+
+    \end{tikzpicture}   
+  \end{center}
+  So now we can solve our problem by computing:
+  \[
+  3\vec{p} + 3 \vec{w} =
+  \]
+
+  
+  
   
 \end{enumerate}
 
@@ -403,13 +447,18 @@ hours, we use $3$ as a scalar to write
 
 In mathematics, a matrix is just a big rectangular array of numbers
 \[
-eg
+M =
+\underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{\begin{pmatrix}
+  m_{1,1} & m_{1,2} & m_{1,3} & m_{1,4} & m_{1,5} \\
+  m_{2,1} & m_{2,2} & m_{2,3} & m_{2,4} & m_{2,5} \\
+  m_{3,1} & m_{3,2} & m_{3,3} & m_{1,4} & m_{3,5} \\
+  m_{4,1} & m_{4,2} & m_{4,3} & m_{4,4} & m_{4,5} 
+\end{pmatrix}}
+\boldsymbol{4}~\textbf {rows}
 \]
-We give the `dimensions' of a matrix by stating its number of rows and colums:
-\[
-diagram rows columns
-\]
-Rows come first and columns come second.
+We give the `dimensions' of a matrix by stating its number of rows and
+colums. Rows come first and columns come second, so $M$ above is a
+$(4\times 5)$-matrix.
 
 \begin{question}
   Which matrix below is a $3\times 2$ matrix?
@@ -417,13 +466,18 @@ Rows come first and columns come second.
   write more
   \]
 \end{question}
-
-
 In fact $n$-dimensional row vectors are just $1\times n$ matrices and
 $n$-dimensional column vectors are just $n\times 1$ matrices.
 
 
 \subsection{Multiplying matrices}
+
+Babysteps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-matrix by a $(3\times 1)$ matrix
+\[
+\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = ( a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} )
+\]
+
 
 
 

@@ -475,8 +475,27 @@ $n$-dimensional column vectors are just $n\times 1$ matrices.
 Babysteps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-matrix by a $(3\times 1)$ matrix
 \[
 \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
-\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = ( a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} )
+\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} 
 \]
+We can imagine a `physical' movement of the entires with this product:
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[line width=18pt, black!20!white, ->] (-.95,-.6) -- (-.95, .6) -- (-3,.6 );
+    \node at (0,0) {\begin{minipage}{\textwidth}
+        \begin{align*}
+          \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+          \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &=
+          \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\\
+          &= a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} 
+        \end{align*}
+      \end{minipage}};
+    \node at (1.5,.7) {$\begin{matrix} b_{1,1} & b_{1,2} & b_{1,3} \end{matrix}$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{warning}
+\end{warning}
 
 
 

@@ -57,9 +57,10 @@ times that it makes sense to add data:
   various activities on day gives a total time spent. We all have busy
   lives, and time is a very precious commodity. Hence, it is good to
   understand how we spend our time.
-\item[Distances] (BADBAD needs to be rewritten in light of examples below)If you walk $3$ miles in the morning and another $2$
-  miles in the evening, adding these distances gives a meaningful
-  total of $5$ miles walked in a day.
+\item[Navigation] Aircraft navigate by knowing the direction and speed
+  that they are traveling. When interpreted correctly, we add the
+  speed and direction of many of many different ``course changes'' to
+  find the ultimate position of the aircraft.
 \end{description}
 \end{concept}
 Often when it make sense to \textit{add} quantities, it make sense to
@@ -85,7 +86,7 @@ numbers used to scale vectors are called \textit{scalars}.
   again represents `meaningful' data in the same way that $\vec{v}$
   and $\vec{w}$ do.
 \end{definition}
-This informal defintion in fact contains the \textit{essence} of the
+This informal definition in fact contains the \textit{essence} of the
 concept of a \textit{vector space}. If this seems too abstract, let's
 give some very concrete examples, based on the examples
 above. However, before we start, we need to give some notation for
@@ -130,6 +131,17 @@ vectors.
   exercising.
 \end{description}
 \end{concept}
+
+Of course, since mathematics is a human endeavor, you will find variations on the notation above, as a common example, some folks use different brackets like these
+\[
+\langle a, b, c\rangle \qquad\text{or}\qquad
+\begin{bmatrix}
+  a\\
+  b\\
+  c
+\end{bmatrix}
+\]
+for an ordered-tuple vectors and column vectors. Enough with notation, now we need some definitions.
 
 \begin{definition}
   To switch a row vector into a column vector and vice versa, we use the \dfn{transpose} operation:
@@ -313,7 +325,7 @@ Now that we know the basics, onto the examples!
 
 
 
-\begin{example}[Velocities]
+\begin{example}[Navigation]
   Airplanes can use true bearings for navigation. Here's the idea, the direction is given by degrees from North:
   
 \begin{center}
@@ -456,9 +468,11 @@ M =
 \end{pmatrix}}
 \boldsymbol{4}~\textbf {rows}
 \]
-We give the `dimensions' of a matrix by stating its number of rows and
-colums. Rows come first and columns come second, so $M$ above is a
-$(4\times 5)$-matrix.
+We give the \dfn{dimensions of a matrix} by stating its number of rows and
+columns. Rows come first and columns come second, so $M$ above is a
+$(4\times 5)$-matrix. We can use similar notation to talk about
+specific entries of a matrix. Above, $m_{i,j}$ is the $\boldsymbol{(i,j)}${\bf-}\dfn{entry} of
+the matrix $M$.
 
 \begin{question}
   Which matrix below is a $3\times 2$ matrix?
@@ -470,9 +484,90 @@ In fact $n$-dimensional row vectors are just $1\times n$ matrices and
 $n$-dimensional column vectors are just $n\times 1$ matrices.
 
 
-\subsection{Multiplying matrices}
+\subsection{Matrices store data}
 
-Babysteps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-matrix by a $(3\times 1)$ matrix
+
+One way we get a matrix is by simply combining vectors. You can think
+of a matrix a just a bunch of vectors stacked together.
+
+\begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
+  In a previous example, we encoded the $2023$
+  \link[demographics]{https://worldpopulationreview.com/states/states-by-race}~of
+  the twelve Midwestern States as $6$-dimensional vectors, represented
+  as an ordered tuples. Represent this data by a $12\times 6$
+  matrix. Explain what the entry at position $(4,8)$ represents.
+  \begin{solution}
+  Since ordered-tuples are \wordChoice{\choice[correct]{horizontal}\choice{vertical}} it makes sense to
+  concatenate this data by stacking it vertically into a matrix:
+  \[
+  \begin{pmatrix}
+  \vec{p}_{\texttt{IA}} \\
+  \vec{p}_{\texttt{IL}} \\
+  \vec{p}_{\texttt{IN}} \\
+  \vec{p}_{\texttt{KA}} \\
+  \vec{p}_{\texttt{MI}} \\
+  \vec{p}_{\texttt{MN}} \\
+  \vec{p}_{\texttt{MO}} \\
+  \vec{p}_{\texttt{ND}} \\
+  \vec{p}_{\texttt{NE}} \\
+  \vec{p}_{\texttt{OH}} \\
+  \vec{p}_{\texttt{SD}} \\
+  \vec{p}_{\texttt{WI}}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  2806418 & 117035 & 10538 & 79296 & 3941 & 132783\\
+  8874067 & 1796660 & 33972 & 709567 & 5196 & 1296702\\
+  5510354 & 631923 & 14030 & 158705 & 2205 & 379676\\
+  2416165 & 165837 & 22278 & 87093 & 2344 & 218902\\
+  7735902 & 1360149 & 50035 & 316844 & 3117 & 507860\\
+  4572149 & 359817 & 54558 & 275242 & 2201 & 336199\\
+  4978046 & 698043 & 24274 & 123810 & 8887 & 291100\\
+  651470 & 23959 & 39165 & 11979 & 1004 & 32817\\
+  1641256 & 91896 & 16875 & 47944 & 1235 & 124620\\
+  9394878 & 1442655 & 20442 & 268527 & 3907 & 544866\\
+  735228 & 18836 & 74975 & 12413 & 544 & 37340\\
+  4895065 & 367889 & 48674 & 163396 & 2672 & 329279
+  \end{pmatrix}
+  \]
+  The entry at position $(4,8)$ represents BADBAD
+  \end{solution}
+\end{example}
+
+\begin{example}[Time Spent on Tasks]
+  In a previous example, we encoded one's daily ``time spent on
+  tasks'' for weekdays using $4$-dimensional vectors, represented as
+  column vectors. Represent the five-day weekly ``time spent on task''
+  by a $5\times 4$ matrix. Interpret the meaning of the $(2,3)$-entry
+  of the matrix.
+  \begin{solution}
+    Since we are using column vectors, we'll concatenate this data by
+    placing the vectors side-by-side:
+    \[
+    \begin{pmatrix}
+      \vec{w}_{\texttt{MWF}} & \vec{w}_{\texttt{TR}} & \vec{w}_{\texttt{MWF}} & \vec{w}_{\texttt{TR}} & \vec{w}_{\texttt{MWF}}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      1 & 0.5 & 1 & 0.5 & 1 \\
+      2 & 4   & 2 & 4   & 2 \\
+      3 & 0   & 3 & 0   & 3 \\
+      0 & 1   & 0 & 1   & 0
+    \end{pmatrix}
+    \]
+    The meaning of the $(2,3)$-entry is BADBAD
+  \end{solution}
+\end{example}
+
+
+
+
+
+
+
+\subsection{Multiplying vectors by matrices}
+
+Baby-steps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-matrix by a $(3\times 1)$ matrix
 \[
 \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
 \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} 
@@ -499,17 +594,27 @@ We can imagine a `physical' movement of the entires with this product:
 
 
 
-
-\subsection{Matrices store data}
-
 Extract a new data set from a matrix using basis vectors
 
 \subsection{Matrices transform data}
 
-Scale/normalize population etc.
+
+\begin{example}[Financial Transactions]
+  Scale/normalize fincinal data etc.
+\end{example}
 
 
-Geometry
+
+
+
+\begin{example}[Navigation]
+  Scale/normalize fincinal data etc.
+\end{example}
+
+
+
+
+
 
 
 \end{document}

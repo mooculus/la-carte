@@ -107,10 +107,14 @@ vectors.
 \item[As a row vector] A row vector is a lot like an ordered tuple,
   except we do not use a comma to separate entries. Instead, we use a
   space.  Suppose a bookstore sells a variety of books in a month, say
-  199 Science Fiction, 249 Fantasy, 141 Mystery, 304 Romance, 251
-  Historical. We can express this data as a row vector:
+  $141$ Science Fiction,
+  $304$ Fantasy,
+  $249$ Mystery,
+  $199$ Romance,
+  $251$ Historical.
+  We can express this data as a row vector:
   \[
-  \vec{s} = \begin{pmatrix}199 & 249 & 141 & 304 & 251 \end{pmatrix} 
+  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix} 
   \]
 \item[As a column vector] A column vector is just like a row vector,
   except is it written vertically:
@@ -266,7 +270,7 @@ Now that we know the basics, onto the examples!
   A bookstore sells a variety of books. We'll express the number of
   each type of book sold in one month as a row vector
   \[
-  \vec{s} = \begin{pmatrix}199 & 249 & 141 & 304 & 251 \end{pmatrix} 
+  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix} 
   \]
   with the entries representing the categories: Science Fiction,
   Fantasy, Mystery, Romance, Historical in that order.  If each book
@@ -443,12 +447,7 @@ hours, we use $3$ as a scalar to write
   \[
   3\vec{p} + 3 \vec{w} =
   \]
-
-  
-  
-  
 \end{enumerate}
-
 \end{solution}
 \end{example}
 
@@ -457,22 +456,23 @@ hours, we use $3$ as a scalar to write
 \section{Matrices store and transform data}
 
 
-In mathematics, a matrix is just a big rectangular array of numbers
+A \dfn{matrix} is just a big rectangular array of numbers
 \[
 M =
 \underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{\begin{pmatrix}
-  m_{1,1} & m_{1,2} & m_{1,3} & m_{1,4} & m_{1,5} \\
-  m_{2,1} & m_{2,2} & m_{2,3} & m_{2,4} & m_{2,5} \\
-  m_{3,1} & m_{3,2} & m_{3,3} & m_{1,4} & m_{3,5} \\
-  m_{4,1} & m_{4,2} & m_{4,3} & m_{4,4} & m_{4,5} 
+  a_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5} \\
+  a_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5} \\
+  a_{3,1} & a_{3,2} & a_{3,3} & a_{1,4} & a_{3,5} \\
+  a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5} 
 \end{pmatrix}}
 \boldsymbol{4}~\textbf {rows}
 \]
-We give the \dfn{dimensions of a matrix} by stating its number of rows and
-columns. Rows come first and columns come second, so $M$ above is a
-$(4\times 5)$-matrix. We can use similar notation to talk about
-specific entries of a matrix. Above, $m_{i,j}$ is the $\boldsymbol{(i,j)}${\bf-}\dfn{entry} of
-the matrix $M$.
+We give the \dfn{dimensions of a matrix} by stating its number of rows
+and columns. Rows come first and columns come second, so $M$ above is
+a $(4\times 5)$-matrix. We can use similar notation to talk about
+specific entries of a matrix. Above, $a_{i,j}$ is the
+$\boldsymbol{(i,j)}${\bf-}\dfn{entry} of the matrix $M$. Sometimes,
+people write $M_{i,j}$ to mean the $(i,j)$-entry of the matrix $M$.
 
 \begin{question}
   Which matrix below is a $3\times 2$ matrix?
@@ -572,7 +572,8 @@ Baby-steps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-m
 \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
 \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} 
 \]
-We can imagine a `physical' movement of the entires with this product:
+This is equivalent to multiplying a row vector by a column vector. We
+can imagine a `physical' movement of the entires with this product:
 
 \begin{center}
   \begin{tikzpicture}
@@ -588,21 +589,116 @@ We can imagine a `physical' movement of the entires with this product:
     \node at (1.5,.7) {$\begin{matrix} b_{1,1} & b_{1,2} & b_{1,3} \end{matrix}$};
   \end{tikzpicture}
 \end{center}
+We'll leave it to the reader to generalize this proceedure to $(1\times n)$-matrix by a $(n\times 1)$ matrix.
+
+\begin{question}
+  CHECK TO SEE IF THEY CAN GENERALIZE THE PROCEEDURE WITH n=4 and n=6 (use sparce matrices)
+\end{question}
+
+
+To multiply matrix by a column vector, envision the matrix as a
+grouping of row vectors and we use the distributive property. for
+example:
+\begin{align*}
+\begin{pmatrix}
+  a_{1,1} & a_{1,2} & a_{1,3} \\
+  a_{2,1} & a_{2,2} & a_{2,3} \\
+  a_{3,1} & a_{3,2} & a_{3,3} 
+\end{pmatrix}
+\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}
+&=
+\begin{pmatrix}
+  (a_{1,1} & a_{1,2} & a_{1,3}) \\
+  (a_{2,1} & a_{2,2} & a_{2,3}) \\
+  (a_{3,1} & a_{3,2} & a_{3,3}) 
+\end{pmatrix}
+\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
+&=
+\begin{pmatrix}
+  (a_{1,1} & a_{1,2} & a_{1,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
+  (a_{2,1} & a_{2,2} & a_{2,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
+  (a_{3,1} & a_{3,2} & a_{3,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} 
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+  a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1}  \\
+  a_{2,1}b_{1,1} + a_{2,2}b_{2,1} + a_{2,3}b_{3,1}  \\
+  a_{3,1}b_{1,1} + a_{3,2}b_{2,1} + a_{3,3}b_{3,1} 
+\end{pmatrix}
+\end{align*}
+In an entirely similar way, we can multiply a row vector by a matrix
+by envisioning the matrix as a grouping of column vectors.
+\begin{align*}
+\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+\begin{pmatrix}
+  b_{1,1} & b_{1,2} & b_{1,3} \\
+  b_{2,1} & b_{2,2} & b_{2,3} \\
+  b_{3,1} & b_{3,2} & b_{3,3}
+\end{pmatrix}
+&=
+\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+\begin{pmatrix}
+  \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
+  \begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
+  \begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+\end{pmatrix} \\
+&=\begin{pmatrix}
+  \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
+  \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
+  \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+\end{pmatrix}
+\end{align*}
+
+
 
 \begin{warning}
+  
 \end{warning}
 
-
-
+\begin{example}[Population Counts]
 Extract a new data set from a matrix using basis vectors
+\end{example}
+
+
+\begin{example}[Time Spent on Tasks]
+\end{example}
+
+
 
 \subsection{Matrices transform data}
 
 
 \begin{example}[Financial Transactions]
-  Scale/normalize fincinal data etc.
+  Recall that a bookstore sells a variety of books with each type of
+  book sold in one month stored as a row vector
+  \[
+  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix} 
+  \]
+  with the entries representing the categories: Science Fiction,
+  Fantasy, Mystery, Romance, Historical in that order.  Suppose last
+  month the book store bought $200$ Science Fiction, $400$ Fantasy, $300$
+  Mystery, $250$ Romance, $300$ Historical books. What percentage of each
+  category was sold this month?
+  \begin{solution}
+    Let
+    \[
+    T = 
+    \begin{pmatrix}
+      1/200 & 0 &    0   &   0    &   0 \\
+      0 & 1/400 &    0   &   0    &   0 \\
+      0 &   0   &  1/300 &   0    &   0 \\
+      0 &   0   &    0   & 1/250  &   0 \\
+      0 &   0   &    0   &   0    & 1/300
+    \end{pmatrix}
+    \]
+    We can solve our problem by computing
+    \[
+    \vec{s} T = 
+    \]
+    So we see
+  \end{solution}
+ 
 \end{example}
-
 
 
 

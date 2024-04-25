@@ -78,19 +78,19 @@ numbers used to scale vectors are called \textit{scalars}.
   \vec{v}+\vec{w}
   \]
   is also a vector, encoding `meaningful' data in the same way that
-  $\vec{v}$ and $\vec{w}$ do, and for all \textbf{scalars} $s$ (where
-  $s$ is usually a real number),
+  $\vec{v}$ and $\vec{w}$ do, and for all \textbf{scalars} $s$, where
+  $s$ is usually a real number,
   \[
   s(\vec{v} + \vec{w}) = s\vec{v}+ s\vec{w}.
   \]
   again represents `meaningful' data in the same way that $\vec{v}$
   and $\vec{w}$ do.
 \end{definition}
-This informal definition in fact contains the \textit{essence} of the
-concept of a \textit{vector space}. If this seems too abstract, let's
-give some very concrete examples, based on the examples
-above. However, before we start, we need to give some notation for
-vectors.
+These informal definitions of vectors and scalars in fact contain the
+\textit{essence} of the concept of a \textit{vector space}. If this
+seems too abstract, let's give some very concrete examples, based on
+the examples above. However, before we start, we need to give some
+notation for vectors.
 
 \begin{concept}[Ways data can be stored as a vector]
 \begin{description}
@@ -136,7 +136,7 @@ vectors.
 \end{description}
 \end{concept}
 
-Of course, since mathematics is a human endeavor, you will find variations on the notation above, as a common example, some folks use different brackets like these
+Of course, since mathematics is a human endeavor you will find variations on the notation above, as a common example, some folks use different brackets like these
 \[
 \langle a, b, c\rangle \qquad\text{or}\qquad
 \begin{bmatrix}
@@ -145,7 +145,8 @@ Of course, since mathematics is a human endeavor, you will find variations on th
   c
 \end{bmatrix}
 \]
-for an ordered-tuple vectors and column vectors. Enough with notation, now we need some definitions.
+for an ordered-tuple vectors and column vectors. At this point I think
+we have enough notation, now we need some definitions.
 
 \begin{definition}
   To switch a row vector into a column vector and vice versa, we use the \dfn{transpose} operation:
@@ -157,6 +158,14 @@ for an ordered-tuple vectors and column vectors. Enough with notation, now we ne
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
 \end{definition}
+
+
+\begin{question}
+  Compute:
+  \[
+SOME TRANSPOSE
+  \]
+\end{question}
 
 Once we have data represented as vectors encoded as ordered tuples,
 row vectors, or column vectors, we can describe some general
@@ -626,33 +635,53 @@ example:
   a_{3,1}b_{1,1} + a_{3,2}b_{2,1} + a_{3,3}b_{3,1} 
 \end{pmatrix}
 \end{align*}
+
+\begin{warning}
+  It only makes sense to multiply a matrix by a column vector if the
+  number of colmuns of the matrix equals the dimension of the column
+  vector.
+\end{warning}
+
+
 In an entirely similar way, we can multiply a row vector by a matrix
 by envisioning the matrix as a grouping of column vectors.
+
+
+
 \begin{align*}
-\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+&\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
 \begin{pmatrix}
   b_{1,1} & b_{1,2} & b_{1,3} \\
   b_{2,1} & b_{2,2} & b_{2,3} \\
   b_{3,1} & b_{3,2} & b_{3,3}
 \end{pmatrix}
-&=
-\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+=
+\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\arraycolsep=0pt
 \begin{pmatrix}
   \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
   \begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
   \begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
 \end{pmatrix} \\
-&=\begin{pmatrix}
+&=\arraycolsep=0pt
+\begin{pmatrix}
   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+\end{pmatrix}\\
+&=\arraycolsep=0pt
+\begin{pmatrix}
+a_{1,1}b_{1,1}+a_{1,2}b_{2,1}+a_{1,3}b_{3,1} &
+a_{1,1}b_{1,2}+a_{1,2}b_{2,2}+a_{1,3}b_{3,2} &
+a_{1,1}b_{1,3}+a_{1,2}b_{2,3}+a_{1,3}b_{3,3}
 \end{pmatrix}
 \end{align*}
 
 
 
 \begin{warning}
-  
+  It only makes sense to multiply a row vector by a matrix if the
+  dimension of the row vector equals the the number of rows of the
+  matrix.
 \end{warning}
 
 \begin{example}[Population Counts]
@@ -684,14 +713,19 @@ Extract a new data set from a matrix using basis vectors
     \[
     T = 
     \begin{pmatrix}
-      1/200 & 0 &    0   &   0    &   0 \\
-      0 & 1/400 &    0   &   0    &   0 \\
-      0 &   0   &  1/300 &   0    &   0 \\
-      0 &   0   &    0   & 1/250  &   0 \\
-      0 &   0   &    0   &   0    & 1/300
+      100/200 & 0 &    0   &   0    &   0 \\
+      0 & 100/400 &    0   &   0    &   0 \\
+      0 &   0   &  100/300 &   0    &   0 \\
+      0 &   0   &    0   & 100/250  &   0 \\
+      0 &   0   &    0   &   0    & 100/300
     \end{pmatrix}
     \]
-    We can solve our problem by computing
+    Each entry of the matrix $T$ is of the form:
+    \[
+    100 \cdot \frac{1}{(\text{Stock})}
+    \]
+    where $(\text{Stock})$ represents the number of books the
+    bookstore bought to sell.  We can solve our problem by computing
     \[
     \vec{s} T = 
     \]

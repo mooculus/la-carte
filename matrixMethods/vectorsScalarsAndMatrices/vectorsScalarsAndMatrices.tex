@@ -479,8 +479,10 @@ $n$-dimensional column vectors are just $n\times 1$ matrices.
 \subsection{Matrices store data}
 
 
-One way we get a matrix is by simply combining vectors. You can think
-of a matrix a just a bunch of vectors stacked together.
+Matrices can be thought of as a ``mathematical spreadsheet.'' With a
+spreadsheet you have rows and columns of data.  You can think of a
+matrix a just a bunch of vectors stacked together either horizontally
+or vertically.
 
 \begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
   In a previous example, we encoded the $2023$
@@ -588,6 +590,73 @@ We'll leave it to the reader to generalize this proceedure to $(1\times n)$-matr
   CHECK TO SEE IF THEY CAN GENERALIZE THE PROCEEDURE WITH n=4 and n=6 (use sparce matrices)
 \end{question}
 
+This type of vector/matrix multiplcation is so important, it has it's own name.
+
+\begin{definition}
+  The \dfn{dot product} or \dfn{scalar product} of two vectors
+  $\vec{v}$ and $\vec{w}$ is given by:
+  \[
+  \vec{v}\dotp \vec{w} = \vec{v}^\transpose \vec{w}.
+  \]
+\end{definition}
+
+
+
+
+\begin{question}
+  Compute:
+  \[
+  \begin{pmatrix} 1 & 1 & -1 \end{pmatrix}
+  \dotp\begin{pmatrix} 1 & 1 & 2\end{pmatrix}
+  \begin{prompt}
+    = \answer{0}
+  \end{prompt}
+  \]
+\end{question}
+
+
+The first thing you should notice about the the dot product is that
+\[
+\mathbf{vector}\dotp \mathbf{vector} = \mathbf{number}.
+\]
+
+\begin{warning}
+  There is no general way to ``multiply'' vectors of the same type and
+  have resulting product be a resonable vector also of that type.
+  You might think it is reasonable to define
+\[
+\begin{bmatrix}
+  a_1\\
+  a_2\\
+  \vdots\\
+  a_n
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+  b_1\\
+  b_2\\
+  \vdots\\
+  b_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+  a_1b_1\\
+  a_2b_2\\
+  \vdots\\
+  a_nb_n
+\end{bmatrix}
+\] 
+but this operation is not especially useful, and will \textbf{never be
+  utilized in this course}.
+\end{warning}
+
+\begin{question}
+  Which of the following are resonable?
+
+  Dot prod etc.
+\end{question}
+
+
 
 To multiply matrix by a column vector, envision the matrix as a
 grouping of row vectors and we use the distributive property. for
@@ -628,37 +697,62 @@ example:
 
 
 In an entirely similar way, we can multiply a row vector by a matrix
-by envisioning the matrix as a grouping of column vectors.
-
-
+by envisioning the matrix as a grouping of column vectors. In this
+case, we will use a $2$-dimensional row vector and a $2\times2$ matrix
+to save horizontal space.
 
 \begin{align*}
-&\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+\begin{pmatrix} a_{1,1} & a_{1,2}  \end{pmatrix}
 \begin{pmatrix}
-  b_{1,1} & b_{1,2} & b_{1,3} \\
-  b_{2,1} & b_{2,2} & b_{2,3} \\
-  b_{3,1} & b_{3,2} & b_{3,3}
+  b_{1,1} & b_{1,2} \\
+  b_{2,1} & b_{2,2} 
 \end{pmatrix}
-=
-\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\arraycolsep=0pt
+&=
+\begin{pmatrix} a_{1,1} & a_{1,2}  \end{pmatrix}\arraycolsep=0pt
 \begin{pmatrix}
-  \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
-  \begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
-  \begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+  \begin{pmatrix} b_{1,1} \\ b_{2,1} \\  \end{pmatrix} &
+  \begin{pmatrix} b_{1,2} \\ b_{2,2} \\ \end{pmatrix} 
 \end{pmatrix} \\
-&=\arraycolsep=0pt
+&=
 \begin{pmatrix}
-  \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
-  \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
-  \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+  \begin{pmatrix} a_{1,1} & a_{1,2} \end{pmatrix}\begin{pmatrix} b_{1,1} \\ b_{2,1} \end{pmatrix} &
+  \begin{pmatrix} a_{1,1} & a_{1,2} \end{pmatrix}\begin{pmatrix} b_{1,2} \\ b_{2,2} \end{pmatrix} 
 \end{pmatrix}\\
-&=\arraycolsep=0pt
+&=
 \begin{pmatrix}
-a_{1,1}b_{1,1}+a_{1,2}b_{2,1}+a_{1,3}b_{3,1} &
-a_{1,1}b_{1,2}+a_{1,2}b_{2,2}+a_{1,3}b_{3,2} &
-a_{1,1}b_{1,3}+a_{1,2}b_{2,3}+a_{1,3}b_{3,3}
+a_{1,1}b_{1,1}+a_{1,2}b_{2,1} &
+a_{1,1}b_{1,2}+a_{1,2}b_{2,2}
 \end{pmatrix}
 \end{align*}
+
+
+%% \begin{align*}
+%% &\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+%% \begin{pmatrix}
+%%   b_{1,1} & b_{1,2} & b_{1,3} \\
+%%   b_{2,1} & b_{2,2} & b_{2,3} \\
+%%   b_{3,1} & b_{3,2} & b_{3,3}
+%% \end{pmatrix}
+%% =
+%% \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\arraycolsep=0pt
+%% \begin{pmatrix}
+%%   \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
+%%   \begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
+%%   \begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+%% \end{pmatrix} \\
+%% &=\arraycolsep=0pt
+%% \begin{pmatrix}
+%%   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
+%%   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
+%%   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+%% \end{pmatrix}\\
+%% &=\arraycolsep=0pt
+%% \begin{pmatrix}
+%% a_{1,1}b_{1,1}+a_{1,2}b_{2,1}+a_{1,3}b_{3,1} &
+%% a_{1,1}b_{1,2}+a_{1,2}b_{2,2}+a_{1,3}b_{3,2} &
+%% a_{1,1}b_{1,3}+a_{1,2}b_{2,3}+a_{1,3}b_{3,3}
+%% \end{pmatrix}
+%% \end{align*}
 
 
 

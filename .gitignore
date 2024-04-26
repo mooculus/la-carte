@@ -8,3 +8,7 @@
 *.out
 ximera.cls
 xourse.cls
+*.sagetex.sage
+*.synctex
+*.bbl
+*.blg

@@ -1,1 +1,8 @@
 *~
+*.aux
+*.log
+*.pdf
+*.ids
+*.jax
+*.oc
+*.out

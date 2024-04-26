@@ -1,4 +1,4 @@
-\documentclass{ximera}
+\documentclass[handout]{ximera}
 
 \input{../../preamble.tex}
 
@@ -29,7 +29,7 @@ to add data and sometimes it doesn't.
 \item[Temperatures] While you can mathematically add temperatures
   together, doing so usually doesn't provide useful information.
 \item[Time] Adding specific points in time, like dates or hours of the
-  day, usually doesn't yield meaningful results. 
+  day, usually doesn't yield meaningful results.
 \item[Geographic Coordinates] Adding the latitude and longitude of two
   locations doesn't give you a location that has any real-world
   significance.
@@ -114,7 +114,7 @@ notation for vectors.
   $251$ Historical.
   We can express this data as a row vector:
   \[
-  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix} 
+  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
   \]
 \item[As a column vector] A column vector is just like a row vector,
   except is it written vertically:
@@ -148,7 +148,7 @@ Of course, since mathematics is a human endeavor you will find variations on the
 for an ordered-tuple vectors and column vectors. Ordered tuples and
 row vectors are more convient to write in a line, because they are
 horizontal. On the other hand, column vectors take up less horizontal
-space, and are more convenient when you have vectors with many entries. 
+space, and are more convenient when you have vectors with many entries.
 
 
 \begin{definition}
@@ -164,10 +164,12 @@ space, and are more convenient when you have vectors with many entries.
 
 
 \begin{question}
-  Consider $\vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}$. Compute:
+  Consider $\vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}$. Compute $\vec{s}^\transpose$.
+  \begin{prompt}
   \[
-  \vec{s}^\transpose  = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
+  \vec{s}^\transpose  = \begin{pmatrix}\answer{141} \\ \answer{304} \\ \answer{249} \\ \answer{199} \\ \answer{251} \end{pmatrix}
   \]
+  \end{prompt}
 \end{question}
 
 Once we have data represented as vectors encoded as ordered tuples,
@@ -248,7 +250,7 @@ Now that we know the basics, onto the examples!
     \]
   \item To find the population growth of each demographic, we use the scalar, $1.001$ to find
     \[
-    1.001 \vec{p}_{\texttt{OH}} = 
+    1.001 \vec{p}_{\texttt{OH}} =
     \]
   \end{enumerate}
 \end{solution}
@@ -260,7 +262,7 @@ Now that we know the basics, onto the examples!
   A bookstore sells a variety of books. We'll express the number of
   each type of book sold in one month as a row vector
   \[
-  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix} 
+  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
   \]
   with the entries representing the categories: Science Fiction,
   Fantasy, Mystery, Romance, Historical in that order.  If each book
@@ -269,10 +271,10 @@ Now that we know the basics, onto the examples!
   \begin{solution}
     Using the properties of vectors, we wish to compute
     \[
-    9\vec{s}-6\vec{s} = 
+    9\vec{s}-6\vec{s} =
     \]
   \end{solution}
-  
+
 \end{example}
 
 
@@ -311,7 +313,7 @@ Now that we know the basics, onto the examples!
   \begin{solution}
     Here we simply compute:
     \[
-    3 \vec{w}_{\texttt{MWF}} + 2  \vec{w}_{\texttt{TR}}  = 
+    3 \vec{w}_{\texttt{MWF}} + 2  \vec{w}_{\texttt{TR}}  =
     \]
   \end{solution}
 \end{example}
@@ -321,7 +323,7 @@ Now that we know the basics, onto the examples!
 
 \begin{example}[Navigation]
   Airplanes can use true bearings for navigation. Here's the idea, the direction is given by degrees from North:
-  
+
 \begin{center}
 \upshape
 % Define a few constants for easy configuration
@@ -382,7 +384,7 @@ Armed with this, we are ready to solve the problem.
   \vec{p} = \begin{pmatrix}125\cdot \sin(280^\circ)\\ 125 \cdot \cos(280^\circ)\end{pmatrix}
   \]
   Here is a schematic drawing of what is happening:
-  
+
   \begin{center}
     %% A schematic diagram showing a vector at a 330 degree angle with a
     %% vertical line, made in a clockwise fashion. The vectors' length is labeled 125
@@ -392,19 +394,19 @@ Armed with this, we are ready to solve the problem.
 
       \draw[draw=white!50!black,->]
       (0mm,3mm) arc (90:-185:3mm);
-      
+
       \draw[<->,ultra thick] ({1.5*sin(280)},{1.5*cos(280)}) -- (0,0) -- (0,.5);
-      
+
       \node[below right] at (0,0) {$\scriptstyle 280^\circ$};
       \node[right] at (0,.5) {\bf N};
       \node[above]  at ({.75*sin(280)},{.75*cos(280)}) {$125$};
       \node[below]  at ({.75*sin(280)},{.75*cos(280)}) {$\vec{p}$};
       \node[left] at ({1.5*sin(280)},{1.5*cos(280)}) {$\begin{pmatrix}\scriptstyle 125\cdot \sin(280^\circ)\\ \scriptstyle 125 \cdot \cos(280^\circ)\end{pmatrix}$};
-    \end{tikzpicture}   
+    \end{tikzpicture}
   \end{center}
 
-  
- 
+
+
 To find the the coordinates of the plane after it has traveled for $3$
 hours, we use $3$ as a scalar to write
 \begin{align*}
@@ -422,16 +424,16 @@ hours, we use $3$ as a scalar to write
 
       \draw[draw=white!50!black,->]
       (0mm,3mm) arc (90:-15:3mm);
-      
+
       \draw[<->,ultra thick] ({1.5*sin(110)},{1.5*cos(110)}) -- (0,0) -- (0,.5);
-      
+
       \node[above right] at (0,0) {$\scriptstyle 110^\circ$};
       \node[right] at (0,.5) {\bf N};
       \node[above]  at ({.75*sin(110)},{.75*cos(110)}) {$35$};
       \node[below]  at ({.75*sin(110)},{.75*cos(110)}) {$\vec w$};
       \node[right] at ({1.5*sin(110)},{1.5*cos(110)}) {$\begin{pmatrix}\scriptstyle 35\cdot \sin(110^\circ)\\ \scriptstyle 35 \cdot \cos(110^\circ)\end{pmatrix}$};
 
-    \end{tikzpicture}   
+    \end{tikzpicture}
   \end{center}
   So now we can solve our problem by computing:
   \[
@@ -453,7 +455,7 @@ M =
   a_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5} \\
   a_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5} \\
   a_{3,1} & a_{3,2} & a_{3,3} & a_{1,4} & a_{3,5} \\
-  a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5} 
+  a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5}
 \end{pmatrix}}
 \boldsymbol{4}~\textbf {rows}
 \]
@@ -560,7 +562,7 @@ of a matrix a just a bunch of vectors stacked together.
 Baby-steps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-matrix by a $(3\times 1)$ matrix
 \[
 \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
-\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} 
+\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1}
 \]
 This is equivalent to multiplying a row vector by a column vector. We
 can imagine a `physical' movement of the entires with this product:
@@ -573,7 +575,7 @@ can imagine a `physical' movement of the entires with this product:
           \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
           \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &=
           \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\\
-          &= a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1} 
+          &= a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1}
         \end{align*}
       \end{minipage}};
     \node at (1.5,.7) {$\begin{matrix} b_{1,1} & b_{1,2} & b_{1,3} \end{matrix}$};
@@ -593,27 +595,27 @@ example:
 \begin{pmatrix}
   a_{1,1} & a_{1,2} & a_{1,3} \\
   a_{2,1} & a_{2,2} & a_{2,3} \\
-  a_{3,1} & a_{3,2} & a_{3,3} 
+  a_{3,1} & a_{3,2} & a_{3,3}
 \end{pmatrix}
 \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}
 &=
 \begin{pmatrix}
   (a_{1,1} & a_{1,2} & a_{1,3}) \\
   (a_{2,1} & a_{2,2} & a_{2,3}) \\
-  (a_{3,1} & a_{3,2} & a_{3,3}) 
+  (a_{3,1} & a_{3,2} & a_{3,3})
 \end{pmatrix}
 \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
 &=
 \begin{pmatrix}
   (a_{1,1} & a_{1,2} & a_{1,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
   (a_{2,1} & a_{2,2} & a_{2,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
-  (a_{3,1} & a_{3,2} & a_{3,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} 
+  (a_{3,1} & a_{3,2} & a_{3,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}
 \end{pmatrix}\\
 &=
 \begin{pmatrix}
   a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1}  \\
   a_{2,1}b_{1,1} + a_{2,2}b_{2,1} + a_{2,3}b_{3,1}  \\
-  a_{3,1}b_{1,1} + a_{3,2}b_{2,1} + a_{3,3}b_{3,1} 
+  a_{3,1}b_{1,1} + a_{3,2}b_{2,1} + a_{3,3}b_{3,1}
 \end{pmatrix}
 \end{align*}
 
@@ -682,7 +684,7 @@ Extract a new data set from a matrix using basis vectors
   Recall that a bookstore sells a variety of books with each type of
   book sold in one month stored as a row vector
   \[
-  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix} 
+  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
   \]
   with the entries representing the categories: Science Fiction,
   Fantasy, Mystery, Romance, Historical in that order.  Suppose last
@@ -692,7 +694,7 @@ Extract a new data set from a matrix using basis vectors
   \begin{solution}
     Let
     \[
-    T = 
+    T =
     \begin{pmatrix}
       100/200 & 0 &    0   &   0    &   0 \\
       0 & 100/400 &    0   &   0    &   0 \\
@@ -708,11 +710,11 @@ Extract a new data set from a matrix using basis vectors
     where $(\text{Stock})$ represents the number of books the
     bookstore bought to sell.  We can solve our problem by computing
     \[
-    \vec{s} T = 
+    \vec{s} T =
     \]
     So we see
   \end{solution}
- 
+
 \end{example}
 
 

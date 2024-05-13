@@ -2,6 +2,8 @@
 
 \input{../../preamble.tex}
 
+\author{Parisa Fatheddin \and Bart Snapp}
+
 %% Jim Hefferon’s Linear Algebra. (CC-BY-NC-SA)
 %% Anna Davis and Paul Zachlin: https://github.com/annadavismath/LinearAlgebraV2
 %% https://ximera.osu.edu/linearalgebrav3/LinearAlgebraInteractiveIntro/SYS-0030/main
@@ -17,38 +19,205 @@
 \end{abstract}
 \maketitle
 
+
+
 \section{Row operations on matrices}
 
 
-Any time we have a system of equations we represent it with a matrix:
+Any time we have a \dfn{system of equations} we may represent it with a
+\dfn{matrix}
 \[
 \begin{array}{ccccccc}
-      3x & -&y&+&z&= &0 \\
-     2x& +&y&+&2z&=&2\\
-     x& +&4y&-&2z&=&11
+       & & 3y &-& 3z &=& 2 \\
+     x& +&3y&-&3z&=&-3\\
+     -3x& -&9y&-&11z&=&0
 \end{array}
-\qquad\Rightarrow\qquad
+\qquad\Longrightarrow\qquad
 \left(\begin{array}{ccc|c}
-  3 & -1 & 1 & 0 \\
-  2 &  1 & 2 & 2 \\
-  1 &  4 & 2 & 11 
+  0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{array}\right).
+\]
+Some folks call this an \dfn{augmented matrix}, and they write stuff like this:
+\[
+A = \underbrace{\begin{pmatrix}
+  0 & 3 & -3  \\
+  1 &  3  & -3 \\
+ -3 & -9 & 11
+\end{pmatrix}}_{\text{the coefficients}},
+\quad
+B =
+\underbrace{\begin{pmatrix}
+ -3\\ 2 \\ 0 
+\end{pmatrix}}_{\text{right-hand side}},
+\quad
+\left(A|B\right) = \underbrace{\left(\begin{array}{ccc|c}
+  0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{array}\right)}_{\text{augmented matrix}}.
+\]
+
+\begin{question}
+  Consider the following system of equations:
+
+  Write the augmented matrix for this system of equations.
+  \begin{prompt}
+    \[
+    \left(\begin{array}{ccc|c}
+      \answer{} & \answer{} & \answer{} & \answer{}
+    \end{array}\right)
+    \]
+  \end{prompt}
+\end{question}
+
+We are going to use matrices to solve this system of equations. The
+method we describe below is often called \dfn{Gaussian ellimination}
+or simply \dfn{ellimination}. To do this, we're going to introduce
+\dfn{row operations}. The row operations will allow us to change the
+form of the matix \emph{without changing the solutions}. The idea is
+this we start with a big matrix,
+\[
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet 
+\end{pmatrix}
+\quad
+\Rightarrow
+\quad
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+     0   & \bullet & \bullet & \bullet \\
+     0  &    0 & \bullet & \bullet 
+\end{pmatrix}
+\quad
+\Rightarrow
+\quad
+\begin{pmatrix}
+  1 & 0 & 0  & \bullet \\
+     0   & 1  &  0 & \bullet \\
+     0  &    0 & 1 & \bullet 
+\end{pmatrix}
+\]
+and transform it into a form where we can simply ``read-off'' the
+information about the system of equations, incluing the solutions.
+The row operations are as follows:
+\subsection{Swapping two rows} Since swapping the order of the equations in a
+  system of equations does not change the solutions, we may swap rows
+  in an augmented matrix. We denote swapping the $i$th row with the
+  $j$th row by $R_i\leftrightarrow R_j$. As an example, we can swap
+  the first and second rows of the matrix below:
+ \[
+\left(\begin{array}{ccc|c}
+  0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{array}\right)
+\qquad
+\begin{array}{c}
+  R_1\leftrightarrow R_2\\\Longrightarrow
+\end{array}
+\qquad
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  -3& -9  & 11 & 0
 \end{array}\right)
 \]
-We're going $\ro_1\to  \ro_2$
 
-TEACH ROW OPERATIONS WHILE REDUCING TO ROW ECHECLON FORM
+\begin{question}
+\end{question}
 
+  
+\subsection{Multiply by a nonzero constant and add different rows} 
+We may multiply equations by nonzero constants and add equations together
+\emph{without affecting the solution.} Hence we may multiply the first
+row by $3$ and add it to the third row, storing the answer in the
+third row (you could have chosen either of the summands).
+\[
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  -3& -9  & 11 & 0
+\end{array}\right)
+\qquad
+\begin{array}{c}
+  3R_1+R_3\rightarrow R_3\\\Longrightarrow
+\end{array}
+\qquad
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{array}\right).
+\]
+
+\begin{question}
+\end{question}
+
+
+
+At this point, we should draw your attention to the \emph{form} of the matrix. This matrix
+
+\[
+\begin{pmatrix}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{pmatrix}
+\qquad
+\text{is of this form:}
+\qquad
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+     0   & \bullet & \bullet & \bullet \\
+     0  &    0 & \bullet & \bullet 
+\end{pmatrix}
+\]
+
+
+
+We'll discuss the implications of this form below.
 
 
 \section{Row echelon form}
 
 At this point, we can write many matrices that all represent systems
-of equations that have a common solution. Some `forms' of these
-matrices are more convient than others. One form of matrix is called
-\dfn{row echelon form} or \dfn{triangular form}. An \textit{echelon}
-is a military term meaning a formation (of soldiers, vechicals, and so
-on) that makes a ``stair step'' shape. All of the matrices below are
-in row echelon form:
+of equations that have a common solution. For example:
+\[
+\begin{pmatrix}
+ 0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  -3& -9  & 11 & 0
+\end{pmatrix}
+\quad
+\begin{pmatrix}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{pmatrix}
+\]
+All represent solutions to the system of equations:
+\[
+\begin{array}{ccccccc}
+       & & 3y &-& 3z &=& 2 \\
+     x& +&3y&-&3z&=&-3\\
+     -3x& -&9y&-&11z&=&0
+\end{array}
+\]
+Some `forms' of these matrices are more convient than others. One form
+of matrix is called \dfn{row echelon form} or \dfn{triangular
+  form}. An \textit{echelon} is a military term meaning a formation
+(of soldiers, vechicals, and so on) that makes a ``stair step''
+shape. All of the matrices below are in row echelon form:
 \begin{tikzpicture}
 \node at (0,0) {$\begin{pmatrix}
  ~1~&2&-1&-5&0&2\\0&0&3&1&2&0\\0&0&0&0&1&0

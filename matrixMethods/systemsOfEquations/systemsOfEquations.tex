@@ -8,6 +8,10 @@
 %% Anna Davis and Paul Zachlin: https://github.com/annadavismath/LinearAlgebraV2
 %% https://ximera.osu.edu/linearalgebrav3/LinearAlgebraInteractiveIntro/SYS-0030/main
 
+%% https://www.cis.upenn.edu/~cis6100/Notices-06-11-Gausselim.pdf
+%% https://www.sciencedirect.com/science/article/pii/S0315086010000376
+
+
 \title{Matrices and systems of linear equations}
 
 
@@ -15,10 +19,29 @@
 
 \begin{document}
 \begin{abstract}
-  We use matrics to solve systems of linear equations
+  We use matrices to solve systems of linear equations.
 \end{abstract}
 \maketitle
 
+Gaussian elimination is technique for solving systems of linear
+equations. It is (obviously) named after
+\link[Gauss]{https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss}
+($1799$--$1855$). However, it was known to
+\link[Legendre]{https://en.wikipedia.org/wiki/Adrien-Marie_Legendre}
+($1752$--$1833$) and even
+\link[Euler]{https://en.wikipedia.org/wiki/Leonhard_Euler}
+($1707$--$1783$) before him. Moreover, it seems that these legends of
+mathematicians did not think highly of the method: Gauss refereed to it
+as ``common;'' Legendre called it ``ordinary;'' Euler ``did not
+recommend'' this method to students.
+
+
+
+
+Despite this inauspicious start, \textbf{Gaussian elimination is a tremendously
+important technique today.} It reduces a problem to it's barest
+components, and gives a method, an algorithm, that can be programmed
+into a computer that will solve systems of linear equations. Let's get started.
 
 
 \section{Row operations on matrices}
@@ -74,10 +97,10 @@ B =
 \end{question}
 
 We are going to use matrices to solve this system of equations. The
-method we describe below is often called \dfn{Gaussian ellimination}
-or simply \dfn{ellimination}. To do this, we're going to introduce
+method we describe below is often called \dfn{Gaussian elimination}
+or simply \dfn{elimination}. To do this, we're going to introduce
 \dfn{row operations}. The row operations will allow us to change the
-form of the matix \emph{without changing the solutions}. The idea is
+form of the matrix \emph{without changing the solutions}. The idea is
 this we start with a big matrix,
 \[
 \begin{pmatrix}
@@ -103,7 +126,7 @@ this we start with a big matrix,
 \end{pmatrix}
 \]
 and transform it into a form where we can simply ``read-off'' the
-information about the system of equations, incluing the solutions.  We
+information about the system of equations, including the solutions.  We
 discuss the row operations that allow such a transformation below.
 
 
@@ -218,10 +241,10 @@ system of equations:
      -3x& -&9y&-&11z&=&0
 \end{array}
 \]
-Some `forms' of these matrices are more convient than others. One
+Some `forms' of these matrices are more convenient than others. One
 useful form is called \dfn{row echelon form} or \dfn{triangular
   form}. An \textit{echelon} is a military term meaning a formation
-(of soldiers, vechicals, and so on) that makes a ``stair step''
+(of soldiers, vehicles, and so on) that makes a ``stair step''
 shape. All of the matrices below are in row echelon form:
 \[
 \begin{tikzpicture}
@@ -254,10 +277,10 @@ shape. All of the matrices below are in row echelon form:
 \draw (-1.5,.7) -- (-1.5,.25) -- (-1,.25) -- (-1, -.2) -- (-.4,-.2) -- (-.4,-.7);
 \end{tikzpicture}
 \]
-We've made a stair step patteren in each matrix. Now let's make a defintion.
+We've made a stair step pattern in each matrix. Now let's make a definition.
 
 \begin{definition}
-We say a matrix $M$ is in \dfn{row eschelon form} if every nonzero row
+We say a matrix $M$ is in \dfn{row echelon form} if every nonzero row
 contains a nonzero entry $M_{i,j}\ne 0$ such that
 \begin{itemize}
 \item Every entry below $M_{i,j}$ is zero, $M_{k,\l}=0$ whenever $k> i$.
@@ -272,10 +295,10 @@ Such an $M_{i,j}$ is called a \dfn{pivot} of $M$.
 
 
 
-\subsection{How does row ecehelon form help?}
+\subsection{How does row echelon form help?}
 
 Let's think about our original system of equations. We've shown that
-this cooresponds to a matrix in row eschelon from:
+this corresponds to a matrix in row echelon from:
 \[
 \begin{array}{ccccccc}
        & & 3y &-& 3z &=& 2 \\
@@ -290,7 +313,7 @@ this cooresponds to a matrix in row eschelon from:
 \end{pmatrix}
 \]
 But this final matrix that we obtained from row operations, (directly)
-cooresponds to the following system of equations:
+corresponds to the following system of equations:
 \[
 \left(\begin{array}{ccc|c}
   1 &   3 & -3 & 2  \\
@@ -307,6 +330,8 @@ cooresponds to the following system of equations:
 
 \section{Reduced row echelon form}
 
+
+Now comes the \emph{elimination} part of Gaussian elimination. 
 
 
 

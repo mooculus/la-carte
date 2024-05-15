@@ -336,21 +336,14 @@ corresponds to the following system of equations:
 
 
 \begin{algorithm}[Row Echelon Form (REF)]
-  \begin{description}
-\item Determine the leftmost column containing a nonzero entry (it exists if the matrix is nonzero).
-\item Use row operations so that the first nonzero column has a non-zero entry in the first row.
-\item Perform type III operations to make the entries below this leading 1 equal to 0.
-\item Repeat the previous four steps on the submatrix consisting of all except the first row, until reaching the end of the rows.
-\item For each row containing a leading 1, proceed upward using type III operations to  make zero any entry appearing above a leading 1.
-  \end{description}
-  Let $A = (a_{i,j})$ be a $m\times n$ matrix. 
+  Here we explain a general algorithm for reducing a matrix to row
+  echelon form in plain terms.
   \begin{enumerate}
-  \item Find a leftmost nonzero column of $A$, call this column
-    $j$. If all of the columns of $A$ are zero, goto $\ref{REF:done}$.
-  \item Use row operations to make $a_{1,j} = 1$.
-  \item Use row operations to make $a_{i,j}=0$ for $i\ne1$.
-  \item If there are no more nonzero columns to the left of $j$, goto $\ref{REF:done}$. Otherwise increment $j$ by $1$ and goto
-  \item\label{REF:done}
+  \item Determine the leftmost column containing a nonzero entry (it exists if the matrix is nonzero).
+  \item Use row operations so that the first nonzero column has a non-zero entry in the first row.
+  \item Use row operations to make the entries below this nonzero entry equal to zero.
+  \item Repeat the previous four steps on the submatrix consisting of
+    all except the first row, until reaching the end of the rows.
   \end{enumerate}
 \end{algorithm}
 
@@ -358,6 +351,146 @@ corresponds to the following system of equations:
 
 
 Now comes the \emph{elimination} part of Gaussian elimination. 
+
+\section{Putting it all together}
+
+
+\begin{example}
+  Solve for $x$, $y$, and $z$ in the following system of equations:
+  \begin{align*}
+    2x + 3y + z  &= 5 \\
+    x -2y+ 2z &=-9\\
+    3x +y- 3z &=14
+  \end{align*}
+
+\begin{solution}
+First we'll represent this as an agumented matrix.
+\[
+\left(\begin{array}{ccc|c}
+  2 & 3 & 1 & 5 \\
+  1 &  -2 & 2 &-9 \\
+  3 &  1 & -3 & 14
+\end{array}\right)
+
+\]
+Our first goal is to convert our matrix to row echelon form. Noting
+that changing the order of equations does not affect the solutions of the system
+\[
+\left(\begin{array}{ccc|c}
+  2 & 3 & 1 & 5 \\
+  1 &  -2 & 2 &-9 \\
+  3 &  1 & -3 & 14
+\end{array}\right)
+\begin{array}
+  R_1\leftrightarrow R_2\\\Longrightarrow
+\end{array}
+\left(\begin{array}{ccc|c}
+  1 &  -2 & 2 &-9 \\
+  2 & 3 & 1 & 5 \\
+  3 &  1 & -3 & 14
+\end{array}\right),
+\]
+Note that changing the order of equations does not affect the system
+and it is the same as interchanging rows in the matrix, denoted as
+$R_1 \leftrightarrow R_2$. By addition method we proceed by
+multiplying the first equation by $-2$ and adding it to the second
+equation. Afterwards, we multiply the first equation by $-3$ and add
+it to the third equation:
+\[
+\begin{array}{ccccccccc}
+     (-2)&&(x& -&2y&+&2z&=&-9)\\
+     +&& 2x &+& 3y &+& z &=& 5 \\
+     &&-&-&-&-&-&-&-\\
+     \Rightarrow&& & &7y&-&3z&=&23
+\end{array}
+\hspace{.2cm}\Rightarrow \hspace{.2cm}
+\left(\begin{array}{ccc|c}
+  1 &  -2 & 2 &-9 \\
+  0 & 7 & -3 & 23 \\
+  3 &  1 & -3 & 14
+\end{array}\right),
+\]
+and
+\[
+\begin{array}{ccccccccc}
+     (-3)&&(x& -&2y&+&2z&=&-9)\\
+     +&& 3x &+& y &-& 3z &=& 14 \\
+     &&-&-&-&-&-&-&-\\
+     \Rightarrow&& & &7y&-&9z&=&41
+\end{array}
+\hspace{.2cm}\Rightarrow \hspace{.2cm}
+\left(\begin{array}{ccc|c}
+  1 &  -2 & 2 &-9 \\
+  0 & 7 & -3 & 23 \\
+  0 &  7 & -9 & 41
+\end{array}\right).
+\]
+The above operations can be written in condensed form as $-2R_1 + R_2$ and $-3R_1 + R_3$, respectively. Observe that the row that is multiplied by a number does not change. For example, the first row above stayed the same and the row that it was added to changed. It is convenient to multiply each entry of row one by the appropriate number and write it above the row as side work and erase the numbers after adding them to the other row. It is important not to change the row itself. \\
+Now we see that both $y$ variables have $7$ as the coefficient. Thus, the best way to proceed is to eliminate the $y$ variable:
+\[
+\begin{array}{ccccccc}
+     (-1)&&(7y&-&3z&=&23)\\
+     +&& 7y &-& 9z &=& 41 \\
+     &&-&-&-&-&-\\
+     \Rightarrow&& &-&6z&=&18
+\end{array}
+\hspace{.2cm}\Rightarrow \hspace{.2cm}
+\left(\begin{array}{ccc|c}
+  1 &  -2 & 2 &-9 \\
+  0 & 7 & -3 & 23 \\
+  0 &  0 & -6 & 18
+\end{array}\right).
+\]
+It is now natural to solve for $z$ and obtain:
+\[
+\begin{array}{ccc}
+     &&z = -3\\
+     \text{ also } &&7y- 3z=23  \hspace{.3cm}\Rightarrow\hspace{.3cm} y- \frac{3}{7}z = \frac{23}{7}
+\end{array}
+\hspace{.2cm}\Rightarrow \hspace{.2cm}
+\left(\begin{array}{ccc|c}
+  1 &  -2 & 2 &-9 \\
+  0 & 1 & -3/7 & 23/7 \\
+  0 &  0 & 1 & -3
+\end{array}\right),
+\]
+where the operations translate to $R_{3}/(-6)$ and $R_{2}/7$, respectively. By substitution, we obtain,\\
+
+\hspace{.5cm} $z = -3   \hspace{.5cm}\Rightarrow \hspace{.5cm} y- \frac{3}{7}(-3) = \frac{23}{7} \hspace{.5cm}\Rightarrow \hspace{.5cm} y= \frac{23-9}{7}= 2,$
+\\ \\ \hspace{.5cm} then putting $y$ and $z$ in the first equation gives $x -2(2)+2(-3)=-9$ from which we obtain, $x= 1$.
+
+The same process may be applied to matrices by converting the rows back to equations and then using substitution. The matrix we obtained in which the diagonal entries are 1 and every entry below them is zero is said to be in row-echelon form. If one also makes the entries above the diagonal to become zero then the matrix is said to be in reduced row-echelon form. In example above, we may first make the entry above entry $a_{22}$ be zero:
+\[
+\left(\begin{array}{ccc|c}
+  1 &  -2 & 2 &-9 \\
+  0 & 1 & -3/7 & 23/7 \\
+  0 &  0 & 1 & -3
+\end{array}\right)
+\hspace{.2cm}\xrightarrow{2R_{2}+R_{1}} \hspace{.2cm}
+\left(\begin{array}{ccc|c}
+  1 &  0 & 8/7 &-17/7 \\
+  0 & 1 & -3/7 & 23/7 \\
+  0 &  0 & 1 & -3
+\end{array}\right),
+\]
+Then we use the 1 in row three to make the entries above it zero:
+\[
+\left(\begin{array}{ccc|c}
+  1 &  0 & 8/7 &-17/7 \\
+  0 & 1 & -3/7 & 23/7 \\
+  0 &  0 & 1 & -3
+\end{array}\right)
+\hspace{.2cm}\xrightarrow[(3/7)R_{3}+R_{2}]{(-8/7)R_{3}+R_{1}} \hspace{.2cm}
+\left(\begin{array}{ccc|c}
+  1 &  0 & 0 &1 \\
+  0 & 1 & 0& 2 \\
+  0 &  0 & 1 & -3
+\end{array}\right),
+\]
+which automatically leads to $z=-3$ and $y=2$ and $x=1$.
+\end{solution}
+\end{example}
+
 
 
 

@@ -371,7 +371,6 @@ First we'll represent this as an agumented matrix.
   1 &  -2 & 2 &-9 \\
   3 &  1 & -3 & 14
 \end{array}\right)
-
 \]
 Our first goal is to convert our matrix to row echelon form. Noting
 that changing the order of equations does not affect the solutions of the system
@@ -381,7 +380,7 @@ that changing the order of equations does not affect the solutions of the system
   1 &  -2 & 2 &-9 \\
   3 &  1 & -3 & 14
 \end{array}\right)
-\begin{array}
+\begin{array}{c}
   R_1\leftrightarrow R_2\\\Longrightarrow
 \end{array}
 \left(\begin{array}{ccc|c}
@@ -489,6 +488,127 @@ Then we use the 1 in row three to make the entries above it zero:
 \]
 which automatically leads to $z=-3$ and $y=2$ and $x=1$.
 \end{solution}
+\end{example}
+
+
+\begin{example}
+  There are two special cases that may occur in solving systems: the system may have no real solutions and the other is it can have infinitely many solutions. Here we discuss these two cases by going through examples.\\
+Let us study at the following system,
+\begin{eqnarray}\label{system}
+\frac{2}{5}x + \frac{3}{10} y &=& 8\\
+y -\frac{1}{4}w &=& 5\nonumber\\
+\frac{3}{5}x + \frac{2}{5}z &=& 2\nonumber\\
+6y - \frac{3}{2}w &=& -9.\nonumber
+\end{eqnarray}
+We write it in matrix form:
+\[
+\left(\begin{array}{ccccc|c}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &5\\
+  \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+  \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+\end{array}\right)
+\]
+To avoid calculations involving fractions, we first convert such entries to integers by multiplying their rows by the common denominator of the fractions in that row. Then we obtain,
+\[
+\left(\begin{array}{ccccc|c}
+   \answer[given]{4}&  \answer[given]{3} & \answer[given]{0} &\answer[given]{0} &80 \\
+  \answer[given]{0}&  \answer[given]{4} & \answer[given]{0} &\answer[given]{-1} &20\\
+  3&  \answer[given]{0} & \answer[given]{2} &\answer[given]{0} &\answer[given]{10}\\
+  \answer[given]{0}&  \answer[given]{12} & \answer[given]{0} &\answer[given]{-3} &\answer[given]{-18}
+\end{array}\right)
+\]
+Then,
+\[
+\hspace{.2cm}\xrightarrow[-3R_{1} + R_{\answer[given]{3}}]{\answer[given]{1/4}R_{1}}\hspace{.2cm}
+\left(\begin{array}{ccccc|c}
+   \answer[given]{1}&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &\answer[given]{20} \\
+  \answer[given]{0}&  \answer[given]{4} & \answer[given]{0} &\answer[given]{-1} &20\\
+  \answer[given]{0}&  \answer[given]{-9/4} & \answer[given]{2} &\answer[given]{0} &-50\\
+  \answer[given]{0}&  \answer[given]{12} & \answer[given]{0} &\answer[given]{-3} &\answer[given]{-18}
+\end{array}\right)\\
+\]
+\[
+\hspace{.2cm}\xrightarrow[-12 R_{2} + R_{\answer[given]{4}}]{\answer[given]{1/4}R_{2}}\hspace{.2cm}
+\left(\begin{array}{ccccc|c}
+   \answer[given]{1}&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &\answer[given]{20} \\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &5\\
+  \answer[given]{0}&  \answer[given]{-9/4} & \answer[given]{2} &\answer[given]{0} &-50\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-78}
+\end{array}\right)
+\]
+Thus, the last row translates to $0x+0y+0z+0w=-78$, that is $0=-78$, which can never be true. This means that the system has no solution. There is no $(x,y,z,w)$ that makes every equation in the system hold true. \\
+Now let us consider the same system \eqref{system} with the second equation replaced with,
+\begin{equation*}
+y- \frac{1}{4}w= -\frac{3}{2}.
+\end{equation*}
+Then, the same steps may be followed as above to obtain,
+\[
+\left(\begin{array}{ccccc|c}
+   1&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &20 \\
+  \answer[given]{0}&  4 & \answer[given]{0} &\answer[given]{-1} &-6\\
+  \answer[given]{0}&  -9/4 & \answer[given]{2} &\answer[given]{0} &-50\\
+  \answer[given]{0}&  12 & \answer[given]{0} &-3 &\answer[given]{-18}
+\end{array}\right)\\
+\]
+\[
+\hspace{.2cm}\xrightarrow[-12 R_{2} + R_{4}]{\answer[given]{1/4}R_{2}}\hspace{.2cm}
+\left(\begin{array}{ccccc|c}
+   1&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &20 \\
+  \answer[given]{0}&  1 & \answer[given]{0} &\answer[given]{-1/4} &\answer[given]{-3/2}\\
+  \answer[given]{0}&  -9/4 & \answer[given]{2} &\answer[given]{0} &-50\\
+  \answer[given]{0}&  0 & \answer[given]{0} &0 &\answer[given]{0}
+\end{array}\right).
+\]
+Here the row of zeros imply $0x+0y+0z+0w=0$ that is $0=0$, which is true for any numbers for $x,y,z,w$. Thus, we let $r$ be any arbitrary real number and set the last variable $w$ be equal to $r$ and write every other variable in terms of $r$. That is,
+\begin{eqnarray*}
+w&=&r \\
+\frac{-9}{4} y + 2z &=& -50\\
+y- \frac{1}{4} w &=& -\frac{3}{2} \hspace{.2cm}\rightarrow \hspace{.2cm} y=\frac{1}{4} r -\frac{3}{2}\\
+x +\frac{3}{4} y &=& 20 \hspace{.2cm}\rightarrow \hspace{.2cm} x = \answer[given]{-3/16} r + \frac{9}{8} + \answer[given]{20}\\
+\frac{-9}{4} y + 2z &=& -50 \hspace{.2cm}\rightarrow \hspace{.2cm} z= \answer[given]{9/16} r - 25 - \answer[given]{-27/8}.
+\end{eqnarray*}
+When getting zero rows, it is best to move them to the bottom of the matrix and start from the last variable to equate them to an arbitrary number. If the row-echelon form of a system has $n$ zero rows, where $n>1$ then set the last $n$ variables equal to different letters. For example, suppose we have for row-echelon form,
+\[
+\left(\begin{array}{ccccc|c}
+   1&  0 & 2 &5 &10 \\
+  0&  0 & 0 &0 &0\\
+  0&  0 & 0 &0 &0\\
+  0&  0 & 0 &0 &0\\
+\end{array}\right),
+\]
+then we let $w=r, z=s, y=k$, where $r,s,k$ are arbitrary real numbers and solve for x: $ x= \answer[given]{-5}r + \answer[given]{-2}s +\answer[given]{10}$. \\
+Now let us study when these cases occur. Recall that graphically the solution is the intersection point of the equations. Consider the equations,
+\[
+\begin{array}{ccccc}
+     2x& -&4y&=&16\\
+     16x &-& 32y&=& 12
+\end{array}
+\hspace{.2cm}\Rightarrow \hspace{.2cm}
+\begin{array}{ccccc}
+     y&=&\frac{1}{2}x&+&4\\
+     y &=& \frac{1}{2}x&-& \frac{3}{8}
+\end{array},
+\]
+we may notice that they have the same slope and different y-intercepts, implying that the two lines are parallel and have no intersection points and thus the system has no solutions. Note that the second equation above has coefficients that are $8$ times those of the first equation. Also going back to system \eqref{system}, note that the coefficients of the fourth equation were a constant multiple of those of the second equation and since the constants were not also a multiple of each other then we had no solutions, the same here. Furthermore, if we consider,
+\[
+\begin{array}{ccccc}
+     2x& -&4y&=&16\\
+     16x &-& 32y&=& 128
+\end{array}
+\hspace{.2cm}\Rightarrow \hspace{.2cm}
+\begin{array}{ccccc}
+     y&=&\frac{1}{2}x&+&4\\
+     y &=& \frac{1}{2}x&+& 4
+\end{array},
+\]
+then we have the two equations representing the same line causing an overlap. Therefore, this leads to infinitely many solutions with each point on this line being a solution of the system, since it is an intersection point of the two equations. This may also be observed in system \eqref{system} when the second equation was replaced by
+\begin{equation*}
+y-\frac{1}{4}w= -\frac{3}{2},
+\end{equation*}
+leading to every entry of a row being a constant multiple of another row giving a row of zeros, which implies that the system has infinitely many solutions. In summary when solving a system by matrices, if every entry of a row is a constant multiple of another row then there are infinitely many solutions. If every entry of a row in the coefficient matrix is a multiple of another row while their constants are not multiple of one another then there is no solution.
+
+
 \end{example}
 
 

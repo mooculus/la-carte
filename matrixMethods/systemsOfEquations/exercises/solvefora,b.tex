@@ -1,0 +1,37 @@
+\documentclass{ximera}
+
+%\input{../../../preamble.tex}
+
+
+\author{Parisa Fatheddin}
+
+
+
+\begin{document}
+
+
+
+\begin{exercise} What values for $a,b$ make the following system of equations have no solutions or infinitely many solutions. If there are no such values write N/A.
+\begin{eqnarray*}
+\frac{5}{3}x + \frac{7}{4}y &=& 2\\
+(4a)x + \frac{2}{3}z &=& 1\\
+\frac{3}{7} y + bz &=& 11
+\end{eqnarray*}
+\begin{prompt}
+a. There are no real solutions: $a = \answer{-15/21}\hspace{.08cm}k, b= \answer{2/21}\hspace{.08cm}k$, where $k$ is any number. \\
+b. There are infinitely many solutions: $a = \answer{N/A} \hspace{.08cm}k, b= \answer{N/A}\hspace{.08cm}k$.
+\begin{hint}
+Writing the system in matrix form and transforming the entries in the first and third rows to integers gives,
+\[
+\left(\begin{array}{ccc|c}
+  \answer{20} &  \answer{21} & \answer{0} &\answer{24} \\
+  4a &  \answer{0} & \answer{2/3} & 1\\
+  \answer{0} &  \answer{3} & \answer{7b} & \answer{77}
+\end{array}\right)
+\]
+Then after applying the operations $\frac{R_{1}}{20}$ and $-4a R_{1} + R_{2}$ solve for $a$ and $b$.
+\end{hint}
+\end{prompt}
+\end{exercise}
+
+\end{document}

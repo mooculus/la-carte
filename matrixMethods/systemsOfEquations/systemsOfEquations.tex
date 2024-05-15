@@ -333,6 +333,27 @@ corresponds to the following system of equations:
 \end{array}
 \]
 
+
+
+\begin{algorithm}[Row Echelon Form (REF)]
+  \begin{description}
+\item Determine the leftmost column containing a nonzero entry (it exists if the matrix is nonzero).
+\item Use row operations so that the first nonzero column has a non-zero entry in the first row.
+\item Perform type III operations to make the entries below this leading 1 equal to 0.
+\item Repeat the previous four steps on the submatrix consisting of all except the first row, until reaching the end of the rows.
+\item For each row containing a leading 1, proceed upward using type III operations to  make zero any entry appearing above a leading 1.
+  \end{description}
+  Let $A = (a_{i,j})$ be a $m\times n$ matrix. 
+  \begin{enumerate}
+  \item Find a leftmost nonzero column of $A$, call this column
+    $j$. If all of the columns of $A$ are zero, goto $\ref{REF:done}$.
+  \item Use row operations to make $a_{1,j} = 1$.
+  \item Use row operations to make $a_{i,j}=0$ for $i\ne1$.
+  \item If there are no more nonzero columns to the left of $j$, goto $\ref{REF:done}$. Otherwise increment $j$ by $1$ and goto
+  \item\label{REF:done}
+  \end{enumerate}
+\end{algorithm}
+
 \section{Reduced row echelon form}
 
 

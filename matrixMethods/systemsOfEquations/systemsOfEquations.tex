@@ -336,6 +336,8 @@ corresponds to the following system of equations:
 
 
 \begin{algorithm}[Row Echelon Form (REF)]
+  Here we explain a general algorithm for reducing a matrix to row
+  echelon form in plain terms.
   \begin{enumerate}
   \item Determine the leftmost column containing a nonzero entry (it exists if the matrix is nonzero).
   \item Use row operations so that the first nonzero column has a non-zero entry in the first row.
@@ -353,56 +355,35 @@ Now comes the \emph{elimination} part of Gaussian elimination.
 \section{Putting it all together}
 
 
-\begin{example} Solve for $x$, $y$, and $z$ in the following system of equations:
+\begin{example}
+  Solve for $x$, $y$, and $z$ in the following system of equations:
+  \begin{align*}
+    2x + 3y + z  &= 5 \\
+    x -2y+ 2z &=-9\\
+    3x +y- 3z &=14
+  \end{align*}
 
 \begin{solution}
-
-  \[
-  \begin{array}{ccccccc}
-    2x &+& 3y &+& z &=& 5 \\
-    x& -&2y&+&2z&=&-9\\
-    3x& +&y&-&3z&=&14
-  \end{array}
-\hspace{.2cm}\Rightarrow \hspace{.2cm}
-\left(\begin{array}{ccc}
-  2 & 3 & 1  \\
-  1 &  -2 & 2  \\
-  3 &  1 & -3
-\end{array}\right)
-\left(\begin{array}{c}
-x \\
-y\\
-z\\
-\end{array}\right) = \left(\begin{array}{c}
-5\\
--9\\
-14
-\end{array}\right),
-\]
-which we typically write in matrix notation as $A\textbf{x} = B$, with $A$ being the coefficient matrix and $B$ the constant matrix. Note that here $\textbf{x}$ is a column vector representing the variables in the system. We first write one condensed matrix $(A|B)$ as follows,
+First we'll represent this as an agumented matrix.
 \[
 \left(\begin{array}{ccc|c}
   2 & 3 & 1 & 5 \\
   1 &  -2 & 2 &-9 \\
   3 &  1 & -3 & 14
-\end{array}\right).
+\end{array}\right)
+
 \]
-Now we solve the system by traditional methods such as addition (also
-referred to as elimination) method and show what each step means for
-our matrix. Recall that in addition method one multiplies one equation
-by a constant and then adds it to another equation to eliminate one
-variable. Since the second equation in the system above has no
-coefficient for $x$, it is best to use it as the equation to multiply
-by the needed constant to eliminate the $x$ variable in the other two
-equations. We will interchange the first and second equations to make
-this process easier:
+Our first goal is to convert our matrix to row echelon form. Noting
+that changing the order of equations does not affect the solutions of the system
 \[
-\begin{array}{ccccccc}
-     x& -&2y&+&2z&=&-9\\
-     2x &+& 3y &+& z &=& 5 \\
-     3x& +&y&-&3z&=&14
+\left(\begin{array}{ccc|c}
+  2 & 3 & 1 & 5 \\
+  1 &  -2 & 2 &-9 \\
+  3 &  1 & -3 & 14
+\end{array}\right)
+\begin{array}
+  R_1\leftrightarrow R_2\\\Longrightarrow
 \end{array}
-\hspace{.2cm}\Rightarrow \hspace{.2cm}
 \left(\begin{array}{ccc|c}
   1 &  -2 & 2 &-9 \\
   2 & 3 & 1 & 5 \\

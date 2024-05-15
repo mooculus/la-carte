@@ -1,0 +1,52 @@
+\documentclass{ximera}
+
+\input{../../../preamble.tex}
+
+
+\author{Parisa Fatheddin}
+
+
+
+\begin{document}
+
+\begin{exercise}
+Consider the following system of linear equations:
+\begin{align*}
+      3x + 5z &=  -15 \\
+     2y+4x+3z&= -1\\
+     3x -9z&= 27
+\end{align*}
+\begin{enumerate}
+\item Express this system as an augmented matrix.
+\begin{prompt}
+\[
+\left(\begin{array}{ccc|c}
+  \answer{3} &  \answer{0} & \answer{5} &-15 \\
+  \answer{4} & \answer{2} & 3 & \answer{-1} \\
+  \answer{3} &  \answer{0} & -9 & \answer{27}
+\end{array}\right)
+\]
+\end{prompt}
+\item Use row operations to convert this matrix to row echelon form.
+\begin{prompt}
+\[
+\left(\begin{array}{ccc|c}
+  \answer{1} &  \answer{0} & \answer{5/3} &\answer{-5} \\
+  \answer{0} & \answer{1} & \answer{-11/6} & \answer{19/2} \\
+  \answer{0} &  \answer{0} & \answer{1} & \answer{-3}
+\end{array}\right),
+\]
+\end{prompt}
+\item Convert this augmented matrix back to a system of equations
+and give the solution.
+\begin{prompt}
+\begin{align*}
+      \left(\answer{1}\right)x + \left(\answer{0}\right)y + \left(\answer{5/3}\right)z &= \left(\answer{-5}\right) \\
+     \left(\answer{1}\right)y+\left(\answer{-11/6}\right)z&=\left(\answer{19/2}\right)\\
+     z&=\left(\answer{-3}\right)
+\end{align*}
+Our solution is: $x= \answer{0}, y= \answer{4}, z=\answer{-3}$.
+\end{prompt}
+\end{enumerate}
+\end{exercise}
+\end{document}

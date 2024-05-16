@@ -53,10 +53,14 @@ times that it makes sense to add data:
   are real numbers that represent actual amounts of money, and their
   total gives meaningful information about financial status or
   performance.
-\item[Time Spent on Tasks] Adding the duration of time spent on
-  various activities on day gives a total time spent. We all have busy
-  lives, and time is a very precious commodity. Hence, it is good to
-  understand how we spend our time.
+%% \item[Time Spent on Tasks] Adding the duration of time spent on
+%%   various activities on day gives a total time spent. We all have busy
+%%   lives, and time is a very precious commodity. Hence, it is good to
+%%   understand how we spend our time.
+\item[RGB Color Space] Colors on digital screens are often represented
+  as vectors in the RGB color space, with each component corresponding
+  to the intensity of red, green, and blue light. Adding the values
+  for different pixels changes the brightness of each individual component.
 \item[Navigation] Aircraft navigate by knowing the direction and speed
   that they are traveling. When interpreted correctly, we add the
   speed and direction of many of many different ``course changes'' to
@@ -116,23 +120,37 @@ notation for vectors.
   \[
   \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
   \]
-\item[As a column vector] A column vector is just like a row vector,
+  \item[As a column vector] A column vector is just like a row vector,
   except is it written vertically:
   \[
-  \vec{w}_{\texttt{TR}} = \begin{pmatrix}
-    0.5\\ 4 \\ 0 \\ 1\end{pmatrix}
+  \vec{p} = \begin{pmatrix}
+    0.58\\  0.91 \\ 0.35\end{pmatrix}
     \qquad
     \begin{array}{l}
-    \text{Emails}\\
-    \text{Classes}\\
-    \text{Projects}\\
-    \text{Exercising}
-  \end{array}
+    \text{Red}\\
+    \text{Green}\\
+    \text{Blue}
+    \end{array}
   \]
-  Above, we could suppose that $\vec{w}_{\texttt{TR}}$ represents the
-  fact that on Tuesdays and Thursdays, someone spends $0.5$ hours on
-  emails, $4$ hours in class, $0$ hours on projects, and $1$ hour
-  exercising.
+  Above, we suppose that $\vec{p}$ represents the color (using normalized RGB)
+  that represents the color  \textit{Sea Foam Green}.
+%% \item[As a column vector] A column vector is just like a row vector,
+%%   except is it written vertically:
+%%   \[
+%%   \vec{w}_{\texttt{TR}} = \begin{pmatrix}
+%%     0.5\\ 4 \\ 0 \\ 1\end{pmatrix}
+%%     \qquad
+%%     \begin{array}{l}
+%%     \text{Emails}\\
+%%     \text{Classes}\\
+%%     \text{Projects}\\
+%%     \text{Exercising}
+%%   \end{array}
+%%   \]
+%%   Above, we could suppose that $\vec{w}_{\texttt{TR}}$ represents the
+%%   fact that on Tuesdays and Thursdays, someone spends $0.5$ hours on
+%%   emails, $4$ hours in class, $0$ hours on projects, and $1$ hour
+%%   exercising.
 \end{description}
 \end{concept}
 
@@ -146,7 +164,7 @@ Of course, since mathematics is a human endeavor you will find variations on the
 \end{bmatrix}
 \]
 for an ordered-tuple vectors and column vectors. Ordered tuples and
-row vectors are more convient to write in a line, because they are
+row vectors are more convenient to write in a line, because they are
 horizontal. On the other hand, column vectors take up less horizontal
 space, and are more convenient when you have vectors with many entries.
 
@@ -278,38 +296,15 @@ Now that we know the basics, onto the examples!
 \end{example}
 
 
-
-\begin{example}[Time Spent on Tasks]
-  On Mondays, Wednesdays, and Fridays, suppose you spend you spend $1$
-  hour on emails, $2$ hours in class, and $3$ hours working on
-  projects. On Tuesdays and Thursdays, you spend $1/2$ hour on emails,
-  $4$ hours in class, and $1$ hour exercising. We can express each day
-  as a column vector:
+\begin{example}[RGB Color Space]
+  The color \textit{Sea Foam Green} is a classic color found on many \textit{Fender} Guitars. 
   \[
-  \vec{w}_{\texttt{MWF}} =
+  \vec{p} =
   \begin{pmatrix}
-    1 \\
-    2 \\
-    3 \\
-    0
+    0.58\\  0.91 \\ 0.35
   \end{pmatrix}
-  \qquad
-  \vec{w}_{\texttt{TR}} =
-  \begin{pmatrix}
-    0.5\\
-    4\\
-    0\\
-    1
-  \end{pmatrix} \qquad
-  \begin{array}{l}
-    \text{Emails}\\
-    \text{Classes}\\
-    \text{Projects}\\
-    \text{Exercising}
-  \end{array}
   \]
-  How much time is spent on emails, classes, projects, and exercising
-  per work week?
+  When a nitrocellulose lacquer finish ages, it lightens and begins to yellow.
   \begin{solution}
     Here we simply compute:
     \[
@@ -317,6 +312,51 @@ Now that we know the basics, onto the examples!
     \]
   \end{solution}
 \end{example}
+
+
+
+
+%% \begin{example}[Time Spent on Tasks]
+%%   On Mondays, Wednesdays, and Fridays, suppose you spend you spend $1$
+%%   hour on emails, $2$ hours in class, and $3$ hours working on
+%%   projects. On Tuesdays and Thursdays, you spend $1/2$ hour on emails,
+%%   $4$ hours in class, and $1$ hour exercising. We can express each day
+%%   as a column vector:
+%%   \[
+%%   \vec{w}_{\texttt{MWF}} =
+%%   \begin{pmatrix}
+%%     1 \\
+%%     2 \\
+%%     3 \\
+%%     0
+%%   \end{pmatrix}
+%%   \qquad
+%%   \vec{w}_{\texttt{TR}} =
+%%   \begin{pmatrix}
+%%     0.5\\
+%%     4\\
+%%     0\\
+%%     1
+%%   \end{pmatrix} \qquad
+%%   \begin{array}{l}
+%%     \text{Emails}\\
+%%     \text{Classes}\\
+%%     \text{Projects}\\
+%%     \text{Exercising}
+%%   \end{array}
+%%   \]
+%%   How much time is spent on emails, classes, projects, and exercising
+%%   per work week?
+%%   \begin{solution}
+%%     Here we simply compute:
+%%     \[
+%%     3 \vec{w}_{\texttt{MWF}} + 2  \vec{w}_{\texttt{TR}}  =
+%%     \]
+%%   \end{solution}
+%% \end{example}
+
+
+
 
 
 
@@ -567,7 +607,7 @@ Baby-steps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-m
 \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} = a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1}
 \]
 This is equivalent to multiplying a row vector by a column vector. We
-can imagine a `physical' movement of the entires with this product:
+can imagine a `physical' movement of the entries with this product:
 
 \begin{center}
   \begin{tikzpicture}
@@ -584,16 +624,16 @@ can imagine a `physical' movement of the entires with this product:
     \node at (1.5,.7) {$\begin{matrix} b_{1,1} & b_{1,2} & b_{1,3} \end{matrix}$};
   \end{tikzpicture}
 \end{center}
-We'll leave it to the reader to generalize this proceedure to $(1\times n)$-matrix by a $(n\times 1)$ matrix.
+We'll leave it to the reader to generalize this procedure to $(1\times n)$-matrix by a $(n\times 1)$ matrix.
 
 \begin{question}
-  CHECK TO SEE IF THEY CAN GENERALIZE THE PROCEEDURE WITH n=4 and n=6 (use sparce matrices)
+  CHECK TO SEE IF THEY CAN GENERALIZE THE PROCEDURE WITH n=4 and n=6 (use spare matrices)
 \end{question}
 
 
 
 
-This type of vector/matrix multiplcation is so important, it has it's own name.
+This type of vector/matrix multiplication is so important, it has it's own name.
 
 \begin{definition}
   The \dfn{dot product} or \dfn{scalar product} of two vectors
@@ -625,7 +665,7 @@ The first thing you should notice about the the dot product is that
 
 \begin{warning}
   There is no general way to ``multiply'' vectors of the same type and
-  have resulting product be a resonable vector also of that type.
+  have resulting product be a reasonable vector also of that type.
   You might think it is reasonable to define
   \begin{center}
 \begin{tikzpicture}
@@ -659,7 +699,7 @@ but this operation is not especially useful, and will \textbf{never be
 \end{warning}
 
 \begin{question}
-  Which of the following are resonable?
+  Which of the following are reasonable?
 
   Dot prod etc.
 \end{question}
@@ -731,7 +771,7 @@ We're basically multiplying the like-shaded sections below:
 
 \begin{warning}
   It only makes sense to multiply a matrix by a column vector if the
-  number of colmuns of the matrix equals the dimension of the column
+  number of columns of the matrix equals the dimension of the column
   vector.
 \end{warning}
 

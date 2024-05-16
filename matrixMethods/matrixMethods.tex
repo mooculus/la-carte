@@ -1,4 +1,4 @@
-\documentclass[numbers]{xourse}
+\documentclass[numbers,handout]{xourse}
 
 \input{../preamble.tex}
 
@@ -7,14 +7,18 @@
 \title{Matrix Methods}
 
 \begin{document}
+\onecolumn
 \begin{abstract}
   An introductory linear algebra course focused on solving systems of equations.
 \end{abstract}
 \maketitle
 
-
+\chapterstyle
 \activity{vectorsScalarsAndMatrices/vectorsScalarsAndMatrices.tex}
 \activity{systemsOfEquations/systemsOfEquations.tex}
+\practicestyle
+\exerciseCollection{systemsOfEquations/exercises/}{exerciseList}
+\chapterstyle
 \activity{applications/applications.tex}
 \activity{propertiesOfVectorsAndMatrices/propertiesOfVectorsAndMatrices.tex}
 \activity{inversesOfMatrices/inversesOfMatrices.tex}

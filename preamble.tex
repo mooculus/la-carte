@@ -26,7 +26,50 @@
 
 
 
+%% Define exercise collection. 
+\makeatletter
+\newcommand{\exerciseCollection}[2]{
+\def\input@path{{#1}}
+\activity{#1#2}}
 
+
+
+\newcommand{\practicestyle}{
+  
+  \let\exercise\relax
+\let\endexercise\relax
+\let\c@exercise\relax
+\let\problem\relax
+\let\endproblem\relax
+\let\c@problem\relax 
+\newtheoremstyle{problem}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries}{)}{ }{}
+\theoremstyle{problem}
+\newtheorem{problem}{}
+\newtheorem{exercise}[problem]{}
+\section{Exercises for Chapter~\thetitlenumber}
+\small%\twocolumn
+%% \let\exercise\relax
+%%   \let\endexercise\relax
+%%   \let\c@exercise\relax 
+%%   \newtheoremstyle{exercise}
+%%                   {\topsep}{\topsep}{\rmfamily}{}{\bfseries}{)}{~}{}
+%% \theoremstyle{exercise}
+%% \newtheorem{exercise}{}
+}
+\renewcommand\chapterstyle{%
+  \def\activitystyle{activity-chapter}
+  \normalsize
+  %\onecolumn
+  \def\maketitle{%
+    \addtocounter{titlenumber}{1}%
+                    {\flushleft\small\sffamily\bfseries\@pretitle\par\vspace{-1.5em}}%
+                    {\flushleft\LARGE\sffamily\bfseries\thetitlenumber\hspace{1em}\@title \par }%
+                    {\vskip .6em\noindent\textit\theabstract\setcounter{problem}{0}\setcounter{section}{0}}%
+                    \par\vspace{2em}
+                    \phantomsection\addcontentsline{toc}{section}{\textbf{\thetitlenumber\hspace{1em}\@title}}%
+}}
+\makeatother
 
 
 

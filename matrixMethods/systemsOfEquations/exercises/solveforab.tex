@@ -1,6 +1,6 @@
 \documentclass{ximera}
 
-%\input{../../../preamble.tex}
+\input{../../../preamble.tex}
 
 
 \author{Parisa Fatheddin}
@@ -11,15 +11,30 @@
 
 
 
-\begin{exercise} What values for $a,b$ make the following system of equations have no solutions or infinitely many solutions. If there are no such values write N/A.
-\begin{eqnarray*}
-\frac{5}{3}x + \frac{7}{4}y &=& 2\\
-(4a)x + \frac{2}{3}z &=& 1\\
-\frac{3}{7} y + bz &=& 11
-\end{eqnarray*}
+\begin{exercise}
+  Below we have a system of equations:
+\begin{align*}
+\frac{5}{3}x + \frac{7}{4}y &= 2\\
+(4a)x + \frac{2}{3}z &= 1\\
+\frac{3}{7} y + bz &= 11
+\end{align*}
+Find values for $a,b$ make this system of equations have:
+\begin{enumerate}
+\item No real solutions.
+\item Infinitely many solutions.
+\end{enumerate}
+In either case, write ``NA'' if there are no such values.
 \begin{prompt}
-a. There are no real solutions: $a = \answer{-15/21}\hspace{.08cm}k, b= \answer{2/21}\hspace{.08cm}k$, where $k$ is any number. \\
-b. There are infinitely many solutions: $a = \answer{N/A} \hspace{.08cm}k, b= \answer{N/A}\hspace{.08cm}k$.
+  \begin{enumerate}
+  \item  There are no real solutions:
+    \[
+    a = \left(\answer{-15/21}\right)k,\quad  b= \left(\answer{2/21}\right)k,
+    \]
+    where $k$ is any number.
+  \item There are infinitely many solutions:
+    \[
+    a = \answer[format=string]{NA},\quad b= \answer[format=string]{NA}.
+    \]
 \begin{hint}
 Writing the system in matrix form and transforming the entries in the first and third rows to integers gives,
 \[
@@ -31,6 +46,7 @@ Writing the system in matrix form and transforming the entries in the first and 
 \]
 Then after applying the operations $\frac{R_{1}}{20}$ and $-4a R_{1} + R_{2}$ solve for $a$ and $b$.
 \end{hint}
+  \end{enumerate}
 \end{prompt}
 \end{exercise}
 

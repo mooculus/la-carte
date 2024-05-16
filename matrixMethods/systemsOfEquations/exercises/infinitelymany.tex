@@ -14,15 +14,20 @@
 
 
 \begin{exercise} Consider system of equations,
-\begin{eqnarray*}
-\frac{2}{3}x + \frac{1}{6}y -2z &=& 5\\
--4x -y+12z &=& -30\\
-5x-20w &=& 40\\
-2x+\frac{1}{2} y - 6z &=& 15
-\end{eqnarray*}
-a. What is its augmented matrix row-echelon form? \\
+\begin{align*}
+\frac{2}{3}x + \frac{1}{6}y -2z &= 5\\
+-4x -y+12z &= -30\\
+5x-20w &= 40\\
+2x+\frac{1}{2} y - 6z &= 15
+\end{align*}
+
+\begin{enumerate}
+\item\label{infman:a} Express the augmented matrix for this system of equations matrix
+  in row echelon form.
 \begin{prompt}
-Noting that the third row in the augmented matrix has the most number of zeros, begin by applying $R_{1}\leftrightarrow R_{3}$. Row-echelon form:
+Noting that the third row in the augmented matrix has the most number
+of zeros, begin by applying $R_{1}\leftrightarrow R_{3}$. We find the
+row echelon form:
 \[
 \left(\begin{array}{ccccc|c}
   \answer{1} &  \answer{0} & \answer{0} & \answer{-4} &\answer{8} \\
@@ -32,16 +37,15 @@ Noting that the third row in the augmented matrix has the most number of zeros, 
 \end{array}\right),
 \]
 \end{prompt}
-
-b. Solve the system. \\
+\item Solve the system of equations. 
 \begin{prompt}
-Based on part a, the system has \wordChoice{\choice{no solutions} \choice{$x=0, y=0, z=0, w=0$} \choice[correct]{infinitely many solutions}\choice{$x=4, y=12, z=$ undefined, $w=$ undefined}} and for arbitrary real numbers $r,s$,
-\begin{eqnarray*}
-w&=& r\\
-z &=& \answer{s}\\
-y &=& \answer{-16}\hspace{.08cm}r + \answer{12}\hspace{.08cm}s + \answer{-2}\\
-x&=& \answer{4}\hspace{.08cm} r + \answer{0}\hspace{.08cm}s + \answer{8}
-\end{eqnarray*}
+Based on part (\ref{infman:a}), the system has \wordChoice{\choice{no solutions} \choice{$x=0, y=0, z=0, w=0$} \choice[correct]{infinitely many solutions}\choice{$x=4, y=12, z=$ undefined, $w=$ undefined}} and for arbitrary real numbers $r,s$,
+\begin{align*}
+w&= r\\
+z &= \answer{s}\\
+y &= \left(\answer{-16}\right)r + \left(\answer{12}\right)s + \answer{-2}\\
+x&= \left(\answer{4}\right) r + \left(\answer{0}\right)s + \answer{8}
+\end{align*}
 \end{prompt}
 \end{exercise}
 \end{document} 

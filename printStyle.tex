@@ -1,4 +1,10 @@
 \makeatletter
+\usepackage[T1]{fontenc}
+\usepackage{stix}
+\usepackage{gillius}
+
+\usepackage{multicol}
+
 
 %% Define exercise collection. 
 \newcommand{\exerciseCollection}[2]{
@@ -8,20 +14,19 @@
 
 
 \newcommand{\practicestyle}{
-  
-  \let\exercise\relax
+\let\exercise\relax
 \let\endexercise\relax
 \let\c@exercise\relax
 \let\problem\relax
 \let\endproblem\relax
-\let\c@problem\relax 
+\let\c@problem\relax
 \newtheoremstyle{problem}
 {\topsep}{\topsep}{\rmfamily}{}{\bfseries}{)}{ }{}
 \theoremstyle{problem}
 \newtheorem{problem}{}
 \newtheorem{exercise}[problem]{}
-\section{Exercises for Chapter~\thetitlenumber}
-\small%\twocolumn
+\twocolumn[\section{Exercises for Chapter~\thetitlenumber}]
+\small
 %% \let\exercise\relax
 %%   \let\endexercise\relax
 %%   \let\c@exercise\relax 
@@ -32,6 +37,7 @@
 }
 \renewcommand\chapterstyle{%
   \def\activitystyle{activity-chapter}
+  \onecolumn
   \normalsize
   %\onecolumn
   \def\maketitle{%
@@ -42,4 +48,6 @@
                     \par\vspace{2em}
                     \phantomsection\addcontentsline{toc}{section}{\textbf{\thetitlenumber\hspace{1em}\@title}}%
 }}
+
+\onecolumn
 \makeatother

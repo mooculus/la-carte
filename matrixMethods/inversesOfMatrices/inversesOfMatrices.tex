@@ -19,8 +19,36 @@
 \section{Matrices are functions}
 
 \begin{definition}
-  Linear function
+  A \textbf{linear function} is a function $L:\R^n\to\R^m$ such that
+  \[
+  L(a\vec{x}+b\vec{y}) = aL(\vec{x}) + bL(\vec{y})
+  \]
+  for all $a,b\in\R$ and $\vec{x},\vec{y}\in \R^n$.
 \end{definition}
+
+\begin{question}
+  Now consider this function:
+  \begin{align*}
+    \vec{F}: \R^6 &\to \R^4\\
+    \begin{pmatrix}
+      x_1\\
+      x_2\\
+      x_3\\
+      x_4\\
+      x_5\\
+      x_6
+    \end{pmatrix}
+    &\mapsto
+        \begin{pmatrix}
+      x_1+1\\
+      x_2+1\\
+      x_3+1\\
+      x_4+1
+    \end{pmatrix}
+  \end{align*}
+  Starting from the definition of a linear function, \textbf{is $\vec{F}$ a
+  linear function? Why or why not?}
+\end{question}
 
 
 

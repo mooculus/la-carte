@@ -58,9 +58,12 @@ times that it makes sense to add data:
 %%   lives, and time is a very precious commodity. Hence, it is good to
 %%   understand how we spend our time.
 \item[RGB Color Space] Colors on digital screens are often represented
-  as vectors in the RGB color space, with each component corresponding
-  to the intensity of red, green, and blue light. Adding the values
-  for different pixels changes the brightness of each individual component.
+  as vectors in the RGB color space. Here three numerical components
+  correspond to the intensity of red, green, and blue light, with $0$
+  representing no intenstity, black can be represented by $(0,0,0)$,
+  and $255$ represents maximum intensity, white can be represented by
+  $(255,255,255)$.  Adding the values for different pixels changes the
+  brightness of each individual component.
 \item[Navigation] Aircraft navigate by knowing the direction and speed
   that they are traveling. When interpreted correctly, we add the
   speed and direction of many of many different ``course changes'' to
@@ -124,7 +127,7 @@ notation for vectors.
   except is it written vertically:
   \[
   \vec{p} = \begin{pmatrix}
-    0.58\\  0.91 \\ 0.35\end{pmatrix}
+    159\\  226 \\ 191\end{pmatrix}
     \qquad
     \begin{array}{l}
     \text{Red}\\
@@ -132,8 +135,8 @@ notation for vectors.
     \text{Blue}
     \end{array}
   \]
-  Above, we suppose that $\vec{p}$ represents the color (using normalized RGB)
-  that represents the color  \textit{Sea Foam Green}.
+  Above, we suppose that $\vec{p}$ represents the color that
+  represents the color \textit{Sea Foam Green}.
 %% \item[As a column vector] A column vector is just like a row vector,
 %%   except is it written vertically:
 %%   \[
@@ -163,10 +166,11 @@ Of course, since mathematics is a human endeavor you will find variations on the
   c
 \end{bmatrix}
 \]
-for an ordered-tuple vectors, row vectors, and column vectors. Ordered tuples and
-row vectors are more convenient to write in-line (in a sentence), because they are
-horizontal. On the other hand, column vectors take up less horizontal
-space, and are more convenient when you have vectors with many entries.
+for an ordered-tuple vectors, row vectors, and column vectors. Ordered
+tuples and row vectors are easy to write in-line (in a sentence),
+because they are horizontal. On the other hand, column vectors take up
+less horizontal space and are more convenient when you have vectors
+with many entries.
 
 
 \begin{definition}
@@ -287,12 +291,11 @@ Now that we know the basics, onto the examples!
   costs the bookstore $6$ dollars from the wholesaler, and each book sells
   for $9$ dollars, what is the profit for each category?
   \begin{explanation}
-    Using the properties of vectors, we wish to compute
+    Using the properties of vectors, we wish to compute:
     \[
-    9\vec{s}-6\vec{s} =
+    9\vec{s}-6\vec{s} = \begin{pmatrix} \answer[given]{423} & \answer[given]{912} & \answer[given]{747} & 597 & 753 \end{pmatrix}
     \]
   \end{explanation}
-
 \end{example}
 
 
@@ -301,15 +304,35 @@ Now that we know the basics, onto the examples!
   \[
   \vec{p} =
   \begin{pmatrix}
-    0.58\\  0.91 \\ 0.35
+    159 \\ 226 \\ 191
   \end{pmatrix}
   \]
-  When a nitrocellulose lacquer finish ages, it lightens and begins to yellow.
+  In the early days, \textit{Fender} used a nitrocellulose lacquer
+  finish ages. When this sort of finish ages, it fades and begins to
+  yellow.
+
+  These effects can separately and summed together. To simulate the
+  fading, rasing all the values by $10$ percent. To simulate the
+  yellowing, we should remove ``blue'' from our initial color, we will
+  remove $10$ percent of a pure blue $(0,0,255)$ vector. Use this
+  difference to simulate the aging of a nitrocellulose lacquer
+  finish. When you are done, visually inspect the effects of your work
+  using an online RGB color picker.
   \begin{explanation}
     Here we simply compute:
     \[
-    3 \vec{w}_{\texttt{MWF}} + 2  \vec{w}_{\texttt{TR}}  =
+    1.1 \vec{p} - 0.1  \begin{pmatrix} \answer[given]{0} \\  \answer[given]{0} \\  \answer[given]{255} \end{pmatrix}
+    = \begin{pmatrix} \answer[given]{175} \\  \answer[given]{249} \\  \answer[given]{185} \end{pmatrix}
     \]
+    \colorbox[rgb]{0.624, 0.886, 0.749}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    This is a box with a custom RGB color (159, 226, 191).
+    }}
+
+    \colorbox[rgb]{0.686, 0.976, 0.725}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    This is a box with a custom RGB color (175, 249, 185).
+    }}
   \end{explanation}
 \end{example}
 

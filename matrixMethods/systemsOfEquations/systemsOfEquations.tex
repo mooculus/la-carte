@@ -1,7 +1,7 @@
 \documentclass{ximera}
 
 \input{../../preamble.tex}
-
+\usetikzlibrary{matrix}
 \author{Parisa Fatheddin \and Bart Snapp}
 
 %% Jim Hefferon’s Linear Algebra. (CC-BY-NC-SA)
@@ -346,6 +346,52 @@ corresponds to the following system of equations:
     all except the first row, until reaching the end of the rows.
   \end{enumerate}
 \end{algorithm}
+
+Pictorially, we can imagine this algorithm working as follows:
+
+\[
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet 
+\end{pmatrix}
+\Rightarrow
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet 
+\end{pmatrix}
+\]
+
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,left delimiter={(},right delimiter={)}] {
+    \bullet & \bullet & \bullet & \bullet \\
+    0       & \bullet & \bullet & \bullet \\
+    0       & \bullet & \bullet & \bullet \\
+  };
+
+  % Draw the rectangle around the submatrix
+  \draw[red,thick] (m-2-2.north west) rectangle (m-3-4.south east);
+
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Reduced row echelon form}
 

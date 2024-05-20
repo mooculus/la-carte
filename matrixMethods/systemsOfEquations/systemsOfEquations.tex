@@ -363,17 +363,17 @@ Pictorially, we can imagine this algorithm working as follows:
 \end{pmatrix}
 \]
 
-\begin{tikzpicture}
-  \matrix (m) [matrix of math nodes,left delimiter={(},right delimiter={)}] {
-    \bullet & \bullet & \bullet & \bullet \\
-    0       & \bullet & \bullet & \bullet \\
-    0       & \bullet & \bullet & \bullet \\
-  };
+%% \begin{tikzpicture}
+%%   \matrix (m) [matrix of math nodes,left delimiter={(},right delimiter={)}] {
+%%     \bullet & \bullet & \bullet & \bullet \\
+%%     0       & \bullet & \bullet & \bullet \\
+%%     0       & \bullet & \bullet & \bullet \\
+%%   };
 
-  % Draw the rectangle around the submatrix
-  \draw[red,thick] (m-2-2.north west) rectangle (m-3-4.south east);
+%%   % Draw the rectangle around the submatrix
+%%   \draw[red,thick] (m-2-2.north west) rectangle (m-3-4.south east);
 
-\end{tikzpicture}
+%% \end{tikzpicture}
 
 
 

@@ -6,7 +6,7 @@
 \usepackage{multicol}
 
 %% Size of the page
-\usepackage[margin=.5in, includehead, includefoot, hmargin={.8in,.5in}, paperwidth=8.5in, paperheight=8.5in]{geometry}
+\usepackage[margin=.5in, includehead, includefoot, hmargin={1.8in,1.5in}, paperwidth=8.5in, paperheight=8.5in]{geometry}
 %\usepackage[margin=.5in, includehead, includefoot, hmargin={.8in,.5in}, paperwidth=11in, paperheight=8.5in]{geometry}
 
 
@@ -102,6 +102,7 @@
 
 
 \newcommand{\practicestyle}{
+\newgeometry{hmargin={.8in,.5in}}
 \let\exercise\relax
 \let\endexercise\relax
 \let\c@exercise\relax
@@ -124,6 +125,7 @@
 %% \newtheorem{exercise}{}
 }
 \renewcommand\chapterstyle{%
+\restoregeometry
   \def\activitystyle{activity-chapter}
   \onecolumn
   \normalsize

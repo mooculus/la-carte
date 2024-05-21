@@ -454,19 +454,44 @@ several!) of zeros like this:
   0& 0  & 0 & 0
 \end{array}\right)
 \qquad\Longrightarrow\qquad
-\begin{array}{ccccccc}
-      \bullet x& + & \bullet y &+& \bullet z &=& \bullet \\
-      &  &\bullet y& + &\bullet z&=& \bullet
-\end{array}
+\begin{aligned}
+      \bullet x +  \bullet y + \bullet z &= \bullet \\
+        \bullet y + \bullet z&= \bullet
+\end{aligned}
 \]
-
-
+In this case, we have a system of equations with more variables than
+equations! This means (assuming no columns of zeros) that the system
+of equations is \dfn{underdetermined}. Note that if we try to solve
+for $x$ and $y$, we will always have a function of $z$ for each. Hence
+in a case like this, there are an \dfn{infinite number of solutions}.
 
 
 
 \paragraph{Columns of zeros}
 
+Sometimes after we transform to row echelon form, we have a column (or
+several!) of zeros like this:
+\[
+\left(\begin{array}{ccc|c}
+  \bullet &   0 & \bullet & \bullet  \\
+  0 &   0 & \bullet & \bullet \\
+   0& 0  &  0 & \bullet
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{aligned}
+      \bullet x  + \bullet z &= \bullet & \\
+      \bullet z&= \bullet & \\
+      0 &=\bullet & \textbf{(VERY PROBLEMATIC)}
+\end{aligned}
+\]
+Again, we have a system of equations but this time we have $0 =
+\bullet$ where we're assuming $\bullet$ is not zero.  This means that
+the system of equations is \dfn{overdetermined} also known as
+\dfn{inconsistent}. In a case like this, there are \dfn{no solutions.}
 
+
+
+\paragraph{Summary}
 
 
 

@@ -324,7 +324,7 @@ Such an $M_{i,j}$ is called a \dfn{pivot} of $M$.
 \subsection{An algorithm for row echelon form}
 
 The biggest strength of using matrices to solve equations is that the
-proceedure (when using matrices) can be easily done on a computer with
+procedure (when using matrices) can be easily done on a computer with
 something like the following algorithm:
 
 \begin{algorithm}[Row Echelon Form (REF)]
@@ -378,10 +378,10 @@ Pictorially, we can imagine this algorithm working as follows:
   \node[below] at (9,-1) {\begin{minipage}{2.5cm}\small\center REF\end{minipage}};
   \end{tikzpicture}
 \end{center}
-Note, in the algorithm, we don't need to know much about the entires
+Note, in the algorithm, we don't need to know much about the entries
 other than that the pivots are nonzero. In fact \textit{we don't need
   to know much at all.}  This is why Euler, Legendre, and Gauss were
-not, in fact, enamorued with this sort of algorithm.  They, like us
+not, in fact, enamored with this sort of algorithm.  They, like us
 and all good teachers, \textbf{want you to do math with understanding!}
 
 However, this pedagogical limitation is in fact its greatest
@@ -432,10 +432,13 @@ Hence at this point we see
   3y-3\cdot 3 &= -3 &\Rightarrow  & & y &= 2\\
   x + 3\cdot 2 - 3\cdot 3 &= 2  &\Rightarrow & & x &= 1
 \end{align*}
-And we have solved our system of equations. \textbf{But wait, there's
-  more!}  Often the `form' or shape of the matrix in row echelon form
-will \textbf{tell us about the solutions, without actually finding the
-solutions.}
+And we have solved our system of equations. The method we used,
+solving for $z$, then $y$, then $x$ is called \dfn{back
+  substitution}. Once a matrix is in row echelon form, this is usually
+a fairly efficient method to find the solutions.  \textbf{But wait,
+  there's more!}  Often the `form' or shape of the matrix in row
+echelon form will \textbf{tell us about the solutions, without
+  actually finding the solutions.}
 
 
 
@@ -488,7 +491,7 @@ Now comes the \emph{elimination} part of Gaussian elimination.
   \end{align*}
 
 \begin{solution}
-First we'll represent this as an agumented matrix.
+First we'll represent this as an augmented matrix.
 \[
 \left(\begin{array}{ccc|c}
   2 & 3 & 1 & 5 \\

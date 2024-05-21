@@ -22,31 +22,61 @@
 %% Redefine "question"
 \let\question\relax
 \let\endquestion\relax
-\let\c@pquestion\relax
+%\let\c@pquestion\relax
 \newtheoremstyle{question}
-{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{.}{ }{Question}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Question}
 \theoremstyle{question}
 \newtheorem*{question}{}
 
+%% Redefine "example"
+\let\example\relax
+\let\endexample\relax
+%\let\c@example\relax
+\newtheoremstyle{example}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Example}
+\theoremstyle{example}
+\newtheorem*{example}{}
+
+%% Redefine "warning"
+\let\warning\relax
+\let\endwarning\relax
+%\let\c@example\relax
+\newtheoremstyle{warning}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{WARNING}
+\theoremstyle{warning}
+\newtheorem*{warning}{}
+
+
+%% Redefine "definition"
+\let\definition\relax
+\let\enddefinition\relax
+%\let\c@example\relax
+\newtheoremstyle{definition}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Definition}
+\theoremstyle{definition}
+\newtheorem*{definition}{}
 
 
 
-%% %% Redefines "explanation"
-%% \renewmdenv[
-%%   font=\upshape,
-%%   outerlinewidth=3mm,
-%%   topline=false,
-%%   bottomline=false,
-%%   leftline=true,
-%%   rightline=false, 
-%%   leftmargin=0,
-%%   innertopmargin=0pt,
-%%   innerbottommargin=0pt,
-%%   skipbelow=\baselineskip,
-%%   linecolor=textColor!20!white,
-%%   fontcolor=textColor,
-%%   backgroundcolor=background
-%% ]{explanation}%
+
+
+
+%% Redefines "explanation"
+\renewmdenv[
+  font=\upshape,
+  linewidth=3mm,
+  topline=false,
+  bottomline=false,
+  leftline=true,
+  rightline=false, 
+  leftmargin=0,
+  innertopmargin=0pt,
+  innerbottommargin=0pt,
+  skipbelow=\baselineskip,
+  linecolor=textColor!20!white,
+  fontcolor=textColor,
+  backgroundcolor=background
+]{explanation}%
 
 
 

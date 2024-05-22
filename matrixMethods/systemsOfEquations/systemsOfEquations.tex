@@ -156,7 +156,7 @@ discuss the row operations that allow such a transformation below.
 \end{array}\right)
 \qquad
 \begin{array}{c}
-  R_1\leftrightarrow R_2\\\Longrightarrow
+  \scriptstyle R_1\leftrightarrow R_2\\\Longrightarrow
 \end{array}
 \qquad
 \left(\begin{array}{ccc|c}
@@ -204,7 +204,7 @@ third row (you could have chosen either of the summands).
 \end{array}\right)
 \qquad
 \begin{array}{c}
-  3R_1+R_3\rightarrow R_3\\\Longrightarrow
+  \scriptstyle 3R_1+R_3\rightarrow R_3\\\Longrightarrow
 \end{array}
 \qquad
 \left(\begin{array}{ccc|c}
@@ -618,7 +618,7 @@ make the entires below this one zero using row operations.
   3 &  1 & -3 & 14
 \end{pmatrix}
 \begin{array}{c}
-  (-0.5) R_1+R+2\to R_2\\ \Longrightarrow\\  (-1.5) R_1+R+3\to R_3
+  \scriptstyle(-0.5) R_1+R+2\to R_2\\ \Longrightarrow\\  \scriptstyle(-1.5) R_1+R+3\to R_3
 \end{array}
 \begin{pmatrix}
   2 & 3 & 1 & 5 \\
@@ -647,7 +647,7 @@ Again we make all rows less than the submatrix's top most entry zero:
   0 & -3.5 & -4.5 & 6.5
 \end{pmatrix}
 \begin{array}{c}
-  (-1) R_2+R_3\to R_3\\ \Longrightarrow
+  \scriptstyle(-1) R_2+R_3\to R_3\\ \Longrightarrow
 \end{array}
 \begin{pmatrix}
   2 & 3 & 1 & 5 \\
@@ -817,7 +817,7 @@ First we'll represent this system of equations as an augmented matrix:
 \[
   \left(\begin{array}{cccc|c}
    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &\frac{-3}{2}\\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & -3/2\\
   \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
   \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
 \end{array}\right)
@@ -826,17 +826,17 @@ Now we will use Gaussian elimination to transform this matrix to row echelon for
 \[
 \begin{pmatrix}
    {2/5}&  {3/10} & {0} &{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
   {3/5}&  {0} & {2/5} &{0} &2\\
   {0}&  {6} & {0} &{-3/2} &-9
 \end{pmatrix}
 \begin{matrix}
-  (-3/2) R_1 + R_3\to R_3\\
+  \scriptstyle(-3/2) R_1 + R_3\to R_3\\
   \Longrightarrow
 \end{matrix}
 \begin{pmatrix}
    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
   \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
   {0}&  {6} & {0} &{-3/2} &-9
 \end{pmatrix}
@@ -847,12 +847,12 @@ Now we work with the submatrix:
   \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
     column sep=0.3em, row sep=0.1em] at (6,0){
    {2/5}&  {3/10} & {0} &{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
   {0}&  {-9/20} & {2/5} &{0} &-10\\
   {0}&  {6} & {0} &{-3/2} &-9\\
   };
   % Draw the rectangle around the submatrix
-  \draw[black!30!white,thick] ([xshift=-1em,yshift=.5em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
+  \draw[black!30!white,thick] ([xshift=-1em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
 \end{tikzpicture}
 \]
 We will zero the columns below the $(2,2)$-entry:
@@ -864,36 +864,25 @@ We will zero the columns below the $(2,2)$-entry:
   {0}&  {6} & {0} &{-3/2} &-9
 \end{pmatrix}
 \begin{matrix}
-  (9/2) R_2 + R_3\to R_3\\
-  \Longrightarrow
+  \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  \Longrightarrow \\
+  \scriptstyle(-6) R_2+R_4\to R_4
 \end{matrix}
 \begin{pmatrix}
    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
   {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
-  \answer[given]{0}&  \answer[given]{0} & \answer[given]{} &\answer[given]{} &\\
-  {0}&  {6} & {0} &{-3/2} &-9
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
 \end{pmatrix}
 \]
-
-
+and we are now in row echelon form. However, we have a row of zeros. 
+Here the row of zeros imply
 \[
-\left(\begin{array}{ccccc|c}
-   1&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &20 \\
-  \answer[given]{0}&  4 & \answer[given]{0} &\answer[given]{-1} &-6\\
-  \answer[given]{0}&  -9/4 & \answer[given]{2} &\answer[given]{0} &-50\\
-  \answer[given]{0}&  12 & \answer[given]{0} &-3 &\answer[given]{-18}
-\end{array}\right)
+0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
 \]
-\[
-\hspace{.2cm}\xrightarrow[-12 R_{2} + R_{4}]{\answer[given]{1/4}R_{2}}\hspace{.2cm}
-\left(\begin{array}{ccccc|c}
-   1&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &20 \\
-  \answer[given]{0}&  1 & \answer[given]{0} &\answer[given]{-1/4} &\answer[given]{-3/2}\\
-  \answer[given]{0}&  -9/4 & \answer[given]{2} &\answer[given]{0} &-50\\
-  \answer[given]{0}&  0 & \answer[given]{0} &0 &\answer[given]{0}
-\end{array}\right).
-\]
-Here the row of zeros imply $0x+0y+0z+0w=0$ that is $0=0$, which is true for any numbers for $x,y,z,w$. Thus, we let $r$ be any arbitrary real number and set the last variable $w$ be equal to $r$ and write every other variable in terms of $r$. That is,
+which is true for all numbers $x,y,z,w$. Thus, we let $r$ be any
+arbitrary real number and set the last variable $w$ be equal to $r$
+and write every other variable in terms of $r$. That is,
 \begin{eqnarray*}
 w&=&r \\
 \frac{-9}{4} y + 2z &=& -50\\

@@ -591,7 +591,7 @@ hand, it is usually best to use back substitution to solve the system of equatio
 Now let's try our hand at some example problems. 
 
 
-\begin{example}[A unique solution]
+\begin{example}[Unique solution]
   Solve for $x$, $y$, and $z$ in the following system of equations:
   \begin{align*}
     2x + 3y + z  &= 5 \\
@@ -600,7 +600,7 @@ Now let's try our hand at some example problems.
   \end{align*}
 
 \begin{explanation}
-First we'll represent this system of equations as an augmented matrix.
+First we'll represent this system of equations as an augmented matrix:
 \[
 \left(\begin{array}{ccc|c}
   2 & 3 & 1 & 5 \\
@@ -626,7 +626,7 @@ make the entires below this one zero using row operations.
   0 & -3.5 & -4.5 & 6.5
 \end{pmatrix}
 \]
-Now we focus on the submatrix:
+Now we work with the submatrix:
 \[
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
@@ -801,58 +801,27 @@ Finally, you must check your work!
 \end{explanation}
 \end{example}
 
+Now let's see an example where there are an infinite number of solutions.
 
-\begin{example}
-  There are two special cases that may occur in solving systems: the system may have no real solutions and the other is it can have infinitely many solutions. Here we discuss these two cases by going through examples.\\
-Let us study at the following system,
-\begin{eqnarray}\label{system}
-\frac{2}{5}x + \frac{3}{10} y &=& 8\\
-y -\frac{1}{4}w &=& 5\nonumber\\
-\frac{3}{5}x + \frac{2}{5}z &=& 2\nonumber\\
-6y - \frac{3}{2}w &=& -9.\nonumber
-\end{eqnarray}
-We write it in matrix form:
+
+\begin{example}[Infinite solutions]
+  Describe the solutions of the following system of equations:
+\begin{align*}
+\left(\frac{2}{5}\right)x + \left(\frac{3}{10}\right) y &= 8\\
+y -\left(\frac{1}{4}\right)w &= \frac{-3}{2}\\
+\left(\frac{3}{5}\right)x + \left(\frac{2}{5}\right)z &= 2\\
+6y - \left(\frac{3}{2}\right)w &= -9
+\end{align*}
+\begin{explanation}
+First we'll represent this system of equations as an augmented matrix:
 \[
-\left(\begin{array}{ccccc|c}
+  \left(\begin{array}{cccc|c}
    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &5\\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &\frac{-3}{2}\\
   \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
   \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
 \end{array}\right)
 \]
-To avoid calculations involving fractions, we first convert such entries to integers by multiplying their rows by the common denominator of the fractions in that row. Then we obtain,
-\[
-\left(\begin{array}{ccccc|c}
-   \answer[given]{4}&  \answer[given]{3} & \answer[given]{0} &\answer[given]{0} &80 \\
-  \answer[given]{0}&  \answer[given]{4} & \answer[given]{0} &\answer[given]{-1} &20\\
-  3&  \answer[given]{0} & \answer[given]{2} &\answer[given]{0} &\answer[given]{10}\\
-  \answer[given]{0}&  \answer[given]{12} & \answer[given]{0} &\answer[given]{-3} &\answer[given]{-18}
-\end{array}\right)
-\]
-Then,
-\[
-\hspace{.2cm}\xrightarrow[-3R_{1} + R_{\answer[given]{3}}]{\answer[given]{1/4}R_{1}}\hspace{.2cm}
-\left(\begin{array}{ccccc|c}
-   \answer[given]{1}&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &\answer[given]{20} \\
-  \answer[given]{0}&  \answer[given]{4} & \answer[given]{0} &\answer[given]{-1} &20\\
-  \answer[given]{0}&  \answer[given]{-9/4} & \answer[given]{2} &\answer[given]{0} &-50\\
-  \answer[given]{0}&  \answer[given]{12} & \answer[given]{0} &\answer[given]{-3} &\answer[given]{-18}
-\end{array}\right)\\
-\]
-\[
-\hspace{.2cm}\xrightarrow[-12 R_{2} + R_{\answer[given]{4}}]{\answer[given]{1/4}R_{2}}\hspace{.2cm}
-\left(\begin{array}{ccccc|c}
-   \answer[given]{1}&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &\answer[given]{20} \\
-  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &5\\
-  \answer[given]{0}&  \answer[given]{-9/4} & \answer[given]{2} &\answer[given]{0} &-50\\
-  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-78}
-\end{array}\right)
-\]
-Thus, the last row translates to $0x+0y+0z+0w=-78$, that is $0=-78$, which can never be true. This means that the system has no solution. There is no $(x,y,z,w)$ that makes every equation in the system hold true. \\
-Now let us consider the same system \eqref{system} with the second equation replaced with,
-\begin{equation*}
-y- \frac{1}{4}w= -\frac{3}{2}.
-\end{equation*}
 Then, the same steps may be followed as above to obtain,
 \[
 \left(\begin{array}{ccccc|c}
@@ -860,7 +829,7 @@ Then, the same steps may be followed as above to obtain,
   \answer[given]{0}&  4 & \answer[given]{0} &\answer[given]{-1} &-6\\
   \answer[given]{0}&  -9/4 & \answer[given]{2} &\answer[given]{0} &-50\\
   \answer[given]{0}&  12 & \answer[given]{0} &-3 &\answer[given]{-18}
-\end{array}\right)\\
+\end{array}\right)
 \]
 \[
 \hspace{.2cm}\xrightarrow[-12 R_{2} + R_{4}]{\answer[given]{1/4}R_{2}}\hspace{.2cm}
@@ -918,33 +887,65 @@ then we have the two equations representing the same line causing an overlap. Th
 y-\frac{1}{4}w= -\frac{3}{2},
 \end{equation*}
 leading to every entry of a row being a constant multiple of another row giving a row of zeros, which implies that the system has infinitely many solutions. In summary when solving a system by matrices, if every entry of a row is a constant multiple of another row then there are infinitely many solutions. If every entry of a row in the coefficient matrix is a multiple of another row while their constants are not multiple of one another then there is no solution.
-
+\end{explanation}
 
 \end{example}
 
 
 
+\begin{example}[No solutions]
+  There are two special cases that may occur in solving systems: the system may have no real solutions and the other is it can have infinitely many solutions. Here we discuss these two cases by going through examples.\\
+Let us study at the following system,
+\begin{eqnarray}\label{system}
+\frac{2}{5}x + \frac{3}{10} y &=& 8\\
+y -\frac{1}{4}w &=& 5\nonumber\\
+\frac{3}{5}x + \frac{2}{5}z &=& 2\nonumber\\
+6y - \frac{3}{2}w &=& -9.\nonumber
+\end{eqnarray}
+\begin{explanation}
+We write it in matrix form:
+\[
+\left(\begin{array}{ccccc|c}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &5\\
+  \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+  \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+\end{array}\right)
+\]
+To avoid calculations involving fractions, we first convert such entries to integers by multiplying their rows by the common denominator of the fractions in that row. Then we obtain,
+\[
+\left(\begin{array}{ccccc|c}
+   \answer[given]{4}&  \answer[given]{3} & \answer[given]{0} &\answer[given]{0} &80 \\
+  \answer[given]{0}&  \answer[given]{4} & \answer[given]{0} &\answer[given]{-1} &20\\
+  3&  \answer[given]{0} & \answer[given]{2} &\answer[given]{0} &\answer[given]{10}\\
+  \answer[given]{0}&  \answer[given]{12} & \answer[given]{0} &\answer[given]{-3} &\answer[given]{-18}
+\end{array}\right)
+\]
+Then,
+\[
+\hspace{.2cm}\xrightarrow[-3R_{1} + R_{\answer[given]{3}}]{\answer[given]{1/4}R_{1}}\hspace{.2cm}
+\left(\begin{array}{ccccc|c}
+   \answer[given]{1}&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &\answer[given]{20} \\
+  \answer[given]{0}&  \answer[given]{4} & \answer[given]{0} &\answer[given]{-1} &20\\
+  \answer[given]{0}&  \answer[given]{-9/4} & \answer[given]{2} &\answer[given]{0} &-50\\
+  \answer[given]{0}&  \answer[given]{12} & \answer[given]{0} &\answer[given]{-3} &\answer[given]{-18}
+\end{array}\right)\\
+\]
+\[
+\hspace{.2cm}\xrightarrow[-12 R_{2} + R_{\answer[given]{4}}]{\answer[given]{1/4}R_{2}}\hspace{.2cm}
+\left(\begin{array}{ccccc|c}
+   \answer[given]{1}&  \answer[given]{3/4} & \answer[given]{0} &\answer[given]{0} &\answer[given]{20} \\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &5\\
+  \answer[given]{0}&  \answer[given]{-9/4} & \answer[given]{2} &\answer[given]{0} &-50\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-78}
+\end{array}\right)
+\]
+Thus, the last row translates to $0x+0y+0z+0w=-78$, that is $0=-78$, which can never be true. This means that the system has no solution. There is no $(x,y,z,w)$ that makes every equation in the system hold true. \\
 
-This final example shows us the power of reducing to row echelon form, and understanding the consequences with respect to reduced row echelon form.
-
-%Example 2.5.4 from
-%https://linearalgebra.math.umanitoba.ca/math1220/section-12.html
-\begin{example}
-  Consider the system of linear equations:
-  \begin{align*}
-    x+y+z &=  1\\
-    2x+y+z &=  2\\
-    3x+ay+bz &= c
-  \end{align*}
-  Find values of $a$, $b$ and $c$ for which there are no solutions,
-  one solution, or many solutions.
-  \begin{explanation}
-    here
-  \end{explanation}
-\end{example}
+\end{explanation}
 
 
-
+  \end{example}
 
 
 

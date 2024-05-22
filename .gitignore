@@ -14,3 +14,4 @@ xourse.cls
 *.blg
 *.toc
 *.cls
+*.synctex\(busy\) 

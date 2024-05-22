@@ -21,7 +21,7 @@
 In mathematics, we study (among other things) numbers. In many cases,
 these numbers represent real-world data. Sometimes it ``makes sense''
 to add data and sometimes it doesn't.
-\begin{concept}[When it does NOT make sense to add data]
+begin{concept}[When it does NOT make sense to add data]
 \begin{description}
 \item[Personal Identification Numbers] Summing things like social
   security numbers, phone numbers, or zip codes doesn't provide
@@ -34,7 +34,7 @@ to add data and sometimes it doesn't.
   locations doesn't give you a location that has any real-world
   significance.
 \end{description}
-\end{concept}
+end{concept}
 For some of the categories above, the \textit{average} can be
 meaningful; or perhaps if each quantity is thought of as
 `displacement' or `duration,' summing might be meaningful. However,
@@ -42,7 +42,7 @@ without additional (pun intended!) stipulations, summing the types of
 quantities above is not meaningful. On the other hand, there's lots of
 times that it makes sense to add data:
 
-\begin{concept}[When it makes sense to add data]
+begin{concept}[When it makes sense to add data]
 \begin{description}
 \item[Population Counts] Adding the populations of different regions,
   cities, or countries to find the total population of a larger
@@ -69,7 +69,7 @@ times that it makes sense to add data:
   speed and direction of many of many different ``course changes'' to
   find the ultimate position of the aircraft.
 \end{description}
-\end{concept}
+end{concept}
 Often when it make sense to \textit{add} quantities, it make sense to
 \textit{scale} them as well. For example with population, you could
 ask for the population of a city with $3$ times the population, or
@@ -79,7 +79,7 @@ numbers used to scale vectors are called \textit{scalars}.
 
 
 \begin{definition}
-  We say data is represented by \dfn{vectors} $\vec{v}$ and $\vec{w}$
+  We say data is represented by $\vec{v}$ and $\vec{w}$
   if
   \[
   \vec{v}+\vec{w}
@@ -99,7 +99,7 @@ seems too abstract, let's give some very concrete examples, based on
 the examples above. However, before we start, we need to give some
 notation for vectors.
 
-\begin{concept}[Ways data can be stored as a vector]
+begin{concept}[Ways data can be stored as a vector]
 \begin{description}
 \item[As an ordered tuple] An ordered pair is just a pair of numbers
   $(a,b)$ delineated by parenthesis with the entries separated by a
@@ -155,7 +155,7 @@ notation for vectors.
 %%   emails, $4$ hours in class, $0$ hours on projects, and $1$ hour
 %%   exercising.
 \end{description}
-\end{concept}
+end{concept}
 
 Of course, since mathematics is a human endeavor you will find variations on the notation above, as a common example, some folks use different brackets like these
 \[
@@ -174,22 +174,22 @@ with many entries.
 
 
 \begin{definition}
-  To switch a row vector into a column vector and vice versa, we use the \dfn{transpose} operation:
+  To switch a row vector into a column vector and vice versa, we use the operation:
   \[
-  \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}^\transpose =
+  \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}^transpose =
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
   \quad\text{and}\quad
-  \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^\transpose =
+  \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^transpose =
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
 \end{definition}
 
 
 \begin{question}
-  Consider $\vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}$. Compute $\vec{s}^\transpose$.
+  Consider $\vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}$. Compute $\vec{s}^transpose$.
   \begin{prompt}
   \[
-  \vec{s}^\transpose  = \begin{pmatrix}\answer{141} \\ \answer{304} \\ \answer{249} \\ \answer{199} \\ \answer{251} \end{pmatrix}
+  \vec{s}^transpose  = \begin{pmatrix}\answer{141} \\ \answer{304} \\ \answer{249} \\ \answer{199} \\ \answer{251} \end{pmatrix}
   \]
   \end{prompt}
 \end{question}
@@ -200,8 +200,8 @@ information about the vectors. In particular, we can think about their
 \textit{dimension} and their \textit{components}.
 
 \begin{definition}
-The \dfn{dimension} of a vector is the number of entries. Each
-individual entry of a vector is called a \dfn{component}.
+The dimension of a vector is the number of entries. Each
+individual entry of a vector is called a component.
 \end{definition}
 
 \begin{question}
@@ -222,7 +222,7 @@ vectors we add them in a componentwise fashion.
   \begin{pmatrix} 1\\ 2\\ 3   \end{pmatrix} + \begin{pmatrix} 4\\ 5\\ 6   \end{pmatrix} &= \begin{pmatrix} 5\\ 7\\ 9   \end{pmatrix}
 \end{align*}
 
-We can also multiply vectors by a \dfn{scalar} (a number), by
+We can also multiply vectors by a scalar (a number), by
 multiplying each component by the scalar.
 \begin{align*}
   5\cdot   (1,2,3) &= (5,10,15)\\
@@ -511,7 +511,7 @@ hours, we use $3$ as a scalar to write
 \section{Matrices store and transform data}
 
 
-A \dfn{matrix} is just a big rectangular array of numbers
+A matrix is just a big rectangular array of numbers
 \[
 M =
 \underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{\begin{pmatrix}
@@ -522,11 +522,11 @@ M =
 \end{pmatrix}}
 \boldsymbol{4}~\textbf {rows}
 \]
-We give the \dfn{dimensions of a matrix} by stating its number of rows
+We give the dimensions of a matrix by stating its number of rows
 and columns. Rows come first and columns come second, so $M$ above is
 a $(4\times 5)$-matrix. We can use similar notation to talk about
 specific entries of a matrix. Above, $a_{i,j}$ is the
-$\boldsymbol{(i,j)}${\bf-}\dfn{entry} of the matrix $M$. Sometimes,
+$\boldsymbol{(i,j)}${\bf-}entry of the matrix $M$. Sometimes,
 people write $M_{i,j}$ to mean the $(i,j)$-entry of the matrix $M$.
 
 \begin{question}
@@ -659,10 +659,10 @@ We'll leave it to the reader to generalize this procedure to $(1\times n)$-matri
 This type of vector/matrix multiplication is so important, it has it's own name.
 
 \begin{definition}
-  The \dfn{dot product} or \dfn{scalar product} of two vectors
+  The dot product or scalar product of two vectors
   $\vec{v}$ and $\vec{w}$ is given by:
   \[
-  \vec{v}\dotp \vec{w} = \vec{v}^\transpose \vec{w}.
+  \vec{v}\dot \vec{w} = \vec{v}^transpose \vec{w}.
   \]
 \end{definition}
 
@@ -673,7 +673,7 @@ This type of vector/matrix multiplication is so important, it has it's own name.
   Compute:
   \[
   \begin{pmatrix} 1 & 1 & -1 \end{pmatrix}
-  \dotp\begin{pmatrix} 1 & 1 & 2\end{pmatrix}
+  \cdot \begin{pmatrix} 1 & 1 & 2\end{pmatrix}
   \begin{prompt}
     = \answer{0}
   \end{prompt}
@@ -683,7 +683,7 @@ This type of vector/matrix multiplication is so important, it has it's own name.
 
 The first thing you should notice about the the dot product is that
 \[
-\mathbf{vector}\dotp \mathbf{vector} = \mathbf{number}.
+\mathbf{vector}\cdot \mathbf{vector} = \mathbf{number}.
 \]
 
 \begin{warning}
@@ -725,13 +725,13 @@ but this operation is not especially useful, and will \textbf{never be
   Let $\vec{u},\vec{v},\vec{w}$ be nonzero vectors of the same dimension. Which of
   the following expressions make sense?
   \begin{selectAll}
-    \choice[correct]{$(\vec{w} \dotp \vec{u} ) \vec{u}$}
-    \choice[correct]{$5(\vec{u} +\vec{w}) \dotp {\vec{u}}$}
+    \choice[correct]{$(\vec{w} \cdot \vec{u} ) \vec{u}$}
+    \choice[correct]{$5(\vec{u} +\vec{w}) \cdot {\vec{u}}$}
     \choice{$\vec{w} / \vec{u}$}
-    \choice[correct]{$(2,3) \dotp (4,2) + 7$}
-    \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
-    \choice{$(1,3) \dotp (-1,2,5)$}
-    \choice{$\vec{u}\dotp \vec{v}+\vec{w}$}
+    \choice[correct]{$(2,3) \cdot (4,2) + 7$}
+    \choice[correct]{$\vec{w} / ( \vec{u} \cdot \vec{u})$}
+    \choice{$(1,3) \cdot (-1,2,5)$}
+    \choice{$\vec{u}\cdot \vec{v}+\vec{w}$}
   \end{selectAll}
   \begin{hint}
     Think about which terms/factors are vectors and which
@@ -740,10 +740,10 @@ but this operation is not especially useful, and will \textbf{never be
   \begin{question}
     Which of the following are vectors?
     \begin{selectAll}
-    \choice[correct]{$(\vec{w} \dotp \vec{u} ) \vec{u}$}
-    \choice{$5(\vec{u} +\vec{w}) \dotp {\vec{u}}$}
-    \choice{$(2,3) \dotp (4,2) + 7$}
-    \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
+    \choice[correct]{$(\vec{w} \cdot \vec{u} ) \vec{u}$}
+    \choice{$5(\vec{u} +\vec{w}) \cdot {\vec{u}}$}
+    \choice{$(2,3) \cdot (4,2) + 7$}
+    \choice[correct]{$\vec{w} / ( \vec{u} \cdot \vec{u})$}
     \end{selectAll}
   \end{question}
 \end{question}

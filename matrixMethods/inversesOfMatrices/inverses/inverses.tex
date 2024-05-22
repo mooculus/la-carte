@@ -499,11 +499,11 @@ j. Based on the results in parts g-i, which of the following is true?
 
 The example above illustrates the following facts about inverses. \\
 \[
-\begin{array}{ccc}
-&\left(A^{-1}\right)^{-1}=A &\hspace{1.5cm} \text{see example \ref{example1} a,b}\\ \\
-&\left(A^{T}\right)^{-1}= \left(A^{-1}\right)^{T} &\hspace{1.5cm} \text{see example \ref{example1} c,d,} \\ \\
-&\left(kA\right)^{-1}= \frac{1}{k}A^{-1} &\hspace{1.5cm} \text{see example \ref{example1} a,e,}\\ \\
-&(AB)^{-1}= B^{-1}A^{-1} &\hspace{1.5cm} \text{see example \ref{example1} g-j}.
+\begin{array}{cc}
+i. \left(A^{-1}\right)^{-1}=A &\hspace{1.5cm} \text{see example \ref{example1} a,b}\\ \\
+ii. \left(A^{T}\right)^{-1}= \left(A^{-1}\right)^{T} &\hspace{1.5cm} \text{see example \ref{example1} c,d,} \\ \\
+iii. \left(kA\right)^{-1}= \frac{1}{k}A^{-1}, \hspace{.1cm} \text{if}\hspace{.1cm} k\neq 0, &\hspace{1.5cm} \text{see example \ref{example1} a,e,}\\ \\
+iv. (AB)^{-1}= B^{-1}A^{-1} &\hspace{1.5cm} \text{see example \ref{example1} g-j}.
 \end{array}
 \]
 Note that for three matrices, $A, B, C$, we may write using the last statement above,
@@ -514,7 +514,24 @@ We may apply this process to any finite number of matrices:
 \begin{equation*}
 \left(A_{1}A_{2}...A_{k}\right)^{-1}= A_{k}^{-1} A_{k-1}^{-1}...A_{2}^{-1}A_{1}^{-1}.
 \end{equation*}
-
+By the definition of inverse given in \eqref{inverse}, we may prove facts $i-iv$ above for any matrices $A$ and $B$:\\
+i. $A$ is the inverse of $A^{-1}$ since,
+\begin{equation*}
+AA^{-1} = A^{-1} A = I.
+\end{equation*}
+ii. $\left(A^{-1}\right)^{T}$ is the inverse of $A^{T}$ since by applying the property of transpose: $(AB)^{T} = B^{T} A^{T}$, we have,
+\begin{eqnarray*}
+A^{T}\left(A^{-1}\right)^{T} &=& \left(A^{-1}A\right)^{T} = I^{T} = I,\\
+\left(A^{-1}\right)^{T} A^{T} &=& \left(AA^{-1}\right)^{T} = I^{T} = I.
+\end{eqnarray*}
+iii. $\frac{1}{k}A^{-1}$ is the inverse of $kA$ since,
+\begin{equation*}
+(kA)\left(\frac{1}{k}A^{-1}\right) = AA^{-1}= I, \hspace{.1cm} \text{and} \hspace{.1cm} \left(\frac{1}{k}A^{-1}\right)(kA) = AA^{-1} = I.
+\end{equation*}
+iv. $B^{-1}A^{-1}$ is the inverse of $AB$ since,
+\begin{equation*}
+(AB)\left(B^{-1}A^{-1}\right) =  \left(B^{-1}A^{-1}\right)(AB) = I.
+\end{equation*}
 Let us now use the methods introduced in this chapter to solve a system of equations.
 \begin{example}
 Solve the following system of equations by writing it as $Ax=B$ and then using the inverse of the coefficient matrix, $A$.

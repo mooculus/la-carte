@@ -1,8 +1,10 @@
 \documentclass{ximera}
- \usepackage{amsmath}
+
+\input{../../../preamble.tex}
 
 
-%\input{../../preamble.tex}
+\author{Parisa Fatheddin}
+
 
 
 
@@ -10,14 +12,66 @@
 
 \begin{document}
 \begin{exercise}
-Consider the following system of equations. 
+Consider the following system of equations.
 \begin{eqnarray*}
 3x+ 2y&=& -19\\
 x-5y &=& 5
 \end{eqnarray*}
 a. Solve by Gaussian elimination method. \\
-b. Solve by finding the inverse of the coefficient matrix. 
-\end{exercise} 
+b. Solve by finding the inverse of the coefficient matrix.
+
+\begin{prompt}
+a.
+\[\left(\begin{array}{cc|c}
+\answer{3} & \answer{2} & \answer{-19}\\
+\answer{1} & \answer{-5} & \answer{5}
+\end{array}\right) \hspace{.2cm} \rightarrow \hspace{.2cm}
+\left(\begin{array}{cc|c}
+1 & \answer{-5} & 5\\
+0 & \answer{17} & \answer{-34}
+\end{array}\right)\hspace{.2cm} \rightarrow \hspace{.2cm}
+\left(\begin{array}{cc|c}
+1 & \answer{-5} & 5\\
+0 & 1 & \answer{-2}
+\end{array}\right)
+\]
+leading to
+\begin{equation*}
+x= \answer{-5}, \hspace{.5cm} y = \answer{-2}
+\end{equation*}
+
+b.
+\[A= \left(\begin{array}{cc}
+\answer{3} & \answer{2}\\
+\answer{1} & \answer{-5}
+\end{array} \right), \hspace{.5cm} A^{-1}= \left(\begin{array}{cc}
+\answer{5/17} & \answer{2/17}\\
+\answer{1/17} & \answer{-3/17}
+\end{array} \right)
+\]
+Thus,
+\[
+\textbf{x} = \left(\begin{array}{c}
+\answer{-95/17} + \answer{10/17}\\
+\answer{-19/17} + \answer{-15/17}
+\end{array}\right)
+\]
+giving,
+\begin{equation*}
+x= \answer{-5}, \hspace{.5cm} y = \answer{-2}
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+\end{prompt}
+\end{exercise}
 
 
 
@@ -52,4 +106,4 @@ b. Solve by finding the inverse of the coefficient matrix.
 
 
 
-\end{document}
+\end{document} 

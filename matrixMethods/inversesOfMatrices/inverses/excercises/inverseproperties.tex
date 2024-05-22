@@ -1,8 +1,10 @@
 \documentclass{ximera}
- \usepackage{amsmath}
+
+\input{../../../preamble.tex}
 
 
-%\input{../../preamble.tex}
+\author{Parisa Fatheddin}
+
 
 
 
@@ -12,27 +14,41 @@
 \begin{exercise}
 For some matrices $A, B, C$ suppose we know,
 \[ A^{-1} = \left(\begin{array}{ccc}
-5 & 0 & -1/2 \\
-2 &-1 & 6\\
-0 & 7 & -2 
-\end{array}\right), \hspace{.1cm} B^{-1} = 
+ 0 & -1/2 \\
+-1 & 6
+\end{array}\right), \hspace{.1cm} B^{-1} =
 \left(\begin{array}{ccc}
-0 & 3 & -8 \\
-0 &-2 & 7\\
-1/5 & -1 & 0
+0 & 3  \\
+1/5 & -1
 \end{array}\right), \]
-\[\hspace{.1cm} C^{-1} =
-\left(\begin{array}{ccc}
-2 & 0 & -1 \\
-1/2 &-1 & 0\\
-8 & -7 & 0
+
+a. Find $\left(A^{T}\right)^{-1}$. If it is not possible write N/A. \\
+b. Determine $\left((AB)^{T}\right)^{-1}$. If it is not possible write N/A.\\
+c. Find $\left(3BA\right)^{-1}$. If it is not possible write N/A.
+\begin{prompt}
+a. \[ \left(A^{T}\right)^{-1} = \left(\begin{array}{cc}
+\answer{0} & \answer{-1}\\
+\answer{-1/2} & \answer{6}
+\end{array}\right)\]
+
+b. \[ \left(\left(AB\right)^{T}\right)^{-1} = \left(\begin{array}{cc}
+\answer{-3} & \answer{1}\\
+\answer{18} & \answer{-61/10}
 \end{array}\right)
 \]
 
-a. Find $\left(A^{T}\right)^{-1}$. If it is not possible write N/A. \\
-b. Determine $\left((ABC)^{T}\right)^{-1}$. If it is not possible write N/A.\\
-c. Find $\left(3BC\right)^{-1}$. If it is not possible write N/A. 
-\end{exercise} 
+c. \[ \left(3BA\right)^{-1}= \left(\begin{array}{cc}
+\answer{-1/30} & \answer{1/6}\\
+\answer{2/5} & \answer{-3}
+\end{array}\right)
+\]
+
+
+
+
+
+\end{prompt}
+\end{exercise}
 
 
 
@@ -56,4 +72,4 @@ c. Find $\left(3BC\right)^{-1}$. If it is not possible write N/A.
 
 
 
-\end{document}
+\end{document} 

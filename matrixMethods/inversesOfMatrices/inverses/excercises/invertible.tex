@@ -1,8 +1,10 @@
 \documentclass{ximera}
- \usepackage{amsmath}
+
+\input{../../../preamble.tex}
 
 
-%\input{../../preamble.tex}
+\author{Parisa Fatheddin}
+
 
 
 
@@ -11,6 +13,11 @@
 \begin{document}
 \begin{exercise}
 Which of the following matrices are invertible?
+
+\begin{hint}
+Two rows being a multiple of each other, produces a row of zeros in the first half of the matrix $(A \hspace{.08cm}|\hspace{.08cm} I)$.
+\end{hint}
+
 \begin{multipleChoice}
 \choice[correct]{ \[\left(\begin{array}{cccc}
 5 & 7 & -10 & 1\\
@@ -24,15 +31,14 @@ Which of the following matrices are invertible?
 3 & 0 & -1 & 4\\
 2 & -1 & 0 & 5\\
 0 & 3& 5 & -8\\
-4 & -2 & 0 & 11\\
+4 & -2 & 0 & 10\\
 \end{array}\right)
-\]
-Note that $R_{4}= 2R_{2}$.}
+\]}
 
 \choice{\[ \left(\begin{array}{cc}
 2 & 0 \\
 0 & 3\\
-8 & 9 
+8 & 9
 \end{array}\right)\]}
 
 \choice[correct]{\[\left(\begin{array}{cccc}
@@ -82,4 +88,4 @@ Note that $R_{4}= 2R_{2}$.}
 
 
 
-\end{document}
+\end{document} 

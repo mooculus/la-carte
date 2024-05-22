@@ -1,8 +1,10 @@
 \documentclass{ximera}
- \usepackage{amsmath}
+
+\input{../../../preamble.tex}
 
 
-%\input{../../preamble.tex}
+\author{Parisa Fatheddin}
+
 
 
 
@@ -10,16 +12,82 @@
 
 \begin{document}
 \begin{exercise}
-Find the inverse of 
+Find the inverse of
 \[A = \left(\begin{array}{cccc}
-2 & 2 & 0 & 4\\
-3 & 0 &0& 2\\
-0& 1 & 0 & 3\\
-0 & 2 & -1 & 4
-\end{array}\right).
+2 & 0 & 0 & 4\\
+0 & 0 &0& 2\\
+0& 1 & 0 & 0\\
+0 & 0 & -1 & 0
+\end{array}\right)
+\]
+then verify that your matrix is indeed the inverse.
+
+\begin{prompt}
+\[(A \hspace{.08cm}| \hspace{.08cm} I)= \left(\begin{array}{cccc|cccc}
+\answer{2} & \answer{0} & \answer{0}& \answer{4} & \answer{1} & \answer{0} &\answer{0} & \answer{0}\\
+\answer{0} & \answer{0} & \answer{0}& \answer{2} & \answer{0} & \answer{1} &\answer{0} & \answer{0}\\
+\answer{0} & \answer{1} & \answer{0}& \answer{0} & \answer{0} & \answer{0} &\answer{1} & \answer{0}\\
+\answer{0} & \answer{0} & \answer{-1}& \answer{0} & \answer{0} & \answer{0} &\answer{0} & \answer{1}
+\end{array}\right)
+\]
+\[
+\hspace{.2cm} \rightarrow \hspace{.2cm}
+\left(\begin{array}{cccc|cccc}
+1 & 0 & 0& 0 & \answer{1/2} & \answer{-1} &\answer{0} & \answer{0}\\
+0 & 1 & 0& 0 & \answer{0} & \answer{0} &\answer{1} & \answer{0}\\
+0 & 0 & 1& 0 & \answer{0} & \answer{0} &\answer{0} & \answer{-1}\\
+0 & 0 & 0& 1 & \answer{0} & \answer{1/2} &\answer{0} & \answer{0}
+\end{array}\right)
+\]
+giving,
+\[A^{-1} = \left(\begin{array}{cccc}
+\answer{1/2} & \answer{-1} &\answer{0} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{1} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{0} & \answer{-1}\\
+ \answer{0} & \answer{1/2} &\answer{0} & \answer{0}
+\end{array}\right)
 \]
 
-\end{exercise} 
+Verify:
+\[ A A^{-1} = \left(\begin{array}{cccc}
+2 & 0 & 0 & 4\\
+0 & 0 &0& 2\\
+0& 1 & 0 & 0\\
+0 & 0 & -1 & 0
+\end{array}\right)\left(\begin{array}{cccc}
+\answer{1/2} & \answer{-1} &\answer{0} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{1} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{0} & \answer{-1}\\
+ \answer{0} & \answer{1/2} &\answer{0} & \answer{0}
+\end{array}\right)= \left(\begin{array}{cccc}
+\answer{1} & \answer{0} &\answer{0} & \answer{0}\\
+ \answer{0} & \answer{1} &\answer{0} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{1} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{0} & \answer{1}
+\end{array}\right)
+\]
+and
+\[A^{-1}A=
+\left(\begin{array}{cccc}
+\answer{1/2} & \answer{-1} &\answer{0} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{1} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{0} & \answer{-1}\\
+ \answer{0} & \answer{1/2} &\answer{0} & \answer{0}
+\end{array}\right)\left(\begin{array}{cccc}
+2 & 0 & 0 & 4\\
+0 & 0 &0& 2\\
+0& 1 & 0 & 0\\
+0 & 0 & -1 & 0
+\end{array}\right)= \left(\begin{array}{cccc}
+\answer{1} & \answer{0} &\answer{0} & \answer{0}\\
+ \answer{0} & \answer{1} &\answer{0} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{1} & \answer{0}\\
+ \answer{0} & \answer{0} &\answer{0} & \answer{1}
+\end{array}\right)
+\]
+
+\end{prompt}
+\end{exercise}
 
 
 
@@ -36,4 +104,4 @@ Find the inverse of
 
 
 
-\end{document}
+\end{document} 

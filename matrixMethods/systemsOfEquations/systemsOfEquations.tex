@@ -822,13 +822,13 @@ First we'll represent this system of equations as an augmented matrix:
   \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
 \end{array}\right)
 \]
-Now we will use Gaussian elimination to transform this matrix to row echelon form.
+Now we will use Gaussian elimination to transform this matrix to row echelon form. Start by zeroing the column below the $(1,1)$-entry:
 \[
 \begin{pmatrix}
-   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} &\frac{-3}{2}\\
-  \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
-  \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+   {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
+  {3/5}&  {0} & {2/5} &{0} &2\\
+  {0}&  {6} & {0} &{-3/2} &-9
 \end{pmatrix}
 \begin{matrix}
   (-3/2) R_1 + R_3\to R_3\\
@@ -855,6 +855,26 @@ Now we work with the submatrix:
   \draw[black!30!white,thick] ([xshift=-1em,yshift=.5em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
 \end{tikzpicture}
 \]
+We will zero the columns below the $(2,2)$-entry:
+\[
+\begin{pmatrix}
+      {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
+  {0}&  {-9/20} & {2/5} &{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\begin{matrix}
+  (9/2) R_2 + R_3\to R_3\\
+  \Longrightarrow
+\end{matrix}
+\begin{pmatrix}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{} &\answer[given]{} &\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\]
+
 
 \[
 \left(\begin{array}{ccccc|c}

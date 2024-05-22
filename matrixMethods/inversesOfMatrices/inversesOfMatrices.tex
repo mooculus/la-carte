@@ -3,7 +3,7 @@
 \input{../../preamble.tex}
 
 
-\author{Bart Snapp}
+\author{Parisa Fatheddin \and Bart Snapp}
 
 
 
@@ -16,10 +16,26 @@
 \end{abstract}
 \maketitle
 
+
+
+\begin{quote}
+  And now for something completely different\dots
+
+  
+\hfill ---Monty Python
+\end{quote}
+
+
+
+
+
+
+
+
 \section{Matrices are functions}
 
 \begin{definition}
-  A \textbf{linear function} is a function $L:\R^n\to\R^m$ such that
+  A \dfn{linear function}, also known as a \dfn{linear transformation}, is a function $L:\R^n\to\R^m$ such that
   \[
   L(a\vec{x}+b\vec{y}) = aL(\vec{x}) + bL(\vec{y})
   \]
@@ -53,5 +69,315 @@
 
 
 \section{Inverses of matrices}
+
+
+We learned how to add, subtract or multiply matrices. As for division, one cannot write $\frac{A}{B}$ for matrices $A$ and $B$. We need to introduce the inverse of a matrix. For a matrix $A: n\times n$, its inverse, denoted as $A^{-1}: n\times n$ is a matrix such that
+\begin{equation}\label{inverse}
+AA^{-1}= A^{-1}A = I. 
+\end{equation}
+Using this property, if for example, for matrices $A, B, C$, we have $AB = C$, and wish to solve for matrix $B$, then we multiply by the inverse of $A$ as follows:
+\begin{equation*}
+A^{-1}AB= A^{-1}C \hspace{1cm} \Rightarrow \hspace{1cm} B = A^{-1}C.
+\end{equation*}
+
+Question: Which of the following is the inverse of
+\begin{equation*}
+A= \left(\begin{array}{cc}
+  2 & 3   \\
+  1 &  4
+\end{array}\right)
+\end{equation*}
+\begin{multipleChoice}
+\choice{\[ \left(\begin{array}{cc}
+  1 & 4  \\
+  0 &  -5
+\end{array}\right)
+\]}
+
+\choice{\[ \left(\begin{array}{cc}
+  2 & -3   \\
+  -1 &  2
+\end{array}\right)
+\]}
+
+\choice{\[ \left(\begin{array}{cc}
+  -1 &   \\
+  2 &  
+\end{array}\right)
+\]}
+
+
+\choice[correct]{ \[\frac{1}{4} \left(\begin{array}{cc}
+  2 & -3/2  \\
+  1/2 &  1
+\end{array}\right)
+\]}
+
+\choice{\[ \frac{1}{2} \left(\begin{array}{cc}
+  3 & 2  \\
+  4 &  1
+\end{array}\right)
+\]}
+\end{multipleChoice}
+
+If a matrix has an inverse then we say it is invertible. Note that there can be only one inverse for any given matrix, making the inverse of a matrix be unique. \\
+The inverse of a $2\times 2$ matrix,
+\[ \left(\begin{array}{cc}
+  a & b  \\
+  a &  d
+\end{array}\right),
+\]
+is given by
+\[
+A^{-1}=  \frac{1}{ad-bc} \left(\begin{array}{cc}
+  d & -b  \\
+  -c &  a
+\end{array}\right).
+\]
+Thus, we find the determinant, $ad-bc$ by cross multiplying and we change the entries inside $A$ by switching entries $a_{11}$ and $a_{22}$ and making $a_{12}$ and $a_{21}$ negative. 
+
+Question: Find the inverse of 
+\[ \left(\begin{array}{cc}
+  4 & -1 \\
+  2 & -3
+\end{array}\right)
+\]
+and then verify that the matrix found is the inverse. 
+\begin{prompt}
+Based on \eqref{inverse}, we find,
+\[
+A^{-1}=  \frac{1}{-12-\answer[given]{-2}} \left(\begin{array}{cc}
+  \answer[given]{-3} &  \answer[given]{1} \\
+  \answer[given]{-2} &  \answer[given]{4}
+\end{array}\right)= \left(\begin{array}{cc}
+  3/10 &  \answer[given]{-1/10} \\
+  \answer[given]{1/5} &  \answer[given]{-2/5}
+\end{array}\right)
+\]
+Since, 
+\[
+AA^{-1}= \left(\begin{array}{cc}
+  \answer[given]{1} &  \answer[given]{0} \\
+  \answer[given]{0} &  \answer[given]{1}
+\end{array}\right), \hspace{1cm} \text{and} \hspace{1cm}
+A^{-1}A= \left(\begin{array}{cc}
+  \answer[given]{1} &  \answer[given]{0} \\
+  \answer[given]{0} &  \answer[given]{1}
+\end{array}\right),
+\]
+then $A^{-1}$ is the inverse of $A$. 
+\end{prompt}
+
+Consider the matrix,
+\[
+A= \left(\begin{array}{cc}
+  5 &  1 \\
+  -2 &  0
+\end{array}\right),
+\]
+then based on the formula discussed above,
+\begin{equation}\label{Amatrix}
+A^{-1}= \frac{1}{\answer[given]{2}} \left(\begin{array}{cc}
+  \answer[given]{0} &  \answer[given]{-1} \\
+  \answer[given]{2} &  \answer[given]{5}
+\end{array}\right).
+\end{equation}
+One can also find this inverse by using the definition of the inverse: find entries $x_{1}, x_{2}, x_{3}, x_{4}$ that make the following hold:
+\[
+\left(\begin{array}{cc}
+  5 &  1 \\
+  -2 &  0
+\end{array}\right) \left(\begin{array}{cc}
+  x_{1} &  x_{2} \\
+  x_{3} &  x_{4}
+\end{array}\right)= \left(\begin{array}{cc}
+  1 &  0 \\
+  0 &  1
+\end{array}\right)  
+\]
+which translates to $AA^{-1}=I$. Hence we need to solve the system,
+\begin{eqnarray*}
+5x_{1}+x_{3}&=&1\\
+5x_{2} + x_{\answer[given]{4}} &=& \answer[given]{0}\\
+-2x_{1}&=& \answer[given]{0}\\
+-2x_{2} &=& \answer[given]{1}
+\end{eqnarray*}
+leading to,
+\begin{equation*}
+x_{1} = \answer[given]{0}, x_{2} =\answer[given]{-1/2}, x_{3} = \answer[given]{1}, x_{4} = \answer[given]{5/2},
+\end{equation*}
+which correspond to the entries we obtained in \eqref{Amatrix}. This method becomes more involved for a $3\times 3$ matrix. For example, for the matrix,
+\[
+\left(\begin{array}{ccc}
+  2 &  0 & 1 \\
+  0 &  3 & 4 \\
+  1 & -1 & -2
+\end{array}\right),
+\]
+ we set up, 
+ \[
+\left(\begin{array}{ccc}
+  2 &  0 & 1 \\
+  0 &  3 & 4 \\
+  1 & -1 & -2
+\end{array}\right) \left(\begin{array}{ccc}
+  x_{11} &  x_{12} & x_{13} \\
+ x_{21} &  x_{22} & x_{23} \\
+  x_{31} &  x_{32} & x_{33}
+\end{array}\right)
+= \left(\begin{array}{ccc}
+  1 &  0 & 0 \\
+  0 &  1 & 0 \\
+  0 & 0 & 1
+\end{array}\right)
+\]
+which gives a system of nine equations to solve. To avoid such long calculations we use the following more direct method for finding the inverse of an $n\times n$ matrix for $n>2$. \\
+Begin by forming the matrix $(A|I)$, where the identity matrix $I$ has the same size as $A$. Then apply row operations to convert $(A|I)$ to $(I|B)$. That is to covert $A$ to the identity matrix and apply every row operation in the process to the entire row including the adjacent identity matrix. Then the matrix $B$ is the inverse of $A$. In short,
+\begin{equation}\label{method}
+(A|I) \hspace{1cm}\xrightarrow{\text{row operations}}\hspace{1cm} (I|A^{-1}).
+\end{equation}
+
+ \begin{example}
+Find the inverse of 
+ \[A= \left(\begin{array}{ccc}
+  1 &  -1 & 0 \\
+  2 &  0 & 3 \\
+  1 & -2 & 0
+\end{array}\right)
+\]
+and verify your answer. 
+\begin{prompt}
+We begin by forming, 
+\[
+(A|I)= \left(\begin{array}{ccc|ccc}
+  1 &  -1 & 0 & 1 &0 &0 \\
+  2 &  0 & 3 & 0 &1 &0\\
+  1 & -2 & 0 & 0 &0 &1
+\end{array}\right)
+\]
+\end{prompt}
+\end{example}
+\section*{Properties of inverses} 
+Recall that the inverse matrix $A^{-1}$ is the matrix that satisfies,
+\begin{equation*}
+AA^{-1}= A^{-1}A= I
+\end{equation*}
+Note that for $A$ to be invertible, it must be a square matrix and cannot have a row or column of zeros. For example,
+ \[B= \left(\begin{array}{ccc}
+  2 &  3 & 0 \\
+  4 &  1 & 8 
+\end{array}\right), \hspace{1cm} C= \left(\begin{array}{ccc}
+  1 &  2 & 5 \\
+  2 &  0 & 1 \\
+  0 & 0& 0
+\end{array}\right), \hspace{1cm} D = \left(\begin{array}{ccc}
+  3 &  0 & 9 \\
+  2 &  0 & -1 \\
+  0 & 0& 3
+\end{array}\right)
+\]
+cannot have an inverse since there are no matrices $B^{-1}, C^{-1}, D^{-1}$ that may be multiplied by $B,C,D$ to give, $BB^{-1}= CC^{-1}=D^{-1}D=I$. One may also observe that by method given in \eqref{method}, the above matrices cannot be transformed into identity matrices. 
+
+Question: Which of the following is invertible. 
+\begin{multipleChoice}
+\choice{\[\left(\begin{array}{cccc}
+  0 &  -1 & 0 &0 \\
+  -1 &  5 & 3 &0 \\
+  0 & -3& 4 &1
+\end{array}\right)\]}
+\choice{\[\left(\begin{array}{cccc}
+  7 &  -1 & 0 &8 \\
+  11 &  -3 & 0 &0 \\
+  -5 & 0& 0 &2\\
+   0& 0&0&1
+\end{array}\right)\]}
+\choice[correct]{\[\left(\begin{array}{ccc}
+  1 &  0& 0  \\
+  0 &  1 & 0 \\
+  0 & 0& 1
+\end{array}\right)\]}
+\choice{\[\left(\begin{array}{cc}
+8 & 0\\
+0 &0
+\end{array}\right)\]}
+\choice[correct] 
+{\[\left(\begin{array}{cccc}
+  0 &  0& 4&0  \\
+  9 &  0 & 0 &0 \\
+  0 & 0& 0&8\\
+  0&2&0&0
+\end{array}\right)\]}
+\choice[correct]
+{\[\left(\begin{array}{cccc}
+  -2 &  -1& 0&0  \\
+  0 &  8 & 0 &1 \\
+  10 & -3& 9&-4\\
+  7&-5&0&3
+\end{array}\right)\]}
+\end{multipleChoice}
+Now we study properties of inverses by going through examples. 
+\begin{example}\label{example1}
+Consider the matrix,
+\[A= \left(\begin{array}{cc}
+  2 &  -1  \\
+   7&  4 
+\end{array}\right)\]
+
+a. Find $A^{-1}$. 
+\begin{prompt}
+\[A^{-1}= \frac{1}{\answer[given]{8}- \answer[given]{-7}}\left(\begin{array}{cc}
+  \answer[given]{4} &  \answer[given]{1}  \\
+   \answer[given]{-7}&  \answer[given]{2}
+\end{array}\right)= \left(\begin{array}{cc}
+  \answer[given]{4/15} &  \answer[given]{1/15}  \\
+   \answer[given]{-7/15}&  \answer[given]{2/15}
+\end{array}\right)
+\]
+\end{prompt}
+b. Determine the inverse of $A^{-1}$. 
+\begin{prompt}
+\[A^{-1}= \frac{1}{\answer[given]{8/225}- \answer[given]{7/225}}\left(\begin{array}{cc}
+  \answer[given]{2/15} &  \answer[given]{-1/15}  \\
+   \answer[given]{7/15}&  \answer[given]{4/15}
+\end{array}\right)= \left(\begin{array}{cc}
+  \answer[given]{2} &  \answer[given]{-1}  \\
+   \answer[given]{7}&  \answer[given]{4}
+\end{array}\right)
+\]
+\end{prompt}
+c. What is $\left(A^{T}\right)^{1}$?
+\begin{prompt}
+\[A^{T}= \left(\begin{array}{cc}
+  \answer[given]{2} &  \answer[given]{7}  \\
+   \answer[given]{-1}&  \answer[given]{4}
+\end{array}\right)
+\]
+Therefore,
+\[\left(A^{T}\right)^{-1}= \frac{1}{\answer[given]{15}}\left(\begin{array}{cc}
+  \answer[given]{4} &  \answer[given]{-7}  \\
+   \answer[given]{1}&  \answer[given]{2}
+\end{array}\right) = \left(\begin{array}{cc}
+  \answer[given]{4/15} &  \answer[given]{-7/15}  \\
+   \answer[given]{1/15}&  \answer[given]{2/15}
+\end{array}\right) \]
+\end{prompt}
+d. Using your answer in part a, determine $\left(A^{-1}\right)^{T}$.
+
+e. What is $(kA)^{-1}$, where $k$ is any arbitrary number. 
+f. If 
+\[B= \left(\begin{array}{cc}
+  \answer[given]{1} &  \answer[given]{-3}  \\
+   \answer[given]{5}&  \answer[given]{-2}
+\end{array}\right)
+\]
+find $B^{-1}$. 
+g. What is $(AB)^{-1}$? 
+\end{example}
+
+The example above illustrates the following facts about inverses. \\
+$\left(A^{-1}\right)^{-1}=A$ \hspace{2cm} see parts a, b in example \ref{example1}\\
+$\left(A^{T}\right)^{-1}= \left(A^{-1}\right)^{T}$ \hspace{2cm} see parts c, d, \\
+$\left(kA\right)^{-1}= \frac{1}{k}A^{-1}$ \hspace{2cm} see part e,\\
+$(AB)^{-1}= B^{-1}A^{-1}$ \hspace{2cm} see part f. 
 
 \end{document}

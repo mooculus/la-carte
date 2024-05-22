@@ -1,7 +1,7 @@
 \documentclass{ximera}
 
 \input{../../preamble.tex}
-\usetikzlibrary{matrix}
+
 \author{Parisa Fatheddin \and Bart Snapp}
 
 %% Jim Hefferon’s Linear Algebra. (CC-BY-NC-SA)
@@ -23,17 +23,25 @@
 \end{abstract}
 \maketitle
 
-Gaussian elimination is technique for solving systems of linear
+\begin{quote}
+  This method---which Euler did not recommend, which Legendre called ``ordinary,'' and which Gauss called ``common''--- is now named after Gauss: ``Gaussian'' elimination.
+
+  
+\hfill ---J.F.\ Grcar
+\end{quote}
+  
+Gaussian elimination is a technique for solving systems of linear
 equations. It is (obviously) named after
 \link[Gauss]{https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss}
 ($1799$--$1855$). However, it was known to
 \link[Legendre]{https://en.wikipedia.org/wiki/Adrien-Marie_Legendre}
-($1752$--$1833$) and even
+($1752$--$1833$) and
 \link[Euler]{https://en.wikipedia.org/wiki/Leonhard_Euler}
-($1707$--$1783$) before him. Moreover, it seems that these \textit{legends of
-mathematics} did not think highly of the method: Gauss refereed to it
-as ``common;'' Legendre called it ``ordinary;'' Euler ``did not
-recommend'' this method to students.
+($1707$--$1783$) before him, and even before. Below we will discuss
+perhaps why it seems that these \textit{legends of mathematics} did
+not think highly of the method.
+
+
 
 
 
@@ -159,6 +167,27 @@ discuss the row operations that allow such a transformation below.
 \]
 
 \begin{question}
+  Some row swapping operation was done below:
+  \[
+  \begin{pmatrix}
+-3 & 2 & 4 & -1 \\
+1 & -5 & 3 & 2 \\
+0 & -2 & 5 & 3
+  \end{pmatrix}
+  \Rightarrow
+  \begin{pmatrix}
+0 & -2 & 5 & 3 \\
+1 & -5 & 3 & 2 \\
+-3 & 2 & 4 & -1
+\end{pmatrix}
+  \]
+  Which row operation was performed?
+  \begin{prompt}
+    \[
+    R_{\answer{1}} \leftrightarrow R_{\answer{3}}
+    \]
+    The smaller answer must appear on the left.
+  \end{prompt}
 \end{question}
 
   
@@ -300,6 +329,79 @@ Such an $M_{i,j}$ is called a \dfn{pivot} of $M$.
 
 
 
+\subsection{An algorithm for row echelon form}
+
+The biggest strength of using matrices to solve equations is that the
+procedure (when using matrices) can be easily done on a computer with
+something like the following algorithm:
+
+\begin{algorithm}[Row Echelon Form (REF)]
+  Here we explain a general algorithm for reducing a matrix to row
+  echelon form in plain terms.
+  \begin{enumerate}
+  \item Determine the leftmost column containing a nonzero entry use
+    row operations to move this entry to the first row.
+  \item Use row operations to make the entries below this nonzero entry equal to zero.
+  \item Repeat the previous steps on the submatrix consisting of all
+    except the first row, until reaching the end of the rows.
+  \end{enumerate}
+\end{algorithm}
+
+Pictorially, we can imagine this algorithm working as follows:
+
+\begin{center}
+\begin{tikzpicture}[every left delimiter/.style={xshift=.5em},every right delimiter/.style={xshift=-.5em},]
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.2em] at (0,0) {
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet \\
+  };
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (3,0) {
+  \bullet & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet \\
+  };
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (6,0){
+    \bullet & \bullet & \bullet & \bullet \\
+    0       & \bullet & \bullet & \bullet \\
+    0       & \bullet & \bullet & \bullet \\
+  };
+  % Draw the rectangle around the submatrix
+  \draw[black!30!white,thick] (m-2-2.north west) rectangle (m-3-4.south east);
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (9,0) {
+  \bullet & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet \\
+  0       &  0  & \bullet & \bullet \\
+  };
+  \node at (1.5,0) {$\Rightarrow$};
+  \node at (4.5,0) {$\Rightarrow$};
+  \node at (7.5,0) {$\Rightarrow$};
+  \node[below] at (0,-1) {\begin{minipage}{2.5cm}\small\center Top leftmost entry is nonzero.\end{minipage}};
+  \node[below] at (3,-1) {\begin{minipage}{2.5cm}\small\center Zero all entries below.\end{minipage}};
+  \node[below] at (6,-1) {\begin{minipage}{2.5cm}\small\center Repeat with each submatrix.\end{minipage}};
+  \node[below] at (9,-1) {\begin{minipage}{2.5cm}\small\center REF\end{minipage}};
+  \end{tikzpicture}
+\end{center}
+Note, in the algorithm, we don't need to know much about the entries
+other than that the pivots are nonzero. In fact \textit{we don't need
+  to know much at all.}  This is why Euler, Legendre, and Gauss were
+not, in fact, enamored with this sort of algorithm.  They, like us
+and all good teachers, \textbf{want you to do math with understanding!}
+
+However, this pedagogical limitation is in fact its greatest
+strength. Computers, do not (yet!) understand anything, they just
+crunch numbers very quickly. Hence, the fact that no understanding is
+needed to do the algorithm is a bonus in this case. Many computer
+languages have the notion of `vectors' and `matrices' and algorithms
+like the one above that are optimized and built-in.
+
+
+
+
 \subsection{How does row echelon form help?}
 
 Let's think about our original system of equations. We've shown that
@@ -311,11 +413,11 @@ this corresponds to a matrix in row echelon from:
      -3x& -&9y&-&11z&=&0
 \end{array}
 \qquad\Longrightarrow\qquad
-\begin{pmatrix}
+\left(\begin{array}{ccc|c}
   1 &   3 & -3 & 2  \\
   0 &   3 & -3 & -3 \\
   0& 0  & 2 & 6
-\end{pmatrix}
+\end{array}\right)
 \]
 But this final matrix that we obtained from row operations, (directly)
 corresponds to the following system of equations:
@@ -332,60 +434,72 @@ corresponds to the following system of equations:
      & & & &2z&=&6
 \end{array}
 \]
+Hence at this point we see
+\begin{align*}
+  2z &= 6 &\Rightarrow  & & z &= 3\\
+  3y-3\cdot 3 &= -3 &\Rightarrow  & & y &= 2\\
+  x + 3\cdot 2 - 3\cdot 3 &= 2  &\Rightarrow & & x &= 1
+\end{align*}
+And we have solved our system of equations. The method we used,
+solving for $z$, then $y$, then $x$ is called \dfn{back
+  substitution}. Once a matrix is in row echelon form, this is usually
+a fairly efficient method to find the solutions.  \textbf{But wait,
+  there's more!}  Often the `form' or shape of the matrix in row
+echelon form will \textbf{tell us about the solutions, without
+  actually finding the solutions.}
 
 
 
-\begin{algorithm}[Row Echelon Form (REF)]
-  Here we explain a general algorithm for reducing a matrix to row
-  echelon form in plain terms.
-  \begin{enumerate}
-  \item Determine the leftmost column containing a nonzero entry (it exists if the matrix is nonzero).
-  \item Use row operations so that the first nonzero column has a non-zero entry in the first row.
-  \item Use row operations to make the entries below this nonzero entry equal to zero.
-  \item Repeat the previous four steps on the submatrix consisting of
-    all except the first row, until reaching the end of the rows.
-  \end{enumerate}
-\end{algorithm}
 
-Pictorially, we can imagine this algorithm working as follows:
+\paragraph{Rows of zeros}
 
+Sometimes after we transform to row echelon form, we have a row (or
+several!) of zeros like this:
 \[
-\begin{pmatrix}
-  \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet 
-\end{pmatrix}
-\Rightarrow
-\begin{pmatrix}
-  \bullet & \bullet & \bullet & \bullet \\
-  0       & \bullet & \bullet & \bullet \\
-  0       & \bullet & \bullet & \bullet 
-\end{pmatrix}
+\left(\begin{array}{ccc|c}
+  \bullet &   \bullet & \bullet & \bullet  \\
+  0 &   \bullet & \bullet & \bullet \\
+  0& 0  & 0 & 0
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{aligned}
+      \bullet x +  \bullet y + \bullet z &= \bullet \\
+        \bullet y + \bullet z&= \bullet
+\end{aligned}
 \]
-
-%% \begin{tikzpicture}
-%%   \matrix (m) [matrix of math nodes,left delimiter={(},right delimiter={)}] {
-%%     \bullet & \bullet & \bullet & \bullet \\
-%%     0       & \bullet & \bullet & \bullet \\
-%%     0       & \bullet & \bullet & \bullet \\
-%%   };
-
-%%   % Draw the rectangle around the submatrix
-%%   \draw[red,thick] (m-2-2.north west) rectangle (m-3-4.south east);
-
-%% \end{tikzpicture}
+In this case, we have a system of equations with more variables than
+equations! This means (assuming no columns of zeros) that the system
+of equations is \dfn{underdetermined}. Note that if we try to solve
+for $x$ and $y$, we will always have a function of $z$ for each. Hence
+in a case like this, there are an \dfn{infinite number of solutions}.
 
 
 
+\paragraph{Columns of zeros}
+
+Sometimes after we transform to row echelon form, we have a column (or
+several!) of zeros like this:
+\[
+\left(\begin{array}{ccc|c}
+  \bullet &   0 & \bullet & \bullet  \\
+  0 &   0 & \bullet & \bullet \\
+   0& 0  &  0 & \bullet
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{aligned}
+      \bullet x  + \bullet z &= \bullet & \\
+      \bullet z&= \bullet & \\
+      0 &=\bullet & \textbf{(VERY PROBLEMATIC)}
+\end{aligned}
+\]
+Again, we have a system of equations but this time we have $0 =
+\bullet$ where we're assuming $\bullet$ is not zero.  This means that
+the system of equations is \dfn{overdetermined} also known as
+\dfn{inconsistent}. In a case like this, there are \dfn{no solutions.}
 
 
 
-
-
-
-
-
-
+\paragraph{Summary}
 
 
 
@@ -396,7 +510,7 @@ Pictorially, we can imagine this algorithm working as follows:
 \section{Reduced row echelon form}
 
 
-Now comes the \emph{elimination} part of Gaussian elimination. 
+Now comes the \emph{elimination} part of Gaussian elimination.
 
 \section{Putting it all together}
 
@@ -410,7 +524,7 @@ Now comes the \emph{elimination} part of Gaussian elimination.
   \end{align*}
 
 \begin{solution}
-First we'll represent this as an agumented matrix.
+First we'll represent this as an augmented matrix.
 \[
 \left(\begin{array}{ccc|c}
   2 & 3 & 1 & 5 \\
@@ -677,4 +791,18 @@ This final example shows us the power of reducing to row echelon form, and under
     here
   \end{solution}
 \end{example}
+
+
+
+
+
+
+
+For some interesting extra reading check out:
+\begin{itemize}
+\item \link[\textit{How ordinary elimination became Gaussian elimination},  Historica Mathematica Volume 38, Issue 2, May 2011, Page 163--218.]{https://go.osu.edu/reg-gauss}
+\end{itemize}
+
+
+
 \end{document}

@@ -1,4 +1,4 @@
-\documentclass[numbers,handout]{xourse}
+\documentclass[12pt,numbers,handout]{xourse}
 
 \input{../preamble.tex}
 \pdfOnly\input{../printStyle.tex}
@@ -19,14 +19,15 @@
 \pdfOnly{\exerciseCollection{vectorsScalarsAndMatrices/exercises/}{exerciseList}}
 \chapterstyle
 \activity{systemsOfEquations/systemsOfEquations.tex}
-\practicestyle
-\exerciseCollection{systemsOfEquations/exercises/}{exerciseList}
+\pdfOnly{\practicestyle}
+\pdfOnly{\exerciseCollection{systemsOfEquations/exercises/}{exerciseList}}
 \chapterstyle
 \activity{applications/applications.tex}
 \activity{propertiesOfVectorsAndMatrices/propertiesOfVectorsAndMatrices.tex}
 \activity{determinants/determinants.tex}
 \activity{inversesOfMatrices/inversesOfMatrices.tex}
-
-
+\pdfOnly{\practicestyle}
+\pdfOnly{\exerciseCollection{inversesOfMatrices/exercises/}{exerciseList}}
+\chapterstyle
 
 \end{document}

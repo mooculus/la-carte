@@ -5,33 +5,91 @@
 
 \usepackage{multicol}
 
+%% Size of the page
+\usepackage[margin=.5in, includehead, includefoot, hmargin={1.8in,1.5in}, paperwidth=8.5in, paperheight=8.5in]{geometry}
+%\usepackage[margin=.5in, includehead, includefoot, hmargin={.8in,.5in}, paperwidth=11in, paperheight=8.5in]{geometry}
 
 
-
-%% Redefine section
-
-
+%% Redefine section and subsection
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
                                    {\normalfont\Large\bfseries\sffamily}}
-
-
-
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                                      {-3.25ex \@plus -1ex \@minus -.2ex}%
                                      {1.5ex \@plus .2ex}%
                                      {\normalfont\large\bfseries\sffamily}}
 
 
-
+%% Redefine "question"
 \let\question\relax
 \let\endquestion\relax
-\let\c@pquestion\relax
+%\let\c@pquestion\relax
 \newtheoremstyle{question}
-{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{.}{ }{Question}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Question}
 \theoremstyle{question}
 \newtheorem*{question}{}
+
+%% Redefine "example"
+\let\example\relax
+\let\endexample\relax
+%\let\c@example\relax
+\newtheoremstyle{example}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Example (\thmnote{#3})}
+\theoremstyle{example}
+\newtheorem*{example}{}
+
+%% Redefine "warning"
+\let\warning\relax
+\let\endwarning\relax
+%\let\c@example\relax
+\newtheoremstyle{warning}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{WARNING}
+\theoremstyle{warning}
+\newtheorem*{warning}{}
+
+
+%% Redefine "definition"
+\let\definition\relax
+\let\enddefinition\relax
+%\let\c@example\relax
+\newtheoremstyle{definition}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Definition}
+\theoremstyle{definition}
+\newtheorem*{definition}{}
+
+
+
+
+
+
+%% Redefines "explanation"
+\renewmdenv[
+  font=\upshape,
+  linewidth=3mm,
+  topline=false,
+  bottomline=false,
+  leftline=true,
+  rightline=false, 
+  leftmargin=0,
+  innertopmargin=0pt,
+  innerbottommargin=0pt,
+  skipbelow=\baselineskip,
+  linecolor=textColor!20!white,
+  fontcolor=textColor,
+  backgroundcolor=background
+]{explanation}%
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -44,6 +102,7 @@
 
 
 \newcommand{\practicestyle}{
+\newgeometry{hmargin={.8in,.5in}}
 \let\exercise\relax
 \let\endexercise\relax
 \let\c@exercise\relax
@@ -66,6 +125,7 @@
 %% \newtheorem{exercise}{}
 }
 \renewcommand\chapterstyle{%
+\restoregeometry
   \def\activitystyle{activity-chapter}
   \onecolumn
   \normalsize

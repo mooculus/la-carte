@@ -1,0 +1,66 @@
+\documentclass{ximera}
+
+\author{Tae Eun Kim}
+
+\input{../../../preamble.tex}
+
+\begin{document}
+\begin{exercise}
+  The exam scores (in percentage) of 35 students are encoded in a
+  $3 \times 35$ matrix $S$
+  \[
+    S =
+    \begin{pmatrix}
+      |&|&&| \\
+      \vec{s}_1 & \vec{s}_2 & \cdots & \vec{s}_{35} \\
+      |&|&&|
+    \end{pmatrix}
+  \]
+  where the $j$-th column $\vec{s}_j$ contains the data of the $j$-th
+  student, as in the previous problem:
+  \[
+    \vec{s}_j =
+    \begin{pmatrix}
+      s_{1,j}\\ s_{2,j} \\ s_{3,j}
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{Midterm 1}\\
+      \text{Midterm 2}\\
+      \text{Final Exam}
+    \end{array}
+  \]
+
+  Assume again that the exam weights are encoded in a column
+  vector $\vec{w}$:
+  \[
+    \vec{w} =
+    \begin{pmatrix}
+      w_1\\ w_2\\ w_3
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{weight of Midterm 1}\\
+      \text{weight of Midterm 2}\\
+      \text{weight of Final Exam}
+    \end{array}
+  \]
+  with $w_1 + w_2 + w_3 = 1$. Which of the following expressions
+  correctly calculates the weighted averages of all 35 students?
+  \begin{multipleChoice}
+    \choice{$S \vec{w}$}
+    \choice{$S \vec{w}^\transpose$}
+    \choice{$\vec{w} S$}
+    \choice[correct]{$\vec{w}^\transpose S$}
+  \end{multipleChoice}
+  \begin{feedback}[incorrect]
+    Recall that matrix-matrix multiplication makes sense only when the
+    number of columns of the first equals the number of rows of the
+    second.
+  \end{feedback}
+  \begin{prompt}
+    The outcome of the calculation is a \answer{row} vector containing
+    35 weighted averages.
+  \end{prompt}
+\end{exercise}
+\end{document}

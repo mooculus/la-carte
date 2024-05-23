@@ -26,8 +26,8 @@
   relationships and in the orderly processing of otherwise tedious
   algebraic calculations and numerical manipulations.
 
-  
-  
+
+
   \hfill ---\link[J.\ Cochran]{https://www.amazon.com/Applied-Mathematics-Principles-Applications-Probability/dp/0534980260}
 \end{quote}
 
@@ -74,7 +74,7 @@ times that it makes sense to add data:
 %%   lives, and time is a very precious commodity. Hence, it is good to
 %%   understand how we spend our time.
 \item[RGB Color Space] Colors on digital screens are often represented
-  as vectors in the RGB color space. Here three numerical components
+  as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}. Here three numerical components
   correspond to the intensity of red, green, and blue light, with $0$
   representing no intenstity, black can be represented by $(0,0,0)$,
   and $255$ represents maximum intensity, white can be represented by
@@ -122,7 +122,7 @@ notation for vectors.
   comma. It's called ``ordered'' because $(a,b) \ne (b,a)$. An \textit{ordered
   tuple} is just a list of an arbitrary, but fixed, number of elements
   that is ordered like an ordered pair. As an example, we could
-  represent the \link[demographic information]{https://worldpopulationreview.com/states/states-by-race} for Ohio as an vector
+  represent the \link[demographic information]{https://worldpopulationreview.com/states/states-by-race} for Ohio as a vector
   represented by an ordered tuple:
   \[
   \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{Black}}{1442655},\underset{\text{American Indian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
@@ -140,7 +140,7 @@ notation for vectors.
   \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
   \]
   \item[As a column vector] A column vector is just like a row vector,
-  except is it written vertically:
+  except it is written vertically:
   \[
   \vec{p} = \begin{pmatrix}
     159\\  226 \\ 191\end{pmatrix}
@@ -152,7 +152,11 @@ notation for vectors.
     \end{array}
   \]
   Above, we suppose that $\vec{p}$ represents the color that
-  represents the color \textit{Sea Foam Green}.
+  represents the color \textit{Sea Foam Green}. Here we see the color in all of its glory:
+  \begin{center}
+    \colorbox[rgb]{0.624, 0.886, 0.749}{%(159, 226, 191)
+      \parbox{1cm}{\rule{0pt}{1cm}}}
+  \end{center}
 %% \item[As a column vector] A column vector is just like a row vector,
 %%   except is it written vertically:
 %%   \[
@@ -213,7 +217,17 @@ with many entries.
 Once we have data represented as vectors encoded as ordered tuples,
 row vectors, or column vectors, we can describe some general
 information about the vectors. In particular, we can think about their
-\textit{dimension} and their \textit{components}.
+\textit{dimensions} and their \textit{components}.
+% Ordinarily, the term dimension is used to describe an attribute of a
+% vector space, not of a vector. What do you think about introducing
+% such phrases as
+%
+%   v is an n-dimensional (column/row) vector;
+%
+% or
+%
+%   v is a (column/row) n-vector.
+
 
 \begin{definition}
 The \dfn{dimension} of a vector is the number of entries. Each
@@ -249,7 +263,7 @@ Now that we know the basics, onto the examples!
 
 \begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
   The Midwest of the United States consists of $12$ states. We can
-  express the $2023$
+  express the population in $2023$
   \link[demographics]{https://worldpopulationreview.com/states/states-by-race}
   of each state as a vector represented by an ordered tuple. The
   ordered tuple for Ohio looks like:
@@ -276,7 +290,8 @@ Now that we know the basics, onto the examples!
   and Indiana?
 \item Suppose that the annual percentage growth rate of Ohio is
   currently $0.1\%$. Assuming this is even across all demographics,
-  what might the population data look like for Ohio in $2025$?
+  what might the population data look like for Ohio in $2025$? Round
+  to the nearest whole number.
 \end{enumerate}
 \begin{explanation}
   We'll use the properties of vectors to solve this problem.
@@ -286,9 +301,16 @@ Now that we know the basics, onto the examples!
     \[
     \vec{p}_{\texttt{MI}} + \vec{p}_{\texttt{OH}} + \vec{p}_{\texttt{IN}} = \left(\answer[given]{22641134},\answer[given]{3434727},\answer[given]{84507},744076,9229,2349428\right)
     \]
-  \item To find the population growth of each demographic, we use the scalar, $1.001$ to find:
+  % \item To find the population growth of each demographic, we use the scalar, $1.001^2$ to find:
+  %   \[
+  %     1.001 \vec{p}_{\texttt{OH}} =\left(\answer[given]{9404273},\answer[given]{1444098},\answer[given]{20462},268796,3911,545411 \right)
+  %   \]
+  \item To find the population demographics of Ohio after in
+    \textit{two} years, we use the scalar, $1.001^2$, to find:
     \[
-    1.001 \vec{p}_{\texttt{OH}} =\left(\answer[given]{9404273},\answer[given]{1444098},\answer[given]{20462},268796,3911,545411 \right)
+      1.001 \vec{p}_{\texttt{OH}}
+      =\left(\answer[given]{9413677},\answer[given]{1445542},\answer[given]{20483},269064,3915,545956
+      \right)
     \]
   \end{enumerate}
 \end{explanation}
@@ -316,39 +338,48 @@ Now that we know the basics, onto the examples!
 
 
 \begin{example}[RGB Color Space]
-  The color \textit{Sea Foam Green} is a classic color found on many \textit{Fender} Guitars.
-  \[
-  \vec{p} =
-  \begin{pmatrix}
-    159 \\ 226 \\ 191
-  \end{pmatrix}
-  \]
-  In the early days, \textit{Fender} used a nitrocellulose lacquer
-  finish. When this sort of finish ages, it fades and begins to
-  yellow.
-
-  These effects can separately and summed together. To simulate the
-  fading, rasing all the values by $10$ percent. To simulate the
-  yellowing, we should remove ``blue'' from our initial color, we will
-  remove $10$ percent of a pure blue $(0,0,255)$ vector. Use this
-  difference to simulate the aging of a nitrocellulose lacquer
-  finish. When you are done, visually inspect the effects of your work
-  using an online RGB color picker.
-  \begin{explanation}
-    Here we simply compute:
+  The \textit{MOOCulus Lighting Company} has designed an LED table
+  lamp whose shades vary linearly, at a constant rate, through six
+  colors ($3$ primary and $3$ secondary) of the RGB color space in
+  this order:
     \[
-    1.1 \vec{p} - 0.1  \begin{pmatrix} \answer[given]{0} \\  \answer[given]{0} \\  \answer[given]{255} \end{pmatrix}
-    = \begin{pmatrix} \answer[given]{175} \\  \answer[given]{249} \\  \answer[given]{185} \end{pmatrix}
+    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
+    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
+    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
+    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
+    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}, 
     \]
-    \colorbox[rgb]{0.624, 0.886, 0.749}{%
-  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
-    This is a box with a custom RGB color (159, 226, 191).
-    }}
-
-    \colorbox[rgb]{0.686, 0.976, 0.725}{%
-  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
-    This is a box with a custom RGB color (175, 249, 185).
-    }}
+  If the lamp is turned on, it initally shows, red, then this fades to
+  yellow after one minute, then fades green after a minute more, and
+  so on. After $6$ minutes it is back to red. Color $\vec{c}_1$ fades
+  to $\vec{c}_2$ like the vector function $\vec{f}(t)$
+  \[
+  \vec{f}(t) = \vec{c}_1+ t(\vec{c}_2 -\vec{c}_1)
+  \]
+  as $t$ runs from $0$ to $1$. Note $\vec{f}(0) = \vec{c}_1$ and
+  $\vec{f}(1) = \vec{c}_2$.  What RGB color is the lamp showing at $4$
+  minutes and $40$ seconds?
+  \begin{explanation}
+    At $4$ minutes and $40$ seconds, our lamp is showing some color
+    between blue and magenta. Let
+    \[
+    \vec{c}_1 = \begin{pmatrix}0\\0\\255\end{pmatrix} \quad\text{and}\quad
+      \vec{c}_2 = \begin{pmatrix}255\\0\\255\end{pmatrix} 
+    \]
+    Since $40$ seconds is $2/3$ of a minute, we write
+    \begin{align*}
+      \vec{f}(2/3) &= \vec{c}_{1}+ \left(\answer[given]{2/3}\right)(\vec{c}_2 -\vec{c}_1) \\
+      &= \begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\left(\begin{pmatrix}255\\0\\255\end{pmatrix}  -  \begin{pmatrix}0\\0\\255\end{pmatrix}\right) \\
+      &=\begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\begin{pmatrix}255\\0\\0\end{pmatrix} \\
+              &=\begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\begin{pmatrix}255\\0\\0\end{pmatrix}\\
+                &=\begin{pmatrix}170\\0\\255\end{pmatrix}
+    \end{align*}
+    Here is this color:
+  \begin{center}
+    \colorbox[rgb]{0.667, 0, 1}{%(170,0, 255)
+      \parbox{1cm}{\rule{0pt}{1cm}}}
+  \end{center}
   \end{explanation}
 \end{example}
 
@@ -433,10 +464,9 @@ Now that we know the basics, onto the examples!
 
 So traveling North would be a (true) bearing of $0^\circ$, while
 traveling West would be a bearing of $270^\circ$.
-\link[knots]{https://en.wikipedia.org/wiki/Knot_(unit)}.
 \begin{enumerate}
 \item Suppose a plane starts at $(0,0)$ and its destination is reached
-  by following true bearing $280^\circ$ for $3$ hours at $125$ knots.
+  by following true bearing $280^\circ$ for $3$ hours at $125$ \link[knots]{https://en.wikipedia.org/wiki/Knot_(unit)}.
   What are the coordinates of planes destination?
 \item Suppose further there is wind blowing at $35$ knots in the true
   bearing of $110^\circ$. In this case, what are the coordinates of
@@ -516,16 +546,15 @@ hours, we use $3$ as a scalar to write
   \end{center}
   So now we can solve our problem by computing:
   \[
-  3\vec{p} + 3 \vec{w} =
+    3\vec{p} + 3 \vec{w} =
+    \begin{pmatrix}\answer[given]{-1009.24}\\ \answer[given]{159.44} \end{pmatrix}
   \]
 \end{enumerate}
 \end{explanation}
 \end{example}
 
 
-
 \section{Matrices store and transform data}
-
 
 A \dfn{matrix} is just a big rectangular array of numbers
 \[
@@ -607,13 +636,19 @@ or vertically.
   \end{explanation}
 \end{example}
 
-\begin{example}[Time Spent on Tasks]
-  In a previous example, we encoded one's daily ``time spent on
-  tasks'' for weekdays using $4$-dimensional vectors, represented as
-  column vectors. Represent the five-day weekly ``time spent on task''
-  by a $5\times 4$ matrix. Interpret the meaning of the $(2,3)$-entry
-  of the matrix.
+\begin{example}[RGB Color Space]
+  In a previous example we mentioned an LED table lamp whose shades
+  vary linearly through the RGB color space in this order:
+  \begin{center}
+    red, yellow, cyan, blue, magenta
+  \end{center}
+  Represent this sequence of RGB colors by a $5\times 3$
+  matrix. Interpret the meaning of the $(2,3)$-entry of the matrix.
   \begin{explanation}
+    Let's start by finding the RGB colors:
+    \[
+    \underset{red}{\begin{pmatrix}255\\0\\0\end{pmatrix}}
+    \]
     Since we are using column vectors, we'll concatenate this data by
     placing the vectors side-by-side:
     \[

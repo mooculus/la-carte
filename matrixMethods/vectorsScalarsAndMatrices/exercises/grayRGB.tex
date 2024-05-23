@@ -1,0 +1,105 @@
+\documentclass{ximera}
+
+\author{Tae Eun Kim}
+
+\input{../../../preamble.tex}
+
+\begin{document}
+\begin{exercise}
+  The following column 3-vector $\vec{p}$ represents the \link[official gray
+  color]{https://bux.osu.edu/color/primary-colors} of the Ohio State
+  University, converted to RGB from the hex code \verb|#a7b1b7|:
+  \[
+    \vec{p} = \begin{pmatrix}
+      167\\ 177\\ 183
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{Red}\\
+      \text{Green}\\
+      \text{Blue}
+    \end{array}
+  \]
+  In this problem, we will create three additional shades of gray that are
+  lighter than the given. Recalling that white is represented by
+  \[
+    \vec{w} = \begin{pmatrix}
+      255\\ 255\\ 255
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{Red}\\
+      \text{Green}\\
+      \text{Blue}
+    \end{array}
+  \]
+  one strategy is to take the difference of the two RGB vectors, and
+  add its various fractions to $\vec{p}$ to generate lighter shades of
+  the OSU gray.
+
+  First, compute the differences of RGB intensities between white and the OSU
+  gray.
+  \[
+    \vec{d} = \vec{w} - \vec{p} =
+    \begin{pmatrix}
+      \answer{88}\\
+      \answer{78}\\
+      \answer{72}
+    \end{pmatrix}
+  \]
+
+  Generate a light gray by adding 25\% of $\vec{d}$ onto $\vec{p}$.
+  \[
+    \vec{p}_1 = \vec{p} + \answer{0.25}\,\vec{d} =
+    \begin{pmatrix}
+      \answer{189}\\
+      \answer{196.5}\\
+      \answer{201}
+    \end{pmatrix}
+  \]
+
+  Generate a lighter gray by adding 50\% of $\vec{d}$ onto $\vec{p}$.
+  \[
+    \vec{p}_2 = \vec{p} + \answer{0.5}\,\vec{d} =
+    \begin{pmatrix}
+      \answer{211}\\
+      \answer{216}\\
+      \answer{219}
+    \end{pmatrix}
+  \]
+
+  Finally, generate an even lighter gray by adding 75\% of $\vec{d}$
+  onto $\vec{p}$.
+  \[
+    \vec{p}_3 = \vec{p} + \answer{0.75}\,\vec{d} =
+    \begin{pmatrix}
+      \answer{233}\\
+      \answer{235.5}\\
+      \answer{237}
+    \end{pmatrix}
+  \]
+
+  \begin{feedback}[correct]
+    Use an online RGB color picker such as
+    \link[this]{https://rgbcolorpicker.com} for visual confirmation of
+    your work!
+  \end{feedback}
+
+%% MATLAB script for this problem
+% p = [167 177 183]';
+% w = 255*[1 1 1]';
+% d = w - p;
+% shades = p + d * [.25 .5 .75]; % columns are p_1, p_2, p_3
+%
+% >> d'
+% ans =
+%       88    78    72
+%
+% >> shades
+% shades =
+%          189    211  233
+%          196.5  216  235.5
+%          201    219  237
+
+\end{exercise}
+\end{document}

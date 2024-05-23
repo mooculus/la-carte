@@ -1,0 +1,51 @@
+\documentclass{ximera}
+
+\author{Tae Eun Kim}
+
+\input{../../../preamble.tex}
+
+\begin{document}
+\begin{exercise}
+  A student's exam scores (in percentage) are encoded in a column vector $\vec{s}$:
+  \[
+    \vec{s} =
+    \begin{pmatrix}
+      80\\ 76\\ 91
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{Midterm 1}\\
+      \text{Midterm 2}\\
+      \text{Final Exam}
+    \end{array}
+  \]
+  Suppose that each of the two midterms weighs 30\% and the final exam
+  weighs 40\% of the total score. (Note that these weights add up to
+  100\%.) That is, the \textit{weighted average} of the students
+  scores computed by
+  \[
+    (0.3) 80 + (0.3) 76 + (0.4) 91 = 83.2.
+  \]
+  Assuming that the weights are encoded in another column vector $\vec{w}$:
+  \[
+    \vec{w} =
+    \begin{pmatrix}
+      0.3\\ 0.3\\ 0.4
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{weight of Midterm 1}\\
+      \text{weight of Midterm 2}\\
+      \text{weight of Final Exam}
+    \end{array}
+  \]
+  which of the following vector expressions correctly calculates the
+  weighted average?
+  \begin{selectAll}
+    \choice{$\vec{s} \vec{w}^\transpose$}
+    \choice{$\vec{w} \vec{s}^\transpose$}
+    \choice[correct]{$\vec{s}^\transpose \vec{w}$}
+    \choice[correct]{$\vec{w}^\transpose \vec{s}$}
+  \end{selectAll}
+\end{exercise}
+\end{document}

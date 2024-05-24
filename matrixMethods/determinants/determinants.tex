@@ -3,7 +3,7 @@
 \input{../../preamble.tex}
 
 
-\author{Bart Snapp}
+\author{Bart Snapp \and Tae Eun Kim}
 
 
 
@@ -16,35 +16,51 @@
 \end{abstract}
 \maketitle
 
-
-
-
-
-
+The determinant is a function of square matrices in the sense that it
+takes a square matrix as input and yields a number. In this chapter,
+we will primarily focus on the determinants of $2 \times 2$ and
+$3 \times 3$ matrices.
 
 \section{Basic computations}
 
+% Transposed the matrix in the definition. I prefer column-oriented viewpoint.
 \begin{definition}
-  Given a $2\times2$ matrix, the \dfn{determinant} is given by
+  The \dfn{determinant} of a $2 \times 2$ matrix $\begin{pmatrix} a & c \\
+    b & d \end{pmatrix}$ is given by
   \[
-  \det
-  \begin{pmatrix}
-    a & b\\
-    c & d
-  \end{pmatrix}
-  =
-  \begin{vmatrix}
-    a & b\\
-    c & d
-  \end{vmatrix}
-  = ad -bc.
+    \det
+    \begin{pmatrix}
+      a & c\\
+      b & d
+    \end{pmatrix}
+    % The notation below can get ugly when the absolute value of
+    % determinant is needed.
+    % =
+    % \begin{vmatrix}
+    %   a & b\\
+    %   c & d
+    % \end{vmatrix}
+    = ad - bc.
   \]
 \end{definition}
-Why would anyone ever be interested in this? Well to start, given nonzero vectors
+% Why would anyone ever be interested in this? Well to start, given nonzero vectors
+
+To gain a geometric insight behind this definition, consider the
+parallelogram spanned by two vectors
 \[
-\vec{v} = (a,b)\quad\text{and}\quad\vec{w}=(c,d)
+  \vec{v} =
+  \begin{pmatrix}
+    a \\ b
+  \end{pmatrix}
+  \quad\text{and}\quad
+  \vec{w} =
+  \begin{pmatrix}
+    c \\d
+  \end{pmatrix},
 \]
-we can form a parallelogram as below.
+which are the two columns of the matrix in the definition; see the
+figure below.
+
 \begin{image}
 \begin{tikzpicture}
   \draw[fill=fill1!50!white,draw=none]
@@ -60,13 +76,33 @@ we can form a parallelogram as below.
   \node[above,penColor] at (2.5,.5) {$\vec{v}$}; %% <a,b>
   \node[below right,penColor2] at (1,1.5) {$\vec{w}$}; %% <c,d>
   \draw[->] (.5,.1) arc[radius=.5cm,start angle=11.3,end angle=56.3];
-  \node[above right] at (.4,.2) {$\theta$}; 
+  \node[above right] at (.4,.2) {$\theta$};
 \end{tikzpicture}
 \end{image}
-The determinant gives the (signed) area of this parallelogram, where
-the sign of the area is given by the sign of the angle $\theta$ (drawn
-counterclockwise) between $\vec{v}$ and $\vec{w}$. To understand why
-this is true, make a rectangle around the parallelogram as below.
+
+The determinant gives the \textit{signed} area of this parallelogram,
+where the sign of the area is determined by the orientation of the two
+vectors $\vec{v}$ and $\vec{w}$. If the second vector $\vec{w}$ lies
+counterclockwise from the first vector $\vec{v}$ as illustrated above,
+then the sign is positive. If $\vec{w}$ lies clockwise from $\vec{v}$,
+then the sign is negative. Written algebraically, we have
+\[
+  \det
+  \begin{pmatrix}
+    c & a \\ d & b
+  \end{pmatrix}
+  =
+  - \det
+  \begin{pmatrix}
+    a & c \\ b & d
+  \end{pmatrix}.
+\]
+
+% sign of the angle $\theta$ (drawn counterclockwise) between $\vec{v}$ and
+% $\vec{w}$.
+
+To understand how the determinant is related to the area of the
+parallelogram, make a rectangle around the parallelogram as below.
 \begin{image}
 \begin{tikzpicture}
   \draw[fill=fill1!50!white,draw=none]
@@ -84,7 +120,7 @@ this is true, make a rectangle around the parallelogram as below.
 
   \draw[fill=fill4] (0, 0) -- (2,3) -- (0,3) -- cycle;
   \draw[fill=fill4] (5, 1) -- (7,1) -- (7,4) -- cycle;
-  
+
   \draw[->,ultra thick,penColor] (0,0) -- (5,1);
   \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
   \draw[->,ultra thick,dashed,penColor2] (5,1) -- (7,4);
@@ -116,7 +152,7 @@ this is true, make a rectangle around the parallelogram as below.
 
   \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (5,0)--(7,0);
   \node[below] at (6,-.2) {$c$};
-  
+
   \node[above,penColor] at (2.5,.5) {$\vec{v}$}; %% <a,b>
   \node[below right,penColor2] at (1,1.5) {$\vec{w}$}; %% <c,d>
 \end{tikzpicture}
@@ -131,8 +167,8 @@ and this is
   &=  ad - bc\\
   &= \det
   \begin{pmatrix}
-    a & b\\
-    c & d
+    a & c\\
+    b & d
   \end{pmatrix}.
 \end{align*}
 
@@ -143,8 +179,8 @@ we think of the terms as follows.
     \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,%column sep=.1em,
       nodes={text height=1ex,text width=2ex}]
             {
-              a \& b \\
-              c \& d \\
+              a \& c \\
+              b \& d \\
             };
             \draw[thick] (mtrx-1-1.north) -| (mtrx-2-1.south west)
             -- (mtrx-2-1.south);
@@ -156,87 +192,186 @@ we think of the terms as follows.
             (mtrx-1-1.center)  --  (mtrx-2-2.center);
             \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,nodes={text height=1ex,text width=2ex}]
             {
-              a \& b\\
-              c \& d\\
+              a \& c\\
+              b \& d\\
             };
             \node at (0,-.7) {${\color{blue!50!black}ad}-{\color{red!50!black}bc}$};
   \end{tikzpicture}
 \end{image}
 
-
 \begin{definition}
-  Given a $3\times 3$ matrix, the \dfn{determinant} is denoted by the following.
-  \[
-  \det\begin{pmatrix}
-  a_1 &  a_2 & a_3 \\
-  b_1 &  b_2 & b_3 \\
-  c_1 &  c_2 & c_3
-  \end{pmatrix}
-  =
-  \begin{vmatrix}
-    a_1 &  a_2 & a_3 \\
-    b_1 &  b_2 & b_3 \\
-    c_1 &  c_2 & c_3
-  \end{vmatrix}
-  \]
-  The determinant can be computed using the following pattern.
-  %\begin{image}[3in]
-  \begin{center}
-\begin{tikzpicture}
-\node at (0,0) {$\det
-\begin{pmatrix}
-  a_1 & a_2 & a_3\\
-  b_1 & b_2 & b_3\\
-  c_1 & c_2 & c_3
-\end{pmatrix}
-= a_1
-\begin{vmatrix}
-  b_2 & b_3\\
-  c_2 & c_3
-\end{vmatrix}
--a_2
-\begin{vmatrix}
-  b_1 & b_3\\
-  c_1 & c_3
-\end{vmatrix}
-+a_3
-\begin{vmatrix}
-  b_1 & b_2\\
-  c_1 & c_2
-\end{vmatrix}$};
-
-\draw[ultra thick,->,gray] (-.27,-1.3) -- (-.27,-.7);
-\draw[ultra thick,->,gray] (1.76,-1.3) -- (1.76,-.7);
-\draw[ultra thick,->,gray] (3.8,-1.3) -- (3.8,-.7);
-
-\node at (-.27,-2) {\scalebox{.7}{
-    $\begin{pmatrix}
-      a_1 & \bullet & \bullet\\
-      \bullet & b_2 & b_3\\
-      \bullet & c_2 & c_3
-    \end{pmatrix}$}};
-
-\node at (1.76,-2) {\scalebox{.7}{
-    $\begin{pmatrix}
-      \bullet & a_2 & \bullet\\
-      b_1 & \bullet & b_3\\
-      c_1 & \bullet & c_3
-    \end{pmatrix}$}};
-
-\node at (3.8,-2) {\scalebox{.7}{
-    $\begin{pmatrix}
-      \bullet & \bullet & a_3\\
-      b_1 & b_2 & \bullet\\
-      c_1 & c_2 & \bullet
-    \end{pmatrix}$}};
-\end{tikzpicture}
-\end{center}
-%\end{image}
-This equals
-\[
- a_1(b_2c_3-b_3c_2)- a_2(b_1c_3-b_3c_1)+ a_3(b_1c_2-b_2c_1).
-\]
+  The \dfn{determinant} of a $3 \times 3$ matrix is given by
+  \begin{align*}
+    \det\begin{pmatrix}
+      a_1 &  b_1 & c_1 \\
+      a_2 &  b_2 & c_2 \\
+      a_3 &  b_3 & c_3
+    \end{pmatrix}
+    & =
+      a_1 \det
+      \begin{pmatrix}
+        b_2 & c_2 \\
+        b_3 & c_3
+      \end{pmatrix}
+      - a_2 \det
+      \begin{pmatrix}
+        b_1 & c_1 \\
+        b_3 & c_3
+      \end{pmatrix}
+      + a_3 \det
+      \begin{pmatrix}
+        b_1 & c_1 \\
+        b_2 & c_2
+      \end{pmatrix} \\
+          & = a_1(b_2c_3 - b_3c_2) - a_2(b_1c_3 - b_3c_1) + a_3(b_1c_2 - b_2c_1).
+  \end{align*}
 \end{definition}
+
+%%%%%%%%%%%%%%%%%%% COME BACK HERE AND FINISH %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+One thing to note is that the determinant of a $3 \times 3$ matrix is
+defined in terms of determinants of smaller $2 \times 2$ matrices. Note
+that each of the three $2 \times 2$ matrices is obtained from the original
+matrix by removing the first column and a row at a time. Such matrices
+are called minor matrices (of the given matrix).
+
+Note also the alternation of signs from term to term. The determinants
+of minor matrices with alternating signs are called the cofactors (of
+the given matrix).
+
+Because of these, the formula for the determinant given above is
+often called the cofactor expansion, where the coefficients are the
+elements of the first column. Incidentally, the determinant can also
+be computed using the entries of the first row as coefficients. See
+below for the illustration of this alternate method.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \node at (0,0) {$\det
+        \begin{pmatrix}
+          a_1 & a_2 & a_3\\
+          b_1 & b_2 & b_3\\
+          c_1 & c_2 & c_3
+        \end{pmatrix}
+        = a_1
+        \begin{vmatrix}
+          b_2 & b_3\\
+          c_2 & c_3
+        \end{vmatrix}
+        -a_2
+        \begin{vmatrix}
+          b_1 & b_3\\
+          c_1 & c_3
+        \end{vmatrix}
+        +a_3
+        \begin{vmatrix}
+          b_1 & b_2\\
+          c_1 & c_2
+        \end{vmatrix}$};
+
+      \draw[ultra thick,->,gray] (-.27,-1.3) -- (-.27,-.7);
+      \draw[ultra thick,->,gray] (1.76,-1.3) -- (1.76,-.7);
+      \draw[ultra thick,->,gray] (3.8,-1.3) -- (3.8,-.7);
+
+      \node at (-.27,-2) {\scalebox{.7}{
+          $\begin{pmatrix}
+            a_1 & \bullet & \bullet\\
+            \bullet & b_2 & b_3\\
+            \bullet & c_2 & c_3
+          \end{pmatrix}$}};
+
+      \node at (1.76,-2) {\scalebox{.7}{
+          $\begin{pmatrix}
+            \bullet & a_2 & \bullet\\
+            b_1 & \bullet & b_3\\
+            c_1 & \bullet & c_3
+          \end{pmatrix}$}};
+
+      \node at (3.8,-2) {\scalebox{.7}{
+          $\begin{pmatrix}
+            \bullet & \bullet & a_3\\
+            b_1 & b_2 & \bullet\\
+            c_1 & c_2 & \bullet
+          \end{pmatrix}$}};
+    \end{tikzpicture}
+  \end{center}
+
+  The idea of cofactor expansion nicely extends to handle the
+  computation of the determinant of a general $n \times n$ matrix, for any
+  positive integer $n$.
+
+% \begin{definition}
+%   Given a $3\times 3$ matrix, the \dfn{determinant} is denoted by the following.
+%   \[
+%   \det\begin{pmatrix}
+%   a_1 &  a_2 & a_3 \\
+%   b_1 &  b_2 & b_3 \\
+%   c_1 &  c_2 & c_3
+%   \end{pmatrix}
+%   =
+%   \begin{vmatrix}
+%     a_1 &  a_2 & a_3 \\
+%     b_1 &  b_2 & b_3 \\
+%     c_1 &  c_2 & c_3
+%   \end{vmatrix}
+%   \]
+%   The determinant can be computed using the following pattern.
+%   %\begin{image}[3in]
+%   \begin{center}
+% \begin{tikzpicture}
+% \node at (0,0) {$\det
+% \begin{pmatrix}
+%   a_1 & a_2 & a_3\\
+%   b_1 & b_2 & b_3\\
+%   c_1 & c_2 & c_3
+% \end{pmatrix}
+% = a_1
+% \begin{vmatrix}
+%   b_2 & b_3\\
+%   c_2 & c_3
+% \end{vmatrix}
+% -a_2
+% \begin{vmatrix}
+%   b_1 & b_3\\
+%   c_1 & c_3
+% \end{vmatrix}
+% +a_3
+% \begin{vmatrix}
+%   b_1 & b_2\\
+%   c_1 & c_2
+% \end{vmatrix}$};
+
+% \draw[ultra thick,->,gray] (-.27,-1.3) -- (-.27,-.7);
+% \draw[ultra thick,->,gray] (1.76,-1.3) -- (1.76,-.7);
+% \draw[ultra thick,->,gray] (3.8,-1.3) -- (3.8,-.7);
+
+% \node at (-.27,-2) {\scalebox{.7}{
+%     $\begin{pmatrix}
+%       a_1 & \bullet & \bullet\\
+%       \bullet & b_2 & b_3\\
+%       \bullet & c_2 & c_3
+%     \end{pmatrix}$}};
+
+% \node at (1.76,-2) {\scalebox{.7}{
+%     $\begin{pmatrix}
+%       \bullet & a_2 & \bullet\\
+%       b_1 & \bullet & b_3\\
+%       c_1 & \bullet & c_3
+%     \end{pmatrix}$}};
+
+% \node at (3.8,-2) {\scalebox{.7}{
+%     $\begin{pmatrix}
+%       \bullet & \bullet & a_3\\
+%       b_1 & b_2 & \bullet\\
+%       c_1 & c_2 & \bullet
+%     \end{pmatrix}$}};
+% \end{tikzpicture}
+% \end{center}
+% %\end{image}
+% This equals
+% \[
+%  a_1(b_2c_3-b_3c_2)- a_2(b_1c_3-b_3c_1)+ a_3(b_1c_2-b_2c_1).
+% \]
+% \end{definition}
 
 Another way to conceptualize this computation is the following:
 %% Commented because this is not a particularly useful method in this course.
@@ -251,7 +386,7 @@ Another way to conceptualize this computation is the following:
               c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
             };
             \matrix (mtrx3)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}] at (5,0)
-            { 
+            {
               a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
               b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
               c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
@@ -269,13 +404,13 @@ Another way to conceptualize this computation is the following:
             (mtrx-1-2.center) edge (mtrx-3-4.center)
             (mtrx-1-3.center)  --  (mtrx-3-5.center);
             \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
-            { 
+            {
               a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
               b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
               c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
             };
             \matrix (mtrx4)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}] at (5,0)
-            { 
+            {
               a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
               b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
               c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
@@ -294,7 +429,7 @@ Another way to conceptualize this computation is the following:
   Compute.
   \[
   \det
-  \begin{pmatrix} 
+  \begin{pmatrix}
     1 & 4 & 7\\
     2 & 5 & 8\\
     3 & 6 & 9\\

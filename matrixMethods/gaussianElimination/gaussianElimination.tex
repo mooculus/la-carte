@@ -1,0 +1,1054 @@
+\documentclass{ximera}
+
+\input{../../preamble.tex}
+
+\author{Parisa Fatheddin \and Bart Snapp}
+
+%% Jim Hefferon’s Linear Algebra. (CC-BY-NC-SA)
+%% Anna Davis and Paul Zachlin: https://github.com/annadavismath/LinearAlgebraV2
+%% https://ximera.osu.edu/linearalgebrav3/LinearAlgebraInteractiveIntro/SYS-0030/main
+
+%% https://www.cis.upenn.edu/~cis6100/Notices-06-11-Gausselim.pdf
+%% https://www.sciencedirect.com/science/article/pii/S0315086010000376
+
+
+\title{Gaussian elimination}
+
+
+
+
+\begin{document}
+\begin{abstract}
+  We use matrices to solve systems of linear equations.
+\end{abstract}
+\maketitle
+
+\begin{quote}
+  This method---which Euler did not recommend, which Legendre called ``ordinary,'' and which Gauss called ``common''--- is now named after Gauss: ``Gaussian'' elimination.
+
+  
+\hfill ---\link[J.F.\ Grcar]{https://go.osu.edu/reg-gauss}
+\end{quote}
+  
+Gaussian elimination is a technique for solving systems of linear
+equations. It is (obviously) named after
+\link[Gauss]{https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss}
+($1799$--$1855$). However, it was known to
+\link[Legendre]{https://en.wikipedia.org/wiki/Adrien-Marie_Legendre}
+($1752$--$1833$) and
+\link[Euler]{https://en.wikipedia.org/wiki/Leonhard_Euler}
+($1707$--$1783$) before him, and even before. Below we will discuss
+perhaps why it seems that these \textit{legends of mathematics} did
+not think highly of the method.
+
+
+
+
+
+
+Despite this inauspicious start, \textbf{Gaussian elimination is a
+  tremendously important technique today.} It reduces a problem to
+its barest components, and gives a method, an algorithm, that can be
+programmed into a computer that will solve systems of linear
+equations. Our mathematical heroes' disdain for this method is a
+consequence of the fact that \textit{not even they could have dreamt of the awesome
+computational power of modern computers.}
+
+
+
+\section{Row operations on matrices}
+
+
+Any time we have a \dfn{system of equations} we may represent it with a
+\dfn{matrix}
+\[
+\begin{array}{ccccccc}
+       & & 3y &-& 3z &=& -3 \\
+     x& +&3y&-&3z&=&2\\
+     -3x& -&9y&-&11z&=&0
+\end{array}
+\qquad\Longrightarrow\qquad
+\left(\begin{array}{ccc|c}
+  0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{array}\right).
+\]
+This is an example of a matrix used to store data. Some folks call
+this an \dfn{augmented matrix}, and they write stuff like this:
+\[
+A = \underbrace{\begin{pmatrix}
+  0 & 3 & -3  \\
+  1 &  3  & -3 \\
+ -3 & -9 & 11
+\end{pmatrix}}_{\text{the coefficients}},
+\quad
+B =
+\underbrace{\begin{pmatrix}
+ -3\\ 2 \\ 0 
+\end{pmatrix}}_{\text{right-hand side}},
+\quad
+\left(A|B\right) = \underbrace{\left(\begin{array}{ccc|c}
+  0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{array}\right)}_{\text{augmented matrix}}.
+\]
+
+\begin{question}
+  Consider the following system of equations:
+
+  Write the augmented matrix for this system of equations.
+  \begin{prompt}
+    \[
+    \left(\begin{array}{ccc|c}
+      \answer{} & \answer{} & \answer{} & \answer{}
+    \end{array}\right)
+    \]
+  \end{prompt}
+\end{question}
+
+We are going to use matrices to solve this system of equations. The
+method we describe below is often called \dfn{Gaussian elimination}
+or simply \dfn{elimination}. To do this, we're going to introduce
+\dfn{row operations}. The row operations will allow us to change the
+form of the matrix \emph{without changing the solutions}. The idea is
+this we start with a big matrix,
+\[
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet 
+\end{pmatrix}
+\quad
+\Rightarrow
+\quad
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+     0   & \bullet & \bullet & \bullet \\
+     0  &    0 & \bullet & \bullet 
+\end{pmatrix}
+\quad
+\Rightarrow
+\quad
+\begin{pmatrix}
+  1 & 0 & 0  & \bullet \\
+     0   & 1  &  0 & \bullet \\
+     0  &    0 & 1 & \bullet 
+\end{pmatrix}
+\]
+and transform it into a form where we can simply ``read-off'' the
+information about the system of equations, including the solutions.  We
+discuss the row operations that allow such a transformation below.
+
+
+
+\subsection{Swapping two rows} Since swapping the order of the equations in a
+  system of equations does not change the solutions, we may swap rows
+  in an augmented matrix. We denote swapping the $i$th row with the
+  $j$th row by $R_i\leftrightarrow R_j$. As an example, we can swap
+  the first and second rows of the matrix below:
+ \[
+\left(\begin{array}{ccc|c}
+  0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{array}\right)
+\qquad
+\begin{array}{c}
+  \scriptstyle R_1\leftrightarrow R_2\\\Longrightarrow
+\end{array}
+\qquad
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  -3& -9  & 11 & 0
+\end{array}\right)
+\]
+
+\begin{question}
+  Some row swapping operation was done below:
+  \[
+  \begin{pmatrix}
+-3 & 2 & 4 & -1 \\
+1 & -5 & 3 & 2 \\
+0 & -2 & 5 & 3
+  \end{pmatrix}
+  \Rightarrow
+  \begin{pmatrix}
+0 & -2 & 5 & 3 \\
+1 & -5 & 3 & 2 \\
+-3 & 2 & 4 & -1
+\end{pmatrix}
+  \]
+  Which row operation was performed?
+  \begin{prompt}
+    \[
+    R_{\answer{1}} \leftrightarrow R_{\answer{3}}
+    \]
+    The smaller answer must appear on the left.
+  \end{prompt}
+\end{question}
+
+  
+\subsection{Multiply by a nonzero constant and add different rows} 
+We may multiply equations by nonzero constants and add equations together
+\emph{without affecting the solution.} Hence we may multiply the first
+row by $3$ and add it to the third row, storing the answer in the
+third row (you could have chosen either of the summands).
+\[
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  -3& -9  & 11 & 0
+\end{array}\right)
+\qquad
+\begin{array}{c}
+  \scriptstyle 3R_1+R_3\rightarrow R_3\\\Longrightarrow
+\end{array}
+\qquad
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{array}\right).
+\]
+
+\begin{question}
+\end{question}
+
+
+
+At this point, we should draw your attention to the \emph{form} of the matrix. This matrix
+
+\[
+\begin{pmatrix}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{pmatrix}
+\qquad
+\text{is of this form:}
+\qquad
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+     0   & \bullet & \bullet & \bullet \\
+     0  &    0 & \bullet & \bullet 
+\end{pmatrix}
+\]
+
+
+
+We'll discuss the implications of this form below.
+
+
+\section{Row echelon form}
+
+We can write many different matrices that all represent systems
+of equations that have a common solution. For example:
+\[
+\begin{pmatrix}
+ 0 &   3 & -3 & -3 \\
+  1 &   3 & -3 & 2  \\
+  -3& -9  & 11 & 0
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  -3& -9  & 11 & 0
+\end{pmatrix},
+\quad
+\begin{pmatrix}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{pmatrix},
+\]
+are all different matrices representing the same solution to the
+system of equations:
+\[
+\begin{array}{ccccccc}
+       & & 3y &-& 3z &=& 2 \\
+     x& +&3y&-&3z&=&-3\\
+     -3x& -&9y&-&11z&=&0
+\end{array}
+\]
+Some `forms' of these matrices are more convenient than others. One
+useful form is called \dfn{row echelon form} or \dfn{triangular
+  form}. An \textit{echelon} is a military term meaning a formation
+(of soldiers, vehicles, and so on) that makes a ``stair step''
+shape. All of the matrices below are in row echelon form:
+\begin{center}
+\begin{tikzpicture}
+  \draw[line width=1.3em,black!15!white] (-1.9,.455) -- (1.8,.455);
+  \draw[line width=1.3em,black!15!white] (-.8,.025) -- (1.8,.025);
+  \draw[line width=1.3em,black!15!white] (.7,-.42) -- (1.8,-.42);
+\node at (0,0) {$\begin{pmatrix}
+ ~1~&2&-1&-5&0&~2~\\0&0&3&0&2&0\\0&0&0&0&1&0
+  \end{pmatrix},$};
+%\draw (-1.9,.7) -- (-1.9,.25) -- (-.8,.25) -- (-.8, -.2) -- (.7,-.2) -- (.7,-.7);
+\end{tikzpicture}
+\quad\begin{tikzpicture}
+  \draw[line width=13pt,black!15!white] (-.6,.455) -- (.45,.455);
+  \draw[line width=13pt,black!15!white] (-.05,.025) -- (.45,.025);
+\node at (0,0) {$\begin{pmatrix}
+ ~4~&~0~\\0&1\\0&0
+  \end{pmatrix},$};
+%\draw (-.6,.7) -- (-.6,.25) -- (-.05,.25) -- (-.05, -.2) -- (.45,-.2) -- (.45,-.7);
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}
+  \draw[line width=1.3em,black!15!white] (-1.5,.455) -- (1.35,.455);
+  \draw[line width=1.3em,black!15!white] (-1,.025) -- (1.35,.025);
+  \draw[line width=1.3em,black!15!white] (-.4,-.42) -- (1.35,-.42);
+\node at (0,0) {$\begin{pmatrix}
+  ~1~ &   3 & -3 & ~2~  \\
+  0 &   3 & -3 & ~-3~ \\
+  0& 0  & 2 & 6
+  \end{pmatrix}.$};
+%\draw (-1.5,.7) -- (-1.5,.25) -- (-1,.25) -- (-1, -.2) -- (-.4,-.2) -- (-.4,-.7);
+\end{tikzpicture}
+\end{center}
+We've highlighted the \textit{echelon} pattern in each of the matrices
+above. Now let's give a definition.
+
+\begin{definition}
+We say a matrix $M$ is in \dfn{row echelon form} if every nonzero row
+contains a nonzero entry $M_{i,j}\ne 0$ such that
+\begin{itemize}
+\item Every entry below $M_{i,j}$ is zero, $M_{k,\l}=0$ whenever $k> i$.
+\item Every entry to the left of $M_{i,j}$ is zero, $M_{k,\l}=0$ whenever $\l < j$.
+\end{itemize}
+Such an $M_{i,j}$ is called a \dfn{pivot} of $M$.
+\end{definition}
+
+\begin{question}
+  id in REF and id pivots
+\end{question}
+
+
+
+\subsection{An algorithm for row echelon form}
+
+The biggest strength of using matrices to solve equations is that the
+procedure (when using matrices) can be easily done on a computer with
+something like the following algorithm for computing row echelon form
+(REF).
+
+\begin{algorithm}[Gaussian Elimination (REF)]
+  Here we explain a general algorithm for reducing a matrix to row
+  echelon form in plain terms.
+  \begin{enumerate}
+  \item Determine the leftmost column containing a nonzero entry use
+    row operations to move this entry to the first row.
+  \item Use row operations to make the entries below this nonzero entry equal to zero.
+  \item Repeat the previous steps on the submatrix consisting of all
+    except the first row, until reaching the end of the rows.
+  \end{enumerate}
+\end{algorithm}
+
+It's called Gaussian \textit{elimination}, because you are
+`eliminating' variables from each of the equations.  Pictorially, we
+can imagine this algorithm working as follows:
+
+\begin{center}
+\begin{tikzpicture}[every left delimiter/.style={xshift=.5em},every right delimiter/.style={xshift=-.5em},]
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.2em] at (0,0) {
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet \\
+  };
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (3,0) {
+  \bullet & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet \\
+  };
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (6,0){
+    \bullet & \bullet & \bullet & \bullet \\
+    0       & \bullet & \bullet & \bullet \\
+    0       & \bullet & \bullet & \bullet \\
+  };
+  % Draw the rectangle around the submatrix
+  \draw[black!30!white,thick] (m-2-2.north west) rectangle (m-3-4.south east);
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (9,0) {
+  \bullet & \bullet & \bullet & \bullet \\
+  0       & \bullet & \bullet & \bullet \\
+  0       &  0  & \bullet & \bullet \\
+  };
+  \node at (1.5,0) {$\Rightarrow$};
+  \node at (4.5,0) {$\Rightarrow$};
+  \node at (7.5,0) {$\Rightarrow$};
+  \node[below] at (0,-1) {\begin{minipage}{2.5cm}\small\center Top leftmost entry is nonzero.\end{minipage}};
+  \node[below] at (3,-1) {\begin{minipage}{2.5cm}\small\center Zero all entries below.\end{minipage}};
+  \node[below] at (6,-1) {\begin{minipage}{2.5cm}\small\center Repeat with each submatrix.\end{minipage}};
+  \node[below] at (9,-1) {\begin{minipage}{2.5cm}\small\center REF\end{minipage}};
+  \end{tikzpicture}
+\end{center}
+Note, in the algorithm, we don't need to know much about the entries
+other than that the pivots are nonzero. In fact \textit{we don't need
+  to know much at all.}  This is why Euler, Legendre, and Gauss were
+not, in fact, enamored with this sort of algorithm.  They, like us
+and all good teachers, \textbf{want you to do math with understanding!}
+
+However, this pedagogical limitation is in fact its greatest
+strength. Computers, do not (yet!) understand anything, they just
+crunch numbers very quickly. Hence, the fact that no understanding is
+needed to do the algorithm is a bonus in this case. Many computer
+languages have the notion of `vectors' and `matrices' and algorithms
+like the one above that are optimized and built-in.
+
+
+
+
+\subsection{How does row echelon form help?}
+
+Let's think about our original system of equations. We've shown that
+this corresponds to a matrix in row echelon from:
+\[
+\begin{array}{ccccccc}
+       & & 3y &-& 3z &=& 2 \\
+     x& +&3y&-&3z&=&-3\\
+     -3x& -&9y&-&11z&=&0
+\end{array}
+\qquad\Longrightarrow\qquad
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{array}\right)
+\]
+But this final matrix that we obtained from row operations, (directly)
+corresponds to the following system of equations:
+\[
+\left(\begin{array}{ccc|c}
+  1 &   3 & -3 & 2  \\
+  0 &   3 & -3 & -3 \\
+  0& 0  & 2 & 6
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{array}{ccccccc}
+     x  &+ & 3y &-& 3z &=& 2 \\
+     &  &3y&-&3z&=&-3\\
+     & & & &2z&=&6
+\end{array}
+\]
+Hence at this point we see
+\begin{align*}
+  2z &= 6 &\Rightarrow  & & z &= 3\\
+  3y-3\cdot 3 &= -3 &\Rightarrow  & & y &= 2\\
+  x + 3\cdot 2 - 3\cdot 3 &= 2  &\Rightarrow & & x &= 1
+\end{align*}
+And we have solved our system of equations. The method we used,
+solving for $z$, then $y$, then $x$ is called \dfn{back
+  substitution}. Once a matrix is in row echelon form, this is usually
+a fairly efficient method to find the solutions.  \textbf{But wait,
+  there's more!}  Often the `form' or shape of the matrix in row
+echelon form will \textbf{tell us about the solutions, without
+  actually finding the solutions.}
+
+
+
+
+\paragraph{Rows of zeros}
+
+Sometimes after we transform to row echelon form, we have a row (or
+several!) of zeros like this:
+\[
+\left(\begin{array}{ccc|c}
+  \bullet &   \bullet & \bullet & \bullet  \\
+  0 &   \bullet & \bullet & \bullet \\
+  0& 0  & 0 & 0
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{aligned}
+      \bullet x +  \bullet y + \bullet z &= \bullet \\
+        \bullet y + \bullet z&= \bullet
+\end{aligned}
+\]
+In this case, we have a system of equations with more variables than
+equations! This means (assuming no columns of zeros) that the system
+of equations is \dfn{underdetermined}. Note that if we try to solve
+for $x$ and $y$, we will always have a function of $z$ for each. Hence
+in a case like this, there are an \dfn{infinite number of solutions}.
+
+
+
+\paragraph{Columns of zeros}
+
+Sometimes after we transform to row echelon form, we have a column (or
+several!) of zeros like this:
+\[
+\left(\begin{array}{ccc|c}
+  \bullet &   0 & \bullet & \bullet  \\
+  0 &   0 & \bullet & \bullet \\
+   0& 0  &  0 & \bullet
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{aligned}
+      \bullet x  + \bullet z &= \bullet & \\
+      \bullet z&= \bullet & \\
+      0 &=\bullet & \textbf{(VERY PROBLEMATIC)}
+\end{aligned}
+\]
+Again, we have a system of equations but this time we have $0 =
+\bullet$ where we're assuming $\bullet$ is not zero.  This means that
+the system of equations is \dfn{overdetermined} also known as
+\dfn{inconsistent}. In a case like this, there are \dfn{no solutions.}
+
+
+
+\paragraph{Summary}
+
+As we have seen, simply having the augmented matrix in row echelon form can immediately tell us if a system of equations:
+\begin{description}
+\item[Has a unique solution] This happens when there are \textbf{no rows/columns of zeros.}
+\item[Has infinitely many solutions] When there are \textbf{rows of zeros and no columns of zeros.}
+\item[Has no solutions] When there are  \textbf{columns of zeros and no rows of zeros.}
+\end{description}
+Of course, it can be more subtle than this. As we progress in our
+journey, we will continue to refine, clarify, and extend these ideas.
+
+
+
+
+
+\subsection{Reduced row echelon form}
+
+Once we have an augmented matrix in row echelon form, we can use row
+operations to continue to reduce it to the following form:
+\[
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet \\
+     0   & \bullet & \bullet & \bullet \\
+     0  &    0 & \bullet & \bullet 
+\end{pmatrix}
+\quad
+\Rightarrow
+\quad
+\begin{pmatrix}
+  1 & 0 & 0  & \bullet \\
+     0   & 1  &  0 & \bullet \\
+     0  &    0 & 1 & \bullet 
+\end{pmatrix}
+\]
+The advantage here is that this final form corresponds to a very nice system of equations:
+\[
+\left(\begin{array}{ccc|c}
+  1 &   0 & 0 & \bullet  \\
+  0 &   1 & 0 & \bullet \\
+   0& 0  &  1 & \bullet
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{aligned}
+      x &= \bullet  \\
+      y &= \bullet  \\
+      z &=\bullet 
+\end{aligned}
+\]
+\begin{question}
+  Transform the following matrix to reduced row echelon from:
+  \[
+  \begin{pmatrix}
+  1 & 3 & -3 & 2  \\
+  0 & 3 & -3 & -3 \\
+  0 & 0 &  2 & 6
+  \end{pmatrix}
+  \]
+  \begin{prompt}
+    \[
+    \begin{pmatrix}
+      \answer{1} & \answer{0} & \answer{0} & \answer{1} \\
+      \answer{0} & \answer{1} & \answer{0} & \answer{2} \\
+      \answer{0} & \answer{0} & \answer{1} & \answer{3} 
+    \end{pmatrix}
+    \]
+  \end{prompt}
+\end{question}
+While \textit{reduced} row echelon form may seem like a good idea,
+there are some issues.  Usually row echelon form is sufficient, and
+the additional computations are not worth the effort.  If working by
+hand, it is usually best to use back substitution to solve the system of equations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Putting it all together}
+
+Now let's try our hand at some example problems. 
+
+
+\begin{example}[Unique solution]
+  Solve for $x$, $y$, and $z$ in the following system of equations:
+  \begin{align*}
+    2x + 3y + z  &= 5 \\
+    x -2y+ 2z &=-9\\
+    3x +y- 3z &=14
+  \end{align*}
+
+\begin{explanation}
+First we'll represent this system of equations as an augmented matrix:
+\[
+\left(\begin{array}{ccc|c}
+  2 & 3 & 1 & 5 \\
+  1 &  -2 & 2 &-9 \\
+  3 &  1 & -3 & 14
+\end{array}\right)
+\]
+Our goal is to convert our matrix to row echelon form. We'll use
+Gaussian eliminiation. Since the top left most entry is nonzero we
+make the entires below this one zero using row operations.
+\[
+\begin{pmatrix}
+  2 & 3 & 1 & 5 \\
+  1 &  -2 & 2 &-9 \\
+  3 &  1 & -3 & 14
+\end{pmatrix}
+\begin{array}{c}
+  \scriptstyle(-0.5) R_1+R+2\to R_2\\ \Longrightarrow\\  \scriptstyle(-1.5) R_1+R+3\to R_3
+\end{array}
+\begin{pmatrix}
+  2 & 3 & 1 & 5 \\
+  0 & -3.5 & 1.5 &-11.5 \\
+  0 & -3.5 & -4.5 & 6.5
+\end{pmatrix}
+\]
+Now we work with the submatrix:
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (6,0){
+     2 & 3 & 1 & 5 \\
+  0 & -3.5 & 1.5 &-11.5 \\
+  0 & -3.5 & -4.5 & 6.5\\
+  };
+  % Draw the rectangle around the submatrix
+  \draw[black!30!white,thick] (m-2-2.north west) rectangle ([xshift=0.5em] m-3-4.south east);
+\end{tikzpicture}
+\]
+Again we make all rows less than the submatrix's top most entry zero:
+\[
+\begin{pmatrix}
+  2 & 3 & 1 & 5 \\
+  0 & -3.5 & 1.5 &-11.5 \\
+  0 & -3.5 & -4.5 & 6.5
+\end{pmatrix}
+\begin{array}{c}
+  \scriptstyle(-1) R_2+R_3\to R_3\\ \Longrightarrow
+\end{array}
+\begin{pmatrix}
+  2 & 3 & 1 & 5 \\
+  0 & -3.5 & 1.5 &-11.5 \\
+  0 & 0    & -6 & 18
+\end{pmatrix}
+\]
+Now we see
+
+\[
+\left(\begin{array}{ccc|c}
+  2 & 3 & 1 & 5 \\
+  0 & -3.5 & 1.5 &-11.5 \\
+  0 & 0    & -6 & 18
+\end{array}\right)
+\qquad\Longrightarrow\qquad
+\begin{array}{ccccccc}
+     2x  &+ & 3y &+& z &=& 5 \\
+     &  &-3.5y&+&1.5z&=&-11.5\\
+     & & & &-6z&=&18
+\end{array}
+\]
+It is now time to use back substitution to solve for $z$, then $y$, then $x$:
+\begin{align*}
+  -6z &= 18   &\Rightarrow & & z &= -3\\
+  -3.5y+1.5z &=-11.5 &\Rightarrow & & y &= 2\\
+  2x  +  3y + z &= 5 &\Rightarrow & & x &= 1
+\end{align*}
+Finally, you must check your work!
+  \begin{align*}
+    2\left(\answer[given]{-3}\right)+ 3\left(\answer[given]{2}\right) + \left(\answer[given]{1}\right)  &= \answer[given]{5} \\
+    \left(\answer[given]{-3}\right) -2\left(\answer[given]{2}\right)+ 2\left(\answer[given]{1}\right) &=\answer[given]{-9}\\
+    3\left(\answer[given]{-3}\right) +\left(\answer[given]{2}\right)- 3\left(\answer[given]{1}\right) &=\answer[given]{14}
+  \end{align*}
+
+%% Noting that changing the order of equations
+%% does not affect the solutions of the system of equations, we note that
+%% neither does swapping the rows of the augmented matrix. So we write:
+%% \[
+%% \left(\begin{array}{ccc|c}
+%%   2 & 3 & 1 & 5 \\
+%%   1 &  -2 & 2 &-9 \\
+%%   3 &  1 & -3 & 14
+%% \end{array}\right)
+%% \begin{array}{c}
+%%   R_1\leftrightarrow R_2\\\Longrightarrow
+%% \end{array}
+%% \left(\begin{array}{ccc|c}
+%%   1 &  -2 & 2 &-9 \\
+%%   2 & 3 & 1 & 5 \\
+%%   3 &  1 & -3 & 14
+%% \end{array}\right)
+%% \]
+%% Now, multiplying the first equation by $-2$ and adding it to the
+%% second equation, and then replacing the second equation 
+
+%% Afterwards, we multiply the first equation by $-3$ and add
+%% it to the third equation:
+%% \[
+%% \begin{array}{ccccccccc}
+%%      (-2)&&(x& -&2y&+&2z&=&-9)\\
+%%      +&& 2x &+& 3y &+& z &=& 5 \\
+%%      &&-&-&-&-&-&-&-\\
+%%      \Rightarrow&& & &7y&-&3z&=&23
+%% \end{array}
+%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
+%% \left(\begin{array}{ccc|c}
+%%   1 &  -2 & 2 &-9 \\
+%%   0 & 7 & -3 & 23 \\
+%%   3 &  1 & -3 & 14
+%% \end{array}\right),
+%% \]
+%% and
+%% \[
+%% \begin{array}{ccccccccc}
+%%      (-3)&&(x& -&2y&+&2z&=&-9)\\
+%%      +&& 3x &+& y &-& 3z &=& 14 \\
+%%      &&-&-&-&-&-&-&-\\
+%%      \Rightarrow&& & &7y&-&9z&=&41
+%% \end{array}
+%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
+%% \left(\begin{array}{ccc|c}
+%%   1 &  -2 & 2 &-9 \\
+%%   0 & 7 & -3 & 23 \\
+%%   0 &  7 & -9 & 41
+%% \end{array}\right).
+%% \]
+%% The above operations can be written in condensed form as $-2R_1 + R_2$ and $-3R_1 + R_3$, respectively. Observe that the row that is multiplied by a number does not change. For example, the first row above stayed the same and the row that it was added to changed. It is convenient to multiply each entry of row one by the appropriate number and write it above the row as side work and erase the numbers after adding them to the other row. It is important not to change the row itself. \\
+%% Now we see that both $y$ variables have $7$ as the coefficient. Thus, the best way to proceed is to eliminate the $y$ variable:
+%% \[
+%% \begin{array}{ccccccc}
+%%      (-1)&&(7y&-&3z&=&23)\\
+%%      +&& 7y &-& 9z &=& 41 \\
+%%      &&-&-&-&-&-\\
+%%      \Rightarrow&& &-&6z&=&18
+%% \end{array}
+%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
+%% \left(\begin{array}{ccc|c}
+%%   1 &  -2 & 2 &-9 \\
+%%   0 & 7 & -3 & 23 \\
+%%   0 &  0 & -6 & 18
+%% \end{array}\right).
+%% \]
+%% It is now natural to solve for $z$ and obtain:
+%% \[
+%% \begin{array}{ccc}
+%%      &&z = -3\\
+%%      \text{ also } &&7y- 3z=23  \hspace{.3cm}\Rightarrow\hspace{.3cm} y- \frac{3}{7}z = \frac{23}{7}
+%% \end{array}
+%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
+%% \left(\begin{array}{ccc|c}
+%%   1 &  -2 & 2 &-9 \\
+%%   0 & 1 & -3/7 & 23/7 \\
+%%   0 &  0 & 1 & -3
+%% \end{array}\right),
+%% \]
+%% where the operations translate to $R_{3}/(-6)$ and $R_{2}/7$, respectively. By substitution, we obtain,\\
+
+%% \hspace{.5cm} $z = -3   \hspace{.5cm}\Rightarrow \hspace{.5cm} y- \frac{3}{7}(-3) = \frac{23}{7} \hspace{.5cm}\Rightarrow \hspace{.5cm} y= \frac{23-9}{7}= 2,$
+%% \\ \\ \hspace{.5cm} then putting $y$ and $z$ in the first equation gives $x -2(2)+2(-3)=-9$ from which we obtain, $x= 1$.
+
+%% The same process may be applied to matrices by converting the rows back to equations and then using substitution. The matrix we obtained in which the diagonal entries are 1 and every entry below them is zero is said to be in row-echelon form. If one also makes the entries above the diagonal to become zero then the matrix is said to be in reduced row-echelon form. In example above, we may first make the entry above entry $a_{22}$ be zero:
+%% \[
+%% \left(\begin{array}{ccc|c}
+%%   1 &  -2 & 2 &-9 \\
+%%   0 & 1 & -3/7 & 23/7 \\
+%%   0 &  0 & 1 & -3
+%% \end{array}\right)
+%% \hspace{.2cm}\xrightarrow{2R_{2}+R_{1}} \hspace{.2cm}
+%% \left(\begin{array}{ccc|c}
+%%   1 &  0 & 8/7 &-17/7 \\
+%%   0 & 1 & -3/7 & 23/7 \\
+%%   0 &  0 & 1 & -3
+%% \end{array}\right),
+%% \]
+%% Then we use the 1 in row three to make the entries above it zero:
+%% \[
+%% \left(\begin{array}{ccc|c}
+%%   1 &  0 & 8/7 &-17/7 \\
+%%   0 & 1 & -3/7 & 23/7 \\
+%%   0 &  0 & 1 & -3
+%% \end{array}\right)
+%% \hspace{.2cm}\xrightarrow[(3/7)R_{3}+R_{2}]{(-8/7)R_{3}+R_{1}} \hspace{.2cm}
+%% \left(\begin{array}{ccc|c}
+%%   1 &  0 & 0 &1 \\
+%%   0 & 1 & 0& 2 \\
+%%   0 &  0 & 1 & -3
+%% \end{array}\right),
+%% \]
+%% which automatically leads to $z=-3$ and $y=2$ and $x=1$.
+\end{explanation}
+\end{example}
+
+Now let's see an example where there are an infinite number of solutions.
+
+
+\begin{example}[Infinite solutions]
+  Describe the solutions of the following system of equations:
+\begin{align*}
+\left(\frac{2}{5}\right)x + \left(\frac{3}{10}\right) y &= 8\\
+y -\left(\frac{1}{4}\right)w &= \frac{-3}{2}\\
+\left(\frac{3}{5}\right)x + \left(\frac{2}{5}\right)z &= 2\\
+6y - \left(\frac{3}{2}\right)w &= -9
+\end{align*}
+\begin{explanation}
+First we'll represent this system of equations as an augmented matrix:
+\[
+  \left(\begin{array}{cccc|c}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & -3/2\\
+  \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+  \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+\end{array}\right)
+\]
+Now we will use Gaussian elimination to transform this matrix to row echelon form. Start by zeroing the column below the $(1,1)$-entry:
+\[
+\begin{pmatrix}
+   {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
+  {3/5}&  {0} & {2/5} &{0} &2\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\begin{matrix}
+  \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+  \Longrightarrow
+\end{matrix}
+\begin{pmatrix}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
+  \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\]
+Now we work with the submatrix:
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=), 
+    column sep=0.3em, row sep=0.1em] at (6,0){
+   {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
+  {0}&  {-9/20} & {2/5} &{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9\\
+  };
+  % Draw the rectangle around the submatrix
+  \draw[black!30!white,thick] ([xshift=-1em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
+\end{tikzpicture}
+\]
+We will zero the columns below the $(2,2)$-entry:
+\[
+\begin{pmatrix}
+      {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
+  {0}&  {-9/20} & {2/5} &{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\begin{matrix}
+  \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  \Longrightarrow \\
+  \scriptstyle(-6) R_2+R_4\to R_4
+\end{matrix}
+\begin{pmatrix}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
+\end{pmatrix}
+\]
+and we are now in row echelon form. However, we have a row of zeros. 
+Here the row of zeros imply
+\[
+0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
+\]
+which is true for all numbers $x,y,z,w$. Hence, immediately we see
+that there are an infinte number of solutions.
+
+You may be tempted to stop here, but this problem isn't finished with
+us yet. In particular, we see $w$ can be any real number. Hence we can
+\textit{still} use back substitution to write:
+\begin{align*}
+ \left(\frac{2}{5}\right) z + \left(\frac{-9}{80}\right)z  &= -427/40   &\Rightarrow & & z &= \frac{9 w-854}{32} \\
+  y+\left(\frac{1}{4}\right)w &=\frac{-3}{2} &\Rightarrow & & y &= \frac{w-6}{4}\\
+  \left(\frac{2}{5}\right)x  +  \left(\frac{3}{10}\right)y  &= 8 &\Rightarrow & & x &= \frac{338-3w}{16}
+\end{align*}
+%% \[
+%% \left(\begin{array}{ccccc|c}
+%%    1&  0 & 2 &5 &10 \\
+%%   0&  0 & 0 &0 &0\\
+%%   0&  0 & 0 &0 &0\\
+%%   0&  0 & 0 &0 &0\\
+%% \end{array}\right),
+%% \]
+%% then we let $w=r, z=s, y=k$, where $r,s,k$ are arbitrary real numbers and solve for x: $ x= \answer[given]{-5}r + \answer[given]{-2}s +\answer[given]{10}$. \\
+%% Now let us study when these cases occur. Recall that graphically the solution is the intersection point of the equations. Consider the equations,
+%% \[
+%% \begin{array}{ccccc}
+%%      2x& -&4y&=&16\\
+%%      16x &-& 32y&=& 12
+%% \end{array}
+%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
+%% \begin{array}{ccccc}
+%%      y&=&\frac{1}{2}x&+&4\\
+%%      y &=& \frac{1}{2}x&-& \frac{3}{8}
+%% \end{array},
+%% \]
+%% we may notice that they have the same slope and different y-intercepts, implying that the two lines are parallel and have no intersection points and thus the system has no solutions. Note that the second equation above has coefficients that are $8$ times those of the first equation. Also going back to system \eqref{system}, note that the coefficients of the fourth equation were a constant multiple of those of the second equation and since the constants were not also a multiple of each other then we had no solutions, the same here. Furthermore, if we consider,
+%% \[
+%% \begin{array}{ccccc}
+%%      2x& -&4y&=&16\\
+%%      16x &-& 32y&=& 128
+%% \end{array}
+%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
+%% \begin{array}{ccccc}
+%%      y&=&\frac{1}{2}x&+&4\\
+%%      y &=& \frac{1}{2}x&+& 4
+%% \end{array},
+%% \]
+%% then we have the two equations representing the same line causing an overlap. Therefore, this leads to infinitely many solutions with each point on this line being a solution of the system, since it is an intersection point of the two equations. This may also be observed in system \eqref{system} when the second equation was replaced by
+%% \begin{equation*}
+%% y-\frac{1}{4}w= -\frac{3}{2},
+%% \end{equation*}
+%% leading to every entry of a row being a constant multiple of another row giving a row of zeros, which implies that the system has infinitely many solutions. In summary when solving a system by matrices, if every entry of a row is a constant multiple of another row then there are infinitely many solutions. If every entry of a row in the coefficient matrix is a multiple of another row while their constants are not multiple of one another then there is no solution.
+\end{explanation}
+\end{example}
+
+Now let's see a system of linear equations with no solutions. Note how similar the equations are to the last example! As we will see, a small change in the equations can lead to a big change in the behavior of the solutions.
+
+\begin{example}[No solutions]
+  Describe the solutions of the following system of equations:
+  \begin{align*}
+\left(\frac{2}{5}\right)x + \left(\frac{3}{10}\right) y &= 8\\
+y -\left(\frac{1}{4}\right)w &= 5\\
+\left(\frac{3}{5}\right)x + \left(\frac{2}{5}\right)z &= 2\\
+6y - \left(\frac{3}{2}\right)w &= -9
+\end{align*}
+\begin{explanation}
+First we'll represent this system of equations as an augmented matrix:
+  \[
+  \left(\begin{array}{cccc|c}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & 5\\
+  \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+  \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+\end{array}\right)
+\]
+Again, we will use Gaussian elimination to transform this matrix to
+row echelon form. The first step is essentially the same as before:
+\[
+\begin{pmatrix}
+   {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & 5\\
+  {3/5}&  {0} & {2/5} &{0} &2\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\begin{matrix}
+  \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+  \Longrightarrow
+\end{matrix}
+\begin{pmatrix}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & 5\\
+  \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\]
+However, when we zero the columns below the $(2,2)$-entry
+\[
+\begin{pmatrix}
+      {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & 5\\
+  {0}&  {-9/20} & {2/5} &{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9
+\end{pmatrix}
+\begin{matrix}
+  \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  \Longrightarrow \\
+  \scriptstyle(-6) R_2+R_4\to R_4
+\end{matrix}
+\begin{pmatrix}
+   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{49/4}\\
+  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-36}
+\end{pmatrix}
+\]
+but now, the last row translates to 
+\[
+0\cdot x+0\cdot y+0\cdot z+0\cdot w=-36
+\]
+but $0\ne -36$. This means that the system has no solution. There is
+no $(x,y,z,w)$ that makes every equation in the system hold true.
+\end{explanation}
+\end{example}
+
+%Example 2.5.4 from
+%https://linearalgebra.math.umanitoba.ca/math1220/section-12.html
+\begin{example}[None, one, many]
+  Consider the system of linear equations:
+  \begin{align*}
+    x+y+z &=  1\\
+    2x+y+z &=  2\\
+    3x+ay+bz &= c
+  \end{align*}
+  Find the smallest positive whole number values of $a$, $b$ and $c$
+  for which there are no solutions, one solution, or many solutions.
+  \begin{explanation}
+    Here the augmented matrix is:
+    \[\left(\begin{array}{ccc|c}
+    \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
+    \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
+    \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c} 
+    \end{array}\right)\]
+    Apply the following row operations:
+    \[
+    \hspace{.2cm} \xrightarrow[-3R_{1}+R_{3}\rightarrow R_{3}]
+           {-2R_{1} + R_{2}\rightarrow R_{2}}\hspace{.2cm}
+    \left(\begin{array}{ccc|c}
+      \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
+      \answer[given]{0} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{0} \\
+      \answer[given]{0} &  \answer[given]{a-3} &  \answer[given]{b-3} &  \answer[given]{c-3}
+    \end{array}\right)\]
+    Based on the above, for the system to have no solutions we need: 
+    \[
+    a = \answer[given]{4}, \hspace{.5cm} b = \answer[given]{4}, \hspace{.5cm} c = \answer[given]{1}
+    \]
+    For the system to have infinitely many solutions we need (give the smallest natural number ($n\geq 1$) possible):
+    \[
+    a = \answer[given]{4}, \hspace{.5cm} b = \answer[given]{4}, \hspace{.5cm} c = \answer[given]{3}
+    \]
+    For the system to have one solution we need (give the smallest natural number ($n\geq 1$) possible):
+    \[
+    a = \answer[given]{1}, \hspace{.5cm} b = \answer[given]{1}, \hspace{.5cm} c = \answer[given]{1}
+    \]
+  \end{explanation}
+\end{example}
+    
+
+For some interesting extra reading check out:
+\begin{itemize}
+\item \link[\textit{How ordinary elimination became Gaussian elimination},  Historica Mathematica Volume 38, Issue 2, May 2011, Page 163--218.]{https://go.osu.edu/reg-gauss}
+\end{itemize}
+
+
+
+\end{document}

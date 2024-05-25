@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[margin=0.5in]{geometry} % Adjust margins to ensure text can go off the page
+
+\usepackage{gillius} % Ensure this package is installed
+\renewcommand{\familydefault}{\sfdefault} % Set Gillius as the default font
+\usepackage{amsmath} % For bold math symbols
+
+
+%% For black/white switch
+\usepackage{pagecolor}
+\definecolor{bkgndcr}{rgb}{0,0,0}
+\definecolor{txtcr}{rgb}{1,1,1}
+\pagecolor{bkgndcr}
+
+
+
+
+%\usepackage{FiraMono} % Use the Fira Mono font
+%\renewcommand\familydefault{\ttdefault} 
+% Set Fira Mono as the monospace font
+
+\usepackage{ocr}
+\usepackage[T1]{fontenc}
+\let\ttfamily\ocrfamily
+
+\begin{document}
+\boldmath % Makes all math text bold
+\bfseries % Makes all text bold
+
+
+% Define the random 0s and 1s
+\newcommand{\randomtext}{\setlength{\baselineskip}{1ex}\ttfamily%
+  10101001010101101\\
+  11010010100101001\\
+  11101001010100101\\
+  10101010010101010\\
+  11010100101001010\\
+  10101001010010101\\
+  11010100101010101\\
+}
+
+\begin{tikzpicture}[remember picture, overlay]
+  % Fill the page with the random text
+  \node[scale=14, bkgndcr!90!txtcr, anchor=center, text width=\paperwidth, align=center] at (current page.center) {\randomtext};
+\end{tikzpicture}
+\sffamily
+% Write the main title on top left and middle right
+\begin{tikzpicture}[remember picture, overlay]
+  \node[scale=14, bkgndcr, anchor=north west] at ([yshift=-.1cm,xshift=-.1cm]current page.north west) {Matrix};
+  \node[scale=14, txtcr, anchor=north west] at (current page.north west) {Matrix};
+
+  \node[scale=14, bkgndcr, anchor=west] at ([xshift=-.1cm,yshift=-7.7cm]current page.north west) {Methods};
+  \node[scale=14, txtcr, anchor=west] at ([yshift=-7.6cm]current page.north west) {Methods};
+
+  \node[scale=4, bkgndcr, anchor=west] at ([yshift=-11.5cm,xshift=1.4cm]current page.north west) {\itshape Linear Algebra, \`a la carte};
+  \node[scale=4, txtcr, anchor=west] at ([yshift=-11.4cm,xshift=1.5cm]current page.north west) {\itshape Linear Algebra, \`a la carte};
+
+  \node[scale=4, bkgndcr,] at ([xshift=-.1cm,yshift=-10.1cm]current page.center) {Fatheddin $\bullet$ Kim $\bullet$ Snapp};
+  \node[scale=4, txtcr,] at ([yshift=-10cm]current page.center) {Fatheddin $\bullet$ Kim $\bullet$ Snapp};
+  
+
+\end{tikzpicture}
+
+\end{document}

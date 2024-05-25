@@ -53,7 +53,7 @@ to add data and sometimes it doesn't.
 For some of the categories above, the \textit{average} can be
 meaningful or perhaps if each quantity is thought of as `displacement'
 or `duration,' summing might be meaningful. However, without
-additional (pun intended!) stipulations, summing the types of
+additional \textcolor{blue}{what do you mean pun intended?}\underline{(pun intended!)} stipulations, summing the types of
 quantities above is not meaningful. On the other hand, there are lots
 of times that it makes sense to add data:
 
@@ -62,7 +62,7 @@ of times that it makes sense to add data:
 \item[Population Counts] Adding the populations of different regions,
   cities, or countries to find the total population of a larger
   area. Answers to questions like these help us understand our
-  society and are important to many people.
+  society and are important to many \textcolor{blue}{organizations} \underline{people.}
 \item[Financial Transactions] Summing daily sales to find total
   monthly sales, or adding up all expenses to find total costs. These
   are real numbers that represent actual amounts of money, and their
@@ -75,27 +75,27 @@ of times that it makes sense to add data:
 \item[RGB Color Space] Colors on digital screens are often represented
   as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}. Here three numerical components
   correspond to the intensity of red, green, and blue light, with $0$
-  representing no intensity, black can be represented by $(0,0,0)$,
-  and $255$ represents maximum intensity, white can be represented by
+  representing no intensity, \textcolor{blue}{so} black can be represented by $(0,0,0)$\textcolor{blue}{period here and start a new sentence with Number $255$},
+  \underline{and $255$} represents \textcolor{blue}{the} maximum intensity, \textcolor{blue}{so} white can be represented by
   $(255,255,255)$.  Adding the values for different pixels changes the
   brightness of each individual component.
-\item[Navigation] Aircraft navigate by knowing the direction and speed \textcolor{blue}{at which}
+\item[Navigation] Aircraft\textcolor{blue}{s} navigate by knowing the direction and speed at which
   they are traveling. When interpreted correctly, we add the
   speed and direction of many different ``course changes'' to
   find the ultimate position of the aircraft.
 \end{description}
 \end{concept}
 Often when it makes sense to \textit{add} quantities, it makes sense
-to \textit{scale} them as well. For example with population, you could
+to \textit{scale} them as well. \textcolor{blue}{instead of the following sentence: For example, with respect to populations, you could ask what is 3 times or half of the population of a city.} For example with population, you could
 ask for the population of a city with $3$ times the population, or
 half the population. In a similar way, \textit{scaling} makes sense
-for all the examples above where it \textcolor{blue}{makes} sense to
+for all the examples above where it makes sense to
 add data. Regular old numbers used to scale vectors are called
 \textit{scalars}.
 
 
 \begin{definition}
-  We say data is represented by \dfn{vectors} $\vec{v}$ and $\vec{w}$
+  \textcolor{blue}{data can be represented by a single vector. I found this sentence confusing since this is just properties of vectors not related to data} We say data is represented by \dfn{vectors} $\vec{v}$ and $\vec{w}$
   if
   \[
   \vec{v}+\vec{w}
@@ -111,9 +111,9 @@ add data. Regular old numbers used to scale vectors are called
 \end{definition}
 These informal definitions of vectors and scalars in fact contain the
 \textit{essence} of the concept of a \textit{vector space}. If this
-seems too abstract, let's give some very concrete examples, based on
+seems too abstract, let's give some very concrete examples, \textcolor{blue}{take out comma here} based on
 the examples above. However, before we start, we need to give some
-notation for vectors.
+notation for vectors.\textcolor{blue}{I don't see notations here}
 
 \begin{concept}[Ways data can be stored as a vector]
 \begin{description}
@@ -123,15 +123,15 @@ notation for vectors.
   tuple} is just a list of an arbitrary, but fixed, number of elements
   that is ordered like an ordered pair. As an example, we could
   represent the \link[demographic information]{https://worldpopulationreview.com/states/states-by-race} for Ohio as an vector
-  represented by an ordered tuple:
+  represented by an ordered tuple:\textcolor{blue}{I put AfricanAmerican and AmericanIndian as one word to make it fit in the box}
   \[
-  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{Black}}{1442655},\underset{\text{American Indian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
+  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{\textcolor{blue}{AfricanAmerican} }}{1442655},\underset{\text{AmericanIndian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
   \]
 \item[Row vector] A row vector is a lot like an ordered tuple, except
   we do not use a comma to separate entries. Instead, we separate them
   by some space.  Suppose a bookstore sells a variety of books in a
   month, say $141$ Science Fiction, $304$ Fantasy, $249$ Mystery,
-  $199$ Romance, $251$ \textcolor{blue}{History}.  We can express this
+  $199$ Romance, $251$ History.  We can express this
   data as a row vector:
   \[
   \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
@@ -195,8 +195,8 @@ with many entries.
 
 
 \begin{definition}
-  To switch a row vector into a column vector and vice versa, we use
-  the \dfn{transpose} operation, referred to as the transpose of the
+  To \textcolor{blue}{convert} \underline{switch} a row vector \textcolor{blue}{to} \underline{into} a column vector and vice versa, we use
+  the \dfn{transpose} operation, \textcolor{blue}{take out}\underline{referred to as the transpose of the}
   vector,
   \[
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}^\transpose =
@@ -205,6 +205,12 @@ with many entries.
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
+  \textcolor{blue}{We read the first equality as 
+  \[
+  \text{the transpose of } \hspace{.5cm} \left(\begin{array}{ccc} 1 & 2& 3\end{array}\right) \hspace{.5cm} \text{is} \hspace{.5cm} \begin{pmatrix} 1\\
+  2\\
+  3 \end{pmatrix} \]
+  Thus, we can use the transpose to switch from a row vector to a column vector and vice versa as the second equality above shows. }
 \end{definition}
 
 
@@ -240,8 +246,8 @@ individual entry of a vector is called a \dfn{component}.
 When we express vectors as ordered tuples, row vectors, or column
 vectors we add them in a componentwise fashion.
 \begin{align*}
-  (1,2,3) + (4,5,6) &= (5,7,9)\\
-  \begin{pmatrix} 1 & 2 & 3   \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6   \end{pmatrix}& = \begin{pmatrix} 1+4 & 2+5 & 3+6   \end{pmatrix}&= \begin{pmatrix} 5 & 7 & 9   \end{pmatrix}\\
+  (1,2,3) + (4,5,6) & = \begin{pmatrix} 1+4 & 2+5 & 3+6   \end{pmatrix} = (5,7,9)\\
+  \begin{pmatrix} 1 & 2 & 3   \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6   \end{pmatrix}&= \begin{pmatrix} 5 & 7 & 9   \end{pmatrix}\\
   \begin{pmatrix} 1\\ 2\\ 3   \end{pmatrix} + \begin{pmatrix} 4\\ 5\\ 6   \end{pmatrix} &= \begin{pmatrix} 5\\ 7\\ 9   \end{pmatrix}
 \end{align*}
 
@@ -261,7 +267,7 @@ Now that we know the basics, onto the examples!
   of each state as a vector represented by an ordered tuple. The
   ordered tuple for Ohio looks like:
   \[
-  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{African American}{1442655},\underset{\text{American Indian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866}).
+  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{AfricanAmerican}}{1442655},\underset{\text{AmericanIndian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866}).
   \]
   The ordered tuples for each state in the Midwest looks like:
 \begin{align*}
@@ -333,10 +339,10 @@ Now that we know the basics, onto the examples!
     \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
     \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
     \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
-    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}, 
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}},
     \]
-  If the lamp is turned on, it initally shows, red, then this fades to
-  yellow after one minute, then fades green after a minute more, and
+  If the lamp is turned on, it initally shows\textcolor{blue}{take out comma here}\underline{,} red, then this fades to
+  yellow after one minute, then fades \textcolor{blue}{to} green after a minute more, and
   so on. After $6$ minutes it is back to red. Color $\vec{c}_1$ fades
   to $\vec{c}_2$ like the vector function $\vec{f}(t)$
   \[
@@ -350,14 +356,14 @@ Now that we know the basics, onto the examples!
     between blue and magenta. Let
     \[
     \vec{c}_1 = \begin{pmatrix}0\\0\\255\end{pmatrix} \quad\text{and}\quad
-      \vec{c}_2 = \begin{pmatrix}255\\0\\255\end{pmatrix} 
+      \vec{c}_2 = \begin{pmatrix}255\\0\\255\end{pmatrix}
     \]
     Since $40$ seconds is $2/3$ of a minute, we write
     \begin{align*}
       \vec{f}(2/3) &= \vec{c}_{1}+ \left(\answer[given]{2/3}\right)(\vec{c}_2 -\vec{c}_1) \\
       &= \begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\left(\begin{pmatrix}255\\0\\255\end{pmatrix}  -  \begin{pmatrix}0\\0\\255\end{pmatrix}\right) \\
       &=\begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\begin{pmatrix}255\\0\\0\end{pmatrix} \\
-              &=\begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\begin{pmatrix}255\\0\\0\end{pmatrix}\\
+              &=\textcolor{blue}{wrote twice take out this line} \begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\begin{pmatrix}255\\0\\0\end{pmatrix}\\
                 &=\begin{pmatrix}170\\0\\255\end{pmatrix}
     \end{align*}
     Here is this color:
@@ -450,11 +456,11 @@ Now that we know the basics, onto the examples!
 \end{center}
 
 So traveling North would be a (true) bearing of $0^\circ$, while
-traveling West would be a bearing of $270^\circ$.
+traveling West would be a bearing of $270^\circ$. \textcolor{blue}{how many knots?}
 \link[knots]{https://en.wikipedia.org/wiki/Knot_(unit)}.
 \begin{enumerate}
 \item Suppose a plane starts at $(0,0)$ and its destination is reached
-  by following true bearing $280^\circ$ for $3$ hours at $125$ knots.
+  by following \textcolor{blue}{the} true bearing $280^\circ$ for $3$ hours at $125$ knots.
   What are the coordinates of the plane's destination?
 \item Suppose the plane travels at $125$ by true bearing of $280^\circ$ for $3$ hours then the wind starts blowing and make it travel at $35$ knots in the true
   bearing of $110^\circ$ for another $3$ hours. What are the coordinates of
@@ -474,7 +480,7 @@ cartesian coordinates by writing:
 \]
 Armed with this, we are ready to solve the problem.
 \begin{enumerate}
-\item  Converting the planes bearing and speed to a vector in cartesian
+\item  Converting the plane\textcolor{blue}{'s} bearing and speed to a vector in cartesian
   coordinates, we have
   \[
   \vec{p} = \begin{pmatrix}125\cdot \sin(280^\circ)\\ 125 \cdot \cos(280^\circ)\end{pmatrix}
@@ -509,7 +515,7 @@ hours, we use $3$ as a scalar to write (round to two decimal places).
   3\vec{p} &= \begin{pmatrix}\answer[given]{375}\cdot \sin(280^\circ)\\ \answer[given]{375} \cdot \cos(280^\circ)\end{pmatrix}\\
   &= \begin{pmatrix}\answer[given]{-369.30}\\ \answer[given]{65.12} \end{pmatrix}\\
 \end{align*}
-\item Now supposing that the wind \textcolor{blue}{is} blowing at $35$ knots in the true
+\item Now supposing that the wind is blowing at $35$ knots in the true
   bearing of $110^\circ$, we have something like this:
   \begin{center}
     %% A schematic diagram showing a vector at a 330 degree angle with a
@@ -533,11 +539,11 @@ hours, we use $3$ as a scalar to write (round to two decimal places).
   \end{center}
   So now we can solve our problem by computing (round to two decimal places):
   \[
-  3\vec{p} + 3 \vec{w} = \textcolor{blue}{\begin{pmatrix} \answer[given]{-369.3}\\ \answer[given]{65.12} \end{pmatrix} + \begin{pmatrix} \answer[given]{32.89} \\
-  \answer[given]{-11.97} \end{pmatrix} = \begin{pmatrix} \answer[given]{-336.41} \\ \answer[given]{53.15}\end{pmatrix}}
+  3\vec{p} + 3 \vec{w} = \begin{pmatrix} \answer[given]{-369.3}\\ \answer[given]{65.12} \end{pmatrix} + \begin{pmatrix} \answer[given]{32.89} \\
+  \answer[given]{-11.97} \end{pmatrix} = \begin{pmatrix} \answer[given]{-336.41} \\ \answer[given]{53.15}\end{pmatrix}
   \]
 \end{enumerate}
 \end{explanation}
 \end{example}
 
-\end{document} 
+\end{document}

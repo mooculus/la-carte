@@ -5,12 +5,12 @@
 \author{Parisa Fatheddin and Bart Snapp}
 %%OpenAI. (2023). ChatGPT (Mar 14 version) [Large language model]. https://chat.openai.com/chat
 
-\title{Matrices, products, and equations}
+\title{Matrices, products, and \textcolor{blue}{systems of} equations}
 
 
 \begin{document}
 \begin{abstract}
-  A concrete introduction to vectors and matrices, with an informal
+  A concrete introduction to \textcolor{blue}{take out vectors and}\underline{vectors and} matrices, with an informal
   view towards vector spaces and linear transformations.
 \end{abstract}
 \maketitle
@@ -18,7 +18,7 @@
 \section{Matrices}
 
 
-A \dfn{matrix} is just a \textcolor{blue}{large} rectangular array of numbers
+A \dfn{matrix} is just a large rectangular array of numbers
 \[
 M =
 \underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{\begin{pmatrix}
@@ -30,14 +30,12 @@ M =
 \boldsymbol{4}~\textbf {rows}
 \]
 We give the \dfn{dimensions of a matrix} by stating its number of rows
-and columns. \textcolor{blue}{The number of }rows \textcolor{blue}{comes} first and \textcolor{blue}{The number of } columns second, so $M$ above is
+and columns. The number of rows comes first and the number of columns second, so $M$ above is
 a $(4\times 5)$-matrix. We can use similar notation to talk about
 specific entries of a matrix. Above, $a_{i,j}$ is the
-$\boldsymbol{(i,j)}${\bf-}\dfn{entry} of the matrix $M$. Sometimes \textcolor{blue}{took out the comma}
-people write $M_{i,j}$ to mean the $(i,j)$-entry of the matrix $M$.
+$\boldsymbol{(i,j)}${\bf-}\dfn{entry} of the matrix $M$. Sometimes people write $M_{i,j}$ to mean the $(i,j)$-entry of the matrix $M$.
 
 \begin{question}
-\textcolor{blue}{
   a. Which of the following matrices are $3\times 2$ matrices?
   \begin{multipleChoice}
   \choice{\[\left(\begin{array}{ccc}
@@ -68,36 +66,44 @@ people write $M_{i,j}$ to mean the $(i,j)$-entry of the matrix $M$.
   \[A= \left(\begin{array}{ccc}
   -3 & 0 & 1\\
   4 & 5 & -2\\
-  0 & 1 & -1
+  0 & 9 & -1
   \end{array}\right)\]
-  what are the entries $a_{12}, a_{22}, a_{32}$?
+  what are the entries $a_{12},\hspace{.08cm} a_{22}, \hspace{.08cm}a_{32}$?
   \begin{prompt}
   \begin{equation*}
   a_{12} = \answer[given]{0}, \hspace{.5cm} a_{22} = \answer[given]{5}, \hspace{.5cm} a_{32} = \answer[given]{9}
   \end{equation*}
-  \end{prompt}}
+  \end{prompt}
 \end{question}
 In fact $n$-dimensional row vectors are just $1\times n$ matrices and
-$n$-dimensional column vectors are just $n\times 1$ matrices.
+$n$-dimensional column vectors are just $n\times 1$ matrices\textcolor{blue}{:
+\[
+\left(\begin{array}{cccc} a_{1} & a_{2} & \cdot \cdot \cdot & a_{n}\end{array}\right), \hspace{.5cm} \begin{pmatrix} a_{1}\\
+a_{2}\\
+\cdot\\
+\cdot\\
+\cdot\\
+a_{n}\end{pmatrix}
+\]}
 
 
 \subsection{Matrices store data}
 
 
-Matrices can be thought of as a ``mathematical spreadsheet.'' With a
+\textcolor{blue}{A matrix} \underline{Matrices} can be thought of as a ``mathematical spreadsheet.'' With a
 spreadsheet you have rows and columns of data.  You can think of a
-matrix \textcolor{blue}{as (took out just a bunch)} vectors stacked together either horizontally
+matrix as vectors stacked together either horizontally
 or vertically.
 
 \begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
-  In a previous example, we encoded the $2023$
+  \textcolor{blue}{In an example in Chapter One,} \underline{In a previous example,} we encoded the $2023$
   \link[demographics]{https://worldpopulationreview.com/states/states-by-race}~of
-  the twelve Midwestern States as $6$-dimensional vectors \textcolor{blue}{took out comma} represented
-  as \textcolor{blue}{took out an} ordered tuples. Represent this data by a $12\times 6$
-  matrix. Explain what the entry at position \textcolor{blue}{$(7,5)$} represents.
+  the twelve Midwestern States as $6$-dimensional vectors represented
+  as ordered tuples. Represent this data by a $12\times 6$
+  matrix. Explain what the entry at position $(7,5)$ represents.
   \begin{explanation}
   Since ordered-tuples are \wordChoice{\choice[correct]{horizontal}\choice{vertical}} it makes sense to
-  concatenate this data by stacking it \textcolor{blue}{horizontally} into a matrix:
+  concatenate this data by stacking it horizontally into a matrix:
   \[
   \begin{pmatrix}
   \vec{p}_{\texttt{IA}} \\
@@ -129,27 +135,36 @@ or vertically.
   4895065 & 367889 & 48674 & 163396 & 2672 & 329279
   \end{pmatrix}
   \]
-  \textcolor{blue}{Note that the above is a $12\times 6$ matrix. The $(7, 5)$- entry is $8887$ which is the number of Hawaiians in Missouri (MO).}
+  Note that the above is a $12\times 6$ matrix. The $(7, 5)$- entry is $8887$ which is the number of Hawaiians in Missouri (MO).
   \end{explanation}
 \end{example}
 
 
 
 \begin{example}[RGB Color Space]
-  In a previous example we mentioned an LED table lamp whose shades
+  \textcolor{blue}{In an example in Chapter One,}In a previous example we mentioned an LED table lamp whose shades
   vary linearly through the RGB color space in this order:
   \begin{center}
-    red, yellow, cyan, blue, magenta
+    red, yellow, \textcolor{blue}{green}, cyan, blue, magenta
   \end{center}
-  Represent this sequence of RGB colors by a $5\times 3$
+  Represent this sequence of RGB colors by a $\textcolor{blue}{3 times 6}5\times 3$
   matrix. Interpret the meaning of the $(2,3)$-entry of the matrix.
   \begin{explanation}
-    Let's start by finding the RGB colors:
+    Let's start by finding the RGB colors \textcolor{blue}{(better to list all as in the example so they can have it)}:
     \[
     \underset{red}{\begin{pmatrix}255\\0\\0\end{pmatrix}}
     \]
+    \textcolor{blue}{
+    \[
+    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
+    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
+    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
+    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
+    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}},
+    \]
     Since we are using column vectors, we'll concatenate this data by
-    placing the vectors side-by-side:
+    placing the vectors side-by-side: \textcolor{blue}{this is not right. I think the vectors here are from another example. I gave the correct one}
     \[
     \begin{pmatrix}
       \vec{w}_{\texttt{MWF}} & \vec{w}_{\texttt{TR}} & \vec{w}_{\texttt{MWF}} & \vec{w}_{\texttt{TR}} & \vec{w}_{\texttt{MWF}}
@@ -162,7 +177,13 @@ or vertically.
       0 & 1   & 0 & 1   & 0
     \end{pmatrix}
     \]
-    The meaning of the $(2,3)$-entry is BADBAD
+    \textcolor{blue}{
+    \[\left(\begin{array}{cccccc}
+    255 & 255 & 0 & 0 & 0 & 255\\
+    0 & 255& 255 & 255 & 0 & 0 \\
+    0 & 0 & 0 & 255 & 255 & 255 
+    \end{array}\right)\]}
+    The meaning of the $(2,3)$-entry is BADBAD \textcolor{blue}{I think interpreting the entry is not that great here: The (2,3)-entry is the intensity of green color in green.}
   \end{explanation}
 \end{example}
 
@@ -195,10 +216,10 @@ can imagine a `physical' movement of the entries with this product:
     \node at (1.5,.7) {$\begin{matrix} b_{1,1} & b_{1,2} & b_{1,3} \end{matrix}$};
   \end{tikzpicture}
 \end{center}
-\textcolor{blue}{Note that this multiplication results in a scalar not a vector.} We'll leave it to the reader to generalize the procedure to $(1\times n)$-matrix by a $(n\times 1)$ matrix.
+Note that this multiplication results in a scalar not a vector. We'll leave it to the reader to generalize the procedure to $(1\times n)$-matrix by a $(n\times 1)$ matrix.
 
 \begin{question}
- Perform the following multiplication if possible (write NA if it is not possible):
+ Perform the following multiplication if possible (write N/A if it is not possible):
  \[
  \left(\begin{array}{cccc}
  4 & 1 & 2 & -1
@@ -236,7 +257,7 @@ The first thing you should notice about the dot product is that
   \begin{pmatrix} 1 & 1 & -1 \end{pmatrix}
   \dotp\begin{pmatrix} 1 & 1 & 2\end{pmatrix}\]
   \begin{prompt}
-    = \[\left(\begin{array}{ccc} \answer[given]{1} & \answer[given]{1} & \answer[given]{-1}\end{array}\right) \begin{pmatrix} 1\\
+     \[=\left(\begin{array}{ccc} \answer[given]{1} & \answer[given]{1} & \answer[given]{-1}\end{array}\right) \begin{pmatrix} 1\\
     \answer[given]{1}\\
     \answer[given]{1}\\
     \answer[given]{2}
@@ -250,7 +271,7 @@ The first thing you should notice about the dot product is that
 
 \begin{warning}
   There is no general way to ``multiply'' vectors of the same type and
-  have \textcolor{blue}{the} resulting product be a reasonable vector also of that type.
+  have the resulting product be a reasonable vector also of that type.
   You might think it is reasonable to define
   \begin{center}
 \begin{tikzpicture}
@@ -308,12 +329,12 @@ but this operation is not especially useful, and will \textbf{never be
     \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
     \end{selectAll}
   \end{question}
-\end{question}
 
 
 
-To multiply \textcolor{blue}{a} matrix by a column vector, envision the matrix as a
-grouping of row vectors and \textcolor{blue}{took out we} use the distributive property. \textcolor{blue}{For}
+
+To multiply a matrix by a column vector, envision the matrix as a
+grouping of row vectors and use the distributive property. For
 example:
 \begin{align*}
 \begin{pmatrix}
@@ -343,7 +364,7 @@ example:
 \end{pmatrix}
 \end{align*}
 
-We're basically multiplying \textcolor{blue}{each shaded section below by the column vector}
+We're basically multiplying each shaded section below by the column vector
 
 \begin{center}
   \begin{tikzpicture}
@@ -380,7 +401,7 @@ We're basically multiplying \textcolor{blue}{each shaded section below by the co
   number of columns of the matrix equals the dimension of the column
   vector.
 \end{warning}
-\textcolor{blue}{As a general rule, we can multiply matrix, $A: n \times m$ by matrix $B: k \times \ell$ if $m=k$. That is if the middle two numbers match: $n\times \underline{m} \hspace{.5cm} \underline{k} \times \ell$. The result then turns out to be a matrix of size $n\times \ell$ (the outside numbers).}
+As a general rule, we can multiply matrix, $A: n \times m$ by matrix $B: k \times \ell$ if $m=k$. That is if the middle two numbers match: $n\times \underline{m} \hspace{.5cm} \underline{k} \times \ell$. The result then turns out to be a matrix of size $n\times \ell$ (the outside numbers).
 
 In an entirely similar way, we can multiply a row vector by a matrix
 by envisioning the matrix as a grouping of column vectors. In this

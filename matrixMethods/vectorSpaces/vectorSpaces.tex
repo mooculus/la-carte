@@ -17,6 +17,74 @@
 \end{abstract}
 \maketitle
 
+\begin{quote}
+  We shall not cease from exploration\\
+And the end of all our exploring\\
+Will be to arrive where we started\\
+And know the place for the first time.
+
+
+  \hfill ---T.S.\ Eliot
+\end{quote}
+
+
+Data and their associated systems of equations are complicated. It is
+not enough to simply solve these equations, we must understand the
+solutions in a more abstract way. In this chapter we will introduce
+various sets (or in this case, vector spaces) of vectors in the
+context of solving equations. Then we will revist these ideas from
+`higher ground,' and introduce the notion of a vector space.
+
+
+
+\section{Homogeneous equations and the null space}
+
+Suppose we have a system of equations:
+\begin{align*}
+  a_1 x + b_1 y + c_1 z &= d_1\\
+  a_2 x + b_2 y + c_2 z &= d_2\\
+  a_3 x + b_3 y + c_3 z &= d_3
+\end{align*}
+Where each $a_i$, $b_i$, $c_i$, and $d_i$ are real numbers. We can
+learn about the solutions to this system of equations if we
+\textit{change the problem} to the following:
+\begin{align*}
+  a_1 x + b_1 y + c_1 z &= 0  \\
+  a_2 x + b_2 y + c_2 z &= 0  \\
+  a_3 x + b_3 y + c_3 z &= 0
+\end{align*}
+Equations of this form are called \dfn{homogeneous equations}. We call
+them \textit{homogeneous} because all the (nonzero) terms are
+multiplied by the same \textbf{powers of variables}.
+
+\begin{question}
+  Which of the following equations are homogeneous?
+  \begin{selectAll}
+    \choice{$2x^3 + y^2 - 3z = 0$}
+    \choice[correct]{$2x^3 + xy^2 - 3y^2z = 0$}
+    \choice{$2x + y - 3 = 0$}
+    \choice[correct]{$2x + y - 3z = 0$}
+  \end{selectAll}
+\end{question}
+
+
+\section{Column space}
+
+Given a system of equations
+\begin{align*}
+  a_1 x + b_1 y + c_1 z &= d_1\\
+  a_2 x + b_2 y + c_2 z &= d_2\\
+  a_3 x + b_3 y + c_3 z &= d_3
+\end{align*}
+the \dfn{column space} is the set of all possible constants, expressed
+as a single vector:
+\[
+\begin{pmatrix} d_1 \\ d_2 \\ d_3 \end{pmatrix}
+\]
+
+
+
+
 
 \section{Linear combinatrions of vectors}
 
@@ -77,6 +145,8 @@ elements of the field $K$ are called \dfn{scalars}.
 \end{definition}
 
 
+
+\section{Row space}
 
 \section{Column space and range of a matrix}
 

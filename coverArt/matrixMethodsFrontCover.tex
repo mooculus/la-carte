@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix} %% for fancy matrix stuff
+
+\usepackage{xcolor}
+\usepackage[margin=0.5in]{geometry} % Adjust margins to ensure text can go off the page
+
+\usepackage{gillius} % Ensure this package is installed
+\renewcommand{\familydefault}{\sfdefault} % Set Gillius as the default font
+\usepackage{amsmath} % For bold math symbols
+
+
+%% For black/white switch
+\usepackage{pagecolor}
+\definecolor{bkgndcr}{rgb}{0,0,0}
+\definecolor{txtcr}{rgb}{1,1,1}
+
+%% \definecolor{bkgndcr}{rgb}{.4,.1,.4}
+%% \definecolor{txtcr}{rgb}{.2,.3,.8}
+
+
+\pagecolor{bkgndcr}
+
+
+
+
+%\usepackage{FiraMono} % Use the Fira Mono font
+%\renewcommand\familydefault{\ttdefault} 
+% Set Fira Mono as the monospace font
+
+\usepackage{ocr}
+\usepackage[T1]{fontenc}
+\let\ttfamily\ocrfamily
+
+\begin{document}
+\boldmath % Makes all math text bold
+\bfseries % Makes all text bold
+
+
+
+\begin{tikzpicture}[remember picture, overlay,scale=10,every node/.style={scale=10}]
+  % Fill the page with the random text
+\matrix (m) [transform shape,bkgndcr!90!txtcr,matrix of math nodes,
+    column sep=0.2em, row sep=0.1em] at (0,0) {
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet &  0  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0  & 0 & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0 & 0 & 0 & \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0 & 0 & 0 & 0 & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0  & 0 & 0 & 0 & 0 & \bullet & \bullet & \bullet \\
+};
+%% \draw[bkgndcr!90!txtcr,thick] (m-8-8.north west) rectangle (m-13-15.south east);
+%% \draw[bkgndcr!90!txtcr,thick] (m-9-9.north west) rectangle (m-13-15.south east);
+%% \draw[bkgndcr!90!txtcr,thick] (m-10-10.north west) rectangle (m-13-15.south east);
+%% \draw[bkgndcr!90!txtcr,thick] (m-11-11.north west) rectangle (m-13-15.south east);
+%% \draw[bkgndcr!90!txtcr,thick] (m-12-12.north west) rectangle (m-13-15.south east);
+\end{tikzpicture}
+\sffamily
+% Write the main title on top left and middle right
+\begin{tikzpicture}[remember picture, overlay]
+  \node[scale=14, bkgndcr, anchor=north west] at ([yshift=-.1cm,xshift=-.1cm]current page.north west) {Matrix};
+  \node[scale=14, txtcr, anchor=north west] at (current page.north west) {Matrix};
+
+  \node[scale=14, bkgndcr, anchor=west] at ([xshift=-.1cm,yshift=-7.7cm]current page.north west) {Methods};
+  \node[scale=14, txtcr, anchor=west] at ([yshift=-7.6cm]current page.north west) {Methods};
+
+  \node[scale=4, bkgndcr, anchor=west] at ([yshift=-11.5cm,xshift=1.4cm]current page.north west) {\itshape Linear Algebra, \`a la carte};
+  \node[scale=4, txtcr, anchor=west] at ([yshift=-11.4cm,xshift=1.5cm]current page.north west) {\itshape Linear Algebra, \`a la carte};
+
+  \node[scale=4, bkgndcr,] at ([xshift=-.1cm,yshift=-10.1cm]current page.center) {Fatheddin $\bullet$ Kim $\bullet$ Snapp};
+  \node[scale=4, txtcr,] at ([yshift=-10cm]current page.center) {Fatheddin $\bullet$ Kim $\bullet$ Snapp};
+  
+
+\end{tikzpicture}
+
+\end{document}

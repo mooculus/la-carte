@@ -18,10 +18,13 @@
 \maketitle
 
 \begin{quote}
-  Think deeply about simple things.
+  We shall not cease from exploration\\
+And the end of all our exploring\\
+Will be to arrive where we started\\
+And know the place for the first time.
 
-  \hfill ---A.E.\ Ross
 
+  \hfill ---T.S.\ Eliot
 \end{quote}
 
 
@@ -34,7 +37,7 @@ context of solving equations. Then we will revist these ideas from
 
 
 
-\section{Null space}
+\section{Homogeneous equations and the null space}
 
 Suppose we have a system of equations:
 \begin{align*}
@@ -50,7 +53,14 @@ learn about the solutions to this system of equations if we
   a_2 x + b_2 y + c_2 z &= 0  \\
   a_3 x + b_3 y + c_3 z &= 0
 \end{align*}
-
+Equations of this form are called \dfn{homogeneous equations}. We call
+them \textit{homogeneous} because all the (nonzero) terms are multiplied by the same powers of variables For example:
+\[
+\underbrace{2x^3 + y^2 - 3z = 0}_{\text{NOT homogeneous}}\qquad \underbrace{2x + y - 3 = 0}_{\text{NOT homogeneous}}
+\]
+\[
+\underbrace{2x^3 + xy^2 - 3y^2z = 0}_{\text{homogeneous}}\qquad \underbrace{2x + y - 3z = 0}_{\text{homogeneous}}
+\]
 
 
 \section{Column space}
@@ -67,9 +77,6 @@ as a single vector:
 \begin{pmatrix} d_1 \\ d_2 \\ d_3 \end{pmatrix}
 \]
 
-
-
-\section{Row space}
 
 
 
@@ -133,6 +140,8 @@ elements of the field $K$ are called \dfn{scalars}.
 \end{definition}
 
 
+
+\section{Row space}
 
 \section{Column space and range of a matrix}
 

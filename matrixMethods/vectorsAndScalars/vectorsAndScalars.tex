@@ -53,7 +53,7 @@ to add data and sometimes it doesn't.
 For some of the categories above, the \textit{average} can be
 meaningful or perhaps if each quantity is thought of as `displacement'
 or `duration,' summing might be meaningful. However, without
-additional \textcolor{blue}{what do you mean pun intended?}\underline{(pun intended!)} stipulations, summing the types of
+additional \underline{(pun intended!)} stipulations, summing the types of
 quantities above is not meaningful. On the other hand, there are lots
 of times that it makes sense to add data:
 
@@ -62,7 +62,7 @@ of times that it makes sense to add data:
 \item[Population Counts] Adding the populations of different regions,
   cities, or countries to find the total population of a larger
   area. Answers to questions like these help us understand our
-  society and are important to many \textcolor{blue}{organizations} \underline{people.}
+  society and are important to many people.
 \item[Financial Transactions] Summing daily sales to find total
   monthly sales, or adding up all expenses to find total costs. These
   are real numbers that represent actual amounts of money, and their
@@ -75,27 +75,26 @@ of times that it makes sense to add data:
 \item[RGB Color Space] Colors on digital screens are often represented
   as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}. Here three numerical components
   correspond to the intensity of red, green, and blue light, with $0$
-  representing no intensity, \textcolor{blue}{so} black can be represented by $(0,0,0)$\textcolor{blue}{period here and start a new sentence with Number $255$},
-  \underline{and $255$} represents \textcolor{blue}{the} maximum intensity, \textcolor{blue}{so} white can be represented by
+  representing no intensity. The color black can be represented by $(0,0,0)$. On the other hand, 
+  $255$ represents the  maximum intensity, hence  white is  represented by
   $(255,255,255)$.  Adding the values for different pixels changes the
   brightness of each individual component.
-\item[Navigation] Aircraft\textcolor{blue}{s} navigate by knowing the direction and speed at which
-  they are traveling. When interpreted correctly, we add the
-  speed and direction of many different ``course changes'' to
-  find the ultimate position of the aircraft.
+\item[Navigation] Aircraft navigate by knowing the direction and speed
+  at which they are traveling. When interpreted correctly, we add the
+  speed and direction of many different ``course changes'' to find the
+  ultimate position of the aircraft.
 \end{description}
 \end{concept}
 Often when it makes sense to \textit{add} quantities, it makes sense
-to \textit{scale} them as well. \textcolor{blue}{instead of the following sentence: For example, with respect to populations, you could ask what is 3 times or half of the population of a city.} For example with population, you could
-ask for the population of a city with $3$ times the population, or
-half the population. In a similar way, \textit{scaling} makes sense
-for all the examples above where it makes sense to
-add data. Regular old numbers used to scale vectors are called
-\textit{scalars}.
+to \textit{scale} them as well. For example, with respect to
+populations, you could ask what is $3$ times or half of the population
+of a city. In a similar way, \textit{scaling} makes sense for all the
+examples above where it makes sense to add data. Regular old numbers
+used to scale vectors are called \textit{scalars}.
 
 
 \begin{definition}
-  \textcolor{blue}{data can be represented by a single vector. I found this sentence confusing since this is just properties of vectors not related to data} We say data is represented by \dfn{vectors} $\vec{v}$ and $\vec{w}$
+  We say data is represented by \dfn{vectors} $\vec{v}$ and $\vec{w}$
   if
   \[
   \vec{v}+\vec{w}
@@ -109,11 +108,12 @@ add data. Regular old numbers used to scale vectors are called
   again represents `meaningful' data in the same way that $\vec{v}$
   and $\vec{w}$ do.
 \end{definition}
+
 These informal definitions of vectors and scalars in fact contain the
 \textit{essence} of the concept of a \textit{vector space}. If this
-seems too abstract, let's give some very concrete examples, \textcolor{blue}{take out comma here} based on
+seems too abstract, let's give some very concrete examples based on
 the examples above. However, before we start, we need to give some
-notation for vectors.\textcolor{blue}{I don't see notations here}
+notation for vectors.
 
 \begin{concept}[Ways data can be stored as a vector]
 \begin{description}
@@ -123,9 +123,9 @@ notation for vectors.\textcolor{blue}{I don't see notations here}
   tuple} is just a list of an arbitrary, but fixed, number of elements
   that is ordered like an ordered pair. As an example, we could
   represent the \link[demographic information]{https://worldpopulationreview.com/states/states-by-race} for Ohio as an vector
-  represented by an ordered tuple:\textcolor{blue}{I put AfricanAmerican and AmericanIndian as one word to make it fit in the box}
+  represented by an ordered tuple:
   \[
-  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{\textcolor{blue}{AfricanAmerican} }}{1442655},\underset{\text{AmericanIndian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
+  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{AfricanAmerican}}{1442655},\underset{\text{AmericanIndian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
   \]
 \item[Row vector] A row vector is a lot like an ordered tuple, except
   we do not use a comma to separate entries. Instead, we separate them
@@ -151,11 +151,9 @@ notation for vectors.\textcolor{blue}{I don't see notations here}
   Above, we suppose that $\vec{p}$ represents the color that
   represents the color \textit{Sea Foam Green}. Here we see the color in all of its glory:
   \begin{center}
-    \colorbox[RGB]{159, 226, 191}
+    \colorbox[rgb]{0.624, 0.886, 0.749}{%{159, 226, 191}
       \parbox{1cm}{\rule{0pt}{1cm}}}
   \end{center}
-
-
   %% \item[As a column vector] A column vector is just like a row vector,
 %%   except is it written vertically:
 %%   \[
@@ -368,7 +366,7 @@ Now that we know the basics, onto the examples!
     \end{align*}
     Here is this color:
   \begin{center}
-    \colorbox[RGB]{170,0, 255}
+    \colorbox[rgb]{0.67,0,1}{%{170,0, 255}
       \parbox{1cm}{\rule{0pt}{1cm}}}
   \end{center}
   \end{explanation}

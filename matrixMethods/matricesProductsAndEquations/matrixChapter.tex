@@ -162,7 +162,7 @@ or vertically.
     \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
     \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
     \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}},
-    \]
+    \]}
     Since we are using column vectors, we'll concatenate this data by
     placing the vectors side-by-side: \textcolor{blue}{this is not right. I think the vectors here are from another example. I gave the correct one}
     \[
@@ -186,10 +186,6 @@ or vertically.
     The meaning of the $(2,3)$-entry is BADBAD \textcolor{blue}{I think interpreting the entry is not that great here: The (2,3)-entry is the intensity of green color in green.}
   \end{explanation}
 \end{example}
-
-
-
-
 
 \subsection{Multiplying vectors and matrices}
 
@@ -218,117 +214,9 @@ can imagine a `physical' movement of the entries with this product:
 \end{center}
 Note that this multiplication results in a scalar not a vector. We'll leave it to the reader to generalize the procedure to $(1\times n)$-matrix by a $(n\times 1)$ matrix.
 
-\begin{question}
- Perform the following multiplication if possible (write N/A if it is not possible):
- \[
- \left(\begin{array}{cccc}
- 4 & 1 & 2 & -1
- \end{array}\right)\left(\begin{array}{c}
- 0\\
- 5\\
- -2\\
- 7
- \end{array}\right) = \answer[given]{0} + \answer[given]{5}+\answer[given]{-4} + \answer[given]{-7} = \answer[given]{-6}
- \]
-\end{question}
 
 
 
-
-This type of vector/matrix multiplication is so important, it has it's own name.
-
-\begin{definition}
-  The \dfn{dot product} or \dfn{scalar product} of two vectors
-  $\vec{v}$ and $\vec{w}$ is given by:
-  \[
-  \vec{v}\dotp \vec{w} =  \vec{v}^\transpose \vec{w}.
-  \]
-\end{definition}
-
-The first thing you should notice about the dot product is that
-\[
-\mathbf{vector}\dotp \mathbf{vector} = \mathbf{number}.
-\]
-
-
-\begin{question}
-  Compute:
-  \[
-  \begin{pmatrix} 1 & 1 & -1 \end{pmatrix}
-  \dotp\begin{pmatrix} 1 & 1 & 2\end{pmatrix}\]
-  \begin{prompt}
-     \[=\left(\begin{array}{ccc} \answer[given]{1} & \answer[given]{1} & \answer[given]{-1}\end{array}\right) \begin{pmatrix} 1\\
-    \answer[given]{1}\\
-    \answer[given]{1}\\
-    \answer[given]{2}
-    \end{pmatrix}= \answer[given]{0}
-    \]
-  \end{prompt}
-\end{question}
-
-
-
-
-\begin{warning}
-  There is no general way to ``multiply'' vectors of the same type and
-  have the resulting product be a reasonable vector also of that type.
-  You might think it is reasonable to define
-  \begin{center}
-\begin{tikzpicture}
-    \node at (0,0) {
-      $\begin{pmatrix}
-        a_1\\
-        a_2\\
-        \vdots\\
-        a_n
-      \end{pmatrix}
-      \cdot
-      \begin{pmatrix}
-        b_1\\
-        b_2\\
-        \vdots\\
-        b_n
-      \end{pmatrix}
-      =
-      \begin{pmatrix}
-        a_1b_1\\
-        a_2b_2\\
-        \vdots\\
-        a_nb_n
-      \end{pmatrix}$};
-    \draw[red, line width=5pt,opacity=.3] (-2,-1) -- (2,1);
-    \draw[red, line width=5pt,opacity=.3] (-2,1) -- (2,-1);
-\end{tikzpicture}
-  \end{center}
-but this operation is not especially useful, and will \textbf{never be
-  utilized in this course}.
-\end{warning}
-
-\begin{question}
-  Let $\vec{u},\vec{v},\vec{w}$ be nonzero vectors of the same dimension. Which of
-  the following expressions make sense?
-  \begin{selectAll}
-    \choice[correct]{$(\vec{w} \dotp \vec{u} ) \vec{u}$}
-    \choice[correct]{$5(\vec{u} +\vec{w}) \dotp {\vec{u}}$}
-    \choice{$\vec{w} / \vec{u}$}
-    \choice[correct]{$(2,3) \dotp (4,2) + 7$}
-    \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
-    \choice{$(1,3) \dotp (-1,2,5)$}
-    \choice{$\vec{u}\dotp \vec{v}+\vec{w}$}
-  \end{selectAll}
-  \begin{hint}
-    Think about which terms/factors are vectors and which
-    terms/factors are scalars.
-  \end{hint}
-  \begin{question}
-    Which of the following are vectors?
-    \begin{selectAll}
-    \choice[correct]{$(\vec{w} \dotp \vec{u} ) \vec{u}$}
-    \choice{$5(\vec{u} +\vec{w}) \dotp {\vec{u}}$}
-    \choice{$(2,3) \dotp (4,2) + 7$}
-    \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
-    \end{selectAll}
-  \end{question}
 
 
 

@@ -142,18 +142,7 @@ or vertically.
 \begin{example}[RGB Color Space]
   \textcolor{blue}{In an example in Chapter One,}In a previous example we mentioned an LED table lamp whose shades
   vary linearly through the RGB color space in this order:
-  \begin{center}
-    red, yellow, \textcolor{blue}{green}, cyan, blue, magenta
-  \end{center}
-  Represent this sequence of RGB colors by a $\textcolor{blue}{3 times 6}5\times 3$
-  matrix. Interpret the meaning of the $(2,3)$-entry of the matrix.
-  \begin{explanation}
-    Let's start by finding the RGB colors \textcolor{blue}{(better to list all as in the example so they can have it)}:
-    \[
-    \underset{red}{\begin{pmatrix}255\\0\\0\end{pmatrix}}
-    \]
-    \textcolor{blue}{
-    \[
+      \[
     \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
     \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
     \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
@@ -161,6 +150,9 @@ or vertically.
     \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
     \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}},
     \]
+  Represent this sequence of RGB colors by a $\textcolor{blue}{3 times 6}5\times 3$
+  matrix. Interpret the meaning of the $(2,3)$-entry of the matrix.
+  \begin{explanation}
     Since we are using column vectors, we'll concatenate this data by
     placing the vectors side-by-side:
     \[
@@ -168,7 +160,7 @@ or vertically.
     255 & 255 & 0 & 0 & 0 & 255\\
     0 & 255& 255 & 255 & 0 & 0 \\
     0 & 0 & 0 & 255 & 255 & 255 
-    \end{pmatix}
+    \end{pmatrix}
     \]
     The meaning of the $(2,3)$-entry is BADBAD 
   \end{explanation}
@@ -316,7 +308,7 @@ but this operation is not especially useful, and will \textbf{never be
     \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
     \end{selectAll}
   \end{question}
-
+\end{question}
 
 
 

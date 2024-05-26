@@ -5,8 +5,6 @@
 \usepackage{xcolor}
 \usepackage[margin=0.5in]{geometry} % Adjust margins to ensure text can go off the page
 
-
-
 \usepackage{gillius} % Ensure this package is installed
 \renewcommand{\familydefault}{\sfdefault} % Set Gillius as the default font
 \usepackage{amsmath} % For bold math symbols
@@ -17,8 +15,8 @@
 \definecolor{bkgndcr}{rgb}{0,0,0}
 \definecolor{txtcr}{rgb}{1,1,1}
 
-%% \definecolor{bkgndcr}{RGB}{200,10, 10}
-%% \definecolor{txtcr}{RGB}{200, 200, 200}
+%% \definecolor{bkgndcr}{RGB}{45,20, 5}
+%% \definecolor{txtcr}{RGB}{200, 170, 40}
 
 
 \pagecolor{bkgndcr}
@@ -52,10 +50,13 @@
 %% \draw[bkgndcr!90!txtcr,thick] (m-11-11.north west) rectangle (m-13-15.south east);
 %% \draw[bkgndcr!90!txtcr,thick] (m-12-12.north west) rectangle (m-13-15.south east);
 \end{tikzpicture}
-\sffamily
-\flushleft\scalebox{14}{Matrix}\\[1cm]
-\scalebox{14}{Methods}\\[1cm]
-\scalebox{4}{\itshape\,Linear Algebra, \`a la carte}
+\sffamily%
+\flushleft%
+\scalebox{14}{Matrix}\\[1cm]%
+\scalebox{14}{Methods}\\[1cm]%
+%% \resizebox{\textwidth}{!}{Gaussian}\\[1cm]%
+%% \resizebox{\textwidth}{1.2in}{Elimination}\\[1cm]%
+\scalebox{4}{\itshape\,Linear Algebra, \`a la carte}%
 
 \vfill
 

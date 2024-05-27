@@ -23,12 +23,13 @@
 
 
 \begin{document}
+\pagestyle{empty}
 \boldmath % Makes all math text bold
 \bfseries % Makes all text bold
 \color{txtcr}
 \begin{tikzpicture}[remember picture, overlay,scale=10,every node/.style={scale=10}]
   % Fill the page with the random text
-\matrix (m) [transform shape,bkgndcr!80!txtcr,matrix of math nodes,
+  \matrix (m) [transform shape,bkgndcr!80!txtcr,matrix of math nodes,
     column sep=0.2em, row sep=0.1em] at (0,0) {
   \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
   \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
@@ -65,8 +66,11 @@
 \end{center}
 \small This document was typeset on \today. \hfill \Large\textsf{\ccbyncsa}\\
 \small\texttt{GIT COMMIT: \input{.git/refs/heads/master}}\\
-\small Source: \texttt{https://github.com/mooculus/la-carte}\hfill developed in \textbf{XIMERA}\\
+\small Source: \texttt{https://github.com/mooculus/la-carte}\hfill developed in \textbf{XIMERA}
 
+\cleardoublepage
+
+%\pagestyle{main}
 
 
 \end{document}

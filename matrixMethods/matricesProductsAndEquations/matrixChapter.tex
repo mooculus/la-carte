@@ -1,0 +1,694 @@
+\documentclass{ximera}
+
+\input{../../preamble.tex}
+
+\author{Parisa Fatheddin and Bart Snapp}
+%%OpenAI. (2023). ChatGPT (Mar 14 version) [Large language model]. https://chat.openai.com/chat
+
+\title{Matrices, products, and systems of equations}
+
+
+\begin{document}
+\begin{abstract}
+  An introduction to matrices and how to write systems of equations in matrix form.
+\end{abstract}
+\maketitle
+
+\section{Matrices}
+
+
+A \dfn{matrix} is just a large rectangular array of numbers
+\[
+M =
+\underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{\begin{pmatrix}
+  a_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5} \\
+  a_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5} \\
+  a_{3,1} & a_{3,2} & a_{3,3} & a_{1,4} & a_{3,5} \\
+  a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5}
+\end{pmatrix}}
+\boldsymbol{4}~\textbf {rows}
+\]
+We give the \dfn{dimensions of a matrix} by stating its number of rows
+and number of columns. The number of rows comes first and the number of columns second, so $M$ above is
+a $(4\times 5)$-matrix. We can use similar notation to talk about
+specific entries of a matrix. Above, $a_{i,j}$ is the
+$\boldsymbol{(i,j)}${\bf-}\dfn{entry} of the matrix $M$. Sometimes people write $M_{i,j}$ or just $M_{ij}$ if $i,j <10$ to mean the $(i,j)$-entry of the matrix $M$.
+
+\begin{question}
+  a. Which of the following matrices are $3\times 2$ matrices?
+  \begin{multipleChoice}
+  \choice{\[\left(\begin{array}{ccc}
+  2 & 4 & 8\\
+  5 & 9 & -1\\
+  6 & 0 & 1
+  \end{array}\right)\]}
+  \choice{\[\left(\begin{array}{ccc}
+  0 & 1 &3\\
+  0 & 0 & 2
+  \end{array}\right)\]}
+  \choice[correct]{\[\left(\begin{array}{cc}
+  2 & 1 \\
+  4 & 5 \\
+  -1 & 0
+  \end{array}\right)\]}
+  \choice[correct]{\[\left(\begin{array}{cc}
+  1 & -1\\
+  -3 & 0 \\
+  0 & 0
+  \end{array}\right)\]}
+  \choice{\[ \left(\begin{array}{ccc}
+  0 & 0 & 0\\
+  -1 & 0 & 5
+  \end{array}\right)\]}
+\end{multipleChoice}
+  b. If
+  \[A= \left(\begin{array}{ccc}
+  -3 & 0 & 1\\
+  4 & 5 & -2\\
+  0 & 9 & -1
+  \end{array}\right)\]
+  what are the entries $a_{12},\hspace{.08cm} a_{22}, \hspace{.08cm}a_{32}$?
+  \begin{prompt}
+  \begin{equation*}
+  a_{12} = \answer[given]{0}, \hspace{.5cm} a_{22} = \answer[given]{5}, \hspace{.5cm} a_{32} = \answer[given]{9}
+  \end{equation*}
+  \end{prompt}
+\end{question}
+In fact $n$-dimensional row vectors are just $1\times n$ matrices and
+$n$-dimensional column vectors are just $n\times 1$ matrices:
+\[
+\left(\begin{array}{cccc} a_{1} & a_{2} & \cdot \cdot \cdot & a_{n}\end{array}\right), \hspace{.5cm} \begin{pmatrix} a_{1}\\
+a_{2}\\
+\cdot\\
+\cdot\\
+\cdot\\
+a_{n}\end{pmatrix}
+\]
+
+
+\subsection{Matrices store data}
+
+
+A matrix can be thought of as a ``mathematical spreadsheet.'' With a
+spreadsheet you have rows and columns of data.  You can think of a
+matrix as vectors stacked together either horizontally
+or vertically.
+
+\begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
+  In an example in Chapter One, we encoded the $2023$
+  \link[demographics]{https://worldpopulationreview.com/states/states-by-race}~of
+  the twelve Midwestern States as $6$-dimensional vectors represented
+  as ordered tuples. Represent this data by a $12\times 6$
+  matrix. Explain what the entry at position $(7,5)$ represents.
+  \begin{explanation}
+  Since ordered-tuples are \wordChoice{\choice[correct]{horizontal}\choice{vertical}} it makes sense to
+  concatenate this data by stacking it horizontally into a matrix:
+  \[
+  \begin{pmatrix}
+  \vec{p}_{\texttt{IA}} \\
+  \vec{p}_{\texttt{IL}} \\
+  \vec{p}_{\texttt{IN}} \\
+  \vec{p}_{\texttt{KA}} \\
+  \vec{p}_{\texttt{MI}} \\
+  \vec{p}_{\texttt{MN}} \\
+  \vec{p}_{\texttt{MO}} \\
+  \vec{p}_{\texttt{ND}} \\
+  \vec{p}_{\texttt{NE}} \\
+  \vec{p}_{\texttt{OH}} \\
+  \vec{p}_{\texttt{SD}} \\
+  \vec{p}_{\texttt{WI}}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  2806418 & 117035 & 10538 & 79296 & 3941 & 132783\\
+  8874067 & 1796660 & 33972 & 709567 & 5196 & 1296702\\
+  5510354 & 631923 & 14030 & 158705 & 2205 & 379676\\
+  2416165 & 165837 & 22278 & 87093 & 2344 & 218902\\
+  7735902 & 1360149 & 50035 & 316844 & 3117 & 507860\\
+  4572149 & 359817 & 54558 & 275242 & 2201 & 336199\\
+  4978046 & 698043 & 24274 & 123810 & 8887 & 291100\\
+  651470 & 23959 & 39165 & 11979 & 1004 & 32817\\
+  1641256 & 91896 & 16875 & 47944 & 1235 & 124620\\
+  9394878 & 1442655 & 20442 & 268527 & 3907 & 544866\\
+  735228 & 18836 & 74975 & 12413 & 544 & 37340\\
+  4895065 & 367889 & 48674 & 163396 & 2672 & 329279
+  \end{pmatrix}
+  \]
+  Note that the above is a $12\times 6$ matrix. The $(7, 5)$- entry is $8887$ which is the number of Hawaiians in Missouri (MO).
+  \end{explanation}
+\end{example}
+
+
+
+\begin{example}[RGB Color Space]
+  In an example in Chapter One, we mentioned an LED table lamp whose shades
+  vary linearly through the RGB color space in this order:
+  \begin{center}
+    red, yellow, green, cyan, blue, magenta
+  \end{center}
+  Represent this sequence of RGB colors by a $3 \times 6$
+  matrix. Interpret the meaning of the $(2,3)$-entry of the matrix.
+  \begin{explanation}
+    Let's start by finding the RGB colors:
+    \[
+    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
+    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
+    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
+    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
+    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
+    \]
+    Since we are using column vectors, we'll concatenate this data by
+    placing the vectors side-by-side:
+    \[\left(\begin{array}{cccccc}
+    255 & 255 & 0 & 0 & 0 & 255\\
+    0 & 255& 255 & 255 & 0 & 0 \\
+    0 & 0 & 0 & 255 & 255 & 255
+    \end{array}\right)\]
+    The (2,3)-entry is the intensity of green color in green.
+  \end{explanation}
+\end{example}
+
+\subsection{Multiplying vectors and matrices}
+Recall in Chapter One, we learned how to multiply two vectors:
+\[\vec{u}= \left(\begin{array}{ccc}
+0 & -1 & 4
+\end{array}\right), \hspace{.5cm} \vec{v} = \left(\begin{array}{ccc}
+2 & -3 & -5
+\end{array}\right)
+\]
+\[
+\vec{u}\dotp \vec{v} = \vec{u} \vec{v}^{\transpose} = \left(\begin{array}{ccc}
+0 & -1 & 4
+\end{array}\right)
+\begin{pmatrix}
+2\\
+-3\\
+-5
+\end{pmatrix}
+= -17
+\]
+known as the dot product. Notice that $\vec{u}$ is a $\left(1\times 3\right)$- matrix and $\vec{v}^{\transpose}$ is a $\left(3\times 1\right)$- matrix. To multiply a matrix by a column vector, envision the matrix as a
+grouping of row vectors and use the distributive property. For
+example:
+\begin{align*}
+\begin{pmatrix}
+  a_{1,1} & a_{1,2} & a_{1,3} \\
+  a_{2,1} & a_{2,2} & a_{2,3} \\
+  a_{3,1} & a_{3,2} & a_{3,3}
+\end{pmatrix}
+\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}
+&=
+\begin{pmatrix}
+  (a_{1,1} & a_{1,2} & a_{1,3}) \\
+  (a_{2,1} & a_{2,2} & a_{2,3}) \\
+  (a_{3,1} & a_{3,2} & a_{3,3})
+\end{pmatrix}
+\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
+&=
+\begin{pmatrix}
+  (a_{1,1} & a_{1,2} & a_{1,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
+  (a_{2,1} & a_{2,2} & a_{2,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}\\
+  (a_{3,1} & a_{3,2} & a_{3,3}) \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+  a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1}  \\
+  a_{2,1}b_{1,1} + a_{2,2}b_{2,1} + a_{2,3}b_{3,1}  \\
+  a_{3,1}b_{1,1} + a_{3,2}b_{2,1} + a_{3,3}b_{3,1}
+\end{pmatrix}
+\end{align*}
+
+We're basically multiplying each shaded section below by the column vector
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[red!30!white,line width = 1.3em] (-4.5,.45) -- (-2,.45);
+    \draw[blue!20!white,line width = 1.3em] (-4.5,0) -- (-2,0);
+    \draw[green!20!white,line width = 1.3em] (-4.5,-.45) -- (-2,-.45);
+
+    \draw[red!30!white,line width = 1.3em] (.2,.45) -- (4.4,.45);
+    \draw[blue!20!white,line width = 1.3em] (.2,0) -- (4.4,0);
+    \draw[green!20!white,line width = 1.3em] (.2,-.45) -- (4.4,-.45);
+
+    \node at (0,0)
+          {$\begin{pmatrix}
+              a_{1,1} & a_{1,2} & a_{1,3} \\
+              a_{2,1} & a_{2,2} & a_{2,3} \\
+              a_{3,1} & a_{3,2} & a_{3,3}
+            \end{pmatrix}
+            \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix}
+            =
+            \begin{pmatrix}
+              a_{1,1}b_{1,1} + a_{1,2}b_{2,1} + a_{1,3}b_{3,1}  \\
+              a_{2,1}b_{1,1} + a_{2,2}b_{2,1} + a_{2,3}b_{3,1}  \\
+              a_{3,1}b_{1,1} + a_{3,2}b_{2,1} + a_{3,3}b_{3,1}
+            \end{pmatrix}$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{warning}
+  It only makes sense to multiply a matrix by a column vector if the
+  number of columns of the matrix equals the dimension of the column
+  vector.
+\end{warning}
+
+In an entirely similar way, we can multiply a row vector by a matrix
+by envisioning the matrix as a grouping of column vectors. In this
+case, we will use a $2$-dimensional row vector and a $2\times2$ matrix
+to save horizontal space.
+
+\begin{align*}
+\begin{pmatrix} a_{1,1} & a_{1,2}  \end{pmatrix}
+\begin{pmatrix}
+  b_{1,1} & b_{1,2} \\
+  b_{2,1} & b_{2,2}
+\end{pmatrix}
+&=
+\begin{pmatrix} a_{1,1} & a_{1,2}  \end{pmatrix}%\arraycolsep=0pt
+\begin{pmatrix}
+  \begin{pmatrix} b_{1,1} \\ b_{2,1} \\  \end{pmatrix} &
+  \begin{pmatrix} b_{1,2} \\ b_{2,2} \\ \end{pmatrix}
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+  \begin{pmatrix} a_{1,1} & a_{1,2} \end{pmatrix}\begin{pmatrix} b_{1,1} \\ b_{2,1} \end{pmatrix} &
+  \begin{pmatrix} a_{1,1} & a_{1,2} \end{pmatrix}\begin{pmatrix} b_{1,2} \\ b_{2,2} \end{pmatrix}
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+a_{1,1}b_{1,1}+a_{1,2}b_{2,1} &
+a_{1,1}b_{1,2}+a_{1,2}b_{2,2}
+\end{pmatrix}
+\end{align*}
+
+
+%% \begin{align*}
+%% &\begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}
+%% \begin{pmatrix}
+%%   b_{1,1} & b_{1,2} & b_{1,3} \\
+%%   b_{2,1} & b_{2,2} & b_{2,3} \\
+%%   b_{3,1} & b_{3,2} & b_{3,3}
+%% \end{pmatrix}
+%% =
+%% \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\arraycolsep=0pt
+%% \begin{pmatrix}
+%%   \begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
+%%   \begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
+%%   \begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+%% \end{pmatrix} \\
+%% &=\arraycolsep=0pt
+%% \begin{pmatrix}
+%%   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,1} \\ b_{2,1} \\ b_{3,1} \end{pmatrix} &
+%%   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,2} \\ b_{2,2} \\ b_{3,2} \end{pmatrix} &
+%%   \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \end{pmatrix}\begin{pmatrix} b_{1,3} \\ b_{2,3} \\ b_{3,3} \end{pmatrix}
+%% \end{pmatrix}\\
+%% &=\arraycolsep=0pt
+%% \begin{pmatrix}
+%% a_{1,1}b_{1,1}+a_{1,2}b_{2,1}+a_{1,3}b_{3,1} &
+%% a_{1,1}b_{1,2}+a_{1,2}b_{2,2}+a_{1,3}b_{3,2} &
+%% a_{1,1}b_{1,3}+a_{1,2}b_{2,3}+a_{1,3}b_{3,3}
+%% \end{pmatrix}
+%% \end{align*}
+
+
+
+\begin{warning}
+  It only makes sense to multiply a row vector by a matrix if the
+  dimension of the row vector equals the number of rows of the
+  matrix.
+\end{warning}
+
+
+\begin{question}
+If
+\[
+\left(\begin{array}{ccc}
+2 & 0 & -1\\
+5 & 1 & -2\\
+1 & 0 & 4
+\end{array}\right), \hspace{.5cm} \vec{v} = \begin{pmatrix}
+1 \\
+0\\
+2
+\end{pmatrix}
+\]
+compute the following and write NA for each entry if the multiplication is not possible. \\
+
+a. $\vec{v} A$ \begin{prompt} \[=\begin{pmatrix}
+\answer[given]{NA}\\
+\answer[given]{NA}\\
+\answer[given]{NA}
+\end{pmatrix}\]
+\end{prompt}\\
+
+b. $A\vec{v}$ \begin{prompt} \[= \begin{pmatrix}
+\answer[given]{0}\\
+\answer[given]{-4}\\
+\answer[given]{9}
+\end{pmatrix}\]\end{prompt}\\
+
+c. $\vec{v}^{\transpose} A$ \begin{prompt} \[= \left(\begin{array}{ccc}
+\answer[given]{2} & \answer[given]{0} & \answer[given]{7}
+\end{array}\right)\]
+\end{prompt}\\
+
+d. $A\vec{v}^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
+\answer[given]{NA} & \answer[given]{NA} & \answer[given]{NA}
+\end{array}\right)\]
+\end{prompt}
+\end{question}
+
+
+\subsection{Multiplying Matrices}
+We can extend the concept introduced in previous section to multiplication of a matrix by another matrix. As a general rule, we can multiply matrix, $A: n \times m$ by matrix $B: k \times \ell$ if $m=k$. That is if the middle two numbers match: $n\times \underline{m} \hspace{.5cm} \underline{k} \times \ell$. The result then turns out to be a matrix of size $n\times \ell$ (the outside numbers). \\
+We multiply each row of the first matrix by each column of the second matrix:
+\[ AB = \left(\begin{array}{cc}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{array}\right) \left(\begin{array}{cc}
+b_{11} & b_{12}\\
+b_{21} & b_{22}
+\end{array}\right)
+\]
+\[ = \left(\begin{array}{cc}
+\text{(row one of A)(column one of B)} & \text{(row one of A)(column two of B)}\\
+\text{(row two of A)(column one of B)} & \text{(row two of A)(column two of B)}
+\end{array}\right) \]
+\[ = \left(\begin{array}{cc}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12}+ a_{12}b_{22}\\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
+\end{array}\right)\]
+If we call the resulting matrix $C$, then the entry \\
+$c_{\textcolor{blue}{1}\textcolor{red}{1}}$ is the multiplication of $\left(\textcolor{blue}{1}^{\text{st}} \text{ row of A}\right)\left( \textcolor{red}{1}^{\text{st}} \text{ column of B}\right)$\\
+$c_{\textcolor{blue}{2} \textcolor{red}{1}}$ is the multiplication of $\left(\textcolor{blue}{2}^{\text{nd}} \text{ row of A}\right)\left( \textcolor{red}{1}^{\text{st}} \text{ column of B}\right)$\\
+and so forth. \\
+For example,
+\[\left(\begin{array}{ccc}
+1 & -1 & 0\\
+2 & 0 & 4 \\
+5 & 3 & 1
+\end{array}\right) \left(\begin{array}{ccc}
+5 & 1 & 0\\
+-1 & -2 & 0\\
+1 & 0 & 2
+\end{array}\right)\]
+\[= \left(\begin{array}{ccc}
+(1)(5) + (-1)(-1)+ (0)(1) & 1 + 2+ 0 & 0 + 0+ 0\\
+10 + 0 + 4 & 2 + 0+0 & 0 + 0+8\\
+25+ (-3) + 1 & 5 + -6+0 & 0 + 0+ 2
+\end{array}\right)\]
+\[= \left(\begin{array}{ccc}
+6 & 3 & 0\\
+14& 2 & 8\\
+23 & -1 & 2
+\end{array}\right)
+\]
+It is helpful to first write the sum since there might be many small calculations and easy to make mistakes. It is important to write the matrices neatly and put enough space between entries.
+\begin{question}
+Multiply the following matrices:
+\[AB = \left(\begin{array}{cc}
+3 & 0 \\
+5 & 1\\
+1 & -1
+\end{array}\right)
+\]
+\begin{prompt}
+Note that $A$ is a $\left(\answer[given]{3}\times \answer[given]{2}\right)$- matrix and $B$ is a $\left(\answer[given]{2}\times \answer[given]{2}\right)$- matrix. Since the middle numbers match then this multiplication is possible and we expect to get a $\left(\answer[given]{3}\times \answer[given]{2}\right)$-matrix for the result.
+\[AB = \left(\begin{array}{cc}
+\answer[given]{3} & \answer[given]{-3}\\
+\answer[given]{5} & \answer[given]{-7}\\
+\answer[given]{1} & \answer[given]{1}
+\end{array}\right)\]
+\end{prompt}
+\end{question}
+It is important to note that order matters in matrix multiplication. For example, in the multiplication above, $AB$ was possible but $BA$ is a multiplication of a $2\times 2$-matrix with a $3\times 2$-matrix, which is not possible. So in general, $AB \neq BA$.
+\begin{question}
+For the following matrices, find $AB$ and $BA$.
+\[
+A= \left(\begin{array}{cc}
+5 & 0 \\
+2 & 1
+\end{array}\right), \hspace{.5cm} B = \left(\begin{array}{cc}
+3 & -1 \\
+2 & 0
+\end{array}\right)
+\]
+\begin{prompt}
+\[
+AB = \left(\begin{array}{cc}
+\answer[given]{15} & \answer[given]{-5}\\
+\answer[given]{8} & \answer[given]{-2}
+\end{array}\right)\]
+
+\[BA = \left(\begin{array}{cc}
+\answer[given]{13} & \answer[given]{-1}\\
+\answer[given]{10} & \answer[given]{0}
+\end{array}\right)\]
+\end{prompt}
+Do the two multiplications give the same result? \wordChoice{\choice{yes} \choice[correct]{no}}
+\end{question}
+In Chapter One we also introduced the transpose of a vector:
+\[
+\vec{u} = \left(\begin{array}{ccc}
+1 & -1 & 0
+\end{array}\right)
+\hspace{.4cm}\Rightarrow\hspace{.4cm}
+\vec{u}^{\transpose} = \begin{pmatrix}
+1\\
+-1\\
+0
+\end{pmatrix}
+\]
+So transpose switched a $\left(1\times 3\right)$- matrix to a $\left(3\times 1\right)$- matrix. The same concept applies to any larger matrix. The transpose operation switches all the rows to columns:
+\[
+A = \left(\begin{array}{ccc}
+2 & -1 & 0\\
+-3 & 4 & 5\\
+1 & -2 & 0
+\end{array}\right)
+\hspace{.4cm}\Rightarrow\hspace{.4cm}
+A^{\transpose} = \left(\begin{array}{ccc}
+2 & -3 & 1\\
+-1 & 4 & -2\\
+0& 5 & 0
+\end{array}\right)
+\]
+Thus, the first row of $A$ becomes the first column of $A^{\transpose}$ and the second row of $A$ becomes the second column of $A^{\transpose}$ and so forth.
+\begin{question}
+If
+\[
+A= \left(\begin{array}{ccc}
+-3 & 0 & 1\\
+4 & 0 & 2\\
+-1 & 5 & 0
+\end{array}\right), \hspace{.5cm}
+B = \left(\begin{array}{ccc}
+1 & -1 & 0\\
+0 & 2 & 1\\
+-3 & 4 & 0
+\end{array}\right)\]
+Compute the following. \\
+
+a. $2A^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
+\answer[given]{-6} & \answer[given]{8}& \answer[given]{-2}\\
+\answer[given]{0} & \answer[given]{0}& \answer[given]{10}\\
+\answer[given]{2} & \answer[given]{4}& \answer[given]{0}
+\end{array}\right)\]\end{prompt}\\
+
+b. $AB^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
+\answer[given]{-3} & \answer[given]{1}& \answer[given]{9}\\
+\answer[given]{4} & \answer[given]{2}& \answer[given]{-12}\\
+\answer[given]{-6} & \answer[given]{10}& \answer[given]{23}
+\end{array}\right)\]\end{prompt}\\
+
+c. $A^{\transpose} + AB$ \begin{prompt} \[=\left(\begin{array}{ccc}
+\answer[given]{-9} & \answer[given]{11}& \answer[given]{-1}\\
+\answer[given]{-2} & \answer[given]{4}& \answer[given]{5}\\
+\answer[given]{0} & \answer[given]{13}& \answer[given]{5}
+\end{array}\right)\]\end{prompt}
+\end{question}
+
+
+
+\begin{example}[Population Counts]
+Extract a new data set from a matrix using basis vectors
+\end{example}
+
+
+\begin{example}[RGB Color Space]
+\end{example}
+
+
+
+\subsection{Matrices transform data}
+
+
+\begin{example}[Financial Transactions]
+  Recall that a bookstore sells a variety of books with each type of
+  book sold in one month stored as a row vector
+  \[
+  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
+  \]
+  with the entries representing the categories: Science Fiction,
+  Fantasy, Mystery, Romance, Historical in that order.  Suppose last
+  month the book store bought $200$ Science Fiction, $400$ Fantasy, $300$
+  Mystery, $250$ Romance, $300$ Historical books. What percentage of each
+  category was sold this month?
+  \begin{explanation}
+    Let
+    \[
+    T =
+    \begin{pmatrix}
+      100/200 & 0 &    0   &   0    &   0 \\
+      0 & 100/400 &    0   &   0    &   0 \\
+      0 &   0   &  100/300 &   0    &   0 \\
+      0 &   0   &    0   & 100/250  &   0 \\
+      0 &   0   &    0   &   0    & 100/300
+    \end{pmatrix}
+    \]
+    Each entry of the matrix $T$ is of the form:
+    \[
+    100 \cdot \frac{1}{(\text{Stock})}
+    \]
+    where $(\text{Stock})$ represents the number of books the
+    bookstore bought to sell.  We can solve our problem by computing
+    \[
+    \vec{s} T =
+    \]
+    So we see
+  \end{explanation}
+
+\end{example}
+
+
+
+
+\begin{example}[Navigation]
+  Scale/normalize fincinal data etc.
+\end{example}
+
+\subsection{Systems of Equations}
+One important use of matrices is to solve systems of equations. By matrix multiplication, one can check that
+\begin{eqnarray*}
+4x+2y+z &=& 5\\
+2x+3y &=& 6\\
+5y -z &=& 8
+\end{eqnarray*}
+can be written as 
+\[
+\left(\begin{array}{ccc}
+4 & 2 & 1 \\
+2 & 3 & 0\\
+0 & 5 & -1
+\end{array}\right) \begin{pmatrix}
+x \\
+y\\
+z
+\end{pmatrix}
+= \begin{pmatrix}
+5 \\
+6\\
+8
+\end{pmatrix}
+\]
+Multiplying the left-hand side above we have,
+\[
+\begin{pmatrix}
+4x+2y+z\\
+2x+3y\\
+5y-z
+\end{pmatrix} = \begin{pmatrix}
+5\\
+6\\
+8
+\end{pmatrix}
+\]
+giving the system of equations. Note that for two matrices $A$ and $B$, we have $A=B$ if both matrices are of the same size and each entry in $A$ matches to that of $B$. 
+\begin{question}
+Write the system of equations below in matrix form:
+\begin{eqnarray*}
+3x-7y+8w &=& 1\\
+2z -10w &=& 9\\
+5x-2z+3y &=& 4\\
+x-y+z &=& 8
+\end{eqnarray*}
+\begin{prompt}
+\[
+\left(\begin{array}{cccc}
+\answer[given]{3} & \answer[given]{-7} & \answer[given]{0} & \answer[given]{8}\\
+\answer[given]{0} & \answer[given]{0} & \answer[given]{2} & \answer[given]{-10}\\
+\answer[given]{5} & \answer[given]{3} & \answer[given]{-2} & \answer[given]{0}\\
+\answer[given]{1} & \answer[given]{-1} & \answer[given]{1} & \answer[given]{0}
+\end{array}\right) \begin{pmatrix}
+x\\
+y\\
+z\\
+w
+\end{pmatrix} = \begin{pmatrix} 
+\answer[given]{1}\\
+\answer[given]{9}\\
+\answer[given]{4}\\
+\answer[given]{8}
+\end{pmatrix}
+\]
+\end{prompt}
+\end{question}
+
+\begin{question}
+Solve for $x, y, z, w$:
+\[\left(\begin{array}{cc}
+2x+4 & 5y \\
+z^2-8 & 8
+\end{array}\right) = \left(\begin{array}{cc}
+6x & 10\\
+8 & 5w
+\end{array}\right)
+\]
+\begin{prompt}
+\[ 
+x= \answer[given]{1}, \hspace{.4cm} y = \answer[given]{2}, \hspace{.4cm} z = \answer[given]{8}, \hspace{.4cm} w = \answer[given]{8/5}
+\]
+\end{prompt}
+\end{question} 
+
+To avoid writing the variables and to make the calculations easier to carry we write the condensed matrix called augmented matrix as follows, where the constants on the right hand side of the equations are separated by a line:
+\[
+\left(\begin{array}{ccc|c}
+4 & 2 & 1 & 5\\
+2 & 3 & 0 & 6\\
+0 & 5 & -1 & 8
+\end{array}\right)\]
+
+We often use this form to solve the system of equations. We will discuss this procedure in the next chapter. 
+\begin{question}
+  Write the augmented matrix for the following system:
+  \begin{eqnarray*}
+  2x-5y+8z &=& 1\\
+  3y -4z &=& 9\\
+  6x -7z &=& 10
+  \end{eqnarray*}
+  \begin{prompt}
+  \[\left(\begin{array}{ccc|c}
+  \answer[given]{2} &  \answer[given]{-5} &  \answer[given]{8} & \answer[given]{1}\\
+   \answer[given]{0} &  \answer[given]{3} &  \answer[given]{-4} &  \answer[given]{9}\\
+   \answer[given]{6} &  \answer[given]{0} &  \answer[given]{-7} &  \answer[given]{10}
+  \end{array}\right)
+  \]
+  \end{prompt}
+  \end{question}
+
+
+
+
+
+
+
+For some interesting extra reading check out:
+\begin{itemize}
+\item \link[\textit{Earliest Uses of Symbols for Matrices and Vectors},  MacTutor History of Mathematics, (University of St Andrews, Scotland, February 2000.]{https://mathshistory.st-andrews.ac.uk/Miller/mathsym/matrices/}
+\end{itemize}
+
+
+
+\end{document}

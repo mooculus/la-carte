@@ -43,6 +43,61 @@ $3 \times 3$ matrices.
     = ad - bc.
   \]
 \end{definition}
+
+% Typically, when one computes the determinant of a $2\times 2$ matrix,
+% we think of the terms as follows.
+In words, the determinant of a $2\times 2$ matrix is the difference between
+the product of diagonal terms and the product of anti-diagonal terms.
+\begin{image}[0.75in]
+  \begin{tikzpicture}
+    \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,%column sep=.1em,
+    nodes={text height=1ex,text width=2ex}]
+    {
+      a \& c \\
+      b \& d \\
+    };
+    \draw[thick] (mtrx-1-1.north) -| (mtrx-2-1.south west)
+    -- (mtrx-2-1.south);
+    \draw[thick] (mtrx-1-2.north) -| (mtrx-2-2.south east)
+    -- (mtrx-2-2.south);
+    \draw[ultra thick,red!20!white,->]
+    (mtrx-1-2.center) -- (mtrx-2-1.center);
+    \draw[draw,ultra thick,blue!20!white,->]
+    (mtrx-1-1.center)  --  (mtrx-2-2.center);
+    \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,nodes={text height=1ex,text width=2ex}]
+    {
+      a \& c\\
+      b \& d\\
+    };
+    \node at (0,-.7) {${\color{blue!50!black}ad}-{\color{red!50!black}bc}$};
+  \end{tikzpicture}
+\end{image}
+
+% \begin{image}[1in]
+%   \begin{tikzpicture}
+%     \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,%column sep=.1em,
+%     nodes={text height=1ex,text width=2ex}]
+%     {
+%       a \& c \\
+%       b \& d \\
+%     };
+%     \draw[thick] (mtrx-1-1.north) -| (mtrx-2-1.south west)
+%     -- (mtrx-2-1.south);
+%     \draw[thick] (mtrx-1-2.north) -| (mtrx-2-2.south east)
+%     -- (mtrx-2-2.south);
+%     \draw[ultra thick,red!20!white,->]
+%     (mtrx-1-2.center) -- (mtrx-2-1.center);
+%     \draw[draw,ultra thick,blue!20!white,->]
+%     (mtrx-1-1.center)  --  (mtrx-2-2.center);
+%     \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,nodes={text height=1ex,text width=2ex}]
+%     {
+%       a \& c\\
+%       b \& d\\
+%     };
+%     \node at (0,-.7) {${\color{blue!50!black}ad}-{\color{red!50!black}bc}$};
+%   \end{tikzpicture}
+% \end{image}
+
 % Why would anyone ever be interested in this? Well to start, given nonzero vectors
 
 To gain a geometric insight behind this definition, consider the
@@ -85,7 +140,9 @@ where the sign of the area is determined by the orientation of the two
 vectors $\vec{v}$ and $\vec{w}$. If the second vector $\vec{w}$ lies
 counterclockwise from the first vector $\vec{v}$ as illustrated above,
 then the sign is positive. If $\vec{w}$ lies clockwise from $\vec{v}$,
-then the sign is negative. Written algebraically, we have
+then the sign is negative. It follows that the determants of a
+$2 \times 2$ matrix and the matrix obtained by interchanging its two
+columns differ only by the sign, that is,
 \[
   \det
   \begin{pmatrix}
@@ -98,11 +155,21 @@ then the sign is negative. Written algebraically, we have
   \end{pmatrix}.
 \]
 
-% sign of the angle $\theta$ (drawn counterclockwise) between $\vec{v}$ and
-% $\vec{w}$.
+\begin{question}
+  Confirm the relation above by explicit calculation. That is,
+  calculate
+  \[
+    \det
+    \begin{pmatrix}
+      c & a \\ d & b
+    \end{pmatrix}
+  \]
+  and show that it equals $-(ad - bc)$.
+\end{question}
 
 To understand how the determinant is related to the area of the
 parallelogram, make a rectangle around the parallelogram as below.
+
 \begin{image}
 \begin{tikzpicture}
   \draw[fill=fill1!50!white,draw=none]
@@ -157,6 +224,7 @@ parallelogram, make a rectangle around the parallelogram as below.
   \node[below right,penColor2] at (1,1.5) {$\vec{w}$}; %% <c,d>
 \end{tikzpicture}
 \end{image}
+
 Now, we see that the area of the parallelogram is
 \[
 \text{Area of rectangle} - \text{Area of other regions}
@@ -172,33 +240,7 @@ and this is
   \end{pmatrix}.
 \end{align*}
 
-Typically, when one computes the determinant of a $2\times 2$ matrix,
-we think of the terms as follows.
-\begin{image}[1in]
-  \begin{tikzpicture}
-    \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,%column sep=.1em,
-      nodes={text height=1ex,text width=2ex}]
-            {
-              a \& c \\
-              b \& d \\
-            };
-            \draw[thick] (mtrx-1-1.north) -| (mtrx-2-1.south west)
-            -- (mtrx-2-1.south);
-            \draw[thick] (mtrx-1-2.north) -| (mtrx-2-2.south east)
-            -- (mtrx-2-2.south);
-            \draw[ultra thick,red!20!white,->]
-            (mtrx-1-2.center) -- (mtrx-2-1.center);
-            \draw[draw,ultra thick,blue!20!white,->]
-            (mtrx-1-1.center)  --  (mtrx-2-2.center);
-            \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,nodes={text height=1ex,text width=2ex}]
-            {
-              a \& c\\
-              b \& d\\
-            };
-            \node at (0,-.7) {${\color{blue!50!black}ad}-{\color{red!50!black}bc}$};
-  \end{tikzpicture}
-\end{image}
-
+Moving on to the next dimension:
 \begin{definition}
   The \dfn{determinant} of a $3 \times 3$ matrix is given by
   \begin{align*}
@@ -232,14 +274,14 @@ One thing to note is that the determinant of a $3 \times 3$ matrix is
 defined in terms of determinants of smaller $2 \times 2$ matrices. Note
 that each of the three $2 \times 2$ matrices is obtained from the original
 matrix by removing the first column and a row at a time. Such matrices
-are called minor matrices (of the given matrix).
+are called \textit{minor matrices} (of the given matrix).
 
 Note also the alternation of signs from term to term. The determinants
-of minor matrices with alternating signs are called the cofactors (of
+of minor matrices with alternating signs are called the \textit{cofactors} (of
 the given matrix).
 
-Because of these, the formula for the determinant given above is
-often called the cofactor expansion, where the coefficients are the
+Because of these, the formula for the determinant given above is often
+called the \textit{cofactor expansion}, where the coefficients are the
 elements of the first column. Incidentally, the determinant can also
 be computed using the entries of the first row as coefficients. See
 below for the illustration of this alternate method.

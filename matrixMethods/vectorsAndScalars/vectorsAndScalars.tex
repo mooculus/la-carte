@@ -69,7 +69,7 @@ of times that it makes sense to add data:
 \item[RGB Color Space] Colors on digital screens are often represented
   as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}. Here three numerical components
   correspond to the intensity of red, green, and blue light, with $0$
-  representing no intensity. The color black can be represented by $(0,0,0)$. On the other hand, 
+  representing no intensity. The color black can be represented by $(0,0,0)$. On the other hand,
   $255$ represents the  maximum intensity, hence  white is  represented by
   $(255,255,255)$.  Adding the values for different pixels changes the
   brightness of each individual component.
@@ -197,7 +197,7 @@ with many entries.
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
-  \textcolor{blue}{We read the first equality as 
+  \textcolor{blue}{We read the first equality as
   \[
   \text{the transpose of } \hspace{.5cm} \left(\begin{array}{ccc} 1 & 2& 3\end{array}\right) \hspace{.5cm} \text{is} \hspace{.5cm} \begin{pmatrix} 1\\
   2\\
@@ -219,6 +219,19 @@ Once we have data represented as vectors encoded as ordered tuples,
 row vectors, or column vectors, we can describe some general
 information about the vectors. In particular, we can think about their
 \textit{dimension} and their \textit{components}.
+
+\textcolor{red}{TK: I object to the following definition of the term
+  dimension below. The term has a very specific meaning in linear
+  algebra describing an attribute of a vector space, not of a
+  vector. In applied fields, it is commonly seen that the term
+  `length' of a vector is used to mean the number of its
+  components. Admittedly, some people find it confusing with the
+  notion of Euclidean length (the square root of sum of squares), but
+  it is easily remedied once the notion of vector norms are
+  introduced. It is okay for me that the course does not introduce
+  vector and matrix norms, but I prefer to see phrases such as
+  `n-dimensional vector' or `n-vector' to be introduced, instead of
+  the following definition.}
 
 \begin{definition}
 The \dfn{dimension} of a vector is the number of entries. Each

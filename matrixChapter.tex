@@ -10,7 +10,7 @@
 
 \begin{document}
 \begin{abstract}
-  An introduction to matrices and how to write systems of equations in matrix form.
+  An introduction to matrices and how to write systems of equations in matrix form. 
 \end{abstract}
 \maketitle
 
@@ -178,7 +178,7 @@ Recall in Chapter One, we learned how to multiply two vectors:
 \end{array}\right)
 \]
 \[
-\vec{u}\dotp \vec{v} = \vec{u} \vec{v}^{\transpose} = \left(\begin{array}{ccc}
+\vec{u}\dotp \vec{v} = \vec{u} \vec{v}^{\transpose} = \left(\begin{array}{ccc} 
 0 & -1 & 4
 \end{array}\right)
 \begin{pmatrix}
@@ -321,7 +321,7 @@ a_{1,1}b_{1,2}+a_{1,2}b_{2,2}
 
 
 \begin{question}
-If
+If 
 \[
 \left(\begin{array}{ccc}
 2 & 0 & -1\\
@@ -369,7 +369,7 @@ a_{21} & a_{22}
 \end{array}\right) \left(\begin{array}{cc}
 b_{11} & b_{12}\\
 b_{21} & b_{22}
-\end{array}\right)
+\end{array}\right) 
 \]
 \[ = \left(\begin{array}{cc}
 \text{(row one of A)(column one of B)} & \text{(row one of A)(column two of B)}\\
@@ -383,12 +383,12 @@ If we call the resulting matrix $C$, then the entry \\
 $c_{\textcolor{blue}{1}\textcolor{red}{1}}$ is the multiplication of $\left(\textcolor{blue}{1}^{\text{st}} \text{ row of A}\right)\left( \textcolor{red}{1}^{\text{st}} \text{ column of B}\right)$\\
 $c_{\textcolor{blue}{2} \textcolor{red}{1}}$ is the multiplication of $\left(\textcolor{blue}{2}^{\text{nd}} \text{ row of A}\right)\left( \textcolor{red}{1}^{\text{st}} \text{ column of B}\right)$\\
 and so forth. \\
-For example,
+For example, 
 \[\left(\begin{array}{ccc}
 1 & -1 & 0\\
 2 & 0 & 4 \\
 5 & 3 & 1
-\end{array}\right) \left(\begin{array}{ccc}
+\end{array}\right) \left(\begin{array}{ccc} 
 5 & 1 & 0\\
 -1 & -2 & 0\\
 1 & 0 & 2
@@ -404,7 +404,7 @@ For example,
 23 & -1 & 2
 \end{array}\right)
 \]
-It is helpful to first write the sum since there might be many small calculations and easy to make mistakes. It is important to write the matrices neatly and put enough space between entries.
+It is helpful to first write the sum since there might be many small calculations and easy to make mistakes. It is important to write the matrices neatly and put enough space between entries. 
 \begin{question}
 Multiply the following matrices:
 \[AB = \left(\begin{array}{cc}
@@ -414,7 +414,7 @@ Multiply the following matrices:
 \end{array}\right)
 \]
 \begin{prompt}
-Note that $A$ is a $\left(\answer[given]{3}\times \answer[given]{2}\right)$- matrix and $B$ is a $\left(\answer[given]{2}\times \answer[given]{2}\right)$- matrix. Since the middle numbers match then this multiplication is possible and we expect to get a $\left(\answer[given]{3}\times \answer[given]{2}\right)$-matrix for the result.
+Note that $A$ is a $\left(\answer[given]{3}\times \answer[given]{2}\right)$- matrix and $B$ is a $\left(\answer[given]{2}\times \answer[given]{2}\right)$- matrix. Since the middle numbers match then this multiplication is possible and we expect to get a $\left(\answer[given]{3}\times \answer[given]{2}\right)$-matrix for the result. 
 \[AB = \left(\begin{array}{cc}
 \answer[given]{3} & \answer[given]{-3}\\
 \answer[given]{5} & \answer[given]{-7}\\
@@ -422,9 +422,9 @@ Note that $A$ is a $\left(\answer[given]{3}\times \answer[given]{2}\right)$- mat
 \end{array}\right)\]
 \end{prompt}
 \end{question}
-It is important to note that order matters in matrix multiplication. For example, in the multiplication above, $AB$ was possible but $BA$ is a multiplication of a $2\times 2$-matrix with a $3\times 2$-matrix, which is not possible. So in general, $AB \neq BA$.
+It is important to note that order matters in matrix multiplication. For example, in the multiplication above, $AB$ was possible but $BA$ is a multiplication of a $2\times 2$-matrix with a $3\times 2$-matrix, which is not possible. So in general, $AB \neq BA$. 
 \begin{question}
-For the following matrices, find $AB$ and $BA$.
+For the following matrices, find $AB$ and $BA$. 
 \[
 A= \left(\begin{array}{cc}
 5 & 0 \\
@@ -460,23 +460,23 @@ In Chapter One we also introduced the transpose of a vector:
 0
 \end{pmatrix}
 \]
-So transpose switched a $\left(1\times 3\right)$- matrix to a $\left(3\times 1\right)$- matrix. The same concept applies to any larger matrix. The transpose operation switches all the rows to columns:
+So transpose switched a $\left(1\times 3\right)$- matrix to a $\left(3\times 1\right)$- matrix. The same concept applies to any larger matrix. The transpose operation switches all the rows to columns: 
 \[
 A = \left(\begin{array}{ccc}
 2 & -1 & 0\\
 -3 & 4 & 5\\
 1 & -2 & 0
-\end{array}\right)
+\end{array}\right) 
 \hspace{.4cm}\Rightarrow\hspace{.4cm}
 A^{\transpose} = \left(\begin{array}{ccc}
 2 & -3 & 1\\
 -1 & 4 & -2\\
 0& 5 & 0
-\end{array}\right)
+\end{array}\right) 
 \]
-Thus, the first row of $A$ becomes the first column of $A^{\transpose}$ and the second row of $A$ becomes the second column of $A^{\transpose}$ and so forth.
+Thus, the first row of $A$ becomes the first column of $A^{\transpose}$ and the second row of $A$ becomes the second column of $A^{\transpose}$ and so forth. 
 \begin{question}
-If
+If 
 \[
 A= \left(\begin{array}{ccc}
 -3 & 0 & 1\\
@@ -567,120 +567,6 @@ Extract a new data set from a matrix using basis vectors
 \begin{example}[Navigation]
   Scale/normalize fincinal data etc.
 \end{example}
-
-\subsection{Systems of Equations}
-One important use of matrices is to solve systems of equations. By matrix multiplication, one can check that
-\begin{eqnarray*}
-4x+2y+z &=& 5\\
-2x+3y &=& 6\\
-5y -z &=& 8
-\end{eqnarray*}
-can be written as 
-\[
-\left(\begin{array}{ccc}
-4 & 2 & 1 \\
-2 & 3 & 0\\
-0 & 5 & -1
-\end{array}\right) \begin{pmatrix}
-x \\
-y\\
-z
-\end{pmatrix}
-= \begin{pmatrix}
-5 \\
-6\\
-8
-\end{pmatrix}
-\]
-Multiplying the left-hand side above we have,
-\[
-\begin{pmatrix}
-4x+2y+z\\
-2x+3y\\
-5y-z
-\end{pmatrix} = \begin{pmatrix}
-5\\
-6\\
-8
-\end{pmatrix}
-\]
-giving the system of equations. Note that for two matrices $A$ and $B$, we have $A=B$ if both matrices are of the same size and each entry in $A$ matches to that of $B$. 
-\begin{question}
-Write the system of equations below in matrix form:
-\begin{eqnarray*}
-3x-7y+8w &=& 1\\
-2z -10w &=& 9\\
-5x-2z+3y &=& 4\\
-x-y+z &=& 8
-\end{eqnarray*}
-\begin{prompt}
-\[
-\left(\begin{array}{cccc}
-\answer[given]{3} & \answer[given]{-7} & \answer[given]{0} & \answer[given]{8}\\
-\answer[given]{0} & \answer[given]{0} & \answer[given]{2} & \answer[given]{-10}\\
-\answer[given]{5} & \answer[given]{3} & \answer[given]{-2} & \answer[given]{0}\\
-\answer[given]{1} & \answer[given]{-1} & \answer[given]{1} & \answer[given]{0}
-\end{array}\right) \begin{pmatrix}
-x\\
-y\\
-z\\
-w
-\end{pmatrix} = \begin{pmatrix} 
-\answer[given]{1}\\
-\answer[given]{9}\\
-\answer[given]{4}\\
-\answer[given]{8}
-\end{pmatrix}
-\]
-\end{prompt}
-\end{question}
-
-\begin{question}
-Solve for $x, y, z, w$:
-\[\left(\begin{array}{cc}
-2x+4 & 5y \\
-z^2-8 & 8
-\end{array}\right) = \left(\begin{array}{cc}
-6x & 10\\
-8 & 5w
-\end{array}\right)
-\]
-\begin{prompt}
-\[ 
-x= \answer[given]{1}, \hspace{.4cm} y = \answer[given]{2}, \hspace{.4cm} z = \answer[given]{8}, \hspace{.4cm} w = \answer[given]{8/5}
-\]
-\end{prompt}
-\end{question} 
-
-To avoid writing the variables and to make the calculations easier to carry we write the condensed matrix called augmented matrix as follows, where the constants on the right hand side of the equations are separated by a line:
-\[
-\left(\begin{array}{ccc|c}
-4 & 2 & 1 & 5\\
-2 & 3 & 0 & 6\\
-0 & 5 & -1 & 8
-\end{array}\right)\]
-
-We often use this form to solve the system of equations. We will discuss this procedure in the next chapter. 
-\begin{question}
-  Write the augmented matrix for the following system:
-  \begin{eqnarray*}
-  2x-5y+8z &=& 1\\
-  3y -4z &=& 9\\
-  6x -7z &=& 10
-  \end{eqnarray*}
-  \begin{prompt}
-  \[\left(\begin{array}{ccc|c}
-  \answer[given]{2} &  \answer[given]{-5} &  \answer[given]{8} & \answer[given]{1}\\
-   \answer[given]{0} &  \answer[given]{3} &  \answer[given]{-4} &  \answer[given]{9}\\
-   \answer[given]{6} &  \answer[given]{0} &  \answer[given]{-7} &  \answer[given]{10}
-  \end{array}\right)
-  \]
-  \end{prompt}
-  \end{question}
-
-
-
-
 
 
 

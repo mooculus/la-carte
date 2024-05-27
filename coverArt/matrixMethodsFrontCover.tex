@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tikz}
 \usetikzlibrary{matrix} %% for fancy matrix stuff
-
+\usepackage{ccicons}
 \usepackage{xcolor}
 \usepackage[margin=0.5in]{geometry} % Adjust margins to ensure text can go off the page
 
@@ -15,32 +15,20 @@
 \definecolor{bkgndcr}{rgb}{0,0,0}
 \definecolor{txtcr}{rgb}{1,1,1}
 
-%% \definecolor{bkgndcr}{rgb}{.4,.1,.4}
-%% \definecolor{txtcr}{rgb}{.2,.3,.8}
+%% \definecolor{bkgndcr}{RGB}{45,20, 5}
+%% \definecolor{txtcr}{RGB}{200, 170, 40}
 
 
 \pagecolor{bkgndcr}
 
 
-
-
-%\usepackage{FiraMono} % Use the Fira Mono font
-%\renewcommand\familydefault{\ttdefault} 
-% Set Fira Mono as the monospace font
-
-\usepackage{ocr}
-\usepackage[T1]{fontenc}
-\let\ttfamily\ocrfamily
-
 \begin{document}
 \boldmath % Makes all math text bold
 \bfseries % Makes all text bold
-
-
-
+\color{txtcr}
 \begin{tikzpicture}[remember picture, overlay,scale=10,every node/.style={scale=10}]
   % Fill the page with the random text
-\matrix (m) [transform shape,bkgndcr!90!txtcr,matrix of math nodes,
+\matrix (m) [transform shape,bkgndcr!80!txtcr,matrix of math nodes,
     column sep=0.2em, row sep=0.1em] at (0,0) {
   \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
   \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
@@ -62,22 +50,23 @@
 %% \draw[bkgndcr!90!txtcr,thick] (m-11-11.north west) rectangle (m-13-15.south east);
 %% \draw[bkgndcr!90!txtcr,thick] (m-12-12.north west) rectangle (m-13-15.south east);
 \end{tikzpicture}
-\sffamily
-% Write the main title on top left and middle right
-\begin{tikzpicture}[remember picture, overlay]
-  \node[scale=14, bkgndcr, anchor=north west] at ([yshift=-.1cm,xshift=-.1cm]current page.north west) {Matrix};
-  \node[scale=14, txtcr, anchor=north west] at (current page.north west) {Matrix};
+\sffamily%
+\flushleft%
+\scalebox{14}{Matrix}\\[1cm]%
+\scalebox{14}{Methods}\\[1cm]%
+%% \resizebox{\textwidth}{!}{Gaussian}\\[1cm]%
+%% \resizebox{\textwidth}{1.2in}{Elimination}\\[1cm]%
+\scalebox{4}{\itshape\,Linear Algebra, \`a la carte}%
 
-  \node[scale=14, bkgndcr, anchor=west] at ([xshift=-.1cm,yshift=-7.7cm]current page.north west) {Methods};
-  \node[scale=14, txtcr, anchor=west] at ([yshift=-7.6cm]current page.north west) {Methods};
+\vfill
 
-  \node[scale=4, bkgndcr, anchor=west] at ([yshift=-11.5cm,xshift=1.4cm]current page.north west) {\itshape Linear Algebra, \`a la carte};
-  \node[scale=4, txtcr, anchor=west] at ([yshift=-11.4cm,xshift=1.5cm]current page.north west) {\itshape Linear Algebra, \`a la carte};
+\begin{center}
+  \scalebox{4}{Fatheddin $\bullet$ Kim $\bullet$ Snapp}
+\end{center}
+\small This document was typeset on \today. \hfill \Large\textsf{\ccbyncsa}\\
+\small\texttt{GIT COMMIT: \input{.git/refs/heads/master}}\\
+\small Source: \texttt{https://github.com/mooculus/la-carte}\hfill developed in \textbf{XIMERA}\\
 
-  \node[scale=4, bkgndcr,] at ([xshift=-.1cm,yshift=-10.1cm]current page.center) {Fatheddin $\bullet$ Kim $\bullet$ Snapp};
-  \node[scale=4, txtcr,] at ([yshift=-10cm]current page.center) {Fatheddin $\bullet$ Kim $\bullet$ Snapp};
-  
 
-\end{tikzpicture}
 
 \end{document}

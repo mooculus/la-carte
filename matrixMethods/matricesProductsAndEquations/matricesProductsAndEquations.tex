@@ -4,13 +4,13 @@
 
 \author{Parisa Fatheddin and Bart Snapp}
 
-\title{Matrices, products, and \textcolor{blue}{systems of} equations}
+\title{Matrices, products, and equations}
 
 
 \begin{document}
 \begin{abstract}
-  A concrete introduction to \textcolor{blue}{take out vectors and}\underline{vectors and} matrices, with an informal
-  view towards vector spaces and linear transformations.
+  A concrete introduction to matrices and their connections to systems
+  of equations.
 \end{abstract}
 \maketitle
 
@@ -44,73 +44,83 @@ M =
 \boldsymbol{4}~\textbf {rows}
 \]
 We give the \dfn{dimensions of a matrix} by stating its number of rows
-and columns. The number of rows comes first and the number of columns second, so $M$ above is
-a $(4\times 5)$-matrix. We can use similar notation to talk about
-specific entries of a matrix. Above, $a_{i,j}$ is the
-$\boldsymbol{(i,j)}${\bf-}\dfn{entry} of the matrix $M$. Sometimes people write $M_{i,j}$ to mean the $(i,j)$-entry of the matrix $M$.
+and number of columns. The number of rows comes first and the number
+of columns second, so $M$ above is a $(4\times 5)$-matrix. In fact,
+$n$-dimensional row vectors are just $1\times n$ matrices and
+$n$-dimensional column vectors are just $n\times 1$ matrices:
+\[
+\underbrace{\begin{pmatrix}a_{1} & a_{2} & \cdot \cdot \cdot & a_{n}\end{pmatrix}}_{1\times n} \qquad \underbrace{\begin{pmatrix} a_{1}\\
+a_{2}\\
+\vdots\\
+a_{n}\end{pmatrix}}_{n\times 1}
+\]
 
 \begin{question}
-  a. Which of the following matrices are $3\times 2$ matrices?
-  \begin{multipleChoice}
-  \choice{\[\left(\begin{array}{ccc}
+  Which of the following matrices are $3\times 2$ matrices?
+  \begin{selectAll}
+  \choice{$\begin{pmatrix}
   2 & 4 & 8\\
   5 & 9 & -1\\
   6 & 0 & 1
-  \end{array}\right)\]}
-  \choice{\[\left(\begin{array}{ccc}
+    \end{pmatrix}$}
+  \choice{$\begin{pmatrix}
   0 & 1 &3\\
   0 & 0 & 2
-  \end{array}\right)\]}
-  \choice[correct]{\[\left(\begin{array}{cc}
+  \end{pmatrix}$}
+  \choice[correct]{$\begin{pmatrix}
   2 & 1 \\
   4 & 5 \\
   -1 & 0
-  \end{array}\right)\]}
-  \choice[correct]{\[\left(\begin{array}{cc}
+  \end{pmatrix}$}
+  \choice[correct]{$\begin{pmatrix}
   1 & -1\\
   -3 & 0 \\
   0 & 0
-  \end{array}\right)\]}
-  \choice{\[ \left(\begin{array}{ccc}
+  \end{pmatrix}$}
+  \choice{$\begin{pmatrix}
   0 & 0 & 0\\
   -1 & 0 & 5
-  \end{array}\right)\]}
-\end{multipleChoice}
-  b. If
-  \[A= \left(\begin{array}{ccc}
+  \end{pmatrix}$}
+  \end{selectAll}
+\end{question}
+
+
+We can use similar notation to talk about specific entries of a
+matrix. Above, $a_{i,j}$ is the $\boldsymbol{(i,j)}${\bf-}\dfn{entry}
+of the matrix $M$. Often people write $M_{i,j}$ (or just $M_{ij}$) to
+mean the $(i,j)$-entry of the matrix $M$.
+
+
+
+\begin{question}
+  If
+  \[A= \begin{pmatrix}
   -3 & 0 & 1\\
   4 & 5 & -2\\
   0 & 9 & -1
-  \end{array}\right)\]
-  what are the entries $a_{12},\hspace{.08cm} a_{22}, \hspace{.08cm}a_{32}$?
+  \end{pmatrix}
+  \]
+  what are the entries $A_{1,2}$, $A_{2,2}$, $A_{3,2}$?
   \begin{prompt}
-  \begin{equation*}
-  a_{12} = \answer[given]{0}, \hspace{.5cm} a_{22} = \answer[given]{5}, \hspace{.5cm} a_{32} = \answer[given]{9}
-  \end{equation*}
+    \[
+    A_{1,2} = \answer{0}, \quad A_{2,2} = \answer{5}, \quad A_{3,2} = \answer{9}
+    \]
   \end{prompt}
 \end{question}
-In fact $n$-dimensional row vectors are just $1\times n$ matrices and
-$n$-dimensional column vectors are just $n\times 1$ matrices\textcolor{blue}{:
-\[
-\left(\begin{array}{cccc} a_{1} & a_{2} & \cdot \cdot \cdot & a_{n}\end{array}\right), \hspace{.5cm} \begin{pmatrix} a_{1}\\
-a_{2}\\
-\cdot\\
-\cdot\\
-\cdot\\
-a_{n}\end{pmatrix}
-\]}
+
 
 
 \section{Matrices store data}
 
 
-\textcolor{blue}{A matrix} \underline{Matrices} can be thought of as a ``mathematical spreadsheet.'' With a
-spreadsheet you have rows and columns of data.  You can think of a
-matrix as vectors stacked together either horizontally
-or vertically.
+A matrix can be thought of as a ``mathematical spreadsheet.'' With a
+spreadsheet you have rows and columns of data.  The data we're
+typically interested in comes in the form of vectors.  You can think
+of a matrix as vectors stacked together either horizontally or
+vertically.
 
 \begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
-  \textcolor{blue}{In an example in Chapter One,} \underline{In a previous example,} we encoded the $2023$
+  In a previous example, we encoded the $2023$
   \link[demographics]{https://worldpopulationreview.com/states/states-by-race}~of
   the twelve Midwestern States as $6$-dimensional vectors represented
   as ordered tuples. Represent this data by a $12\times 6$
@@ -156,8 +166,9 @@ or vertically.
 
 
 \begin{example}[RGB Color Space]
-  \textcolor{blue}{In an example in Chapter One,}In a previous example we mentioned an LED table lamp whose shades
-  vary linearly through the RGB color space in this order:
+  \textcolor{blue}{In an example in Chapter One,}In a previous example
+  we mentioned an LED table lamp whose shades vary linearly through
+  the RGB color space every minute in this order:
       \[
     \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
     \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
@@ -178,10 +189,10 @@ or vertically.
         0 & 0 & 0 & 255 & 255 & 255
       \end{pmatrix}
     \]
-    The meaning of the $(2,3)$-entry is BADBAD \textcolor{blue}{I
-      think interpreting the entry is not that great here: The
-      (2,3)-entry is the intensity of green color in green.}
-    % The meaning of the $(2,3)$-entry is BADBAD
+    The $(2,3)$-entry is if the matrix is $\answer[given]{255}$. This
+    represents a that
+    \wordChoice{\choice{red}\choice[correct]{green}\choice{blue}}
+    is at maximum intensity in that color at time $2$ minutes.
   \end{explanation}
 \end{example}
 
@@ -217,16 +228,20 @@ can imagine a `physical' movement of the entries with this product:
 Note that this multiplication results in a scalar not a vector. We'll leave it to the reader to generalize the procedure to $(1\times n)$-matrix by a $(n\times 1)$ matrix.
 
 \begin{question}
- Perform the following multiplication if possible (write N/A if it is not possible):
+ Compute the following product:
  \[
- \left(\begin{array}{cccc}
+ \begin{pmatrix}
  4 & 1 & 2 & -1
- \end{array}\right)\left(\begin{array}{c}
- 0\\
- 5\\
- -2\\
- 7
- \end{array}\right) = \answer[given]{0} + \answer[given]{5}+\answer[given]{-4} + \answer[given]{-7} = \answer[given]{-6}
+ \end{pmatrix}
+ \begin{pmatrix}
+   0\\
+   5\\
+   -2\\
+   7
+ \end{pmatrix}
+ \begin{prompt}
+   = \answer{-6}
+ \end{prompt}
  \]
 \end{question}
 

@@ -47,16 +47,17 @@ to add data and sometimes it doesn't.
 For some of the categories above, the \textit{average} can be
 meaningful or perhaps if each quantity is thought of as `displacement'
 or `duration,' summing might be meaningful. However, without
-additional \underline{(pun intended!)} stipulations, summing the types of
+\textbf{addition}al (pun intended!) stipulations, summing the types of
 quantities above is not meaningful. On the other hand, there are lots
-of times that it makes sense to add data:
+of times that it makes sense to add data. Data is represented by a
+\textit{vector} when it is resonable to add separate data points.
 
-\begin{concept}[When it makes sense to add data]
+\begin{concept}[Vectors: When it makes sense to add data]
 \begin{description}
 \item[Population Counts] Adding the populations of different regions,
   cities, or countries to find the total population of a larger
   area. Answers to questions like these help us understand our
-  society and are important to many people.
+  society and in turn, aid our future decisions.
 \item[Financial Transactions] Summing daily sales to find total
   monthly sales, or adding up all expenses to find total costs. These
   are real numbers that represent actual amounts of money, and their
@@ -67,12 +68,14 @@ of times that it makes sense to add data:
 %%   lives, and time is a very precious commodity. Hence, it is good to
 %%   understand how we spend our time.
 \item[RGB Color Space] Colors on digital screens are often represented
-  as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}. Here three numerical components
-  correspond to the intensity of red, green, and blue light, with $0$
-  representing no intensity. The color black can be represented by $(0,0,0)$. On the other hand,
-  $255$ represents the  maximum intensity, hence  white is  represented by
-  $(255,255,255)$.  Adding the values for different pixels changes the
-  brightness of each individual component.
+  as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}.
+  Here, three numerical components correspond to the intensity of red,
+  green, and blue light, with $0$ representing no intensity of the
+  colors and $255$ representing the maximum intensity of the
+  colors. Hence the color black can be represented by $(0,0,0)$ and
+  white is represented by $(255,255,255)$.  Adding the values for
+  different pixels changes the brightness of each individual
+  component.
 \item[Navigation] Aircraft navigate by knowing the direction and speed
   at which they are traveling. When interpreted correctly, we add the
   speed and direction of many different ``course changes'' to find the
@@ -105,9 +108,9 @@ used to scale vectors are called \textit{scalars}.
 
 These informal definitions of vectors and scalars in fact contain the
 \textit{essence} of the concept of a \textit{vector space}. If this
-seems too abstract, let's give some very concrete examples based on
-the examples above. However, before we start, we need to give some
-notation for vectors.
+seems too abstract, I assure you that we will be giving some very
+concrete examples all along the way. However, before we start, we need
+to give some notation for vectors.
 
 \begin{concept}[Ways data can be stored as a vector]
 \begin{description}
@@ -119,7 +122,7 @@ notation for vectors.
   represent the \link[demographic information]{https://worldpopulationreview.com/states/states-by-race} for Ohio as an vector
   represented by an ordered tuple:
   \[
-  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{AfricanAmerican}}{1442655},\underset{\text{AmericanIndian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
+  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\begin{smallmatrix}\text{\scriptsize African}\\ \text{\scriptsize American}\end{smallmatrix}}{1442655},\underset{\begin{smallmatrix}\text{\scriptsize Native}\\\text{\scriptsize American}\end{smallmatrix}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866})
   \]
 \item[Row vector] A row vector is a lot like an ordered tuple, except
   we do not use a comma to separate entries. Instead, we separate them
@@ -187,9 +190,8 @@ with many entries.
 
 
 \begin{definition}
-  To \textcolor{blue}{convert} \underline{switch} a row vector \textcolor{blue}{to} \underline{into} a column vector and vice versa, we use
-  the \dfn{transpose} operation, \textcolor{blue}{take out}\underline{referred to as the transpose of the}
-  vector,
+  To convert a row vector to a column vector and vice versa, we use
+  the \dfn{transpose} operation, 
   \[
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
@@ -197,12 +199,10 @@ with many entries.
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
-  \textcolor{blue}{We read the first equality as
-  \[
-  \text{the transpose of } \hspace{.5cm} \left(\begin{array}{ccc} 1 & 2& 3\end{array}\right) \hspace{.5cm} \text{is} \hspace{.5cm} \begin{pmatrix} 1\\
-  2\\
-  3 \end{pmatrix} \]
-  Thus, we can use the transpose to switch from a row vector to a column vector and vice versa as the second equality above shows. }
+  We read the first equality as ``the transpose of the row vector $1$,
+  $2$, $3$ is the column vector $1$, $2$, $3$.''  Thus, we can use the
+  transpose to switch from a row vector to a column vector and vice
+  versa as the second equality above shows.
 \end{definition}
 
 

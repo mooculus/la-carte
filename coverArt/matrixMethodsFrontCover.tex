@@ -1,49 +1,35 @@
-\documentclass{article}
-\usepackage{tikz}
-\usetikzlibrary{matrix} %% for fancy matrix stuff
-\usepackage{ccicons}
-\usepackage{xcolor}
-\usepackage[margin=0.5in]{geometry} % Adjust margins to ensure text can go off the page
-
-\usepackage{gillius} % Ensure this package is installed
-\renewcommand{\familydefault}{\sfdefault} % Set Gillius as the default font
-\usepackage{amsmath} % For bold math symbols
-
-
-%% For black/white switch
 \usepackage{pagecolor}
 \definecolor{bkgndcr}{rgb}{0,0,0}
 \definecolor{txtcr}{rgb}{1,1,1}
 
-%% \definecolor{bkgndcr}{RGB}{45,20, 5}
-%% \definecolor{txtcr}{RGB}{200, 170, 40}
+\definecolor{bkgndcr}{RGB}{0,20, 0}
+\definecolor{txtcr}{RGB}{100, 200, 255}
 
 
-\pagecolor{bkgndcr}
-
-
-\begin{document}
-\pagestyle{empty}
-\boldmath % Makes all math text bold
-\bfseries % Makes all text bold
-\color{txtcr}
-\begin{tikzpicture}[remember picture, overlay,scale=10,every node/.style={scale=10}]
+\let\othermaketitle\maketitle
+\renewcommand{\maketitle}{
+  \newgeometry{hmargin={.5in,.5in},vmargin={.5in,.5in}}
+  \pagecolor{bkgndcr}
+  \boldmath % Makes all math text bold
+  \bfseries % Makes all text bold
+  \color{txtcr}
+  \begin{tikzpicture}[remember picture, overlay,scale=10,every node/.style={scale=6}]
   % Fill the page with the random text
-  \matrix (m) [transform shape,bkgndcr!80!txtcr,matrix of math nodes,
-    column sep=0.2em, row sep=0.1em] at (0,0) {
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet &  0  & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0  & 0 & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0 & 0 & 0 & \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0 & 0 & 0 & 0 & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & \bullet & 0  & 0 & 0 & 0 & 0 & \bullet & \bullet & \bullet \\
+  \matrix (m) [transform shape,bkgndcr!80!txtcr,matrix of math nodes,ampersand replacement=\&,
+    column sep=0.1em, row sep=0.5em] at (0,0) {
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet  \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet  \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet  \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \&  0  \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& 0  \& 0 \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& 0 \& 0 \& 0 \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& 0 \& 0 \& 0 \& 0 \& \bullet \& \bullet \& \bullet \& \bullet \\
+  \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& 0  \& 0 \& 0 \& 0 \& 0 \& \bullet \& \bullet \& \bullet \\
 };
 %% \draw[bkgndcr!90!txtcr,thick] (m-8-8.north west) rectangle (m-13-15.south east);
 %% \draw[bkgndcr!90!txtcr,thick] (m-9-9.north west) rectangle (m-13-15.south east);
@@ -51,26 +37,28 @@
 %% \draw[bkgndcr!90!txtcr,thick] (m-11-11.north west) rectangle (m-13-15.south east);
 %% \draw[bkgndcr!90!txtcr,thick] (m-12-12.north west) rectangle (m-13-15.south east);
 \end{tikzpicture}
-\sffamily%
-\flushleft%
-\scalebox{14}{Matrix}\\[1cm]%
-\scalebox{14}{Methods}\\[1cm]%
-%% \resizebox{\textwidth}{!}{Gaussian}\\[1cm]%
-%% \resizebox{\textwidth}{1.2in}{Elimination}\\[1cm]%
-\scalebox{4}{\itshape\,Linear Algebra, \`a la carte}%
-
+  \sffamily%
+  \flushleft%
+  \scalebox{11}{Matrix}\\[1cm]%
+  \scalebox{11}{Methods}\\[1cm]%
+  %% \resizebox{\textwidth}{!}{Gaussian}\\[1cm]%
+  %% \resizebox{\textwidth}{1.2in}{Elimination}\\[1cm]%
+  \scalebox{3}{\itshape\,Linear Algebra, \`a la carte}%
+  
 \vfill
 
 \begin{center}
-  \scalebox{4}{Fatheddin $\bullet$ Kim $\bullet$ Snapp}
+  \scalebox{3}{Fatheddin $\bullet$ Kim $\bullet$ Snapp}
 \end{center}
 \small This document was typeset on \today. \hfill \Large\textsf{\ccbyncsa}\\
 \small\texttt{GIT COMMIT: \input{.git/refs/heads/master}}\\
 \small Source: \texttt{https://github.com/mooculus/la-carte}\hfill developed in \textbf{XIMERA}
 
-\cleardoublepage
-
-%\pagestyle{main}
-
-
-\end{document}
+\clearpage
+\pagecolor{white}
+\color{black}
+\normalfont\unboldmath
+\tableofcontents\clearpage
+  \clearpage
+  \let\maketitle\othermaketitle
+}

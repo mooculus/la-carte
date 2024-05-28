@@ -138,7 +138,15 @@ or vertically.
   \end{explanation}
 \end{example}
 
-
+As mentioned in the previous chapter, matrices are used in image processing to improve the quality of digital images. Each image is first represented as an $(m \times n)$- matrix:
+\[
+f(x,y)= \left(\begin{array}{cccc}
+f(0,0) & f(0,1) & ... & f(0, n-1)\\
+f(1,0) & f(1,1) & ... & f(1, n-1)\\
+ . & . & . & . \\
+ f(m-1,0) & f(m-1,1) & ... & f(m-1,m-1)\end{array}\right)
+ \]
+ where each entry represents a pixel and gives information of the image in that block or area. If the image is black and white, one needs an ordered pair $(x,y)$ as in the matrix above with $x$ and $y$ characterizing the intensity of white and black in that pixel. Every color ranges from $0$ to $255$ with black assigned the number $0$ and white the number $255$. Colored images have three numbers given: red-green-blue (RGB) with intensity of each ranging from $0$ to $255$. Since each entry represents a part of the image, one can use matrix operations to manipulate the image. For example, matrix subtraction can be used to eliminate some part of the image. That is for instance, taking out the background or in medical imaging taking out the image of the bones or other distractions from the part that needs to be looked at. Scalar multiplication, $cA$, is used to change the intensity of the image: the higher the number $c$ the brighter the image will become since the highest number is $255$ and corresponds to color white. Interchanging some rows, for example moving the top rows to the bottom and the bottom rows to the top, can flip the image horizontally.
 
 \begin{example}[RGB Color Space]
   In an example in Chapter One, we mentioned an LED table lamp whose shades
@@ -336,9 +344,9 @@ If
 compute the following and write NA for each entry if the multiplication is not possible. \\
 
 a. $\vec{v} A$ \begin{prompt} \[=\begin{pmatrix}
-\answer[given]{NA}\\
-\answer[given]{NA}\\
-\answer[given]{NA}
+\answer[given][format= string]{NA}\\
+\answer[given][format= string]{NA}\\
+\answer[given][format= string]{NA}
 \end{pmatrix}\]
 \end{prompt}\\
 
@@ -354,7 +362,7 @@ c. $\vec{v}^{\transpose} A$ \begin{prompt} \[= \left(\begin{array}{ccc}
 \end{prompt}\\
 
 d. $A\vec{v}^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
-\answer[given]{NA} & \answer[given]{NA} & \answer[given]{NA}
+\answer[given][format= string]{NA} & \answer[given][format= string]{NA} & \answer[given][format= string]{NA}
 \end{array}\right)\]
 \end{prompt}
 \end{question}
@@ -876,7 +884,7 @@ In electrical engineering, networks are often used to analyze a system. A networ
 
 ......\\
 
-gives: 
+gives:
 \begin{eqnarray*}
 20 &=& x_{1} + 2x_{2} + 30\\
 x_{1} + 40 &=& x_{3}\\

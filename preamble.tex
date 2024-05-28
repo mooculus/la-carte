@@ -35,8 +35,14 @@
 
 
 
-
-
+%% https://texblog.net/latex-archive/maths/amsmath-matrix/
+%% allows \begin{pmatrix}[cc|c]
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
 
 
 

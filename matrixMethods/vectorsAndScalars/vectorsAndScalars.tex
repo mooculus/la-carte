@@ -50,7 +50,7 @@ or `duration,' summing might be meaningful. However, without
 \textbf{addition}al (pun intended!) stipulations, summing the types of
 quantities above is not meaningful. On the other hand, there are lots
 of times that it makes sense to add data. Data is represented by a
-\textit{vector} when it is resonable to add separate data points.
+\textit{vector} when it is reasonable to add separate data points.
 
 \begin{concept}[When it makes sense to add data]
 \begin{description}
@@ -229,19 +229,6 @@ row vectors, or column vectors, we can describe some general
 information about the vectors. In particular, we can think about their
 \textit{length} and their \textit{components}.
 
-\textcolor{red}{TK: I object to the following definition of the term
-  dimension below. The term has a very specific meaning in linear
-  algebra describing an attribute of a vector space, not of a
-  vector. In applied fields, it is commonly seen that the term
-  `length' of a vector is used to mean the number of its
-  components. Admittedly, some people find it confusing with the
-  notion of Euclidean length (the square root of sum of squares), but
-  it is easily remedied once the notion of vector norms are
-  introduced. It is okay for me that the course does not introduce
-  vector and matrix norms, but I prefer to see phrases such as
-  `n-dimensional vector' or `n-vector' to be introduced, instead of
-  the following definition.}
-
 \begin{definition}
 The \dfn{length} of a vector is the number of entries.  A vector of
 length $n$ can be called an $\boldsymbol n$\textbf{-vector}. Each
@@ -256,15 +243,19 @@ individual entry of a vector is called a \dfn{component}.
   \]
   \end{prompt}
 \end{question}
-
-
 When we express vectors as ordered tuples, row vectors, or column
 vectors we add them in a componentwise fashion.
 \begin{align*}
-  (1,2,3) + (4,5,6) & = \begin{pmatrix} 1+4 & 2+5 & 3+6   \end{pmatrix} = (5,7,9)\\
+  (1,2,3) + (4,5,6) &= (1+4 & 2+5 & 3+6)  = (5,7,9)\\
   \begin{pmatrix} 1 & 2 & 3   \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6   \end{pmatrix}&= \begin{pmatrix} 5 & 7 & 9   \end{pmatrix}\\
   \begin{pmatrix} 1\\ 2\\ 3   \end{pmatrix} + \begin{pmatrix} 4\\ 5\\ 6   \end{pmatrix} &= \begin{pmatrix} 5\\ 7\\ 9   \end{pmatrix}
 \end{align*}
+\begin{warning}
+  We may only add two vectors if they have the same length.
+\end{warning}
+
+
+
 
 We can also multiply vectors by a \dfn{scalar} (a number), by
 multiplying each component by the scalar.
@@ -275,8 +266,6 @@ multiplying each component by the scalar.
 \end{align*}
 Now that we know the basics, onto the examples!
 
-\section{Examples}
-
 
 \begin{example}[Population Counts] %https://worldpopulationreview.com/states/states-by-race
   The Midwest of the United States consists of $12$ states. We can
@@ -285,7 +274,7 @@ Now that we know the basics, onto the examples!
   of each state as a vector represented by an ordered tuple. The
   ordered tuple for Ohio looks like:
   \[
-  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\text{AfricanAmerican}}{1442655},\underset{\text{AmericanIndian}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866}).
+  \vec{p}_{\texttt{OH}} = (\underset{\text{White}}{9394878},\underset{\begin{smallmatrix}\text{\scriptsize African}\\ \text{\scriptsize American}\end{smallmatrix}}{1442655},\underset{\begin{smallmatrix}\text{\scriptsize Native}\\\text{\scriptsize American}\end{smallmatrix}}{20442},\underset{\text{Asian}}{268527},\underset{\text{Hawaiian}}{3907},\underset{\text{Other}}{544866}).
   \]
   The ordered tuples for each state in the Midwest looks like:
 \begin{align*}
@@ -562,5 +551,169 @@ hours, we use $3$ as a scalar to write (round to two decimal places).
 \end{enumerate}
 \end{explanation}
 \end{example}
+
+
+
+
+
+
+
+\section{The dot product}
+
+
+We have covered how to add and subtract vectors to get other vectors:
+\[
+\mathbf{vector} +\mathbf{vector} = \mathbf{vector}
+\]
+and how to multiply vectors by scalars to get other vectors:
+\[
+\mathbf{scalar}\cdot \mathbf{vector} = \mathbf{vector}.
+\]
+However, we \textbf{cannot directly multiply vectors of the same type}. 
+ \begin{warning}
+  There is no general way to ``multiply'' vectors of the same type and
+  have the resulting product be a reasonable vector also of that type.
+  You might think it is reasonable to define
+  \begin{center}
+\begin{tikzpicture}
+    \node at (0,0) {
+      $\begin{pmatrix}
+        a_1\\
+        a_2\\
+        \vdots\\
+        a_n
+      \end{pmatrix}
+      \cdot
+      \begin{pmatrix}
+        b_1\\
+        b_2\\
+        \vdots\\
+        b_n
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+        a_1b_1\\
+        a_2b_2\\
+        \vdots\\
+        a_nb_n
+      \end{pmatrix}$};
+    \draw[red, line width=5pt,opacity=.3] (-2,-1) -- (2,1);
+    \draw[red, line width=5pt,opacity=.3] (-2,1) -- (2,-1);
+\end{tikzpicture}
+  \end{center}
+but this operation is not especially useful, and will \textbf{never be
+  utilized in this course}.
+\end{warning}
+
+ Instead, we use the \textit{dot product}.
+
+ \begin{definition}
+  The \dfn{dot product} of two vectors is given by the following.
+  \begin{align*}
+  \begin{pmatrix}
+    a_1\\
+    a_2\\
+    \vdots\\
+    a_n
+  \end{pmatrix}
+  \dotp
+  \begin{pmatrix}
+    b_1\\
+    b_2\\
+    \vdots\\
+    b_n
+  \end{pmatrix}
+  &=\begin{pmatrix} a_1 & a_2 & \cdots & a_n\end{pmatrix}\dotp\begin{pmatrix} b_1 & b_2 & \cdots & b_n\end{pmatrix}\\
+  &= \sum_{i=1}^n a_ib_i\\
+  &= a_1b_1 + a_2b_2 +\dots+a_nb_n
+  \end{align*}
+\end{definition}
+
+The first thing you should notice about the the dot product is that
+\[
+\mathbf{vector}\dotp \mathbf{vector} = \mathbf{number}.
+\]
+\begin{question}
+  Compute:
+  \[
+  \begin{pmatrix}1 & 2 & 3\end{pmatrix}\dotp\begin{pmatrix}4 & 5 & 6\end{pmatrix}
+  \begin{prompt}
+    = \answer{32}
+  \end{prompt}
+  \]
+\end{question}
+
+\begin{question}
+  Compute:
+  \[
+  \begin{pmatrix}1\\1\\-1\end{pmatrix}\dotp\begin{pmatrix}1\\1\\2\end{pmatrix}
+  \begin{prompt}
+    = \answer{0}
+  \end{prompt}
+  \]
+\end{question}
+
+
+\begin{question}
+  Which of the following are vectors?
+  \begin{selectAll}
+    \choice[correct]{$(\vec{w} \dotp \vec{u} ) \vec{u}$}
+    \choice{$5(\vec{u} +\vec{w}) \dotp {\vec{u}}$}
+    \choice{$(2,3) \dotp (4,2) + 7$}
+    \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
+    \end{selectAll}
+\end{question}
+
+The dot product allows us to write some complicated formulas more simply.
+ 
+\begin{definition}
+  The \dfn{norm} (or magnitude) of vector $\vec{v}$ is given by
+  \[
+  \|\vec{v}\|=\sqrt{\vec{v}\dotp\vec{v}}
+  \]
+\end{definition}
+
+\begin{question}
+  Compute the norm of the vector $\vec{v} = (1,2,3,4)$.
+  \begin{prompt}
+    \[
+    \|\vec{v}\| = \answer{\sqrt{30}}
+    \]
+  \end{prompt}
+\end{question}
+When working with $2$-vectors whose entires are real numbers, say
+$\vec{v} = (x,y)$, we can intepret this data as ``displacement from
+the origin.''
+\begin{center}
+  \begin{tikzpicture}
+  \draw[->] (-1,0) -- (4,0);
+  \draw[->] (0,-1) -- (0,3);
+  \draw[->,ultra thick,penColor] (0,0) -- (3,2);
+  \node[below right,penColor] at (1.5,1) {$\vec{v}$}; %% <c,d>
+  \node[right,penColor] at (3,2) {$(x,y)$}; %% <c,d>
+\end{tikzpicture}
+\end{center}
+We can use the distance formula to find the displacement given by
+$\vec{v}$. Write:
+\begin{align*}
+  d &= \sqrt{\left(x-0\right)^{2} + \left(y-0\right)^{2}}\\
+  &= \sqrt{x^{2} + y^{2}}\\
+  &= \sqrt{\vec{v}\dotp\vec{v}}\\
+  &= \|\vec{v}\|
+\end{align*}
+We can place any vector, $\vec{v}= \left(\begin{array}{cccc}
+v_{1} & v_{2} & ... & v_{n}\end{array}\right)$ to start at the origin and find its length, denoted as $\|\vec{v}\|$, as
+\begin{eqnarray*}
+\|\vec{v}\|&=& \sqrt{\left(v_{1}-0\right)^{2} + \left(v_{2}-0\right)^{2} + ... + \left(v_{n}-0\right)^{2}}\\
+&=& \sqrt{v_{1}^{2} + v_{2}^{2} + ... + v_{n}^{2}}
+\end{eqnarray*}
+
+
+
+
+
+
+
+
 
 \end{document}

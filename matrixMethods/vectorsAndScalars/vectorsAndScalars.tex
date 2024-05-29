@@ -346,12 +346,12 @@ Now that we know the basics, onto the examples!
     \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
     \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
     \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
-    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}},
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
     \]
-  If the lamp is turned on, it initally shows\textcolor{blue}{take out comma here}\underline{,} red, then this fades to
-  yellow after one minute, then fades \textcolor{blue}{to} green after a minute more, and
-  so on. After $6$ minutes it is back to red. Color $\vec{c}_1$ fades
-  to $\vec{c}_2$ like the vector function $\vec{f}(t)$
+  If the lamp is turned on, it initally shows red, then this fades to
+  yellow after one minute, then fades to green after a minute more,
+  and so on. After $6$ minutes it is back to red. Color $\vec{c}_1$
+  fades to $\vec{c}_2$ like the vector function $\vec{f}(t)$
   \[
   \vec{f}(t) = \vec{c}_1+ t(\vec{c}_2 -\vec{c}_1)
   \]
@@ -462,17 +462,16 @@ Now that we know the basics, onto the examples!
 \end{center}
 
 So traveling North would be a (true) bearing of $0^\circ$, while
-traveling West would be a bearing of $270^\circ$. \textcolor{blue}{how many knots?}
-\link[knots]{https://en.wikipedia.org/wiki/Knot_(unit)}.
+traveling West would be a bearing of $270^\circ$. 
 \begin{enumerate}
 \item Suppose a plane starts at $(0,0)$ and its destination is reached
-  by following \textcolor{blue}{the} true bearing $280^\circ$ for $3$ hours at $125$ knots.
-  What are the coordinates of the plane's destination?
-\item Suppose the plane travels at $125$ by true bearing of $280^\circ$ for $3$ hours then the wind starts blowing and make it travel at $35$ knots in the true
-  bearing of $110^\circ$ for another $3$ hours. What are the coordinates of
-  the plane after these times?
-%% \item What course and speed should the pilot set to arrive at the
-%%   destination on-time?
+  by following the true bearing $280^\circ$ for $3$ hours at $125$
+  \link[knots]{https://en.wikipedia.org/wiki/Knot_(unit)}.  What are
+  the coordinates of the plane's destination?
+\item Now suppose on a different day, the plane flies a the same true
+  bearing and speed, but now there is a constant wind at $35$ knots in
+  the true bearing of $110^\circ$. What are the coordinates of the
+  plane after $3$ hours?
 \end{enumerate}
 
 \begin{explanation}
@@ -486,7 +485,7 @@ cartesian coordinates by writing:
 \]
 Armed with this, we are ready to solve the problem.
 \begin{enumerate}
-\item  Converting the plane\textcolor{blue}{'s} bearing and speed to a vector in cartesian
+\item  Converting the plane's true bearing and speed to a vector in cartesian
   coordinates, we have
   \[
   \vec{p} = \begin{pmatrix}125\cdot \sin(280^\circ)\\ 125 \cdot \cos(280^\circ)\end{pmatrix}
@@ -633,6 +632,7 @@ The first thing you should notice about the the dot product is that
 \[
 \mathbf{vector}\dotp \mathbf{vector} = \mathbf{number}.
 \]
+You can think of the dot product as measuring ``how aligned'' two vectors are.
 \begin{question}
   Compute:
   \[
@@ -652,6 +652,13 @@ The first thing you should notice about the the dot product is that
   \end{prompt}
   \]
 \end{question}
+When the dot product is zero, it means that the vectors are independent of each other.
+
+\begin{definition}
+  Two vectors are called \dfn{orthogonal} if the the dot product of
+  these vectors is zero.
+\end{definition}
+
 
 
 \begin{question}
@@ -713,11 +720,42 @@ or ``Euclidean length'' of this vector. This concept allows us to
 ``normalize'' vectors and hence data in general.
 
 
-UNIT VECTOR SUFF
+\begin{definition}
+  A vector $\vec{u}$ is called a \dfn{unit vector} if
+  \[
+  \|\vec{u}\| = 1
+  \]
+\end{definition}
 
 
 
 
+
+
+We summarize the arithmetic and algebraic properties of the dot
+product below.
+\begin{theorem}
+  The following are true for all scalars $s$ and vectors
+  $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $\R^n$.
+  \begin{description}
+  \item[Commutativity:] $\vec{v} \dotp \vec{w} = \vec{w} \dotp
+    \vec{v}$
+  \item[Linear in first argument:] $(\vec{u}+\vec{v})\dotp \vec{w} = \vec{u}\dotp \vec{w} +
+    \vec{v}\dotp \vec{w}$ and $(s\vec{v})\dotp \vec{w} = s(\vec{v}
+    \dotp \vec{w})$
+  \item[Linear in second argument:] $\vec{u} \dotp (\vec{v}+\vec{w}) = \vec{u}\dotp \vec{v}+
+    \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
+    \dotp \vec{w})$
+  \item[Relation to norm:] $\vec{v} \dotp \vec{v} = \|\vec{v}\|^2$
+  \item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
+    $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
+  \end{description}
+\end{theorem}
+ 
+Instead of defining the dot product by a formula, we could have
+defined it by the properties above!  While this is common practice in
+mathematics, the process is a bit abstract and is perhaps beyond the scope of
+this course. 
 
 
 \end{document}

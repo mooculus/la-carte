@@ -83,19 +83,23 @@ of times that it makes sense to add data. Data is represented by a
 \end{description}
 \end{concept}
 
-Mathematician's have a special word to denote data your able to resonably add: \textit{vectors}.
-
 
 
 \section{Vectors, adding and scaling}
 
 
-Often when it makes sense to \textit{add} quantities, it makes sense
-to \textit{scale} them as well. For example, with respect to
-populations, you could ask what is $3$ times or half of the population
-of a city. In a similar way, \textit{scaling} makes sense for all the
-examples above where it makes sense to add data. Regular old numbers
-used to scale vectors are called \textit{scalars}.
+Often when it makes sense to \textit{add} quantities, it also makes
+sense to \textit{scale} them. For example, if we consider the
+populations of cities, say Columbus, Ohio; Minneapolis, Minnesota; and
+Chicago, Illinois, it is meaningful to say things like
+\begin{itemize}
+\item The population of Minneapolis is \textit{half-of} the population of Columbus.
+\item The population of Chicago is \textit{three times} the population of Columbus.
+\end{itemize}
+In a similar way, \textit{scaling} makes sense for the other examples
+above: Financial Transactions, RGB Color Space, and Navigation. When
+we ``scale'' vectors (data) by numbers, we call these numbers
+\textit{scalars}.
 
 \begin{definition}
   We say data is represented by \dfn{vectors} $\vec{v}$ and $\vec{w}$
@@ -115,9 +119,9 @@ used to scale vectors are called \textit{scalars}.
 
 These informal definitions of vectors and scalars in fact contain the
 \textit{essence} of the concept of a \textit{vector space}. If this
-seems too abstract, I assure you that we will be giving some very
-concrete examples all along the way. However, before we start, we need
-to give some notation for vectors.
+seems too abstract, I assure you that we will be giving concrete
+examples all along the way. At this point we need to give some
+notation for vectors.
 
 \begin{concept}[Ways data can be stored as a vector]
 \begin{description}
@@ -206,10 +210,8 @@ with many entries.
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
-  We read the first equality as ``the transpose of the row vector $1$,
-  $2$, $3$ is the column vector $1$, $2$, $3$.''  Thus, we can use the
-  transpose to switch from a row vector to a column vector and vice
-  versa as the second equality above shows.
+  We read the first equality as ``the transpose of the row (column) vector $1$,
+  $2$, $3$ is the column (row) vector $1$, $2$, $3$.'' 
 \end{definition}
 
 
@@ -225,7 +227,7 @@ with many entries.
 Once we have data represented as vectors encoded as ordered tuples,
 row vectors, or column vectors, we can describe some general
 information about the vectors. In particular, we can think about their
-\textit{dimension} and their \textit{components}.
+\textit{length} and their \textit{components}.
 
 \textcolor{red}{TK: I object to the following definition of the term
   dimension below. The term has a very specific meaning in linear
@@ -241,15 +243,16 @@ information about the vectors. In particular, we can think about their
   the following definition.}
 
 \begin{definition}
-The \dfn{dimension} of a vector is the number of entries. Each
+The \dfn{length} of a vector is the number of entries.  A vector of
+length $n$ can be called an $\boldsymbol n$\textbf{-vector}. Each
 individual entry of a vector is called a \dfn{component}.
 \end{definition}
 
 \begin{question}
-  What is the dimension of the vector $\vec{p}_{\texttt{OH}}$?
+  What is the length of the vector $\vec{p}_{\texttt{OH}}$?
   \begin{prompt}
   \[
-  \text{Dimension} = \answer{6}
+  \text{Length} = \answer{6}
   \]
   \end{prompt}
 \end{question}

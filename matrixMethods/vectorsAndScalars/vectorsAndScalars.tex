@@ -681,7 +681,7 @@ The dot product allows us to write some complicated formulas more simply.
     \]
   \end{prompt}
 \end{question}
-When working with $2$-vectors whose entires are real numbers, say
+When working with a $2$-vector whose entires are real numbers, say
 $\vec{v} = (x,y)$, we can intepret this data as ``displacement from
 the origin.''
 \begin{center}
@@ -697,19 +697,22 @@ We can use the distance formula to find the displacement given by
 $\vec{v}$. Write:
 \begin{align*}
   d &= \sqrt{\left(x-0\right)^{2} + \left(y-0\right)^{2}}\\
-  &= \sqrt{x^{2} + y^{2}}\\
+  &= \sqrt{x^{2} + y^{2}}
+\end{align*}
+But this last line is equal to:
   &= \sqrt{\vec{v}\dotp\vec{v}}\\
   &= \|\vec{v}\|
 \end{align*}
-We can place any vector, $\vec{v}= \left(\begin{array}{cccc}
-v_{1} & v_{2} & ... & v_{n}\end{array}\right)$ to start at the origin and find its length, denoted as $\|\vec{v}\|$, as
-\begin{eqnarray*}
-\|\vec{v}\|&=& \sqrt{\left(v_{1}-0\right)^{2} + \left(v_{2}-0\right)^{2} + ... + \left(v_{n}-0\right)^{2}}\\
-&=& \sqrt{v_{1}^{2} + v_{2}^{2} + ... + v_{n}^{2}}
-\end{eqnarray*}
+Hence we see that if we have a $2$-vector $\vec{v}$ (in fact any
+$n$-vector) whose entires are real numbers, we can intepret
+\[
+\|\vec{v}\| = \text{The geometric displacement} 
+\]
+or ``Euclidean length'' of this vector. This concept allows us to
+``normalize'' vectors and hence data in general.
 
 
-
+UNIT VECTOR SUFF
 
 
 

@@ -1,14 +1,15 @@
 \usepackage{pagecolor}
-\definecolor{bkgndcr}{rgb}{0,0,0}
-\definecolor{txtcr}{rgb}{1,1,1}
-
+\makeatletter
+\definecolor{bkgndcr}{rgb}{1,1,1}
+\definecolor{txtcr}{rgb}{0,0,0}
+\ifcolor
 \definecolor{bkgndcr}{RGB}{0,20, 0}
 \definecolor{txtcr}{RGB}{100, 200, 255}
-\makeatletter
+\fi
 \let\othermaketitle\maketitle
 \renewcommand{\maketitle}{
   \pagestyle{empty}
-  \newgeometry{hmargin={.5in,.5in},vmargin={.5in,.5in}}
+  \newgeometry{hmargin={.5in,.5in},vmargin={.2in,.5in}}
   \pagecolor{bkgndcr}
   \boldmath % Makes all math text bold
   \bfseries % Makes all text bold
@@ -30,14 +31,13 @@
       \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& 0 \& 0 \& 0 \& 0 \& \bullet \& \bullet \& \bullet \& \bullet \\
       \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& \bullet \& 0  \& 0 \& 0 \& 0 \& 0 \& \bullet \& \bullet \& \bullet \\
 };
-  \end{tikzpicture}
-    \sffamily%
-  \flushleft%
-  \scalebox{11}{Matrix}\\[1cm]%
-  \scalebox{11}{Methods}\\[1cm]%
-  %% \resizebox{\textwidth}{!}{Gaussian}\\[1cm]%
-  %% \resizebox{\textwidth}{1.2in}{Elimination}\\[1cm]%
-  \scalebox{3}{\itshape\,Linear Algebra, \`a la carte}%
+  \end{tikzpicture}\sffamily\flushleft%
+  %% \scalebox{11}{Matrix}\\[1cm]%
+  %% \scalebox{11}{Methods}\\[1cm]%
+  \scalebox{9}{Data}\\[.6cm]%
+  \scalebox{9}{Matrices}\\[.6cm]%
+  \scalebox{9}{Equations}\\[0cm]%
+  \hfill\scalebox{2}{\itshape\,Linear Algebra, \`a la carte}%
   \vfill
   \begin{center}
     \scalebox{3}{Fatheddin $\bullet$ Kim $\bullet$ Snapp}

@@ -25,19 +25,20 @@ perspective adopted, the determinant is a tool which extracts a
 representative number that conveys a special kind of information about a
 given matrix or the set of its constituent vectors.
 
-The chapter begins mildly with the determinant of the simplest
-$2 \times 2$ matrices and study its various properties both in algebraic
-and geometric terms. These properties are then shown to extend to
-higher dimensions. Different methods of calculation the determinant of
-general $n \times n$ matrices are introduced. The connection between the
-row operations studied in a previous chapter is presented
+% COME BACK AND REWIRTE THIS PARAGRAPH
+The chapter begins mildly with the determinant of the simple
+$2 \times 2$ and $3 \times 3$ matrices and study its various properties both in
+algebraic and geometric terms. These properties are then shown to
+extend to higher dimensions. Different methods of calculation the
+determinant of general $n \times n$ matrices are introduced. The connection
+between the row operations studied in a previous chapter is presented
 afterward. The chapter concludes by showing how to interpret the
 determinant of a matrix, both when it is viewed as a data and as a
 transformation.
 
-\section{The determinant of $2 \times 2$ matrices}
+\section{The determinant of small matrices}
 
-\begin{definition}\label{defn:det-2by2}
+\begin{definition}
   The \dfn{determinant} of a $2 \times 2$ matrix $\begin{pmatrix} a & b \\
     c & d \end{pmatrix}$ is given by
   \[
@@ -87,34 +88,38 @@ the product of diagonal terms and the product of anti-diagonal terms.
   \end{tikzpicture}
 \end{image}
 
-% \begin{image}[1in]
-%   \begin{tikzpicture}
-%     \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,%column sep=.1em,
-%     nodes={text height=1ex,text width=2ex}]
-%     {
-%       a \& c \\
-%       b \& d \\
-%     };
-%     \draw[thick] (mtrx-1-1.north) -| (mtrx-2-1.south west)
-%     -- (mtrx-2-1.south);
-%     \draw[thick] (mtrx-1-2.north) -| (mtrx-2-2.south east)
-%     -- (mtrx-2-2.south);
-%     \draw[ultra thick,red!20!white,->]
-%     (mtrx-1-2.center) -- (mtrx-2-1.center);
-%     \draw[draw,ultra thick,blue!20!white,->]
-%     (mtrx-1-1.center)  --  (mtrx-2-2.center);
-%     \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,nodes={text height=1ex,text width=2ex}]
-%     {
-%       a \& c\\
-%       b \& d\\
-%     };
-%     \node at (0,-.7) {${\color{blue!50!black}ad}-{\color{red!50!black}bc}$};
-%   \end{tikzpicture}
-% \end{image}
+
+\begin{question}
+  Let
+  \[
+    A =                         % base matrix
+    \begin{pmatrix}
+      1 & 3 \\ -2 & 2
+    \end{pmatrix}, \quad
+    B =                         % rows swapped from the base
+    \begin{pmatrix}
+      -2 & 2 \\ 1 & 3
+    \end{pmatrix}, \quad
+    C =                         % 2nd row is multiple of 1st
+    \begin{pmatrix}
+      1 & 3 \\ 3 & 9
+    \end{pmatrix}, \quad
+    D =                         % triangular
+    \begin{pmatrix}
+      1 & 3 \\ 0 & 2
+    \end{pmatrix}
+  \]
+  Compute the following determinants.
+  \begin{enumerate}
+  \item $\det(A) = \answer{8}$
+  \item $\det(B) = \answer{-8}$
+  \item $\det(C) = \answer{0}$
+  \item $\det(D) = \answer{2}$
+  \end{enumerate}
+\end{question}
 
 % Why would anyone ever be interested in this? Well to start, given nonzero vectors
 
-\subsection{Geometric interpretation}
 To gain a geometric insight behind this definition, consider the
 parallelogram spanned by two row vectors
 \[
@@ -229,6 +234,281 @@ and this is
   \end{pmatrix}.
 \end{align*}
 
+\begin{question}
+  Let $A(5,1)$ and $B(1,4)$ be two points in the plane as shown below. Find
+  the area of the triangle $\triangle OAB$ using determinant.
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[step=1cm,lightgray,very thin] (-0.5,-0.5) grid (6.5,5.5);
+      \draw[->,thin] (-0.5,0) -- (6.5,0) node[right] {$x$};
+      \draw[->,thin] (0,-0.5) -- (0,5.5) node[above] {$y$};
+      \filldraw[fill=fill1!50!white,draw=penColor]
+      (0, 0) -- ++(5,1) -- ++(-4,3) -- cycle;
+      \node[below left] at (0,0) {$O(0,0)$};
+      \node[right,fill=white] at (5,1) {$A(5,1)$};
+      \node[above,fill=white] at (1,4) {$B(1,4)$};
+    \end{tikzpicture}
+  \end{center}
+\end{question}
+
+Moving on to the next dimension:
+% \begin{definition}
+%   Given a $3\times 3$ matrix, the \dfn{determinant} is denoted by the following.
+%   \[
+%   \det\begin{pmatrix}
+%   a_1 &  a_2 & a_3 \\
+%   b_1 &  b_2 & b_3 \\
+%   c_1 &  c_2 & c_3
+%   \end{pmatrix}
+%   =
+%   \begin{vmatrix}
+%     a_1 &  a_2 & a_3 \\
+%     b_1 &  b_2 & b_3 \\
+%     c_1 &  c_2 & c_3
+%   \end{vmatrix}
+%   \]
+%   The determinant can be computed using the following pattern.
+%   %\begin{image}[3in]
+%   \begin{center}
+% \begin{tikzpicture}
+% \node at (0,0) {$\det
+% \begin{pmatrix}
+%   a_1 & a_2 & a_3\\
+%   b_1 & b_2 & b_3\\
+%   c_1 & c_2 & c_3
+% \end{pmatrix}
+% = a_1
+% \begin{vmatrix}
+%   b_2 & b_3\\
+%   c_2 & c_3
+% \end{vmatrix}
+% -a_2
+% \begin{vmatrix}
+%   b_1 & b_3\\
+%   c_1 & c_3
+% \end{vmatrix}
+% +a_3
+% \begin{vmatrix}
+%   b_1 & b_2\\
+%   c_1 & c_2
+% \end{vmatrix}$};
+
+% \draw[ultra thick,->,gray] (-.27,-1.3) -- (-.27,-.7);
+% \draw[ultra thick,->,gray] (1.76,-1.3) -- (1.76,-.7);
+% \draw[ultra thick,->,gray] (3.8,-1.3) -- (3.8,-.7);
+
+% \node at (-.27,-2) {\scalebox{.7}{
+%     $\begin{pmatrix}
+%       a_1 & \bullet & \bullet\\
+%       \bullet & b_2 & b_3\\
+%       \bullet & c_2 & c_3
+%     \end{pmatrix}$}};
+
+% \node at (1.76,-2) {\scalebox{.7}{
+%     $\begin{pmatrix}
+%       \bullet & a_2 & \bullet\\
+%       b_1 & \bullet & b_3\\
+%       c_1 & \bullet & c_3
+%     \end{pmatrix}$}};
+
+% \node at (3.8,-2) {\scalebox{.7}{
+%     $\begin{pmatrix}
+%       \bullet & \bullet & a_3\\
+%       b_1 & b_2 & \bullet\\
+%       c_1 & c_2 & \bullet
+%     \end{pmatrix}$}};
+% \end{tikzpicture}
+% \end{center}
+% %\end{image}
+% This equals
+% \[
+%  a_1(b_2c_3-b_3c_2)- a_2(b_1c_3-b_3c_1)+ a_3(b_1c_2-b_2c_1).
+% \]
+% \end{definition}
+
+\begin{definition}
+  The \dfn{determinant} of a $3 \times 3$ matrix is given by
+  \begin{align*}
+    \det
+    \begin{pmatrix}
+      a_1 &  a_2 & a_3 \\
+      b_1 &  b_2 & b_3 \\
+      c_1 &  c_2 & c_3
+    \end{pmatrix}
+    & =
+      a_1 \det
+      \begin{pmatrix}
+        b_2 & b_3 \\
+        c_2 & c_3
+      \end{pmatrix}
+      - a_2 \det
+      \begin{pmatrix}
+        b_1 & b_3 \\
+        c_1 & c_3
+      \end{pmatrix}
+      + a_3 \det
+      \begin{pmatrix}
+        b_1 & b_2 \\
+        c_1 & c_2
+      \end{pmatrix} \\
+          & = a_1(b_2c_3 - b_3c_2) - a_2(b_1c_3 - b_3c_1) + a_3(b_1c_2 - b_2c_1).
+  \end{align*}
+\end{definition}
+
+Note that the determinant of a $3 \times 3$ matrix is related to the
+determinants of three $2 \times 2$ matrices, each of which is obtained
+from the original matrix by removing the first row and a column at a
+time. Such smaller matrices are called \textit{minor matrices} (of the
+given matrix).
+
+\begin{center}
+  \begin{tikzpicture}
+    \node at (0,0) {$\det
+      \begin{pmatrix}
+        a_1 & a_2 & a_3\\
+        b_1 & b_2 & b_3\\
+        c_1 & c_2 & c_3
+      \end{pmatrix}
+      = a_1
+      \begin{vmatrix}
+        b_2 & b_3\\
+        c_2 & c_3
+      \end{vmatrix}
+      -a_2
+      \begin{vmatrix}
+        b_1 & b_3\\
+        c_1 & c_3
+      \end{vmatrix}
+      +a_3
+      \begin{vmatrix}
+        b_1 & b_2\\
+        c_1 & c_2
+      \end{vmatrix}$};
+
+    \draw[ultra thick,->,gray] (-.27,-1.3) -- (-.27,-.7);
+    \draw[ultra thick,->,gray] (1.76,-1.3) -- (1.76,-.7);
+    \draw[ultra thick,->,gray] (3.8,-1.3) -- (3.8,-.7);
+
+    \node at (-.27,-2) {\scalebox{.7}{
+        $\begin{pmatrix}
+          a_1 & \bullet & \bullet\\
+          \bullet & b_2 & b_3\\
+          \bullet & c_2 & c_3
+        \end{pmatrix}$}};
+
+    \node at (1.76,-2) {\scalebox{.7}{
+        $\begin{pmatrix}
+          \bullet & a_2 & \bullet\\
+          b_1 & \bullet & b_3\\
+          c_1 & \bullet & c_3
+        \end{pmatrix}$}};
+
+    \node at (3.8,-2) {\scalebox{.7}{
+        $\begin{pmatrix}
+          \bullet & \bullet & a_3\\
+          b_1 & b_2 & \bullet\\
+          c_1 & c_2 & \bullet
+        \end{pmatrix}$}};
+  \end{tikzpicture}
+\end{center}
+
+Note also the alternation of signs from term to term. The determinants
+of minor matrices with alternating signs are called the
+\textit{cofactors} (of the given matrix).
+
+Because of these, the formula for the determinant given above is often
+called the \textit{cofactor expansion} or the \textit{Laplace
+  expansion}, where the coefficients are the elements of the first
+row. Incidentally, the determinant can also be computed using the
+entries of the first column as coefficients. See below for the
+illustration of this alternate method.
+
+
+The idea of cofactor expansion nicely extends to handle the
+computation of the determinant of a general $n \times n$ matrix, for any
+positive integer $n$.
+
+Another way to carry out this computation to follow the \textit{rule of
+Sarrus}:
+%% Commented because this is not a particularly useful method in this course.
+%% %% Credit for the following image goes to
+%% %% http://tex.stackexchange.com/a/257063
+\begin{image}
+  \begin{tikzpicture}
+    \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
+            {
+              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
+              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
+              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
+            };
+            \matrix (mtrx3)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}] at (5,0)
+            {
+              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
+              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
+              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
+            };
+            \draw[thick] (mtrx-1-1.north) -| (mtrx-3-1.south west)
+            -- (mtrx-3-1.south);
+            \draw[thick] (mtrx-1-3.north) -| (mtrx-3-3.south east)
+            -- (mtrx-3-3.south);
+            \draw[ultra thick,red!20!white,->]
+            (mtrx3-3-1.center) edge (mtrx3-1-3.center)
+            (mtrx3-3-2.center) edge (mtrx3-1-4.center)
+            (mtrx3-3-3.center)  --  (mtrx3-1-5.center);
+            \draw[draw,ultra thick,blue!20!white,->]
+            (mtrx-1-1.center) edge (mtrx-3-3.center)
+            (mtrx-1-2.center) edge (mtrx-3-4.center)
+            (mtrx-1-3.center)  --  (mtrx-3-5.center);
+            \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
+            {
+              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
+              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
+              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
+            };
+            \matrix (mtrx4)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}] at (5,0)
+            {
+              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
+              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
+              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
+            };
+            \draw[thick] (mtrx4-1-1.north) -| (mtrx4-3-1.south west)
+            -- (mtrx4-3-1.south);
+            \draw[thick] (mtrx4-1-3.north) -| (mtrx4-3-3.south east)
+            -- (mtrx4-3-3.south);
+            \node at (2.5,-1) {${\color{blue!50!black}a_1b_2c_3}+{\color{blue!50!black}a_2b_3c_1}+{\color{blue!50!black}a_3b_1c_2}-{\color{red!50!black}a_3b_2c_1}-{\color{red!50!black}a_1b_3c_2}-{\color{red!50!black}a_2b_1c_3}$};
+            \node at (0,1) {{\color{blue!50!black}positive terms}};
+            \node at (5,1) {{\color{red!50!black}negative terms}};
+  \end{tikzpicture}
+\end{image}
+
+The idea is to attach the first two columns of the given matrix to the
+right of the third column, then to add the products of the down-right
+diagonals (blue  arrows), then to subtract the products of the
+up-right diagonals (red arrows).
+
+\begin{remark}
+  The rule of Sarrus only works for $3 \times 3$ matrices.
+\end{remark}
+
+
+
+\begin{question}
+  Compute the following using either the definition or the rule of Sarrus.
+  \[
+  \det
+  \begin{pmatrix}
+    1 & 4 & 7\\
+    2 & 5 & 8\\
+    3 & 6 & 9\\
+  \end{pmatrix}
+  \begin{prompt}
+    = \answer{0}
+  \end{prompt}
+  \]
+\end{question}
+
+
+
 \subsection{Fundamental properties of the determinant}
 Here we present some fundamental properties of the determinant of
 $2 \times 2$ matrices. These properties are described as
@@ -286,7 +566,7 @@ north) lies counterclockwise from the first vector
 $\vec{e}_1^\transpose$ (facing due east), so the area is indeed
 endowed with the positive sign.
 
-\begin{image}[2in]
+\begin{image}[0.4\textwidth]
   \begin{tikzpicture}
     \draw[fill=fill1!50!white,draw=none]
     (0, 0)                      % starting point
@@ -375,7 +655,7 @@ of the area, while keeping the magnitude unchanged.
 An interesting and useful consequence of the sign reversal property is
 that the determinant of a matrix with two identical rows is zero.
 
-\begin{proposition}[Multilinearity]
+\begin{proposition}[Linear in each row]
   The determinant is a linear function of each row while other rows
   are held fixed.
 \end{proposition}
@@ -451,7 +731,7 @@ scaled by the factor of $k$.
 
     % labels
     \node[below,penColor] at (1,-0.1) {$\vec{v}$};
-    \node[below,penColor4] at (5,-0.1) {$3\vec{v}$};
+    \node[below,penColor4] at (5,-0.1) {$k\vec{v}$};
     \node[left,penColor2] at (1.2,2.5) {$\vec{w}$};
   \end{tikzpicture}
 \end{image}
@@ -520,266 +800,25 @@ add up to the area of the parallelogram outlined by dotted lines.
   \end{tikzpicture}
 \end{image}
 
-% We leave to the readers the illustration of the other property, namely,
-% \[
-%   \det
-%   \begin{pmatrix}
-%     \vec{v}_1 + \vec{v}_2 \\ \vec{w}
-%   \end{pmatrix}
-%   = \det
-%   \begin{pmatrix}
-%     \vec{v}_1 \\ \vec{w}
-%   \end{pmatrix}
-%   + \det
-%   \begin{pmatrix}
-%     \vec{v}_2 \\ \vec{w}
-%   \end{pmatrix}.
-% \]
 
+\subsection{The determinant in higher dimensions}
+The three properties of the determinant previously presented, namely
+\begin{itemize}
+\item the determinant of the identity matrix is 1;
+\item the determinant changes signs when two rows are interchanged;
+\item the determinant is linear in each row while others are held fixed;
+\end{itemize}
+are so fundamental that in an abstract and rigorous setting the
+determinant is defined as the unique function satisfying the above
+three properties. This requires that the existence and the uniqueness
+of a function satisfying these properties must be established. We
+direct readers who are interested in these theoretical matters to
+advanced linear algebra textbooks such as Hoffman and Kunze.
 
-%% COME BACK HERE AND FINISH --------------------
-Moving on to the next dimension:
-\begin{definition}
-  The \dfn{determinant} of a $3 \times 3$ matrix is given by
-  \begin{align*}
-    \det\begin{pmatrix}
-      a_1 &  b_1 & c_1 \\
-      a_2 &  b_2 & c_2 \\
-      a_3 &  b_3 & c_3
-    \end{pmatrix}
-    & =
-      a_1 \det
-      \begin{pmatrix}
-        b_2 & c_2 \\
-        b_3 & c_3
-      \end{pmatrix}
-      - a_2 \det
-      \begin{pmatrix}
-        b_1 & c_1 \\
-        b_3 & c_3
-      \end{pmatrix}
-      + a_3 \det
-      \begin{pmatrix}
-        b_1 & c_1 \\
-        b_2 & c_2
-      \end{pmatrix} \\
-          & = a_1(b_2c_3 - b_3c_2) - a_2(b_1c_3 - b_3c_1) + a_3(b_1c_2 - b_2c_1).
-  \end{align*}
-\end{definition}
-
-
-One thing to note is that the determinant of a $3 \times 3$ matrix is
-defined in terms of determinants of smaller $2 \times 2$ matrices. Note
-that each of the three $2 \times 2$ matrices is obtained from the original
-matrix by removing the first column and a row at a time. Such matrices
-are called \textit{minor matrices} (of the given matrix).
-
-Note also the alternation of signs from term to term. The determinants
-of minor matrices with alternating signs are called the \textit{cofactors} (of
-the given matrix).
-
-Because of these, the formula for the determinant given above is often
-called the \textit{cofactor expansion}, where the coefficients are the
-elements of the first column. Incidentally, the determinant can also
-be computed using the entries of the first row as coefficients. See
-below for the illustration of this alternate method.
-
-  \begin{center}
-    \begin{tikzpicture}
-      \node at (0,0) {$\det
-        \begin{pmatrix}
-          a_1 & a_2 & a_3\\
-          b_1 & b_2 & b_3\\
-          c_1 & c_2 & c_3
-        \end{pmatrix}
-        = a_1
-        \begin{vmatrix}
-          b_2 & b_3\\
-          c_2 & c_3
-        \end{vmatrix}
-        -a_2
-        \begin{vmatrix}
-          b_1 & b_3\\
-          c_1 & c_3
-        \end{vmatrix}
-        +a_3
-        \begin{vmatrix}
-          b_1 & b_2\\
-          c_1 & c_2
-        \end{vmatrix}$};
-
-      \draw[ultra thick,->,gray] (-.27,-1.3) -- (-.27,-.7);
-      \draw[ultra thick,->,gray] (1.76,-1.3) -- (1.76,-.7);
-      \draw[ultra thick,->,gray] (3.8,-1.3) -- (3.8,-.7);
-
-      \node at (-.27,-2) {\scalebox{.7}{
-          $\begin{pmatrix}
-            a_1 & \bullet & \bullet\\
-            \bullet & b_2 & b_3\\
-            \bullet & c_2 & c_3
-          \end{pmatrix}$}};
-
-      \node at (1.76,-2) {\scalebox{.7}{
-          $\begin{pmatrix}
-            \bullet & a_2 & \bullet\\
-            b_1 & \bullet & b_3\\
-            c_1 & \bullet & c_3
-          \end{pmatrix}$}};
-
-      \node at (3.8,-2) {\scalebox{.7}{
-          $\begin{pmatrix}
-            \bullet & \bullet & a_3\\
-            b_1 & b_2 & \bullet\\
-            c_1 & c_2 & \bullet
-          \end{pmatrix}$}};
-    \end{tikzpicture}
-  \end{center}
-
-  The idea of cofactor expansion nicely extends to handle the
-  computation of the determinant of a general $n \times n$ matrix, for any
-  positive integer $n$.
-
-% \begin{definition}
-%   Given a $3\times 3$ matrix, the \dfn{determinant} is denoted by the following.
-%   \[
-%   \det\begin{pmatrix}
-%   a_1 &  a_2 & a_3 \\
-%   b_1 &  b_2 & b_3 \\
-%   c_1 &  c_2 & c_3
-%   \end{pmatrix}
-%   =
-%   \begin{vmatrix}
-%     a_1 &  a_2 & a_3 \\
-%     b_1 &  b_2 & b_3 \\
-%     c_1 &  c_2 & c_3
-%   \end{vmatrix}
-%   \]
-%   The determinant can be computed using the following pattern.
-%   %\begin{image}[3in]
-%   \begin{center}
-% \begin{tikzpicture}
-% \node at (0,0) {$\det
-% \begin{pmatrix}
-%   a_1 & a_2 & a_3\\
-%   b_1 & b_2 & b_3\\
-%   c_1 & c_2 & c_3
-% \end{pmatrix}
-% = a_1
-% \begin{vmatrix}
-%   b_2 & b_3\\
-%   c_2 & c_3
-% \end{vmatrix}
-% -a_2
-% \begin{vmatrix}
-%   b_1 & b_3\\
-%   c_1 & c_3
-% \end{vmatrix}
-% +a_3
-% \begin{vmatrix}
-%   b_1 & b_2\\
-%   c_1 & c_2
-% \end{vmatrix}$};
-
-% \draw[ultra thick,->,gray] (-.27,-1.3) -- (-.27,-.7);
-% \draw[ultra thick,->,gray] (1.76,-1.3) -- (1.76,-.7);
-% \draw[ultra thick,->,gray] (3.8,-1.3) -- (3.8,-.7);
-
-% \node at (-.27,-2) {\scalebox{.7}{
-%     $\begin{pmatrix}
-%       a_1 & \bullet & \bullet\\
-%       \bullet & b_2 & b_3\\
-%       \bullet & c_2 & c_3
-%     \end{pmatrix}$}};
-
-% \node at (1.76,-2) {\scalebox{.7}{
-%     $\begin{pmatrix}
-%       \bullet & a_2 & \bullet\\
-%       b_1 & \bullet & b_3\\
-%       c_1 & \bullet & c_3
-%     \end{pmatrix}$}};
-
-% \node at (3.8,-2) {\scalebox{.7}{
-%     $\begin{pmatrix}
-%       \bullet & \bullet & a_3\\
-%       b_1 & b_2 & \bullet\\
-%       c_1 & c_2 & \bullet
-%     \end{pmatrix}$}};
-% \end{tikzpicture}
-% \end{center}
-% %\end{image}
-% This equals
-% \[
-%  a_1(b_2c_3-b_3c_2)- a_2(b_1c_3-b_3c_1)+ a_3(b_1c_2-b_2c_1).
-% \]
-% \end{definition}
-
-Another way to conceptualize this computation is the following:
-%% Commented because this is not a particularly useful method in this course.
-%% %% Credit for the following image goes to
-%% %% http://tex.stackexchange.com/a/257063
-\begin{image}
-  \begin{tikzpicture}
-    \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
-            {
-              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
-              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
-              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
-            };
-            \matrix (mtrx3)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}] at (5,0)
-            {
-              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
-              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
-              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
-            };
-            \draw[thick] (mtrx-1-1.north) -| (mtrx-3-1.south west)
-            -- (mtrx-3-1.south);
-            \draw[thick] (mtrx-1-3.north) -| (mtrx-3-3.south east)
-            -- (mtrx-3-3.south);
-            \draw[ultra thick,red!20!white,->]
-            (mtrx3-3-1.center) edge (mtrx3-1-3.center)
-            (mtrx3-3-2.center) edge (mtrx3-1-4.center)
-            (mtrx3-3-3.center)  --  (mtrx3-1-5.center);
-            \draw[draw,ultra thick,blue!20!white,->]
-            (mtrx-1-1.center) edge (mtrx-3-3.center)
-            (mtrx-1-2.center) edge (mtrx-3-4.center)
-            (mtrx-1-3.center)  --  (mtrx-3-5.center);
-            \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
-            {
-              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
-              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
-              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
-            };
-            \matrix (mtrx4)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}] at (5,0)
-            {
-              a_1 \& a_2 \& a_3 \& a_1 \& a_2         \\
-              b_1 \& b_2 \& b_3 \& b_1 \& b_2         \\
-              c_1 \& c_2 \& c_3 \& c_1 \& c_2         \\
-            };
-            \draw[thick] (mtrx4-1-1.north) -| (mtrx4-3-1.south west)
-            -- (mtrx4-3-1.south);
-            \draw[thick] (mtrx4-1-3.north) -| (mtrx4-3-3.south east)
-            -- (mtrx4-3-3.south);
-            \node at (2.5,-1) {${\color{blue!50!black}a_1b_2c_3}+{\color{blue!50!black}a_2b_3c_1}+{\color{blue!50!black}a_3b_1c_2}-{\color{red!50!black}a_3b_2c_1}-{\color{red!50!black}a_1b_3c_2}-{\color{red!50!black}a_2b_1c_3}$};
-            \node at (0,1) {{\color{blue!50!black}positive terms}};
-            \node at (5,1) {{\color{red!50!black}negative terms}};
-  \end{tikzpicture}
-\end{image}
-
-\begin{question}
-  Compute.
-  \[
-  \det
-  \begin{pmatrix}
-    1 & 4 & 7\\
-    2 & 5 & 8\\
-    3 & 6 & 9\\
-  \end{pmatrix}
-  \begin{prompt}
-    = \answer{0}
-  \end{prompt}
-  \]
-\end{question}
-
+We will instead take this definition as given and focus on you how
+this axiomatic definition, as opposed to a constructive definition
+such as the $2 \times 2$ determinant formula, can be used in understanding
+computations involving the determinant.
 
 
 \section{Connections to row operations and row echelon form}

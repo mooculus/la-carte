@@ -57,7 +57,10 @@ transformation.
 
 % Typically, when one computes the determinant of a $2\times 2$ matrix,
 % we think of the terms as follows.
-In words, the determinant of a $2\times 2$ matrix is the difference between
+In the definition above, notice that we introduced two ways to denote
+this number, $\det A$ and $|A|$.
+
+In words, the determinant of a $2 \times 2$ matrix is the difference between
 the product of diagonal terms and the product of anti-diagonal terms.
 \begin{image}[0.75in]
   \begin{tikzpicture}
@@ -229,13 +232,15 @@ and this is
 \subsection{Fundamental properties of the determinant}
 Here we present some fundamental properties of the determinant of
 $2 \times 2$ matrices. These properties are described as
-\textit{fundamental} because they hold true for the determinant of any
-square matrices. For this, the properties will be stated in terms of
-arbitrarily sized square matrices. Rigorous proofs will not be
-presented, but both algebraic and geometric confirmation will be
-provided using $2 \times 2$ matrices.
+\textit{fundamental} because they hold true not just for $2 \times 2$
+matrices, but also for square matrices of any size. For this, the
+properties will be stated in terms of general square
+matrices. Rigorous proofs will not be presented, but both algebraic
+and geometric confirmation are provided using $2 \times 2$ matrices.
 
-In what follows, $n$ denotes a positive integer.
+The first property pertains to the determinant of the identity
+matrices which we define below. For the remainder of the chapter, $n$
+denotes a positive integer.
 
 \begin{definition}[Identity matrix]\label{defn:id}
   The $n \times n$ \dfn{identity matrix}, denoted $I_n$, is the
@@ -261,23 +266,25 @@ $I_n$, and it is simply written as $I$.
   \]
 \end{proposition}
 
-It is readily confirmed for $I_2$ using the formula given in
-Definition \ref{defn:det-2by2}:
-\[
+This property is readily confirmed for $I_2$ using the $2 \times 2$
+determinant formula:
+\begin{align*}
   \det
   \begin{pmatrix}
     1 & 0 \\ 0 & 1
   \end{pmatrix}
-  = 1 \cdot 1 - 0 \cdot 0 = 1.
-\]
+  & = \text{(product of diagonals)} - \text{(product of
+    anti-diagonals)} \\
+  & = 1 \cdot 1 - 0 \cdot 0 = 1.
+\end{align*}
 
-Geometrically, $\det I_2$ is the signed area of the parallelogram
-spanned by $\vec{e}_1^\transpose = (1, 0)$ and
-$\vec{e}_2^\transpose = (0, 1)$, which in fact is the unit square with
-area 1. Note that the second vector $\vec{e}_2^\transpose$ (facing due
+Geometrically, $\det I_2$ computes the signed area of the
+parallelogram spanned by $\vec{e}_1^\transpose = (1, 0)$ and
+$\vec{e}_2^\transpose = (0, 1)$, which is the unit square with area
+1. Note that the second vector $\vec{e}_2^\transpose$ (facing due
 north) lies counterclockwise from the first vector
-$\vec{e}_1^\transpose$ (facing due east), so the area is assigned the
-positive sign.
+$\vec{e}_1^\transpose$ (facing due east), so the area is indeed
+endowed with the positive sign.
 
 \begin{image}[2in]
   \begin{tikzpicture}
@@ -291,8 +298,8 @@ positive sign.
     \draw[->,ultra thick,penColor2] (0,0) -- (0,5);
     \draw[->,ultra thick,dashed,penColor2] (5,0) -- (5,5);
     \draw[->,ultra thick,dashed,penColor] (0,5) -- (5,5);
-    \node[above,penColor] at (2.5,-.75) {$\vec{e}_1^\transpose$};
-    \node[below right,penColor2] at (-.75,2.5) {$\vec{e}_2^\transpose$};
+    \node[above,penColor] at (2.5,-1) {$\vec{e}_1^\transpose$};
+    \node[below right,penColor2] at (-1,2.5) {$\vec{e}_2^\transpose$};
     \draw[->,thick] (.5,0) -- (.5,.5) -- (0,.5);
     \node[above right] at (.5,.5) {$\theta = \pi/2$};
     \node at (2.5,2.5) {$\det\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = 1$};
@@ -322,7 +329,7 @@ Checking this for the $2 \times 2$ case:
 
 Geometrically speaking, interchanging two rows of a $2 \times 2$ matrix
 boils down to reversing the orientation of the parallelogram spanned
-by it two row vectors, which has the very effect of changing the sign
+by its two row vectors, which has the very effect of changing the sign
 of the area, while keeping the magnitude unchanged.
 
 \begin{image}[.98\textwidth]
@@ -337,12 +344,11 @@ of the area, while keeping the magnitude unchanged.
     \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
     \draw[->,ultra thick,dashed,penColor2] (5,1) -- (7,4);
     \draw[->,ultra thick,dashed,penColor] (2,3) -- (7,4);
-    \node[below,penColor] at (4,0.5) {$\vec{v}$}; %% <a,b>
-    \node[left,penColor2] at (1.2,2.4) {$\vec{w}$}; %% <c,d>
+    \node[below,penColor] at (4,0.5) {$\vec{v} = \langle a,b \rangle$}; %% <a,b>
+    \node[left,penColor2] at (1.2,2.4) {$\vec{w} = \langle c,d \rangle$}; %% <c,d>
     \draw[->,thick] (.98,0.2) arc[radius=1cm,start angle=11.3,end angle=56.3];
     \node[above right] at (.4,.2) {$\theta$};
-    \node at (3.5, 2) {$\det\begin{pmatrix} \vec{v} \\
-      \vec{w} \end{pmatrix} > 0$};
+    \node at (3.5, 2) {$\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} > 0$};
     \node at (3.5, -1) {counterclockwise orientation};
   \end{tikzpicture}
   \hfill
@@ -357,15 +363,17 @@ of the area, while keeping the magnitude unchanged.
     \draw[->,ultra thick,penColor] (0,0) -- (2,3);
     \draw[->,ultra thick,dashed,penColor] (5,1) -- (7,4);
     \draw[->,ultra thick,dashed,penColor2] (2,3) -- (7,4);
-    \node[below,penColor2] at (4,0.5) {$\vec{v}$}; %% <a,b>
-    \node[left,penColor] at (1.2,2.4) {$\vec{w}$}; %% <c,d>
+    \node[below,penColor2] at (4,0.5) {$\vec{v} = \langle a,b \rangle$}; %% <a,b>
+    \node[left,penColor] at (1.2,2.4) {$\vec{w} = \langle c,d \rangle$}; %% <c,d>
     \draw[->] (.55,.83) arc[radius=1cm,end angle=11.3,start angle=56.3];
     \node[above right] at (.4,.2) {$\theta$};
-    \node at (3.5, 2) {$\det\begin{pmatrix} \vec{w} \\
-      \vec{v} \end{pmatrix} < 0$};
+    \node at (3.5, 2) {$\det\begin{pmatrix} c & d \\ a & b \end{pmatrix} < 0$};
     \node at (3.5, -1) {clockwise orientation};
   \end{tikzpicture}
 \end{image}
+
+An interesting and useful consequence of the sign reversal property is
+that the determinant of a matrix with two identical rows is zero.
 
 \begin{proposition}[Multilinearity]
   The determinant is a linear function of each row while other rows
@@ -374,7 +382,7 @@ of the area, while keeping the magnitude unchanged.
 
 We illustrate the last property in the $2 \times 2$ case. In particular, we
 show that the determinant is linear in the first row while the second
-row is held fixed. This entails showing:
+row is held fixed. This amounts to showing:
 \begin{itemize}
 \item multiplying the first row by a scalar $k$, the determinant is
   multiplied by $k$;
@@ -418,8 +426,8 @@ and
 \end{align*}
 
 The geometric illustration of this last property can be quite
-satisfying. Below illustrates the \textit{scaling property} for the concrete
-case where $k = 3$:
+satisfying. If the first row is multiplied by $k$, the area is also
+scaled by the factor of $k$.
 \begin{image}[0.75\textwidth]
   \begin{tikzpicture}
     % shade
@@ -429,14 +437,13 @@ case where $k = 3$:
     (0, 0) -- ++(2,0) -- ++(2,3) -- ++(-2,0) -- cycle;
 
     % vectors (arrows)
-    \draw[->,ultra thick,penColor] (0,0) -- (2,0);
-    \draw[->,ultra thick,penColor] (2,0) -- (4,0);
-    \draw[->,ultra thick,penColor] (4,0) -- (6,0);
+    \draw[->,ultra thick,penColor] (0.1,0.1) -- (2,0.1);
+    \draw[->,ultra thick,penColor4] (0,0) -- (6,0);
     \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
 
     % parallel mirrors
-    \draw[->,ultra thick,dashed,penColor2] (6,0) -- (8,3);
     \draw[->,ultra thick,dashed,penColor] (2,3) -- (8,3);
+    \draw[->,ultra thick,dashed,penColor2] (6,0) -- (8,3);
 
     % auxilliary lines
     \draw[-,dashed,penColor2] (2,0) -- (4,3);
@@ -444,57 +451,90 @@ case where $k = 3$:
 
     % labels
     \node[below,penColor] at (1,-0.1) {$\vec{v}$};
-    \node[below,penColor] at (3,-0.1) {$\vec{v}$};
-    \node[below,penColor] at (5,-0.1) {$\vec{v}$};
+    \node[below,penColor4] at (5,-0.1) {$3\vec{v}$};
     \node[left,penColor2] at (1.2,2.5) {$\vec{w}$};
   \end{tikzpicture}
 \end{image}
 
-One the one hand, the area of the large parallelogram equals
-\[
-  \det
-  \begin{pmatrix}
-    3 \vec{v} \\ \vec{w}
-  \end{pmatrix}.
-\]
-On the other hand, the picture suggests that this area is three times
-the area of the small parallelogram with darker shade which, in turn,
-can be written in terms of the determinant as well:
-\[
-  3 \times \text{(Area of the smaller parallelogram)}
-  = 3 \det
-  \begin{pmatrix}
-    \vec{v} \\ \vec{w}
-  \end{pmatrix}.
-\]
-Equating the two expression, we arrive at the desired equality:
-\[
-  \det
-  \begin{pmatrix}
-    3 \vec{v} \\ \vec{w}
-  \end{pmatrix}
-  =
-  3 \det
-  \begin{pmatrix}
-    \vec{v} \\ \vec{w}
-  \end{pmatrix}.
-\]
+% One the one hand, the area of the large parallelogram equals
+% \[
+%   \det
+%   \begin{pmatrix}
+%     3 \vec{v} \\ \vec{w}
+%   \end{pmatrix}.
+% \]
+% On the other hand, the picture suggests that this area is three times
+% the area of the small parallelogram with darker shade which, in turn,
+% can be written in terms of the determinant as well:
+% \[
+%   3 \times \text{(Area of the smaller parallelogram)}
+%   = 3 \det
+%   \begin{pmatrix}
+%     \vec{v} \\ \vec{w}
+%   \end{pmatrix}.
+% \]
+% Equating the two expression, we arrive at the desired equality:
+% \[
+%   \det
+%   \begin{pmatrix}
+%     3 \vec{v} \\ \vec{w}
+%   \end{pmatrix}
+%   =
+%   3 \det
+%   \begin{pmatrix}
+%     \vec{v} \\ \vec{w}
+%   \end{pmatrix}.
+% \]
 
-We leave to the readers the illustration of the other property, namely,
-\[
-  \det
-  \begin{pmatrix}
-    \vec{v}_1 + \vec{v}_2 \\ \vec{w}
-  \end{pmatrix}
-  = \det
-  \begin{pmatrix}
-    \vec{v}_1 \\ \vec{w}
-  \end{pmatrix}
-  + \det
-  \begin{pmatrix}
-    \vec{v}_2 \\ \vec{w}
-  \end{pmatrix}.
-\]
+If a new row $\vec{v}_2 = (a_2, b_2)$ is added to the first row
+$\vec{v}_1 = (a_1, b_1)$, while the second row $\vec{w} = (c,d)$ is
+held fixed, the areas of two parallelograms outlined by solid lines
+add up to the area of the parallelogram outlined by dotted lines.
+\begin{image}[0.75\textwidth]
+  \begin{tikzpicture}
+    % shade
+    \draw[fill=fill1!50!white,draw=none] % det(3u,v)
+    (0,0) -- ++(4,0) -- ++(-1,3) -- ++(-4,0) -- cycle;
+    \draw[fill=fill1!80!white,draw=none] % det(u,v)
+    (4,0) -- ++(2,2) -- ++(-1,3) -- ++(-2,-2) -- cycle;
+
+    % vectors (arrows)
+    \draw[->,ultra thick,penColor] (0,0) -- (4,0);
+    \draw[->,ultra thick,penColor] (4,0) -- (6,2);
+    \draw[->,ultra thick,penColor2] (0,0) -- (-1,3);
+
+    \draw[-,ultra thick,penColor] (-1,3) -- (3,3);
+    \draw[-,ultra thick,penColor] (3,3) -- (5,5);
+    \draw[-,ultra thick,penColor2] (4,0) -- (3,3);
+    \draw[-,ultra thick,penColor2] (6,2) -- (5,5);
+
+    % auxilliary lines
+    \draw[->,ultra thick,dashed,penColor4] (0,0) -- (6,2);
+    \draw[->,ultra thick,dashed,penColor4] (-1,3) -- (5,5);
+
+    % labels
+    \node[below,penColor] at (3,-0.1) {$\vec{v}_1 = \langle a_1, b_1 \rangle$};
+    \node[right,penColor] at (5,0.8) {$\vec{v}_2 = \langle a_2, b_2 \rangle$};
+    \node[right,penColor4] at (6,2.2) {$\vec{v}_1 + \vec{v}_2$};
+    \node[left,penColor2] at (-1,2) {$\vec{w} = \langle c,d \rangle$};
+  \end{tikzpicture}
+\end{image}
+
+% We leave to the readers the illustration of the other property, namely,
+% \[
+%   \det
+%   \begin{pmatrix}
+%     \vec{v}_1 + \vec{v}_2 \\ \vec{w}
+%   \end{pmatrix}
+%   = \det
+%   \begin{pmatrix}
+%     \vec{v}_1 \\ \vec{w}
+%   \end{pmatrix}
+%   + \det
+%   \begin{pmatrix}
+%     \vec{v}_2 \\ \vec{w}
+%   \end{pmatrix}.
+% \]
 
 
 %% COME BACK HERE AND FINISH --------------------

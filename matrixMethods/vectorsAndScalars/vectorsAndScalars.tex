@@ -73,7 +73,7 @@ of times that it makes sense to add data. Data is represented by a
   green, and blue light, with $0$ representing no intensity of the
   colors and $255$ representing the maximum intensity of the
   colors. Hence the color black can be represented by $(0,0,0)$ and
-  white is represented by $(255,255,255)$.  Adding the values for
+  white is represented by\break $(255,255,255)$.  Adding the values for
   different pixels changes the brightness of each individual
   component.
 \item[Navigation] Aircraft navigate by knowing the direction and speed
@@ -246,7 +246,7 @@ individual entry of a vector is called a \dfn{component}.
 When we express vectors as ordered tuples, row vectors, or column
 vectors we add them in a componentwise fashion.
 \begin{align*}
-  (1,2,3) + (4,5,6) &= (1+4 & 2+5 & 3+6)  = (5,7,9)\\
+  (1,2,3) + (4,5,6) &= (5,7,9)\\
   \begin{pmatrix} 1 & 2 & 3   \end{pmatrix} + \begin{pmatrix} 4 & 5 & 6   \end{pmatrix}&= \begin{pmatrix} 5 & 7 & 9   \end{pmatrix}\\
   \begin{pmatrix} 1\\ 2\\ 3   \end{pmatrix} + \begin{pmatrix} 4\\ 5\\ 6   \end{pmatrix} &= \begin{pmatrix} 5\\ 7\\ 9   \end{pmatrix}
 \end{align*}
@@ -716,16 +716,16 @@ $n$-vector) whose entires are real numbers, we can intepret
 \[
 \|\vec{v}\| = \text{The geometric displacement} 
 \]
-or ``Euclidean length'' of this vector. This concept allows us to
-``normalize'' vectors and hence data in general.
+or ``Euclidean length'' of this vector.%%  This concept allows us to
+%% ``normalize'' vectors and hence data in general.
 
 
-\begin{definition}
-  A vector $\vec{u}$ is called a \dfn{unit vector} if
-  \[
-  \|\vec{u}\| = 1
-  \]
-\end{definition}
+%% \begin{definition}
+%%   A vector $\vec{u}$ is called a \dfn{unit vector} if
+%%   \[
+%%   \|\vec{u}\| = 1
+%%   \]
+%% \end{definition}
 
 
 

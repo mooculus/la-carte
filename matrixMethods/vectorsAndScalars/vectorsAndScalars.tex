@@ -348,7 +348,7 @@ Now that we know the basics, onto the examples!
     \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
     \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
     \]
-  If the lamp is turned on, it initally shows red, then this fades to
+  If the lamp is turned on, it initially shows red, then this fades to
   yellow after one minute, then fades to green after a minute more,
   and so on. After $6$ minutes it is back to red. Color $\vec{c}_1$
   fades to $\vec{c}_2$ like the vector function $\vec{f}(t)$
@@ -632,33 +632,6 @@ The first thing you should notice about the the dot product is that
 \[
 \mathbf{vector}\dotp \mathbf{vector} = \mathbf{number}.
 \]
-You can think of the dot product as measuring ``how aligned'' two vectors are.
-\begin{question}
-  Compute:
-  \[
-  \begin{pmatrix}1 & 2 & 3\end{pmatrix}\dotp\begin{pmatrix}4 & 5 & 6\end{pmatrix}
-  \begin{prompt}
-    = \answer{32}
-  \end{prompt}
-  \]
-\end{question}
-
-\begin{question}
-  Compute:
-  \[
-  \begin{pmatrix}1\\1\\-1\end{pmatrix}\dotp\begin{pmatrix}1\\1\\2\end{pmatrix}
-  \begin{prompt}
-    = \answer{0}
-  \end{prompt}
-  \]
-\end{question}
-When the dot product is zero, it means that the vectors are independent of each other.
-
-\begin{definition}
-  Two vectors are called \dfn{orthogonal} if the the dot product of
-  these vectors is zero.
-\end{definition}
-
 
 
 \begin{question}
@@ -671,52 +644,89 @@ When the dot product is zero, it means that the vectors are independent of each 
     \end{selectAll}
 \end{question}
 
-The dot product allows us to write some complicated formulas more simply.
- 
-\begin{definition}
-  The \dfn{norm} (or magnitude) of vector $\vec{v}$ is given by
+
+You can think of the dot product as measuring ``how aligned'' two vectors are.
+\begin{question}
+  Compute:
   \[
-  \|\vec{v}\|=\sqrt{\vec{v}\dotp\vec{v}}
+  \begin{pmatrix}1 & 2 & 3\end{pmatrix}\dotp\begin{pmatrix}4 & 5 & 6\end{pmatrix}
+  \begin{prompt}
+    = \answer{32}
+  \end{prompt}
   \]
-\end{definition}
+\end{question}
+
+
 
 \begin{question}
-  Compute the norm of the vector $\vec{v} = (1,2,3,4)$.
+  Compute:
+  \[
+  \begin{pmatrix}1\\1\\-1\end{pmatrix}\dotp\begin{pmatrix}1\\1\\2\end{pmatrix}
   \begin{prompt}
-    \[
-    \|\vec{v}\| = \answer{\sqrt{30}}
-    \]
+    = \answer{0}
   \end{prompt}
+  \]
 \end{question}
-When working with a $2$-vector whose entires are real numbers, say
-$\vec{v} = (x,y)$, we can intepret this data as ``displacement from
-the origin.''
-\begin{center}
-  \begin{tikzpicture}
-  \draw[->] (-1,0) -- (4,0);
-  \draw[->] (0,-1) -- (0,3);
-  \draw[->,ultra thick,penColor] (0,0) -- (3,2);
-  \node[below right,penColor] at (1.5,1) {$\vec{v}$}; %% <c,d>
-  \node[right,penColor] at (3,2) {$(x,y)$}; %% <c,d>
-\end{tikzpicture}
-\end{center}
-We can use the distance formula to find the displacement given by
-$\vec{v}$. Write:
-\begin{align*}
-  d &= \sqrt{\left(x-0\right)^{2} + \left(y-0\right)^{2}}\\
-  &= \sqrt{x^{2} + y^{2}}
-\end{align*}
-But this last line is equal to:
-\begin{align*}
-  &= \sqrt{\vec{v}\dotp\vec{v}}\\
-  &= \|\vec{v}\|
-\end{align*}
-Hence we see that if we have a $2$-vector $\vec{v}$ (in fact any
-$n$-vector) whose entires are real numbers, we can intepret
-\[
-\|\vec{v}\| = \text{The geometric displacement} 
-\]
-or ``Euclidean length'' of this vector.%%  This concept allows us to
+When the dot product is zero, it means that the vectors are
+`independent' of each other in a sense that we will make clear
+later. When this happens, we call say that the vectors are
+\textit{orthogonal} to each other.
+
+\begin{definition}
+  Two vectors are called \dfn{orthogonal} if the the dot product of
+  these vectors is zero.
+\end{definition}
+
+
+As we will see, the notion of orthogonal vectors will allow help us analyze data.
+%% SEE PAGE 25 of notes
+%% The dot product allows us to write some complicated formulas more simply.
+ 
+%% \begin{definition}
+%%   The \dfn{norm} (or magnitude) of vector $\vec{v}$ is given by
+%%   \[
+%%   \|\vec{v}\|=\sqrt{\vec{v}\dotp\vec{v}}
+%%   \]
+%% \end{definition}
+
+%% \begin{question}
+%%   Compute the norm of the vector $\vec{v} = (1,2,3,4)$.
+%%   \begin{prompt}
+%%     \[
+%%     \|\vec{v}\| = \answer{\sqrt{30}}
+%%     \]
+%%   \end{prompt}
+%% \end{question}
+%% When working with a $2$-vector whose entires are real numbers, say
+%% $\vec{v} = (x,y)$, we can intepret this data as ``displacement from
+%% the origin.''
+%% \begin{center}
+%%   \begin{tikzpicture}
+%%   \draw[->] (-1,0) -- (4,0);
+%%   \draw[->] (0,-1) -- (0,3);
+%%   \draw[->,ultra thick,penColor] (0,0) -- (3,2);
+%%   \node[below right,penColor] at (1.5,1) {$\vec{v}$}; %% <c,d>
+%%   \node[right,penColor] at (3,2) {$(x,y)$}; %% <c,d>
+%% \end{tikzpicture}
+%% \end{center}
+%% We can use the distance formula to find the displacement given by
+%% $\vec{v}$. Write:
+%% \begin{align*}
+%%   d &= \sqrt{\left(x-0\right)^{2} + \left(y-0\right)^{2}}\\
+%%   &= \sqrt{x^{2} + y^{2}}
+%% \end{align*}
+%% But this last line is equal to:
+%% \begin{align*}
+%%   &= \sqrt{\vec{v}\dotp\vec{v}}\\
+%%   &= \|\vec{v}\|
+%% \end{align*}
+%% Hence we see that if we have a $2$-vector $\vec{v}$ (in fact any
+%% $n$-vector) whose entires are real numbers, we can intepret
+%% \[
+%% \|\vec{v}\| = \text{The geometric displacement} 
+%% \]
+%% or ``Euclidean length'' of this vector.
+%%  This concept allows us to
 %% ``normalize'' vectors and hence data in general.
 
 
@@ -726,12 +736,6 @@ or ``Euclidean length'' of this vector.%%  This concept allows us to
 %%   \|\vec{u}\| = 1
 %%   \]
 %% \end{definition}
-
-
-
-
-
-
 We summarize the arithmetic and algebraic properties of the dot
 product below.
 \begin{theorem}
@@ -746,7 +750,7 @@ product below.
   \item[Linear in second argument:] $\vec{u} \dotp (\vec{v}+\vec{w}) = \vec{u}\dotp \vec{v}+
     \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
     \dotp \vec{w})$
-  \item[Relation to norm:] $\vec{v} \dotp \vec{v} = \|\vec{v}\|^2$
+  %\item[Relation to norm:] $\vec{v} \dotp \vec{v} = \|\vec{v}\|^2$
   \item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
     $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
   \end{description}

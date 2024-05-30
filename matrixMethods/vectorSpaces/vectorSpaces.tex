@@ -68,8 +68,52 @@ multiplied by the same \textbf{powers of variables}.
 \end{question}
 
 
+
+\begin{definition}
+  The \dfn{null space} (or \dfn{kernel}) of a $m\times n$ matrix $M$
+  is the set of all solutions to $M\vec{x} = \vec{0}$. We can express
+  this as
+  \[
+  \Null(M) = \{ \vec{x}\in\R^n: M\vec{x} = \vec{0}\}.
+  \]
+\end{definition}
+
+
+
+\begin{example}
+  Consider the following homogenous system of equations.
+
+  Explain why the null space has 0
+
+  The sum
+
+  scalar multiples
+  
+\end{example}
+
+
+
+
+
 \section{Column space}
 
+Given a matrix (not necessarily square)
+\[
+\begin{pmatrix}
+  a_1 &  b_1  &  c_1 \\
+  a_2 & b_2 & c_2 \\
+  a_3 & b_3 & c_3 
+\end{pmatrix}
+\]
+
+\[
+\begin{pmatrix} d_1 \\ d_2 \\ d_3 \end{pmatrix}=\begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix} x +
+\begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} y +
+\begin{pmatrix} c_1 \\ c_2 \\ c_3 \end{pmatrix} z
+\]
+It's called the \textit{column space} because it's equal to every
+possible vector produced by the columns of the augmented matrix
+associated to the system of equations:
 Given a system of equations
 \begin{align*}
   a_1 x + b_1 y + c_1 z &= d_1\\
@@ -78,9 +122,6 @@ Given a system of equations
 \end{align*}
 the \dfn{column space} is the set of all possible constants, expressed
 as a single vector:
-\[
-\begin{pmatrix} d_1 \\ d_2 \\ d_3 \end{pmatrix}
-\]
 
 
 

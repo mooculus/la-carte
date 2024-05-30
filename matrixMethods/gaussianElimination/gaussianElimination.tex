@@ -454,7 +454,7 @@ echelon form will \textbf{tell us about the solutions, without
 
 
 
-\paragraph{Rows of zeros}
+\paragraph{Infinitely many solutions}
 
 Sometimes after we transform to row echelon form, we have a row (or
 several!) of zeros like this:
@@ -478,13 +478,13 @@ in a case like this, there are an \dfn{infinite number of solutions}.
 
 
 
-\paragraph{Columns of zeros}
+\paragraph{No solutions}
 
-Sometimes after we transform to row echelon form, we have a column (or
-several!) of zeros like this:
+Sometimes after we transform to row echelon form, we have a matrix
+that looks something like this:
 \[
 \left(\begin{array}{ccc|c}
-  \bullet &   0 & \bullet & \bullet  \\
+  \bullet &   \bullet & \bullet & \bullet  \\
   0 &   0 & \bullet & \bullet \\
    0& 0  &  0 & \bullet
 \end{array}\right)
@@ -507,8 +507,10 @@ the system of equations is \dfn{overdetermined} also known as
 As we have seen, simply having the augmented matrix in row echelon form can immediately tell us if a system of equations:
 \begin{description}
 \item[Has a unique solution] This happens when there are \textbf{no rows/columns of zeros.}
-\item[Has infinitely many solutions] When there are \textbf{rows of zeros and no columns of zeros.}
-\item[Has no solutions] When there are  \textbf{columns of zeros and no rows of zeros.}
+\item[Has infinitely many solutions] When there are \textbf{rows of
+  zeros and no columns of zeros.}
+\item[Has no solutions] When there is a \textbf{row whose entries are
+  zero, with a nonzero left most entry.}
 \end{description}
 Of course, it can be more subtle than this. As we progress in our
 journey, we will continue to refine, clarify, and extend these ideas.
@@ -1021,24 +1023,27 @@ no $(x,y,z,w)$ that makes every equation in the system hold true.
     \end{array}\right)\]
     Apply the following row operations:
     \[
-    \hspace{.2cm} \xrightarrow[-3R_{1}+R_{3}\rightarrow R_{3}]
-           {-2R_{1} + R_{2}\rightarrow R_{2}}\hspace{.2cm}
+    \begin{matrix}\scriptstyle-3R_{1}+R_{3}\rightarrow R_{3}\\\Longrightarrow\\\scriptstyle-2R_{1} + R_{2}\rightarrow R_{2}\end{matrix}
     \left(\begin{array}{ccc|c}
       \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
       \answer[given]{0} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{0} \\
       \answer[given]{0} &  \answer[given]{a-3} &  \answer[given]{b-3} &  \answer[given]{c-3}
-    \end{array}\right)\]
-    Based on the above, for the system to have no solutions we need:
-    \[
-    a = \answer[given]{4}, \hspace{.5cm} b = \answer[given]{4}, \hspace{.5cm} c = \answer[given]{1}
+    \end{array}\right)
     \]
-    For the system to have infinitely many solutions we need (give the smallest natural number ($n\geq 1$) possible):
+    Based on our work above, and the fact that we are looking for the
+    smallest positive whole number in each case, for the system of
+    equations to have no solutions we set:
     \[
-    a = \answer[given]{4}, \hspace{.5cm} b = \answer[given]{4}, \hspace{.5cm} c = \answer[given]{3}
+    a = \answer[given]{4}, \quad b = \answer[given]{4}, \quad c = \answer[given]{1}
     \]
-    For the system to have one solution we need (give the smallest natural number ($n\geq 1$) possible):
+    For the system of equations to have infinitely many solutions,
+    set:
     \[
-    a = \answer[given]{1}, \hspace{.5cm} b = \answer[given]{1}, \hspace{.5cm} c = \answer[given]{1}
+    a = \answer[given]{4}, \quad b = \answer[given]{4}, \quad c = \answer[given]{3}
+    \]
+    For the system of equations to have one solution, set:
+    \[
+    a = \answer[given]{1}, \quad b = \answer[given]{1}, \quad c = \answer[given]{1}
     \]
   \end{explanation}
 \end{example}

@@ -297,8 +297,94 @@ compute the following, if possible.
 
 
 
+\section{Multiplying Matrices}
+We can extend the concept introduced in previous section to multiplication of a matrix by another matrix. As a general rule, we can multiply matrix, $A: n \times m$ by matrix $B: k \times \ell$ if $m=k$. That is if the middle two numbers match: $n\times \underline{m} \hspace{.5cm} \underline{k} \times \ell$. The result then turns out to be a matrix of size $n\times \ell$ (the outside numbers). \\
+We multiply each row of the first matrix by each column of the second matrix:
+\[ AB = \left(\begin{array}{cc}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{array}\right) \left(\begin{array}{cc}
+b_{11} & b_{12}\\
+b_{21} & b_{22}
+\end{array}\right)
+\]
+\[ = \left(\begin{array}{cc}
+\text{(row one of A)(column one of B)} & \text{(row one of A)(column two of B)}\\
+\text{(row two of A)(column one of B)} & \text{(row two of A)(column two of B)}
+\end{array}\right) \]
+\[ = \left(\begin{array}{cc}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12}+ a_{12}b_{22}\\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
+\end{array}\right)\]
+If we call the resulting matrix $C$, then the entry \\
+$c_{\textcolor{blue}{1}\textcolor{red}{1}}$ is the multiplication of $\left(\textcolor{blue}{1}^{\text{st}} \text{ row of A}\right)\left( \textcolor{red}{1}^{\text{st}} \text{ column of B}\right)$\\
+$c_{\textcolor{blue}{2} \textcolor{red}{1}}$ is the multiplication of $\left(\textcolor{blue}{2}^{\text{nd}} \text{ row of A}\right)\left( \textcolor{red}{1}^{\text{st}} \text{ column of B}\right)$\\
+and so forth. \\
+For example,
+\[\left(\begin{array}{ccc}
+1 & -1 & 0\\
+2 & 0 & 4 \\
+5 & 3 & 1
+\end{array}\right) \left(\begin{array}{ccc}
+5 & 1 & 0\\
+-1 & -2 & 0\\
+1 & 0 & 2
+\end{array}\right)\]
+\[= \left(\begin{array}{ccc}
+(1)(5) + (-1)(-1)+ (0)(1) & 1 + 2+ 0 & 0 + 0+ 0\\
+10 + 0 + 4 & 2 + 0+0 & 0 + 0+8\\
+25+ (-3) + 1 & 5 + -6+0 & 0 + 0+ 2
+\end{array}\right)\]
+\[= \left(\begin{array}{ccc}
+6 & 3 & 0\\
+14& 2 & 8\\
+23 & -1 & 2
+\end{array}\right)
+\]
+It is helpful to first write the sum since there might be many small calculations and easy to make mistakes. It is important to write the matrices neatly and put enough space between entries.
+\begin{question}
+Multiply the following matrices:
+\[AB = \left(\begin{array}{cc}
+3 & 0 \\
+5 & 1\\
+1 & -1
+\end{array}\right)
+\]
+\begin{prompt}
+Note that $A$ is a $\left(\answer[given]{3}\times \answer[given]{2}\right)$- matrix and $B$ is a $\left(\answer[given]{2}\times \answer[given]{2}\right)$- matrix. Since the middle numbers match then this multiplication is possible and we expect to get a $\left(\answer[given]{3}\times \answer[given]{2}\right)$-matrix for the result.
+\[AB = \left(\begin{array}{cc}
+\answer[given]{3} & \answer[given]{-3}\\
+\answer[given]{5} & \answer[given]{-7}\\
+\answer[given]{1} & \answer[given]{1}
+\end{array}\right)\]
+\end{prompt}
+\end{question}
+It is important to note that order matters in matrix multiplication. For example, in the multiplication above, $AB$ was possible but $BA$ is a multiplication of a $2\times 2$-matrix with a $3\times 2$-matrix, which is not possible. So in general, $AB \neq BA$.
+\begin{question}
+For the following matrices, find $AB$ and $BA$.
+\[
+A= \left(\begin{array}{cc}
+5 & 0 \\
+2 & 1
+\end{array}\right), \hspace{.5cm} B = \left(\begin{array}{cc}
+3 & -1 \\
+2 & 0
+\end{array}\right)
+\]
+\begin{prompt}
+\[
+AB = \left(\begin{array}{cc}
+\answer[given]{15} & \answer[given]{-5}\\
+\answer[given]{8} & \answer[given]{-2}
+\end{array}\right)\]
 
-
+\[BA = \left(\begin{array}{cc}
+\answer[given]{13} & \answer[given]{-1}\\
+\answer[given]{10} & \answer[given]{0}
+\end{array}\right)\]
+\end{prompt}
+Do the two multiplications give the same result? \wordChoice{\choice{yes} \choice[correct]{no}}
+\end{question}
 
 
 

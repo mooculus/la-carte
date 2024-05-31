@@ -45,16 +45,7 @@ M =
 \]
 We give the \dfn{dimensions of a matrix} by stating its number of rows
 and number of columns. The number of rows comes first and the number
-of columns second, so $M$ above is a $(4\times 5)$-matrix. In fact,
-$n$-dimensional row vectors are just $1\times n$ matrices and
-$n$-dimensional column vectors are just $n\times 1$ matrices:
-\[
-\underbrace{\begin{pmatrix}a_{1} & a_{2} & \cdot \cdot \cdot & a_{n}\end{pmatrix}}_{1\times n} \qquad \underbrace{\begin{pmatrix} a_{1}\\
-a_{2}\\
-\vdots\\
-a_{n}\end{pmatrix}}_{n\times 1}
-\]
-
+of columns second, so $M$ above is a $(4\times 5)$-matrix.
 \begin{question}
   Which of the following matrices are $3\times 2$ matrices?
   \begin{selectAll}
@@ -73,13 +64,9 @@ a_{n}\end{pmatrix}}_{n\times 1}
   -1 & 0
   \end{pmatrix}$}
   \choice[correct]{$\begin{pmatrix}
-  1 & -1\\
-  -3 & 0 \\
+  0 & 0\\
+  0 & 0 \\
   0 & 0
-  \end{pmatrix}$}
-  \choice{$\begin{pmatrix}
-  0 & 0 & 0\\
-  -1 & 0 & 5
   \end{pmatrix}$}
   \end{selectAll}
 \end{question}
@@ -108,6 +95,7 @@ mean the $(i,j)$-entry of the matrix $M$.
   \end{prompt}
 \end{question}
 
+Next we'll discuss how matrices arise in different contexts.
 
 
 \section{Matrices store data}
@@ -159,23 +147,24 @@ vertically.
   4895065 & 367889 & 48674 & 163396 & 2672 & 329279
   \end{pmatrix}
   \]
-  Note that the above is a $12\times 6$ matrix. The $(7, 5)$- entry is $8887$ which is the number of Hawaiians in Missouri (MO).
+  Note that the above is a $\answer[given]{12}\times \answer[given]{6}$ matrix. The $(7, 5)$- entry is
+  $\answer[given]{8887}$ which is the number of Hawaiians in Missouri (MO).
   \end{explanation}
 \end{example}
 
 
 
 \begin{example}[RGB Color Space]
-  \textcolor{blue}{In an example in Chapter One,}In a previous example
-  we mentioned an LED table lamp whose shades vary linearly through
-  the RGB color space every minute in this order:
+  In a previous example we mentioned an LED table lamp whose shades
+  vary linearly through the RGB color space every minute in this
+  order:
       \[
     \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
     \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
     \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
     \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
     \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
-    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}},
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
     \]
   Represent this sequence of RGB colors by a $3 \times 6$
   matrix. Interpret the meaning of the $(2,3)$-entry of the matrix.
@@ -197,10 +186,122 @@ vertically.
 \end{example}
 
 
+\begin{example}[Grayscale Image] 
+BADBAD 
+\end{example}
+
+
+
+
+
+
+
+
+
+
 
 
 
 \section{Multiplying vectors and matrices}
+
+Recall the dot product of two vectors:
+\begin{align*}
+  \begin{pmatrix}
+    a_1\\
+    a_2\\
+    \vdots\\
+    a_n
+  \end{pmatrix}
+  \dotp
+  \begin{pmatrix}
+    b_1\\
+    b_2\\
+    \vdots\\
+    b_n
+  \end{pmatrix}
+  &=\begin{pmatrix} a_1 & a_2 & \cdots & a_n\end{pmatrix}\dotp\begin{pmatrix} b_1 & b_2 & \cdots & b_n\end{pmatrix}\\
+  &= \sum_{i=1}^n a_ib_i\\
+  &= a_1b_1 + a_2b_2 +\dots+a_nb_n
+\end{align*}
+We can extend this idea to multiplying matrices by vectors and to
+multiplying vectors by matrices.
+
+\paragraph{Multiplying a matrix by a column vector}
+
+If I have a matrix $m\times n$ matrix $M$, and $\vec{a}$ is an
+$m$-vector expressed as a column,
+\[
+M \vec{a} =
+\begin{pmatrix}
+  M_{1,-}^\transpose \dotp \vec{a} \\
+  M_{2,-}^\transpose \dotp \vec{a} \\
+  \vdots \\
+  M_{m,-}^\transpose \dotp \vec{a}
+\end{pmatrix}
+\]
+Where $M_{i,-}$ represents the $i$th row of $M$.
+
+\paragraph{Multiplying a row vector by a matrix}
+If on the other hand, $M$ is still a $m\times n$ matrix, but now
+$\vec{b}$ is an $n$-vector expressed as a row,
+\[
+\vec{b} M =
+\begin{pmatrix}
+  \vec{b}\dotp M_{-,1}^\transpose \\
+  \vec{b}\dotp M_{-,2}^\transpose \\
+  \vdots \\
+  \vec{b}\dotp M_{-,n}^\transpose
+\end{pmatrix}
+\]
+Where $M_{-,i}$ represents the $i$th column of $M$.
+
+
+\begin{question}
+If
+\[
+A=\begin{pmatrix}
+2 & 0 & -1\\
+5 & 1 & -2\\
+1 & 0 & 4
+\end{pmatrix} \quad\text{and}\quad  \vec{v} = \begin{pmatrix}
+1 \\
+0\\
+2
+\end{pmatrix}
+\]
+compute the following, if possible.
+\begin{prompt} Write ``NA'' for each entry if the multiplication is not possible.\end{prompt}
+\begin{enumerate}
+\item $\vec{v} A$ \begin{prompt}
+  \[=\begin{pmatrix}
+  \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}
+\end{pmatrix}\]
+\end{prompt}
+\item $A\vec{v}$ \begin{prompt} \[= \begin{pmatrix}
+\answer[given]{0}\\
+\answer[given]{-4}\\
+\answer[given]{9}
+\end{pmatrix}\]\end{prompt}
+\item $\vec{v}^{\transpose} A$ \begin{prompt} \[= \begin{pmatrix}
+\answer[given]{2} & \answer[given]{0} & \answer[given]{7}
+  \end{pmatrix}
+  \]
+\end{prompt}
+\item $A\vec{v}^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
+\answer[given,format= string]{NA} & \answer[given,format= string]{NA} & \answer[given,format= string]{NA}
+\end{array}\right)\]
+\end{prompt}
+\end{enumerate}
+\end{question}
+
+
+
+
+
+
+
+
+
 
 Baby-steps to multiplying matrices! We'll start by multiplying a $(1\times 3)$-matrix by a $(3\times 1)$ matrix
 \[

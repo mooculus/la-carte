@@ -297,9 +297,78 @@ compute the following, if possible.
 
 
 
-\section{Multiplying Matrices}
-We can extend the concept introduced in previous section to multiplication of a matrix by another matrix. As a general rule, we can multiply matrix, $A: n \times m$ by matrix $B: k \times \ell$ if $m=k$. That is if the middle two numbers match: $n\times \underline{m} \hspace{.5cm} \underline{k} \times \ell$. The result then turns out to be a matrix of size $n\times \ell$ (the outside numbers). \\
-We multiply each row of the first matrix by each column of the second matrix:
+\section{Multiplying matrices}
+
+Matrix multiplication may seem strange at first. In fact, only certain
+matrices can be multipled togther. As a general rule, we can only
+multiply a $m \times n$ matrix by a $k \times \l$ matrix matrix if
+$n=k$. That is if the middle two numbers match:
+\[
+\underbrace{\begin{pmatrix}
+    \bullet & \bullet & \bullet & \bullet \\
+    \bullet & \bullet & \bullet & \bullet \\
+    \bullet & \bullet & \bullet & \bullet 
+  \end{pmatrix}}
+  _{m\times n} \underbrace{\begin{pmatrix}
+    \bullet & \bullet \\\bullet & \bullet \\  \bullet & \bullet \\\bullet & \bullet  \end{pmatrix}}_{n\times \l} =
+\underbrace{\begin{pmatrix}
+  \bullet & \bullet \\\bullet & \bullet \\  \bullet & \bullet 
+\end{pmatrix}}_{m\times \l}
+\]
+The result then turns out to be a matrix of size $m\times \ell$ (the
+outside numbers). We'll give several different explanations and
+interpretations of this computation.
+
+\paragraph{As an extension of the dot product}
+We can extend the concept of the dot product to explain how to
+multiply a matrix by another matrix. Here is an example:
+\begin{align*}AB &= \begin{pmatrix}
+a_{1,1} & a_{1,2}\\
+a_{2,1} & a_{2,2}
+\end{pmatrix}
+\begin{pmatrix}
+b_{1,1} & b_{1,2}\\
+b_{2,1} & b_{2,2}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\text{(row one of A)(column one of B)} & \text{(row one of A)(column two of B)}\\
+\text{(row two of A)(column one of B)} & \text{(row two of A)(column two of B)}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
+a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
+\end{pmatrix}
+\end{align*}
+\begin{question}
+For the following matrices, find $AB$ and $BA$.
+\[
+A= \left(\begin{array}{cc}
+5 & 0 \\
+2 & 1
+\end{array}\right), \hspace{.5cm} B = \left(\begin{array}{cc}
+3 & -1 \\
+2 & 0
+\end{array}\right)
+\]
+\begin{prompt}
+\[
+AB = \left(\begin{array}{cc}
+\answer[given]{15} & \answer[given]{-5}\\
+\answer[given]{8} & \answer[given]{-2}
+\end{array}\right)\]
+
+\[BA = \left(\begin{array}{cc}
+\answer[given]{13} & \answer[given]{-1}\\
+\answer[given]{10} & \answer[given]{0}
+\end{array}\right)\]
+\end{prompt}
+Do the two multiplications give the same result? \wordChoice{\choice{yes} \choice[correct]{no}}
+\end{question}
+
+
+
+ We multiply each row of the first matrix by
+each column of the second matrix:
 \[ AB = \left(\begin{array}{cc}
 a_{11} & a_{12}\\
 a_{21} & a_{22}
@@ -360,31 +429,6 @@ Note that $A$ is a $\left(\answer[given]{3}\times \answer[given]{2}\right)$- mat
 \end{prompt}
 \end{question}
 It is important to note that order matters in matrix multiplication. For example, in the multiplication above, $AB$ was possible but $BA$ is a multiplication of a $2\times 2$-matrix with a $3\times 2$-matrix, which is not possible. So in general, $AB \neq BA$.
-\begin{question}
-For the following matrices, find $AB$ and $BA$.
-\[
-A= \left(\begin{array}{cc}
-5 & 0 \\
-2 & 1
-\end{array}\right), \hspace{.5cm} B = \left(\begin{array}{cc}
-3 & -1 \\
-2 & 0
-\end{array}\right)
-\]
-\begin{prompt}
-\[
-AB = \left(\begin{array}{cc}
-\answer[given]{15} & \answer[given]{-5}\\
-\answer[given]{8} & \answer[given]{-2}
-\end{array}\right)\]
-
-\[BA = \left(\begin{array}{cc}
-\answer[given]{13} & \answer[given]{-1}\\
-\answer[given]{10} & \answer[given]{0}
-\end{array}\right)\]
-\end{prompt}
-Do the two multiplications give the same result? \wordChoice{\choice{yes} \choice[correct]{no}}
-\end{question}
 
 
 

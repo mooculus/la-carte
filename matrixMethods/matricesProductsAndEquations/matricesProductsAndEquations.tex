@@ -297,6 +297,22 @@ compute the following, if possible.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Multiplying matrices}
 
 Matrix multiplication may seem strange at first. In fact, only certain
@@ -305,14 +321,13 @@ multiply a $m \times n$ matrix by a $k \times \l$ matrix matrix if
 $n=k$. That is if the middle two numbers match:
 \[
 \underbrace{\begin{pmatrix}
-    \bullet & \bullet & \bullet & \bullet \\
-    \bullet & \bullet & \bullet & \bullet \\
-    \bullet & \bullet & \bullet & \bullet 
-  \end{pmatrix}}
+    \bullet & \bullet & \bullet & \bullet & \bullet\\
+    \bullet & \bullet & \bullet & \bullet & \bullet\\
+\end{pmatrix}}
   _{m\times n} \underbrace{\begin{pmatrix}
-    \bullet & \bullet \\\bullet & \bullet \\  \bullet & \bullet \\\bullet & \bullet  \end{pmatrix}}_{n\times \l} =
+    \bullet & \bullet &\bullet \\\bullet & \bullet & \bullet \\  \bullet & \bullet & \bullet \\\bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{pmatrix}}_{n\times \l} =
 \underbrace{\begin{pmatrix}
-  \bullet & \bullet \\\bullet & \bullet \\  \bullet & \bullet 
+  \bullet & \bullet &\bullet \\\bullet & \bullet &  \bullet
 \end{pmatrix}}_{m\times \l}
 \]
 The result then turns out to be a matrix of size $m\times \ell$ (the

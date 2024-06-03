@@ -596,7 +596,11 @@ Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
 \[
 \col_i(C) = \sum_{k=1}^n \col_k(A)b_{k,i}
 \]
-
+that is,
+\begin{align*}
+  C &= \begin{pmatrix} \col_1(C) & \col_2 (C) & \cdots & \col_{\l}(C) \end{pmatrix}\\
+  &=  \begin{pmatrix} \sum_{k=1}^n \col_k(A)b_{k,1} & \sum_{k=1}^n \col_k(A)b_{k,2} & \cdots & \sum_{k=1}^n \col_k(A)b_{k,\l}\end{pmatrix}
+\end{align*}
 
 
 \paragraph{Rows of the product}
@@ -627,7 +631,11 @@ Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
 \[
 \row_i(C) = \sum_{k=1}^n a_{i,k}\row_k(B)
 \]
-
+that is,
+\begin{align*}
+  C &= \begin{pmatrix} \row_1(C) \\ \row_2 (C) \\ \vdots \\ \row_{m}(C) \end{pmatrix}\\
+  &=  \begin{pmatrix} \sum_{k=1}^n a_{1,k}\row_k(B) \\ \sum_{k=1}^n a_{2,k}\row_k(B) \\ \vdots \\ \sum_{k=1}^n a_{m,k}\row_k(B)\end{pmatrix}
+\end{align*}
 
 
 

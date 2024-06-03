@@ -679,8 +679,111 @@ later. When this happens, we call say that the vectors are
 
 
 As we will see, the notion of orthogonal vectors will allow help us analyze data.
+We summarize the arithmetic and algebraic properties of the dot
+product below.
+\begin{theorem}
+  The following are true for all scalars $s$ and vectors
+  $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $\R^n$.
+  \begin{description}
+  \item[Commutativity:] $\vec{v} \dotp \vec{w} = \vec{w} \dotp
+    \vec{v}$
+  \item[Linear in first argument:] $(\vec{u}+\vec{v})\dotp \vec{w} = \vec{u}\dotp \vec{w} +
+    \vec{v}\dotp \vec{w}$ and $(s\vec{v})\dotp \vec{w} = s(\vec{v}
+    \dotp \vec{w})$
+  \item[Linear in second argument:] $\vec{u} \dotp (\vec{v}+\vec{w}) = \vec{u}\dotp \vec{v}+
+    \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
+    \dotp \vec{w})$
+  %\item[Relation to norm:] $\vec{v} \dotp \vec{v} = \|\vec{v}\|^2$
+  \item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
+    $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
+  \end{description}
+\end{theorem}
+ 
+Instead of defining the dot product by a formula, we could have
+defined it by the properties above!  While this is common practice in
+mathematics, the process is a bit abstract and is perhaps beyond the
+scope of this course.
+
+
+
+
+
 %% SEE PAGE 25 of notes
-%% The dot product allows us to write some complicated formulas more simply.
+
+\section{Normalizing data}
+
+
+
+\paragraph{Unit vector (Euclidean norm) normalization}
+
+This involves scaling the vector so that its length (or Euclidean
+norm) is 1. The Euclidean norm of a vector \(\vec{v} = (v_1, v_2,
+\ldots, v_n)\) is given by:
+\[
+\|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+\]
+Note that
+\[
+\|\vec{v}\| = \sqrt{\vec{v}\dotp\vec{v}}.
+\]
+To normalize the vector to a unit vector, each component of the vector is divided by this norm:
+\[ \hat{\vec{v}} = \frac{\vec{v}}{\|\vec{v}\|} \]
+
+\begin{example}[RGB Color Space]
+Consider the RGB color vector for red: \(\vec{r} = \begin{pmatrix}255\\0\\0\end{pmatrix}\). The Euclidean norm of \(\vec{r}\) is:
+\[ \|\vec{r}\| = \sqrt{255^2 + 0^2 + 0^2} = 255 \]
+
+The normalized vector \(\hat{\vec{r}}\) is:
+\[ \hat{\vec{r}} = \frac{\begin{pmatrix}255\\0\\0\end{pmatrix}}{255} = \begin{pmatrix}1\\0\\0\end{pmatrix} \]
+\end{example}
+\paragraph{Relative Component Normalization}
+
+For comparing relative components, you can normalize a vector by
+dividing each component by the sum of all components. This method
+ensures that the sum of the vector components is 1.
+
+\[ \vec{v}_{\text{normalized}} = \frac{\vec{v}}{\sum_{i=1}^n v_i} \]
+
+\begin{example}[Population Counts]
+Consider the population vector for Ohio:
+\[ \vec{p}_{\text{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
+
+The sum of the components is:
+\[ \sum \vec{p}_{\text{OH}} = 9394878 + 1442655 + 20442 + 268527 + 3907 + 544866 = 11710275 \]
+
+The normalized vector is:
+\[ \vec{p}_{\text{normalized}} = \frac{(9394878, 1442655, 20442, 268527, 3907, 544866)}{11710275} \]
+
+So the components would be:
+\[ \left(\frac{9394878}{11710275}, \frac{1442655}{11710275}, \frac{20442}{11710275}, \frac{268527}{11710275}, \frac{3907}{11710275}, \frac{544866}{11710275}\right) \]
+\end{example}
+\paragraph{Max component normalization}
+
+This method involves dividing each component of the vector by the maximum component value. This is useful in cases where you want all components to be scaled relative to the largest component.
+
+\[ \vec{v}_{\text{normalized}} = \frac{\vec{v}}{\max(v_i)} \]
+
+\begin{example}
+Consider the same population vector for Ohio:
+\[ \vec{p}_{\texttt{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
+
+The maximum component is 9394878. The normalized vector is:
+\[ \vec{p}_{\text{normalized}} = \frac{(9394878, 1442655, 20442, 268527, 3907, 544866)}{9394878} \]
+
+So the components would be:
+\[ \left(\frac{9394878}{9394878}, \frac{1442655}{9394878}, \frac{20442}{9394878}, \frac{268527}{9394878}, \frac{3907}{9394878}, \frac{544866}{9394878}\right) \]
+\end{example}
+\paragraph{Which do I use?}
+Different normalization techniques are used based on the context and
+the specific property you want to normalize for. In demographic
+comparisons, relative component normalization ensures that you can
+compare proportions directly. For the LED lamp color intensity
+normalization, unit vector normalization (Euclidean norm) is
+appropriate to ensure consistent intensity across different colors.
+
+
+%% The dot product allows us to write some complicated formulas quite
+%% simply.
  
 %% \begin{definition}
 %%   The \dfn{norm} (or magnitude) of vector $\vec{v}$ is given by
@@ -736,30 +839,5 @@ As we will see, the notion of orthogonal vectors will allow help us analyze data
 %%   \|\vec{u}\| = 1
 %%   \]
 %% \end{definition}
-We summarize the arithmetic and algebraic properties of the dot
-product below.
-\begin{theorem}
-  The following are true for all scalars $s$ and vectors
-  $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $\R^n$.
-  \begin{description}
-  \item[Commutativity:] $\vec{v} \dotp \vec{w} = \vec{w} \dotp
-    \vec{v}$
-  \item[Linear in first argument:] $(\vec{u}+\vec{v})\dotp \vec{w} = \vec{u}\dotp \vec{w} +
-    \vec{v}\dotp \vec{w}$ and $(s\vec{v})\dotp \vec{w} = s(\vec{v}
-    \dotp \vec{w})$
-  \item[Linear in second argument:] $\vec{u} \dotp (\vec{v}+\vec{w}) = \vec{u}\dotp \vec{v}+
-    \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
-    \dotp \vec{w})$
-  %\item[Relation to norm:] $\vec{v} \dotp \vec{v} = \|\vec{v}\|^2$
-  \item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
-    $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
-  \end{description}
-\end{theorem}
- 
-Instead of defining the dot product by a formula, we could have
-defined it by the properties above!  While this is common practice in
-mathematics, the process is a bit abstract and is perhaps beyond the scope of
-this course. 
-
 
 \end{document}

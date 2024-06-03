@@ -419,6 +419,85 @@ a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
 a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
 \end{pmatrix}
 \end{align*}
+Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
+\l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
+\[
+C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
+\]
+
+\paragraph{Columns of the product}
+\begin{align*}AB &= \begin{pmatrix}
+a_{1,1} & a_{1,2}\\
+a_{2,1} & a_{2,2}
+\end{pmatrix}
+\begin{pmatrix}
+b_{1,1} & b_{1,2}\\
+b_{2,1} & b_{2,2}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\col_1(A)b_{1,1} + \col_2(A) b_{2,1} & \col_1(A)b_{1,2} + \col_2(A) b_{2,2}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\begin{pmatrix}a_{1,1} \\ a_{2,1}\end{pmatrix}b_{1,1} + \begin{pmatrix}a_{1,2} \\ a_{2,2}\end{pmatrix}b_{2,1} & \begin{pmatrix}a_{1,1} \\ a_{2,1}\end{pmatrix}b_{1,2} + \begin{pmatrix}a_{1,2} \\ a_{2,2}\end{pmatrix}b_{2,2}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
+a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
+\end{pmatrix}
+\end{align*}
+
+Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
+\l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
+\[
+\col_i(C) = \sum_{k=1}^n \col_k(A)b_{k,i}
+\]
+
+
+
+\paragraph{Rows of the product}
+
+
+\begin{align*}AB &= \begin{pmatrix}
+a_{1,1} & a_{1,2}\\
+a_{2,1} & a_{2,2}
+\end{pmatrix}
+\begin{pmatrix}
+b_{1,1} & b_{1,2}\\
+b_{2,1} & b_{2,2}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+a_{1,1}\row_1(B) + a_{1,2}\row_2(B) \\ a_{2,1}\row_1(B) +  a_{2,2}\row_2(B)
+\end{pmatrix}\\
+&= \begin{pmatrix}
+a_{1,1}\begin{pmatrix} b_{1,1} & b_{1,2}\end{pmatrix} + a_{1,2}\begin{pmatrix} b_{2,1} & b_{2,2}\end{pmatrix} \\ a_{2,1}\begin{pmatrix} b_{1,1} & b_{1,2}\end{pmatrix} +  a_{2,2}\begin{pmatrix} b_{2,1} & b_{2,2}\end{pmatrix}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
+a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
+\end{pmatrix}
+\end{align*}
+
+Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
+\l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
+\[
+\row_i(C) = \sum_{k=1}^n a_{i,k}\row_k(B)
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{question}
 For the following matrices, find $AB$ and $BA$.
 \[

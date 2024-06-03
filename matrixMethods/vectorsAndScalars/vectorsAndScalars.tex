@@ -746,10 +746,10 @@ ensures that the sum of the vector components is 1.
 
 \begin{example}[Population Counts]
 Consider the population vector for Ohio:
-\[ \vec{p}_{\text{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
+\[ \vec{p}_{\texttt{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
 
 The sum of the components is:
-\[ \sum \vec{p}_{\text{OH}} = 9394878 + 1442655 + 20442 + 268527 + 3907 + 544866 = 11710275 \]
+\[ \sum \vec{p}_{\texttt{OH}} = 9394878 + 1442655 + 20442 + 268527 + 3907 + 544866 = 11710275 \]
 
 The normalized vector is:
 \[ \vec{p}_{\text{normalized}} = \frac{(9394878, 1442655, 20442, 268527, 3907, 544866)}{11710275} \]
@@ -757,13 +757,19 @@ The normalized vector is:
 So the components would be:
 \[ \left(\frac{9394878}{11710275}, \frac{1442655}{11710275}, \frac{20442}{11710275}, \frac{268527}{11710275}, \frac{3907}{11710275}, \frac{544866}{11710275}\right) \]
 \end{example}
+
+
+
+
+
+
 \paragraph{Max component normalization}
 
 This method involves dividing each component of the vector by the maximum component value. This is useful in cases where you want all components to be scaled relative to the largest component.
 
 \[ \vec{v}_{\text{normalized}} = \frac{\vec{v}}{\max(v_i)} \]
 
-\begin{example}
+\begin{example}[Population Counts]
 Consider the same population vector for Ohio:
 \[ \vec{p}_{\texttt{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
 

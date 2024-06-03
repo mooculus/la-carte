@@ -354,19 +354,50 @@ matrices can be multipled togther. As a general rule, we can only
 multiply a $m \times n$ matrix by a $k \times \l$ matrix matrix if
 $n=k$. That is if the middle two numbers match:
 \[
-\underbrace{\begin{pmatrix}
+\begin{matrix}
+\begin{pmatrix}
     \bullet & \bullet & \bullet & \bullet & \bullet\\
     \bullet & \bullet & \bullet & \bullet & \bullet\\
-\end{pmatrix}}
-  _{m\times n} \underbrace{\begin{pmatrix}
-    \bullet & \bullet &\bullet \\\bullet & \bullet & \bullet \\  \bullet & \bullet & \bullet \\\bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{pmatrix}}_{n\times \l} =
-\underbrace{\begin{pmatrix}
+\end{pmatrix}
+&
+\begin{pmatrix}
+    \bullet & \bullet &\bullet \\\bullet & \bullet & \bullet \\  \bullet & \bullet & \bullet \\\bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{pmatrix} &= &
+\begin{pmatrix}
   \bullet & \bullet &\bullet \\\bullet & \bullet &  \bullet
-\end{pmatrix}}_{m\times \l}
+\end{pmatrix}\\
+\begin{pmatrix}
+  m\times n\\
+  \text{matrix}
+\end{pmatrix} &
+\begin{pmatrix}
+  n\times \l\\
+  \text{matrix}
+\end{pmatrix} 
+&= & \begin{pmatrix}
+  m\times \l\\
+  \text{matrix}
+\end{pmatrix}
+\end{matrix}
 \]
-The result then turns out to be a matrix of size $m\times \ell$ (the
-outside numbers). We'll give several different explanations and
-interpretations of this computation.
+The product then turns out to be a matrix of size $m\times \ell$ (the
+outside numbers).
+
+\begin{question}
+  Given three matrices 
+  \[
+  A =,\quad B =, \quad C =\quad 
+  \]
+  which of the following make sense?
+  \begin{selectAll}
+    \choice{$AB$}
+    \choice{$AC$}
+  \end{selectAll}
+  What are the dimensions of the product?
+\end{question}
+
+
+We'll give several different explanations and interpretations of this
+computation.
 
 \paragraph{As an extension of the dot product}
 We can extend the concept of the dot product to explain how to

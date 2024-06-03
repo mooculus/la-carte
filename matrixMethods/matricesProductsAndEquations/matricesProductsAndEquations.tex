@@ -263,31 +263,31 @@ multiplying vectors by matrices.
 \paragraph{Multiplying a matrix by a column vector}
 
 If I have a matrix $m\times n$ matrix $M$, and $\vec{a}$ is an
-$m$-vector expressed as a column,
+$n$-vector expressed as a column,
 \[
 M \vec{a} =
 \begin{pmatrix}
-  M_{1,-}^\transpose \dotp \vec{a} \\
-  M_{2,-}^\transpose \dotp \vec{a} \\
+  \row_1(M)^\transpose \dotp \vec{a} \\
+  \row_2(M)^\transpose \dotp \vec{a} \\
   \vdots \\
-  M_{m,-}^\transpose \dotp \vec{a}
+  \row_m(M)^\transpose \dotp \vec{a}
 \end{pmatrix}
 \]
-Where $M_{i,-}$ represents the $i$th row of $M$.
+Where $\row_i(M)$ represents the $i$th row of $M$.
 
 \paragraph{Multiplying a row vector by a matrix}
 If on the other hand, $M$ is still a $m\times n$ matrix, but now
-$\vec{b}$ is an $n$-vector expressed as a row,
+$\vec{b}$ is an $m$-vector expressed as a row,
 \[
 \vec{b} M =
 \begin{pmatrix}
-  \vec{b}\dotp M_{-,1}^\transpose \\
-  \vec{b}\dotp M_{-,2}^\transpose \\
+  \vec{b}\dotp \col_1(M)^\transpose \\
+  \vec{b}\dotp \col_2(M)^\transpose \\
   \vdots \\
-  \vec{b}\dotp M_{-,n}^\transpose
+  \vec{b}\dotp \col_n(M)^\transpose
 \end{pmatrix}
 \]
-Where $M_{-,i}$ represents the $i$th column of $M$.
+Where $\col_i(M)$ represents the $i$th column of $M$.
 
 
 \begin{question}
@@ -352,7 +352,7 @@ compute the following, if possible.
 Matrix multiplication may seem strange at first. In fact, only certain
 matrices can be multipled togther. As a general rule, we can only
 multiply a $m \times n$ matrix by a $k \times \l$ matrix matrix if
-$n=k$. That is if the middle two numbers match:
+$n=k$. That is if \textbf{the middle two numbers match}:
 \[
 \begin{matrix}
 \begin{pmatrix}
@@ -379,8 +379,8 @@ $n=k$. That is if the middle two numbers match:
 \end{pmatrix}
 \end{matrix}
 \]
-The product then turns out to be a matrix of size $m\times \ell$ (the
-outside numbers).
+The product then turns out to be a matrix of size $m\times \ell$, \textbf{the
+outside numbers}.
 
 \begin{question}
   Given three matrices 
@@ -411,8 +411,8 @@ b_{1,1} & b_{1,2}\\
 b_{2,1} & b_{2,2}
 \end{pmatrix}\\
 &= \begin{pmatrix}
-\text{(row one of A)(column one of B)} & \text{(row one of A)(column two of B)}\\
-\text{(row two of A)(column one of B)} & \text{(row two of A)(column two of B)}
+\row_1(A)^\transpose \dotp\col_1(B) & \row_1(A)^\transpose\dotp\col_2(B)\\
+\row_2(A)^\transpose \dotp\col_1(B) & \row_2(A)^\transpose\dotp\col_2(B)
 \end{pmatrix}\\
 &= \begin{pmatrix}
 a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\

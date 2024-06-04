@@ -1138,7 +1138,7 @@ add up to the area of the parallelogram outlined by dotted lines.
 We close this section by listing additional properties of the
 determinant that can be derived from the three defining properties.
 
-% Should we prove these properties?
+%% TODO: Should we prove these properties?
 \begin{theorem}[Additional properties of determinant]
   Let $A, B$ be $n \times n$ matrices.
   \begin{enumerate}
@@ -1303,7 +1303,8 @@ At times, we don't need to go all the way through.
   \end{explanation}
 \end{example}
 
-
+%% TODO: Maybe compare the values of n! and n^3 for a concrete n value
+%% (n = 15 or 20) to give a feel for the difference.
 \begin{remark}
   Computing determinants via row reduction is a much more efficient
   way than to use the cofactor expansion (or the Leibniz
@@ -1311,6 +1312,18 @@ At times, we don't need to go all the way through.
   cofactor expansion requires about $n!$ operations while the
   row-reduction methods takes about $\frac{2}{3} n^3$ operations.
 \end{remark}
+
+
+%% TODO: Add a couple more examples?
+
+%% TODO: Add the following sections on interpretation of (computed) determinants
+% \section{When matrices store data}
+% \section{When matrices transform data}
+
+
+
+
+\end{document}
 
 
 %% \section{Connections to row operations and row echelon form}
@@ -1324,14 +1337,3 @@ At times, we don't need to go all the way through.
 %% % rowi+c⋅rowjrowi​+c\cdot rowj​
 %% in a matrix $A$, the determinant of the new
 %% matrix $A'$ is $\det⁡(A')=det⁡(A)det(A')=det(A)$.
-
-
-% \section{When matrices store data}
-
-
-% \section{When matrices transform data}
-
-
-
-
-\end{document}

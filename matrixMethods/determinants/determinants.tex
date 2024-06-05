@@ -41,7 +41,7 @@ perspective adopted, the determinant is a tool which extracts a
 representative number that conveys a special kind of information about a
 given matrix or the set of its constituent vectors.
 
-% COME BACK AND REWIRTE THIS PARAGRAPH
+%% TODO: COME BACK AND REWIRTE THIS PARAGRAPH
 The chapter begins mildly with the determinant of the simple
 $2 \times 2$ and $3 \times 3$ matrices and study its various properties both in
 algebraic and geometric terms. These properties are then shown to
@@ -440,7 +440,7 @@ size. There are a couple of different ways to compute the determinant:
 In this section we will introduce the cofactor expansion which is a
 generalization of the $3 \times 3$ formula already seen. We will then see
 how determinants can be computed using row reductions. Unlike the
-others approaches, this does not provide a concrete formula to
+other approaches, this does not provide a concrete formula to
 calculate determinants out of the elements of a given matrix but,
 rather, is based on fundamental properties that the determinant
 function satisfies. The Leibniz formula is based on mathematical
@@ -881,7 +881,7 @@ the cofactor expansion.
   The \dfn{determinant} is a scalar function of a square matrix
   satisfying the following properties:
   \begin{enumerate}
-  \item the determinant of the identity matrix 1;
+  \item the determinant of the identity matrix is 1;
   \item the determinant changes signs when two rows are interchanged;
   \item the determinant is a linear function of each row while other
     rows are held fixed.
@@ -902,7 +902,7 @@ existence and the uniqueness of the determinant here. Instead, we will
 focus on understanding each of the properties and their connections to
 row operations.
 
-We will begin by confirming the three properties indeed holds for
+We will begin by confirming the three properties indeed hold true for
 $2 \times 2$ matrices based on the previously given formula
 \[
   \det
@@ -1019,6 +1019,7 @@ of the area, while keeping the magnitude unchanged.
   \end{tikzpicture}
 \end{image}
 
+%% TODO: Say more? Leave it out? Come back and decide.
 An interesting and useful consequence of the sign reversal property is
 that the determinant of a matrix with two identical rows is zero.
 
@@ -1072,6 +1073,8 @@ and
 The geometric illustration of this last property can be quite
 satisfying. If the first row is multiplied by $k$, the area is also
 scaled by the factor of $k$.
+
+%% TODO: Can this be illustrated better?
 \begin{image}[0.75\textwidth]
   \begin{tikzpicture}
     % shade
@@ -1101,10 +1104,11 @@ scaled by the factor of $k$.
   \end{tikzpicture}
 \end{image}
 
-If a new row $\vec{v}_2 = (a_2, b_2)$ is added to the first row
-$\vec{v}_1 = (a_1, b_1)$, while the second row $\vec{w} = (c,d)$ is
-held fixed, the areas of two parallelograms outlined by solid lines
-add up to the area of the parallelogram outlined by dotted lines.
+If a new row $\vec{v}_2 = \langle a_2, b_2 \rangle$ is added to the first row
+$\vec{v}_1 = \langle a_1, b_1 \rangle$, while the second row
+$\vec{w} = \langle c,d \rangle$ is held fixed, the areas of two parallelograms
+outlined by solid lines add up to the area of the parallelogram
+outlined by dotted lines.
 \begin{image}[0.75\textwidth]
   \begin{tikzpicture}
     % shade
@@ -1138,7 +1142,7 @@ add up to the area of the parallelogram outlined by dotted lines.
 We close this section by listing additional properties of the
 determinant that can be derived from the three defining properties.
 
-%% TODO: Should we prove these properties?
+%% TODO: Should we prove these properties? Can this be motivated better?
 \begin{theorem}[Additional properties of determinant]
   Let $A, B$ be $n \times n$ matrices.
   \begin{enumerate}
@@ -1212,6 +1216,10 @@ a trivial task.
       6 & 2 & 0
     \end{pmatrix}.
   \]
+  %% TODO: Think about an alternate presentation/explanation of the
+  %% solution. One idea is to have two columns where one records row
+  %% operations while the other keeps track of the change in the
+  %% determinant side by side.
   \begin{explanation}
     The row replacement $R_3 \to R_3 - 6R_1$ does not change the
     determinant:
@@ -1275,11 +1283,11 @@ At times, we don't need to go all the way through.
     \begin{center}
       If $A$ has a row of zeros, then $\det(A) =0$.
     \end{center}
-    then you know that the answer is 0 and call it a day. Even if you
-    do not remember it, the answer is only a couple of steps away.
+    then you know that the answer is 0 and call it a day.
 
-    Carrying out the row replacement $R_3 \to R_3 - 12 R_1$ does not change the
-    determinant:
+    However, even if you do not remember it, the answer is only a
+    couple of steps away. Carrying out the row replacement
+    $R_3 \to R_3 - 12 R_1$ does not change the determinant:
     \[
       \det(A) =
       \begin{vmatrix}

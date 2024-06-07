@@ -715,11 +715,14 @@ scope of this course.
 In many cases, it is useful to to scale data to aid in visualization
 and comparison. This process is called
 \textit{normalization}. However, it can take different forms depending
-on the context.
+on the context. Moreover, the norm allows us to assign a
+\textbf{single number to a vector}. In many ways, the idea of taking
+something complicated, and reducing it to a single number, is the
+heart of mathematics.\index{heart of mathematics}
 
 
 
-\paragraph{Unit vector (Euclidean norm) normalization}
+\paragraph{Unit vector normalization, the Euclidean norm}
 
 This involves scaling the vector so that its length (or Euclidean
 norm) is 1. The Euclidean norm of a vector \(\vec{v} = (v_1, v_2,
@@ -772,13 +775,14 @@ To normalize the vector to a unit vector, each component of the vector is divide
 
 
 
-\paragraph{Relative Component Normalization}
+\paragraph{Relative component normalization, the $1$-norm}
 
 For comparing relative components, you can normalize a vector by
-dividing each component by the sum of all components. This method
-ensures that the sum of the vector components is 1.
+dividing each component by the absolute value of the sum of all
+components. This method ensures that the sum of the vector components
+is $1$.
 
-\[ \vec{v}_{\text{normalized}} = \frac{\vec{v}}{\sum_{i=1}^n v_i} \]
+\[ \|\vec{v}\|_1 = \frac{\vec{v}}{\sum_{i=1}^n |v_i|} \]
 
 \begin{example}[Population Counts]
 Consider the population vector for Ohio:
@@ -799,11 +803,11 @@ So the components would be:
 
 
 
-\paragraph{Max component normalization}
+\paragraph{Max component normalization, the $\infty$-norm}
 
 This method involves dividing each component of the vector by the maximum component value. This is useful in cases where you want all components to be scaled relative to the largest component.
 
-\[ \vec{v}_{\text{normalized}} = \frac{\vec{v}}{\max(v_i)} \]
+\[ \|\vec{v}\|_\infty = \frac{\vec{v}}{\max(|v_i|)} \]
 
 \begin{example}[Student Data]
 Suppose the range of score in a certain math class are between $51$

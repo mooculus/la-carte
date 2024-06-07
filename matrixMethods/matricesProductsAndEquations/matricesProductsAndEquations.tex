@@ -157,7 +157,7 @@ vertically.
 
 
 \begin{example}[Grayscale Image]
-  Here is a very low resolution image of the number $6$:
+  Here is a very low resolution grayscale image of the number $6$:
   \begin{center}  
 \newcommand{\matrixData}{{
     {0, 0.01, 0, 0, 0, 0, 0},
@@ -179,7 +179,8 @@ vertically.
       }
     \end{tikzpicture}
   \end{center}
-  We can represent this data as a grayscale image where $0$ represents ``black'' and $1$ represents ``white.''
+  We can represent this data as an $8\times 7$ matrix where $0$
+  represents ``black,'' $1$ represents ``white,'' and numbers in between represent ``shades of gray.'' 
   \[
   \begin{pmatrix}
      1 & 1 & 0.94 & 0.82 & 0.82 & 0.99 & 1 \\
@@ -321,11 +322,11 @@ compute the following, if possible.
   Explain how to express $C_{i,j}$ as a product of $C$ and vectors of
   the forms:
   \begin{itemize}
-    \item A $600$-vector expresed as a row
+    \item A $600$-vector expressed as a row
       \[
       \vec r_i = \underbrace{\begin{pmatrix} 0 & \cdots  & 0 & 1 & 0 & \cdots & 0 \end{pmatrix}}_{\text{all entries are zero except for the $i$th}}
       \]
-    \item A $800$-vector expresed as a column
+    \item A $800$-vector expressed as a column
       \[
       \vec c_j=\begin{pmatrix} 0 \\ \vdots  \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}\quad \begin{matrix}
         \text{all entries are zero}\\

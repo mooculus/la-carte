@@ -805,15 +805,14 @@ This method involves dividing each component of the vector by the maximum compon
 
 \[ \vec{v}_{\text{normalized}} = \frac{\vec{v}}{\max(v_i)} \]
 
-\begin{example}[Population Counts]
-Consider the same population vector for Ohio:
-\[ \vec{p}_{\texttt{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
-
-The maximum component is 9394878. The normalized vector is:
-\[ \vec{p}_{\text{normalized}} = \frac{(9394878, 1442655, 20442, 268527, 3907, 544866)}{9394878} \]
-
-So the components would be:
-\[ \left(\frac{9394878}{9394878}, \frac{1442655}{9394878}, \frac{20442}{9394878}, \frac{268527}{9394878}, \frac{3907}{9394878}, \frac{544866}{9394878}\right) \]
+\begin{example}[Student Data]
+Suppose the range of score in a certain math class are between $51$
+percent and $92$ percent. It is resonable to use the maximum component
+normalization in this case, and scale by $100$ at the end. What is the
+range of score after normalizing?
+\begin{explanation}
+The maximum component is $92$. Normalizing we find a range of  BAD BAD
+\end{explanation}
 \end{example}
 \paragraph{Which do I use?}
 Different normalization techniques are used based on the context and

@@ -147,43 +147,13 @@ vertically.
   4895065 & 367889 & 48674 & 163396 & 2672 & 329279
   \end{pmatrix}
   \]
-  Note that the above is a $\answer[given]{12}\times \answer[given]{6}$ matrix. The $(7, 5)$- entry is
+  Note that the above is a $\answer[given]{12}\times \answer[given]{6}$ matrix. The $(7, 5)$-entry is
   $\answer[given]{8887}$ which is the number of Hawaiians in Missouri (MO).
   \end{explanation}
 \end{example}
 
 
 
-\begin{example}[RGB Color Space]
-  In a previous example we mentioned an LED table lamp whose shades
-  vary linearly through the RGB color space every minute in this
-  order:
-      \[
-    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
-    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
-    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
-    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
-    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
-    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
-    \]
-  Represent this sequence of RGB colors by a $3 \times 6$
-  matrix. Interpret the meaning of the $(2,3)$-entry of the matrix.
-  \begin{explanation}
-    Since we are using column vectors, we'll concatenate this data by
-    placing the vectors side-by-side:
-    \[
-      \begin{pmatrix}
-        255 & 255 & 0 & 0 & 0 & 255\\
-        0 & 255& 255 & 255 & 0 & 0 \\
-        0 & 0 & 0 & 255 & 255 & 255
-      \end{pmatrix}
-    \]
-    The $(2,3)$-entry is if the matrix is $\answer[given]{255}$. This
-    represents a that
-    \wordChoice{\choice{red}\choice[correct]{green}\choice{blue}}
-    is at maximum intensity in that color at time $2$ minutes.
-  \end{explanation}
-\end{example}
 
 
 \begin{example}[Grayscale Image]
@@ -222,6 +192,13 @@ vertically.
      1 & 1 & 1 & 0.93 & 0.97 & 1 & 1 \\
   \end{pmatrix}
   \]
+  Interpret the meaning of the $(4,6)$-entry of the matrix.
+  \begin{explanation}
+    Here the $(4,6)$-entry of the matrix is
+    $\answer[given]{0.71}$. This represents a shade of gray that is
+    closer to \wordChoice{\choice[correct]{white}\choice{black}} than
+    it is to  \wordChoice{\choice{white}\choice[correct]{black}}.
+  \end{explanation}
 \end{example}
 
 
@@ -236,9 +213,10 @@ vertically.
 
 
 
-\section{Multiplying vectors and matrices}
+\section{Multiplying matrices and vectors}
 
-Recall the dot product of two vectors:
+We can define a meaningful way to multiply matrices and vectors based
+on the dot product.  Recall the dot product of two vectors:
 \begin{align*}
   \begin{pmatrix}
     a_1\\
@@ -262,8 +240,8 @@ multiplying vectors by matrices.
 
 \paragraph{Multiplying a matrix by a column vector}
 
-If I have a matrix $m\times n$ matrix $M$, and $\vec{a}$ is an
-$n$-vector expressed as a column,
+Given a $m\times n$ matrix $M$ and $\vec{a}$ an $n$-vector
+expressed as a column, we define
 \[
 M \vec{a} =
 \begin{pmatrix}
@@ -275,9 +253,11 @@ M \vec{a} =
 \]
 Where $\row_i(M)$ represents the $i$th row of $M$.
 
+
+
 \paragraph{Multiplying a row vector by a matrix}
 If on the other hand, $M$ is still a $m\times n$ matrix, but now
-$\vec{b}$ is an $m$-vector expressed as a row,
+$\vec{b}$ is an $m$-vector expressed as a row, we define
 \[
 \vec{b} M =
 \begin{pmatrix}
@@ -330,7 +310,41 @@ compute the following, if possible.
 
 
 
-
+\begin{example}[Grayscale Image]%% https://commons.wikimedia.org/wiki/File:Cat_face_closeup.jpg
+  Here is a grayscale image of a cat:
+  \begin{image}
+  \includegraphics[width=.5\textwidth]{catface.jpg}
+  \end{image}
+  This image has a resolution of $600$ rows by $800$ columns. The
+  matrix representing this image is too large to conveniently express,
+  so let's just call it $C$, for \textit{cat}; or perhaps \textit{convenient}.
+  Explain how to express $C_{i,j}$ as a product of $C$ and vectors of
+  the forms:
+  \begin{itemize}
+    \item A $600$-vector expresed as a row
+      \[
+      \vec r_i = \underbrace{\begin{pmatrix} 0 & \cdots  & 0 & 1 & 0 & \cdots & 0 \end{pmatrix}}_{\text{all entries are zero except for the $i$th}}
+      \]
+    \item A $800$-vector expresed as a column
+      \[
+      \vec c_j=\begin{pmatrix} 0 \\ \vdots  \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}\quad \begin{matrix}
+        \text{all entries are zero}\\
+        \text{except for the $j$th}
+      \end{matrix}
+      \]
+  \end{itemize}
+  \begin{explanation}
+    First note that $\vec r_i C$ computes the $i$th
+    \wordChoice{\choice[correct]{row}\choice{column}} of the matrix
+    $C$. On the other hand $C\vec c_j$ computes the $j$th
+    \wordChoice{\choice{row}\choice[correct]{column}} of the matrix
+    $C$. Hence
+    \[
+    \vec r_i C\vec{c}_j
+    \]
+    computes $C_{i,j}$.
+  \end{explanation}
+\end{example}
 
 
 
@@ -495,7 +509,7 @@ Extract a new data set from a matrix using basis vectors
 \section{Multiplying matrices}
 
 Matrix multiplication may seem strange at first. In fact, only certain
-matrices can be multipled togther. As a general rule, we can only
+matrices can be multiplied together. As a general rule, we can only
 multiply a $m \times n$ matrix by a $k \times \l$ matrix matrix if
 $n=k$. That is if \textbf{the middle two numbers match}:
 \[

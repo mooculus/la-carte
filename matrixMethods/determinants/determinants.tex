@@ -1,7 +1,6 @@
 \documentclass{ximera}
 
 \input{../../preamble.tex}
-\newcommand{\rvx}[1]{\rule[0.5ex]{1em}{.05pt}\,#1\,\rule[0.5ex]{1em}{.05pt}}
 
 \author{Bart Snapp \and Tae Eun Kim}
 
@@ -16,14 +15,14 @@
 \end{abstract}
 \maketitle
 
-\begin{quote}
-  It is difficult to imagine a more fundamental single scalar to
-  associate with a square matrix, and experience has long demonstrated
-  its ability to contribute unique insight on both theoretical and
-  applied levels.
+% \begin{quote}
+%   It is difficult to imagine a more fundamental single scalar to
+%   associate with a square matrix, and experience has long demonstrated
+%   its ability to contribute unique insight on both theoretical and
+%   applied levels.
 
-  \hfill ---\link[D.\ Carlson and others]{https://a.co/d/cw805aA}
-\end{quote}
+%   \hfill ---\link[D.\ Carlson and others]{https://a.co/d/cw805aA}
+% \end{quote}
 
 \begin{quote}
   The determinant of a square matrix is a single number. That number
@@ -253,7 +252,7 @@ and this is
 \end{align*}
 
 \begin{question}
-  Let $A(5,1)$ and $B(1,4)$ be two points in the plane as shown below. Find
+  Let $A = (5,1)$ and $B = (1,4)$ be two points in the plane as shown below. Find
   the area of the triangle $\triangle OAB$ using determinant.
   \begin{image}[0.6\textwidth]
     \begin{tikzpicture}
@@ -268,9 +267,9 @@ and this is
 
       % then draw triangle and label vertices
       \draw[penColor,ultra thick] (0, 0) -- ++(5,1) -- ++(-4,3) -- cycle;
-      \node[below left] at (0,0) {$O(0,0)$};
-      \node[right,fill=white] at (5,1) {$A(5,1)$};
-      \node[above,fill=white] at (1,4) {$B(1,4)$};
+      \node[below left] at (0,0) {$O = (0,0)$};
+      \node[right,fill=white] at (5,1) {$A = (5,1)$};
+      \node[above,fill=white] at (1,4) {$B = (1,4)$};
     \end{tikzpicture}
   \end{image}
 \end{question}
@@ -1206,7 +1205,7 @@ reduce $A$ all the way to the reduced row echelon form because
 calculating the determinant of the triangular matrix is already
 a trivial task.
 
-\begin{example}
+\begin{example}[Determinant via row operations]
   Compute $\det(A)$, where
   \[
     A =
@@ -1252,7 +1251,7 @@ a trivial task.
 \end{example}
 
 At times, we don't need to go all the way through.
-\begin{example}
+\begin{example}[Row of zeros]
   Compute $\det(A)$, where
   \[
     A =
@@ -1317,8 +1316,9 @@ At times, we don't need to go all the way through.
   Computing determinants via row reduction is a much more efficient
   way than to use the cofactor expansion (or the Leibniz
   formula). Calculating the determinant of an $n \times n$ matrix using the
-  cofactor expansion requires about $n!$ operations while the
-  row-reduction methods takes about $\frac{2}{3} n^3$ operations.
+  cofactor expansion requires about $n!$ operations ($+$, $-$, $\times$, and $\div$) while the
+  row-reduction methods takes about $2/3\, n^3$ operations.
+
 \end{remark}
 
 

@@ -159,7 +159,7 @@ notation for vectors.
   Above, we suppose that $\vec{p}$ represents the color that
   represents the color \textit{Sea Foam Green}. Here we see the color in all of its glory:
   \begin{center}
-    \colorbox[rgb]{0.624, 0.886, 0.749}{%{159, 226, 191}
+    \colorbox[RGB]{159, 226, 191}{
       \parbox{1cm}{\rule{0pt}{1cm}}}
   \end{center}
   %% \item[As a column vector] A column vector is just like a row vector,
@@ -373,8 +373,8 @@ Now that we know the basics, onto the examples!
                 &=\begin{pmatrix}170\\0\\255\end{pmatrix}
     \end{align*}
     Here is this color:
-  \begin{center}
-    \colorbox[rgb]{0.67,0,1}{%{170,0, 255}
+    \begin{center}
+    \colorbox[RGB]{170,0, 255}{
       \parbox{1cm}{\rule{0pt}{1cm}}}
   \end{center}
   \end{explanation}
@@ -712,6 +712,11 @@ scope of this course.
 
 \section{Normalizing data}
 
+In many cases, it is useful to to scale data to aid in visualization
+and comparison. This process is called
+\textit{normalization}. However, it can take different forms depending
+on the context.
+
 
 
 \paragraph{Unit vector (Euclidean norm) normalization}
@@ -730,12 +735,43 @@ To normalize the vector to a unit vector, each component of the vector is divide
 \[ \hat{\vec{v}} = \frac{\vec{v}}{\|\vec{v}\|} \]
 
 \begin{example}[RGB Color Space]
-Consider the RGB color vector for red: \(\vec{r} = \begin{pmatrix}255\\0\\0\end{pmatrix}\). The Euclidean norm of \(\vec{r}\) is:
-\[ \|\vec{r}\| = \sqrt{255^2 + 0^2 + 0^2} = 255 \]
-
-The normalized vector \(\hat{\vec{r}}\) is:
-\[ \hat{\vec{r}} = \frac{\begin{pmatrix}255\\0\\0\end{pmatrix}}{255} = \begin{pmatrix}1\\0\\0\end{pmatrix} \]
+  Recall that the \textit{MOOCulus Lighting Company} produces an color-changing LED table lamp, whose colors run through the RGB spectrum
+    \[
+    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
+    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
+    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
+    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
+    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
+    \]
+    changing colors linearly every minute. However, after consumer
+    reviews, it is discovered that the lamp suffers from a small flaw:
+    As the colors change, their intensity changes too. In particular,
+    yellow, cyan, and magenta, all seem much brighter than red, blue
+    and green. Normalize the intenstites of the colors so that the
+    intensity is constant.
+  \begin{explanation}
+   Our plan is to normalize the vectors representing yellow, cyan, and
+   magenta by their Euclidean norm, then make these vectors, unit
+   vectors, then scale back to RGB color space, where the entries are
+   betweeen $0$ and $255$. First note:
+   \[
+   \left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\| =  \left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\| =  \left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\| = \answer[given]{360.624}
+   \]
+     
+  \end{explanation}
 \end{example}
+
+
+
+
+
+
+
+
+
+
+
 \paragraph{Relative Component Normalization}
 
 For comparing relative components, you can normalize a vector by

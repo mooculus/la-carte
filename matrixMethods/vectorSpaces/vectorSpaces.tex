@@ -56,6 +56,20 @@ learn about the solutions to this system of equations if we
 Equations of this form are called \dfn{homogeneous equations}. We call
 them \textit{homogeneous} because all the (nonzero) terms are
 multiplied by the same \textbf{powers of variables}.
+%% TK: I am not sure if I follow this explanation about why they are
+%% called homogeneous, because I am not sure whether we can consider
+%% the nonlinear system
+%%
+%%   a_i x^2 + b_i y^2 + c_i z^2 = 0, i = 1, 2, 3
+%%
+%% as homogeneous. The homogeneity in the case of linear systems
+%% are due to 1) linearity and 2) zero constant terms. In
+%% particular, because of this, it follows that if x is a solution
+%% of Ax = 0, then any scalar multiple of x is also a solution. As a
+%% consequence, ker(A) is a subspace.
+
+%% Mayby, it was meant to be written as ``because all the
+%% (nonconstant) terms are multiplied by ...''?
 
 \begin{question}
   Which of the following equations are homogeneous?
@@ -88,7 +102,7 @@ multiplied by the same \textbf{powers of variables}.
   The sum
 
   scalar multiples
-  
+
 \end{example}
 
 
@@ -102,7 +116,7 @@ Given a matrix (not necessarily square)
 \begin{pmatrix}
   a_1 &  b_1  &  c_1 \\
   a_2 & b_2 & c_2 \\
-  a_3 & b_3 & c_3 
+  a_3 & b_3 & c_3
 \end{pmatrix}
 \]
 

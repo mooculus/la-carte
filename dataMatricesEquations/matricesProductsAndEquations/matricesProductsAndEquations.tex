@@ -26,7 +26,7 @@
 
 
 
-  \hfill ---\link[J.\ Cochran]{https://www.amazon.com/Applied-Mathematics-Principles-Applications-Probability/dp/0534980260}
+  \hfill ---\link[J.\ Cochran]{https://go.osu.edu/cochran}
 \end{quote}
 
 
@@ -49,6 +49,7 @@ of columns second, so $M$ above is a $(4\times 5)$-matrix.
 \begin{question}
   Which of the following matrices are $3\times 2$ matrices?
   \begin{selectAll}
+    \pdfOnly{\begin{multicols}{4}}
   \choice{$\begin{pmatrix}
   2 & 4 & 8\\
   5 & 9 & -1\\
@@ -67,7 +68,8 @@ of columns second, so $M$ above is a $(4\times 5)$-matrix.
   0 & 0\\
   0 & 0 \\
   0 & 0
-  \end{pmatrix}$}
+    \end{pmatrix}$}
+  \pdfOnly{\end{multicols}}
   \end{selectAll}
 \end{question}
 
@@ -287,6 +289,7 @@ A=\begin{pmatrix}
 compute the following, if possible.
 \begin{prompt} Write ``NA'' for each entry if the multiplication is not possible.\end{prompt}
 \begin{enumerate}
+  \pdfOnly{\begin{multicols}{4}}
 \item $\vec{v} A$ \begin{prompt}
   \[=\begin{pmatrix}
   \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}
@@ -306,6 +309,7 @@ compute the following, if possible.
 \answer[given,format= string]{NA} & \answer[given,format= string]{NA} & \answer[given,format= string]{NA}
 \end{array}\right)\]
 \end{prompt}
+\pdfOnly{\end{multicols}}
 \end{enumerate}
 \end{question}
 
@@ -316,11 +320,11 @@ compute the following, if possible.
   \begin{image}
   \includegraphics[width=.5\textwidth]{catface.jpg}
   \end{image}
-  This image has a resolution of $600$ rows by $800$ columns. The
-  matrix representing this image is too large to conveniently express,
-  so let's just call it $C$, for \textit{cat}; or perhaps \textit{convenient}.
-  Explain how to express $C_{i,j}$ as a product of $C$ and vectors of
-  the forms:
+  This image has a resolution of $600$ rows by $800$ columns. With a
+  whopping $480000$ entries, the matrix representing this image is too
+  large to conveniently express, so let's just call it $C$, for
+  \textit{cat}; or perhaps \textit{convenient}.  Explain how to
+  express $C_{i,j}$ as a product of $C$ and vectors of the forms:
   \begin{itemize}
     \item A $600$-vector expressed as a row
       \[
@@ -407,7 +411,7 @@ A\vec{x} = \vec{b}
 
 
 
-\begin{example}[Three Layer Neural Network]
+\begin{example}[Neural Network]
   Suppose you wish to use a camera attached to a computer to detect if
   a simple pattern of circles
   \begin{center}
@@ -423,7 +427,8 @@ A\vec{x} = \vec{b}
       \draw[ultra thick,fill=black] (6,0) circle (1cm);
     \end{tikzpicture}}
   \end{center}
-  and check that they it is not unshaded or shaded like any of these:
+  and also check that the pattern is not unshaded or shaded like any
+  of these:
   \begin{center}
     \begin{tikzpicture}[scale = .3]
       \draw[ultra thick,fill=black] (0,0) circle (1cm);
@@ -457,8 +462,8 @@ A\vec{x} = \vec{b}
       \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
     \end{tikzpicture}
   \end{center}
-  This might not seem difficult; however, in practice users are too
-  rapid and careless, and they shade like this:
+  This might not seem too difficult; however, in practice users are
+  too rapid and careless, and they shade like this:
   \begin{center}
     \begin{tikzpicture}[scale = .3]
       \draw[ultra thick] (0,0) circle (1cm);
@@ -476,23 +481,61 @@ A\vec{x} = \vec{b}
       \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,0.5) -- (5.5,-0.5);
     \end{tikzpicture}  
   \end{center}
-  Shading may be incomplete, and there may be errent marks. Hence, we
-  can visualize the input as continuous random variables $X_1$, $X_2$,
-  and $X_3$; where a value of $1$ for $X_i$ would represent
-  ``completely shaded'' and a value of $0$ for $X_i$ would represent
-  completely unshaded. We can express these random variables as a
-  column vector $\vec{X}$. Moreover, we may write the ``answer'' of
-  whether the pattern is shaded correctly, using a column vector
-  $\vec{Y}$, with two entries, also random variables $Y_1$ and $Y_2$,
-  where $Y_1$ is the probability that the circles are filled in
+  Shading may be incomplete, and there may be errent marks.
+  We can use a \link[neural network]{https://en.wikipedia.org/wiki/Neural_network} to help solve this problem. This might sound really complicated, but at the end of the day, this a neural network is just a matrix.
+  
+  
+  Since the marks are incomplete, we visualize the input as continuous
+  random variables $X_1$, $X_2$, and $X_3$; where a value of $1$ for
+  $X_i$ would represent ``completely shaded'' and a value of $0$ for
+  $X_i$ would represent completely unshaded. We can express these random
+  variables as a column vector $\vec{X}$. Moreover, we may write the
+  ``answer'' of whether the pattern is shaded correctly, using a column
+  vector $\vec{Y}$, with two entries, also random variables $Y_1$ and
+  $Y_2$, where $Y_1$ is the probability that the circles are filled in
   correctly, and $Y_2$ is the probability they are not.
   \[
   \vec{X} = \begin{pmatrix} X_1 \\ X_2 \\ X_3 \end{pmatrix} \qquad \vec{Y} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
   \]
+  A matrix $N$ represents the neural network, say 
   \[
-  N \vec{X} = \vec{a}
+  N = \begin{pmatrix}
+     0.4 & -1 & 0.5 \\
+ -0.2 & 1 & -0.2
+  \end{pmatrix}
+  \quad \text{and we find} \quad
+  N\vec{X} =
+  \begin{pmatrix}
+    0.7 \\
+    -0.3
+  \end{pmatrix}
   \]
+  Interpret this result and represent this matrix equation as a system of equations.
   \begin{explanation}
+    Since vector
+    \[
+    \vec{Y} =
+    \begin{pmatrix}
+    \answer[given]{0.7} \\
+    \answer[given]{-0.3}
+    \end{pmatrix}
+    \]
+    We see that the drawn pattern, represented by $X_1$, $X_2$, and
+    $X_3$, is likely the
+    \wordChoice{\choice[correct]{correct}\choice{incorrect}} pattern.
+    Writing
+    \[
+    N\vec{X} =
+  \begin{pmatrix}
+    0.7 \\
+    -0.3
+  \end{pmatrix}
+  \]
+  corresponds to the system of equations:
+  \begin{align*}
+    \left(\answer[given]{0.4}\right)X_1 +  \left(\answer[given]{-1}\right) X_2 + \left(\answer[given]{0.5}\right) X_3 &= 0.7 \\
+    \left(\answer[given]{-0.2}\right)X_1 +1 \left(\answer[given]{X_2}\right) +  \left(\answer[given]{-0.2}\right)X_3 &= -0.3
+  \end{align*}
   \end{explanation}
 \end{example}
 
@@ -587,9 +630,10 @@ outside numbers}.
   A =,\quad B =, \quad C =\quad 
   \]
   which of the following make sense?
-  \begin{selectAll}
+  \begin{selectAll}\pdfOnly{\begin{multicols}{2}}
     \choice{$AB$}
     \choice{$AC$}
+    \pdfOnly{\end{multicols}}
   \end{selectAll}
   What are the dimensions of the product?
 \end{question}

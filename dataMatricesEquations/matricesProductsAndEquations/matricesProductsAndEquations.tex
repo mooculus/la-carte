@@ -408,15 +408,92 @@ A\vec{x} = \vec{b}
 
 
 \begin{example}[Three Layer Neural Network]
-  Suppose you wish to a camera attached to a computer to see if a simple pattern of circles:
+  Suppose you wish to use a camera attached to a computer to detect if
+  a simple pattern of circles
   \begin{center}
-    three empty circles
+    \raisebox{-.3\height}{\begin{tikzpicture}[scale = .3]
+      \draw[ultra thick] (0,0) circle (1cm);
+      \draw[ultra thick] (3,0) circle (1cm);
+      \draw[ultra thick] (6,0) circle (1cm);
+    \end{tikzpicture}}
+    \qquad\text{is shaded like this}\qquad
+    \raisebox{-.3\height}{\begin{tikzpicture}[scale = .3]
+      \draw[ultra thick,fill=black] (0,0) circle (1cm);
+      \draw[ultra thick] (3,0) circle (1cm);
+      \draw[ultra thick,fill=black] (6,0) circle (1cm);
+    \end{tikzpicture}}
   \end{center}
-  is colored in (by users, rapidly and very carelessly) in the following pattern:
+  and check that they it is not unshaded or shaded like any of these:
   \begin{center}
-    filled empty filled
+    \begin{tikzpicture}[scale = .3]
+      \draw[ultra thick,fill=black] (0,0) circle (1cm);
+      \draw[ultra thick,fill=black] (3,0) circle (1cm);
+      \draw[ultra thick,fill=black] (6,0) circle (1cm);
+      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
+      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
+    \end{tikzpicture}
+\qquad
+    \begin{tikzpicture}[scale = .3]
+      \draw[ultra thick,fill=black] (0,0) circle (1cm);
+      \draw[ultra thick] (3,0) circle (1cm);
+      \draw[ultra thick] (6,0) circle (1cm);
+      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
+      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
+    \end{tikzpicture}
+\\[.5cm]
+    \begin{tikzpicture}[scale = .3]
+      \draw[ultra thick,fill=black] (0,0) circle (1cm);
+      \draw[ultra thick,fill=black] (3,0) circle (1cm);
+      \draw[ultra thick] (6,0) circle (1cm);
+      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
+      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
+    \end{tikzpicture}
+\qquad 
+      \begin{tikzpicture}[scale = .3]
+      \draw[ultra thick] (0,0) circle (1cm);
+      \draw[ultra thick] (3,0) circle (1cm);
+      \draw[ultra thick,fill=black] (6,0) circle (1cm);
+      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
+      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
+    \end{tikzpicture}
   \end{center}
- On way to do this, is to use a matrix. If we imagine the inputs as random variables: $X_1$, $X_2$, and $X_3$
+  This might not seem difficult; however, in practice users are too
+  rapid and careless, and they shade like this:
+  \begin{center}
+    \begin{tikzpicture}[scale = .3]
+      \draw[ultra thick] (0,0) circle (1cm);
+      \draw[ultra thick] (3,0) circle (1cm);
+      \draw[ultra thick] (6,0) circle (1cm);
+      \node[below] at (0,-1) {$X_1$};
+      \node[below] at (3,-1) {$X_2$};
+      \node[below] at (6,-1) {$X_3$};
+      % Marking the circles carelessly
+      \draw[black,line width=6pt,line cap=round,opacity=.7] (0.5,-0.5) -- (-0.5,0.5);
+      %\draw[black!70!white,thick] (3.1,-0.3) -- (2.7,0.5);
+      \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,-0.5) -- (6.5,0.5);
+      \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (0.5,0.5) -- (-0.5,-0.5);
+      \draw[black,thick,line cap=round,opacity=.7] (3.2,0.1) -- (2.8,-0.1);
+      \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,0.5) -- (5.5,-0.5);
+    \end{tikzpicture}  
+  \end{center}
+  Shading may be incomplete, and there may be errent marks. Hence, we
+  can visualize the input as continuous random variables $X_1$, $X_2$,
+  and $X_3$; where a value of $1$ for $X_i$ would represent
+  ``completely shaded'' and a value of $0$ for $X_i$ would represent
+  completely unshaded. We can express these random variables as a
+  column vector $\vec{X}$. Moreover, we may write the ``answer'' of
+  whether the pattern is shaded correctly, using a column vector
+  $\vec{Y}$, with two entries, also random variables $Y_1$ and $Y_2$,
+  where $Y_1$ is the probability that the circles are filled in
+  correctly, and $Y_2$ is the probability they are not.
+  \[
+  \vec{X} = \begin{pmatrix} X_1 \\ X_2 \\ X_3 \end{pmatrix} \qquad \vec{Y} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+  \]
+  \[
+  N \vec{X} = \vec{a}
+  \]
+  \begin{explanation}
+  \end{explanation}
 \end{example}
 
 

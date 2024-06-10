@@ -167,9 +167,11 @@ vertically.
     {0, 0.38, 0.64, 0.21, 0.37, 0.79, 0.06},
     {0.12, 0.99, 0.12, 0.01, 0, 0.11, 0.02},
     {0.34, 0.94, 0.32, 0.41, 0.64, 0.55, 0.02},
-    {0.35, 0.97, 0.09, 0, 0.05, 0.98, 0.43}, {0.14, 0.98, 0.13, 0, 0.01, 0.94, 
-  0.39}, {0, 0.34, 0.56, 0.29, 0.47, 0.51, 0.01}, {0, 0, 0, 0.07, 
-  0.03, 0, 0}, {0, 0.01, 0, 0, 0, 0.02, 0}
+    {0.35, 0.97, 0.09, 0, 0.05, 0.98, 0.43},
+    {0.14, 0.98, 0.13, 0, 0.01, 0.94, 0.39},
+    {0, 0.34, 0.56, 0.29, 0.47, 0.51, 0.01},
+    {0, 0, 0, 0.07, 0.03, 0, 0},
+    {0, 0.01, 0, 0, 0, 0.02, 0}
 }}
     \begin{tikzpicture}[scale=.5]
       \foreach \y in {1, ..., 8} {
@@ -449,7 +451,8 @@ A\vec{x} = \vec{b}
     \end{tikzpicture}  
   \end{center}
   Shading may be incomplete, and there may be errent marks.
-  We can use a \link[neural network]{https://en.wikipedia.org/wiki/Neural_network} to help solve this problem. This might sound really complicated, but at the end of the day, this a neural network is just a matrix.
+  We can use a \link[neural network]{https://en.wikipedia.org/wiki/Neural_network} to help solve this problem.
+  This might sound really complicated, but at the end of the day, a neural network is just a matrix.
   
   
   Since the marks are incomplete, we visualize the input as continuous
@@ -510,6 +513,7 @@ A\vec{x} = \vec{b}
 
 
 \begin{example}[Cryptography]
+  A Caeser cypher
 \end{example}
 
 
@@ -539,18 +543,6 @@ with augmented matrix:
 1 & 0 & -1 & -40\\
 1 & 2 & 1 & 10
 \end{array}\right)\]
-\end{example}
-
-
-
-
-
-\begin{example}[Population Counts]
-Extract a new data set from a matrix using basis vectors
-\end{example}
-
-
-\begin{example}[RGB Color Space]
 \end{example}
 
 

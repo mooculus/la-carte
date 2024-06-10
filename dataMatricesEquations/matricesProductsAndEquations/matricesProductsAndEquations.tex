@@ -424,46 +424,12 @@ A\vec{x} = \vec{b}
     \raisebox{-.3\height}{\begin{tikzpicture}[scale = .3]
       \draw[ultra thick,fill=black] (0,0) circle (1cm);
       \draw[ultra thick] (3,0) circle (1cm);
-      \draw[ultra thick,fill=black] (6,0) circle (1cm);
+      \draw[ultra thick] (6,0) circle (1cm);
     \end{tikzpicture}}
   \end{center}
-  and also check that the pattern is not unshaded or shaded like any
-  of these:
-  \begin{center}
-    \begin{tikzpicture}[scale = .3]
-      \draw[ultra thick,fill=black] (0,0) circle (1cm);
-      \draw[ultra thick,fill=black] (3,0) circle (1cm);
-      \draw[ultra thick,fill=black] (6,0) circle (1cm);
-      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
-      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
-    \end{tikzpicture}
-\qquad
-    \begin{tikzpicture}[scale = .3]
-      \draw[ultra thick,fill=black] (0,0) circle (1cm);
-      \draw[ultra thick] (3,0) circle (1cm);
-      \draw[ultra thick] (6,0) circle (1cm);
-      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
-      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
-    \end{tikzpicture}
-\\[.5cm]
-    \begin{tikzpicture}[scale = .3]
-      \draw[ultra thick,fill=black] (0,0) circle (1cm);
-      \draw[ultra thick,fill=black] (3,0) circle (1cm);
-      \draw[ultra thick] (6,0) circle (1cm);
-      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
-      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
-    \end{tikzpicture}
-\qquad 
-      \begin{tikzpicture}[scale = .3]
-      \draw[ultra thick] (0,0) circle (1cm);
-      \draw[ultra thick] (3,0) circle (1cm);
-      \draw[ultra thick,fill=black] (6,0) circle (1cm);
-      \draw[red, line width=5pt,opacity=.3] (0,-2) -- (6,2);
-      \draw[red, line width=5pt,opacity=.3] (0,2) -- (6,-2);
-    \end{tikzpicture}
-  \end{center}
-  This might not seem too difficult; however, in practice users are
-  too rapid and careless, and they shade like this:
+  and also check that the pattern is not unshaded or shaded in any
+  other way.  This might not seem too difficult; however, in practice
+  users are too rapid and careless, and they shade like this:
   \begin{center}
     \begin{tikzpicture}[scale = .3]
       \draw[ultra thick] (0,0) circle (1cm);
@@ -475,10 +441,11 @@ A\vec{x} = \vec{b}
       % Marking the circles carelessly
       \draw[black,line width=6pt,line cap=round,opacity=.7] (0.5,-0.5) -- (-0.5,0.5);
       %\draw[black!70!white,thick] (3.1,-0.3) -- (2.7,0.5);
-      \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,-0.5) -- (6.5,0.5);
+      \draw[black!70!white,thick] (5.8,0.5) -- (6.3,-0.5);
+      %\draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,-0.5) -- (6.5,0.5);
       \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (0.5,0.5) -- (-0.5,-0.5);
       \draw[black,thick,line cap=round,opacity=.7] (3.2,0.1) -- (2.8,-0.1);
-      \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,0.5) -- (5.5,-0.5);
+      %\draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,0.5) -- (5.5,-0.5);
     \end{tikzpicture}  
   \end{center}
   Shading may be incomplete, and there may be errent marks.
@@ -497,27 +464,28 @@ A\vec{x} = \vec{b}
   \[
   \vec{X} = \begin{pmatrix} X_1 \\ X_2 \\ X_3 \end{pmatrix} \qquad \vec{Y} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
   \]
-  A matrix $N$ represents the neural network, say 
+  A matrix $H$ represents the neural network, say 
   \[
-  N = \begin{pmatrix}
-     0.4 & -1 & 0.5 \\
- -0.2 & 1 & -0.2
+  H = \begin{pmatrix}
+     0.375 & -0.125 & -0.125 \\
+     0.125 & 0.625 & 0.625
   \end{pmatrix}
   \quad \text{and we find} \quad
   N\vec{X} =
   \begin{pmatrix}
-    0.7 \\
-    -0.3
+    0.288 \\
+    0.163
   \end{pmatrix}
   \]
-  Interpret this result and represent this matrix equation as a system of equations.
+  for some $X$.  Interpret this result and represent this matrix
+  equation as a system of equations.
   \begin{explanation}
     Since vector
     \[
     \vec{Y} =
     \begin{pmatrix}
-    \answer[given]{0.7} \\
-    \answer[given]{-0.3}
+    \answer[given]{0.288} \\
+    \answer[given]{0.163}
     \end{pmatrix}
     \]
     We see that the drawn pattern, represented by $X_1$, $X_2$, and
@@ -527,14 +495,14 @@ A\vec{x} = \vec{b}
     \[
     N\vec{X} =
   \begin{pmatrix}
-    0.7 \\
-    -0.3
+    0.288 \\
+    0.163
   \end{pmatrix}
   \]
   corresponds to the system of equations:
   \begin{align*}
-    \left(\answer[given]{0.4}\right)X_1 +  \left(\answer[given]{-1}\right) X_2 + \left(\answer[given]{0.5}\right) X_3 &= 0.7 \\
-    \left(\answer[given]{-0.2}\right)X_1 +1 \left(\answer[given]{X_2}\right) +  \left(\answer[given]{-0.2}\right)X_3 &= -0.3
+    \left(\answer[given]{0.375}\right)X_1 +  \left(\answer[given]{-0.125}\right) X_2 + \left(\answer[given]{-0.125}\right) X_3 &= 0.288 \\
+    \left(\answer[given]{0.125}\right)X_1 + \left(\answer[given]{0.625}\right) X_2+  \left(\answer[given]{0.625}\right)X_3 &= 0.163
   \end{align*}
   \end{explanation}
 \end{example}

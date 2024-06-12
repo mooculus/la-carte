@@ -238,6 +238,69 @@ elements of the field $K$ are called \dfn{scalars}.
 
 \subsection{Span of vectors}
 
+Span of the color red
+
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbred}{RGB}{\i,0,0}
+      \fill[fill=rgbred] ({\i/255*7},0) rectangle ++(.5,1);
+    }
+    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (7.6,-.5);
+    \node[left] at (0,-.5) {$(0,0,0)$};
+    \node[right] at (7.6,-.5) {$(255,0,0)$};
+\end{tikzpicture}
+\end{center}
+
+Span of red and blue
+
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{\i,0,\j}
+      \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
+    }}
+    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4,-.5);
+    \node[right] at (4,-.5) {$(255,0,0)$};
+    \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4);
+    \node at (-.5,-.5) {$(0,0,0)$};
+    \node[right] at (4,-.5) {$(255,0,0)$};
+    \node[above] at (-.5,4) {$(0,0,255)$};
+\end{tikzpicture}
+\end{center}
+
+Span of red and green
+
+\begin{center}
+  \begin{tikzpicture}[scale=1]
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{\i,\j,0}
+      \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
+    }}
+    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4,-.5);
+    \node[right] at (4,-.5) {$(255,0,0)$};
+    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (-.5,0) -- (-.5,4);
+    \node at (-.5,-.5) {$(0,0,0)$};
+    \node[right] at (4,-.5) {$(255,0,0)$};
+    \node[above] at (-.5,4) {$(0,255,0)$};
+\end{tikzpicture}
+\end{center}
+
+Span of blue and green
+
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{0,\i,\j}
+      \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
+    }}
+\end{tikzpicture}
+\end{center}
+
+
 \begin{definition}
   Given a set of vectors $S$, in a $K$-vector space, $V$, the
   \dfn{span} of the vectors in $S$ is
@@ -249,6 +312,69 @@ elements of the field $K$ are called \dfn{scalars}.
 \end{definition}
 
 \subsection{Linear indendence of vectors}
+
+
+Blue and green are linearly independent
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{0,\i,\j}
+      \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
+    }}
+\end{tikzpicture}
+\end{center}
+
+
+Cyan and Yellow are linerly independent
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{\i,255,\j}
+      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
+    }}
+\end{tikzpicture}
+\end{center}
+
+
+Green and Yellow are linearly independent
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{\i,255,0}
+      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
+    }}
+\end{tikzpicture}
+\end{center}
+
+
+
+Red and dark red are not
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{\j,0,0}
+      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
+    }}
+\end{tikzpicture}
+\end{center}
+
+
+
+Cyan and dark cyan are not
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{0,\j,\j}
+      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
+    }}
+\end{tikzpicture}
+\end{center}
+
 
 
 \begin{definition}

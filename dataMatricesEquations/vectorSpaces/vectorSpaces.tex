@@ -314,16 +314,47 @@ Span of blue and green
 \subsection{Linear indendence of vectors}
 
 
-Not correct:
+Getting somewhere
 \begin{center}
   \begin{tikzpicture}
-    \foreach \k in {0,45,...,255} {
-    \foreach \j in {0,45,...,255} {
-    \foreach \i in {0,45,...,255} {
-      \definecolor{rgbcolor}{RGB}{\i,\j,\k}
-      \fill[fill=rgbcolor] ({\i/255*4*(-.8) + \j/255*4*(.8)},{\k/255*4+(\i+\j)/255*4*(-.37)}) circle (.1);
-    }}}
-\end{tikzpicture}
+    \foreach \k in {0,17,...,255} {
+      \foreach \j in {0,17,...,255} {
+        \definecolor{rgbcolor}{RGB}{0,\j,\k}
+        \fill[fill=rgbcolor] ({\j/255*4*(.8)},{\k/255*4+(\j)/255*4*(-.37)}) circle (.2);
+    }}
+    \foreach \k in {0,17,...,255} {
+      \foreach \i in {0,17,...,255} {
+        \definecolor{rgbcolor}{RGB}{\i,0,\k}
+        \fill[fill=rgbcolor] ({\i/255*4*(-.8)},{\k/255*4+(\i)/255*4*(-.37)}) circle (.2);
+    }}
+    \foreach \j in {0,17,...,255} {
+      \foreach \i in {0,17,...,255} {
+        \definecolor{rgbcolor}{RGB}{\i,\j,0}
+        \fill[fill=rgbcolor] ({\i/255*4*(-.8)+\j/255*4*(.8)},{(\i+\j)/255*4*(-.37)}) circle (.2);
+    }}
+  \end{tikzpicture}
+\end{center}
+
+
+
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \k in {0,17,...,255} {
+      \foreach \j in {0,17,...,255} {
+        \definecolor{rgbcolor}{RGB}{\j,255,\k}
+        \fill[fill=rgbcolor] ({\j/255*4*(.8)},{\k/255*4+(\j)/255*4*(-.37)}) circle (.2);
+    }}
+    \foreach \k in {0,17,...,255} {
+      \foreach \i in {0,17,...,255} {
+        \definecolor{rgbcolor}{RGB}{\i,255,\k}
+        \fill[fill=rgbcolor] ({\i/255*4*(-.8)},{\k/255*4+(\i)/255*4*(-.37)}) circle (.2);
+    }}
+    \foreach \j in {0,17,...,255} {
+      \foreach \i in {0,17,...,255} {
+        \definecolor{rgbcolor}{RGB}{\i,\j,0}
+        \fill[fill=rgbcolor] ({\i/255*4*(-.8)+\j/255*4*(.8)},{(\i+\j)/255*4*(-.37)}) circle (.2);
+    }}
+  \end{tikzpicture}
 \end{center}
 
 

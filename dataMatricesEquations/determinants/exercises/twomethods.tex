@@ -1,0 +1,72 @@
+\documentclass{ximera}
+\author{Parisa Fatheddin}
+
+
+
+\input{../../preamble.tex}
+
+
+
+\begin{document}
+\begin{exercise}
+
+
+Determine the determinant of the following matrix.
+\[
+A= \begin{pmatrix}
+1 & -4 & 3\\
+-2 & 0 & 2\\
+3 & 0 & 1
+\end{pmatrix}
+\]\\
+
+a. by cofactor expansion. \\
+
+\begin{prompt}
+The best row or column to use for cofactor expansion for this problem is:
+\begin{multipleChoice}
+\choice{first row}
+\choice{second row}
+\choice{third row}
+\choice{first column}
+\choice[correct]{second column}
+\choice{third column}
+\end{multipleChoice}
+
+The determinant by cofactor expansion along this row or column gives: $\answer{-32}$. Use another row or column and check that you get the same answer.
+\end{prompt}
+
+
+b. by row operations and converting to a triangular matrix.
+
+\begin{prompt}
+The matrix in triangular form is:
+\[\begin{pmatrix}
+\answer{1} & \answer{-4} & \answer{3}\\
+\answer{0} & 1 & \answer{-1}\\
+\answer{0} & \answer{0} & \answer{4}
+\end{pmatrix}\]
+where we took out a factor of $\answer{-8}$ from the second row to obtain the above. Thus, $det(A) = \answer{-8} \times \answer{4} =  \answer{-32}$.
+\end{prompt}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{exercise}
+\end{document} 

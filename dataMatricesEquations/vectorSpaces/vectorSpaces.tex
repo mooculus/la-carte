@@ -314,66 +314,18 @@ Span of blue and green
 \subsection{Linear indendence of vectors}
 
 
-Blue and green are linearly independent
+Not correct:
 \begin{center}
   \begin{tikzpicture}
-    \foreach \j in {0,17,...,255} {
-    \foreach \i in {0,17,...,255} {
-      \definecolor{rgbcolor}{RGB}{0,\i,\j}
-      \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
-    }}
+    \foreach \k in {0,45,...,255} {
+    \foreach \j in {0,45,...,255} {
+    \foreach \i in {0,45,...,255} {
+      \definecolor{rgbcolor}{RGB}{\i,\j,\k}
+      \fill[fill=rgbcolor] ({\i/255*4*(-.8) + \j/255*4*(.8)},{\k/255*4+(\i+\j)/255*4*(-.37)}) circle (.1);
+    }}}
 \end{tikzpicture}
 \end{center}
 
-
-Cyan and Yellow are linerly independent
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \j in {0,17,...,255} {
-    \foreach \i in {0,17,...,255} {
-      \definecolor{rgbcolor}{RGB}{\i,255,\j}
-      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
-    }}
-\end{tikzpicture}
-\end{center}
-
-
-Green and Yellow are linearly independent
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \j in {0,17,...,255} {
-    \foreach \i in {0,17,...,255} {
-      \definecolor{rgbcolor}{RGB}{\i,255,0}
-      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
-    }}
-\end{tikzpicture}
-\end{center}
-
-
-
-Red and dark red are not
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \j in {0,17,...,255} {
-    \foreach \i in {0,17,...,255} {
-      \definecolor{rgbcolor}{RGB}{\j,0,0}
-      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
-    }}
-\end{tikzpicture}
-\end{center}
-
-
-
-Cyan and dark cyan are not
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \j in {0,17,...,255} {
-    \foreach \i in {0,17,...,255} {
-      \definecolor{rgbcolor}{RGB}{0,\j,\j}
-      \fill[fill=rgbcolor] ({\i/255*4},{(\j/255*4}) rectangle +(.3,.3);
-    }}
-\end{tikzpicture}
-\end{center}
 
 
 

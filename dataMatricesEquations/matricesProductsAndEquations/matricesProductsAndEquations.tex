@@ -246,8 +246,10 @@ multiplying vectors by matrices.
 
 \paragraph{Multiplying a matrix by a column vector}
 
-Given a $m\times n$ matrix $M$ and $\vec{a}$ an $n$-vector
-expressed as a column, we define
+Given a $m\times n$ matrix $M$ and $\vec{a}$, an $n$-vector expressed
+as a column, \textbf{the number of colmuns of the matrix must equal
+  the number of entries of the vector} and we can compute the product
+$M\vec{a}$, defining
 \[
 M \vec{a} =
 \begin{pmatrix}
@@ -257,13 +259,49 @@ M \vec{a} =
   \row_m(M)^\transpose \dotp \vec{a}
 \end{pmatrix}
 \]
-Where $\row_i(M)$ represents the $i$th row of $M$.
+Where $\row_i(M)$ represents the $i$th row of $M$. Note, $M\vec{a}$ is
+a column vector and in this case we have:
+\[
+\begin{matrix}
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet \\
+\end{pmatrix}
+&
+\begin{pmatrix}
+  \bullet \\ \bullet \\ \bullet \\ \bullet \\ \bullet
+\end{pmatrix}
+& = &
+\begin{pmatrix}
+  \bullet \\ \bullet \\ \bullet 
+\end{pmatrix}
+\\
+\begin{pmatrix}
+  m\times n\\
+  \text{matrix}
+\end{pmatrix}
+&
+\begin{pmatrix}
+  n\text{-vector}\\
+  \text{column}
+\end{pmatrix}
+& &
+\begin{pmatrix}
+  m\text{-vector}\\
+  \text{column}
+\end{pmatrix}
+\end{matrix}
+\]
+
 
 
 
 \paragraph{Multiplying a row vector by a matrix}
 If on the other hand, $M$ is still a $m\times n$ matrix, but now
-$\vec{b}$ is an $m$-vector expressed as a row, we define
+$\vec{b}$ is an $m$-vector expressed as a row, \textbf{the number of
+  entries of the vector must equal the number of rows of the matrix}
+and we can compute the product $\vec{b}M$, defining
 \[
 \vec{b} M =
 \begin{pmatrix}
@@ -273,7 +311,53 @@ $\vec{b}$ is an $m$-vector expressed as a row, we define
   \vec{b}\dotp \col_n(M)^\transpose
 \end{pmatrix}
 \]
-Where $\col_i(M)$ represents the $i$th column of $M$.
+Where $\col_i(M)$ represents the $i$th column of $M$. Note, $\vec{b}M$ is a row vector and in this case we have:
+\[
+\begin{matrix}
+\begin{pmatrix}
+  \bullet & \bullet & \bullet 
+\end{pmatrix}
+&
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet \\
+  \bullet & \bullet & \bullet & \bullet & \bullet 
+\end{pmatrix}
+& 
+=
+&
+\begin{pmatrix}
+  \bullet & \bullet & \bullet & \bullet & \bullet
+\end{pmatrix}
+\\
+\begin{pmatrix}
+  m\text{-vector}\\
+  \text{row}
+\end{pmatrix}
+&
+\begin{pmatrix}
+  m\times n\\
+  \text{matrix}
+\end{pmatrix}
+& &
+\begin{pmatrix}
+  n\text{-vector}\\
+  \text{row}
+\end{pmatrix}
+\end{matrix}
+\]
+
+
+Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
+vectors, and one \textit{resonably} writes
+\[
+\vec x A\quad\text{or}\quad  B \vec y
+\]
+then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. In particular, this is related to our next proposition:
+
+
+
+
 
 
 \begin{question}
@@ -317,20 +401,45 @@ compute the following, if possible.
 \end{question}
 
 
-Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
-vectors, and one \textit{resonably} writes
-\[
-\vec x A\quad\text{or}\quad  B \vec y
-\]
-then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. In particular, we may reinterpret the dot product of two vectors as the product of matrices:
-\[
-\vec{x}\dotp \vec{y} = \vec{x}^\transpose \vec{y} = \vec{x} \vec{y}^\transpose
-\]
 
+\begin{proposition}[Dot product as matrix multiplication]
+  We can express the dot product in terms of matrix
+  multiplication. Given row vectors $\vec{x}_R$ and $\vec{y}_R$:
+  \[
+  \vec{x}_R\dotp \vec{y}_R = \vec{x}_R \vec{y}_R^\transpose
+  \]
+  On the other hand, given column vectors $\vec{x}_C$ and $\vec{y}_C$:
+  \[
+  \vec{x}_C\dotp \vec{y}_C = \vec{x}_C^\transpose \vec{y}_C
+  \]
+\begin{explanation}
+  If $\vec{x}_C$ and $\vec{y}_C$ are column vectors,
+  we can think of $\vec{x}_C^\transpose$ as a $1\times n$ matrix and
+  following the rule above for \textit{multiplying a matrix by a
+    column vector}, write
+  \begin{align*}
+    \vec{x}_C^\transpose\vec{y}_C &= (\vec{x}_C^\transpose)^\transpose \dotp \vec{y}_C \\
+    &= \vec{x}_C\dotp\vec{y}_C.
+  \end{align*}
+  If on the other hand $\vec{x}_R$ and $\vec{y}_R$ are row vectors, we can think of
+  $\vec{y}_R^\transpose$ as a $n\times 1$ matrix. Following the rule
+  above for \textit{multiplying a row vector by a matrix}, write
+  \begin{align*}
+    \vec{x}_R\vec{y}^\transpose &= \vec{x}_R \dotp (\vec{y}_R^\transpose)^\transpose \\
+    &= \vec{x}_R\dotp\vec{y}_R.
+  \end{align*}
+  That concludes the explanation.
+\end{explanation}
+\end{proposition}
 
-\begin{proposition}
+\begin{proposition}[Transpose and vector matrix multiplication]
+  Suppose we have a $m\times n$ matrix $A$ and an $n$-vector $\vec{x}$ expressed as a column. In this case:
   \[
   (A\vec{x})^\transpose = \vec{x}^\transpose A^\transpose
+  \]
+  From the definition of multiplying a matrix by a column vector,
+  \[
+  A\vec{x} = \row_\vec{x}
   \]
 \end{proposition}
 

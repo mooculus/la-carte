@@ -80,31 +80,14 @@ this number, $\det A$ and $|A|$.
 
 In words, the determinant of a $2 \times 2$ matrix is the difference between
 the product of diagonal terms and the product of anti-diagonal terms.
-\begin{image}[0.75in]
-  \begin{tikzpicture}
-    \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,%column sep=.1em,
-    nodes={text height=1ex,text width=2ex}]
-    {
-      a \& b \\
-      c \& d \\
-    };
-    \draw[thick] (mtrx-1-1.north) -| (mtrx-2-1.south west)
-    -- (mtrx-2-1.south);
-    \draw[thick] (mtrx-1-2.north) -| (mtrx-2-2.south east)
-    -- (mtrx-2-2.south);
-    \draw[ultra thick,red!20!white,->]
-    (mtrx-1-2.center) -- (mtrx-2-1.center);
-    \draw[draw,ultra thick,blue!20!white,->]
-    (mtrx-1-1.center)  --  (mtrx-2-2.center);
-    \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,nodes={text height=1ex,text width=2ex}]
-    {
-      a \& b\\
-      c \& d\\
-    };
-    \node at (0,-.7) {${\color{blue!50!black}ad}-{\color{red!50!black}bc}$};
-  \end{tikzpicture}
-\end{image}
-
+\begin{center}
+\begin{tikzpicture}
+  \draw[ultra thick,->,blue!20!white] (-.3,.3) -- (.3,-.3);
+  \draw[ultra thick,->,red!20!white] (.3,.3) -- (-.3,-.3);
+  \node at (0,0) {$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$};
+  \node at (0,-1) {$\textcolor{blue!50!black}{ad} -\textcolor{red!50!black}{bc}$};
+\end{tikzpicture}
+\end{center}
 
 \begin{question}
   Let

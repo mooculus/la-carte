@@ -348,18 +348,6 @@ Where $\col_i(M)$ represents the $i$th column of $M$. Note, $\vec{b}M$ is a row 
 \]
 
 
-Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
-vectors, and one \textit{resonably} writes
-\[
-\vec x A\quad\text{or}\quad  B \vec y
-\]
-then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. In particular, this is related to our next proposition:
-
-
-
-
-
-
 \begin{question}
 If
 \[
@@ -401,47 +389,37 @@ compute the following, if possible.
 \end{question}
 
 
+Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
+vectors, and one \textit{resonably} writes
+\[
+\vec x A\quad\text{or}\quad  B \vec y
+\]
+then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. This is related to our next proposition:
 
-\begin{proposition}[Dot product as matrix multiplication]
-  We can express the dot product in terms of matrix
-  multiplication. Given row vectors $\vec{x}_R$ and $\vec{y}_R$:
+
+\begin{proposition}[Dot product and transpose]
+  Given $n$-vectors, $\vec{x}$ and $\vec y$ with
+  \begin{itemize}
+  \item $\vec{x}$ expressed as a row,
+  \item $\vec{y}$ expressed as a column,
+  \end{itemize}
+  then
   \[
-  \vec{x}_R\dotp \vec{y}_R = \vec{x}_R \vec{y}_R^\transpose
-  \]
-  On the other hand, given column vectors $\vec{x}_C$ and $\vec{y}_C$:
-  \[
-  \vec{x}_C\dotp \vec{y}_C = \vec{x}_C^\transpose \vec{y}_C
+  \vec{x}^\transpose\dotp \vec{y} = \vec{x}\dotp\vec{y}^\transpose.
   \]
 \begin{explanation}
-  If $\vec{x}_C$ and $\vec{y}_C$ are column vectors,
-  we can think of $\vec{x}_C^\transpose$ as a $1\times n$ matrix and
-  following the rule above for \textit{multiplying a matrix by a
-    column vector}, write
-  \begin{align*}
-    \vec{x}_C^\transpose\vec{y}_C &= (\vec{x}_C^\transpose)^\transpose \dotp \vec{y}_C \\
-    &= \vec{x}_C\dotp\vec{y}_C.
-  \end{align*}
-  If on the other hand $\vec{x}_R$ and $\vec{y}_R$ are row vectors, we can think of
-  $\vec{y}_R^\transpose$ as a $n\times 1$ matrix. Following the rule
-  above for \textit{multiplying a row vector by a matrix}, write
-  \begin{align*}
-    \vec{x}_R\vec{y}^\transpose &= \vec{x}_R \dotp (\vec{y}_R^\transpose)^\transpose \\
-    &= \vec{x}_R\dotp\vec{y}_R.
-  \end{align*}
-  That concludes the explanation.
+ In case both of these expression equal the product of these two
+ vectors, when thought of as $1\times n$ and $n\times 1$ matrices
+ respectively, that is
+ \[
+   \vec{x}^\transpose\dotp \vec{y} = \underset{\begin{matrix}\text{matrix}\\\text{product}\end{matrix}}{\vec{x}\vec{y}} = \vec{x}\dotp\vec{y}^\transpose
+\]
+hence they are equal.
 \end{explanation}
 \end{proposition}
 
-\begin{proposition}[Transpose and vector matrix multiplication]
-  Suppose we have a $m\times n$ matrix $A$ and an $n$-vector $\vec{x}$ expressed as a column. In this case:
-  \[
-  (A\vec{x})^\transpose = \vec{x}^\transpose A^\transpose
-  \]
-  From the definition of multiplying a matrix by a column vector,
-  \[
-  A\vec{x} = \row_\vec{x}
-  \]
-\end{proposition}
+
+
 
 \begin{example}[Grayscale Image]%% https://commons.wikimedia.org/wiki/File:Cat_face_closeup.jpg
   Here is a grayscale image of a cat:
@@ -866,6 +844,26 @@ Do the two multiplications give the same result? \wordChoice{\choice{yes} \choic
 
 
 
+
+\begin{proposition}[Transpose matrix multiplication]
+  Suppose we have a $m\times n$ matrix $A$ and an $n\times \l$ matrix $B$. In this case:
+  \[
+  (BA)^\transpose = A^\transpose B^\transpose
+  \]
+  \begin{explanation}
+    Using the dot product interpretation of matrix multiplication, we can write
+    \[
+      (BA)_{i,j} = \row_i(B)^\transpose \dotp \col_j(A) 
+    \]
+    Now, write with me (you have to write along to really understand)
+    \begin{align*}
+      (BA)_{i,j}^\transpose &= \row_j(B)^\transpose \dotp \col_i(A) & & (\text{transpose swaps $i$ and $j$})\\
+      &= \col_j(B^\transpose)^\transpose \dotp \row_i(A^\transpose) & & (\text{transpose swaps rows and columns})\\
+      &= \row_i(A^\transpose)^\transpose \dotp \col_j(B^\transpose) & & (\vec x^\transpose \dotp \vec y = \vec x\dotp \vec y^\transpose)\\
+      &= A^\transpose B^\transpose.
+    \end{align*}
+  \end{explanation}
+\end{proposition}
 
 
 

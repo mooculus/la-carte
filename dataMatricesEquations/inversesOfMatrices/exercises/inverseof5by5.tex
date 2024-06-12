@@ -4,24 +4,19 @@
 
 \author{Parisa Fatheddin}
 
-
-
-
 \begin{document}
 \begin{exercise}
-
-Find the inverse of
-\[A = \left(\begin{array}{ccccc}
-0 & 0& 0& 0& 2\\
-0 & 0& -3/4& 0& 0\\
--2 & 0& 0& 0& 0\\
-0 & -1& 0& 0& 0\\
-0 & 0& 0& -1& 3
-\end{array}\right).
-\]
-
-\begin{prompt}
-\[ (A \hspace{.08cm}| \hspace{.08cm} I)=
+  Find the inverse of
+  \[A = \begin{pmatrix}
+    0 & 0& 0& 0& 2\\
+    0 & 0& -3/4& 0& 0\\
+    -2 & 0& 0& 0& 0\\
+    0 & -1& 0& 0& 0\\
+    0 & 0& 0& -1& 3
+  \end{pmatrix}.
+  \]
+  \begin{prompt}
+\[ (A | I)=
 \left(\begin{array}{ccccc|ccccc}
 \answer{0} & \answer{0} & \answer{0} & \answer{0} & \answer{2} & \answer{1} & \answer{0} & \answer{0} & \answer{0}& \answer{0}\\
 \answer{0} & \answer{0} & \answer{-3/4} & \answer{0} & \answer{0} & \answer{0} & \answer{1} & \answer{0} & \answer{0} & \answer{0}\\
@@ -30,8 +25,9 @@ Find the inverse of
 \answer{0} & \answer{0} & \answer{0} & \answer{-1} & \answer{3}& \answer{0} & \answer{0} & \answer{0} & \answer{0} & \answer{1}
 \end{array}\right)
 \]
+Once in reduced row echelon form, 
 \[
-\hspace{.2cm} \rightarrow \hspace{.2cm}
+\quad\Rightarrow \quad
 \left(\begin{array}{ccccc|ccccc}
 1 & 0& 0& 0& 0 & \answer{0} & \answer{0} & \answer{-1/2} & \answer{0} & \answer{0}\\
 0 & 1& 0& 0& 0 & \answer{0} & \answer{0} & \answer{0} & \answer{-1} & \answer{0}\\
@@ -40,32 +36,16 @@ Find the inverse of
 0 & 0& 0& 0& 1 & \answer{1/2} & \answer{0} & \answer{0} & \answer{0} & \answer{0}
 \end{array}\right)
 \]
-
 giving,
 \[
-A^{-1} = \left(\begin{array}{ccccc}
+A^{-1} = \begin{pmatrix}
 \answer{0} & \answer{0} & \answer{-1/2} & \answer{0} & \answer{0}\\
  \answer{0} & \answer{0} & \answer{0} & \answer{-1} & \answer{0}\\
  \answer{0} & \answer{-4/3} & \answer{0} & \answer{0} & \answer{0}\\
  \answer{3/2} & \answer{0} & \answer{0} & \answer{0} & \answer{-1}\\
  \answer{1/2} & \answer{0} & \answer{0} & \answer{0} & \answer{0}
-\end{array}\right)
+\end{pmatrix}
 \]
-
-\end{prompt}
+  \end{prompt}
 \end{exercise}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\end{document} 
+\end{document}

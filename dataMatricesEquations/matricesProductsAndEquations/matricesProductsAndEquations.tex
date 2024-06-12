@@ -76,8 +76,9 @@ of columns second, so $M$ above is a $(4\times 5)$-matrix.
 
 We can use similar notation to talk about specific entries of a
 matrix. Above, $a_{i,j}$ is the $\boldsymbol{(i,j)}${\bf-}\dfn{entry}
-of the matrix $M$. Often people write $M_{i,j}$ (or just $M_{ij}$) to
-mean the $(i,j)$-entry of the matrix $M$.
+of the matrix $M$ (we usually use capital letters for matrices). Often
+people write $M_{i,j}$ (or just $M_{ij}$) to mean the $(i,j)$-entry of
+the matrix $M$.
 
 
 
@@ -316,6 +317,22 @@ compute the following, if possible.
 \end{question}
 
 
+Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
+vectors, and one \textit{resonably} writes
+\[
+\vec x A\quad\text{or}\quad  B \vec y
+\]
+then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. In particular, we may reinterpret the dot product of two vectors as the product of matrices:
+\[
+\vec{x}\dotp \vec{y} = \vec{x}^\transpose \vec{y} = \vec{x} \vec{y}^\transpose
+\]
+
+
+\begin{proposition}
+  \[
+  (A\vec{x})^\transpose = \vec{x}^\transpose A^\transpose
+  \]
+\end{proposition}
 
 \begin{example}[Grayscale Image]%% https://commons.wikimedia.org/wiki/File:Cat_face_closeup.jpg
   Here is a grayscale image of a cat:
@@ -474,7 +491,7 @@ A\vec{x} = \vec{b}
      0.125 & 0.625 & 0.625
   \end{pmatrix}
   \quad \text{and we find} \quad
-  N\vec{X} =
+  H\vec{X} =
   \begin{pmatrix}
     0.288 \\
     0.163
@@ -496,7 +513,7 @@ A\vec{x} = \vec{b}
     \wordChoice{\choice[correct]{correct}\choice{incorrect}} pattern.
     Writing
     \[
-    N\vec{X} =
+    H\vec{X} =
   \begin{pmatrix}
     0.288 \\
     0.163

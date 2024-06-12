@@ -2,7 +2,7 @@
 
 \input{../../preamble.tex}
 
-\author{Bart Snapp \and Parisa Fatheddin}
+\author{Bart Snapp \and Parisa Fatheddin \and Tae Eun Kim}
 %%OpenAI. (2023). ChatGPT (Mar 14 version) [Large language model]. https://chat.openai.com/chat
 
 \title{Vectors and scalars}
@@ -103,7 +103,7 @@ of times that it makes sense to add data. Data is represented by a
 \begin{scope} % red + green + blue = white
 	\clip (90:1.5) circle(2cm);
 	\clip (210:1.5) circle(2cm);
-	\draw [draw=none, fill=white] (-30:1.5) circle (2cm);	
+	\draw [draw=none, fill=white] (-30:1.5) circle (2cm);
 \end{scope}
 
 \foreach \x/\text in {0/red, 60/yellow, 120/green, 180/cyan, 240/blue, 300/magenta}
@@ -243,7 +243,7 @@ with many entries.
 
 \begin{definition}
   To convert a row vector to a column vector and vice versa, we use
-  the \dfn{transpose} operation, 
+  the \dfn{transpose} operation,
   \[
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
@@ -252,7 +252,7 @@ with many entries.
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
   We read the first equality as ``the transpose of the row (column) vector $1$,
-  $2$, $3$ is the column (row) vector $1$, $2$, $3$.'' 
+  $2$, $3$ is the column (row) vector $1$, $2$, $3$.''
 \end{definition}
 
 
@@ -503,7 +503,7 @@ Now that we know the basics, onto the examples!
 \end{center}
 
 So traveling North would be a (true) bearing of $0^\circ$, while
-traveling West would be a bearing of $270^\circ$. 
+traveling West would be a bearing of $270^\circ$.
 \begin{enumerate}
 \item Suppose a plane starts at $(0,0)$ and its destination is reached
   by following the true bearing $280^\circ$ for $3$ hours at $125$
@@ -609,41 +609,45 @@ and how to multiply vectors by scalars to get other vectors:
 \[
 \mathbf{scalar}\cdot \mathbf{vector} = \mathbf{vector}.
 \]
-However, we \textbf{cannot directly multiply vectors of the same type}. 
- \begin{warning}
+
+However, we \textbf{cannot directly multiply vectors of the same type}.
+\begin{warning}
   There is no general way to ``multiply'' vectors of the same type and
   have the resulting product be a reasonable vector also of that type.
   You might think it is reasonable to define
   \begin{center}
-\begin{tikzpicture}
-    \node at (0,0) {
-      $\begin{pmatrix}
-        a_1\\
-        a_2\\
-        \vdots\\
-        a_n
-      \end{pmatrix}
-      \cdot
-      \begin{pmatrix}
-        b_1\\
-        b_2\\
-        \vdots\\
-        b_n
-      \end{pmatrix}
-      =
-      \begin{pmatrix}
-        a_1b_1\\
-        a_2b_2\\
-        \vdots\\
-        a_nb_n
-      \end{pmatrix}$};
-    \draw[red, line width=5pt,opacity=.3] (-2,-1) -- (2,1);
-    \draw[red, line width=5pt,opacity=.3] (-2,1) -- (2,-1);
-\end{tikzpicture}
+    \begin{tikzpicture}
+      \node at (0,0) {
+        $\begin{pmatrix}
+          a_1\\
+          a_2\\
+          \vdots\\
+          a_n
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+          b_1\\
+          b_2\\
+          \vdots\\
+          b_n
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          a_1b_1\\
+          a_2b_2\\
+          \vdots\\
+          a_nb_n
+        \end{pmatrix}$};
+      \draw[red, line width=5pt,opacity=.3] (-2,-1) -- (2,1);
+      \draw[red, line width=5pt,opacity=.3] (-2,1) -- (2,-1);
+    \end{tikzpicture}
   \end{center}
-but this operation is not especially useful, and will \textbf{never be
-  utilized in this course}.
+  but this operation is not especially useful, and will \textbf{never be
+    utilized in this course}.
 \end{warning}
+
+
+
 
  Instead, we use the \textit{dot product}.
 
@@ -687,6 +691,83 @@ The first thing you should notice about the the dot product is that
     \end{selectAll}
 \end{question}
 
+\begin{concept}[Dot products are sums]
+  A sum of multiple terms, $a_1 + a_2 + \cdots + a_n$, can be viewed as a
+  dot product:
+  \begin{align*}
+    \sum_{i=1}^n a_i
+    & = a_1 + a_2 + \cdots + a_n \\
+    & = 1 \cdot a_1 + 1 \cdot a_2 + \cdots + 1 \cdot a_n \\
+    & =
+      \underbrace{
+      \begin{pmatrix}
+        1 \\ 1 \\ \vdots \\ 1
+      \end{pmatrix}}_{=\vec{1}}
+      \dotp
+      \underbrace{
+      \begin{pmatrix}
+        a_1 \\ a_2 \\ \vdots \\ a_n
+      \end{pmatrix}}_{=\vec{a}} = \vec{1} \dotp \vec{a}.
+  \end{align*}
+  The notation $\vec{1}$ denotes the column vector all whose entries
+  are ones. This notation will be used throughout the rest of this
+  book.
+
+  This viewpoint allows us to express sums of various types in the
+  language of vectors and avails linear algebra tools at our
+  fingertips. This empowers us to manipulate sums with convenience and
+  elegance.
+\end{concept}
+
+\begin{example}[Data Analysis - Finding Averages]
+  Suppose that a student's homework scores (in percentage) for a
+  linear algebra class are encoded in a column vector $\vec{s}$:
+  \[
+    \vec{s} =
+    \begin{pmatrix}
+      90 \\ 85 \\ 100 \\ 80
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{Homework 1}\\
+      \text{Homework 2}\\
+      \text{Homework 3}\\
+      \text{Homework 4}
+    \end{array}
+  \]
+  \begin{explanation}
+    One way to summarize the student's performance using a
+    \textit{single number} is to calculate the average $\mu$ of the four
+    scores. This is a fundamental task in data science which involves summation,
+    and we now know that it can be expressed as a dot product:
+    \begin{align*}
+      \mu
+      & = \frac{1}{4} \left( 90 + 85 + 100 + 80 \right) \\
+      & = \frac{1}{4}
+        \underbrace{
+        \begin{pmatrix}
+          1 \\ 1 \\ 1 \\ 1
+        \end{pmatrix}}_{=\vec{1}}
+        \dotp
+        \underbrace{
+        \begin{pmatrix}
+          90 \\ 85 \\ 100 \\ 80
+        \end{pmatrix}}_{=\vec{s}} = \frac{1}{4} \vec{1} \dotp \vec{s}.
+    \end{align*}
+  \end{explanation}
+
+  In general, if $n$ data is stored in a column vector $\vec{s}$, then
+  the average $\mu$ is computed by
+  \[
+    \mu = \frac{1}{n} \vec{1} \dotp \vec{s}.
+  \]
+  Another way to generalize this computation is to give different
+  weights to different entries of the data. For example, in the
+  context of the linear algebra class, it is expected that an
+  individual homework assignment is not weighed the same as a midterm
+  or the final exam score. An exercise problem walks through how one
+  can express \textit{weighted averages} using dot products.
+\end{example}
 
 You can think of the dot product as measuring ``how aligned'' two vectors are.
 \begin{question}
@@ -741,7 +822,7 @@ product below.
     $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
   \end{description}
 \end{theorem}
- 
+
 Instead of defining the dot product by a formula, we could have
 defined it by the properties above!  While this is common practice in
 mathematics, the process is a bit abstract and is perhaps beyond the
@@ -838,7 +919,7 @@ To normalize the vector to a unit vector, each component of the vector is divide
 \begin{scope} % red + green + blue = white
 	\clip (90:1.5) circle(2cm);
 	\clip (210:1.5) circle(2cm);
-	\draw [draw=none, fill=white] (-30:1.5) circle (2cm);	
+	\draw [draw=none, fill=white] (-30:1.5) circle (2cm);
 \end{scope}
 
 \foreach \x/\text in {0/red, 60/yellow, 120/green, 180/cyan, 240/blue, 300/magenta}
@@ -912,7 +993,7 @@ appropriate to ensure consistent intensity across different colors.
 
 %% The dot product allows us to write some complicated formulas quite
 %% simply.
- 
+
 %% \begin{definition}
 %%   The \dfn{norm} (or magnitude) of vector $\vec{v}$ is given by
 %%   \[
@@ -954,7 +1035,7 @@ appropriate to ensure consistent intensity across different colors.
 %% Hence we see that if we have a $2$-vector $\vec{v}$ (in fact any
 %% $n$-vector) whose entires are real numbers, we can intepret
 %% \[
-%% \|\vec{v}\| = \text{The geometric displacement} 
+%% \|\vec{v}\| = \text{The geometric displacement}
 %% \]
 %% or ``Euclidean length'' of this vector.
 %%  This concept allows us to

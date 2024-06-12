@@ -64,6 +64,13 @@
 \theoremstyle{definition}
 \newtheorem*{definition}{}
 
+\let\proposition\relax
+\let\endproposition\relax
+\newtheoremstyle{proposition}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Proposition}
+\theoremstyle{proposition}
+\newtheorem*{proposition}{}
+
 % Define the 'concept' environment with an optional header
 \renewenvironment{algorithm}[1][]{%
   \begin{mdframed}[linecolor=black, linewidth=2pt, innertopmargin=5pt, innerbottommargin=5pt, skipabove=12pt, skipbelow=12pt]%

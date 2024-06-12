@@ -19,9 +19,9 @@
 
 \begin{quote}
   We shall not cease from exploration\\
-And the end of all our exploring\\
-Will be to arrive where we started\\
-And know the place for the first time.
+  And the end of all our exploring\\
+  Will be to arrive where we started\\
+  And know the place for the first time.
 
 
   \hfill ---T.S.\ Eliot
@@ -36,9 +36,68 @@ context of solving equations. Then we will revist these ideas from
 `higher ground,' and introduce the notion of a vector space.
 
 
+%% TK: my take on this
+A fundamental task in linear algebra is to solve a system of linear
+equations associated with certain data:
+\begin{equation*}
+  \left\{ \,
+    \begin{array}{*{9}{@{}c@{}}}
+      a_{11} x_1 & {}+{} & a_{12} x_2 & {}+{} & \cdots & {}+{} & a_{1n} x_n & {}\mathrel{=}{} & b_1 \\
+      a_{21} x_1 & {}+{} & a_{22} x_2 & {}+{} & \cdots & {}+{} & a_{2n} x_n & {}\mathrel{=}{} & b_2 \\
+      \vdots         &       & \vdots         &      &   &       & \vdots         &                 & \vdots \\
+      a_{n1} x_1 & {}+{} & a_{n2} x_2 & {}+{} & \cdots & {}+{} & a_{nn} x_n & {}\mathrel{=}{} & b_n
+    \end{array}
+    \, \right.
+\end{equation*}
+It is not enough to simply solve these equations; we must understand
+the solutions in a more abstract way. Let us first write the system
+above compactly as a matrix equation $A \vec{x} = \vec{b}$, where $A$
+is the $n \times n$ matrix of coefficients, $\vec{x}$ is the
+$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the
+right-hand sides:
+\[
+  A =
+  \begin{bmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{nn}
+  \end{bmatrix}, \quad
+  \vec{x} =
+  \begin{bmatrix}
+    x_1 \\ x_2 \\ \vdots \\ x_n
+  \end{bmatrix}, \quad
+  \vec{b} =
+  \begin{bmatrix}
+    b_1 \\ b_2 \\ \vdots \\ b_n
+  \end{bmatrix}.
+\]
+
+We then consider two scenarios depending on the zero-ness of the
+right-hand sides:
+\begin{description}
+\item[Case: $\vec{b} = \vec{0}$.] In the special case where
+  $\vec{b} = \vec{0}$, the system is said to be
+  \dfn{homogeneous}. Since a homogeneous system is fully characterized
+  by its coefficients, the solution set is called the \textit{null
+    space of $A$}. Since $\vec{x} = \vec{0}$ satisfies
+  $A\vec{x} = \vec{0}$ no matter what $A$ is, the null space of $A$
+  always contains the zero vector and so is never empty.
+\item[Case: $\vec{b} \neq \vec{0}$.] On the other hand, if
+  $\vec{b} \neq \vec{0}$, the system $A\vec{x} = \vec{b}$ may not have a
+  solution at all. The existence of solution depends on whether
+  $\vec{b}$ lies in the \textit{column space of $A$}.
+\end{description}
+
+The two jargons introduced above, the null space and the column space
+of $A$, both contain the word \textit{space}. This comes from the fact
+that they are special and very fundamental examples of the
+mathematical structure called the vector (sub)space. We will introduce
+the notion of vector space in the context of solving system of linear
+equations. Then we will revisit these ideas from `higher ground', and
+introduce the notion of an abstract vector space.
 
 \section{Homogeneous equations and the null space}
-
 Suppose we have a system of equations:
 \begin{align*}
   a_1 x + b_1 y + c_1 z &= d_1\\
@@ -60,7 +119,7 @@ multiplied by the same \textbf{powers of variables}.
 %% called homogeneous, because I am not sure whether we can consider
 %% the nonlinear system
 %%
-%%   a_i x^2 + b_i y^2 + c_i z^2 = 0, i = 1, 2, 3
+%%   a_i x^2 + b_i y^2 + c_i z^2 = k, i = 1, 2, 3
 %%
 %% as homogeneous. The homogeneity in the case of linear systems
 %% are due to 1) linearity and 2) zero constant terms. In
@@ -68,7 +127,7 @@ multiplied by the same \textbf{powers of variables}.
 %% of Ax = 0, then any scalar multiple of x is also a solution. As a
 %% consequence, ker(A) is a subspace.
 
-%% Mayby, it was meant to be written as ``because all the
+%% Maybe, it was meant to be written as ``because all the
 %% (nonconstant) terms are multiplied by ...''?
 
 \begin{question}
@@ -92,6 +151,12 @@ multiplied by the same \textbf{powers of variables}.
   \]
 \end{definition}
 
+\begin{remark}
+  A subtle thing to note here is that it is not necessary for $M$ to be
+  a square matrix as in the introduction. Another to note is that
+  $\Null(M)$ is a collection of vectors with length $n$, which coincides
+  with the number of columns of $M$.
+\end{remark}
 
 
 \begin{example}

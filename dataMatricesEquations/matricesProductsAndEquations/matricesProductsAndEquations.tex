@@ -161,7 +161,7 @@ vertically.
 
 \begin{example}[Grayscale Image]
   Here is a very low resolution grayscale image of the number $6$:
-  \begin{center}  
+  \begin{center}
 \newcommand{\matrixData}{{
     {0, 0.01, 0, 0, 0, 0, 0},
     {0, 0, 0.06, 0.18, 0.18, 0.01, 0},
@@ -185,7 +185,7 @@ vertically.
     \end{tikzpicture}
   \end{center}
   We can represent this data as an $8\times 7$ matrix where $0$
-  represents ``black,'' $1$ represents ``white,'' and numbers in between represent ``shades of gray.'' 
+  represents ``black,'' $1$ represents ``white,'' and numbers in between represent ``shades of gray.''
   \[
   \begin{pmatrix}
      1 & 1 & 0.94 & 0.82 & 0.82 & 0.99 & 1 \\
@@ -210,9 +210,39 @@ vertically.
 
 
 
-
-
-
+\begin{example}[Streaming Service]
+  Suppose that you just started a streaming service. Currently, there
+  are only 5 subscribers who happen to be your friends, and only 3
+  movies are streamed. For simplicity and privacy reasons, we call the
+  subscribers 1, 2, 3, 4, and 5 and movies are also labeled 1, 2, and
+  3. The following table summarizes which subscriber watched which
+  movie:
+  \begin{center}
+    \begin{tabular}{c|ccc}
+      subscriber \textbackslash movie & 1 & 2 & 3 \\ \hline
+      1 & 0 & 1 & 1\\
+      2 & 1 & 0 & 1\\
+      3 & 1 & 1 & 0\\
+      4 & 1 & 0 & 0\\
+      5 & 0 & 0 & 0
+    \end{tabular}
+  \end{center}
+  Here, a 1 means that a subscriber on the row head watched the movie on
+  the column head, while a 0 means otherwise. For example, subscriber
+  1 watched movies 2 and 3, while subscriber 2 watched movies 1 and 3,
+  and so on. This data can be packaged into a $5 \times 3$ matrix $M$:
+  \[
+    M =
+    \begin{pmatrix}
+      0 & 1 & 1\\
+      1 & 0 & 1\\
+      1 & 1 & 0\\
+      1 & 0 & 0\\
+      0 & 0 & 0
+    \end{pmatrix}.
+  \]
+  We will revisit this example in later section for simple data analysis.
+\end{example}
 
 
 
@@ -274,7 +304,7 @@ a column vector and in this case we have:
 \end{pmatrix}
 & = &
 \begin{pmatrix}
-  \bullet \\ \bullet \\ \bullet 
+  \bullet \\ \bullet \\ \bullet
 \end{pmatrix}
 \\
 \begin{pmatrix}
@@ -315,15 +345,15 @@ Where $\col_i(M)$ represents the $i$th column of $M$. Note, $\vec{b}M$ is a row 
 \[
 \begin{matrix}
 \begin{pmatrix}
-  \bullet & \bullet & \bullet 
+  \bullet & \bullet & \bullet
 \end{pmatrix}
 &
 \begin{pmatrix}
   \bullet & \bullet & \bullet & \bullet & \bullet \\
   \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet 
+  \bullet & \bullet & \bullet & \bullet & \bullet
 \end{pmatrix}
-& 
+&
 =
 &
 \begin{pmatrix}
@@ -458,8 +488,6 @@ hence they are equal.
 
 
 
-
-
 \section{Systems of equations}
 
 
@@ -551,13 +579,13 @@ A\vec{x} = \vec{b}
       \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (0.5,0.5) -- (-0.5,-0.5);
       \draw[black,thick,line cap=round,opacity=.7] (3.2,0.1) -- (2.8,-0.1);
       %\draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,0.5) -- (5.5,-0.5);
-    \end{tikzpicture}  
+    \end{tikzpicture}
   \end{center}
   Shading may be incomplete, and there may be errent marks.
   We can use a \link[neural network]{https://en.wikipedia.org/wiki/Neural_network} to help solve this problem.
   This might sound really complicated, but at the end of the day, a neural network is just a matrix.
-  
-  
+
+
   Since the marks are incomplete, we visualize the input as continuous
   random variables $X_1$, $X_2$, and $X_3$; where a value of $1$ for
   $X_i$ would represent ``completely shaded'' and a value of $0$ for
@@ -570,7 +598,7 @@ A\vec{x} = \vec{b}
   \[
   \vec{X} = \begin{pmatrix} X_1 \\ X_2 \\ X_3 \end{pmatrix} \qquad \vec{Y} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
   \]
-  A matrix $H$ represents the neural network, say 
+  A matrix $H$ represents the neural network, say
   \[
   H = \begin{pmatrix}
      0.375 & -0.125 & -0.125 \\
@@ -677,7 +705,7 @@ $n=k$. That is if \textbf{the middle two numbers match}:
 \begin{pmatrix}
   n\times \l\\
   \text{matrix}
-\end{pmatrix} 
+\end{pmatrix}
 &= & \begin{pmatrix}
   m\times \l\\
   \text{matrix}
@@ -688,9 +716,9 @@ The product then turns out to be a matrix of size $m\times \ell$, \textbf{the
 outside numbers}.
 
 \begin{question}
-  Given three matrices 
+  Given three matrices
   \[
-  A =,\quad B =, \quad C =\quad 
+  A =,\quad B =, \quad C =\quad
   \]
   which of the following make sense?
   \begin{selectAll}\pdfOnly{\begin{multicols}{2}}
@@ -852,7 +880,7 @@ Do the two multiplications give the same result? \wordChoice{\choice{yes} \choic
   \begin{explanation}
     Using the dot product interpretation of matrix multiplication, we can write
     \[
-      (BA)_{i,j} = \row_i(B)^\transpose \dotp \col_j(A) 
+      (BA)_{i,j} = \row_i(B)^\transpose \dotp \col_j(A)
     \]
     Now, write with me (you have to write along to really understand)
     \begin{align*}

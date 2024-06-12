@@ -69,11 +69,52 @@ of times that it makes sense to add data. Data is represented by a
 %%   understand how we spend our time.
 \item[RGB Color Space] Colors on digital screens are often represented
   as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}.
+  \begin{center}
+    \begin{tikzpicture}%%https://texample.net/tikz/examples/rgb-color-mixing/
+      \definecolor{rgbred}{RGB}{255,0,0}
+      \definecolor{rgbgreen}{RGB}{0,255,0}
+      \definecolor{rgbblue}{RGB}{0,0,255}
+      \definecolor{rgbyellow}{RGB}{255,255,0}
+      \definecolor{rgbcyan}{RGB}{0,255,255}
+      \definecolor{rgbmagenta}{RGB}{255,0,255}
+% On top of the background draw three spotlights of the primary colors
+% red, green and blue (they are primary in an additive colorspace where
+% light are mixed)
+\draw [draw=none, fill=rgbred] (90:1.5) circle (2cm);
+\draw [draw=none, fill=rgbgreen] (-30:1.5) circle (2cm);
+\draw [draw=none, fill=rgbblue] (210:1.5) circle (2cm);
+
+% Draw areas where two of the three primary colors are overlapping.
+% These areas are the secondary colors yellow, cyan and magenta.
+\begin{scope} % red + green = yellow
+	\clip (90:1.5) circle(2cm);
+	\draw [draw=none, fill=rgbyellow] (-30:1.5) circle (2cm);
+\end{scope} % blue + red = magenta
+\begin{scope}
+	\clip (210:1.5) circle(2cm);
+	\draw [draw=none, fill=rgbmagenta] (90:1.5) circle (2cm);
+\end{scope}
+\begin{scope} % green + blue = cyan
+	\clip (-30:1.5) circle(2cm);
+	\draw [draw=none, fill=rgbcyan] (210:1.5) circle (2cm);
+\end{scope}
+
+% Draw the center area which consists of all the primary colors.
+\begin{scope} % red + green + blue = white
+	\clip (90:1.5) circle(2cm);
+	\clip (210:1.5) circle(2cm);
+	\draw [draw=none, fill=white] (-30:1.5) circle (2cm);	
+\end{scope}
+
+\foreach \x/\text in {0/red, 60/yellow, 120/green, 180/cyan, 240/blue, 300/magenta}
+	\draw (-\x+90:4) node {\text};
+\end{tikzpicture}
+  \end{center}
   Here, three numerical components correspond to the intensity of red,
   green, and blue light, with $0$ representing no intensity of the
   colors and $255$ representing the maximum intensity of the
   colors. Hence the color black can be represented by $(0,0,0)$ and
-  white is represented by\break $(255,255,255)$.  Adding the values for
+  white is represented by $(255,255,255)$.  Adding the values for
   different pixels changes the brightness of each individual
   component.
 \item[Navigation] Aircraft navigate by knowing the direction and speed
@@ -763,7 +804,47 @@ To normalize the vector to a unit vector, each component of the vector is divide
    \[
    \left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\| =  \left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\| =  \left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\| = \answer[given]{360.624}
    \]
-     
+   \begin{center}
+    \begin{tikzpicture}%%https://texample.net/tikz/examples/rgb-color-mixing/
+      \definecolor{rgbred}{RGB}{255,0,0}
+      \definecolor{rgbgreen}{RGB}{0,255,0}
+      \definecolor{rgbblue}{RGB}{0,0,255}
+      \definecolor{rgbyellow}{RGB}{180,180,0}
+      \definecolor{rgbcyan}{RGB}{0,180,180}
+      \definecolor{rgbmagenta}{RGB}{180,0,180}
+% On top of the background draw three spotlights of the primary colors
+% red, green and blue (they are primary in an additive colorspace where
+% light are mixed)
+\draw [draw=none, fill=rgbred] (90:1.5) circle (2cm);
+\draw [draw=none, fill=rgbgreen] (-30:1.5) circle (2cm);
+\draw [draw=none, fill=rgbblue] (210:1.5) circle (2cm);
+
+% Draw areas where two of the three primary colors are overlapping.
+% These areas are the secondary colors yellow, cyan and magenta.
+\begin{scope} % red + green = yellow
+	\clip (90:1.5) circle(2cm);
+	\draw [draw=none, fill=rgbyellow] (-30:1.5) circle (2cm);
+\end{scope} % blue + red = magenta
+\begin{scope}
+	\clip (210:1.5) circle(2cm);
+	\draw [draw=none, fill=rgbmagenta] (90:1.5) circle (2cm);
+\end{scope}
+\begin{scope} % green + blue = cyan
+	\clip (-30:1.5) circle(2cm);
+	\draw [draw=none, fill=rgbcyan] (210:1.5) circle (2cm);
+\end{scope}
+
+% Draw the center area which consists of all the primary colors.
+\begin{scope} % red + green + blue = white
+	\clip (90:1.5) circle(2cm);
+	\clip (210:1.5) circle(2cm);
+	\draw [draw=none, fill=white] (-30:1.5) circle (2cm);	
+\end{scope}
+
+\foreach \x/\text in {0/red, 60/yellow, 120/green, 180/cyan, 240/blue, 300/magenta}
+	\draw (-\x+90:4) node {\text};
+\end{tikzpicture}
+  \end{center}
   \end{explanation}
 \end{example}
 

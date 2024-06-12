@@ -27,49 +27,39 @@
                                      {\boldmath\normalfont\large\bfseries\sffamily}}
 
 
+
+
+%% Redefine "example" and "proposition"
+\let\example\relax
+\let\endexample\relax
+\let\proposition\relax
+\let\endproposition\relax
+%\let\c@example\relax
+\newtheoremstyle{example}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{#1 (\thmnote{#3})}
+\theoremstyle{example}
+\newtheorem*{example}{Example}
+\newtheorem*{proposition}{Proposition}
+
+
 %% Redefine "question"
 \let\question\relax
 \let\endquestion\relax
-%\let\c@pquestion\relax
-\newtheoremstyle{question}
-{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Question}
-\theoremstyle{question}
-\newtheorem*{question}{}
-
-%% Redefine "example"
-\let\example\relax
-\let\endexample\relax
-%\let\c@example\relax
-\newtheoremstyle{example}
-{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Example (\thmnote{#3})}
-\theoremstyle{example}
-\newtheorem*{example}{}
-
 %% Redefine "warning"
 \let\warning\relax
 \let\endwarning\relax
-%\let\c@example\relax
-\newtheoremstyle{warning}
-{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{WARNING}
-\theoremstyle{warning}
-\newtheorem*{warning}{}
-
-
 %% Redefine "definition"
 \let\definition\relax
 \let\enddefinition\relax
 %\let\c@example\relax
 \newtheoremstyle{definition}
-{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Definition}
+{\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{#1}
 \theoremstyle{definition}
-\newtheorem*{definition}{}
+\newtheorem*{definition}{Definition}
+\newtheorem*{warning}{WARNING}
+\newtheorem*{question}{Question}
 
-%% \let\proposition\relax
-%% \let\endproposition\relax
-%% \newtheoremstyle{proposition}
-%% {\topsep}{\topsep}{\rmfamily}{}{\bfseries\sffamily}{:}{ }{Proposition}
-%% \theoremstyle{proposition}
-%% \newtheorem*{proposition}{}
+
 
 % Define the 'concept' environment with an optional header
 \renewenvironment{algorithm}[1][]{%

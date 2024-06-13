@@ -611,42 +611,41 @@ and how to multiply vectors by scalars to get other vectors:
 \]
 
 However, we \textbf{cannot directly multiply vectors of the same type}.
-\begin{warning}
-  There is no general way to ``multiply'' vectors of the same type and
-  have the resulting product be a reasonable vector also of that type.
-  You might think it is reasonable to define
-  \begin{center}
-    \begin{tikzpicture}
-      \node at (0,0) {
-        $\begin{pmatrix}
-          a_1\\
-          a_2\\
-          \vdots\\
-          a_n
-        \end{pmatrix}
-        \cdot
-        \begin{pmatrix}
-          b_1\\
-          b_2\\
-          \vdots\\
-          b_n
-        \end{pmatrix}
-        =
-        \begin{pmatrix}
-          a_1b_1\\
-          a_2b_2\\
-          \vdots\\
-          a_nb_n
-        \end{pmatrix}$};
-      \draw[red, line width=5pt,opacity=.3] (-2,-1) -- (2,1);
-      \draw[red, line width=5pt,opacity=.3] (-2,1) -- (2,-1);
-    \end{tikzpicture}
-  \end{center}
-  but this operation is not especially useful, and will \textbf{never be
-    utilized in this course}.
-\end{warning}
-
-%% TK: How about we modify the warning above to something like this?
+%% \begin{warning}
+%%   There is no general way to ``multiply'' vectors of the same type and
+%%   have the resulting product be a reasonable vector also of that type.
+%%   You might think it is reasonable to define
+%%   \begin{center}
+%%     \begin{tikzpicture}
+%%       \node at (0,0) {
+%%         $\begin{pmatrix}
+%%           a_1\\
+%%           a_2\\
+%%           \vdots\\
+%%           a_n
+%%         \end{pmatrix}
+%%         \cdot
+%%         \begin{pmatrix}
+%%           b_1\\
+%%           b_2\\
+%%           \vdots\\
+%%           b_n
+%%         \end{pmatrix}
+%%         =
+%%         \begin{pmatrix}
+%%           a_1b_1\\
+%%           a_2b_2\\
+%%           \vdots\\
+%%           a_nb_n
+%%         \end{pmatrix}$};
+%%       \draw[red, line width=5pt,opacity=.3] (-2,-1) -- (2,1);
+%%       \draw[red, line width=5pt,opacity=.3] (-2,1) -- (2,-1);
+%%     \end{tikzpicture}
+%%   \end{center}
+%%   but this operation is not especially useful, and will \textbf{never be
+%%     utilized in this course}.
+%% \end{warning}
+%% TK: How about we modify the warning above to something like this? BS: Agreed!
 \begin{warning}
   A naive approach to formulation the notion of ``multiplying'' two
   vectors of the same type to produce another vector of that type is
@@ -686,10 +685,7 @@ However, we \textbf{cannot directly multiply vectors of the same type}.
   mathematical details about the Hadamard product are slightly beyond
   the scope of this book, and will not be discussed any further.
 \end{warning}
-
-
- Instead, we use the \textit{dot product}.
-
+ Instead, to ``multiply'' vectors, we use the \textit{dot product}.
  \begin{definition}
   The \dfn{dot product} of two vectors is given by the following.
   \begin{align*}

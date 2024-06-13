@@ -389,6 +389,20 @@ Now that we know the basics, onto the examples!
     \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
     \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
     \]
+    Here are the actual colors:
+    \begin{center}
+      \begin{tikzpicture}
+        \definecolor{rgbyellow}{RGB}{255,255,0}
+        \definecolor{rgbcyan}{RGB}{0,255,255}
+        \definecolor{rgbmagenta}{RGB}{255,0,255}
+        \draw[draw=none,fill={rgb:red,1;green,0;blue,0}] (0,0) rectangle (1,1);
+        \draw[draw=none,fill=rgbyellow] (1,0) rectangle (2,1);
+        \draw[draw=none,fill={rgb:red,0;green,1;blue,0}] (2,0) rectangle (3,1);
+        \draw[draw=none,fill=rgbcyan] (3,0) rectangle (4,1);
+        \draw[draw=none,fill={rgb:red,0;green,0;blue,1}] (4,0) rectangle (5,1);
+        \draw[draw=none,fill=rgbmagenta] (5,0) rectangle (6,1);
+      \end{tikzpicture}
+    \end{center}
   If the lamp is turned on, it initially shows red, then this fades to
   yellow after one minute, then fades to green after a minute more,
   and so on. After $6$ minutes it is back to red. Color $\vec{c}_1$
@@ -920,6 +934,22 @@ To normalize the vector to a unit vector, each component of the vector is divide
    \[
    \left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\| =  \left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\| =  \left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\| = \answer[given]{360.624}
    \]
+    Here are the actual colors:
+    \begin{center}
+      \begin{tikzpicture}
+        \definecolor{rgbyellow}{RGB}{180,180,0}
+        \definecolor{rgbcyan}{RGB}{0,180,180}
+        \definecolor{rgbmagenta}{RGB}{180,0,180}
+        \draw[draw=none,fill={rgb:red,1;green,0;blue,0}] (0,0) rectangle (1,1);
+        \draw[draw=none,fill=rgbyellow] (1,0) rectangle (2,1);
+        \draw[draw=none,fill={rgb:red,0;green,1;blue,0}] (2,0) rectangle (3,1);
+        \draw[draw=none,fill=rgbcyan] (3,0) rectangle (4,1);
+        \draw[draw=none,fill={rgb:red,0;green,0;blue,1}] (4,0) rectangle (5,1);
+        \draw[draw=none,fill=rgbmagenta] (5,0) rectangle (6,1);
+      \end{tikzpicture}
+    \end{center}
+
+   
    \begin{center}
     \begin{tikzpicture}%%https://texample.net/tikz/examples/rgb-color-mixing/
       \definecolor{rgbred}{RGB}{255,0,0}

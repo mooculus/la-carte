@@ -261,12 +261,11 @@ Span of red and blue
       \definecolor{rgbcolor}{RGB}{\i,0,\j}
       \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
     }}
-    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4,-.5);
-    \node[right] at (4,-.5) {$(255,0,0)$};
-    \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4);
-    \node at (-.5,-.5) {$(0,0,0)$};
-    \node[right] at (4,-.5) {$(255,0,0)$};
-    \node[above] at (-.5,4) {$(0,0,255)$};
+    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4.3,-.5);
+        \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4.3);
+    \node at (-.6,-.5) {$(0,0,0)$};
+    \node[right] at (4.3,-.5) {$(255,0,0)$};
+    \node[above] at (-.5,4.3) {$(0,0,255)$};
 \end{tikzpicture}
 \end{center}
 
@@ -279,12 +278,11 @@ Span of red and green
       \definecolor{rgbcolor}{RGB}{\i,\j,0}
       \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
     }}
-    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4,-.5);
-    \node[right] at (4,-.5) {$(255,0,0)$};
-    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (-.5,0) -- (-.5,4);
-    \node at (-.5,-.5) {$(0,0,0)$};
-    \node[right] at (4,-.5) {$(255,0,0)$};
-    \node[above] at (-.5,4) {$(0,255,0)$};
+    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4.3,-.5);
+    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (-.5,0) -- (-.5,4.3);
+    \node at (-.6,-.5) {$(0,0,0)$};
+    \node[right] at (4.3,-.5) {$(255,0,0)$};
+    \node[above] at (-.5,4.3) {$(0,255,0)$};
 \end{tikzpicture}
 \end{center}
 
@@ -297,6 +295,11 @@ Span of blue and green
       \definecolor{rgbcolor}{RGB}{0,\i,\j}
       \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
     }}
+    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (0,-.5) -- (4.3,-.5);
+    \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4.3);
+    \node at (-.6,-.5) {$(0,0,0)$};
+    \node[right] at (4.3,-.5) {$(0,255,0)$};
+    \node[above] at (-.5,4.3) {$(0,0,255)$};
 \end{tikzpicture}
 \end{center}
 
@@ -312,6 +315,47 @@ Span of blue and green
 \end{definition}
 
 \subsection{Linear indendence of vectors}
+
+Red is independent from blue in green, as red is not in the span of blue and green:
+
+
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{0,\i,\j}
+      \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
+    }}
+    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (0,-.5) -- (4.3,-.5);
+    \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4.3);
+    \node at (-.6,-.5) {$(0,0,0)$};
+    \node[right] at (4.3,-.5) {$(0,255,0)$};
+    \node[above] at (-.5,4.3) {$(0,0,255)$};
+    \fill[fill={rgb:red,1;green,0;blue,0}] (7,1) rectangle (9,3);
+    \node[below] at (8,1) {$(255,0,0)$};
+  \end{tikzpicture}
+\end{center}
+
+
+On the other hand, this color is not independent from blue and green as it is in the span.
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \j in {0,17,...,255} {
+    \foreach \i in {0,17,...,255} {
+      \definecolor{rgbcolor}{RGB}{0,\i,\j}
+      \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
+    }}
+    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (0,-.5) -- (4.3,-.5);
+    \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4.3);
+    \node at (-.6,-.5) {$(0,0,0)$};
+    \node[right] at (4.3,-.5) {$(0,255,0)$};
+    \node[above] at (-.5,4.3) {$(0,0,255)$};
+    \fill[fill={rgb:red,0;green,.4;blue,.6}] (7,1) rectangle (9,3);
+    \node[below] at (8,1) {$(0,102,153)$};
+  \end{tikzpicture}
+\end{center}
+
+
 
 
 Getting somewhere
@@ -337,25 +381,7 @@ Getting somewhere
 
 
 
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \k in {0,17,...,255} {
-      \foreach \j in {0,17,...,255} {
-        \definecolor{rgbcolor}{RGB}{\j,255,\k}
-        \fill[fill=rgbcolor] ({\j/255*4*(.8)},{\k/255*4+(\j)/255*4*(-.37)}) circle (.2);
-    }}
-    \foreach \k in {0,17,...,255} {
-      \foreach \i in {0,17,...,255} {
-        \definecolor{rgbcolor}{RGB}{\i,255,\k}
-        \fill[fill=rgbcolor] ({\i/255*4*(-.8)},{\k/255*4+(\i)/255*4*(-.37)}) circle (.2);
-    }}
-    \foreach \j in {0,17,...,255} {
-      \foreach \i in {0,17,...,255} {
-        \definecolor{rgbcolor}{RGB}{\i,\j,0}
-        \fill[fill=rgbcolor] ({\i/255*4*(-.8)+\j/255*4*(.8)},{(\i+\j)/255*4*(-.37)}) circle (.2);
-    }}
-  \end{tikzpicture}
-\end{center}
+
 
 
 

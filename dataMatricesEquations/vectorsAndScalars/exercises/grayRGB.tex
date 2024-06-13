@@ -6,11 +6,11 @@
 
 \begin{document}
 \begin{exercise}
-  The following column 3-vector $\vec{p}$ represents the \link[official gray
-  color]{https://bux.osu.edu/color/primary-colors} of the Ohio State
-  University, converted to RGB from the hex code \verb|#a7b1b7|:
+  The following column $3$-vector $\vec{g}$ represents the
+  \link[official gray color]{https://bux.osu.edu/color/primary-colors}
+  of the Ohio State University, in RGB 
   \[
-    \vec{p} = \begin{pmatrix}
+    \vec{g} = \begin{pmatrix}
       167\\ 177\\ 183
     \end{pmatrix}
     \qquad
@@ -19,62 +19,63 @@
       \text{Green}\\
       \text{Blue}
     \end{array}
-  \]
-  In this problem, we will create three additional shades of gray that are
-  lighter than the given. Recalling that white is represented by
-  \[
-    \vec{w} = \begin{pmatrix}
-      255\\ 255\\ 255
-    \end{pmatrix}
-    \qquad
-    \begin{array}{l}
-      \text{Red}\\
-      \text{Green}\\
-      \text{Blue}
-    \end{array}
-  \]
-  one strategy is to take the difference of the two RGB vectors, and
-  add its various fractions to $\vec{p}$ to generate lighter shades of
-  the OSU gray.
+    \]
+    Create two shades of gray, one that is $50\%$ lighter than
+    $\vec{g}$ and one that is $75\%$ lighter than $\vec{g}$.
+    \begin{prompt}
+      Recalling that white is represented by
+      \[
+      \vec{w} = \begin{pmatrix}
+        255\\ 255\\ 255
+      \end{pmatrix}
+      \qquad
+      \begin{array}{l}
+        \text{Red}\\
+        \text{Green}\\
+        \text{Blue}
+      \end{array}
+      \]
+      To find a color $n\%$ lighter than $\vec{g}$, we will first find
+      the difference between white and our color, and add various
+      fractions of this difference to $\vec{g}$.
 
-  First, compute the differences of RGB intensities between white and the OSU
-  gray.
+      
+      First, compute the differences of RGB intensities between white and the OSU
+      gray.
+      \[
+      \vec{d} = \vec{w} - \vec{g} =
+      \begin{pmatrix}
+        \answer{88}\\
+        \answer{78}\\
+        \answer{72}
+      \end{pmatrix}
+      \]
+      Generate a lighter gray by adding $50\%$ of $\vec{d}$ to $\vec{g}$.
+      \[
+      \vec{g}_1 = \vec{g} + \left(\answer{0.5}\right)\vec{d} =
+      \begin{pmatrix}
+        \answer{211}\\
+        \answer{216}\\
+        \answer{219}
+      \end{pmatrix}
+      \]
+      Generate an even lighter gray by adding $75\%$ of $\vec{d}$
+      onto $\vec{g}$.
   \[
-    \vec{d} = \vec{w} - \vec{p} =
-    \begin{pmatrix}
-      \answer{88}\\
-      \answer{78}\\
-      \answer{72}
-    \end{pmatrix}
-  \]
-
-  Generate a lighter gray by adding 50\% of $\vec{d}$ onto $\vec{p}$.
-  \[
-    \vec{p}_1 = \vec{p} + \answer{0.5}\,\vec{d} =
-    \begin{pmatrix}
-      \answer{211}\\
-      \answer{216}\\
-      \answer{219}
-    \end{pmatrix}
-  \]
-
-  Generate an even lighter gray by adding 75\% of $\vec{d}$
-  onto $\vec{p}$.
-  \[
-    \vec{p}_2 = \vec{p} + \answer{0.75}\,\vec{d} =
+    \vec{g}_2 = \vec{g} + \left(\answer{0.75}\right)\vec{d} =
     \begin{pmatrix}
       \answer{233}\\
       \answer{235.5}\\
       \answer{237}
     \end{pmatrix}
-  \]
-
-  \begin{feedback}[correct]
-    Use an online RGB color picker such as
+    \]
+    
+    \begin{feedback}[correct]
+      Use an online RGB color picker such as
     \link[this]{https://rgbcolorpicker.com} for visual confirmation of
     your work!
-  \end{feedback}
-
+    \end{feedback}
+    \end{prompt}
 %% MATLAB script for this problem
 % p = [167 177 183]';
 % w = 255*[1 1 1]';

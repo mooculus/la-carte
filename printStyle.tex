@@ -90,11 +90,25 @@
 ]{explanation}%
 
 
+%% Redefines "selectAll"
+\renewenvironment{selectAll}[1][]
+{\begin{trivlist}\item[\hskip \labelsep\bfseries Select All Correct Answers:]\hfil\begin{enumerate}}
+    {\end{enumerate}\end{trivlist}}
 
 
-
-
-
+%% Redefine "multipleChice"
+\renewenvironment{multipleChoice}[1][]
+{% Environment Start Code
+\setkeys{multipleChoice}{#1}%
+\recordvariable{\mc@id}%
+\begin{trivlist}
+\item[\hskip \labelsep\bfseries Multiple Choice:]\hfil
+\begin{enumerate}
+}% Note this means that \item has to be the first line after \begin{multipleChoice}.
+{% Environment End Code
+\end{enumerate}
+\end{trivlist}
+}
 
 
 
@@ -124,7 +138,7 @@
 \newtheorem{problem}{}
 \newtheorem{exercise}[problem]{}
 \twocolumn[\section{Exercises for Chapter~\thetitlenumber}\vspace*{-1em}\hrule height .5mm \vspace*{.5em}]
-\small
+\scriptsize
 %% \let\exercise\relax
 %%   \let\endexercise\relax
 %%   \let\c@exercise\relax 

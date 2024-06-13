@@ -68,7 +68,7 @@ of times that it makes sense to add data. Data is represented by a
 %%   lives, and time is a very precious commodity. Hence, it is good to
 %%   understand how we spend our time.
 \item[RGB Color Space] Colors on digital screens are often represented
-  as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}.
+  as vectors in the \link[RGB color space]{https://en.wikipedia.org/wiki/RGB_color_model}:
   \begin{center}
     \begin{tikzpicture}%%https://texample.net/tikz/examples/rgb-color-mixing/
       \definecolor{rgbred}{RGB}{255,0,0}
@@ -111,16 +111,16 @@ of times that it makes sense to add data. Data is represented by a
 \end{tikzpicture}
   \end{center}
   Here, three numerical components correspond to the intensity of red,
-  green, and blue light, with $0$ representing no intensity of the
-  colors and $255$ representing the maximum intensity of the
-  colors. Hence the color black can be represented by $(0,0,0)$ and
-  white is represented by $(255,255,255)$.  Adding the values for
-  different pixels changes the brightness of each individual
-  component.
+  green, and blue light, with $0$ representing no intensity and $255$
+  representing the maximum intensity of the colors. Hence the color
+  black can be represented by $(0,0,0)$ and white is represented by
+  $(255,255,255)$.  Adding the values for different pixels changes the
+  brightness of each individual component.
 \item[Navigation] Aircraft navigate by knowing the direction and speed
-  at which they are traveling. When interpreted correctly, we add the
-  speed and direction of many different ``course changes'' to find the
-  ultimate position of the aircraft.
+  at which they are traveling. When interpreted correctly, this data
+  can be added to help model and understand the speed and direction of
+  many different ``course changes.'' Practically, this helps to find
+  the ultimate position of the aircraft.
 \end{description}
 \end{concept}
 
@@ -243,7 +243,7 @@ with many entries.
 
 \begin{definition}
   To convert a row vector to a column vector and vice versa, we use
-  the \dfn{transpose} operation,
+  the \dfn{transpose} operation:
   \[
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}

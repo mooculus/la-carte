@@ -1,57 +1,36 @@
 \documentclass{ximera}
 
-\author{Parisa Fatheddin}
+\author{Parisa Fatheddin \and Bart Snapp}
 
 \input{../../../preamble.tex}
 
 \begin{document}
 \begin{exercise}
-
-If an airplane starts at (0,0) at 7:00am. and travels with the true bearing $180^\circ$ at $25$ knots until 5:00pm, when it reaches its destination, then what are its coordinates at the end of the trip? Round your answers to two decimal places.
-
+If a cruise ship starts at $(0,0)$ at 7:00am and travels with the
+true bearing $53^\circ$ at $20$ knots until 5:00pm, when it reaches
+its destination, then what are its coordinates at the end of the trip?
+Round your answers to two decimal places.
 \begin{prompt}
-\[\vec{p} = \begin{pmatrix} \answer{76.07} \\
-\answer{163.14}
-\end{pmatrix}\]
-
-Coordinates: $\begin{pmatrix} \answer{760.71} \\
-\answer{1631.35}\end{pmatrix} $ \\
-
-Coordinates converted to those on the x,y plane:  $\begin{pmatrix} \answer{40.71} \\
-\answer{191.35}\end{pmatrix}$
-
+  We start by converting the bearing and speed into cartesian coordinates. Write with me:
+  \begin{align*}
+    \vec{c} &=
+    \begin{pmatrix}
+      \left(\answer{20}\right)\cdot\sin\left(\answer{180}\right)\\
+      \left(\answer{20}\right)\cdot\cos\left(\answer{180}\right)
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+      \answer{15.97} \\
+    \answer{20.04}
+  \end{pmatrix}
+  \end{align*}
+  The number of hours between 7:00am and 5:00pm is $\answer{10}$ hours.
+  Hence we are at the coordiantes:
+  \[
+10 \cdot \vec{c} = \begin{pmatrix}
+      \answer{159.7} \\
+    \answer{200.4}
+  \end{pmatrix}
+  \]
 \end{prompt}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \end{exercise}
 \end{document} 

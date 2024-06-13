@@ -1,6 +1,6 @@
 \documentclass{ximera}
 
-\author{Parisa Fatheddin}
+\author{Parisa Fatheddin \and Bart Snapp}
 
 \input{../../../preamble.tex}
 
@@ -8,45 +8,31 @@
 \begin{exercise}
 
 
-Suppose an airplane is scheduled to fly from Columbus to Cincinnati, a flight that takes 20min. \\
-a. If its bearing is $240^{\circ}$ at $30$ knots, what are its coordinates when it reaches Cincinnati?\\
-b. What are its coordinates at the end on a rainy day in which the airplane's bearing changes to $300^{\circ}$ at $15$ knots.
-
-
-
+Suppose an airplane is scheduled to fly from Columbus to Cincinnati, a
+flight that takes $40$ minutes.  If the initial bearing of the plane
+is $235^{\circ}$ at $435$ knots, what are its coordinates when it
+reaches Cincinnati?
 \begin{prompt}
-a. Round your answer to two decimal places.
-\[\vec{p} = \begin{pmatrix} \answer{120} \\
-\answer{207.85}\end{pmatrix}
-\]
-Coordinates: $\begin{pmatrix} \answer{40} \\
-\answer{69.28}\end{pmatrix}$
-
-b. Round your answer to two decimal places. \\
-
-Coordinates: $ \begin{pmatrix} \answer{25.72}\\
-\answer{96.59}
-\end{pmatrix}$
+We start by converting the bearing and speed into cartesian coordinates. Write with me:
+  \begin{align*}
+    \vec{p} &=
+    \begin{pmatrix}
+      \left(\answer{435}\right)\cdot\sin\left(\answer{235}\right)\\
+      \left(\answer{435}\right)\cdot\cos\left(\answer{235}\right)
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+      \answer{-192.5} \\
+    \answer{-134.79}
+  \end{pmatrix}
+  \end{align*}
+  Since the flight takes $\answer{40}$ minutes, and $\answer{40}$
+  minutes is $\answer{2/3}$ hours, the coordinates at the end of the flight are:
+  \[
+\answer{2/3} \cdot \vec{p} = \begin{pmatrix}
+      \answer{-128.33} \\
+    \answer{-89.86}
+  \end{pmatrix}
+  \]
 \end{prompt}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \end{exercise}
 \end{document} 

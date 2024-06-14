@@ -970,12 +970,11 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
    \]
    Naming the vectors above $\vec{y}$, $\vec{c}$, $\vec{m}$, we can find unit vectors
    \begin{align*}
-     \hat\vec y &= \begin{pmatrix}181\\181\\0\end{pmatrix}\\
-     \hat\vec c &= \begin{pmatrix}0\\181\\181\end{pmatrix}\\
-     \hat\vec m &= \begin{pmatrix}181\\0\\181\end{pmatrix}
+     \hat\vec y &= \begin{pmatrix}\answer[given]{181}\\\answer[given]{181}\\\answer[given]{0}\end{pmatrix}\\
+     \hat\vec c &= \begin{pmatrix}\answer[given]{0}\\\answer[given]{181}\\\answer[given]{181}\end{pmatrix}\\
+     \hat\vec m &= \begin{pmatrix}\answer[given]{181}\\\answer[given]{0}\\\answer[given]{181}\end{pmatrix}
    \end{align*}
-   Now we'll find unit vectors for each of these:
-    Here are the actual colors:
+    Here are the actual new colors:
     \begin{center}
       \begin{tikzpicture}
         \definecolor{rgbyellow}{RGB}{181,181,0}
@@ -989,62 +988,18 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
         \draw[draw=none,fill=rgbmagenta] (5,0) rectangle (6,1);
       \end{tikzpicture}
     \end{center}
-
-
-   \begin{center}
-    \begin{tikzpicture}%%https://texample.net/tikz/examples/rgb-color-mixing/
-      \definecolor{rgbred}{RGB}{255,0,0}
-      \definecolor{rgbgreen}{RGB}{0,255,0}
-      \definecolor{rgbblue}{RGB}{0,0,255}
-      \definecolor{rgbyellow}{RGB}{180,180,0}
-      \definecolor{rgbcyan}{RGB}{0,180,180}
-      \definecolor{rgbmagenta}{RGB}{180,0,180}
-% On top of the background draw three spotlights of the primary colors
-% red, green and blue (they are primary in an additive colorspace where
-% light are mixed)
-\draw [draw=none, fill=rgbred] (90:1.5) circle (2cm);
-\draw [draw=none, fill=rgbgreen] (-30:1.5) circle (2cm);
-\draw [draw=none, fill=rgbblue] (210:1.5) circle (2cm);
-
-% Draw areas where two of the three primary colors are overlapping.
-% These areas are the secondary colors yellow, cyan and magenta.
-\begin{scope} % red + green = yellow
-	\clip (90:1.5) circle(2cm);
-	\draw [draw=none, fill=rgbyellow] (-30:1.5) circle (2cm);
-\end{scope} % blue + red = magenta
-\begin{scope}
-	\clip (210:1.5) circle(2cm);
-	\draw [draw=none, fill=rgbmagenta] (90:1.5) circle (2cm);
-\end{scope}
-\begin{scope} % green + blue = cyan
-	\clip (-30:1.5) circle(2cm);
-	\draw [draw=none, fill=rgbcyan] (210:1.5) circle (2cm);
-\end{scope}
-
-% Draw the center area which consists of all the primary colors.
-\begin{scope} % red + green + blue = white
-	\clip (90:1.5) circle(2cm);
-	\clip (210:1.5) circle(2cm);
-	\draw [draw=none, fill=white] (-30:1.5) circle (2cm);
-\end{scope}
-
-\foreach \x/\text in {0/red, 60/yellow, 120/green, 180/cyan, 240/blue, 300/magenta}
-	\draw (-\x+90:4) node {\text};
-\end{tikzpicture}
-  \end{center}
   \end{explanation}
 \end{example}
 
 
 
 
-BADBAD
-You can think of the dot product as measuring ``how aligned'' two
-vectors are. If the dot product is a large positive number, then the
-vectors are ``somehow aligned.'' If the dot product is a large
-negative number, then the vectors are in ``opposite'' directions. If
-the dot product is zero, then the vectors somehow are indepenendent of
-each other.
+Given two \textbf{unit} vectors, say $\hat{v}$ and $\hat{w}$, the dot
+product as measures ``how aligned'' two vectors are. If the dot
+product is $1$, then the vectors are ``completely aligned.'' If the
+dot product is $-1$ number, then the vectors are in ``exact opposite''
+directions. If the dot product is zero, then the vectors are
+indepenendent of each other.
 \begin{question}
   Compute:
   \[

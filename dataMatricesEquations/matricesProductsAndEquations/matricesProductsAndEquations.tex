@@ -2,7 +2,7 @@
 
 \input{../../preamble.tex}
 
-\author{Parisa Fatheddin and Bart Snapp}
+\author{Parisa Fatheddin \and Tae Eun Kim \and Bart Snapp}
 
 \title{Matrices, products, and equations}
 
@@ -215,7 +215,7 @@ vertically.
   public. Currently, there are only $5$ subscribers who happen to be
   your friends, and only $3$ movies are streamed. For simplicity and
   privacy reasons, we call the subscribers $1$, $2$, $3$, $4$, and $5$ and
-  movies are also labeled $1$, $2$, and $3$. The following table summarizes
+  movies are labeled $A$, $B$, and $C$. The following table summarizes
   which subscriber watched which movie:
   \begin{center}
     \begin{tabular}{c|ccc}
@@ -241,9 +241,14 @@ vertically.
       0 & 0 & 0
     \end{pmatrix}.
   \]
-  We will revisit this example in later section for simple data analysis.
-\end{example}
+  Note that a sum across a row gives the total number of movies that
+  the corresponding subscriber. Likewise, a sum along a column yields
+  the total number of viewers of the particular movie.
 
+  We will revisit this example as we learn more matrix operations and
+  see what type of information can be revealed from this seemingly
+  simple matrix.
+\end{example}
 
 
 
@@ -435,16 +440,24 @@ then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a co
   \end{itemize}
   then
   \[
-  \vec{x}^\transpose\dotp \vec{y} = \vec{x}\dotp\vec{y}^\transpose.
+    \vec{x}^\transpose\dotp \vec{y} = \vec{x}\dotp\vec{y}^\transpose.
   \]
-\begin{explanation}
- In this case, both of these expressions equal the product when
- $\vec{x}$ thought of as $1\times n$ matrix, that is
- \[
-   \vec{x}^\transpose\dotp \vec{y} = \underset{\begin{matrix}\text{matrix}\\\text{product}\end{matrix}}{\vec{x}\vec{y}} = \vec{x}\dotp\vec{y}^\transpose
-\]
-hence they are equal.
-\end{explanation}
+
+  %% TK: Rephrased this.  Question: Should we maybe put this after
+  %% introducing matrix product?
+  \begin{explanation}
+    In this case, both of these expressions equal the matrix product
+    $\vec{x} \vec{y}$ because the row vector $\vec{x}$ can be thought of
+    as $1\times n$ matrix and the column vector $\vec{y}$ as
+    $n \times 1$ matrix. That is,
+    \[
+      \vec{x}^\transpose\dotp \vec{y} = \underset{\begin{matrix}\text{matrix}\\\text{product}\end{matrix}}{\vec{x}\vec{y}} = \vec{x}\dotp\vec{y}^\transpose.
+    \]
+    Note that the matrix product $\vec{x} \vec{y}$ makes sense because
+    the number of columns of the first matrix $\vec{x}$ equals the
+    number of rows of the second matrix $\vec{y}$.
+    % hence they are equal.
+  \end{explanation}
 \end{proposition}
 
 
@@ -482,10 +495,35 @@ hence they are equal.
     \[
     \vec r_i C\vec{c}_j
     \]
-    computes $C_{i,j}$.
+    computes $C_{i,j}$. In other words, the operation
+    $\vec{r}_i C \vec{c}_j$ extracts the grayscale information of the
+    pixel on the $i$th row and the $j$th column of the image.
   \end{explanation}
 \end{example}
 
+%% TK: This may be a good place to introduce this theme. We may
+%% revisit later, e.g., after matrix-matrix product or when discussing
+%% row-operations.
+\begin{concept}[Row and Column Actions]
+  The grayscale image example above showcases a utility of
+  matrix-vector product in extracting a row or a column of a given
+  matrix. It turns out that matrix-vector products can emulate
+  various operations on rows or columns of a matrix that are more
+  involved than simple extraction.
+
+  The general theme is as follows. Let $M$ be an $m \times n$ matrix,
+  $\vec{r}$ a $1 \times m$ row vector, and $\vec{c}$ an $n \times 1$ column
+  vector. Then
+  \begin{description}
+  \item[Row operation.] The vector-matrix product $\vec{r} M$ emulates an operation
+    on rows of $M$. The components of $\vec{r}$ conveys the
+    information about the row operation.
+  \item[Column operation.] The matrix-vector product $M \vec{c}$
+    emulates an operation on columns of $M$. The components of
+    $\vec{c}$ conveys the information about the column operation.
+  \end{description}
+  This is an important theme in linear algebra.
+\end{concept}
 
 
 \section{Systems of equations}

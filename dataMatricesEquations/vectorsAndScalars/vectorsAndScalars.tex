@@ -791,14 +791,31 @@ The first thing you should notice about the the dot product is that
 
 
 
-\begin{concept}[Sums via dot product]
+\paragraph{Sums via dot product}
 
+The dot product allows us to express sums elegantly in the language of
+vectors. For example, the sum of squared terms
 
-  A sum of multiple terms, $a_1 + a_2 + \cdots + a_n$, can be viewed as a
-  dot product:
+\begin{align*}
+  \sum_{i=1}^n a_i^2
+  & = a_1^2 + a_2^2 + \cdots + a_n^2 \\
+  & =
+  \underbrace{
+    \begin{pmatrix}
+      a_1 \\ a_2 \\ \vdots \\ a_n
+  \end{pmatrix}}_{=\vec{a}}
+  \dotp
+  \underbrace{
+    \begin{pmatrix}
+        a_1 \\ a_2 \\ \vdots \\ a_n
+  \end{pmatrix}}_{=\vec{a}} \\
+  &= \vec{a} \dotp \vec{a}.
+\end{align*}
+
+A sum of multiple terms, $a_1 + a_2 + \cdots + a_n$, can also be
+viewed as a dot product:
   \begin{align*}
     \sum_{i=1}^n a_i
-    & = a_1 + a_2 + \cdots + a_n \\
     & = 1 \cdot a_1 + 1 \cdot a_2 + \cdots + 1 \cdot a_n \\
     & =
       \underbrace{
@@ -809,26 +826,16 @@ The first thing you should notice about the the dot product is that
       \underbrace{
       \begin{pmatrix}
         a_1 \\ a_2 \\ \vdots \\ a_n
-      \end{pmatrix}}_{=\vec{a}} = \vec{1} \dotp \vec{a}.
+      \end{pmatrix}}_{=\vec{a}} \\
+      &= \vec{1} \dotp \vec{a}.
   \end{align*}
   The notation $\vec{1}$ denotes the column vector all whose entries
   are ones. This notation will be used throughout the rest of this
-  book.
-
-  This viewpoint allows us to express sums of various types in the
-  language of vectors and avails linear algebra tools at our
-  fingertips. This empowers us to manipulate sums with convenience and
-  elegance.
-\end{concept}
-
-
-In general, given an $n$-vector $\vec{v}$, then the average of th
-entries of that vector, call it $\mu$, is computed by
+  book. In fact the \dfn{mean}, represented by $\mu$, of the entries of the
+  $n$-vector $\vec{a}$ can also be described using the dot product as
   \[
-    \mu = \frac{1}{n} \vec{1} \dotp \vec{v}.
+  \mu = \frac{\vec{1}\dotp\vec{a}}{n}
   \]
-
-
 
 \begin{example}[Finding Averages]
   Suppose that a student's homework scores (in percentage) for a
@@ -853,18 +860,8 @@ entries of that vector, call it $\mu$, is computed by
    the data, the average can be expressed by
     \begin{align*}
       \mu
-      & =  = \frac{1}{\answer[given]{4}} \vec{1} \dotp \vec{s}\\
-      &=\frac{1}{\answer[given]{4}}
-        \underbrace{
-        \begin{pmatrix}
-          \answer[given]{1} \\ \answer[given]{1} \\ \answer[given]{1} \\ \answer[given]{1}
-        \end{pmatrix}}_{=\vec{1}}
-        \dotp
-        \underbrace{
-        \begin{pmatrix}
-          \answer[given]{90} \\ \answer[given]{85} \\ \answer[given]{100} \\ \answer[given]{80}
-        \end{pmatrix}}_{=\vec{s}}\\
-        &=\answer[given]{88.75}
+      & = \frac{\vec{1} \dotp \vec{s}}{\answer[given]{4}}\\
+      &=\answer[given]{88.75}
     \end{align*}
   \end{explanation}
 \end{example}
@@ -874,31 +871,6 @@ entries of that vector, call it $\mu$, is computed by
 
 
 
-You can think of the dot product as measuring ``how aligned'' two
-vectors are. If the dot product is a large positive number, then the
-vectors are ``somehow aligned.'' If the dot product is a large
-negative number, then the vectors are in ``opposite'' directions. If
-the dot product is zero, then the vectors somehow are indepenendent of
-each other.
-\begin{question}
-  Compute:
-  \[
-  \begin{pmatrix}1\\1\\-1\end{pmatrix}\dotp\begin{pmatrix}1\\1\\2\end{pmatrix}
-  \begin{prompt}
-    = \answer{0}
-  \end{prompt}
-  \]
-\end{question}
- When the dot product is zero, we say the vectors are
- \textit{orthogonal} to each other.
-
-\begin{definition}
-  Two vectors are called \dfn{orthogonal} if the the dot product of
-  these vectors is zero.
-\end{definition}
-
-
-As we will see, the notion of orthogonal vectors will allow help us analyze data.
 We summarize the arithmetic and algebraic properties of the dot
 product below.
 \begin{theorem}
@@ -914,8 +886,8 @@ product below.
     \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
     \dotp \vec{w})$
   %\item[Relation to norm:] $\vec{v} \dotp \vec{v} = \|\vec{v}\|^2$
-  \item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
-    $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
+  %\item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
+  %  $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
   \end{description}
 \end{theorem}
 
@@ -945,7 +917,7 @@ heart of mathematics.\index{heart of mathematics}
 \paragraph{Unit vector normalization, the Euclidean norm}
 
 This involves scaling the vector so that its length (or Euclidean
-norm) is 1. The Euclidean norm of a vector \(\vec{v} = (v_1, v_2,
+norm) is $1$. The Euclidean norm of a vector \(\vec{v} = (v_1, v_2,
 \ldots, v_n)\) is given by:
 \[
 \|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
@@ -954,8 +926,23 @@ Note that
 \[
 \|\vec{v}\| = \sqrt{\vec{v}\dotp\vec{v}}.
 \]
-To normalize the vector to a unit vector, each component of the vector is divided by this norm:
-\[ \hat{\vec{v}} = \frac{\vec{v}}{\|\vec{v}\|} \]
+\begin{definition}
+  We call a vector $\hat\vec u$ a \dfn{unit vector} if
+  \[
+  \hat\vec u \dotp \hat\vec u =1
+  \]
+  Unit vectors are typically decorated with ``hats.'' Note, this
+  necessarily means that $\|\hat\vec{u}\| = 1$
+\end{definition}
+
+
+
+To normalize any vector to a unit vector, we simply divide the vector
+by its norm:
+\[
+\hat{\vec{v}} = \frac{\vec{v}}{\|\vec{v}\|}
+\]
+now, $\hat{\vec{v}}$ has Euclidean length $1$.
 
 \begin{example}[RGB Color Space]
   Recall that the \textit{MOOCulus Lighting Company} produces an color-changing LED table lamp, whose colors run through the RGB spectrum
@@ -979,14 +966,21 @@ To normalize the vector to a unit vector, each component of the vector is divide
    vectors, then scale back to RGB color space, where the entries are
    betweeen $0$ and $255$. First note:
    \[
-   \left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\| =  \left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\| =  \left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\| = \answer[given]{360.624}
+   \underset{\vec{y}}{\left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\|} =  \underset{\vec{c}}{\left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\|} =  \underset{\vec{m}}{\left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\|} = \answer[given]{360.624}
    \]
+   Naming the vectors above $\vec{y}$, $\vec{c}$, $\vec{m}$, we can find unit vectors
+   \begin{align*}
+     \hat\vec y &= \begin{pmatrix}181\\181\\0\end{pmatrix}\\
+     \hat\vec c &= \begin{pmatrix}0\\181\\181\end{pmatrix}\\
+     \hat\vec m &= \begin{pmatrix}181\\0\\181\end{pmatrix}
+   \end{align*}
+   Now we'll find unit vectors for each of these:
     Here are the actual colors:
     \begin{center}
       \begin{tikzpicture}
-        \definecolor{rgbyellow}{RGB}{180,180,0}
-        \definecolor{rgbcyan}{RGB}{0,180,180}
-        \definecolor{rgbmagenta}{RGB}{180,0,180}
+        \definecolor{rgbyellow}{RGB}{181,181,0}
+        \definecolor{rgbcyan}{RGB}{0,181,181}
+        \definecolor{rgbmagenta}{RGB}{181,0,181}
         \draw[draw=none,fill={rgb:red,1;green,0;blue,0}] (0,0) rectangle (1,1);
         \draw[draw=none,fill=rgbyellow] (1,0) rectangle (2,1);
         \draw[draw=none,fill={rgb:red,0;green,1;blue,0}] (2,0) rectangle (3,1);
@@ -1044,7 +1038,32 @@ To normalize the vector to a unit vector, each component of the vector is divide
 
 
 
+BADBAD
+You can think of the dot product as measuring ``how aligned'' two
+vectors are. If the dot product is a large positive number, then the
+vectors are ``somehow aligned.'' If the dot product is a large
+negative number, then the vectors are in ``opposite'' directions. If
+the dot product is zero, then the vectors somehow are indepenendent of
+each other.
+\begin{question}
+  Compute:
+  \[
+  \begin{pmatrix}1\\1\\-1\end{pmatrix}\dotp\begin{pmatrix}1\\1\\2\end{pmatrix}
+  \begin{prompt}
+    = \answer{0}
+  \end{prompt}
+  \]
+\end{question}
+ When the dot product is zero, we say the vectors are
+ \textit{orthogonal} to each other.
 
+\begin{definition}
+  Two vectors are called \dfn{orthogonal} if the the dot product of
+  these vectors is zero.
+\end{definition}
+
+
+As we will see, the notion of orthogonal vectors will allow help us analyze data.
 
 
 

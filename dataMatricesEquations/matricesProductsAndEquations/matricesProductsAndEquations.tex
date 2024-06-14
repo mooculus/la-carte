@@ -1342,6 +1342,126 @@ many fields of applications such as graph theory and statistics.
 \end{verbatim}
 \end{remark}
 
+\begin{example}[Data Analysis (revisited) -- Computing Variances]
+  This is continuation of the data analysis example in which we
+  formulated the average of a single student's homework scores using a
+  dot product.
+
+  In this example, we now consider a slightly different situation in
+  which we analyze the final exam scores of the entire linear algebra
+  class. This class is very popular among STEM majors and has 200
+  students in it. Furthermore, due to privacy reasons, we will encrypt
+  the exam scores in a column vector $\vec{x}$ of with $n=200$
+  entries, written abstractly as
+  \[
+    \vec{x} =
+    \begin{pmatrix}
+      x_1 \\ x_2 \\ \vdots \\ x_n
+    \end{pmatrix}
+    \qquad
+    \begin{array}{l}
+      \text{Student $1$}\\
+      \text{Student $2$}\\
+      \vdots \\
+      \text{Student $n$}
+    \end{array}
+  \]
+  instead of writing out all 200 scores. Let $\vec{1} = J_{n \times 1}$ be
+  the column vector of all ones.
+
+  \begin{enumerate}
+  \item The average final exam score $\mu$ of the entire class is given
+    by
+    \begin{equation*}
+      \mu = \frac{1}{n} \vec{1}^\transpose \vec{x}.
+    \end{equation*}
+    This was explained previously.
+  \item The deviations from the average, $x_1 - \mu$, $x_2 - \mu$, \ldots, $x_n
+    - \mu$, can be packaged into a column vector, say $\overline{\vec{x}}$,
+    by
+    \begin{align*}
+      \overline{\vec{x}}
+      & =
+        \begin{pmatrix}
+          x_1 - \mu \\ x_2 - \mu \\ \vdots \\ x_n - \mu
+        \end{pmatrix} \\
+      & =
+        \begin{pmatrix}
+        x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix}
+        - \mu
+        \begin{pmatrix}
+          1 \\ 1 \\ \vdots \\ 1
+        \end{pmatrix} \\
+      & = \vec{x} - \mu \vec{1}.
+    \end{align*}
+    Using the property of the identity matrix, we can write $\vec{x}$
+    as $I \vec{x}$. Furthermore, since $\mu \vec{1} = \vec{1} \mu$, we can
+    write simplify the last line as
+    \begin{align*}
+      \overline{\vec{x}}
+      & = I \vec{x} - \vec{1} \left( \frac{1}{n} \vec{1}^\transpose
+        \vec{x} \right) \\
+      & = \bigl( I - \frac{1}{n} \underbrace{\vec{1} \vec{1}^\transpose}_{=J} \bigr) \vec{x}.
+      % & = \underbrace{\left( I - \frac{1}{n} \vec{1}
+      %   \vec{1}^\transpose \right)}_{=H} \vec{x} = H \vec{x}.
+    \end{align*}
+    Note that the product $\vec{1} \vec{1}^\transpose$ is in the form
+    of a row vector followed by a column vector, which results in a
+    square matrix of all ones, that is, $J = J_{n}$. The upshot is
+    that if we define a new matrix $H$ by
+    \[
+      H = I - \frac{1}{n} J =
+      \begin{pmatrix}
+        1-\frac{1}{n} & -1 & -1 & \cdots & -1 \\
+        -1 & 1-\frac{1}{n} & -1 & \cdots & -1 \\
+        -1 & -1 & 1-\frac{1}{n} & \cdots & -1 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        -1 & -1 & -1 & \cdots & 1-\frac{1}{n}
+      \end{pmatrix},
+    \]
+    then the vector $\overline{\vec{x}}$ of deviations or centered
+    data is obtained simply by the matrix-vector product
+    \[
+      \overline{\vec{x}} = H\vec{x}.
+    \]
+  \item The average of the squared deviations, commonly known as the
+    variance and denoted by $\sigma^2$, of the final exam scores is
+    computed by
+    \begin{align*}
+      \sigma^2
+      & = \frac{1}{n} \sum_{i=1}^n \overline{x}_i^2 \\
+      & = \frac{1}{n}
+        \begin{pmatrix}
+          \overline{x}_1 & \overline{x}_2 & \cdots & \overline{x}_n
+        \end{pmatrix}
+        \begin{pmatrix}
+          \overline{x}_1 \\ \overline{x}_2 \\ \vdots \\ \overline{x}_n
+        \end{pmatrix} \\
+      & = \frac{1}{n} \overline{\vec{x}}^\transpose \overline{\vec{x}}.
+    \end{align*}
+    Note that the variance is a sum of squares and, by now, it is no
+    surprise to us that it can be expressed as a dot product! In fact,
+    we have already seen the dot product of the form
+    $\overline{\vec{x}}^\transpose \overline{\vec{x}}$ in the
+    definition of the Euclidean norm.
+
+    One can go a step further and substitute
+    $\overline{\vec{x}} = H \vec{x}$ in the last line to obtain
+    \[
+      \sigma^2
+      = \frac{1}{n} \left( H \vec{x} \right)^\transpose \left( H
+        \vec{x} \right)
+      = \frac{1}{n} \vec{x}^\transpose \left( H^\transpose H \right) \vec{x}.
+    \]
+    The form $\vec{x}^\transpose \text{(square matrix)} \vec{x}$ in
+    the last line is called the \textit{\link[quadratic
+      form]{https://en.wikipedia.org/wiki/Quadratic_form}}. This
+    mathematical structure provides a powerful framework across many
+    branches of mathematics, not just linear algebra, and many fields
+    of applications.
+  \end{enumerate}
+\end{example}
 
 
 

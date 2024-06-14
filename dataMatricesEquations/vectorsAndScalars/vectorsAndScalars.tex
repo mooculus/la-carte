@@ -7,7 +7,6 @@
 
 \title{Vectors and scalars}
 
-
 \begin{document}
 \begin{abstract}
   A concrete introduction to vectors along with some examples of real world applications.
@@ -58,11 +57,14 @@ of times that it makes sense to add data. Data is represented by a
   cities, or countries to find the total population of a larger
   area. Answers to questions like these help us understand our
   society and in turn, aid our future decisions.
-\item[Financial Transactions] Summing daily sales to find total
-  monthly sales, or adding up all expenses to find total costs. These
-  are real numbers that represent actual amounts of money, and their
-  total gives meaningful information about financial status or
-  performance.
+\item[Consumer Data] The number of distinct products that are bought
+  by a given consumer can be encoded as a vector. Summing data like
+  this will tell us the total number of products purchased by a group of consumers. 
+%% \item[Financial Transactions] Summing daily sales to find total
+%%   monthly sales, or adding up all expenses to find total costs. These
+%%   are real numbers that represent actual amounts of money, and their
+%%   total gives meaningful information about financial status or
+%%   performance.
 %% \item[Time Spent on Tasks] Adding the duration of time spent on
 %%   various activities on day gives a total time spent. We all have busy
 %%   lives, and time is a very precious commodity. Hence, it is good to
@@ -138,8 +140,8 @@ Chicago, Illinois, it is meaningful to say things like
 \item The population of Chicago is \textit{three times} the population of Columbus.
 \end{itemize}
 In a similar way, \textit{scaling} makes sense for the other examples
-above: Financial Transactions, RGB Color Space, and Navigation. When
-we ``scale'' vectors (data) by numbers, we call these numbers
+above: Consumer Data, RGB Color Space, and Navigation. When
+we ``scale'' vectors (data) by numbers, we call those ``scaling'' numbers
 \textit{scalars}.
 
 \begin{definition}
@@ -178,13 +180,14 @@ notation for vectors.
   \]
 \item[Row vector] A row vector is a lot like an ordered tuple, except
   we do not use a comma to separate entries. Instead, we separate them
-  by some space.  Suppose a bookstore sells a variety of books in a
-  month, say $141$ Science Fiction, $304$ Fantasy, $249$ Mystery,
-  $199$ Romance, $251$ History.  We can express this
-  data as a row vector:
+  by some space.  Suppose a streaming service records the number of
+  times each consumer has watched a video as a row vector. For
+  example, for the $1729$th consumer, their data might look like
   \[
-  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
+  \vec c_{1729} = \begin{pmatrix} 1 & 4 & 0 & \cdots & 2 & 0 \end{pmatrix}
   \]
+  The different entires represent the number of times this consumer
+  has watched various videos.
   \item[Column vector] A column vector is just like a row vector,
   except is it written vertically:
   \[
@@ -356,24 +359,44 @@ Now that we know the basics, onto the examples!
 \end{example}
 
 
-
-\begin{example}[Financial Transactions]
-  A bookstore sells a variety of books. We'll express the number of
-  each type of book sold in one month as a row vector
+\begin{example}[Consumer Data]
+  The \textit{MOOCulus} Streaming Service is studying their top $5$
+  most popular videos, for their top $2000$ consumers. They encode
+  this data as row vectors, that we will denote $\vec c_1, \dots,
+  \vec c_{2000}$. The vector encodes how many time each consumer has
+  watched each video. For example, for the $1729$th consumer, their
+  data might look like
   \[
-  \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
+  \vec c_{1729} = \begin{pmatrix} 1 & 4 & 0 &  2 & 0 \end{pmatrix}
   \]
-  with the entries representing the categories: Science Fiction,
-  Fantasy, Mystery, Romance, History in that order.  If each book
-  costs the bookstore $6$ dollars from the wholesaler, and each book sells
-  for $9$ dollars, what is the profit for each category?
+  \begin{enumerate}
+  \item Interpret this vector in this context.
+  \item Interpret the sum of the vectors $\vec{c}_1, \dots,
+    \vec{c}_{2000}$.
+  \end{enumerate}
   \begin{explanation}
-    Using the properties of vectors, we wish to compute:
-    \[
-    9\vec{s}-6\vec{s} = \begin{pmatrix} \answer[given]{423} & \answer[given]{912} & \answer[given]{747} & 597 & 753 \end{pmatrix}
-    \]
+    In this context, 
   \end{explanation}
 \end{example}
+
+
+%% \begin{example}[Financial Transactions]
+%%   A bookstore sells a variety of books. We'll express the number of
+%%   each type of book sold in one month as a row vector
+%%   \[
+%%   \vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}
+%%   \]
+%%   with the entries representing the categories: Science Fiction,
+%%   Fantasy, Mystery, Romance, History in that order.  If each book
+%%   costs the bookstore $6$ dollars from the wholesaler, and each book sells
+%%   for $9$ dollars, what is the profit for each category?
+%%   \begin{explanation}
+%%     Using the properties of vectors, we wish to compute:
+%%     \[
+%%     9\vec{s}-6\vec{s} = \begin{pmatrix} \answer[given]{423} & \answer[given]{912} & \answer[given]{747} & 597 & 753 \end{pmatrix}
+%%     \]
+%%   \end{explanation}
+%% \end{example}
 
 
 \begin{example}[RGB Color Space]

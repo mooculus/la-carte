@@ -1170,7 +1170,9 @@ B^{\transpose} A^{\transpose}  = \left(\begin{array}{cc}
 \]
 \end{prompt}
 \end{question}
-Let us explore some types of matrices that usually are used in linear algebra. The zero matrix, usually denoted as $\textbf{O}_{n\times m}$ is an $n\times m$ matrix with each of its entries being zero. For example,
+Let us explore some types of matrices that usually are used in linear
+algebra. The zero matrix, usually denoted as $\textbf{O}_{m \times n}$ is
+an $m \times n$ matrix with each of its entries being zero. For example,
 \[
 \textbf{O}_{2\times 3} = \left(\begin{array}{ccc}
 0 & 0 &0 \\
@@ -1197,19 +1199,31 @@ It is not hard to see that the zero matrix multiplied by a matrix gives a zero m
 0 &0 &0
 \end{array}\right)
 \]
-and $\textbf{O}_{3\times 3} A = \textbf{O}_{3 \times 3}$. Another important type of matrix is the identity matrix, denoted as $I_{n\times m}$. It is a matrix whose diagonal entries are $1$ and its every other entry is zero. For example,
-\[ I_{2\times 2}=
-\left(\begin{array}{cc}
-1 & 0 \\
-0 & 1
-\end{array}\right), \hspace{.5cm}  I_{4\times 4} = \left(\begin{array}{cccc}
-1 & 0 & 0 & 0 \\
-0 & 1 & 0& 0 \\
-0& 0 & 1 & 0\\
-0 & 0 & 0 & 1
-\end{array}\right)
+and $\textbf{O}_{3\times 3} A = \textbf{O}_{3 \times 3}$.
+
+
+Another important type of matrix is the identity matrix, denoted as
+$I_{m \times n}$. It is a matrix whose diagonal entries are $1$ and its
+every other entry is zero. In particular, when $m = n$,
+$I_{n \times n}$ is often denoted simply as $I_n$, and this square matrix
+is called the \dfn{identity matrix}. For example,
+\[
+  I_{2\times 2}=
+  \left(\begin{array}{cc}
+    1 & 0 \\
+    0 & 1
+  \end{array}\right), \hspace{.5cm}  I_{4\times 4} = \left(\begin{array}{cccc}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0& 0 \\
+    0& 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+  \end{array}\right)
 \]
-Note that the identity matrix is a square matrix ( has the same number of rows as columns). The fundamental property of the identity matrix is that is acts as $1$ as in regular multiplication. That is, $AI = A$ and $IA= A$. For example, one can check that
+% Note that the identity matrix is a square matrix ( has the same number
+% of rows as columns).
+The fundamental property of the identity matrix is that it acts as $1$
+as in regular multiplication. That is, $AI = A$ and $IA= A$. For
+example, one can check that
 \[
 \left(\begin{array}{cc}
 a_{1} & a_{2}\\
@@ -1235,7 +1249,7 @@ a_{3} & a_{4}
 \end{array}\right) \]
 
 \begin{question}
-Write a $3 \times 3$ identity matrix and show that $AI = IA = A$ for
+Write down the $3 \times 3$ identity matrix and show that $AI = IA = A$ for
 \[A =  \left(\begin{array}{ccc}
 2 & 3 & 4\\
 0  & 1 & -1\\
@@ -1285,12 +1299,48 @@ IA = \left(\begin{array}{ccc}
 \end{question}
 
 
+Yet another useful type of matrix is the matrix of all ones which is
+often denoted by $J_{m \times n}$. For example,
+\[
+  J_{3} = J_{3 \times 3} =
+  \begin{pmatrix}
+    1 & 1 & 1 \\
+    1 & 1 & 1 \\
+    1 & 1 & 1
+  \end{pmatrix}, \qquad
+  J_{4 \times 2} =
+  \begin{pmatrix}
+    1 & 1 \\
+    1 & 1 \\
+    1 & 1 \\
+    1 & 1
+  \end{pmatrix}, \qquad
+  J_{5 \times 1} = \vec{1}_5 =
+  \begin{pmatrix}
+    1 \\ 1 \\ 1 \\ 1 \\ 1 \\
+  \end{pmatrix}.
+\]
+Recall that we have already introduced the notation $\vec{1}$ for the
+column vector of all ones in the data analysis example. This can be
+thought of as a special type of all-ones matrix that has only one
+column.
 
+Even though $J$ does not satisfy neat algebraic properties such as
+$A \vec{O} = \vec{O}$ or $AI = IA = A$, this all-ones matrix arises in
+many fields of applications such as graph theory and statistics.
 
-
-
-
-
+\begin{remark}[Computational notes]
+  The three types of matrices introduced above are very commonly used
+  in applications, so many numerical programming languages offer
+  utilities that generate these matrices with ease. For instance, in
+  MATLAB, each of $\vec{O}_{m \times n}$, $J_{m \times n}$, and $I_{m \times n}$ can be
+  constructed in one line of code:
+\begin{verbatim}
+  >> zeros(m, n)
+  >> ones(m, n)
+  >> eye(m, n)
+\end{verbatim}
+\end{remark}
 
 
 

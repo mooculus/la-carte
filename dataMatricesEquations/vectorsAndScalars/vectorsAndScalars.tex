@@ -186,7 +186,7 @@ notation for vectors.
   \[
   \vec c_{1729} = \begin{pmatrix} 1 & 4 & 0 & \cdots & 2 & 0 \end{pmatrix}
   \]
-  The different entires represent the number of times this consumer
+  The different entries represent the number of times this consumer
   has watched various videos.
   \item[Column vector] A column vector is just like a row vector,
   except is it written vertically:
@@ -362,7 +362,7 @@ Now that we know the basics, onto the examples!
 \begin{example}[Consumer Data]
   The \textit{MOOCulus} Streaming Service is studying their top $5$
   most popular videos for their top $2000$ consumers. They encode
-  this data as row vectors with the entires running from the most
+  this data as row vectors with the entries running from the most
   popular to the least. We denote these$\vec c_1, \dots, \vec
   c_{2000}$. The vector encodes how many time each consumer has
   watched each video. For example, for the $1729$th consumer, their
@@ -791,7 +791,7 @@ The first thing you should notice about the the dot product is that
 
 
 
-\paragraph{Sums via dot product}
+\subsection{Sums via dot product}
 
 The dot product allows us to express sums elegantly in the language of
 vectors. For example, the sum of squared terms
@@ -914,7 +914,7 @@ heart of mathematics.\index{heart of mathematics}
 
 
 
-\paragraph{Unit vector normalization, the Euclidean norm}
+\subsection{Unit vector normalization, the Euclidean norm}
 
 This involves scaling the vector so that its length (or Euclidean
 norm) is $1$. The Euclidean norm of a vector \(\vec{v} = (v_1, v_2,
@@ -958,13 +958,13 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
     reviews, it is discovered that the lamp suffers from a small flaw:
     As the colors change, their intensity changes too. In particular,
     yellow, cyan, and magenta, all seem much brighter than red, blue
-    and green. Normalize the intenstites of the colors so that the
+    and green. Normalize the intensities of the colors so that the
     intensity is constant.
   \begin{explanation}
    Our plan is to normalize the vectors representing yellow, cyan, and
    magenta by their Euclidean norm, then make these vectors, unit
    vectors, then scale back to RGB color space, where the entries are
-   betweeen $0$ and $255$. First note:
+   between $0$ and $255$. First note:
    \[
    \underset{\vec{y}}{\left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\|} =  \underset{\vec{c}}{\left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\|} =  \underset{\vec{m}}{\left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\|} = \answer[given]{360.624}
    \]
@@ -994,12 +994,25 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
 
 
 
-Given two \textbf{unit} vectors, say $\hat{v}$ and $\hat{w}$, the dot
-product as measures ``how aligned'' two vectors are. If the dot
-product is $1$, then the vectors are ``completely aligned.'' If the
-dot product is $-1$ number, then the vectors are in ``exact opposite''
-directions. If the dot product is zero, then the vectors are
-indepenendent of each other.
+Given two \textbf{unit} vectors, say $\hat{\vec v}$ and $\hat{\vec w}$, the dot
+product measures ``how aligned'' these two unit vectors are.
+\begin{description}
+  \item[$\boldmath \hat\vec{v}\dotp \hat\vec{w} = 1$] If the dot product is $1$, then the vectors are ``completely
+    aligned.''
+  \item[$\boldmath \hat\vec{v}\dotp \hat\vec{w} = -1$] If the dot
+    product is $-1$ number, then the vectors are in ``exact opposite''
+    directions.
+  \item[$\boldmath \hat\vec{v}\dotp \hat\vec{w} = 0$]If the dot
+    product is zero, then the vectors are independent of each other.
+\end{description}
+
+
+\begin{definition}
+  Two vectors are called \dfn{orthogonal} if the the dot product of
+  these vectors is zero.
+\end{definition}
+
+
 \begin{question}
   Compute:
   \[
@@ -1012,11 +1025,6 @@ indepenendent of each other.
  When the dot product is zero, we say the vectors are
  \textit{orthogonal} to each other.
 
-\begin{definition}
-  Two vectors are called \dfn{orthogonal} if the the dot product of
-  these vectors is zero.
-\end{definition}
-
 
 As we will see, the notion of orthogonal vectors will allow help us analyze data.
 
@@ -1025,7 +1033,7 @@ As we will see, the notion of orthogonal vectors will allow help us analyze data
 
 
 
-\paragraph{Relative component normalization, the $1$-norm}
+\subsection{Relative component normalization, the $1$-norm}
 
 For comparing relative components, you can normalize a vector by
 dividing each component by the absolute value of the sum of all
@@ -1039,13 +1047,15 @@ Consider the population vector for Ohio:
 \[ \vec{p}_{\texttt{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
 
 The sum of the components is:
-\[ \sum \vec{p}_{\texttt{OH}} = 9394878 + 1442655 + 20442 + 268527 + 3907 + 544866 = 11710275 \]
+\[
+\vec{1}\dotp\vec{p}_{\texttt{OH}} = \answer[given]{11675275}
+\]
 
 The normalized vector is:
-\[ \vec{p}_{\text{normalized}} = \frac{(9394878, 1442655, 20442, 268527, 3907, 544866)}{11710275} \]
-
-So the components would be:
-\[ \left(\frac{9394878}{11710275}, \frac{1442655}{11710275}, \frac{20442}{11710275}, \frac{268527}{11710275}, \frac{3907}{11710275}, \frac{544866}{11710275}\right) \]
+\[
+\|\vec{p}_{\texttt{OH}}\|_1 = 
+\frac{\vec{p}_{\texttt{OH}}}{\vec{1}\dotp\vec{p}_{\texttt{OH}}} = (\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05})
+\]
 \end{example}
 
 
@@ -1053,7 +1063,7 @@ So the components would be:
 
 
 
-\paragraph{Max component normalization, the $\infty$-norm}
+\subsection{Max component normalization, the $\infty$-norm}
 
 This method involves dividing each component of the vector by the maximum component value. This is useful in cases where you want all components to be scaled relative to the largest component.
 
@@ -1061,14 +1071,20 @@ This method involves dividing each component of the vector by the maximum compon
 
 \begin{example}[Student Data]
 Suppose the range of score in a certain math class are between $51$
-percent and $92$ percent. It is resonable to use the maximum component
+percent and $92$ percent. It is reasonable to use the maximum component
 normalization in this case, and scale by $100$ at the end. What is the
 range of score after normalizing?
 \begin{explanation}
-The maximum component is $92$. Normalizing we find a range of  BAD BAD
+The maximum component is $\answer[given]{92}$. Normalizing we find a
+range of $\answer[given]{51/92}$ to $1$. Rescaling so that the maximum
+score is $100$, we find the minimum score to be $\answer[given]{55}\%$.
 \end{explanation}
 \end{example}
-\paragraph{Which do I use?}
+
+
+
+
+\subsection{Which do I use?}
 Different normalization techniques are used based on the context and
 the specific property you want to normalize for. In demographic
 comparisons, relative component normalization ensures that you can

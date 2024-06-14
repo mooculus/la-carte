@@ -774,7 +774,26 @@ The first thing you should notice about the the dot product is that
     \end{selectAll}
 \end{question}
 
+
+\begin{question}
+  Compute:
+  \[
+  \begin{pmatrix}1 & 2 & 3\end{pmatrix}\dotp\begin{pmatrix}4 & 5 & 6\end{pmatrix}
+  \begin{prompt}
+    = \answer{32}
+  \end{prompt}
+  \]
+\end{question}
+
+
+
+
+
+
+
 \begin{concept}[Sums via dot product]
+
+
   A sum of multiple terms, $a_1 + a_2 + \cdots + a_n$, can be viewed as a
   dot product:
   \begin{align*}
@@ -802,7 +821,16 @@ The first thing you should notice about the the dot product is that
   elegance.
 \end{concept}
 
-\begin{example}[Data Analysis -- Finding Averages]
+
+In general, given an $n$-vector $\vec{v}$, then the average of th
+entries of that vector, call it $\mu$, is computed by
+  \[
+    \mu = \frac{1}{n} \vec{1} \dotp \vec{v}.
+  \]
+
+
+
+\begin{example}[Finding Averages]
   Suppose that a student's homework scores (in percentage) for a
   linear algebra class are encoded in a column vector $\vec{s}$:
   \[
@@ -817,54 +845,41 @@ The first thing you should notice about the the dot product is that
       \text{Homework 3}\\
       \text{Homework 4}
     \end{array}
-  \]
+    \]
+    Use the dot product to compute help compute the average, $\mu$, of
+    these scores.
   \begin{explanation}
-    One way to summarize the student's performance into \textit{single
-      number} is to calculate the average $\mu$ of the four scores. This
-    is a fundamental task in data science which involves summation,
-    and we now know that it can be expressed as a dot product:
+   Since we can simply dot our vector with the vector $\vec{1}$ to sum
+   the data, the average can be expressed by
     \begin{align*}
       \mu
-      & = \frac{1}{4} \left( 90 + 85 + 100 + 80 \right) \\
-      & = \frac{1}{4}
+      & =  = \frac{1}{\answer[given]{4}} \vec{1} \dotp \vec{s}\\
+      &=\frac{1}{\answer[given]{4}}
         \underbrace{
         \begin{pmatrix}
-          1 \\ 1 \\ 1 \\ 1
+          \answer[given]{1} \\ \answer[given]{1} \\ \answer[given]{1} \\ \answer[given]{1}
         \end{pmatrix}}_{=\vec{1}}
         \dotp
         \underbrace{
         \begin{pmatrix}
-          90 \\ 85 \\ 100 \\ 80
-        \end{pmatrix}}_{=\vec{s}} = \frac{1}{4} \vec{1} \dotp \vec{s}.
+          \answer[given]{90} \\ \answer[given]{85} \\ \answer[given]{100} \\ \answer[given]{80}
+        \end{pmatrix}}_{=\vec{s}}\\
+        &=\answer[given]{88.75}
     \end{align*}
   \end{explanation}
-
-  In general, if $n$ data are stored in a column vector $\vec{s}$, then
-  the average $\mu$ is computed by
-  \[
-    \mu = \frac{1}{n} \vec{1} \dotp \vec{s}.
-  \]
-  Another way to generalize this computation is to give different
-  weights to different entries of the data. For example, in the
-  context of the linear algebra class, it is expected that an
-  individual homework assignment is not weighed the same as a midterm
-  or the final exam score. An exercise problem walks through how one
-  can express \textit{weighted averages} using dot products.
 \end{example}
 
-You can think of the dot product as measuring ``how aligned'' two vectors are.
-\begin{question}
-  Compute:
-  \[
-  \begin{pmatrix}1 & 2 & 3\end{pmatrix}\dotp\begin{pmatrix}4 & 5 & 6\end{pmatrix}
-  \begin{prompt}
-    = \answer{32}
-  \end{prompt}
-  \]
-\end{question}
 
 
 
+
+
+You can think of the dot product as measuring ``how aligned'' two
+vectors are. If the dot product is a large positive number, then the
+vectors are ``somehow aligned.'' If the dot product is a large
+negative number, then the vectors are in ``opposite'' directions. If
+the dot product is zero, then the vectors somehow are indepenendent of
+each other.
 \begin{question}
   Compute:
   \[
@@ -874,10 +889,8 @@ You can think of the dot product as measuring ``how aligned'' two vectors are.
   \end{prompt}
   \]
 \end{question}
-When the dot product is zero, it means that the vectors are
-`independent' of each other in a sense that we will make clear
-later. When this happens, we call say that the vectors are
-\textit{orthogonal} to each other.
+ When the dot product is zero, we say the vectors are
+ \textit{orthogonal} to each other.
 
 \begin{definition}
   Two vectors are called \dfn{orthogonal} if the the dot product of

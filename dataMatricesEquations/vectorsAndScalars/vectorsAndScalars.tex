@@ -361,9 +361,10 @@ Now that we know the basics, onto the examples!
 
 \begin{example}[Consumer Data]
   The \textit{MOOCulus} Streaming Service is studying their top $5$
-  most popular videos, for their top $2000$ consumers. They encode
-  this data as row vectors, that we will denote $\vec c_1, \dots,
-  \vec c_{2000}$. The vector encodes how many time each consumer has
+  most popular videos for their top $2000$ consumers. They encode
+  this data as row vectors with the entires running from the most
+  popular to the least. We denote these$\vec c_1, \dots, \vec
+  c_{2000}$. The vector encodes how many time each consumer has
   watched each video. For example, for the $1729$th consumer, their
   data might look like
   \[
@@ -375,7 +376,17 @@ Now that we know the basics, onto the examples!
     \vec{c}_{2000}$.
   \end{enumerate}
   \begin{explanation}
-    In this context, 
+    We'll answer these in turn.
+    \begin{enumerate}
+    \item In this context, we see that the viewer has watched the most
+      popular movie $\answer[given]{1}$ time, the next most popular
+      movie $\answer[given]{4}$ times, the third most popular movie
+      $\answer[given]{0}$ times, and has seen the last two movies
+      $\answer[given]{2}$ and zero times respectively.
+    \item The sum of the vectors $\vec{c}_1, \dots, \vec{c}_{2000}$
+      represents the total number of views of the five most popular
+      videos.
+    \end{enumerate}
   \end{explanation}
 \end{example}
 
@@ -720,7 +731,7 @@ However, we \textbf{cannot directly multiply vectors of the same type}.
   processing and machine learning. For that matter, many numerical
   programming languages natively supports this operation. However, the
   mathematical details about the Hadamard product are slightly beyond
-  the scope of this book, and will not be discussed any further.
+  the scope of this book, and \textbf{will not be discussed any further}.
 \end{warning}
  Instead, to ``multiply'' vectors, we use the \textit{dot product}.
  \begin{definition}

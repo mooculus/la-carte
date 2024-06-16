@@ -41,7 +41,7 @@ M =
   a_{3,1} & a_{3,2} & a_{3,3} & a_{1,4} & a_{3,5} \\
   a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5}
 \end{pmatrix}}
-\boldsymbol{4}~\textbf {rows}
+~\boldsymbol{4}~\textbf {rows}
 \]
 We give the \dfn{dimensions of a matrix} by stating its number of rows
 and number of columns. The number of rows comes first and the number
@@ -279,7 +279,7 @@ on the dot product.  Recall the dot product of two vectors:
 We can extend this idea to multiplying matrices by vectors and to
 multiplying vectors by matrices.
 
-\paragraph{Multiplying a matrix by a column vector}
+\subsection{Multiplying a matrix by a column vector}
 
 Given a $m\times n$ matrix $M$ and $\vec{a}$, an $n$-vector expressed
 as a column, \textbf{the number of colmuns of the matrix must equal
@@ -332,7 +332,7 @@ a column vector and in this case we have:
 
 
 
-\paragraph{Multiplying a row vector by a matrix}
+\subsection{Multiplying a row vector by a matrix}
 If on the other hand, $M$ is still a $m\times n$ matrix, but now
 $\vec{b}$ is an $m$-vector expressed as a row, \textbf{the number of
   entries of the vector must equal the number of rows of the matrix}
@@ -718,7 +718,17 @@ with augmented matrix:
 
 
 
+
+
+
+
+
+
+
+
 \section{Multiplying matrices}
+
+
 
 Matrix multiplication may seem strange at first. In fact, only certain
 matrices can be multiplied together. As a general rule, we can only
@@ -756,22 +766,52 @@ outside numbers}.
 \begin{question}
   Given three matrices
   \[
-  A =,\quad B =, \quad C =\quad
+  A =\begin{pmatrix}
+1 & -2 & 3 \\
+0 & 5 & -6 \\
+-7 & 8 & 0
+\end{pmatrix},\quad B =\begin{pmatrix}
+1 & 0 \\
+-3 & 4 \\
+5 & -6
+\end{pmatrix}, \quad C =\begin{pmatrix}
+0 & -2 & 3 \\
+4 & 0 & -6
+\end{pmatrix}\quad
   \]
   which of the following make sense?
-  \begin{selectAll}\pdfOnly{\begin{multicols}{2}}
-    \choice{$AB$}
+  \begin{selectAll}\pdfOnly{\begin{multicols}{3}}
+    \choice[correct]{$AA$}
+    \choice[correct]{$AB$}
     \choice{$AC$}
+    \choice{$BA$}
+    \choice{$BB$}
+    \choice[correct]{$BC$}
+    \choice[correct]{$CA$}
+    \choice[correct]{$CB$}
+    \choice{$CC$}
     \pdfOnly{\end{multicols}}
   \end{selectAll}
-  What are the dimensions of the product?
+  \begin{question}
+    What are the dimensions of the products?
+    \pdfOnly{\begin{multicols}{3}}
+    \begin{enumerate}
+    \item $AA$\begin{prompt} is a $\answer{3}\times\answer{3}$ matrix.\end{prompt}
+    \item $AB$\begin{prompt} is a $\answer{3}\times\answer{2}$ matrix.\end{prompt}
+    \item $BC$\begin{prompt} is a $\answer{3}\times\answer{3}$ matrix.\end{prompt}
+    \item $CA$\begin{prompt} is a $\answer{2}\times\answer{3}$ matrix.\end{prompt}
+    \item $CB$\begin{prompt} is a $\answer{2}\times\answer{2}$ matrix.\end{prompt}
+    \item $ABC$\begin{prompt} is a $\answer{2}\times\answer{2}$ matrix.\end{prompt}
+    \end{enumerate}
+    \pdfOnly{\end{multicols}}
+  \end{question}
 \end{question}
 
 
 We'll give several different explanations and interpretations of this
 computation.
 
-\paragraph{As an extension of the dot product}
+\subsection{As an extension of the dot product}
 We can extend the concept of the dot product to explain how to
 multiply a matrix by another matrix. Here is an example:
 \begin{align*}AB &= \begin{pmatrix}
@@ -791,13 +831,86 @@ a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
 a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
 \end{pmatrix}
 \end{align*}
+We attempt to describe the structure of this product in the diagram below:
+
+\begin{center}
+\begin{tikzpicture}[]
+     \matrix (matA) [%
+       matrix of nodes,
+       left delimiter={(},right delimiter={)}
+     ] 
+      {%
+        \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
+        \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
+      };
+      \draw[black,ultra thick] (matA-1-1.west)  -- (matA-1-5.east);
+      \draw[black,ultra thick] (matA-2-1.west) -- (matA-2-5.east);
+      
+      \matrix (matB) [%
+        matrix of nodes,right= of matA,
+       left delimiter={(},right delimiter={)}
+     ]
+      {%
+        \phantom{$\bullet$} & \phantom{$\bullet$} &\phantom{$\bullet$} \\\phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\  \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\\phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\ \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\
+      };
+      \draw[black,ultra thick] (matB-1-1.north)  -- (matB-5-1.south);
+      \draw[black,ultra thick] (matB-1-2.north) -- (matB-5-2.south);
+      \draw[black,ultra thick] (matB-1-3.north) -- (matB-5-3.south);
+      
+      \node[right=of matB] {$=\begin{pmatrix}
+  \boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &\boldsymbol{-}^\transpose\dotp\boldsymbol{|} \\\boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &  \boldsymbol{-}^\transpose\dotp\boldsymbol{|}
+\end{pmatrix}$};
+\end{tikzpicture}
+\end{center}
+
+
+
+
+
+
+
+
+
+
 Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
 \l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
 \[
 C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 \]
+\begin{question} If
+  \[
+  A = \begin{pmatrix}
+1 & -2 & 3 & 0 & -1 \\
+4 & 0 & -5 & 6 & -7
+  \end{pmatrix}\quad\text{and}\quad
+  B=
+  \begin{pmatrix}
+1 & -2 & 3 \\
+0 & 5 & -6 \\
+-7 & 8 & 0 \\
+4 & -5 & 6 \\
+-1 & 2 & 1
+\end{pmatrix}
+  \]
+  and $C = AB$, what is $C_{2,3}$?
+  \begin{prompt}
+    \[
+    C_{2,3} = \answer{41}
+    \]
+  \end{prompt}
+\end{question}
 
-\paragraph{Columns of the product}
+
+
+
+
+
+
+\subsection{Columns of the product}
+
+
+
+Another viewpoint is to build the product as columns.  
 \begin{align*}AB &= \begin{pmatrix}
 a_{1,1} & a_{1,2}\\
 a_{2,1} & a_{2,2}
@@ -830,7 +943,7 @@ that is,
 \end{align*}
 
 
-\paragraph{Rows of the product}
+\subsection{Rows of the product}
 
 
 \begin{align*}AB &= \begin{pmatrix}

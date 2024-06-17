@@ -732,14 +732,14 @@ A\vec{x} = \vec{b}
 \node[vertex] (b) at  (1,1.7) {$B$};
 \node[vertex] (c) at  (0,0) {$C$};
 %edges
-\draw[postaction={decorate}] (a) to[bend right] (c);
-\draw[postaction={decorate}] (c) to[bend right] (b);
-\draw[postaction={decorate}] (b) to[bend right] (a);
+\draw[postaction={decorate}] (a) to[bend right] node[below left] {$30$}  (c);
+\draw[postaction={decorate}] (c) to[bend right] node[below right] {$40$} (b);
+\draw[postaction={decorate}] (b) to[bend right] node[above] {$20$} (a);
 
 
-\draw[postaction={decorate}] (a) to[bend left] (c);
-\draw[postaction={decorate}] (a) to[bend right] (b);
-\draw[postaction={decorate}] (b) to[bend right] (c);
+\draw[postaction={decorate}] (a) to[bend left] node[below left] {$2x_2$} (c);
+\draw[postaction={decorate}] (a) to[bend right] node[above] {$x_1$} (b);
+\draw[postaction={decorate}] (b) to[bend right] node[below right] {$x_3$} (c);
 \end{scope}
 \end{tikzpicture}
 \end{center}

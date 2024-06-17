@@ -711,15 +711,13 @@ A\vec{x} = \vec{b}
 
 
   Networks, not to be confused with \textit{neural} networks, have
-  numerous applications.
+  numerous applications, from traffic networks to circuts, to actual computer networks. 
 
 
 
-\begin{example}[Networks]
-  A network is composed of junctions and branches.  and each junction
-  can be described by an equation by equating the branches going in to
-  branches going out. That is input = output. For example,
-
+\begin{example}[Network Analysis]
+  A network is composed of nodes and directed edges, describing a
+  ``flow'' into each node, and a ``flow'' out of each node. 
 \begin{center}
 \begin{tikzpicture}[scale=2]
 \begin{scope}[very thick,decoration={
@@ -743,8 +741,15 @@ A\vec{x} = \vec{b}
 \end{scope}
 \end{tikzpicture}
 \end{center}
-
-gives:
+Of critical importance, is that \textbf{flow into a node equals the
+  flow out of a node}. So for example, the flow into node $A$ above is
+$20$. However, the flow out of $A$ is $x_{1} + 2x_{2} + 30$. Hence
+\[
+20  = x_{1} + 2x_{2} + 30.
+\]
+Write an equation for the remaining nodes and express the system of
+equations as a matrix multipled by a vector.
+\begin{explanation}
 \begin{eqnarray*}
 20 &=& x_{1} + 2x_{2} + 30\\
 x_{1} + 40 &=& x_{3}\\
@@ -762,6 +767,8 @@ with augmented matrix:
 1 & 0 & -1 & -40\\
 1 & 2 & 1 & 10
 \end{array}\right)\]
+
+\end{explanation}
 \end{example}
 
 

@@ -4,6 +4,10 @@
 
 \author{Parisa Fatheddin \and Tae Eun Kim \and Bart Snapp}
 
+
+%% https://ghenshaw-work.medium.com/3-ways-to-understand-matrix-multiplication-fe8a007d7b26
+
+
 \title{Matrices, products, and equations}
 
 
@@ -41,7 +45,7 @@ M =
   a_{3,1} & a_{3,2} & a_{3,3} & a_{1,4} & a_{3,5} \\
   a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5}
 \end{pmatrix}}
-~\boldsymbol{4}~\textbf {rows}
+~~\boldsymbol{4}~\textbf{rows}
 \]
 We give the \dfn{dimensions of a matrix} by stating its number of rows
 and number of columns. The number of rows comes first and the number
@@ -210,44 +214,50 @@ vertically.
 
 
 
-\begin{example}[Streaming Service]
-  The \textit{MOOCulus Streaming Service} has just gone
-  public. Currently, there are only $5$ subscribers who happen to be
-  your friends, and only $3$ movies are streamed. For simplicity and
-  privacy reasons, we call the subscribers $1$, $2$, $3$, $4$, and $5$ and
-  movies are labeled $A$, $B$, and $C$. The following table summarizes
-  which subscriber watched which movie:
-  \begin{center}
-    \begin{tabular}{c|ccc}
-      subscriber \textbackslash movie & A & B & C \\ \hline
-      1 & 0 & 1 & 1\\
-      2 & 1 & 0 & 1\\
-      3 & 1 & 1 & 0\\
-      4 & 1 & 0 & 0\\
-      5 & 0 & 0 & 0
-    \end{tabular}
-  \end{center}
-  Here, a 1 means that a subscriber on the row head watched the movie on
-  the column head, while a 0 means otherwise. For example, subscriber
-  1 watched movies 2 and 3, while subscriber 2 watched movies 1 and 3,
-  and so on. This data can be packaged into a $5 \times 3$ matrix $M$:
+\begin{example}[Consumer Data]
+  The \textit{MOOCulus Streaming Service} wasn't always as popular as
+  it is today. When it started there were only $5$ subscribers who
+  happen to be our friends, and only $3$ movies are streamed:
+  \textit{Time Bandits}, \textit{Brazil} and \textit{The Adventures of Baron
+    Munchausen}. For simplicity and privacy reasons, we call the
+  subscribers $\vec c_1$, $\vec c_2$, $\vec c_3$, $\vec c_4$, and
+  $\vec c_5$ and movies will coorespond to the first, second and third
+  entires of the vectors $\vec v_i$:
+  \begin{align*}
+   \vec c_{1} &= \begin{pmatrix}0 & 1 & 2\end{pmatrix}\\
+   \vec c_{2} &= \begin{pmatrix}1 & 0 & 1\end{pmatrix}\\
+   \vec c_{3} &= \begin{pmatrix}3 & 1 & 0\end{pmatrix}\\
+   \vec c_{4} &= \begin{pmatrix}1 & 0 & 0\end{pmatrix}\\
+   \vec c_{5} &= \begin{pmatrix}0 & 6 & 0\end{pmatrix}
+  \end{align*}
+  Here, for each vector, the first value is the number of times the
+  consumer watched \textit{Time Bandits}, the second value is the
+  number of times the consumer watched \textit{Brazil}, and the third
+  value is the number of times the consumer watched \textit{The
+    Adventures of Baron Munchausen}.  This data can be packaged into a
+  $5 \times 3$ matrix $M$:
   \[
     M =
     \begin{pmatrix}
-      0 & 1 & 1\\
+      0 & 1 & 2\\
       1 & 0 & 1\\
-      1 & 1 & 0\\
+      3 & 1 & 0\\
       1 & 0 & 0\\
-      0 & 0 & 0
+      0 & 6 & 0
     \end{pmatrix}.
-  \]
-  Note that a sum across a row gives the total number of movies that
-  the corresponding subscriber. Likewise, a sum along a column yields
-  the total number of viewers of the particular movie.
+    \]
+    \begin{itemize}
+    \item Compute the sum of the entires in the third row and interpret the result in this context.
+    \item Compute the sum of the entires in the second column and interpret the result in this context.
+    \end{itemize}
+    \begin{explanation}
+      The sum across the third row is $\answer[given]{4}$. This means
+      that consumer $\vec{c}_{\answer[given]{3}}$ streamed a total of  $\answer[given]{4}$ \wordChoice{\choice{distinct}\choice[correct]{possibly nondistinct}} movies. 
 
-  We will revisit this example as we learn more matrix operations and
-  see what type of information can be revealed from this seemingly
-  simple matrix.
+
+      On the other hand, the sum along the second column is $\answer[given]{8}$. This
+      means that \wordChoice{\choice{Time Bandits}\choice[correct]{Brazil}\choice{The Adventures of Baron Munchausen}} has been watched $\answer[given]{8}$ times.
+    \end{explanation}
 \end{example}
 
 
@@ -445,17 +455,25 @@ then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a co
 
   %% TK: Rephrased this.  Question: Should we maybe put this after
   %% introducing matrix product?
+  %% BS: We just did matrix*vector and vector*matrix... I kinda like it here.
   \begin{explanation}
-    In this case, both of these expressions equal the matrix product
-    $\vec{x} \vec{y}$ because the row vector $\vec{x}$ can be thought of
-    as $1\times n$ matrix and the column vector $\vec{y}$ as
-    $n \times 1$ matrix. That is,
+    In this case, interpret $\vec{x}$ as a $1\times n$ matrix, and
+    $\vec{y}$ as a column vector. By our definition above
+    \[
+    \vec{x}\vec{y} = \vec{x}^\transpose\dotp \vec{y}.
+    \]
+    On the otherhand if we interpret $\vec{x}$ as a row vector, and
+    $\vec{y}$ as a $n\times 1$ matrix, by our definition above
+    \[
+    \vec{x}\vec{y} = \vec{x}\dotp\vec{y}^\transpose.
+    \]
+    Hence
     \[
       \vec{x}^\transpose\dotp \vec{y} = \underset{\begin{matrix}\text{matrix}\\\text{product}\end{matrix}}{\vec{x}\vec{y}} = \vec{x}\dotp\vec{y}^\transpose.
     \]
-    Note that the matrix product $\vec{x} \vec{y}$ makes sense because
-    the number of columns of the first matrix $\vec{x}$ equals the
-    number of rows of the second matrix $\vec{y}$.
+    %% Note that the matrix product $\vec{x} \vec{y}$ makes sense because
+    %% the number of columns of the first matrix $\vec{x}$ equals the
+    %% number of rows of the second matrix $\vec{y}$.
     % hence they are equal.
   \end{explanation}
 \end{proposition}
@@ -501,29 +519,35 @@ then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a co
   \end{explanation}
 \end{example}
 
+
+The grayscale image example above showcases a utility of matrix-vector
+product in extracting a row or a column of a given matrix.
+
+
+  
 %% TK: This may be a good place to introduce this theme. We may
 %% revisit later, e.g., after matrix-matrix product or when discussing
 %% row-operations.
-\begin{concept}[Row and Column Actions]
-  The grayscale image example above showcases a utility of
-  matrix-vector product in extracting a row or a column of a given
-  matrix. It turns out that matrix-vector products can emulate
-  various operations on rows or columns of a matrix that are more
-  involved than simple extraction.
+%% \begin{concept}[Row and Column Actions]
+%%   The grayscale image example above showcases a utility of
+%%   matrix-vector product in extracting a row or a column of a given
+%%   matrix. It turns out that matrix-vector products can emulate
+%%   various operations on rows or columns of a matrix that are more
+%%   involved than simple extraction.
 
-  The general theme is as follows. Let $M$ be an $m \times n$ matrix,
-  $\vec{r}$ a $1 \times m$ row vector, and $\vec{c}$ an $n \times 1$ column
-  vector. Then
-  \begin{description}
-  \item[Row operation.] The vector-matrix product $\vec{r} M$ emulates an operation
-    on rows of $M$. The components of $\vec{r}$ conveys the
-    information about the row operation.
-  \item[Column operation.] The matrix-vector product $M \vec{c}$
-    emulates an operation on columns of $M$. The components of
-    $\vec{c}$ conveys the information about the column operation.
-  \end{description}
-  This is an important theme in linear algebra.
-\end{concept}
+%%   The general theme is as follows. Let $M$ be an $m \times n$ matrix,
+%%   $\vec{r}$ a $1 \times m$ row vector, and $\vec{c}$ an $n \times 1$ column
+%%   vector. Then
+%%   \begin{description}
+%%   \item[Row operation.] The vector-matrix product $\vec{r} M$ emulates an operation
+%%     on rows of $M$. The components of $\vec{r}$ conveys the
+%%     information about the row operation.
+%%   \item[Column operation.] The matrix-vector product $M \vec{c}$
+%%     emulates an operation on columns of $M$. The components of
+%%     $\vec{c}$ conveys the information about the column operation.
+%%   \end{description}
+%%   This is an important theme in linear algebra.
+%% \end{concept}
 
 
 \section{Systems of equations}
@@ -554,7 +578,7 @@ z
 8
 \end{pmatrix}
 \]
-Multiplying the left-hand side above we have,
+as multiplying the left-hand side above we have,
 \[
 \begin{pmatrix}
 4x+2y+z\\
@@ -566,7 +590,7 @@ Multiplying the left-hand side above we have,
 8
 \end{pmatrix}
 \]
-giving the system of equations. With this in mind, it is common to write
+With this in mind, it is common to write
 \[
 A = \begin{pmatrix}
 4 & 2 & 1 \\
@@ -681,18 +705,44 @@ A\vec{x} = \vec{b}
 
 
 
-\begin{example}[Cryptography]
-  A Caeser cypher
-\end{example}
+%% \begin{example}[Cryptography]
+%%   A Caeser cypher
+%% \end{example}
 
 
+  Networks, not to be confused with \textit{neural} networks, have
+  numerous applications.
 
 
 
 \begin{example}[Networks]
-In electrical engineering, networks are often used to analyze a system. A network is composed of junctions and branches and each junction can be described by an equation by equating the branches going in to branches going out. That is input = output. For example,\\
+  A network is composed of junctions and branches.  and each junction
+  can be described by an equation by equating the branches going in to
+  branches going out. That is input = output. For example,
 
-......\\
+\begin{center}
+\begin{tikzpicture}[scale=2]
+\begin{scope}[very thick,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow{>}}}
+    ] 
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+% vertices
+\node[vertex] (a) at  (-1,1.7) {$A$};
+\node[vertex] (b) at  (1,1.7) {$B$};
+\node[vertex] (c) at  (0,0) {$C$};
+%edges
+\draw[postaction={decorate}] (a) to[bend right] (c);
+\draw[postaction={decorate}] (c) to[bend right] (b);
+\draw[postaction={decorate}] (b) to[bend right] (a);
+
+
+\draw[postaction={decorate}] (a) to[bend left] (c);
+\draw[postaction={decorate}] (a) to[bend right] (b);
+\draw[postaction={decorate}] (b) to[bend right] (c);
+\end{scope}
+\end{tikzpicture}
+\end{center}
 
 gives:
 \begin{eqnarray*}
@@ -808,10 +858,10 @@ outside numbers}.
 \end{question}
 
 
-We'll give several different explanations and interpretations of this
-computation.
+%% We'll give several different explanations and interpretations of this
+%% computation.
 
-\subsection{As an extension of the dot product}
+%% \subsection{As an extension of the dot product}
 We can extend the concept of the dot product to explain how to
 multiply a matrix by another matrix. Here is an example:
 \begin{align*}AB &= \begin{pmatrix}
@@ -861,14 +911,10 @@ We attempt to describe the structure of this product in the diagram below:
 \end{pmatrix}$};
 \end{tikzpicture}
 \end{center}
-Above we are attempting to concisely show the dot product in the
-matrix product.
-
-
-
-
-
-Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
+Above the strange symbols
+``$\boldsymbol{-}^\transpose\dotp\boldsymbol{|}$'' are supposed to
+represent the transpose of the rows of $A$ being dotted with the
+columns of $B$. Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
 \l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
 \[
 C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
@@ -902,120 +948,151 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 
 
 
-\subsection{Columns of the product}
+%% \subsection{Columns of the product}
 
 
 
-Another viewpoint is to build the product as columns.  
-\begin{align*}AB &= \begin{pmatrix}
-a_{1,1} & a_{1,2}\\
-a_{2,1} & a_{2,2}
-\end{pmatrix}
-\begin{pmatrix}
-b_{1,1} & b_{1,2}\\
-b_{2,1} & b_{2,2}
-\end{pmatrix}\\
-&= \begin{pmatrix}
-\col_1(A)b_{1,1} + \col_2(A) b_{2,1} & \col_1(A)b_{1,2} + \col_2(A) b_{2,2}
-\end{pmatrix}\\
-&= \begin{pmatrix}
-\begin{pmatrix}a_{1,1} \\ a_{2,1}\end{pmatrix}b_{1,1} + \begin{pmatrix}a_{1,2} \\ a_{2,2}\end{pmatrix}b_{2,1} & \begin{pmatrix}a_{1,1} \\ a_{2,1}\end{pmatrix}b_{1,2} + \begin{pmatrix}a_{1,2} \\ a_{2,2}\end{pmatrix}b_{2,2}
-\end{pmatrix}\\
-&= \begin{pmatrix}
-a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
-a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
-\end{pmatrix}
-\end{align*}
+%% Another viewpoint is to build the product as columns.  
+%% \begin{align*}AB &= \begin{pmatrix}
+%% a_{1,1} & a_{1,2}\\
+%% a_{2,1} & a_{2,2}
+%% \end{pmatrix}
+%% \begin{pmatrix}
+%% b_{1,1} & b_{1,2}\\
+%% b_{2,1} & b_{2,2}
+%% \end{pmatrix}\\
+%% &= \begin{pmatrix}
+%% \col_1(A)b_{1,1} + \col_2(A) b_{2,1} & \col_1(A)b_{1,2} + \col_2(A) b_{2,2}
+%% \end{pmatrix}\\
+%% &= \begin{pmatrix}
+%% \begin{pmatrix}a_{1,1} \\ a_{2,1}\end{pmatrix}b_{1,1} + \begin{pmatrix}a_{1,2} \\ a_{2,2}\end{pmatrix}b_{2,1} & \begin{pmatrix}a_{1,1} \\ a_{2,1}\end{pmatrix}b_{1,2} + \begin{pmatrix}a_{1,2} \\ a_{2,2}\end{pmatrix}b_{2,2}
+%% \end{pmatrix}\\
+%% &= \begin{pmatrix}
+%% a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
+%% a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
+%% \end{pmatrix}
+%% \end{align*}
 
-We attempt to describe the structure of this product in the diagram below:
-\begin{center}
-\begin{tikzpicture}[]
-     \matrix (matA) [%
-       matrix of nodes,
-       left delimiter={(},right delimiter={)}
-     ] 
-      {%
-        \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
-        \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
-      };
-      \draw[black,ultra thick,line cap=round] (matA-1-1.north)  -- (matA-2-1.south);
-      \draw[black,ultra thick,line cap=round] (matA-1-2.north)  -- (matA-2-2.south);
-      \draw[black,ultra thick,line cap=round] (matA-1-3.north)  -- (matA-2-3.south);
-      \draw[black,ultra thick,line cap=round] (matA-1-4.north)  -- (matA-2-4.south);
-      \draw[black,ultra thick,line cap=round] (matA-1-5.north)  -- (matA-2-5.south);
+%% We attempt to describe the structure of this product in the diagram below:
+%% \begin{center}
+%% \begin{tikzpicture}[]
+%%      \matrix (matA) [%
+%%        matrix of nodes,
+%%        left delimiter={(},right delimiter={)}
+%%      ] 
+%%       {%
+%%         \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
+%%         \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
+%%       };
+%%       \draw[black,ultra thick,line cap=round] (matA-1-1.north)  -- (matA-2-1.south);
+%%       \draw[black,ultra thick,line cap=round] (matA-1-2.north)  -- (matA-2-2.south);
+%%       \draw[black,ultra thick,line cap=round] (matA-1-3.north)  -- (matA-2-3.south);
+%%       \draw[black,ultra thick,line cap=round] (matA-1-4.north)  -- (matA-2-4.south);
+%%       \draw[black,ultra thick,line cap=round] (matA-1-5.north)  -- (matA-2-5.south);
       
-      \matrix (matB) [%
-        matrix of nodes,right=of matA,
-       left delimiter={(},right delimiter={)}
-     ]
-      {%
-        $\bullet$ & $\bullet$ &$\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\  $\bullet$ & $\bullet$ & $\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\ $\bullet$ & $\bullet$ & $\bullet$ \\
-      };
-      \draw[black!20!white,line width=1ex,line cap=round] (matB-1-1.north)  -- (matB-5-1.south);
-      \draw[black!20!white,ultra thick,line width=1ex,line cap=round] (matB-1-2.north) -- (matB-5-2.south);
-      \draw[black!20!white,ultra thick,line width=1ex,line cap=round] (matB-1-3.north) -- (matB-5-3.south);
+%%       \matrix (matB) [%
+%%         matrix of nodes,right=of matA,
+%%        left delimiter={(},right delimiter={)}
+%%      ]
+%%       {%
+%%         $\bullet$ & $\bullet$ &$\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\  $\bullet$ & $\bullet$ & $\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\ $\bullet$ & $\bullet$ & $\bullet$ \\
+%%       };
+%%       \draw[black!20!white,line width=1ex,line cap=round] (matB-1-1.north)  -- (matB-5-1.south);
+%%       \draw[black!20!white,ultra thick,line width=1ex,line cap=round] (matB-1-2.north) -- (matB-5-2.south);
+%%       \draw[black!20!white,ultra thick,line width=1ex,line cap=round] (matB-1-3.north) -- (matB-5-3.south);
       
-      \node[right=2ex of matB] {$=\begin{pmatrix}
-  \boldsymbol{|\cdot|\cdot|\cdot|\cdot|\cdot} & \boldsymbol{\mid\cdot\mid\cdot\mid\cdot\mid\cdot\mid\cdot} &|\cdot|\cdot|\cdot|\cdot|\cdot \\
-        \end{pmatrix}$};
-      \matrix (matBp) [%
-        matrix of nodes,right=of matA,
-       left delimiter={(},right delimiter={)}
-     ]
-      {%
-        $\bullet$ & $\bullet$ &$\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\  $\bullet$ & $\bullet$ & $\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\ $\bullet$ & $\bullet$ & $\bullet$ \\
-      };
-\end{tikzpicture}
-\end{center}
+%%       \node[right=2ex of matB] {$=\begin{pmatrix}
+%%   \boldsymbol{\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\cdot} & \boldsymbol{\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\cdot} & \boldsymbol{\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\cdot} \\
+%%         \end{pmatrix}$};
+%%       \matrix (matBp) [%
+%%         matrix of nodes,right=of matA,
+%%        left delimiter={(},right delimiter={)}
+%%      ]
+%%       {%
+%%         $\bullet$ & $\bullet$ &$\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\  $\bullet$ & $\bullet$ & $\bullet$ \\$\bullet$ & $\bullet$ & $\bullet$ \\ $\bullet$ & $\bullet$ & $\bullet$ \\
+%%       };
+%% \end{tikzpicture}
+%% \end{center}
+%% Above the strange symbols
+%% ``$\boldsymbol{\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\cdot}$''
+%% are supposed to represent the sum of the columns of $A$ each multipled
+%% by an element of a column of $B$.  Quite generally, if $A$ is an
+%% $m\times n$ matrix and $B$ is a $n\times \l$ matrix, and $C = AB$ is a
+%% $m\times \l$ matrix, then
+%% \[
+%% \col_i(C) = \sum_{k=1}^n \col_k(A)b_{k,i}
+%% \]
+%% that is,
+%% \begin{align*}
+%%   C &= \begin{pmatrix} \col_1(C) & \col_2 (C) & \cdots & \col_{\l}(C) \end{pmatrix}\\
+%%   &=  \begin{pmatrix} \sum_{k=1}^n \col_k(A)b_{k,1} & \sum_{k=1}^n \col_k(A)b_{k,2} & \cdots & \sum_{k=1}^n \col_k(A)b_{k,\l}\end{pmatrix}
+%% \end{align*}
+%% \begin{question} If
+%%   \[
+%%   A = \begin{pmatrix}
+%% 1 & -2 & 3 & 0 & -1 \\
+%% 4 & 0 & -5 & 6 & -7
+%%   \end{pmatrix}\quad\text{and}\quad
+%%   B=
+%%   \begin{pmatrix}
+%% 1 & -2 & 3 \\
+%% 0 & 5 & -6 \\
+%% -7 & 8 & 0 \\
+%% 4 & -5 & 6 \\
+%% -1 & 2 & 1
+%% \end{pmatrix}
+%%   \]
+%%   and $C = AB$, what is $\col_2(C)$?
+%%   %\begin{prompt}
+%%     \[
+%%     \col_2(C) =  \col_1(A)b_{1,2} +  \col_2(A)b_{2,2}+  \col_3(A)b_{3,2} + \col_4(A) b_{4,2} + \col_5(A) b_{5,2}
+%%     \]
+%%   %\end{prompt}
+%% \end{question}
 
 
 
 
-Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
-\l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
-\[
-\col_i(C) = \sum_{k=1}^n \col_k(A)b_{k,i}
-\]
-that is,
-\begin{align*}
-  C &= \begin{pmatrix} \col_1(C) & \col_2 (C) & \cdots & \col_{\l}(C) \end{pmatrix}\\
-  &=  \begin{pmatrix} \sum_{k=1}^n \col_k(A)b_{k,1} & \sum_{k=1}^n \col_k(A)b_{k,2} & \cdots & \sum_{k=1}^n \col_k(A)b_{k,\l}\end{pmatrix}
-\end{align*}
 
 
-\subsection{Rows of the product}
 
 
-\begin{align*}AB &= \begin{pmatrix}
-a_{1,1} & a_{1,2}\\
-a_{2,1} & a_{2,2}
-\end{pmatrix}
-\begin{pmatrix}
-b_{1,1} & b_{1,2}\\
-b_{2,1} & b_{2,2}
-\end{pmatrix}\\
-&= \begin{pmatrix}
-a_{1,1}\row_1(B) + a_{1,2}\row_2(B) \\ a_{2,1}\row_1(B) +  a_{2,2}\row_2(B)
-\end{pmatrix}\\
-&= \begin{pmatrix}
-a_{1,1}\begin{pmatrix} b_{1,1} & b_{1,2}\end{pmatrix} + a_{1,2}\begin{pmatrix} b_{2,1} & b_{2,2}\end{pmatrix} \\ a_{2,1}\begin{pmatrix} b_{1,1} & b_{1,2}\end{pmatrix} +  a_{2,2}\begin{pmatrix} b_{2,1} & b_{2,2}\end{pmatrix}
-\end{pmatrix}\\
-&= \begin{pmatrix}
-a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
-a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
-\end{pmatrix}
-\end{align*}
 
-Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
-\l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
-\[
-\row_i(C) = \sum_{k=1}^n a_{i,k}\row_k(B)
-\]
-that is,
-\begin{align*}
-  C &= \begin{pmatrix} \row_1(C) \\ \row_2 (C) \\ \vdots \\ \row_{m}(C) \end{pmatrix}\\
-  &=  \begin{pmatrix} \sum_{k=1}^n a_{1,k}\row_k(B) \\ \sum_{k=1}^n a_{2,k}\row_k(B) \\ \vdots \\ \sum_{k=1}^n a_{m,k}\row_k(B)\end{pmatrix}
-\end{align*}
+
+
+%% \subsection{Rows of the product}
+
+
+%% \begin{align*}AB &= \begin{pmatrix}
+%% a_{1,1} & a_{1,2}\\
+%% a_{2,1} & a_{2,2}
+%% \end{pmatrix}
+%% \begin{pmatrix}
+%% b_{1,1} & b_{1,2}\\
+%% b_{2,1} & b_{2,2}
+%% \end{pmatrix}\\
+%% &= \begin{pmatrix}
+%% a_{1,1}\row_1(B) + a_{1,2}\row_2(B) \\ a_{2,1}\row_1(B) +  a_{2,2}\row_2(B)
+%% \end{pmatrix}\\
+%% &= \begin{pmatrix}
+%% a_{1,1}\begin{pmatrix} b_{1,1} & b_{1,2}\end{pmatrix} + a_{1,2}\begin{pmatrix} b_{2,1} & b_{2,2}\end{pmatrix} \\ a_{2,1}\begin{pmatrix} b_{1,1} & b_{1,2}\end{pmatrix} +  a_{2,2}\begin{pmatrix} b_{2,1} & b_{2,2}\end{pmatrix}
+%% \end{pmatrix}\\
+%% &= \begin{pmatrix}
+%% a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
+%% a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
+%% \end{pmatrix}
+%% \end{align*}
+
+%% Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
+%% \l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
+%% \[
+%% \row_i(C) = \sum_{k=1}^n a_{i,k}\row_k(B)
+%% \]
+%% that is,
+%% \[
+%%   C = \begin{pmatrix} \row_1(C) \\ \row_2 (C) \\ \vdots \\ \row_{m}(C) \end{pmatrix}
+%%   =  \begin{pmatrix} \sum_{k=1}^n a_{1,k}\row_k(B) \\ \sum_{k=1}^n a_{2,k}\row_k(B) \\ \vdots \\ \sum_{k=1}^n a_{m,k}\row_k(B)\end{pmatrix}
+%% \]
 
 
 
@@ -1054,34 +1131,41 @@ AB = \left(\begin{array}{cc}
 \answer[given]{10} & \answer[given]{0}
 \end{array}\right)\]
 \end{prompt}
-Do the two multiplications give the same result? \wordChoice{\choice{yes} \choice[correct]{no}}
+Do the two multiplications give the same result?
+\begin{prompt}
+  \begin{multipleChoice}
+    \choice{Yes.}
+    \choice[correct]{No.}
+  \end{multipleChoice}
+\end{prompt}
 \end{question}
 
 
 
 
+For example,
+\[\left(\begin{array}{ccc}
+1 & -1 & 0\\
+2 & 0 & 4 \\
+5 & 3 & 1
+\end{array}\right) \left(\begin{array}{ccc}
+5 & 1 & 0\\
+-1 & -2 & 0\\
+1 & 0 & 2
+\end{array}\right)\]
+\[= \left(\begin{array}{ccc}
+(1)(5) + (-1)(-1)+ (0)(1) & 1 + 2+ 0 & 0 + 0+ 0\\
+10 + 0 + 4 & 2 + 0+0 & 0 + 0+8\\
+25+ (-3) + 1 & 5 + -6+0 & 0 + 0+ 2
+\end{array}\right)\]
+\[= \left(\begin{array}{ccc}
+6 & 3 & 0\\
+14& 2 & 8\\
+23 & -1 & 2
+\end{array}\right)
+\]
+It is helpful to first write the sum since there might be many small calculations and easy to make mistakes. It is important to write the matrices neatly and put enough space between entries.
 
-
-
-\begin{proposition}[Transpose matrix multiplication]
-  Suppose we have a $m\times n$ matrix $A$ and an $n\times \l$ matrix $B$. In this case:
-  \[
-  (BA)^\transpose = A^\transpose B^\transpose
-  \]
-  \begin{explanation}
-    Using the dot product interpretation of matrix multiplication, we can write
-    \[
-      (BA)_{i,j} = \row_i(B)^\transpose \dotp \col_j(A)
-    \]
-    Now, write with me (you have to write along to really understand)
-    \begin{align*}
-      (BA)_{i,j}^\transpose &= \row_j(B)^\transpose \dotp \col_i(A) & & (\text{transpose swaps $i$ and $j$})\\
-      &= \col_j(B^\transpose)^\transpose \dotp \row_i(A^\transpose) & & (\text{transpose swaps rows and columns})\\
-      &= \row_i(A^\transpose)^\transpose \dotp \col_j(B^\transpose) & & (\vec x^\transpose \dotp \vec y = \vec x\dotp \vec y^\transpose)\\
-      &= A^\transpose B^\transpose.
-    \end{align*}
-  \end{explanation}
-\end{proposition}
 
 
 
@@ -1323,6 +1407,49 @@ B^{\transpose} A^{\transpose}  = \left(\begin{array}{cc}
 \]
 \end{prompt}
 \end{question}
+
+
+
+
+
+
+
+
+\begin{proposition}[Transpose matrix multiplication]
+  Suppose we have a $m\times n$ matrix $A$ and an $n\times \l$ matrix $B$. In this case:
+  \[
+  (BA)^\transpose = A^\transpose B^\transpose
+  \]
+  \begin{explanation}
+    Using the dot product interpretation of matrix multiplication, we can write
+    \[
+      (BA)_{i,j} = \row_i(B)^\transpose \dotp \col_j(A)
+    \]
+    Now, write with me (you have to write along to really understand)
+    \begin{align*}
+      (BA)_{i,j}^\transpose &= \row_j(B)^\transpose \dotp \col_i(A) & & (\text{transpose swaps $i$ and $j$})\\
+      &= \col_j(B^\transpose)^\transpose \dotp \row_i(A^\transpose) & & (\text{transpose swaps rows and columns})\\
+      &= \row_i(A^\transpose)^\transpose \dotp \col_j(B^\transpose) & & (\vec x^\transpose \dotp \vec y = \vec x\dotp \vec y^\transpose)\\
+      &= A^\transpose B^\transpose.
+    \end{align*}
+  \end{explanation}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Let us explore some types of matrices that usually are used in linear
 algebra. The zero matrix, usually denoted as $\textbf{O}_{m \times n}$ is
 an $m \times n$ matrix with each of its entries being zero. For example,

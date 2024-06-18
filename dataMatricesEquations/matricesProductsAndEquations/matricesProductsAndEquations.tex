@@ -433,13 +433,13 @@ compute the following, if possible.
 \end{enumerate}
 \end{question}
 
-
-Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
-vectors, and one \textit{resonably} writes
-\[
-\vec x A\quad\text{or}\quad  B \vec y
-\]
-then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. This is related to our next proposition:
+Our next proposition relates the transpose and the dot product.
+%% Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
+%% vectors, and one \textit{resonably} writes
+%% \[
+%% \vec x A\quad\text{or}\quad  B \vec y
+%% \]
+%% then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. This is related to our next proposition:
 
 
 \begin{proposition}[Dot product and transpose]
@@ -477,6 +477,30 @@ then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a co
     % hence they are equal.
   \end{explanation}
 \end{proposition}
+
+If on the other hand, $\vec{x}$ and $\vec y$ are $n$-vectors again
+with
+\begin{itemize}
+\item $\vec{x}$ expressed as a row,
+\item $\vec{y}$ expressed as a column,
+\end{itemize}
+then $\vec{y}\vec{x}$ can be inteperted as either a $n\times 1$
+matrix multiplied by a row vector or a column vector multipled by a
+$1\times n$ matrix. In either case the answers are the same, and will be a $n\times n$ matrix.
+
+\begin{example}[Normal distribution]
+  We encode a vector with data that follows a normal distribution, and data that follows a skewed normal distribution:
+  %% \begin{align*}
+  %%   \vec{n} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}\\
+  %%   \vec{s} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}
+  %% \end{align*}
+  \[
+  \vec{n} =\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11\end{pmatrix}%& 0.11 \end{pmatrix}
+  \]
+  \begin{explanation}
+    here
+  \end{explanation}
+\end{example}
 
 
 
@@ -610,17 +634,19 @@ A\vec{x} = \vec{b}
   Suppose you wish to use a camera attached to a computer to detect if
   a simple pattern of circles
   \begin{center}
-    \raisebox{-.3\height}{\begin{tikzpicture}[scale = .3]
+\begin{tikzpicture}[scale = .3]
       \draw[ultra thick] (0,0) circle (1cm);
       \draw[ultra thick] (3,0) circle (1cm);
       \draw[ultra thick] (6,0) circle (1cm);
-    \end{tikzpicture}}
-    \qquad\text{is shaded like this}\qquad
-    \raisebox{-.3\height}{\begin{tikzpicture}[scale = .3]
+    \end{tikzpicture}
+  \end{center}
+  is shaded like this:
+  \begin{center}
+\begin{tikzpicture}[scale = .3]
       \draw[ultra thick,fill=black] (0,0) circle (1cm);
       \draw[ultra thick] (3,0) circle (1cm);
       \draw[ultra thick] (6,0) circle (1cm);
-    \end{tikzpicture}}
+    \end{tikzpicture}
   \end{center}
   and also check that the pattern is not unshaded or shaded in any
   other way.  This might not seem too difficult; however, in practice

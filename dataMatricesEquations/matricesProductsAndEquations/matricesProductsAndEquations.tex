@@ -462,7 +462,7 @@ Our next proposition relates the transpose and the dot product.
     \[
     \vec{x}\vec{y} = \vec{x}^\transpose\dotp \vec{y}.
     \]
-    On the otherhand if we interpret $\vec{x}$ as a row vector, and
+    If we interpret $\vec{x}$ as a row vector, and
     $\vec{y}$ as a $n\times 1$ matrix, by our definition above
     \[
     \vec{x}\vec{y} = \vec{x}\dotp\vec{y}^\transpose.
@@ -478,6 +478,8 @@ Our next proposition relates the transpose and the dot product.
   \end{explanation}
 \end{proposition}
 
+
+
 If on the other hand, $\vec{x}$ and $\vec y$ are $n$-vectors again
 with
 \begin{itemize}
@@ -490,15 +492,26 @@ $1\times n$ matrix. In either case the answers are the same, and will be a $n\ti
 
 \begin{example}[Normal distribution]
   We encode a vector with data that follows a normal distribution, and data that follows a skewed normal distribution:
-  %% \begin{align*}
-  %%   \vec{n} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}\\
-  %%   \vec{s} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}
-  %% \end{align*}
+  \begin{align*}
+    \vec{n} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}\\
+    \vec{s} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}
+  \end{align*}
   \[
   \vec{n} =\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11\end{pmatrix}%& 0.11 \end{pmatrix}
   \]
-  \begin{explanation}
-    here
+    \begin{center}
+\newcommand{\matrixData}{{
+{0.11, 0.22, 0.39, 0.58, 0.74, 0.8, 0.74, 0.58, 0.39, 0.22, 0.11}
+}}
+    \begin{tikzpicture}[scale=.5]
+        \foreach \x in {0, 1, ..., 10} {
+          \pgfmathsetmacro\val{\matrixData[0][\x]}
+          \fill[black, opacity={1-\val}] (\x, 0) rectangle (\x+1, 0-1);
+          \draw (\x, 0) rectangle (\x+1, 0-1);
+        }
+    \end{tikzpicture}
+    \end{center}
+    \begin{explanation}
   \end{explanation}
 \end{example}
 

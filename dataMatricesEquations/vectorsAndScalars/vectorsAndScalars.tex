@@ -755,7 +755,7 @@ However, we \textbf{cannot directly multiply vectors of the same type}.
           a_2b_2\\
           \vdots\\
           a_nb_n
-        \end{pmatrix}$};
+        \end{pmatrix}$.};
       % \draw[red, line width=5pt,opacity=.3] (-2,-1) -- (2,1);
       % \draw[red, line width=5pt,opacity=.3] (-2,1) -- (2,-1);
     \end{tikzpicture}
@@ -772,26 +772,27 @@ However, we \textbf{cannot directly multiply vectors of the same type}.
 \end{warning}
  Instead, to ``multiply'' vectors, we use the \textit{dot product}.
  \begin{definition}
-  The \dfn{dot product} of two vectors is given by the following.
-  \begin{align*}
-  \begin{pmatrix}
-    a_1\\
-    a_2\\
-    \vdots\\
-    a_n
-  \end{pmatrix}
-  \dotp
-  \begin{pmatrix}
-    b_1\\
-    b_2\\
-    \vdots\\
-    b_n
-  \end{pmatrix}
-  &=\begin{pmatrix} a_1 & a_2 & \cdots & a_n\end{pmatrix}\dotp\begin{pmatrix} b_1 & b_2 & \cdots & b_n\end{pmatrix}\\
-  &= \sum_{i=1}^n a_ib_i\\
-  &= a_1b_1 + a_2b_2 +\dots+a_nb_n
-  \end{align*}
-\end{definition}
+   The \dfn{dot product} (or \textit{scalar product} or \textit{inner
+     product}) of two vectors is given by the following.
+   \begin{align*}
+     \begin{pmatrix}
+       a_1\\
+       a_2\\
+       \vdots\\
+       a_n
+     \end{pmatrix}
+     \dotp
+     \begin{pmatrix}
+       b_1\\
+       b_2\\
+       \vdots\\
+       b_n
+     \end{pmatrix}
+     &=\begin{pmatrix} a_1 & a_2 & \cdots & a_n\end{pmatrix}\dotp\begin{pmatrix} b_1 & b_2 & \cdots & b_n\end{pmatrix}\\
+     &= \sum_{i=1}^n a_ib_i\\
+     &= a_1b_1 + a_2b_2 +\dots+a_nb_n.
+   \end{align*}
+ \end{definition}
 
 The first thing you should notice about the the dot product is that
 \[
@@ -871,7 +872,7 @@ viewed as a dot product:
   book. In fact the \dfn{mean}, represented by $\mu$, of the entries of the
   $n$-vector $\vec{a}$ can also be described using the dot product as
   \[
-  \mu = \frac{\vec{1}\dotp\vec{a}}{n}
+  \mu = \frac{\vec{1}\dotp\vec{a}}{n}.
   \]
 
 \begin{example}[Finding Averages]
@@ -898,7 +899,7 @@ viewed as a dot product:
     \begin{align*}
       \mu
       & = \frac{\vec{1} \dotp \vec{s}}{\answer[given]{4}}\\
-      &=\answer[given]{88.75}
+      &=\answer[given]{88.75}.
     \end{align*}
   \end{explanation}
 \end{example}
@@ -911,17 +912,19 @@ viewed as a dot product:
 We summarize the arithmetic and algebraic properties of the dot
 product below.
 \begin{theorem}
-  The following are true for all scalars $s$ and vectors
+  The following are true for any real scalars $s$ and any vectors
   $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $\R^n$.
   \begin{description}
+  \item[Positivity:] $\vec{v} \dotp \vec{v} \ge 0$ with equality holding
+    if and only if $\vec{v} = \vec{0}$.
   \item[Commutativity:] $\vec{v} \dotp \vec{w} = \vec{w} \dotp
-    \vec{v}$
+    \vec{v}$.
   \item[Linear in first argument:] $(\vec{u}+\vec{v})\dotp \vec{w} = \vec{u}\dotp \vec{w} +
     \vec{v}\dotp \vec{w}$ and $(s\vec{v})\dotp \vec{w} = s(\vec{v}
     \dotp \vec{w})$
-  \item[Linear in second argument:] $\vec{u} \dotp (\vec{v}+\vec{w}) = \vec{u}\dotp \vec{v}+
-    \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
-    \dotp \vec{w})$
+  % \item[Linear in second argument:] $\vec{u} \dotp (\vec{v}+\vec{w}) = \vec{u}\dotp \vec{v}+
+  %   \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
+  %   \dotp \vec{w})$
   %\item[Relation to norm:] $\vec{v} \dotp \vec{v} = \|\vec{v}\|^2$
   %\item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
   %  $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
@@ -939,16 +942,93 @@ scope of this course.
 
 %% SEE PAGE 25 of notes
 
-\section{Normalizing data}
+\section{Normalizing data and vector norms}
 
-In many cases, it is useful to to scale data to aid in visualization
-and comparison. This process is called
-\textit{normalization}. However, it can take different forms depending
-on the context. Moreover, the norm allows us to assign a
-\textbf{single number to a vector}. In many ways, the idea of taking
-something complicated, and reducing it to a single number, is the
-heart of mathematics.\index{heart of mathematics}
+In many cases, it is useful to scale data to aid in visualization and
+comparison. This process is called \textit{normalization}. However, it
+can take different forms depending on the context. Computationally,
+this requires obtaining a number which measures the ``length'' of a
+data vector differently depending on the context; this is the number
+by which the data are to be scaled.
 
+A mathematical apparatus which captures the ``length'' information of
+a given input is called a \textit{norm}. In simple terms, a norm is a
+generalization of the absolute value function, namely, it is a
+function which takes a mathematical object such as a number, a vector,
+a matrix, or even a function, and produces a single meaningful number
+about the input. In many ways, the idea of taking something
+complicated, and reducing it to a single number, is the heart of
+mathematics.\index{heart of mathematics}
+
+In this section, we will focus on three commonly used \textit{vector
+  norms} and their implications in different types of normalization.
+
+\subsection{Vector norms}
+
+The ``length'' of a vector $\vec{v}$ can be measured by its
+\textit{norm}.
+
+\begin{definition}[vector $p\text{-norm}$]
+  Let $p \in [1, \infty)$. The \dfn{$\boldsymbol{p}$-norm}} of
+$\vec{v} \in \R^n$ is denoted by $\|\vec{v}\|_{p}$ and is defined by
+  \[
+    \|\vec{v}\|_{p}
+    = {\biggl( \sum_{i=1}^{n} |v_i|^p \biggr)}^{1/p} \,.
+  \]
+  When $p = \infty$,
+  \[
+    \|\vec{v}\|_{\infty} =\max_{1\le i \le n} |v_i| \,.
+  \]
+\end{definition}
+
+The most commonly used $p$ values are 1, 2, and $\infty$:
+\begin{equation*}
+  \|\vec{v}\|_{1} = \sum_{i=1}^{n} |v_i|,
+  \quad
+  \|\vec{v}\|_{2}  = \sqrt{\sum_{i=1}^{n} |v_i|^2}.
+\end{equation*}
+
+In general, any function $\|\, \cdot \,\|:\R^n \to \R^{+} \cup \{0\}$ is called a
+\textit{vector norm} if it satisfies the following three properties:
+
+\begin{enumerate}
+\item $\|\vec{x}\| = 0$ if and only if $\vec{x} = \vec{0}$.
+\item $\|\alpha \vec{x}\| = |\alpha| \|\vec{x}\|$ for any
+  constant $\alpha$ and any $\vec{x} \in \R^n$.
+\item
+  $\|\vec{x} + \vec{y}\| \le \|\vec{x}\| +
+  \|\vec{y}\|$ for any $\vec{x}, \vec{y} \in \R^n$. This
+  is called the \textit{triangle inequality}.
+\end{enumerate}
+
+A vector $\vec{u}$ is called a \dnf{unit vector} if $\|\vec{u}\| =
+1$. Depending on the norm used, unit vectors will be different. For
+instance, below are illustrations of unit disks in $1$-, $2$-, and
+$\infty$-norm, respectively in $\R^2$:
+
+\begin{tikzpicture}
+  % [scale=0.5]
+  \path[draw, fill=gray!25] (1,0) -- (0,1) -- (-1,0) -- (0,-1) -- cycle;
+  \draw (-1.5, 0) -- (1.5, 0);
+  \draw (0, -1.2) -- (0, 1.2);
+  \node at (0,-2) {$1$-norm};
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+  % [scale=0.5]
+  \path[draw, fill=gray!25] (0,0) circle (1);
+  \draw (-1.5, 0) -- (1.5, 0);
+  \draw (0, -1.2) -- (0, 1.2);
+  \node at (0,-2) {$2$-norm};
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+  % [scale=0.5]
+  \path[draw, fill=gray!25] (1,1) -- (-1,1) -- (-1,-1) -- (1,-1) -- cycle;
+  \draw (-1.5, 0) -- (1.5, 0);
+  \draw (0, -1.2) -- (0, 1.2);
+  \node at (0,-2) {$\infty$-norm};
+\end{tikzpicture}
 
 
 \subsection{Unit vector normalization, the Euclidean norm}

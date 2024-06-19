@@ -42,7 +42,7 @@ M =
 \underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{\begin{pmatrix}
   a_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5} \\
   a_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5} \\
-  a_{3,1} & a_{3,2} & a_{3,3} & a_{1,4} & a_{3,5} \\
+  a_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5} \\
   a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5}
 \end{pmatrix}}
 ~~\boldsymbol{4}~\textbf{rows}
@@ -222,13 +222,13 @@ vertically.
     Munchausen}. For simplicity and privacy reasons, we call the
   subscribers $\vec c_1$, $\vec c_2$, $\vec c_3$, $\vec c_4$, and
   $\vec c_5$ and movies will coorespond to the first, second and third
-  entires of the vectors $\vec v_i$:
+  entries of the vectors $\vec v_i$:
   \begin{align*}
-   \vec c_{1} &= \begin{pmatrix}0 & 1 & 2\end{pmatrix}\\
-   \vec c_{2} &= \begin{pmatrix}1 & 0 & 1\end{pmatrix}\\
-   \vec c_{3} &= \begin{pmatrix}3 & 1 & 0\end{pmatrix}\\
-   \vec c_{4} &= \begin{pmatrix}1 & 0 & 0\end{pmatrix}\\
-   \vec c_{5} &= \begin{pmatrix}0 & 6 & 0\end{pmatrix}
+   \vec v_{1} &= \begin{pmatrix}0 & 1 & 2\end{pmatrix}\\
+   \vec v_{2} &= \begin{pmatrix}1 & 0 & 1\end{pmatrix}\\
+   \vec v_{3} &= \begin{pmatrix}3 & 1 & 0\end{pmatrix}\\
+   \vec v_{4} &= \begin{pmatrix}1 & 0 & 0\end{pmatrix}\\
+   \vec v_{5} &= \begin{pmatrix}0 & 6 & 0\end{pmatrix}
   \end{align*}
   Here, for each vector, the first value is the number of times the
   consumer watched \textit{Time Bandits}, the second value is the
@@ -252,7 +252,7 @@ vertically.
     \end{itemize}
     \begin{explanation}
       The sum across the third row is $\answer[given]{4}$. This means
-      that consumer $\vec{c}_{\answer[given]{3}}$ streamed a total of  $\answer[given]{4}$ \wordChoice{\choice{distinct}\choice[correct]{possibly nondistinct}} movies. 
+      that consumer $\vec{c}_{\answer[given]{3}}$ streamed a total of  $\answer[given]{4}$ \wordChoice{\choice{distinct}\choice[correct]{possibly nondistinct}} movies.
 
 
       On the other hand, the sum along the second column is $\answer[given]{8}$. This
@@ -524,7 +524,7 @@ The grayscale image example above showcases a utility of matrix-vector
 product in extracting a row or a column of a given matrix.
 
 
-  
+
 %% TK: This may be a good place to introduce this theme. We may
 %% revisit later, e.g., after matrix-matrix product or when discussing
 %% row-operations.
@@ -713,19 +713,19 @@ A\vec{x} = \vec{b}
 
 
   Networks, not to be confused with \textit{neural} networks, have
-  numerous applications, from traffic networks to circuts, to actual computer networks. 
+  numerous applications, from traffic networks to circuts, to actual computer networks.
 
 
 
 \begin{example}[Network Analysis]
   A network is composed of nodes and directed edges, describing a
-  ``flow'' into each node and a ``flow'' out of each node. 
+  ``flow'' into each node and a ``flow'' out of each node.
 \begin{center}
 \begin{tikzpicture}[scale=2]
 \begin{scope}[very thick,decoration={
     markings,
     mark=at position 0.5 with {\arrow{>}}}
-    ] 
+    ]
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
 % vertices
 \node[vertex] (a) at  (-1,1.7) {$A$};
@@ -914,14 +914,14 @@ We attempt to describe the structure of this product in the diagram below:
      \matrix (matA) [%
        matrix of nodes,
        left delimiter={(},right delimiter={)}
-     ] 
+     ]
       {%
         \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
         \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
       };
       \draw[black,ultra thick,line cap=round] (matA-1-1.west)  -- (matA-1-5.east);
       \draw[black,ultra thick,line cap=round] (matA-2-1.west) -- (matA-2-5.east);
-      
+
       \matrix (matB) [%
         matrix of nodes,right= of matA,
        left delimiter={(},right delimiter={)}
@@ -932,7 +932,7 @@ We attempt to describe the structure of this product in the diagram below:
       \draw[black,ultra thick,line cap=round] (matB-1-1.north)  -- (matB-5-1.south);
       \draw[black,ultra thick,line cap=round] (matB-1-2.north) -- (matB-5-2.south);
       \draw[black,ultra thick,line cap=round] (matB-1-3.north) -- (matB-5-3.south);
-      
+
       \node[right=2ex of matB] {$=\begin{pmatrix}
   \boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &\boldsymbol{-}^\transpose\dotp\boldsymbol{|} \\\boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &  \boldsymbol{-}^\transpose\dotp\boldsymbol{|}
 \end{pmatrix}$};
@@ -984,7 +984,7 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 
 
 
-%% Another viewpoint is to build the product as columns.  
+%% Another viewpoint is to build the product as columns.
 %% \begin{align*}AB &= \begin{pmatrix}
 %% a_{1,1} & a_{1,2}\\
 %% a_{2,1} & a_{2,2}
@@ -1011,7 +1011,7 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 %%      \matrix (matA) [%
 %%        matrix of nodes,
 %%        left delimiter={(},right delimiter={)}
-%%      ] 
+%%      ]
 %%       {%
 %%         \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
 %%         \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
@@ -1021,7 +1021,7 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 %%       \draw[black,ultra thick,line cap=round] (matA-1-3.north)  -- (matA-2-3.south);
 %%       \draw[black,ultra thick,line cap=round] (matA-1-4.north)  -- (matA-2-4.south);
 %%       \draw[black,ultra thick,line cap=round] (matA-1-5.north)  -- (matA-2-5.south);
-      
+
 %%       \matrix (matB) [%
 %%         matrix of nodes,right=of matA,
 %%        left delimiter={(},right delimiter={)}
@@ -1032,7 +1032,7 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 %%       \draw[black!20!white,line width=1ex,line cap=round] (matB-1-1.north)  -- (matB-5-1.south);
 %%       \draw[black!20!white,ultra thick,line width=1ex,line cap=round] (matB-1-2.north) -- (matB-5-2.south);
 %%       \draw[black!20!white,ultra thick,line width=1ex,line cap=round] (matB-1-3.north) -- (matB-5-3.south);
-      
+
 %%       \node[right=2ex of matB] {$=\begin{pmatrix}
 %%   \boldsymbol{\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\cdot} & \boldsymbol{\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\cdot} & \boldsymbol{\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\mkern-4mu\cdot\mkern-4mu\Big|\cdot} \\
 %%         \end{pmatrix}$};
@@ -1244,8 +1244,8 @@ $1\times n$ matrix. In either case the answers are the same, and will be a $n\ti
         \draw[->] (0,0) -- (0,1);
         \node at (2,.6) {$\vec{n}$};
         % Plot the data points and lines between them
-        \draw[thick] (1,0.11) -- (2,0.22) -- (3,0.39) -- (4,0.58) -- (5,0.74) 
-        -- (6,0.80) -- (7,0.74) -- (8,0.58) -- (9,0.39) 
+        \draw[thick] (1,0.11) -- (2,0.22) -- (3,0.39) -- (4,0.58) -- (5,0.74)
+        -- (6,0.80) -- (7,0.74) -- (8,0.58) -- (9,0.39)
         -- (10,0.22) -- (11,0.11);
       \end{scope}
       \begin{scope}[yscale=.5]
@@ -1339,7 +1339,7 @@ $1\times n$ matrix. In either case the answers are the same, and will be a $n\ti
       }
       \node at (-2,-5.5) {$\vec{n}^\transpose$};
       \node at (5.5,-13) {$\vec{s}$};
-      
+
     \end{tikzpicture}
   \end{center}
     From the picture above, we can visually confirm that our
@@ -1845,11 +1845,11 @@ many fields of applications such as graph theory and statistics.
     \[
       H = I - \frac{1}{n} J =
       \begin{pmatrix}
-        1-\frac{1}{n} & -1 & -1 & \cdots & -1 \\
-        -1 & 1-\frac{1}{n} & -1 & \cdots & -1 \\
-        -1 & -1 & 1-\frac{1}{n} & \cdots & -1 \\
+        1-\frac{1}{n} & -\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
+        -\frac{1}{n} & 1-\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
+        -\frac{1}{n} & -\frac{1}{n} & 1-\frac{1}{n} & \cdots & -\frac{1}{n} \\
         \vdots & \vdots & \vdots & \ddots & \vdots \\
-        -1 & -1 & -1 & \cdots & 1-\frac{1}{n}
+        -\frac{1}{n} & -\frac{1}{n} & -\frac{1}{n} & \cdots & 1-\frac{1}{n}
       \end{pmatrix},
     \]
     then the vector $\overline{\vec{x}}$ of deviations or centered

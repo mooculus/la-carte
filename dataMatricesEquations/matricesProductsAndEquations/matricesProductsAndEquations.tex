@@ -480,43 +480,6 @@ Our next proposition relates the transpose and the dot product.
 
 
 
-If on the other hand, $\vec{x}$ and $\vec y$ are $n$-vectors again
-with
-\begin{itemize}
-\item $\vec{x}$ expressed as a row,
-\item $\vec{y}$ expressed as a column,
-\end{itemize}
-then $\vec{y}\vec{x}$ can be inteperted as either a $n\times 1$
-matrix multiplied by a row vector or a column vector multipled by a
-$1\times n$ matrix. In either case the answers are the same, and will be a $n\times n$ matrix.
-
-\begin{example}[Normal distribution]
-  We encode a vector with data that follows a normal distribution, and data that follows a skewed normal distribution:
-  \begin{align*}
-    \vec{n} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}\\
-    \vec{s} &=\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}
-  \end{align*}
-  \[
-  \vec{n} =\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11\end{pmatrix}%& 0.11 \end{pmatrix}
-  \]
-    \begin{center}
-\newcommand{\matrixData}{{
-{0.11, 0.22, 0.39, 0.58, 0.74, 0.8, 0.74, 0.58, 0.39, 0.22, 0.11}
-}}
-    \begin{tikzpicture}[scale=.5]
-        \foreach \x in {0, 1, ..., 10} {
-          \pgfmathsetmacro\val{\matrixData[0][\x]}
-          \fill[black, opacity={1-\val}] (\x, 0) rectangle (\x+1, 0-1);
-          \draw (\x, 0) rectangle (\x+1, 0-1);
-        }
-    \end{tikzpicture}
-    \end{center}
-    \begin{explanation}
-  \end{explanation}
-\end{example}
-
-
-
 
 \begin{example}[Grayscale Image]%% https://commons.wikimedia.org/wiki/File:Cat_face_closeup.jpg
   Here is a grayscale image of a cat:
@@ -789,24 +752,42 @@ $20$. However, the flow out of $A$ is $x_{1} + 2x_{2} + 30$. Hence
 Write an equation for the remaining nodes and express the system of
 equations as a matrix multipled by a vector.
 \begin{explanation}
-\begin{eqnarray*}
-20 &=& x_{1} + 2x_{2} + 30\\
-x_{1} + 40 &=& x_{3}\\
-2x_{2} + x_{3} + 30 &=& 40
-\end{eqnarray*}
-leading to:
-\begin{eqnarray*}
-x_{1}+2x_{2} &=& -10\\
-x_{1} -x_{3}&=& -40\\
-2x_{2} + x_{3}  &=& 10
-\end{eqnarray*}
-with augmented matrix:
-\[\left(\begin{array}{ccc|c}
-1 & 2 & 0 & -10\\
-1 & 0 & -1 & -40\\
-1 & 2 & 1 & 10
-\end{array}\right)\]
-
+  First we write the equations, remember that the flow into a node
+  equals the flow out of a node:
+  \begin{align*}
+    20 &= x_{1} + 2x_{2} + 30 & & (A)\\
+    x_{1} + \left(\answer[given]{40}\right) &= x_{3} & & (B) \\
+    2x_{2} + x_{3} + \left(\answer[given]{30}\right) &= 40  & & (C)
+  \end{align*}
+  leading to:
+  \begin{align*}
+    x_{1}+2x_{2} &= \answer[given]{-10}\\
+    x_{1} -x_{3}&= \answer[given]{-40}\\
+    2x_{2} + x_{3}  &= \answer[given]{10}
+  \end{align*}
+  Setting
+  \[
+  A = \begin{pmatrix}
+    1 & 2 & 0\\
+    1 & \answer[given]{0} & -1 \\
+    \answer[given]{0} & \answer[given]{2} & 1
+  \end{pmatrix},
+  \quad
+  \vec{x} =
+  \begin{pmatrix}
+    x_1\\
+    x_2\\
+    x_3
+  \end{pmatrix},
+  \quad
+  \vec{b} =
+  \begin{pmatrix}
+    \answer[given]{-10}\\
+    \answer[given]{-40}\\
+     \answer[given]{10}
+  \end{pmatrix}
+  \]
+  We may express this system of equations as $A\vec{x} = \vec{b}$.
 \end{explanation}
 \end{example}
 
@@ -994,6 +975,11 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 
 
 
+
+
+
+
+
 %% \subsection{Columns of the product}
 
 
@@ -1157,25 +1143,29 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 \begin{question}
 For the following matrices, find $AB$ and $BA$.
 \[
-A= \left(\begin{array}{cc}
+A= \begin{pmatrix}
 5 & 0 \\
 2 & 1
-\end{array}\right), \hspace{.5cm} B = \left(\begin{array}{cc}
+\end{pmatrix}, \quad B =
+\begin{pmatrix}
 3 & -1 \\
 2 & 0
-\end{array}\right)
+\end{pmatrix}
 \]
 \begin{prompt}
 \[
-AB = \left(\begin{array}{cc}
+AB =\begin{pmatrix}
 \answer[given]{15} & \answer[given]{-5}\\
 \answer[given]{8} & \answer[given]{-2}
-\end{array}\right)\]
+\end{pmatrix}
+\]
 
-\[BA = \left(\begin{array}{cc}
+\[
+BA = \begin{pmatrix}
 \answer[given]{13} & \answer[given]{-1}\\
 \answer[given]{10} & \answer[given]{0}
-\end{array}\right)\]
+\end{pmatrix}
+\]
 \end{prompt}
 Do the two multiplications give the same result?
 \begin{prompt}
@@ -1187,8 +1177,7 @@ Do the two multiplications give the same result?
 \end{question}
 
 
-
-
+\begin{example}[Matrix Multiplication]
 For example,
 \[\left(\begin{array}{ccc}
 1 & -1 & 0\\
@@ -1211,6 +1200,145 @@ For example,
 \end{array}\right)
 \]
 It is helpful to first write the sum since there might be many small calculations and easy to make mistakes. It is important to write the matrices neatly and put enough space between entries.
+
+\end{example}
+
+
+
+
+Since vectors can be viewed as matrices, matrix multiplication applies
+to vectors too.  If $\vec{x}$ and $\vec y$ are $n$-vectors with
+\begin{itemize}
+\item $\vec{x}$ expressed as a row,
+\item $\vec{y}$ expressed as a column,
+\end{itemize}
+then $\vec{y}\vec{x}$ can be inteperted as either a $n\times 1$
+matrix multiplied by a row vector or a column vector multipled by a
+$1\times n$ matrix. In either case the answers are the same, and will be a $n\times n$ matrix.
+
+\begin{example}[Distributions]
+  We encode a vectors with various distributions. For example the
+  entries of vector $\vec{n}$ follow a normal distribution
+  \[
+  \vec{n} =\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}
+  \]
+  We can plot the entires, and describe them as a grayscale image
+  \begin{center}
+    \newcommand{\matrixData}{{
+        {0.11, 0.22, 0.39, 0.58, 0.74, 0.8, 0.74, 0.58, 0.39, 0.22, 0.11}
+    }}
+    \begin{tikzpicture}[xscale=.5]
+      \begin{scope}[yscale=2.5]
+        % Draw the axes
+        \draw[->] (0,0) -- (12,0);
+        \draw[->] (0,0) -- (0,1);
+        \node at (2,.6) {$\vec{n}$};
+        % Plot the data points and lines between them
+        \draw[thick] (1,0.11) -- (2,0.22) -- (3,0.39) -- (4,0.58) -- (5,0.74) 
+        -- (6,0.80) -- (7,0.74) -- (8,0.58) -- (9,0.39) 
+        -- (10,0.22) -- (11,0.11);
+      \end{scope}
+      \begin{scope}[yscale=.5]
+      \foreach \x in {0, 1, ..., 10} {
+          \pgfmathsetmacro\val{\matrixData[0][\x]}
+          \fill[black, opacity={1-\val}] (.5+\x, -.5) rectangle (\x+1.5, -1.5);
+          \draw (.5+\x, -.5) rectangle (\x+1.5, -1.5);
+      }
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  We can also encode a skewed normal distribution
+  \[
+  \vec{s} =\begin{pmatrix} 0 & 0.01 & 0.07 & 0.26 & 0.61 & 1 & 1.15 & 0.95 & 0.57 & 0.26 & 0.09\end{pmatrix}
+  \]
+ Plotting the entires, and describing them with grayscale we find:
+  \begin{center}
+    \newcommand{\matrixData}{{
+        {0., 0.01, 0.07, 0.26, 0.61, 1., 1.15, 0.95, 0.57, 0.26, 0.09}
+    }}
+    \begin{tikzpicture}[xscale=.5]
+      \begin{scope}[yscale=2.5]
+        % Draw the axes
+        \draw[->] (0,0) -- (12,0);
+        \draw[->] (0,0) -- (0,1);
+        \node at (2,.6) {$\vec{s}$};
+        % Plot the data points and lines between them
+        \draw[thick] (1,0) -- (2,0.01) -- (3,0.07) -- (4,0.26) -- (5,0.61)
+                 -- (6,1) -- (7,1.15) -- (8,0.95) -- (9,0.57) -- (10,0.26)
+                 -- (11,0.09);
+      \end{scope}
+      \begin{scope}[yscale=.5]
+      \foreach \x in {0, 1, ..., 10} {
+          \pgfmathsetmacro\val{\matrixData[0][\x]}
+          \fill[black, opacity={1-\val}] (.5+\x, -.5) rectangle (\x+1.5, -1.5);
+          \draw (.5+\x, -.5) rectangle (\x+1.5, -1.5);
+      }
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  Let $P = \vec{n}^\transpose\vec{s}$. Compute $P_{6,7}$ and interpret
+  the matrix $P$ itself.
+  \begin{explanation}
+    Viewing $\vec{n}^\transpose$ as a $11\times 1$ matrix and
+    $\vec{s}$ as a $11\times 1$ matrix, the product
+    $\vec{n}^\transpose\vec{s}$ will be $\answer[given]{11}\times\answer[given]{11}$
+    matrix, and have $\answer[given]{121}$ entires. $P_{6,7}$ is
+    $\answer[given]{0.92}$.
+
+    The product $P$ is now a distribution of two variables, and can be
+    viewed as the following grayscale image':
+    \begin{center}
+      \newcommand{\matrixData}{{
+          {0,0,0.01,0.03,0.07,0.11,0.13,0.1,0.06,0.03,0.01},
+          {0,0,0.02,0.06,0.13,0.22,0.25,0.21,0.13,0.06,0.02},
+          {0,0,0.03,0.1,0.24,0.39,0.45,0.37,0.22,0.1,0.04},
+          {0,0.01,0.04,0.15,0.35,0.58,0.67,0.55,0.33,0.15,0.05},
+          {0,0.01,0.05,0.19,0.45,0.74,0.85,0.7,0.42,0.19,0.07},
+          {0,0.01,0.06,0.21,0.49,0.8,0.92,0.76,0.46,0.21,0.07},
+          {0,0.01,0.05,0.19,0.45,0.74,0.85,0.7,0.42,0.19,0.07},
+          {0,0.01,0.04,0.15,0.35,0.58,0.67,0.55,0.33,0.15,0.05},
+          {0,0,0.03,0.1,0.24,0.39,0.45,0.37,0.22,0.1,0.04},
+          {0,0,0.02,0.06,0.13,0.22,0.25,0.21,0.13,0.06,0.02},
+          {0,0,0.01,0.03,0.07,0.11,0.13,0.1,0.06,0.03,0.01}
+      }}
+      \newcommand{\skewData}{{
+           {0., 0.01, 0.07, 0.26, 0.61, 1., 1.15, 0.95, 0.57, 0.26, 0.09}
+      }}
+      \newcommand{\normData}{{
+          {0.11, 0.22, 0.39, 0.58, 0.74, 0.8, 0.74, 0.58, 0.39, 0.22, 0.11}
+      }}
+      \begin{tikzpicture}[scale=.5]
+      \foreach \y in {0, ...,10} {
+        \foreach \x in {0, 1, ..., 10} {
+          \pgfmathsetmacro\val{\matrixData[\y][\x]}
+          \fill[black, opacity={1-\val}] (\x, -\y) rectangle (\x+1, -\y-1);
+          \draw (\x, -\y) rectangle (\x+1, -\y-1);
+        }
+      }
+
+      \foreach \x in {0, 1, ..., 10} {
+          \pgfmathsetmacro\val{\skewData[0][\x]}
+          \fill[black, opacity={1-\val}] (\x, -11.5) rectangle (\x+1, -12.5);
+          \draw (\x, -11.5) rectangle (\x+1, -12.5);
+      }
+
+      \foreach \x in {0, 1, ..., 10} {
+        \pgfmathsetmacro\val{\normData[0][\x]}
+        \fill[black, opacity={1-\val}] (-.5,-\x) rectangle (-1.5,-\x-1);
+        \draw (-.5,-\x) rectangle (-1.5,-\x-1);
+      }
+      \node at (-2,-5.5) {$\vec{n}^\transpose$};
+      \node at (5.5,-13) {$\vec{s}$};
+      
+    \end{tikzpicture}
+  \end{center}
+    From the picture above, we can visually confirm that our
+    computation from before is correct.
+    \end{explanation}
+\end{example}
+
+
+
 
 
 

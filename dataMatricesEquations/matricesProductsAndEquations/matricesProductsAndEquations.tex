@@ -1410,6 +1410,24 @@ transform data.
 
 
 
+Remember, vectors consist of data that can be ``added.'' It turns out
+that we have some wiggle room with respect to our defintion of adding.
+
+\begin{tikzpicture}
+  \tikzmath{\xx = 26; \rr = 3; \dd = .4;}
+  \foreach \x in {1,...,\xx} {
+    \pgfmathsetmacro{\angle}{(\x)*360/\xx}
+    \pgfmathparse{int(65 + \x-1)}
+    \let\letter=\pgfmathresult
+    \node[circle,fill=black,inner sep=0pt, minimum size=13pt,text=white]
+      at ({(\rr-\dd)*sin(\angle)},{(\rr-\dd)*cos(\angle)}) 
+      {\normalfont\bfseries\sffamily\small \char\letter};
+      \node[]
+      at ({(\rr-\dd-\dd)*sin(\angle)},{(\rr-\dd-\dd)*cos(\angle)}) 
+      {\x};
+  }
+  \draw[thick] (0,0) circle (\rr);
+\end{tikzpicture}
 
 
 
@@ -1417,6 +1435,14 @@ transform data.
 
 
 
+
+
+
+
+
+\begin{example}[Cryptography]
+  
+\end{example}
 
 
 

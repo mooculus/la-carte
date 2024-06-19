@@ -581,14 +581,15 @@ obvious way to ``add'' ordered tuples of speed and angle. However, we
 can convert a true bearing of $\beta$ along with a speed $v$ to
 cartesian coordinates by writing:
 \[
-\begin{pmatrix}v\cdot \sin(\beta)\\ v \cdot \cos(\beta)\end{pmatrix}
+  \begin{pmatrix} x \\ y \end{pmatrix} =
+  \begin{pmatrix} v\cdot \sin(\beta)\\ v \cdot \cos(\beta) \end{pmatrix}.
 \]
 Armed with this, we are ready to solve the problem.
 \begin{enumerate}
 \item  Converting the plane's true bearing and speed to a vector in cartesian
   coordinates, we have
   \[
-  \vec{p} = \begin{pmatrix}125\cdot \sin(280^\circ)\\ 125 \cdot \cos(280^\circ)\end{pmatrix}
+  \vec{p} = \begin{pmatrix}125\cdot \sin(280^\circ)\\ 125 \cdot \cos(280^\circ)\end{pmatrix}.
   \]
   Here is a schematic drawing of what is happening:
 
@@ -618,7 +619,7 @@ To find the coordinates of the plane after it has traveled for $3$
 hours, we use $3$ as a scalar to write (round to two decimal places).
 \begin{align*}
   3\vec{p} &= \begin{pmatrix}\answer[given]{375}\cdot \sin(280^\circ)\\ \answer[given]{375} \cdot \cos(280^\circ)\end{pmatrix}\\
-  &= \begin{pmatrix}\answer[given]{-369.30}\\ \answer[given]{65.12} \end{pmatrix}\\
+           &= \begin{pmatrix}\answer[given]{-369.30}\\ \answer[given]{65.12} \end{pmatrix}.
 \end{align*}
 \item Now supposing that the wind is blowing at $35$ knots in the true
   bearing of $110^\circ$, we have something like this:
@@ -644,8 +645,31 @@ hours, we use $3$ as a scalar to write (round to two decimal places).
   \end{center}
   So now we can solve our problem by computing (round to two decimal places):
   \[
-  3\vec{p} + 3 \vec{w} = \begin{pmatrix} \answer[given]{-369.3}\\ \answer[given]{65.12} \end{pmatrix} + \begin{pmatrix} \answer[given]{32.89} \\
-  \answer[given]{-11.97} \end{pmatrix} = \begin{pmatrix} \answer[given]{-336.41} \\ \answer[given]{53.15}\end{pmatrix}
+    3\vec{p} + 3 \vec{w} =
+    \begin{pmatrix}
+      \answer[given]{-369.3} \\
+      \answer[given]{65.12}
+    \end{pmatrix}
+    +
+    % This second vector did not get multiplied by 3.
+    % \begin{pmatrix}
+    %   \answer[given]{32.89} \\
+    %   \answer[given]{-11.97}
+    % \end{pmatrix}
+    \begin{pmatrix}
+      \answer[given]{98.67} \\
+      \answer[given]{-35.91}
+    \end{pmatrix}
+    =
+    % The answer is corrected accordingly.
+    % \begin{pmatrix}
+    %   \answer[given]{-336.41} \\
+    %   \answer[given]{53.15}
+    % \end{pmatrix}
+    \begin{pmatrix}
+      \answer[given]{-270.64} \\
+      \answer[given]{29.21}
+    \end{pmatrix}
   \]
 \end{enumerate}
 \end{explanation}

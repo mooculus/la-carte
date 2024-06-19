@@ -959,12 +959,14 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
     As the colors change, their intensity changes too. In particular,
     yellow, cyan, and magenta, all seem much brighter than red, blue
     and green. Normalize the intensities of the colors so that the
-    intensity is constant.
-  \begin{explanation}
-   Our plan is to normalize the vectors representing yellow, cyan, and
-   magenta by their Euclidean norm, then make these vectors, unit
-   vectors, then scale back to RGB color space, where the entries are
-   between $0$ and $255$. First note:
+    intensity is constant. 
+    \begin{explanation}
+      To start, we should point out that this is a difficult problem;
+      however what we will present is a ``reasonable start'' to
+      solution.  Our plan is to normalize the vectors representing
+      yellow, cyan, and magenta by their Euclidean norm, then make
+      these vectors, unit vectors, then scale back to RGB color space,
+      where the entries are between $0$ and $255$. First note:
    \[
    \underset{\vec{y}}{\left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\|} =  \underset{\vec{c}}{\left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\|} =  \underset{\vec{m}}{\left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\|} = \answer[given]{360.624}
    \]
@@ -989,7 +991,7 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
       \end{tikzpicture}
     \end{center}
     Note, this solution can be refined further. In the real world,
-    engineers and artist ``tweak'' these colors to actually achive a
+    engineers and artist ``tweak'' these colors to actually achieve a
     uniform perception for the human eye.
   \end{explanation}
 \end{example}

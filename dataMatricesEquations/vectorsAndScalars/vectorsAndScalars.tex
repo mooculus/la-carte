@@ -353,14 +353,14 @@ Now that we know the basics, onto the examples!
   \item To find the combined demographics of Michigan, Ohio, and
     Indiana we compute
     \[
-    \vec{p}_{\texttt{MI}} + \vec{p}_{\texttt{OH}} + \vec{p}_{\texttt{IN}} = \left(\answer[given]{22641134},\answer[given]{3434727},\answer[given]{84507},744076,9229,1432402\right)
+    \vec{p}_{\texttt{MI}} + \vec{p}_{\texttt{OH}} + \vec{p}_{\texttt{IN}} = \left(\answer[given]{22641134},\answer[given]{3434727},\answer[given]{84507},744076,9229,1432402\right).
     \]
   \item To find the population demographics of Ohio in \textit{two}
     years, we use the scalar, $1.001^2$, to find:
     \[
       1.001^2 \vec{p}_{\texttt{OH}}
       =\left(\answer[given]{9413677},\answer[given]{1445542},\answer[given]{20483},269064,3915,545956
-      \right)
+      \right).
     \]
     % \[
     % 1.001 \vec{p}_{\texttt{OH}} =\left(\answer[given]{9404273},\answer[given]{1444098},\answer[given]{20462},268796,3911,545411 \right)
@@ -372,14 +372,14 @@ Now that we know the basics, onto the examples!
 
 \begin{example}[Consumer Data]
   The \textit{MOOCulus Streaming Service} is studying their top $5$
-  most popular videos for their top $2000$ consumers. They encode
-  this data as row vectors with the entries running from the most
-  popular to the least. We denote these$\vec c_1, \dots, \vec
+  most popular videos for their top $2000$ consumers. They encode this
+  data as row vectors with the entries running from the most popular
+  to the least. We denote these by $\vec c_1, \dots, \vec
   c_{2000}$. The vector encodes how many time each consumer has
   watched each video. For example, for the $1729$th consumer, their
   data might look like
   \[
-  \vec c_{1729} = \begin{pmatrix} 1 & 4 & 0 &  2 & 0 \end{pmatrix}
+  \vec c_{1729} = \begin{pmatrix} 1 & 4 & 0 &  2 & 0 \end{pmatrix}.
   \]
   \begin{enumerate}
   \item Interpret this vector in this context.
@@ -393,7 +393,7 @@ Now that we know the basics, onto the examples!
       popular movie $\answer[given]{1}$ time, the next most popular
       movie $\answer[given]{4}$ times, the third most popular movie
       $\answer[given]{0}$ times, and has seen the last two movies
-      $\answer[given]{2}$ and zero times respectively.
+      $\answer[given]{2}$ and zero times, respectively.
     \item The sum of the vectors $\vec{c}_1, \dots, \vec{c}_{2000}$
       represents the total number of views of the five most popular
       videos.
@@ -427,12 +427,12 @@ Now that we know the basics, onto the examples!
   colors ($3$ primary and $3$ secondary) of the RGB color space in
   this order:
     \[
-    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
-    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
-    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
-    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
-    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
-    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
+    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},\;
+    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},\;
+    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},\;
+    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},\;
+    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},\;
+    \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}.
     \]
     Here are the actual colors:
     \begin{center}
@@ -440,12 +440,12 @@ Now that we know the basics, onto the examples!
         \definecolor{rgbyellow}{RGB}{255,255,0}
         \definecolor{rgbcyan}{RGB}{0,255,255}
         \definecolor{rgbmagenta}{RGB}{255,0,255}
-        \draw[draw=none,fill={rgb:red,1;green,0;blue,0}] (0,0) rectangle (1,1);
-        \draw[draw=none,fill=rgbyellow] (1,0) rectangle (2,1);
-        \draw[draw=none,fill={rgb:red,0;green,1;blue,0}] (2,0) rectangle (3,1);
-        \draw[draw=none,fill=rgbcyan] (3,0) rectangle (4,1);
-        \draw[draw=none,fill={rgb:red,0;green,0;blue,1}] (4,0) rectangle (5,1);
-        \draw[draw=none,fill=rgbmagenta] (5,0) rectangle (6,1);
+        \fill[fill=red] (0,0) rectangle (1,1);
+        \fill[fill=rgbyellow] (1,0) rectangle (2,1);
+        \fill[fill=green] (2,0) rectangle (3,1);
+        \fill[fill=rgbcyan] (3,0) rectangle (4,1);
+        \fill[fill=blue] (4,0) rectangle (5,1);
+        \fill[fill=rgbmagenta] (5,0) rectangle (6,1);
       \end{tikzpicture}
     \end{center}
   If the lamp is turned on, it initially shows red, then this fades to
@@ -462,15 +462,15 @@ Now that we know the basics, onto the examples!
     At $4$ minutes and $40$ seconds, our lamp is showing some color
     between blue and magenta. Let
     \[
-    \vec{c}_1 = \begin{pmatrix}0\\0\\255\end{pmatrix} \quad\text{and}\quad
-      \vec{c}_2 = \begin{pmatrix}255\\0\\255\end{pmatrix}
+      \vec{c}_1 = \begin{pmatrix}0\\0\\255\end{pmatrix} \quad\text{and}\quad
+      \vec{c}_2 = \begin{pmatrix}255\\0\\255\end{pmatrix}.
     \]
     Since $40$ seconds is $2/3$ of a minute, we write
     \begin{align*}
       \vec{f}(2/3) &= \vec{c}_{1}+ \left(\answer[given]{2/3}\right)(\vec{c}_2 -\vec{c}_1) \\
       &= \begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\left(\begin{pmatrix}255\\0\\255\end{pmatrix}  -  \begin{pmatrix}0\\0\\255\end{pmatrix}\right) \\
       &=\begin{pmatrix}0\\0\\255\end{pmatrix}+ \left(\answer[given]{2/3}\right)\begin{pmatrix}255\\0\\0\end{pmatrix} \\
-                &=\begin{pmatrix}170\\0\\255\end{pmatrix}
+                &=\begin{pmatrix}170\\0\\255\end{pmatrix}.
     \end{align*}
     Here is this color:
     \begin{center}

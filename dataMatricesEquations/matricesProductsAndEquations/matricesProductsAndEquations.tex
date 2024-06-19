@@ -713,7 +713,7 @@ A\vec{x} = \vec{b}
 
 
   Networks, not to be confused with \textit{neural} networks, have
-  numerous applications, from traffic networks to circuts, to actual computer networks.
+  numerous applications, from traffic networks to circuits, to actual computer networks.
 
 
 
@@ -743,7 +743,7 @@ A\vec{x} = \vec{b}
 \end{scope}
 \end{tikzpicture}
 \end{center}
-Of critical importance, is that \textbf{flow into a node equals the
+It is of critical importance that \textbf{flow into a node equals the
   flow out of a node}. So for example, the flow into node $A$ above is
 $20$. However, the flow out of $A$ is $x_{1} + 2x_{2} + 30$. Hence
 \[
@@ -756,15 +756,26 @@ equations as a matrix multipled by a vector.
   equals the flow out of a node:
   \begin{align*}
     20 &= x_{1} + 2x_{2} + 30 & & (A)\\
-    x_{1} + \left(\answer[given]{40}\right) &= x_{3} & & (B) \\
+    x_{1} + \left(\answer[given]{40}\right) &= x_{3} + 20 & & (B) \\
     2x_{2} + x_{3} + \left(\answer[given]{30}\right) &= 40  & & (C)
   \end{align*}
   leading to:
   \begin{align*}
     x_{1}+2x_{2} &= \answer[given]{-10}\\
-    x_{1} -x_{3}&= \answer[given]{-40}\\
+    x_{1} -x_{3}&= \answer[given]{-20}\\
     2x_{2} + x_{3}  &= \answer[given]{10}
   \end{align*}
+  %% TK: The following may be tedious to code but column alignment
+  %% makes it instantly clear to write out the coefficient matrix
+  %% without errors. Any suggestions on pretty typesetting of a system
+  %% of equations are welcome.
+  % \begin{equation*}
+  %   \begin{array}{*{7}{@{}c@{}}}
+  %     x_1  & {}+{}  & 2 x_2  &    &      & {}\mathrel{=}{}  & \answer[given]{-10} \\
+  %     x_1  &    &        & {}-{}  & x_3  & {}\mathrel{=}{}  & \answer[given]{-20} \\
+  %          &    & 2 x_2  & {}+{}  & x_3  & {}\mathrel{=}{}  & \answer[given]{10}
+  %   \end{array}
+  % \end{equation*}
   Setting
   \[
   A = \begin{pmatrix}
@@ -783,7 +794,7 @@ equations as a matrix multipled by a vector.
   \vec{b} =
   \begin{pmatrix}
     \answer[given]{-10}\\
-    \answer[given]{-40}\\
+    \answer[given]{-20}\\
      \answer[given]{10}
   \end{pmatrix}
   \]
@@ -1201,7 +1212,7 @@ Do the two multiplications give the same result?
         (1)\left(\answer[given]{5}\right) + (-1)\left(\answer[given]{-1}\right)+ (0)\left(\answer[given]{1}\right) & (-1)\left(\answer[given]{-1}\right) + (-1)\left(\answer[given]{2}\right)+ 0 & 0 + 0+ 0\\
         10 + 0 + 4 & 2 + 0+0 & 0 + 0+8\\
         25+ (-3) + 1 & 5 + -6+0 & 0 + 0+ 2
-      \end{pmatrix}\\ 
+      \end{pmatrix}\\
       &= \begin{pmatrix}
         \answer[given]{6} &  \answer[given]{3} &  \answer[given]{0}\\
          \answer[given]{14}&  \answer[given]{2} &  \answer[given]{8}\\

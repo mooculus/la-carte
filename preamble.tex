@@ -72,3 +72,17 @@
 \colorlet{fill4}{penColor4!20} % Fill
 \colorlet{fill5}{penColor5!20} % Fill
 \colorlet{gridColor}{gray!50} % Color of grid in a plot
+
+
+\makeatletter
+\newcommand\frontstyle{%
+  \def\activitystyle{activity-chapter}
+  \def\maketitle{%
+                {\flushleft\small\sffamily\bfseries\@pretitle\par\vspace{-1.5em}}%
+                {\flushleft\LARGE\sffamily\bfseries\@title \par }%3
+                {\vskip .6em\noindent\textit\theabstract\setcounter{problem}{0}\setcounter{section}{0}}%
+                \par\vspace{2em}    
+                \phantomsection\addcontentsline{toc}{section}{\textbf{\@title}}%
+                \setcounter{titlenumber}{0}
+}}
+\makeatother      

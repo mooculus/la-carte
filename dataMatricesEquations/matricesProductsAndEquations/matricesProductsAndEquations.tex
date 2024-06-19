@@ -484,7 +484,7 @@ Our next proposition relates the transpose and the dot product.
 \begin{example}[Grayscale Image]%% https://commons.wikimedia.org/wiki/File:Cat_face_closeup.jpg
   Here is a grayscale image of a cat:
   \begin{image}
-  \includegraphics[width=.5\textwidth]{catface.jpg}
+  \includegraphics[width=.5\textwidth]{catfaceGS.jpg}
   \end{image}
   This image has a resolution of $600$ rows by $800$ columns. With a
   whopping $480000$ entries, the matrix representing this image is too
@@ -1361,7 +1361,14 @@ So far we have discussed ways matrices encode data. However, they also
 transform data.
 
 
-\begin{example}[RGB ]
+\begin{example}[RGB to Luminance and Chrominance]
+  A color RGB image is encoded as three matrices,
+  \begin{center}
+    \includegraphics[width=.2\textwidth]{catface.jpg}
+    \includegraphics[width=.2\textwidth]{catfaceR.jpg}
+    \includegraphics[width=.2\textwidth]{catfaceG.jpg}
+    \includegraphics[width=.2\textwidth]{catfaceB.jpg}
+  \end{center}
 \end{example}
 
 

@@ -59,7 +59,7 @@ of times that it makes sense to add data. Data is represented by a
   society and in turn, aid our future decisions.
 \item[Consumer Data] The number of distinct products that are bought
   by a given consumer can be encoded as a vector. Summing data like
-  this will tell us the total number of products purchased by a group of consumers. 
+  this will tell us the total number of products purchased by a group of consumers.
 %% \item[Financial Transactions] Summing daily sales to find total
 %%   monthly sales, or adding up all expenses to find total costs. These
 %%   are real numbers that represent actual amounts of money, and their
@@ -163,8 +163,8 @@ we ``scale'' vectors (data) by numbers, we call those ``scaling'' numbers
 These informal definitions of vectors and scalars in fact contain the
 \textit{essence} of the concept of a \textit{vector space}. If this
 seems too abstract, I assure you that we will be giving concrete
-examples all along the way. At this point we need to give some
-notation for vectors.
+examples along the way. At this point we need to give some notation
+for vectors.
 
 \begin{concept}[Ways data can be stored as a vector]
 \begin{description}
@@ -227,21 +227,21 @@ notation for vectors.
 \end{concept}
 
 Of course, since mathematics is a human endeavor you will find
-variations on the notations above. As a common example, some folks use
+variations on the notations above. For instance, some folks use
 different brackets like these
 \[
-\langle a, b, c\rangle, \quad \begin{bmatrix} a & b & c \end{bmatrix}, \quad \text{or}\quad
+\langle a, b, c \rangle, \quad \begin{bmatrix} a & b & c \end{bmatrix}, \quad
 \begin{bmatrix}
   a\\
   b\\
   c
 \end{bmatrix}
 \]
-for an ordered-tuple vectors, row vectors, and column vectors. Ordered
-tuples and row vectors are easy to write in-line (in a sentence),
-because they are horizontal. On the other hand, column vectors take up
-less horizontal space and are more convenient when you have vectors
-with many entries.
+for ordered-tuple vectors, row vectors, and column vectors,
+respectively. Ordered tuples and row vectors are easy to write in-line
+(in a sentence), because they are horizontal. On the other hand,
+column vectors take up less horizontal space and are more convenient
+when you have vectors with many entries.
 
 
 \begin{definition}
@@ -254,13 +254,15 @@ with many entries.
   \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}^\transpose =
   \begin{pmatrix} 1 &  2 & 3 \end{pmatrix}
   \]
-  We read the first equality as ``the transpose of the row (column) vector $1$,
-  $2$, $3$ is the column (row) vector $1$, $2$, $3$.''
+  We read the above as ``the transpose of the row (or column) vector $1$,
+  $2$, $3$ is the column (or row) vector $1$, $2$, $3$,'' respectively.
 \end{definition}
 
 
 \begin{question}
-  Consider $\vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 & 251 \end{pmatrix}$. Compute $\vec{s}^\transpose$.
+  Let
+  $\vec{s} = \begin{pmatrix}141 & 304 & 249 & 199 &
+    251 \end{pmatrix}$. Find $\vec{s}^\transpose$.
   \begin{prompt}
   \[
   \vec{s}^\transpose  = \begin{pmatrix}\answer{141} \\ \answer{304} \\ \answer{249} \\ \answer{199} \\ \answer{251} \end{pmatrix}
@@ -270,13 +272,16 @@ with many entries.
 
 Once we have data represented as vectors encoded as ordered tuples,
 row vectors, or column vectors, we can describe some general
-information about the vectors. In particular, we can think about their
+information about these vectors. In particular, we can consider their
 \textit{length} and their \textit{components}.
 
 \begin{definition}
-The \dfn{length} of a vector is the number of entries.  A vector of
-length $n$ can be called an $\boldsymbol n$\textbf{-vector}. Each
-individual entry of a vector is called a \dfn{component}.
+  The \dfn{length} of a vector is the number of entries.  A vector of
+  length $n$ can be called an \dfn{$\boldsymbol{n}$-vector}.
+  % $\boldsymbol n$\textbf{-vector}
+  Each individual entry of a vector is called a \dfn{component}. The
+  set of all $n$-vectors of real entries is called the \dfn{Euclidean
+    $\boldsymbol{n}-space$} and is denoted by $\mathbb{R}^n$.
 \end{definition}
 
 \begin{question}
@@ -350,10 +355,16 @@ Now that we know the basics, onto the examples!
     \[
     \vec{p}_{\texttt{MI}} + \vec{p}_{\texttt{OH}} + \vec{p}_{\texttt{IN}} = \left(\answer[given]{22641134},\answer[given]{3434727},\answer[given]{84507},744076,9229,1432402\right)
     \]
-  \item To find the population growth of each demographic, we use the scalar, $1.001$ to find:
+  \item To find the population demographics of Ohio in \textit{two}
+    years, we use the scalar, $1.001^2$, to find:
     \[
-    1.001 \vec{p}_{\texttt{OH}} =\left(\answer[given]{9404273},\answer[given]{1444098},\answer[given]{20462},268796,3911,545411 \right)
+      1.001^2 \vec{p}_{\texttt{OH}}
+      =\left(\answer[given]{9413677},\answer[given]{1445542},\answer[given]{20483},269064,3915,545956
+      \right)
     \]
+    % \[
+    % 1.001 \vec{p}_{\texttt{OH}} =\left(\answer[given]{9404273},\answer[given]{1444098},\answer[given]{20462},268796,3911,545411 \right)
+    % \]
   \end{enumerate}
 \end{explanation}
 \end{example}
@@ -959,7 +970,7 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
     As the colors change, their intensity changes too. In particular,
     yellow, cyan, and magenta, all seem much brighter than red, blue
     and green. Normalize the intensities of the colors so that the
-    intensity is constant. 
+    intensity is constant.
     \begin{explanation}
       To start, we should point out that this is a difficult problem;
       however what we will present is a ``reasonable start'' to
@@ -1058,7 +1069,7 @@ The sum of the components is:
 
 The normalized vector is:
 \[
-\|\vec{p}_{\texttt{OH}}\|_1 = 
+\|\vec{p}_{\texttt{OH}}\|_1 =
 \frac{\vec{p}_{\texttt{OH}}}{\vec{1}\dotp\vec{p}_{\texttt{OH}}} = \left(\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05}\right)
 \]
 \end{example}

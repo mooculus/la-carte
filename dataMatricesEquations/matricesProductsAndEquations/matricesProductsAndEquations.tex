@@ -1396,15 +1396,22 @@ transform data.
 \begin{example}[RGB to Luminance and Chrominance]
   A color RGB image is encoded as three matrices,
   \begin{center}
-    \includegraphics[width=.2\textwidth]{catface.jpg}
-    \includegraphics[width=.2\textwidth]{catfaceB.jpg}\\[.2em]
-    \includegraphics[width=.2\textwidth]{catfaceR.jpg}
-    \includegraphics[width=.2\textwidth]{catfaceG.jpg}
+    \begin{tikzpicture}
+    \node at (-2.5,2)  {\includegraphics[width=3cm]{catface.jpg}};
+    \node at (2.5,2)   {\includegraphics[width=3cm]{catfaceB.jpg}};
+    \node at (-2.5,-2) {\includegraphics[width=3cm]{catfaceR.jpg}};
+    \node at (2.5,-2)  {\includegraphics[width=3cm]{catfaceG.jpg}};
+    \draw[line width =3mm, blue,->] (.8,2)--(-.8,2);
+    \draw[line width =3mm, red,->] (-2.5,-.8)--(-2.5,.8);
+    \draw[line width =3mm, green,->] (.8,-.8)--(-.8,.8); 
+    \end{tikzpicture}
   \end{center}
   One representing red, green, and blue. Each pixel of the full color
-  image is a $3$-vector. However, another popular encoding method is
-  \link[Luminance and Chrominance ($YC_BC_R$)]{https://en.wikipedia.org/wiki/YCbCr}.
-  To transform from RGB color to $YC_BC_R$
+  image is a $3$-vector. Note, for this picture, each of the
+  components is essentially equally intricate and detailed. However,
+  another popular encoding method is \link[Luminance and Chrominance
+    ($YC_BC_R$)]{https://en.wikipedia.org/wiki/YCbCr}.  One method to
+  transform RGB color to $YC_BC_R$ is to write
   \[
   \begin{pmatrix}
         0.2126  &  0.7152  &  0.0722 \\
@@ -1420,7 +1427,15 @@ transform data.
   C_B\\
   C_R
   \end{pmatrix}
-\]
+  \]
+  Observe, when we do this transformation to the image of our cat
+  above:
+  \begin{center}
+    \includegraphics[width=.2\textwidth]{catface.jpg}
+    \includegraphics[width=.2\textwidth]{catfaceY.jpg}
+    \includegraphics[width=.2\textwidth]{catfaceCb.jpg}
+    \includegraphics[width=.2\textwidth]{catfaceCr.jpg}
+  \end{center}
 \end{example}
 
 
@@ -1480,16 +1495,16 @@ Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
   \[
   \vec{m} =
   \begin{pmatrix}
-    M\\
-    A\\
-    T\\
-    H
+    \texttt M\\
+    \texttt A\\
+    \texttt T\\
+    \texttt H
   \end{pmatrix}
   \qquad 
   C= \begin{pmatrix}
-   1 & 0 & 3 & 1 \\
+ 1 & 0 & 3 & 1 \\
  2 & 3 & 0 & 1 \\
- 0 & 3 & 2 & 0 \\
+ 0 & 3 & 1 & 0 \\
  2 & 3 & 2 & 2
   \end{pmatrix}
   \]

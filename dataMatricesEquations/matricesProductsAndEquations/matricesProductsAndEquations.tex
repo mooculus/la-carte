@@ -1324,7 +1324,7 @@ We'll use the outer product in our next example.
   the matrix $P$ itself.
   \begin{explanation}
     Viewing $\vec{n}$ as a $11\times 1$ matrix and
-    $\vec{s}^\transpose$ as a $11\times 1$ matrix, the (outer) product
+    $\vec{s}^\transpose$ as a $1 \times 11$ matrix, the (outer) product
     $\vec{n}\vec{s}^\transpose$ will be an
     $\answer[given]{11}\times\answer[given]{11}$ matrix, and have
     $\answer[given]{121}$ entires. $P_{6,7}$ is
@@ -1502,20 +1502,20 @@ a wheel:
     \pgfmathparse{int(65 + \x)}
     \let\letter=\pgfmathresult
     \node[circle,fill=black,inner sep=0pt, minimum size=13pt,text=white]
-      at ({(\rr-\dd)*sin(\angle)},{(\rr-\dd)*cos(\angle)}) 
+      at ({(\rr-\dd)*sin(\angle)},{(\rr-\dd)*cos(\angle)})
       {\normalfont\bfseries\ttfamily\small \char\letter};
       \node[]
-      at ({(\rr-2.5*\dd)*sin(\angle)},{(\rr-2.5*\dd)*cos(\angle)}) 
+      at ({(\rr-2.5*\dd)*sin(\angle)},{(\rr-2.5*\dd)*cos(\angle)})
       {\x};
   }
   %% \pgfmathsetmacro{\angle}{(26)*360/26}
   %%   \pgfmathparse{int(65 + 25)}
   %%   \let\letter=\pgfmathresult
   %%   \node[circle,fill=black,inner sep=0pt, minimum size=13pt,text=white]
-  %%     at ({(\rr-\dd)*sin(\angle)},{(\rr-\dd)*cos(\angle)}) 
+  %%     at ({(\rr-\dd)*sin(\angle)},{(\rr-\dd)*cos(\angle)})
   %%     {\normalfont\bfseries\sffamily\small \char\letter};
   %%     \node[]
-  %%     at ({(\rr-2.5*\dd)*sin(\angle)},{(\rr-2.5*\dd)*cos(\angle)}) 
+  %%     at ({(\rr-2.5*\dd)*sin(\angle)},{(\rr-2.5*\dd)*cos(\angle)})
   %%     {0};
  \draw[thick] (0,0) circle (\rr);
 \end{tikzpicture}
@@ -1538,7 +1538,7 @@ is extemely useful in code making and code breaking.
   \end{enumerate}
 \end{question}
 
-Once you are comfortable ``adding'' letters on a wheel, we can make a cypher. 
+Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
 
 \begin{example}[Cryptography]
   Suppose you want to encypt the message: \texttt{MATH}
@@ -1555,7 +1555,7 @@ Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
     \texttt T\\
     \texttt H
   \end{pmatrix}
-  \qquad 
+  \qquad
   C= \begin{pmatrix}
  1 & 0 & 3 & 1 \\
  2 & 3 & 0 & 1 \\

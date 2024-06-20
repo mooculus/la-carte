@@ -951,59 +951,93 @@ this requires obtaining a number which measures the ``length'' of a
 data vector differently depending on the context; this is the number
 by which the data are to be scaled.
 
-A mathematical apparatus which captures the ``length'' information of
-a given input is called a \textit{norm}. In simple terms, a norm is a
-generalization of the absolute value function, namely, it is a
-function which takes a mathematical object such as a number, a vector,
-a matrix, or even a function, and produces a single meaningful number
-about the input. In many ways, the idea of taking something
-complicated, and reducing it to a single number, is the heart of
-mathematics.\index{heart of mathematics}
+% A mathematical apparatus which captures the ``length'' information of
+% a given input is called a \textit{norm}. In simple terms, a norm is a
+% generalization of the absolute value function, namely, it is a
+% function which takes a mathematical object such as a number, a vector,
+% a matrix, or even a function, and produces a single meaningful number
+% about the input. In many ways, the idea of taking something
+% complicated, and reducing it to a single number, is the heart of
+% mathematics.\index{heart of mathematics}
 
-In this section, we will focus on three commonly used \textit{vector
-  norms} and their implications in different types of normalization.
+% In this section, we will focus on three commonly used \textit{vector
+%   norms} and their implications in different types of normalization.
 
 \subsection{Vector norms}
 
 The ``length'' of a vector $\vec{v}$ can be measured by its
-\textit{norm}.
+\textit{norm}. There are (infinitely) many different types of norms.
 
 \begin{definition}[vector $p\text{-norm}$]
-  Let $p \in [1, \infty)$. The \dfn{$\boldsymbol{p}$-norm} of
-$\vec{v} \in \R^n$ is denoted by $\|\vec{v}\|_{p}$ and is defined by
+  Let $p \in [1, \infty)$. The \dfn{$\boldsymbol{p}$-norm} of a vector
+  $\vec{v} \in \R^n$, denoted as $\|\vec{v}\|_{p}$, is defined by
   \[
     \|\vec{v}\|_{p}
-    = {\biggl( \sum_{i=1}^{n} |v_i|^p \biggr)}^{1/p} \,.
+    = {\biggl( \sum_{i=1}^{n} |v_i|^p \biggr)}^{1/p} .
   \]
   When $p = \infty$,
   \[
-    \|\vec{v}\|_{\infty} =\max_{1\le i \le n} |v_i| \,.
+    \|\vec{v}\|_{\infty} =\max_{1\le i \le n} |v_i| .
   \]
 \end{definition}
 
-The most commonly used $p$ values are 1, 2, and $\infty$:
-\begin{equation*}
-  \|\vec{v}\|_{1} = \sum_{i=1}^{n} |v_i|,
-  \quad
-  \|\vec{v}\|_{2}  = \sqrt{\sum_{i=1}^{n} |v_i|^2}.
-\end{equation*}
+The most commonly used $p$ values are 1, 2, and $\infty$, and they are of
+particular importance in applications:
+\begin{align*}
+  \|\vec{v}\|_{1}
+  & = \sum_{i=1}^{n} |v_i| = |v_1| + |v_2| + \cdots + |v_n|,\\
+  \|\vec{v}\|_{2}
+  & = \sqrt{\sum_{i=1}^{n} |v_i|^2} = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2},\\
+  \|\vec{v}\|_{\infty}
+  & = \max_{1\le i \le n} |v_i| = \max\{|v_1|, |v_2|, \ldots , |v_n|\}.
+\end{align*}
 
-In general, any function $\|\, \cdot \,\|:\R^n \to \R^{+} \cup \{0\}$ is called a
-\textit{vector norm} if it satisfies the following three properties:
+In particular, the $2$-norm, which is also known as the Euclidean
+norm, is an extension of the familiar Pythagorean theorem. It measures
+the length of the line segment connecting the origin and the point
+represented by the given vector in $\R^n$.
 
-\begin{enumerate}
-\item $\|\vec{x}\| = 0$ if and only if $\vec{x} = \vec{0}$.
-\item $\|\alpha \vec{x}\| = |\alpha| \|\vec{x}\|$ for any
-  constant $\alpha$ and any $\vec{x} \in \R^n$.
-\item
-  $\|\vec{x} + \vec{y}\| \le \|\vec{x}\| +
-  \|\vec{y}\|$ for any $\vec{x}, \vec{y} \in \R^n$. This
-  is called the \textit{triangle inequality}.
-\end{enumerate}
+\begin{concept}[General vector norms.]
+  In general, any function $\|\, \cdot \,\|:\R^n \to \R^{+} \cup \{0\}$ is called a
+  \textit{vector norm} if it satisfies the following three properties:
 
-A vector $\vec{u}$ is called a \dfn{unit vector} if $\|\vec{u}\| =
-1$. Depending on the norm used, unit vectors will be different. For
-instance, below are illustrations of unit disks in $1$-, $2$-, and
+  \begin{enumerate}
+  \item $\|\vec{x}\| = 0$ if and only if $\vec{x} = \vec{0}$.
+  \item $\|\alpha \vec{x}\| = |\alpha| \|\vec{x}\|$ for any
+    constant $\alpha$ and any $\vec{x} \in \R^n$.
+  \item
+    $\|\vec{x} + \vec{y}\| \le \|\vec{x}\| +
+    \|\vec{y}\|$ for any $\vec{x}, \vec{y} \in \R^n$. This
+    is called the \textit{triangle inequality}.
+  \end{enumerate}
+  Vector $p$-norms introduced above all satisfy these three
+  properties.
+\end{concept}
+
+\begin{definition}
+  A vector $\vec{u}$ is called a \dfn{unit vector in the $p$-norm}
+  if $\|\vec{u}\|_p = 1$.
+\end{definition}
+Depending on the norm used, unit vectors will be different. For
+example, the vector $\vec{v} = (1/2, \sqrt{3}/2)^\transpose$ is a unit
+vector in the $2$-norm because
+\[
+  \|\vec{v}\|_2
+  = \sqrt{\left( \frac{1}{2} \right)^2 + \left( \frac{\sqrt{3}}{2}
+    \right)^2}
+  = \sqrt{\frac{1}{4} + \frac{3}{4}} = 1,
+\]
+but is not a unit vector in the $1$-norm nor $\infty$-norm:
+\begin{align*}
+  \|\vec{v}\|_1
+  & = \left| \frac{1}{2} \right| + \left| \frac{\sqrt{3}}{2} \right|
+    = \frac{1 + \sqrt{3}}{2} = 1.366025\ldots > 1 \\
+  \|\vec{v}\|_\infty
+  & = \max\left\{ \left| \frac{1}{2} \right|, \left|
+    \frac{\sqrt{3}}{2} \right|\right\}
+     = \frac{\sqrt{3}}{2} = 0.866025\ldots < 1.
+\end{align*}
+Below are illustrations of unit disks in $1$-, $2$-, and
 $\infty$-norm, respectively in $\R^2$:
 
 \begin{tikzpicture}
@@ -1030,39 +1064,61 @@ $\infty$-norm, respectively in $\R^2$:
   \node at (0,-2) {$\infty$-norm};
 \end{tikzpicture}
 
+In a nutshell, a vector norm is a mathematical tool which associates a
+single number to a vector and that number conveys the ``length''
+information of the vector. In many ways, the idea of taking something
+complicated, and reducing it to a single number, is the heart of
+mathematics.\index{heart of mathematics}
 
-\subsection{Unit vector normalization, the Euclidean norm}
+% \subsection{Unit vector normalization, the Euclidean norm}
+\subsection{Normalization with respect to the Euclidean norm}
 
-This involves scaling the vector so that its length (or Euclidean
-norm) is $1$. The Euclidean norm of a vector \(\vec{v} = (v_1, v_2,
-\ldots, v_n)\) is given by:
+% This involves scaling the vector so that its length (or Euclidean
+% norm) is $1$. The Euclidean norm of a vector \(\vec{v} = (v_1, v_2,
+% \ldots, v_n)\) is given by:
+% \[
+% \|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+% \]
+% Note that
+% \[
+% \|\vec{v}\| = \sqrt{\vec{v}\dotp\vec{v}}.
+% \]
+% \begin{definition}
+%   We call a vector $\hat{\vec u}$ a \dfn{unit vector} if
+%   \[
+%   \hat{\vec u} \dotp \hat{\vec u} =1
+%   \]
+%   Unit vectors are typically decorated with ``hats.'' Note, this
+%   necessarily means that $\|\hat{\vec{u}}\| = 1$
+% \end{definition}
+
+To normalize any vector $\vec{v} = (v_1, \ldots, v_n)^\transpose$ to a unit
+vector in the $2$-norm, we simply divide the vector by its Euclidean
+length or $2$-norm:
 \[
-\|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+  \hat{\vec{v}}_2 = \frac{\vec{v}}{\|\vec{v}\|_2}.
 \]
-Note that
+now, $\hat{\vec{v}}_2$ has Euclidean length $1$. As above, a unit
+vector obtained by normalizing an arbitrary vector is usually denoted
+with a hat. The subscript indicates which norm was used for
+normalization. Due to the commonality of the $2$-norm, the subscript
+of 2 is often omitted, that is, $\hat{\vec{v}} =
+\hat{\vec{v}}_2$. This notational convention will be used consistently
+through the remainder of this textbook.
+
+There is an interesting connection between the $2$-norm and the dot product:
 \[
-\|\vec{v}\| = \sqrt{\vec{v}\dotp\vec{v}}.
+  \vec{v} \dotp \vec{v} = v_1^2 + v_2^2 + \cdots + v_n^2 = \| \vec{v} \|_2^2.
 \]
-\begin{definition}
-  We call a vector $\hat{\vec u}$ a \dfn{unit vector} if
-  \[
-  \hat{\vec u} \dotp \hat{\vec u} =1
-  \]
-  Unit vectors are typically decorated with ``hats.'' Note, this
-  necessarily means that $\|\hat{\vec{u}}\| = 1$
-\end{definition}
-
-
-
-To normalize any vector to a unit vector, we simply divide the vector
-by its norm:
+Consequently, we have
 \[
-\hat{\vec{v}} = \frac{\vec{v}}{\|\vec{v}\|}
+  \hat{\vec{v}} \dotp \hat{\vec{v}} = \| \hat{\vec{v}} \|_2^2 = 1.
 \]
-now, $\hat{\vec{v}}$ has Euclidean length $1$.
 
 \begin{example}[RGB Color Space]
-  Recall that the \textit{MOOCulus Lighting Company} produces an color-changing LED table lamp, whose colors run through the RGB spectrum
+  Recall that the \textit{MOOCulus Lighting Company} produces an
+  color-changing LED table lamp, whose colors run through the RGB
+  spectrum
     \[
     \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
     \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
@@ -1080,7 +1136,7 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
     \begin{explanation}
       To start, we should point out that this is a difficult problem;
       however what we will present is a ``reasonable start'' to
-      solution.  Our plan is to normalize the vectors representing
+      a solution.  Our plan is to normalize the vectors representing
       yellow, cyan, and magenta by their Euclidean norm, then make
       these vectors, unit vectors, then scale back to RGB color space,
       where the entries are between $0$ and $255$. First note:
@@ -1114,24 +1170,24 @@ now, $\hat{\vec{v}}$ has Euclidean length $1$.
 \end{example}
 
 
-
-
-Given two \textbf{unit} vectors, say $\hat{\vec v}$ and $\hat{\vec w}$, the dot
-product measures ``how aligned'' these two unit vectors are.
+There is a further connection between the 2-norm and the dot
+product. Given two \textbf{unit} vectors (in the 2-norm), say
+$\hat{\vec v}$ and $\hat{\vec w}$, the dot product measures ``how
+aligned'' these two unit vectors are.
 \begin{description}
-  \item[$\hat{\vec{v}}\dotp \hat{\vec{w}} = 1$] If the dot product is $1$, then the vectors are ``completely
-    aligned.''
-  \item[$\hat{\vec{v}}\dotp \hat{\vec{w}} = -1$] If the dot
-    product is $-1$ number, then the vectors are in ``exact opposite''
-    directions.
-  \item[$\hat{\vec{v}}\dotp \hat{\vec{w}} = 0$]If the dot
-    product is zero, then the vectors are independent of each other.
+\item[$\hat{\vec{v}}\dotp \hat{\vec{w}} = 1$] If the dot product is
+  $1$, then the vectors are ``completely aligned.''
+\item[$\hat{\vec{v}}\dotp \hat{\vec{w}} = -1$] If the dot product is
+  $-1$ number, then the vectors are in ``exact opposite'' directions.
+\item[$\hat{\vec{v}}\dotp \hat{\vec{w}} = 0$]If the dot product is
+  zero, then the vectors are independent of each other.
 \end{description}
 
-
 \begin{definition}
-  Two vectors are called \dfn{orthogonal} if the dot product of
-  these vectors is zero.
+  Two vectors, $\vec{u}$ and $\vec{v}$, are said to be
+  \dfn{orthogonal} if $\vec{u} \dotp \vec{v} = 0$.
+  % They are said to be \dfn{orthonormal} if, in addition,
+  % $\|\vec{u}\| = \|\vec{v}\| = 1$.
 \end{definition}
 
 
@@ -1144,9 +1200,6 @@ product measures ``how aligned'' these two unit vectors are.
   \end{prompt}
   \]
 \end{question}
- When the dot product is zero, we say the vectors are
- \textit{orthogonal} to each other.
-
 
 As we will see, the notion of orthogonal vectors will help us analyze data.
 
@@ -1158,49 +1211,65 @@ As we will see, the notion of orthogonal vectors will help us analyze data.
 \subsection{Relative component normalization, the $1$-norm}
 
 For comparing relative components, you can normalize a vector by
-dividing each component by the absolute value of the sum of all
+dividing each component by the sum of the absolute values of all
 components. This method ensures that the sum of the vector components
-is $1$.
-
-\[ \|\vec{v}\|_1 = \frac{\vec{v}}{\sum_{i=1}^n |v_i|} \]
+is $1$. This idea is succintly captured by normalization with respect
+to the $1$-norm:
+\[
+  \hat{\vec{v}}_1 = \frac{\vec{v}}{\|\vec{v}\|_1} = \frac{\vec{v}}{\sum_{i=1}^n |v_i|}.
+\]
+Again, the hat indicates that this is a unit vector obtained by a
+normalization. The subscript 1 indicates that the normalization was
+done using the $1$-norm.
 
 \begin{example}[Population Counts]
 Consider the population vector for Ohio:
-\[ \vec{p}_{\texttt{OH}} = (9394878, 1442655, 20442, 268527, 3907, 544866) \]
-
-The sum of the components is:
 \[
-\vec{1}\dotp\vec{p}_{\texttt{OH}} = \answer[given]{11675275}
+  \vec{p}_{\texttt{OH}}
+  = (9394878, 1442655, 20442, 268527, 3907, 544866)^\transpose.
+\]
+
+Since population counts are always non-negative, the $1$-norm of
+$\vec{p}_{\mathtt{OH}}$ equals the sum of the
+components:
+\[
+  \left\| \vec{p}_{\mathtt{OH}} \right\|_1
+  = \vec{1}\dotp\vec{p}_{\texttt{OH}}
+  = \answer[given]{11675275}.
 \]
 
 The normalized vector is:
 \[
-\|\vec{p}_{\texttt{OH}}\|_1 =
-\frac{\vec{p}_{\texttt{OH}}}{\vec{1}\dotp\vec{p}_{\texttt{OH}}} = \left(\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05}\right)
+  \hat{\vec{p}_{\texttt{OH}}}_1
+  = \frac{\vec{p}_{\texttt{OH}}}{\vec{1}\dotp\vec{p}_{\texttt{OH}}}
+  = \left(\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05}\right)^\transpose.
 \]
 \end{example}
 
 
 
-
-
-
 \subsection{Max component normalization, the $\infty$-norm}
 
-This method involves dividing each component of the vector by the maximum component value. This is useful in cases where you want all components to be scaled relative to the largest component.
+This method involves dividing each component of the vector by the
+maximum component value. This is useful in cases where you want all
+components to be scaled relative to the largest component.
 
-\[ \|\vec{v}\|_\infty = \frac{\vec{v}}{\max(|v_i|)} \]
+\[
+  \hat{\vec{v}}_\infty
+  = \frac{\vec{v}}{\|\vec{v}\|_\infty} = \frac{\vec{v}}{\max(|v_i|)}.
+\]
 
 \begin{example}[Student Data]
-Suppose the range of score in a certain math class are between $51$
-percent and $92$ percent. It is reasonable to use the maximum component
-normalization in this case, and scale by $100$ at the end. What is the
-range of score after normalizing?
-\begin{explanation}
-The maximum component is $\answer[given]{92}$. Normalizing we find a
-range of $\answer[given]{51/92}$ to $1$. Rescaling so that the maximum
-score is $100$, we find the minimum score to be $\answer[given]{55}\%$.
-\end{explanation}
+  Suppose the range of score in a certain math class are between $51$
+  percent and $92$ percent. It is reasonable to use the maximum
+  component normalization in this case, and scale by $100$ at the
+  end. What is the range of score after normalizing?
+  \begin{explanation}
+    The maximum component is $\answer[given]{92}$. Normalizing we find a
+    range of $\answer[given]{51/92}$ to $1$. Rescaling so that the
+    maximum score is $100$, we find the minimum score to be
+    $\answer[given]{55}\%$.
+  \end{explanation}
 \end{example}
 
 

@@ -1262,7 +1262,7 @@ to vectors too. Suppose $\vec{x}$ and $\vec y$ are column $n$-vectors.
   We encode a vectors with various distributions. For example the
   entries of vector $\vec{n}$ follow a normal distribution
   \[
-  \vec{n} =\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}
+  \vec{n}^\transpose =\begin{pmatrix} 0.11 & 0.22 & 0.39 & 0.58 & 0.74 & 0.8 & 0.74 & 0.58 & 0.39 & 0.22 & 0.11 \end{pmatrix}
   \]
   We can plot the entries, and describe them as a grayscale image
   \begin{center}
@@ -1291,7 +1291,7 @@ to vectors too. Suppose $\vec{x}$ and $\vec y$ are column $n$-vectors.
   \end{center}
   We can also encode a skewed normal distribution
   \[
-  \vec{s} =\begin{pmatrix} 0 & 0.01 & 0.07 & 0.26 & 0.61 & 1 & 1.15 & 0.95 & 0.57 & 0.26 & 0.09\end{pmatrix}
+  \vec{s}^\transpose =\begin{pmatrix} 0 & 0.01 & 0.07 & 0.26 & 0.61 & 1 & 1.15 & 0.95 & 0.57 & 0.26 & 0.09\end{pmatrix}
   \]
  Plotting the entires, and describing them with grayscale we find:
   \begin{center}
@@ -1318,13 +1318,14 @@ to vectors too. Suppose $\vec{x}$ and $\vec y$ are column $n$-vectors.
       \end{scope}
     \end{tikzpicture}
   \end{center}
-  Let $P = \vec{n}^\transpose\vec{s}$. Compute $P_{6,7}$ and interpret
+  Let $P = \vec{n}\vec{s}^\transpose$. Compute $P_{6,7}$ and interpret
   the matrix $P$ itself.
   \begin{explanation}
-    Viewing $\vec{n}^\transpose$ as a $11\times 1$ matrix and
-    $\vec{s}$ as a $11\times 1$ matrix, the product
-    $\vec{n}^\transpose\vec{s}$ will be an $\answer[given]{11}\times\answer[given]{11}$
-    matrix, and have $\answer[given]{121}$ entires. $P_{6,7}$ is
+    Viewing $\vec{n}$ as a $11\times 1$ matrix and
+    $\vec{s}^\transpose$ as a $11\times 1$ matrix, the (outer) product
+    $\vec{n}\vec{s}^\transpose$ will be an
+    $\answer[given]{11}\times\answer[given]{11}$ matrix, and have
+    $\answer[given]{121}$ entires. $P_{6,7}$ is
     $\answer[given]{0.92}$.
 
     The product $P$ is now a distribution of two variables, and can be
@@ -1403,7 +1404,10 @@ transform data.
     \node at (2.5,-2)  {\includegraphics[width=3cm]{catfaceG.jpg}};
     \draw[line width =3mm, blue,->] (.8,2)--(-.8,2);
     \draw[line width =3mm, red,->] (-2.5,-.8)--(-2.5,.8);
-    \draw[line width =3mm, green,->] (.8,-.8)--(-.8,.8); 
+    \draw[line width =3mm, green,->] (.8,-.8)--(-.8,.8);
+    \node at (-2.5,-3.5) {red channel};
+    \node at (2.5,-3.5) {green channel};
+    \node at (2.5,.5) {blue channel};
     \end{tikzpicture}
   \end{center}
   One representing red, green, and blue. Each pixel of the full color
@@ -1430,12 +1434,21 @@ transform data.
   \]
   Observe, when we do this transformation to the image of our cat
   above:
-  \begin{center}
-    \includegraphics[width=.2\textwidth]{catface.jpg}
-    \includegraphics[width=.2\textwidth]{catfaceY.jpg}
-    \includegraphics[width=.2\textwidth]{catfaceCb.jpg}
-    \includegraphics[width=.2\textwidth]{catfaceCr.jpg}
-  \end{center}
+    \begin{center}
+    \begin{tikzpicture}
+    \node at (-2.5,2)  {\includegraphics[width=3cm]{catface.jpg}};
+    \node at (2.5,2)   {\includegraphics[width=3cm]{catfaceCr.jpg}};
+    \node at (-2.5,-2) {\includegraphics[width=3cm]{catfaceY.jpg}};
+    \node at (2.5,-2)  {\includegraphics[width=3cm]{catfaceCb.jpg}};
+    \draw[line width =3mm, gray,->] (.8,2)--(-.8,2);
+    \draw[line width =3mm, black,->] (-2.5,-.8)--(-2.5,.8);
+    \draw[line width =3mm, gray,->] (.8,-.8)--(-.8,.8);
+    \node at (-2.5,-3.5) {$Y$ channel};
+    \node at (2.5,-3.5) {$C_B$ channel};
+    \node at (2.5,.5) {$C_R$ channel};
+    \end{tikzpicture}
+    \end{center}
+Note how little detail is showing in the $C_b$ and $C_r$ channels. 
 \end{example}
 
 

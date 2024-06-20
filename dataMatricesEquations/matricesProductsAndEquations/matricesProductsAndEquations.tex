@@ -35,17 +35,18 @@
 
 
 
-
-A \dfn{matrix} is just a large rectangular array of numbers
+A \dfn{matrix} is simply a rectangular array of numbers
 \[
-M =
-\underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{\begin{pmatrix}
-  a_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5} \\
-  a_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5} \\
-  a_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5} \\
-  a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5}
-\end{pmatrix}}
-~~\boldsymbol{4}~\textbf{rows}
+  A =
+  % \underset{\displaystyle\boldsymbol{5}~\textbf{columns}}{
+  \underset{\raisebox{-2ex}{\text{\bf 5 columns}}}{
+    \begin{pmatrix}
+      a_{1,1} & a_{1,2} & a_{1,3} & a_{1,4} & a_{1,5} \\
+      a_{2,1} & a_{2,2} & a_{2,3} & a_{2,4} & a_{2,5} \\
+      a_{3,1} & a_{3,2} & a_{3,3} & a_{3,4} & a_{3,5} \\
+      a_{4,1} & a_{4,2} & a_{4,3} & a_{4,4} & a_{4,5}
+    \end{pmatrix}}
+  \quad\text{\bf 4 rows}
 \]
 We give the \dfn{dimensions of a matrix} by stating its number of rows
 and number of columns. The number of rows comes first and the number
@@ -54,52 +55,96 @@ of columns second, so $M$ above is a $(4\times 5)$-matrix.
   Which of the following matrices are $3\times 2$ matrices?
   \begin{selectAll}
     \pdfOnly{\begin{multicols}{4}}
-  \choice{$\begin{pmatrix}
-  2 & 4 & 8\\
-  5 & 9 & -1\\
-  6 & 0 & 1
+      \choice{$\begin{pmatrix}
+        2 & 4 & 8\\
+        5 & 9 & -1\\
+        6 & 0 & 1
+      \end{pmatrix}$}
+    \choice{$\begin{pmatrix}
+      0 & 1 &3\\
+      0 & 0 & 2
     \end{pmatrix}$}
-  \choice{$\begin{pmatrix}
-  0 & 1 &3\\
-  0 & 0 & 2
-  \end{pmatrix}$}
   \choice[correct]{$\begin{pmatrix}
-  2 & 1 \\
-  4 & 5 \\
-  -1 & 0
+    2 & 1 \\
+    4 & 5 \\
+    -1 & 0
   \end{pmatrix}$}
-  \choice[correct]{$\begin{pmatrix}
+\choice[correct]{$\begin{pmatrix}
   0 & 0\\
   0 & 0 \\
   0 & 0
-    \end{pmatrix}$}
-  \pdfOnly{\end{multicols}}
-  \end{selectAll}
+\end{pmatrix}$}
+\pdfOnly{\end{multicols}}
+\end{selectAll}
 \end{question}
 
 
-We can use similar notation to talk about specific entries of a
-matrix. Above, $a_{i,j}$ is the $\boldsymbol{(i,j)}${\bf-}\dfn{entry}
-of the matrix $M$ (we usually use capital letters for matrices). Often
-people write $M_{i,j}$ (or just $M_{ij}$) to mean the $(i,j)$-entry of
-the matrix $M$.
+% We can use similar notation to talk about specific entries of a
+% matrix. Above, $a_{i,j}$ is the \dfn{$\boldsymbol{(i,j)}$-entry} of
+% the matrix $M$ (we usually use capital letters for matrices). Often
+% people write $M_{i,j}$ (or just $M_{ij}$) to mean the $(i,j)$-entry of
+% the matrix $M$.
 
+%% TK: For now, I am using the concept environment. Not sure whether
+%% to style this differently by introducing a new environment.
+\begin{concept}[Notation.]
+  Scalars, vectors, and matrices are the key players in the land of
+  linear algebra. Now that they are all introduced, here are our
+  notational convention for the remainder of the textbook.
+
+  We generally use
+  \begin{itemize}
+  \item upper-case regular type (e.g., $A, B, C, \ldots$) for matrices;
+  \item lower-case bold type (e.g., $\vec{u}, \vec{v}, \vec{w}, \ldots$)
+    for vectors;
+  \item lower-case regular type (e.g., $a, b, c, \ldots$) for scalars.
+  \end{itemize}
+
+  When it comes to vectors, we learned various ways to express them in
+  the previous chapter, but we will stick with one of them:
+
+  \begin{center}
+    Unless otherwise specified, vectors are column vectors by default.
+  \end{center}
+
+  This is a widely used convention across many fields of STEM due to
+  practical and theoretical reasons. We will indicate a row vector by
+  explicitly transposing a column vector. For typesetting convenience,
+  the components of a column vector are often displayed by transposing
+  the corresponding column vector as in
+  \[
+    \vec{v} =
+    \begin{pmatrix}
+      4 & 3 & 2 & 1 & 0
+    \end{pmatrix}^\transpose
+    \quad\text{or}\quad
+    \vec{v}^\transpose =
+    \begin{pmatrix}
+      4 & 3 & 2 & 1 & 0
+    \end{pmatrix}.
+  \]
+
+  Component indices are denoted by subscripts, usually $i$ through
+  $n$. For example, the $i$th entry of a vector $\vec{v}$ is denoted
+  by $v_i$ and the $(i,j)$-entry of a matrix $A$ is denoted by
+  $a_{i,j}$ or simply $a_{ij}$.
+\end{concept}
 
 
 \begin{question}
   If
   \[A= \begin{pmatrix}
-  -3 & 0 & 1\\
-  4 & 5 & -2\\
-  0 & 9 & -1
+    -3 & 0 & 1\\
+    4 & 5 & -2\\
+    0 & 9 & -1
   \end{pmatrix}
-  \]
-  what are the entries $A_{1,2}$, $A_{2,2}$, $A_{3,2}$?
-  \begin{prompt}
-    \[
+\]
+what are the entries $A_{1,2}$, $A_{2,2}$, $A_{3,2}$?
+\begin{prompt}
+  \[
     A_{1,2} = \answer{0}, \quad A_{2,2} = \answer{5}, \quad A_{3,2} = \answer{9}
-    \]
-  \end{prompt}
+  \]
+\end{prompt}
 \end{question}
 
 Next we'll discuss how matrices arise in different contexts.
@@ -121,41 +166,41 @@ vertically.
   as ordered tuples. Represent this data by a $12\times 6$
   matrix. Explain what the entry at position $(7,5)$ represents.
   \begin{explanation}
-  Since ordered-tuples are \wordChoice{\choice[correct]{horizontal}\choice{vertical}} it makes sense to
-  concatenate this data by stacking it horizontally into a matrix:
-  \[
-  \begin{pmatrix}
-  \vec{p}_{\texttt{IA}} \\
-  \vec{p}_{\texttt{IL}} \\
-  \vec{p}_{\texttt{IN}} \\
-  \vec{p}_{\texttt{KA}} \\
-  \vec{p}_{\texttt{MI}} \\
-  \vec{p}_{\texttt{MN}} \\
-  \vec{p}_{\texttt{MO}} \\
-  \vec{p}_{\texttt{ND}} \\
-  \vec{p}_{\texttt{NE}} \\
-  \vec{p}_{\texttt{OH}} \\
-  \vec{p}_{\texttt{SD}} \\
-  \vec{p}_{\texttt{WI}}
-  \end{pmatrix}
-  =
-  \begin{pmatrix}
-  2806418 & 117035 & 10538 & 79296 & 3941 & 132783\\
-  8874067 & 1796660 & 33972 & 709567 & 5196 & 1296702\\
-  5510354 & 631923 & 14030 & 158705 & 2205 & 379676\\
-  2416165 & 165837 & 22278 & 87093 & 2344 & 218902\\
-  7735902 & 1360149 & 50035 & 316844 & 3117 & 507860\\
-  4572149 & 359817 & 54558 & 275242 & 2201 & 336199\\
-  4978046 & 698043 & 24274 & 123810 & 8887 & 291100\\
-  651470 & 23959 & 39165 & 11979 & 1004 & 32817\\
-  1641256 & 91896 & 16875 & 47944 & 1235 & 124620\\
-  9394878 & 1442655 & 20442 & 268527 & 3907 & 544866\\
-  735228 & 18836 & 74975 & 12413 & 544 & 37340\\
-  4895065 & 367889 & 48674 & 163396 & 2672 & 329279
-  \end{pmatrix}
-  \]
-  Note that the above is a $\answer[given]{12}\times \answer[given]{6}$ matrix. The $(7, 5)$-entry is
-  $\answer[given]{8887}$ which is the number of Hawaiians in Missouri (MO).
+    Since ordered-tuples are \wordChoice{\choice[correct]{horizontal}\choice{vertical}} it makes sense to
+    concatenate this data by stacking it horizontally into a matrix:
+    \[
+      \begin{pmatrix}
+        \vec{p}_{\texttt{IA}} \\
+        \vec{p}_{\texttt{IL}} \\
+        \vec{p}_{\texttt{IN}} \\
+        \vec{p}_{\texttt{KA}} \\
+        \vec{p}_{\texttt{MI}} \\
+        \vec{p}_{\texttt{MN}} \\
+        \vec{p}_{\texttt{MO}} \\
+        \vec{p}_{\texttt{ND}} \\
+        \vec{p}_{\texttt{NE}} \\
+        \vec{p}_{\texttt{OH}} \\
+        \vec{p}_{\texttt{SD}} \\
+        \vec{p}_{\texttt{WI}}
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+        2806418 & 117035 & 10538 & 79296 & 3941 & 132783\\
+        8874067 & 1796660 & 33972 & 709567 & 5196 & 1296702\\
+        5510354 & 631923 & 14030 & 158705 & 2205 & 379676\\
+        2416165 & 165837 & 22278 & 87093 & 2344 & 218902\\
+        7735902 & 1360149 & 50035 & 316844 & 3117 & 507860\\
+        4572149 & 359817 & 54558 & 275242 & 2201 & 336199\\
+        4978046 & 698043 & 24274 & 123810 & 8887 & 291100\\
+        651470 & 23959 & 39165 & 11979 & 1004 & 32817\\
+        1641256 & 91896 & 16875 & 47944 & 1235 & 124620\\
+        9394878 & 1442655 & 20442 & 268527 & 3907 & 544866\\
+        735228 & 18836 & 74975 & 12413 & 544 & 37340\\
+        4895065 & 367889 & 48674 & 163396 & 2672 & 329279
+      \end{pmatrix}
+    \]
+    Note that the above is a $\answer[given]{12}\times \answer[given]{6}$ matrix. The $(7, 5)$-entry is
+    $\answer[given]{8887}$ which is the number of Hawaiians in Missouri (MO).
   \end{explanation}
 \end{example}
 
@@ -166,18 +211,18 @@ vertically.
 \begin{example}[Grayscale Image]
   Here is a very low resolution grayscale image of the number $6$:
   \begin{center}
-\newcommand{\matrixData}{{
-    {0, 0.01, 0, 0, 0, 0, 0},
-    {0, 0, 0.06, 0.18, 0.18, 0.01, 0},
-    {0, 0.38, 0.64, 0.21, 0.37, 0.79, 0.06},
-    {0.12, 0.99, 0.12, 0.01, 0, 0.11, 0.02},
-    {0.34, 0.94, 0.32, 0.41, 0.64, 0.55, 0.02},
-    {0.35, 0.97, 0.09, 0, 0.05, 0.98, 0.43},
-    {0.14, 0.98, 0.13, 0, 0.01, 0.94, 0.39},
-    {0, 0.34, 0.56, 0.29, 0.47, 0.51, 0.01},
-    {0, 0, 0, 0.07, 0.03, 0, 0},
-    {0, 0.01, 0, 0, 0, 0.02, 0}
-}}
+    \newcommand{\matrixData}{{
+        {0, 0.01, 0, 0, 0, 0, 0},
+        {0, 0, 0.06, 0.18, 0.18, 0.01, 0},
+        {0, 0.38, 0.64, 0.21, 0.37, 0.79, 0.06},
+        {0.12, 0.99, 0.12, 0.01, 0, 0.11, 0.02},
+        {0.34, 0.94, 0.32, 0.41, 0.64, 0.55, 0.02},
+        {0.35, 0.97, 0.09, 0, 0.05, 0.98, 0.43},
+        {0.14, 0.98, 0.13, 0, 0.01, 0.94, 0.39},
+        {0, 0.34, 0.56, 0.29, 0.47, 0.51, 0.01},
+        {0, 0, 0, 0.07, 0.03, 0, 0},
+        {0, 0.01, 0, 0, 0, 0.02, 0}
+      }}
     \begin{tikzpicture}[scale=.5]
       \foreach \y in {1, ..., 8} {
         \foreach \x in {0, 1, ..., 6} {
@@ -191,16 +236,16 @@ vertically.
   We can represent this data as an $8\times 7$ matrix where $0$
   represents ``black,'' $1$ represents ``white,'' and numbers in between represent ``shades of gray.''
   \[
-  \begin{pmatrix}
-     1 & 1 & 0.94 & 0.82 & 0.82 & 0.99 & 1 \\
-     1 & 0.62 & 0.36 & 0.79 & 0.63 & 0.21 & 0.94 \\
-     0.88 & 0.01 & 0.88 & 0.99 & 1 & 0.89 & 0.98 \\
-     0.66 & 0.06 & 0.68 & 0.59 & 0.36 & 0.45 & 0.98 \\
-     0.65 & 0.03 & 0.91 & 1 & 0.95 & 0.02 & 0.57 \\
-     0.86 & 0.02 & 0.87 & 1 & 0.99 & 0.06 & 0.61 \\
-     1 & 0.66 & 0.44 & 0.71 & 0.53 & 0.49 & 0.99 \\
-     1 & 1 & 1 & 0.93 & 0.97 & 1 & 1 \\
-  \end{pmatrix}
+    \begin{pmatrix}
+      1 & 1 & 0.94 & 0.82 & 0.82 & 0.99 & 1 \\
+      1 & 0.62 & 0.36 & 0.79 & 0.63 & 0.21 & 0.94 \\
+      0.88 & 0.01 & 0.88 & 0.99 & 1 & 0.89 & 0.98 \\
+      0.66 & 0.06 & 0.68 & 0.59 & 0.36 & 0.45 & 0.98 \\
+      0.65 & 0.03 & 0.91 & 1 & 0.95 & 0.02 & 0.57 \\
+      0.86 & 0.02 & 0.87 & 1 & 0.99 & 0.06 & 0.61 \\
+      1 & 0.66 & 0.44 & 0.71 & 0.53 & 0.49 & 0.99 \\
+      1 & 1 & 1 & 0.93 & 0.97 & 1 & 1 \\
+    \end{pmatrix}
   \]
   Interpret the meaning of the $(4,6)$-entry of the matrix.
   \begin{explanation}
@@ -224,11 +269,11 @@ vertically.
   $\vec c_5$ and movies will coorespond to the first, second and third
   entries of the vectors $\vec v_i$:
   \begin{align*}
-   \vec v_{1} &= \begin{pmatrix}0 & 1 & 2\end{pmatrix}\\
-   \vec v_{2} &= \begin{pmatrix}1 & 0 & 1\end{pmatrix}\\
-   \vec v_{3} &= \begin{pmatrix}3 & 1 & 0\end{pmatrix}\\
-   \vec v_{4} &= \begin{pmatrix}1 & 0 & 0\end{pmatrix}\\
-   \vec v_{5} &= \begin{pmatrix}0 & 6 & 0\end{pmatrix}
+    \vec v_{1} &= \begin{pmatrix}0 & 1 & 2\end{pmatrix}\\
+    \vec v_{2} &= \begin{pmatrix}1 & 0 & 1\end{pmatrix}\\
+    \vec v_{3} &= \begin{pmatrix}3 & 1 & 0\end{pmatrix}\\
+    \vec v_{4} &= \begin{pmatrix}1 & 0 & 0\end{pmatrix}\\
+    \vec v_{5} &= \begin{pmatrix}0 & 6 & 0\end{pmatrix}
   \end{align*}
   Here, for each vector, the first value is the number of times the
   consumer watched \textit{Time Bandits}, the second value is the
@@ -245,19 +290,19 @@ vertically.
       1 & 0 & 0\\
       0 & 6 & 0
     \end{pmatrix}.
-    \]
-    \begin{itemize}
-    \item Compute the sum of the entires in the third row and interpret the result in this context.
-    \item Compute the sum of the entires in the second column and interpret the result in this context.
-    \end{itemize}
-    \begin{explanation}
-      The sum across the third row is $\answer[given]{4}$. This means
-      that consumer $\vec{c}_{\answer[given]{3}}$ streamed a total of  $\answer[given]{4}$ \wordChoice{\choice{distinct}\choice[correct]{possibly nondistinct}} movies.
+  \]
+  \begin{itemize}
+  \item Compute the sum of the entires in the third row and interpret the result in this context.
+  \item Compute the sum of the entires in the second column and interpret the result in this context.
+  \end{itemize}
+  \begin{explanation}
+    The sum across the third row is $\answer[given]{4}$. This means
+    that consumer $\vec{c}_{\answer[given]{3}}$ streamed a total of  $\answer[given]{4}$ \wordChoice{\choice{distinct}\choice[correct]{possibly nondistinct}} movies.
 
 
-      On the other hand, the sum along the second column is $\answer[given]{8}$. This
-      means that \wordChoice{\choice{Time Bandits}\choice[correct]{Brazil}\choice{The Adventures of Baron Munchausen}} has been watched $\answer[given]{8}$ times.
-    \end{explanation}
+    On the other hand, the sum along the second column is $\answer[given]{8}$. This
+    means that \wordChoice{\choice{Time Bandits}\choice[correct]{Brazil}\choice{The Adventures of Baron Munchausen}} has been watched $\answer[given]{8}$ times.
+  \end{explanation}
 \end{example}
 
 
@@ -296,47 +341,47 @@ as a column, \textbf{the number of colmuns of the matrix must equal
   the number of entries of the vector} and we can compute the product
 $M\vec{a}$, defining
 \[
-M \vec{a} =
-\begin{pmatrix}
-  \row_1(M)^\transpose \dotp \vec{a} \\
-  \row_2(M)^\transpose \dotp \vec{a} \\
-  \vdots \\
-  \row_m(M)^\transpose \dotp \vec{a}
-\end{pmatrix}
+  M \vec{a} =
+  \begin{pmatrix}
+    \row_1(M)^\transpose \dotp \vec{a} \\
+    \row_2(M)^\transpose \dotp \vec{a} \\
+    \vdots \\
+    \row_m(M)^\transpose \dotp \vec{a}
+  \end{pmatrix}
 \]
 Where $\row_i(M)$ represents the $i$th row of $M$. Note, $M\vec{a}$ is
 a column vector and in this case we have:
 \[
-\begin{matrix}
-\begin{pmatrix}
-  \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet \\
-\end{pmatrix}
-&
-\begin{pmatrix}
-  \bullet \\ \bullet \\ \bullet \\ \bullet \\ \bullet
-\end{pmatrix}
-& = &
-\begin{pmatrix}
-  \bullet \\ \bullet \\ \bullet
-\end{pmatrix}
-\\
-\begin{pmatrix}
-  m\times n\\
-  \text{matrix}
-\end{pmatrix}
-&
-\begin{pmatrix}
-  n\text{-vector}\\
-  \text{column}
-\end{pmatrix}
-& &
-\begin{pmatrix}
-  m\text{-vector}\\
-  \text{column}
-\end{pmatrix}
-\end{matrix}
+  \begin{matrix}
+    \begin{pmatrix}
+      \bullet & \bullet & \bullet & \bullet & \bullet \\
+      \bullet & \bullet & \bullet & \bullet & \bullet \\
+      \bullet & \bullet & \bullet & \bullet & \bullet \\
+    \end{pmatrix}
+    &
+      \begin{pmatrix}
+        \bullet \\ \bullet \\ \bullet \\ \bullet \\ \bullet
+      \end{pmatrix}
+    & = &
+          \begin{pmatrix}
+            \bullet \\ \bullet \\ \bullet
+          \end{pmatrix}
+    \\
+    \begin{pmatrix}
+      m\times n\\
+      \text{matrix}
+    \end{pmatrix}
+    &
+      \begin{pmatrix}
+        n\text{-vector}\\
+        \text{column}
+      \end{pmatrix}
+    & &
+        \begin{pmatrix}
+          m\text{-vector}\\
+          \text{column}
+        \end{pmatrix}
+  \end{matrix}
 \]
 
 
@@ -348,85 +393,85 @@ $\vec{b}$ is an $m$-vector expressed as a row, \textbf{the number of
   entries of the vector must equal the number of rows of the matrix}
 and we can compute the product $\vec{b}M$, defining
 \[
-\vec{b} M =
-\begin{pmatrix}
-  \vec{b}\dotp \col_1(M)^\transpose \\
-  \vec{b}\dotp \col_2(M)^\transpose \\
-  \vdots \\
-  \vec{b}\dotp \col_n(M)^\transpose
-\end{pmatrix}
+  \vec{b} M =
+  \begin{pmatrix}
+    \vec{b}\dotp \col_1(M)^\transpose \\
+    \vec{b}\dotp \col_2(M)^\transpose \\
+    \vdots \\
+    \vec{b}\dotp \col_n(M)^\transpose
+  \end{pmatrix}
 \]
 Where $\col_i(M)$ represents the $i$th column of $M$. Note, $\vec{b}M$ is a row vector and in this case we have:
 \[
-\begin{matrix}
-\begin{pmatrix}
-  \bullet & \bullet & \bullet
-\end{pmatrix}
-&
-\begin{pmatrix}
-  \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet & \bullet
-\end{pmatrix}
-&
-=
-&
-\begin{pmatrix}
-  \bullet & \bullet & \bullet & \bullet & \bullet
-\end{pmatrix}
-\\
-\begin{pmatrix}
-  m\text{-vector}\\
-  \text{row}
-\end{pmatrix}
-&
-\begin{pmatrix}
-  m\times n\\
-  \text{matrix}
-\end{pmatrix}
-& &
-\begin{pmatrix}
-  n\text{-vector}\\
-  \text{row}
-\end{pmatrix}
-\end{matrix}
+  \begin{matrix}
+    \begin{pmatrix}
+      \bullet & \bullet & \bullet
+    \end{pmatrix}
+    &
+      \begin{pmatrix}
+        \bullet & \bullet & \bullet & \bullet & \bullet \\
+        \bullet & \bullet & \bullet & \bullet & \bullet \\
+        \bullet & \bullet & \bullet & \bullet & \bullet
+      \end{pmatrix}
+    &
+      =
+    &
+      \begin{pmatrix}
+        \bullet & \bullet & \bullet & \bullet & \bullet
+      \end{pmatrix}
+    \\
+    \begin{pmatrix}
+      m\text{-vector}\\
+      \text{row}
+    \end{pmatrix}
+    &
+      \begin{pmatrix}
+        m\times n\\
+        \text{matrix}
+      \end{pmatrix}
+    & &
+        \begin{pmatrix}
+          n\text{-vector}\\
+          \text{row}
+        \end{pmatrix}
+  \end{matrix}
 \]
 
 
 \begin{question}
-If
-\[
-A=\begin{pmatrix}
-2 & 0 & -1\\
-5 & 1 & -2\\
-1 & 0 & 4
-\end{pmatrix} \quad\text{and}\quad  \vec{v} = \begin{pmatrix}
-1 \\
-0\\
-2
+  If
+  \[
+    A=\begin{pmatrix}
+      2 & 0 & -1\\
+      5 & 1 & -2\\
+      1 & 0 & 4
+    \end{pmatrix} \quad\text{and}\quad  \vec{v} = \begin{pmatrix}
+      1 \\
+      0\\
+      2
+    \end{pmatrix}
+  \]
+  compute the following, if possible.
+  \begin{prompt} Write ``NA'' for each entry if the multiplication is not possible.\end{prompt}
+  \begin{enumerate}
+    \pdfOnly{\begin{multicols}{4}}
+    \item $\vec{v} A$ \begin{prompt}
+        \[=\begin{pmatrix}
+          \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}
+        \end{pmatrix}\]
+    \end{prompt}
+  \item $A\vec{v}$ \begin{prompt} \[= \begin{pmatrix}
+    \answer[given]{0}\\
+    \answer[given]{-4}\\
+    \answer[given]{9}
+  \end{pmatrix}\]\end{prompt}
+\item $\vec{v}^{\transpose} A$ \begin{prompt} \[= \begin{pmatrix}
+  \answer[given]{2} & \answer[given]{0} & \answer[given]{7}
 \end{pmatrix}
 \]
-compute the following, if possible.
-\begin{prompt} Write ``NA'' for each entry if the multiplication is not possible.\end{prompt}
-\begin{enumerate}
-  \pdfOnly{\begin{multicols}{4}}
-\item $\vec{v} A$ \begin{prompt}
-  \[=\begin{pmatrix}
-  \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}
-\end{pmatrix}\]
-\end{prompt}
-\item $A\vec{v}$ \begin{prompt} \[= \begin{pmatrix}
-\answer[given]{0}\\
-\answer[given]{-4}\\
-\answer[given]{9}
-\end{pmatrix}\]\end{prompt}
-\item $\vec{v}^{\transpose} A$ \begin{prompt} \[= \begin{pmatrix}
-\answer[given]{2} & \answer[given]{0} & \answer[given]{7}
-  \end{pmatrix}
-  \]
 \end{prompt}
 \item $A\vec{v}^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
-\answer[given,format= string]{NA} & \answer[given,format= string]{NA} & \answer[given,format= string]{NA}
+  \answer[given,format= string]{NA} & \answer[given,format= string]{NA} & \answer[given,format= string]{NA}
 \end{array}\right)\]
 \end{prompt}
 \pdfOnly{\end{multicols}}
@@ -437,7 +482,7 @@ Our next proposition relates the transpose and the dot product.
 %% Note, if $A$ and $B$ are matrices, $\vec{x}$ and $\vec{y}$ are
 %% vectors, and one \textit{resonably} writes
 %% \[
-%% \vec x A\quad\text{or}\quad  B \vec y
+%%   \vec x A\quad\text{or}\quad  B \vec y
 %% \]
 %% then $\vec{x}$ is necessarially a row vector and $\vec{y}$ is necessarially a column vector. This is related to our next proposition:
 
@@ -460,12 +505,12 @@ Our next proposition relates the transpose and the dot product.
     In this case, interpret $\vec{x}$ as a $1\times n$ matrix, and
     $\vec{y}$ as a column vector. By our definition above
     \[
-    \vec{x}\vec{y} = \vec{x}^\transpose\dotp \vec{y}.
+      \vec{x}\vec{y} = \vec{x}^\transpose\dotp \vec{y}.
     \]
     If we interpret $\vec{x}$ as a row vector, and
     $\vec{y}$ as a $n\times 1$ matrix, by our definition above
     \[
-    \vec{x}\vec{y} = \vec{x}\dotp\vec{y}^\transpose.
+      \vec{x}\vec{y} = \vec{x}\dotp\vec{y}^\transpose.
     \]
     Hence
     \[
@@ -484,7 +529,7 @@ Our next proposition relates the transpose and the dot product.
 \begin{example}[Grayscale Image]%% https://commons.wikimedia.org/wiki/File:Cat_face_closeup.jpg
   Here is a grayscale image of a cat:
   \begin{image}
-  \includegraphics[width=.5\textwidth]{catfaceGS.jpg}
+    \includegraphics[width=.5\textwidth]{catfaceGS.jpg}
   \end{image}
   This image has a resolution of $600$ rows by $800$ columns. With a
   whopping $480000$ entries, the matrix representing this image is too
@@ -492,17 +537,17 @@ Our next proposition relates the transpose and the dot product.
   \textit{cat}; or perhaps \textit{convenient}.  Explain how to
   express $C_{i,j}$ as a product of $C$ and vectors of the forms:
   \begin{itemize}
-    \item A $600$-vector expressed as a row
-      \[
+  \item A $600$-vector expressed as a row
+    \[
       \vec r_i = \underbrace{\begin{pmatrix} 0 & \cdots  & 0 & 1 & 0 & \cdots & 0 \end{pmatrix}}_{\text{all entries are zero except for the $i$th}}
-      \]
-    \item A $800$-vector expressed as a column
-      \[
+    \]
+  \item A $800$-vector expressed as a column
+    \[
       \vec c_j=\begin{pmatrix} 0 \\ \vdots  \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}\quad \begin{matrix}
         \text{all entries are zero}\\
         \text{except for the $j$th}
       \end{matrix}
-      \]
+    \]
   \end{itemize}
   \begin{explanation}
     First note that $\vec r_i C$ computes the $i$th
@@ -511,7 +556,7 @@ Our next proposition relates the transpose and the dot product.
     \wordChoice{\choice{row}\choice[correct]{column}} of the matrix
     $\vec r_i C$. Hence
     \[
-    \vec r_i C\vec{c}_j
+      \vec r_i C\vec{c}_j
     \]
     computes $C_{i,j}$. In other words, the operation
     $\vec{r}_i C \vec{c}_j$ extracts the grayscale information of the
@@ -556,52 +601,52 @@ product in extracting a row or a column of a given matrix.
 
 One important use of matrices is to solve systems of equations. By matrix multiplication, one can check that
 \begin{eqnarray*}
-4x+2y+z &=& 5\\
-2x+3y &=& 6\\
-5y -z &=& 8
+  4x+2y+z &=& 5\\
+  2x+3y &=& 6\\
+  5y -z &=& 8
 \end{eqnarray*}
 can be written as
 \[
-\begin{pmatrix}
-4 & 2 & 1 \\
-2 & 3 & 0\\
-0 & 5 & -1
-\end{pmatrix}
-\begin{pmatrix}
-x \\
-y\\
-z
-\end{pmatrix}
-= \begin{pmatrix}
-5 \\
-6\\
-8
-\end{pmatrix}
+  \begin{pmatrix}
+    4 & 2 & 1 \\
+    2 & 3 & 0\\
+    0 & 5 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x \\
+    y\\
+    z
+  \end{pmatrix}
+  = \begin{pmatrix}
+    5 \\
+    6\\
+    8
+  \end{pmatrix}
 \]
 as multiplying the left-hand side above we have,
 \[
-\begin{pmatrix}
-4x+2y+z\\
-2x+3y\\
-5y-z
-\end{pmatrix} = \begin{pmatrix}
-5\\
-6\\
-8
-\end{pmatrix}
+  \begin{pmatrix}
+    4x+2y+z\\
+    2x+3y\\
+    5y-z
+  \end{pmatrix} = \begin{pmatrix}
+    5\\
+    6\\
+    8
+  \end{pmatrix}
 \]
 With this in mind, it is common to write
 \[
-A = \begin{pmatrix}
-4 & 2 & 1 \\
-2 & 3 & 0\\
-0 & 5 & -1
-\end{pmatrix},\quad\vec x = \begin{pmatrix} x \\ y \\ z\end{pmatrix},
+  A = \begin{pmatrix}
+    4 & 2 & 1 \\
+    2 & 3 & 0\\
+    0 & 5 & -1
+  \end{pmatrix},\quad\vec x = \begin{pmatrix} x \\ y \\ z\end{pmatrix},
   \quad\vec b = \begin{pmatrix} 5 \\6\\8\end{pmatrix}
 \]
 allowing us to write large systems of equations quite compactly:
 \[
-A\vec{x} = \vec{b}
+  A\vec{x} = \vec{b}
 \]
 
 
@@ -610,7 +655,7 @@ A\vec{x} = \vec{b}
   Suppose you wish to use a camera attached to a computer to detect if
   a simple pattern of circles
   \begin{center}
-\begin{tikzpicture}[scale = .3]
+    \begin{tikzpicture}[scale = .3]
       \draw[ultra thick] (0,0) circle (1cm);
       \draw[ultra thick] (3,0) circle (1cm);
       \draw[ultra thick] (6,0) circle (1cm);
@@ -618,7 +663,7 @@ A\vec{x} = \vec{b}
   \end{center}
   is shaded like this:
   \begin{center}
-\begin{tikzpicture}[scale = .3]
+    \begin{tikzpicture}[scale = .3]
       \draw[ultra thick,fill=black] (0,0) circle (1cm);
       \draw[ultra thick] (3,0) circle (1cm);
       \draw[ultra thick] (6,0) circle (1cm);
@@ -637,12 +682,12 @@ A\vec{x} = \vec{b}
       \node[below] at (6,-1) {$X_3$};
       % Marking the circles carelessly
       \draw[black,line width=6pt,line cap=round,opacity=.7] (0.5,-0.5) -- (-0.5,0.5);
-      %\draw[black!70!white,thick] (3.1,-0.3) -- (2.7,0.5);
+      % \draw[black!70!white,thick] (3.1,-0.3) -- (2.7,0.5);
       \draw[black!70!white,thick] (5.8,0.5) -- (6.3,-0.5);
-      %\draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,-0.5) -- (6.5,0.5);
+      % \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,-0.5) -- (6.5,0.5);
       \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (0.5,0.5) -- (-0.5,-0.5);
       \draw[black,thick,line cap=round,opacity=.7] (3.2,0.1) -- (2.8,-0.1);
-      %\draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,0.5) -- (5.5,-0.5);
+      % \draw[black,thick,line width=6pt,line cap=round,opacity=.7] (5.5,0.5) -- (5.5,-0.5);
     \end{tikzpicture}
   \end{center}
   Shading may be incomplete, and there may be errent marks.
@@ -660,141 +705,141 @@ A\vec{x} = \vec{b}
   $Y_2$, where $Y_1$ is the probability that the circles are filled in
   correctly, and $Y_2$ is the probability they are not.
   \[
-  \vec{X} = \begin{pmatrix} X_1 \\ X_2 \\ X_3 \end{pmatrix} \qquad \vec{Y} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+    \vec{X} = \begin{pmatrix} X_1 \\ X_2 \\ X_3 \end{pmatrix} \qquad \vec{Y} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
   \]
   A matrix $H$ represents the neural network, say
   \[
-  H = \begin{pmatrix}
-     0.375 & -0.125 & -0.125 \\
-     0.125 & 0.625 & 0.625
-  \end{pmatrix}
-  \quad \text{and we find} \quad
-  H\vec{X} =
-  \begin{pmatrix}
-    0.288 \\
-    0.163
-  \end{pmatrix}
+    H = \begin{pmatrix}
+      0.375 & -0.125 & -0.125 \\
+      0.125 & 0.625 & 0.625
+    \end{pmatrix}
+    \quad \text{and we find} \quad
+    H\vec{X} =
+    \begin{pmatrix}
+      0.288 \\
+      0.163
+    \end{pmatrix}
   \]
   for some $X$.  Interpret this result and represent this matrix
   equation as a system of equations.
   \begin{explanation}
     Since vector
     \[
-    \vec{Y} =
-    \begin{pmatrix}
-    \answer[given]{0.288} \\
-    \answer[given]{0.163}
-    \end{pmatrix}
+      \vec{Y} =
+      \begin{pmatrix}
+        \answer[given]{0.288} \\
+        \answer[given]{0.163}
+      \end{pmatrix}
     \]
     We see that the drawn pattern, represented by $X_1$, $X_2$, and
     $X_3$, is likely the
     \wordChoice{\choice[correct]{correct}\choice{incorrect}} pattern.
     Writing
     \[
-    H\vec{X} =
-  \begin{pmatrix}
-    0.288 \\
-    0.163
-  \end{pmatrix}
-  \]
-  corresponds to the system of equations:
-  \begin{align*}
-    \left(\answer[given]{0.375}\right)X_1 +  \left(\answer[given]{-0.125}\right) X_2 + \left(\answer[given]{-0.125}\right) X_3 &= 0.288 \\
-    \left(\answer[given]{0.125}\right)X_1 + \left(\answer[given]{0.625}\right) X_2+  \left(\answer[given]{0.625}\right)X_3 &= 0.163
-  \end{align*}
+      H\vec{X} =
+      \begin{pmatrix}
+        0.288 \\
+        0.163
+      \end{pmatrix}
+    \]
+    corresponds to the system of equations:
+    \begin{align*}
+      \left(\answer[given]{0.375}\right)X_1 +  \left(\answer[given]{-0.125}\right) X_2 + \left(\answer[given]{-0.125}\right) X_3 &= 0.288 \\
+      \left(\answer[given]{0.125}\right)X_1 + \left(\answer[given]{0.625}\right) X_2+  \left(\answer[given]{0.625}\right)X_3 &= 0.163
+    \end{align*}
   \end{explanation}
 \end{example}
 
 
 
-  Networks, not to be confused with \textit{neural} networks, have
-  numerous applications, from traffic networks to circuits, to actual computer networks.
+Networks, not to be confused with \textit{neural} networks, have
+numerous applications, from traffic networks to circuits, to actual computer networks.
 
 
 
 \begin{example}[Network Analysis]
   A network is composed of nodes and directed edges, describing a
   ``flow'' into each node and a ``flow'' out of each node.
-\begin{center}
-\begin{tikzpicture}[scale=2]
-\begin{scope}[very thick,decoration={
-    markings,
-    mark=at position 0.5 with {\arrow{>}}}
-    ]
-\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
-% vertices
-\node[vertex] (a) at  (-1,1.7) {$A$};
-\node[vertex] (b) at  (1,1.7) {$B$};
-\node[vertex] (c) at  (0,0) {$C$};
-%edges
-\draw[postaction={decorate}] (a) to[bend right] node[below left] {$30$}  (c);
-\draw[postaction={decorate}] (c) to[bend right] node[below right] {$40$} (b);
-\draw[postaction={decorate}] (b) to[bend right] node[above] {$20$} (a);
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \begin{scope}[very thick,decoration={
+          markings,
+          mark=at position 0.5 with {\arrow{>}}}
+        ]
+        \tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+        % vertices
+        \node[vertex] (a) at  (-1,1.7) {$A$};
+        \node[vertex] (b) at  (1,1.7) {$B$};
+        \node[vertex] (c) at  (0,0) {$C$};
+        % edges
+        \draw[postaction={decorate}] (a) to[bend right] node[below left] {$30$}  (c);
+        \draw[postaction={decorate}] (c) to[bend right] node[below right] {$40$} (b);
+        \draw[postaction={decorate}] (b) to[bend right] node[above] {$20$} (a);
 
 
-\draw[postaction={decorate}] (a) to[bend left] node[below left] {$2x_2$} (c);
-\draw[postaction={decorate}] (a) to[bend right] node[above] {$x_1$} (b);
-\draw[postaction={decorate}] (b) to[bend right] node[below right] {$x_3$} (c);
-\end{scope}
-\end{tikzpicture}
-\end{center}
-It is of critical importance that \textbf{flow into a node equals the
-  flow out of a node}. So for example, the flow into node $A$ above is
-$20$. However, the flow out of $A$ is $x_{1} + 2x_{2} + 30$. Hence
-\[
-20  = x_{1} + 2x_{2} + 30.
-\]
-Write an equation for the remaining nodes and express the system of
-equations as a matrix multipled by a vector.
-\begin{explanation}
-  First we write the equations, remember that the flow into a node
-  equals the flow out of a node:
-  \begin{align*}
-    20 &= x_{1} + 2x_{2} + 30 & & (A)\\
-    x_{1} + \left(\answer[given]{40}\right) &= x_{3} + 20 & & (B) \\
-    2x_{2} + x_{3} + \left(\answer[given]{30}\right) &= 40  & & (C)
-  \end{align*}
-  leading to:
-  \begin{align*}
-    x_{1}+2x_{2} &= \answer[given]{-10}\\
-    x_{1} -x_{3}&= \answer[given]{-20}\\
-    2x_{2} + x_{3}  &= \answer[given]{10}
-  \end{align*}
-  %% TK: The following may be tedious to code but column alignment
-  %% makes it instantly clear to write out the coefficient matrix
-  %% without errors. Any suggestions on pretty typesetting of a system
-  %% of equations are welcome.
-  % \begin{equation*}
-  %   \begin{array}{*{7}{@{}c@{}}}
-  %     x_1  & {}+{}  & 2 x_2  &    &      & {}\mathrel{=}{}  & \answer[given]{-10} \\
-  %     x_1  &    &        & {}-{}  & x_3  & {}\mathrel{=}{}  & \answer[given]{-20} \\
-  %          &    & 2 x_2  & {}+{}  & x_3  & {}\mathrel{=}{}  & \answer[given]{10}
-  %   \end{array}
-  % \end{equation*}
-  Setting
+        \draw[postaction={decorate}] (a) to[bend left] node[below left] {$2x_2$} (c);
+        \draw[postaction={decorate}] (a) to[bend right] node[above] {$x_1$} (b);
+        \draw[postaction={decorate}] (b) to[bend right] node[below right] {$x_3$} (c);
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  It is of critical importance that \textbf{flow into a node equals the
+    flow out of a node}. So for example, the flow into node $A$ above is
+  $20$. However, the flow out of $A$ is $x_{1} + 2x_{2} + 30$. Hence
   \[
-  A = \begin{pmatrix}
-    1 & 2 & 0\\
-    1 & \answer[given]{0} & -1 \\
-    \answer[given]{0} & \answer[given]{2} & 1
-  \end{pmatrix},
-  \quad
-  \vec{x} =
-  \begin{pmatrix}
-    x_1\\
-    x_2\\
-    x_3
-  \end{pmatrix},
-  \quad
-  \vec{b} =
-  \begin{pmatrix}
-    \answer[given]{-10}\\
-    \answer[given]{-20}\\
-     \answer[given]{10}
-  \end{pmatrix}
+    20  = x_{1} + 2x_{2} + 30.
   \]
-  We may express this system of equations as $A\vec{x} = \vec{b}$.
-\end{explanation}
+  Write an equation for the remaining nodes and express the system of
+  equations as a matrix multipled by a vector.
+  \begin{explanation}
+    First we write the equations, remember that the flow into a node
+    equals the flow out of a node:
+    \begin{align*}
+      20 &= x_{1} + 2x_{2} + 30 & & (A)\\
+      x_{1} + \left(\answer[given]{40}\right) &= x_{3} + 20 & & (B) \\
+      2x_{2} + x_{3} + \left(\answer[given]{30}\right) &= 40  & & (C)
+    \end{align*}
+    leading to:
+    \begin{align*}
+      x_{1}+2x_{2} &= \answer[given]{-10}\\
+      x_{1} -x_{3}&= \answer[given]{-20}\\
+      2x_{2} + x_{3}  &= \answer[given]{10}
+    \end{align*}
+    %% TK: The following may be tedious to code but column alignment
+    %% makes it instantly clear to write out the coefficient matrix
+    %% without errors. Any suggestions on pretty typesetting of a system
+    %% of equations are welcome.
+    % \begin{equation*}
+    %   \begin{array}{*{7}{@{}c@{}}}
+    %     x_1  & {}+{}  & 2 x_2  &    &      & {}\mathrel{=}{}  & \answer[given]{-10} \\
+    %     x_1  &    &        & {}-{}  & x_3  & {}\mathrel{=}{}  & \answer[given]{-20} \\
+    %     &    & 2 x_2  & {}+{}  & x_3  & {}\mathrel{=}{}  & \answer[given]{10}
+    %   \end{array}
+    % \end{equation*}
+    Setting
+    \[
+      A = \begin{pmatrix}
+        1 & 2 & 0\\
+        1 & \answer[given]{0} & -1 \\
+        \answer[given]{0} & \answer[given]{2} & 1
+      \end{pmatrix},
+      \quad
+      \vec{x} =
+      \begin{pmatrix}
+        x_1\\
+        x_2\\
+        x_3
+      \end{pmatrix},
+      \quad
+      \vec{b} =
+      \begin{pmatrix}
+        \answer[given]{-10}\\
+        \answer[given]{-20}\\
+        \answer[given]{10}
+      \end{pmatrix}
+    \]
+    We may express this system of equations as $A\vec{x} = \vec{b}$.
+  \end{explanation}
 \end{example}
 
 
@@ -818,75 +863,75 @@ matrices can be multiplied together. As a general rule, we can only
 multiply a $m \times n$ matrix by a $k \times \l$ matrix matrix if
 $n=k$. That is if \textbf{the middle two numbers match}:
 \[
-\begin{matrix}
-\begin{pmatrix}
-    \bullet & \bullet & \bullet & \bullet & \bullet\\
-    \bullet & \bullet & \bullet & \bullet & \bullet\\
-\end{pmatrix}
-&
-\begin{pmatrix}
-    \bullet & \bullet &\bullet \\\bullet & \bullet & \bullet \\  \bullet & \bullet & \bullet \\\bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{pmatrix} &= &
-\begin{pmatrix}
-  \bullet & \bullet &\bullet \\\bullet & \bullet &  \bullet
-\end{pmatrix}\\
-\begin{pmatrix}
-  m\times n\\
-  \text{matrix}
-\end{pmatrix} &
-\begin{pmatrix}
-  n\times \l\\
-  \text{matrix}
-\end{pmatrix}
-&= & \begin{pmatrix}
-  m\times \l\\
-  \text{matrix}
-\end{pmatrix}
-\end{matrix}
+  \begin{matrix}
+    \begin{pmatrix}
+      \bullet & \bullet & \bullet & \bullet & \bullet\\
+      \bullet & \bullet & \bullet & \bullet & \bullet\\
+    \end{pmatrix}
+    &
+      \begin{pmatrix}
+        \bullet & \bullet &\bullet \\\bullet & \bullet & \bullet \\  \bullet & \bullet & \bullet \\\bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{pmatrix} &= &
+                                                                                                                                                                                 \begin{pmatrix}
+                                                                                                                                                                                   \bullet & \bullet &\bullet \\\bullet & \bullet &  \bullet
+                                                                                                                                                                                 \end{pmatrix}\\
+    \begin{pmatrix}
+      m\times n\\
+      \text{matrix}
+    \end{pmatrix} &
+                    \begin{pmatrix}
+                      n\times \l\\
+                      \text{matrix}
+                    \end{pmatrix}
+    &= & \begin{pmatrix}
+      m\times \l\\
+      \text{matrix}
+    \end{pmatrix}
+  \end{matrix}
 \]
 The product then turns out to be a matrix of size $m\times \ell$, \textbf{the
-outside numbers}.
+  outside numbers}.
 
 \begin{question}
   Given three matrices
   \[
-  A =\begin{pmatrix}
-1 & -2 & 3 \\
-0 & 5 & -6 \\
--7 & 8 & 0
-\end{pmatrix},\quad B =\begin{pmatrix}
-1 & 0 \\
--3 & 4 \\
-5 & -6
-\end{pmatrix}, \quad C =\begin{pmatrix}
-0 & -2 & 3 \\
-4 & 0 & -6
-\end{pmatrix}\quad
+    A =\begin{pmatrix}
+      1 & -2 & 3 \\
+      0 & 5 & -6 \\
+      -7 & 8 & 0
+    \end{pmatrix},\quad B =\begin{pmatrix}
+      1 & 0 \\
+      -3 & 4 \\
+      5 & -6
+    \end{pmatrix}, \quad C =\begin{pmatrix}
+      0 & -2 & 3 \\
+      4 & 0 & -6
+    \end{pmatrix}\quad
   \]
   which of the following make sense?
   \begin{selectAll}\pdfOnly{\begin{multicols}{3}}
-    \choice[correct]{$AA$}
-    \choice[correct]{$AB$}
-    \choice{$AC$}
-    \choice{$BA$}
-    \choice{$BB$}
-    \choice[correct]{$BC$}
-    \choice[correct]{$CA$}
-    \choice[correct]{$CB$}
-    \choice{$CC$}
-    \pdfOnly{\end{multicols}}
+      \choice[correct]{$AA$}
+      \choice[correct]{$AB$}
+      \choice{$AC$}
+      \choice{$BA$}
+      \choice{$BB$}
+      \choice[correct]{$BC$}
+      \choice[correct]{$CA$}
+      \choice[correct]{$CB$}
+      \choice{$CC$}
+      \pdfOnly{\end{multicols}}
   \end{selectAll}
   \begin{question}
     What are the dimensions of the products?
     \pdfOnly{\begin{multicols}{3}}
-    \begin{enumerate}
-    \item $AA$\begin{prompt}~is a $\answer{3}\times\answer{3}$ matrix.\end{prompt}
-    \item $AB$\begin{prompt}~is a $\answer{3}\times\answer{2}$ matrix.\end{prompt}
-    \item $BC$\begin{prompt}~is a $\answer{3}\times\answer{3}$ matrix.\end{prompt}
-    \item $CA$\begin{prompt}~is a $\answer{2}\times\answer{3}$ matrix.\end{prompt}
-    \item $CB$\begin{prompt}~is a $\answer{2}\times\answer{2}$ matrix.\end{prompt}
-    \item $ABC$\begin{prompt}~is a $\answer{2}\times\answer{2}$ matrix.\end{prompt}
-    \end{enumerate}
-    \pdfOnly{\end{multicols}}
+      \begin{enumerate}
+      \item $AA$\begin{prompt}~is a $\answer{3}\times\answer{3}$ matrix.\end{prompt}
+      \item $AB$\begin{prompt}~is a $\answer{3}\times\answer{2}$ matrix.\end{prompt}
+      \item $BC$\begin{prompt}~is a $\answer{3}\times\answer{3}$ matrix.\end{prompt}
+      \item $CA$\begin{prompt}~is a $\answer{2}\times\answer{3}$ matrix.\end{prompt}
+      \item $CB$\begin{prompt}~is a $\answer{2}\times\answer{2}$ matrix.\end{prompt}
+      \item $ABC$\begin{prompt}~is a $\answer{2}\times\answer{2}$ matrix.\end{prompt}
+      \end{enumerate}
+      \pdfOnly{\end{multicols}}
   \end{question}
 \end{question}
 
@@ -898,50 +943,50 @@ outside numbers}.
 We can extend the concept of the dot product to explain how to
 multiply a matrix by another matrix. Here is an example:
 \begin{align*}AB &= \begin{pmatrix}
-a_{1,1} & a_{1,2}\\
-a_{2,1} & a_{2,2}
+  a_{1,1} & a_{1,2}\\
+  a_{2,1} & a_{2,2}
 \end{pmatrix}
-\begin{pmatrix}
-b_{1,1} & b_{1,2}\\
-b_{2,1} & b_{2,2}
-\end{pmatrix}\\
-&= \begin{pmatrix}
-\row_1(A)^\transpose \dotp\col_1(B) & \row_1(A)^\transpose\dotp\col_2(B)\\
-\row_2(A)^\transpose \dotp\col_1(B) & \row_2(A)^\transpose\dotp\col_2(B)
-\end{pmatrix}\\
-&= \begin{pmatrix}
-a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
-a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
-\end{pmatrix}
+                   \begin{pmatrix}
+                     b_{1,1} & b_{1,2}\\
+                     b_{2,1} & b_{2,2}
+                   \end{pmatrix}\\
+                 &= \begin{pmatrix}
+                   \row_1(A)^\transpose \dotp\col_1(B) & \row_1(A)^\transpose\dotp\col_2(B)\\
+                   \row_2(A)^\transpose \dotp\col_1(B) & \row_2(A)^\transpose\dotp\col_2(B)
+                 \end{pmatrix}\\
+                 &= \begin{pmatrix}
+                   a_{1,1}b_{1,1} + a_{1,2}b_{2,1} & a_{1,1}b_{1,2}+ a_{1,2}b_{2,2}\\
+                   a_{2,1}b_{1,1} + a_{2,2}b_{2,1} & a_{2,1}b_{1,2} + a_{2,2}b_{2,2}
+                 \end{pmatrix}
 \end{align*}
 We attempt to describe the structure of this product in the diagram below:
 \begin{center}
-\begin{tikzpicture}[]
-     \matrix (matA) [%
-       matrix of nodes,
-       left delimiter={(},right delimiter={)}
-     ]
-      {%
-        \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
-        \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
-      };
-      \draw[black,ultra thick,line cap=round] (matA-1-1.west)  -- (matA-1-5.east);
-      \draw[black,ultra thick,line cap=round] (matA-2-1.west) -- (matA-2-5.east);
+  \begin{tikzpicture}[]
+    \matrix (matA) [%
+    matrix of nodes,
+    left delimiter={(},right delimiter={)}
+    ]
+    {%
+      \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
+      \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$}\\
+    };
+    \draw[black,ultra thick,line cap=round] (matA-1-1.west)  -- (matA-1-5.east);
+    \draw[black,ultra thick,line cap=round] (matA-2-1.west) -- (matA-2-5.east);
 
-      \matrix (matB) [%
-        matrix of nodes,right= of matA,
-       left delimiter={(},right delimiter={)}
-     ]
-      {%
-        \phantom{$\bullet$} & \phantom{$\bullet$} &\phantom{$\bullet$} \\\phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\  \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\\phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\ \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\
-      };
-      \draw[black,ultra thick,line cap=round] (matB-1-1.north)  -- (matB-5-1.south);
-      \draw[black,ultra thick,line cap=round] (matB-1-2.north) -- (matB-5-2.south);
-      \draw[black,ultra thick,line cap=round] (matB-1-3.north) -- (matB-5-3.south);
+    \matrix (matB) [%
+    matrix of nodes,right= of matA,
+    left delimiter={(},right delimiter={)}
+    ]
+    {%
+      \phantom{$\bullet$} & \phantom{$\bullet$} &\phantom{$\bullet$} \\\phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\  \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\\phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\ \phantom{$\bullet$} & \phantom{$\bullet$} & \phantom{$\bullet$} \\
+    };
+    \draw[black,ultra thick,line cap=round] (matB-1-1.north)  -- (matB-5-1.south);
+    \draw[black,ultra thick,line cap=round] (matB-1-2.north) -- (matB-5-2.south);
+    \draw[black,ultra thick,line cap=round] (matB-1-3.north) -- (matB-5-3.south);
 
-      \node[right=2ex of matB] {$=\begin{pmatrix}
-  \boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &\boldsymbol{-}^\transpose\dotp\boldsymbol{|} \\\boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &  \boldsymbol{-}^\transpose\dotp\boldsymbol{|}
-\end{pmatrix}$};
+    \node[right=2ex of matB] {$=\begin{pmatrix}
+      \boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &\boldsymbol{-}^\transpose\dotp\boldsymbol{|} \\\boldsymbol{-}^\transpose\dotp\boldsymbol{|} & \boldsymbol{-}^\transpose\dotp\boldsymbol{|} &  \boldsymbol{-}^\transpose\dotp\boldsymbol{|}
+    \end{pmatrix}$};
 \end{tikzpicture}
 \end{center}
 Above the strange symbols
@@ -950,27 +995,27 @@ represent the transpose of the rows of $A$ being dotted with the
 columns of $B$. Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
 \l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
 \[
-C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
+  C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 \]
 \begin{question} If
   \[
-  A = \begin{pmatrix}
-1 & -2 & 3 & 0 & -1 \\
-4 & 0 & -5 & 6 & -7
-  \end{pmatrix}\quad\text{and}\quad
-  B=
-  \begin{pmatrix}
-1 & -2 & 3 \\
-0 & 5 & -6 \\
--7 & 8 & 0 \\
-4 & -5 & 6 \\
--1 & 2 & 1
-\end{pmatrix}
+    A = \begin{pmatrix}
+      1 & -2 & 3 & 0 & -1 \\
+      4 & 0 & -5 & 6 & -7
+    \end{pmatrix}\quad\text{and}\quad
+    B=
+    \begin{pmatrix}
+      1 & -2 & 3 \\
+      0 & 5 & -6 \\
+      -7 & 8 & 0 \\
+      4 & -5 & 6 \\
+      -1 & 2 & 1
+    \end{pmatrix}
   \]
   and $C = AB$, what is $C_{2,3}$?
   \begin{prompt}
     \[
-    C_{2,3} = \answer{41}
+      C_{2,3} = \answer{41}
     \]
   \end{prompt}
 \end{question}
@@ -992,7 +1037,7 @@ C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
 
 %% Another viewpoint is to build the product as columns.
 %% \begin{align*}AB &= \begin{pmatrix}
-%% a_{1,1} & a_{1,2}\\
+  %%   a_{1,1} & a_{1,2}\\
 %% a_{2,1} & a_{2,2}
 %% \end{pmatrix}
 %% \begin{pmatrix}

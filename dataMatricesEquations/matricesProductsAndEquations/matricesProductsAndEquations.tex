@@ -1526,8 +1526,14 @@ this is technically called \link[modular arithmetic]{https://en.wikipedia.org/wi
 is extemely useful in code making and code breaking.
 
 \begin{question}
-  Thinking of letters on a wheel above, compute the following, giving your answer as a letter:
-  \
+  Thinking of letters on a wheel above, compute the following, giving your answer as a letters:
+  \begin{enumerate}
+    \pdfOnly{\begin{multicols}{3}}
+    \item $\texttt{L} + \texttt{M} + \texttt{N} \begin{prompt}= \answer[format=string]{K}\end{prompt}$
+    \item $2\cdot \texttt{X} \begin{prompt}= \answer[format=string]{U}\end{prompt}$
+    \item $3\cdot \texttt{F} + 2\cdot\texttt{K} \begin{prompt}= \answer[format=string]{J}\end{prompt}$
+    \pdfOnly{\end{multicols}}
+  \end{enumerate}
 \end{question}
 
 Once you are comfortable ``adding'' letters on a wheel, we can make a cypher. 
@@ -1557,7 +1563,28 @@ Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
   \]
  Compute $C\vec{m}$, thus encoding the message.
  \begin{explanation}
-   In this case, 
+   All we need to do is a compuation, write with me:
+   \[
+   \begin{pmatrix}
+ 1 & 0 & 3 & 1 \\
+ 2 & 3 & 0 & 1 \\
+ 0 & 3 & 1 & 0 \\
+ 2 & 3 & 2 & 2
+   \end{pmatrix}
+   \begin{pmatrix}
+    \texttt M\\
+    \texttt A\\
+    \texttt T\\
+    \texttt H
+   \end{pmatrix}
+   =
+     \begin{pmatrix}
+    \pdfOnly{\tt}\answer[given,format=string]{Y}\\
+    \pdfOnly{\tt}\answer[given,format=string]{F}\\
+    \pdfOnly{\tt}\answer[given,format=string]{T}\\
+    \pdfOnly{\tt}\answer[given,format=string]{Y}
+   \end{pmatrix}
+   \]
  \end{explanation}
 \end{example}
 
@@ -1607,33 +1634,24 @@ Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
 
 
 \section{Types of matrices}
-Earlier, we introduced the transpose of a vector:
+Earlier, we introduced the transpose of a vector. The same concept
+also applies to any matrix.
 \[
-\vec{u} = \left(\begin{array}{ccc}
-1 & -1 & 0
-\end{array}\right)
-\hspace{.4cm}\Rightarrow\hspace{.4cm}
-\vec{u}^{\transpose} = \begin{pmatrix}
-1\\
--1\\
-0
-\end{pmatrix}
-\]
-So transpose switched a $\left(1\times 3\right)$- matrix to a $\left(3\times 1\right)$- matrix. The same concept applies to any larger matrix. The transpose operation switches all the rows to columns:
-\[
-A = \left(\begin{array}{ccc}
+A = \begin{pmatrix}
 2 & -1 & 0\\
 -3 & 4 & 5\\
 1 & -2 & 0
-\end{array}\right)
-\hspace{.4cm}\Rightarrow\hspace{.4cm}
-A^{\transpose} = \left(\begin{array}{ccc}
+\end{pmatrix}
+\quad\Rightarrow\quad
+A^{\transpose} = \begin{pmatrix}
 2 & -3 & 1\\
 -1 & 4 & -2\\
 0& 5 & 0
-\end{array}\right)
+\end{pmatrix}
 \]
-Thus, the first row of $A$ becomes the first column of $A^{\transpose}$ and the second row of $A$ becomes the second column of $A^{\transpose}$ and so forth.
+The transpose operation switches all the rows to columns: Thus, the
+first row of $A$ becomes the first column of $A^{\transpose}$ and the
+second row of $A$ becomes the second column of $A^{\transpose}$ and so on.
 \begin{question}
 If
 \[A= \left(\begin{array}{ccc}
@@ -1659,92 +1677,15 @@ Find $A^{\transpose}$ and $B^{\transpose}$.
 \end{prompt}
 \end{question}
 
-\begin{question}
-If
+
+As in vectors, for any matrices $A$ and $B$,
+$(A^{\transpose})^{\transpose} = A$ and $(A+ B)^{\transpose} =
+A^{\transpose} + B^{\transpose}$. Another property of transpose
+operation which is often used is
 \[
-A= \left(\begin{array}{ccc}
--3 & 0 & 1\\
-4 & 0 & 2\\
--1 & 5 & 0
-\end{array}\right), \hspace{.5cm}
-B = \left(\begin{array}{ccc}
-1 & -1 & 0\\
-0 & 2 & 1\\
--3 & 4 & 0
-\end{array}\right)\]
-Compute the following. \\
-
-a. $2A^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
-\answer[given]{-6} & \answer[given]{8}& \answer[given]{-2}\\
-\answer[given]{0} & \answer[given]{0}& \answer[given]{10}\\
-\answer[given]{2} & \answer[given]{4}& \answer[given]{0}
-\end{array}\right)\]\end{prompt}\\
-
-b. $AB^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
-\answer[given]{-3} & \answer[given]{1}& \answer[given]{9}\\
-\answer[given]{4} & \answer[given]{2}& \answer[given]{-12}\\
-\answer[given]{-6} & \answer[given]{10}& \answer[given]{23}
-\end{array}\right)\]\end{prompt}\\
-
-c. $A^{\transpose} + AB$ \begin{prompt} \[=\left(\begin{array}{ccc}
-\answer[given]{-9} & \answer[given]{11}& \answer[given]{-1}\\
-\answer[given]{-2} & \answer[given]{4}& \answer[given]{5}\\
-\answer[given]{0} & \answer[given]{13}& \answer[given]{5}
-\end{array}\right)\]\end{prompt}
-\end{question}
-
-As in vectors, for any matrices $A$ and $B$, $\left(A^{\transpose}\right)^{\transpose} = A$ and $\left(A+ B\right)^{\transpose} = A^{\transpose} + B^{\transpose}$. Another property of transpose operation which is often used is
-\[
-\left(AB\right)^{\transpose} = B^{\transpose} A^{\transpose}
+\left(BA\right)^{\transpose} = A^{\transpose} B^{\transpose}
 \]
 Thus, their order changes after taking the transpose of each.
-\begin{question}
-Let
-\[
-A= \left(\begin{array}{cc}
-2 & -1 \\
-3 & 4
-\end{array}\right), \hspace{.5cm} B = \left(\begin{array}{cc}
-7 & 5 \\
-0 & 1
-\end{array}\right)
-\]
-Find $\left(AB\right)^{\transpose}$ and compare it with $B^{\transpose}A^{\transpose}$.
-
-\begin{prompt}
-\[
-AB = \left(\begin{array}{cc}
-\answer[given]{14} & \answer[given]{9}\\
-\answer[given]{21} & \answer[given]{19}
-\end{array}\right)
-\hspace{.4cm} \Rightarrow \hspace{.4cm}
-\left(AB\right)^{\transpose} = \left(\begin{array}{cc}
-\answer[given]{14} & \answer[given]{21}\\
-\answer[given]{9} & \answer[given]{19}
-\end{array}\right)
-\]
-\[
-A^{\transpose}= \left(\begin{array}{cc}
-\answer[given]{2} & \answer[given]{3}\\
-\answer[given]{-1} & \answer[given]{4}
-\end{array}\right), \hspace{.5cm}
-B^{\transpose} = \left(\begin{array}{cc}
-\answer[given]{7} & \answer[given]{0}\\
-\answer[given]{5} & \answer[given]{1}
-\end{array}\right)
-\hspace{.4cm} \Rightarrow \hspace{.4cm}
-B^{\transpose} A^{\transpose}  = \left(\begin{array}{cc}
-\answer[given]{14} & \answer[given]{21}\\
-\answer[given]{9} & \answer[given]{19}
-\end{array}\right)
-\]
-\end{prompt}
-\end{question}
-
-
-
-
-
 
 
 
@@ -1767,20 +1708,6 @@ B^{\transpose} A^{\transpose}  = \left(\begin{array}{cc}
     \end{align*}
   \end{explanation}
 \end{proposition}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Let us explore some types of matrices that usually are used in linear

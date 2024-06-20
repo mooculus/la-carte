@@ -1418,9 +1418,15 @@ transform data.
   transform RGB color to $YC_BC_R$ is to write
   \[
   \begin{pmatrix}
-        0.2126  &  0.7152  &  0.0722 \\
-   -0.1146 & -0.3854 &  0.5 \\
-    0.5   & -0.4542 & -0.0458
+    0\\
+    128\\
+    128
+  \end{pmatrix}
+  +
+  \begin{pmatrix}
+        0.299  &  0.587  &  0.114 \\
+   -0.169 & -0.331 &  0.5 \\
+    0.5   & -0.419 & -0.081
   \end{pmatrix}
   \begin{pmatrix}
     R\\ G \\ B
@@ -1448,7 +1454,35 @@ transform data.
     \node at (2.5,.5) {$C_R$ channel};
     \end{tikzpicture}
     \end{center}
-Note how little detail is showing in the $C_b$ and $C_r$ channels. 
+    Note how little detail is showing in the $C_b$ and $C_r$ channels.
+
+
+    In the RGB color image, the pixel at $(229,405)$ has an RGB value of
+    \[
+    \begin{pmatrix} 40 & 72 & 60 \end{pmatrix}^\transpose
+    \]
+    What are the $YC_BC_R$ values for this pixel?
+    \begin{explanation}
+      To find the  $YC_BC_R$, we compute
+      \begin{align*}
+      \begin{pmatrix}
+        0\\
+        128\\
+        128
+  \end{pmatrix}+\begin{pmatrix}
+          0.299  &  0.587  &  0.114 \\
+          -0.169 & -0.331 &  0.5 \\
+          0.5   & -0.419 & -0.081
+        \end{pmatrix} \begin{pmatrix} 40 \\ 72 \\ 60 \end{pmatrix}
+        &=
+         \begin{pmatrix}
+        0\\
+        128\\
+        128
+         \end{pmatrix}+\begin{pmatrix} \answer[given]{61.06} \\ \answer[given]{-0.59} \\ \answer[given]{-15.03} \end{pmatrix}\\
+         &= \begin{pmatrix} \answer[given]{61.06} \\ \answer[given]{127.41} \\ \answer[given]{112.97} \end{pmatrix}
+        \end{align*}
+    \end{explanation}
 \end{example}
 
 

@@ -1222,18 +1222,18 @@ Do the two multiplications give the same result?
 
 
 
-Since vectors can be viewed as matrices, matrix multiplication applies
-to vectors too.  If $\vec{x}$ and $\vec y$ are $n$-vectors with
-\begin{itemize}
-\item $\vec{x}$ expressed as a row,
-\item $\vec{y}$ expressed as a column,
-\end{itemize}
-then $\vec{y}\vec{x}$ can be inteperted as either a $n\times 1$
-matrix multiplied by a row vector or a column vector multipled by a
-$1\times n$ matrix. In either case the answers are the same, and will be a
-$n\times n$ matrix. This particular form of a vector product in which a
-column vector is multiplied by a row vector resulting in a matrix is
-called the \dfn{outer product}.
+%% Since vectors can be viewed as matrices, matrix multiplication applies
+%% to vectors too.  If $\vec{x}$ and $\vec y$ are $n$-vectors with
+%% \begin{itemize}
+%% \item $\vec{x}$ expressed as a row,
+%% \item $\vec{y}$ expressed as a column,
+%% \end{itemize}
+%% then $\vec{y}\vec{x}$ can be inteperted as either a $n\times 1$
+%% matrix multiplied by a row vector or a column vector multipled by a
+%% $1\times n$ matrix. In either case the answers are the same, and will be a
+%% $n\times n$ matrix. This particular form of a vector product in which a
+%% column vector is multiplied by a row vector resulting in a matrix is
+%% called the \dfn{outer product}.
 
 %% TK: How above we assume that x and y are both column n-vectors and
 %% describe two vector products, namely, the inner product x' * y and
@@ -1241,13 +1241,13 @@ called the \dfn{outer product}.
 Since vectors can be viewed as matrices, matrix multiplication applies
 to vectors too. Suppose $\vec{x}$ and $\vec y$ are column $n$-vectors.
 \begin{description}
-\item[Inner product.] The product $\vec{x}^\transpose \vec{y}$ can be
-  interpreted as either a $1 \times n$ matrix multiplied by an
-  appropriately sized column vector or a row vector multiplied by an
-  $n \times 1$ matrix. Either case results in a $1 \times 1$ matrix, that is, a
-  scalar. This form of a vector product in which a row vector is
-  multiplied by a column vector producing a scalar is called the
-  \dfn{inner product}.
+\item[Inner product.] The product $\vec{x}\dotp\vec{y} =
+  \vec{x}^\transpose \vec{y}$ can be interpreted as either a $1 \times
+  n$ matrix multiplied by an appropriately sized column vector or a
+  row vector multiplied by an $n \times 1$ matrix. Either case results
+  in a $1 \times 1$ matrix, that is, a scalar. This form of a vector
+  product in which a row vector is multiplied by a column vector
+  producing a scalar is called the \dfn{inner product}.
 \item[Outer product.] The product $\vec{x} \vec{y}^\transpose$ can be
   inteperted as either a $n\times 1$ matrix multiplied by a row vector or a
   column vector multipled by a $1\times n$ matrix. In either case the
@@ -1257,6 +1257,8 @@ to vectors too. Suppose $\vec{x}$ and $\vec y$ are column $n$-vectors.
 \end{description}
 
 
+
+We'll use the outer product in our next example.
 
 \begin{example}[Distributions]
   We encode a vectors with various distributions. For example the

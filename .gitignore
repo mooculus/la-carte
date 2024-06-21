@@ -15,6 +15,9 @@ xourse.cls
 *.toc
 *.cls
 *.synctex\(busy\) 
+*.synctex.gz
+*.fdb_latexmk
+*.fls
 
 # Ignore all `auto'-generated directories
 auto/

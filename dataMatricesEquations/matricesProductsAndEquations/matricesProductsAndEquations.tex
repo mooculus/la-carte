@@ -870,9 +870,9 @@ numerous applications, from traffic networks to circuits, to actual computer net
         \answer[given]{-10}\\
         \answer[given]{-20}\\
         \answer[given]{10}
-      \end{pmatrix}
+      \end{pmatrix},
     \]
-    We may express this system of equations as $A\vec{x} = \vec{b}$.
+    we may express this system of equations as $A\vec{x} = \vec{b}$.
   \end{explanation}
 \end{example}
 
@@ -894,36 +894,54 @@ numerous applications, from traffic networks to circuits, to actual computer net
 
 Matrix multiplication may seem strange at first. In fact, only certain
 matrices can be multiplied together. As a general rule, we can only
-multiply a $m \times n$ matrix by a $k \times \l$ matrix matrix if
-$n=k$. That is if \textbf{the middle two numbers match}:
+multiply a $m \times n$ matrix by a $k \times \l$ matrix if $n=k$. That is, the
+number of columns in the first matrix must equal the number of rows in
+the second matrix:
+%% TK: The original explanation is not clear. Though verbose, why
+%% don't we write out clearly what is meant? We are backing it up with
+%% a nice diagram below anyway.
+% That is, if \textbf{the middle two numbers match}: <-- not clear.
 \[
   \begin{matrix}
     \begin{pmatrix}
-      \bullet & \bullet & \bullet & \bullet & \bullet\\
-      \bullet & \bullet & \bullet & \bullet & \bullet\\
+      \bullet & \bullet & \bullet & \bullet & \bullet \\
+      \bullet & \bullet & \bullet & \bullet & \bullet \\
     \end{pmatrix}
     &
       \begin{pmatrix}
-        \bullet & \bullet &\bullet \\\bullet & \bullet & \bullet \\  \bullet & \bullet & \bullet \\\bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{pmatrix} &= &
-                                                                                                                                                                                 \begin{pmatrix}
-                                                                                                                                                                                   \bullet & \bullet &\bullet \\\bullet & \bullet &  \bullet
-                                                                                                                                                                                 \end{pmatrix}\\
+        \bullet & \bullet & \bullet \\
+        \bullet & \bullet & \bullet \\
+        \bullet & \bullet & \bullet \\
+        \bullet & \bullet & \bullet \\
+        \bullet & \bullet & \bullet
+      \end{pmatrix}
+    &=&
+        \begin{pmatrix}
+          \bullet & \bullet & \bullet \\
+          \bullet & \bullet & \bullet
+        \end{pmatrix} \\
+    &&&\\
     \begin{pmatrix}
-      m\times n\\
-      \text{matrix}
-    \end{pmatrix} &
-                    \begin{pmatrix}
-                      n\times \l\\
-                      \text{matrix}
-                    \end{pmatrix}
-    &= & \begin{pmatrix}
-      m\times \l\\
+      \boldsymbol{{\color{penColor2} m} \times {\color{penColor6} \cancel n}} \\
       \text{matrix}
     \end{pmatrix}
+    &
+      \begin{pmatrix}
+        \boldsymbol{{\color{penColor6} \cancel n} \times {\color{penColor4} \l}} \\
+        \text{matrix}
+      \end{pmatrix}
+    &=&
+        \begin{pmatrix}
+          \boldsymbol{{\color{penColor2} m} \times {\color{penColor4}\l}} \\
+          \text{matrix}
+        \end{pmatrix}
   \end{matrix}
 \]
-The product then turns out to be a matrix of size $m\times \ell$, \textbf{the
-  outside numbers}.
+% The product then turns out to be a matrix of size $m\times \ell$, \textbf{the
+% outside numbers}.
+Note that the number of the rows of the product equals that of the
+first matrix, and the number of columns of the product equals that of
+the second matrix.
 
 \begin{question}
   Given three matrices

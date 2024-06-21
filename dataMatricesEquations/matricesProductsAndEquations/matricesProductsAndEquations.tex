@@ -439,43 +439,62 @@ Where $\col_i(M)$ represents the $i$th column of $M$. Note, $\vec{b}M$ is a row 
 
 
 \begin{question}
-  If
+  Let
   \[
     A=\begin{pmatrix}
       2 & 0 & -1\\
       5 & 1 & -2\\
       1 & 0 & 4
-    \end{pmatrix} \quad\text{and}\quad  \vec{v} = \begin{pmatrix}
-      1 \\
+    \end{pmatrix}
+    \quad\text{and}\quad
+    \vec{v} = \begin{pmatrix}
+      1\\
       0\\
       2
-    \end{pmatrix}
+    \end{pmatrix}.
   \]
-  compute the following, if possible.
+  Compute the following, if possible.
   \begin{prompt} Write ``NA'' for each entry if the multiplication is not possible.\end{prompt}
   \begin{enumerate}
     \pdfOnly{\begin{multicols}{4}}
-    \item $\vec{v} A$ \begin{prompt}
-        \[=\begin{pmatrix}
-          \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}\\ \answer[given,format=string]{NA}
-        \end{pmatrix}\]
-    \end{prompt}
-  \item $A\vec{v}$ \begin{prompt} \[= \begin{pmatrix}
-    \answer[given]{0}\\
-    \answer[given]{-4}\\
-    \answer[given]{9}
-  \end{pmatrix}\]\end{prompt}
-\item $\vec{v}^{\transpose} A$ \begin{prompt} \[= \begin{pmatrix}
-  \answer[given]{2} & \answer[given]{0} & \answer[given]{7}
-\end{pmatrix}
-\]
-\end{prompt}
-\item $A\vec{v}^{\transpose}$ \begin{prompt} \[= \left(\begin{array}{ccc}
-  \answer[given,format= string]{NA} & \answer[given,format= string]{NA} & \answer[given,format= string]{NA}
-\end{array}\right)\]
-\end{prompt}
-\pdfOnly{\end{multicols}}
-\end{enumerate}
+    \item $\vec{v} A$
+      \begin{prompt}
+        \[
+          =\begin{pmatrix}
+            \answer[given,format=string]{NA}\\
+            \answer[given,format=string]{NA}\\
+            \answer[given,format=string]{NA}
+          \end{pmatrix}
+        \]
+      \end{prompt}
+    \item $A\vec{v}$
+      \begin{prompt}
+        \[
+          = \begin{pmatrix}
+            \answer[given]{0}\\
+            \answer[given]{-4}\\
+            \answer[given]{9}
+          \end{pmatrix}
+        \]
+      \end{prompt}
+    \item $\vec{v}^{\transpose} A$
+      \begin{prompt}
+        \[
+          = \begin{pmatrix}
+            \answer[given]{2} & \answer[given]{0} & \answer[given]{7}
+          \end{pmatrix}
+        \]
+      \end{prompt}
+    \item $A\vec{v}^{\transpose}$
+      \begin{prompt}
+        \[
+          = \begin{pmatrix}
+            \answer[given,format= string]{NA} & \answer[given,format= string]{NA} & \answer[given,format= string]{NA}
+          \end{pmatrix}
+        \]
+      \end{prompt}
+    \pdfOnly{\end{multicols}}
+  \end{enumerate}
 \end{question}
 
 Our next proposition relates the transpose and the dot product.

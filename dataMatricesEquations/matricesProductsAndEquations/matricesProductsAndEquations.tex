@@ -554,31 +554,43 @@ Our next proposition relates the transpose and the dot product.
   whopping $480000$ entries, the matrix representing this image is too
   large to conveniently express, so let's just call it $C$, for
   \textit{cat}; or perhaps \textit{convenient}.  Explain how to
-  express $C_{i,j}$ as a product of $C$ and vectors of the forms:
+  express $c_{ij}$ as a product of $C$ and vectors of the forms:
   \begin{itemize}
   \item A $600$-vector expressed as a row
     \[
-      \vec r_i = \underbrace{\begin{pmatrix} 0 & \cdots  & 0 & 1 & 0 & \cdots & 0 \end{pmatrix}}_{\text{all entries are zero except for the $i$th}}
+      \vec r_i^\transpose =
+      \underbrace{
+        \begin{pmatrix} 0 & \cdots  & 0 & 1 & 0 & \cdots & 0 \end{pmatrix}
+      }_{
+        \begin{matrix}
+          \displaystyle \text{all entries are zero} \\
+          \displaystyle \text{ except for the $i$th}
+        \end{matrix}
+      }
     \]
   \item A $800$-vector expressed as a column
     \[
-      \vec c_j=\begin{pmatrix} 0 \\ \vdots  \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}\quad \begin{matrix}
+      \vec c_j = \left.
+        \begin{pmatrix} 0 \\ \vdots  \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+      \right\}
+      \quad
+      \begin{matrix}
         \text{all entries are zero}\\
         \text{except for the $j$th}
       \end{matrix}
     \]
   \end{itemize}
   \begin{explanation}
-    First note that $\vec r_i C$ computes the $i$th
+    First note that $\vec r_i^\transpose C$ computes the $i$th
     \wordChoice{\choice[correct]{row}\choice{column}} of the matrix
-    $C$. With this saide, On the other hand $(\vec r_i C)\vec c_j$ computes the $j$th
+    $C$. On the other hand, $(\vec r_i^\transpose C)\vec c_j$ computes the $j$th
     \wordChoice{\choice{row}\choice[correct]{column}} of the matrix
-    $\vec r_i C$. Hence
+    $\vec r_i^\transpose C$. Hence
     \[
-      \vec r_i C\vec{c}_j
+      \vec r_i^\transpose C \vec{c}_j
     \]
-    computes $C_{i,j}$. In other words, the operation
-    $\vec{r}_i C \vec{c}_j$ extracts the grayscale information of the
+    computes $c_{ij}$. In other words, the operation
+    $\vec{r}_i^\transpose C \vec{c}_j$ extracts the grayscale information of the
     pixel on the $i$th row and the $j$th column of the image.
   \end{explanation}
 \end{example}
@@ -642,7 +654,7 @@ can be written as
     8
   \end{pmatrix}
 \]
-as multiplying the left-hand side above we have,
+as multiplying the left-hand side above we have
 \[
   \begin{pmatrix}
     4x+2y+z\\
@@ -652,7 +664,7 @@ as multiplying the left-hand side above we have,
     5\\
     6\\
     8
-  \end{pmatrix}
+  \end{pmatrix}.
 \]
 With this in mind, it is common to write
 \[
@@ -661,11 +673,11 @@ With this in mind, it is common to write
     2 & 3 & 0\\
     0 & 5 & -1
   \end{pmatrix},\quad\vec x = \begin{pmatrix} x \\ y \\ z\end{pmatrix},
-  \quad\vec b = \begin{pmatrix} 5 \\6\\8\end{pmatrix}
+  \quad\vec b = \begin{pmatrix} 5 \\6\\8\end{pmatrix},
 \]
 allowing us to write large systems of equations quite compactly:
 \[
-  A\vec{x} = \vec{b}
+  A\vec{x} = \vec{b}.
 \]
 
 

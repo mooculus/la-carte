@@ -1680,7 +1680,7 @@ Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
 
 
 
-\section{Types of matrices}
+\section{Special matrices}
 Earlier, we introduced the transpose of a vector. The same concept
 also applies to any matrix.
 \[
@@ -1696,9 +1696,14 @@ A^{\transpose} = \begin{pmatrix}
 0& 5 & 0
 \end{pmatrix}
 \]
-The transpose operation switches all the rows to columns: Thus, the
-first row of $A$ becomes the first column of $A^{\transpose}$ and the
-second row of $A$ becomes the second column of $A^{\transpose}$ and so on.
+\begin{definition} The \dfn{transpose} of a $m\times n$ matrix $A$, is denoted $A^\transpose$ where:
+  \[
+  A^\transpose_{i,j} = A_{j,i}
+  \]
+ Thus, the first row of $A$ becomes the first column of
+  $A^{\transpose}$ and the second row of $A$ becomes the second column
+ of $A^{\transpose}$ and so on.
+\end{definition}
 \begin{question}
 If
 \[A= \left(\begin{array}{ccc}

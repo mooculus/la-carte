@@ -1167,14 +1167,15 @@ Consequently, we have
     \textit{total intensity}, we can see why yellow, cyan, and magenta
     appear brighter than red, green, and blue. In order to scale down
     the brightness of the three colors so that they have the same
-    $2$-norms as red, green, and blue, we first find their respective
-    unit vectors corresponding to $\vec{y}$, $\vec{c}$, and $\vec{m}$:
+    $2$-norms as red, green, and blue, we first find the unit vectors
+    corresponding to $\vec{y}$, $\vec{c}$, and $\vec{m}$:
     \begin{equation*}
       \hat{\vec y} &= \begin{pmatrix}\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{0}\end{pmatrix},\quad
       \hat{\vec c} &= \begin{pmatrix}\answer[given]{0}\\\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{\frac{1}{\sqrt{2}}}\end{pmatrix},\quad
       \hat{\vec m} &= \begin{pmatrix}\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{0}\\\answer[given]{\frac{1}{\sqrt{2}}}\end{pmatrix}.
     \end{equation*}
-    Multiplying each of these by $255$, we obtain (rounded to the nearest whole numbers)
+    Multiplying each of these by $255$, which is the target $2$-norm,
+    we obtain (rounded to the nearest whole numbers)
     \begin{equation*}
       \vec y_{\text{new}} &= \begin{pmatrix}\answer[given]{181}\\\answer[given]{181}\\\answer[given]{0}\end{pmatrix},\quad
       \vec c_{\text{new}} &= \begin{pmatrix}\answer[given]{0}\\\answer[given]{181}\\\answer[given]{181}\end{pmatrix},\quad
@@ -1255,11 +1256,10 @@ to the $1$-norm:
 % done using the $1$-norm.
 
 \begin{example}[Population Counts]
-  Consider the population counts for Ohio, now expressed as a column
-  vector:
+  Consider the population counts for Ohio:
   \[
     \vec{p}_{\texttt{OH}}
-    = (9394878, 1442655, 20442, 268527, 3907, 544866)^\transpose.
+    = (9394878, 1442655, 20442, 268527, 3907, 544866).
   \]
 
   Since population counts are always non-negative, the $1$-norm of
@@ -1271,13 +1271,13 @@ to the $1$-norm:
     = \answer[given]{11675275}.
   \]
 
-  The normalized vector
+  The normalized vector, rounded to the nearest hundredth, is given by
   \[
     % \hat{\vec{p}_{\texttt{OH}}}_1 =
     \frac{\vec{p}_{\texttt{OH}}}{\vec{1}\dotp\vec{p}_{\texttt{OH}}}
-    = \left(\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05}\right)^\transpose
+    = \left(\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05}\right),
   \]
-  presents the percentages of demographics.
+  and it represents the percentages of demographics.
 \end{example}
 
 

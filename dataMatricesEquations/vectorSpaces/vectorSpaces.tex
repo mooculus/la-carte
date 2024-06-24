@@ -32,7 +32,7 @@ Data and their associated systems of equations are complicated. It is
 not enough to simply solve these equations, we must understand the
 solutions in a more abstract way. In this chapter we will introduce
 various sets (or in this case, vector spaces) of vectors in the
-context of solving equations. Then we will revist these ideas from
+context of solving equations. Then we will revisit these ideas from
 `higher ground,' and introduce the notion of a vector space.
 
 
@@ -53,8 +53,8 @@ It is not enough to simply solve these equations; we must understand
 the solutions in a more abstract way. Let us first write the system
 above compactly as a matrix equation $A \vec{x} = \vec{b}$, where $A$
 is the $n \times n$ matrix of coefficients, $\vec{x}$ is the
-$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the
-right-hand sides:
+$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the constants on the 
+right-hand side of the equations:
 \[
   A =
   \begin{bmatrix}
@@ -73,29 +73,28 @@ right-hand sides:
   \end{bmatrix}.
 \]
 
-We then consider two scenarios depending on the zero-ness of the
-right-hand sides:
+We then consider two scenarios depending on the zero-ness of the right-hand
+sides:
 \begin{description}
-\item[Case: $\vec{b} = \vec{0}$.] In the special case where
-  $\vec{b} = \vec{0}$, the system is said to be
-  \dfn{homogeneous}. Since a homogeneous system is fully characterized
-  by its coefficients, the solution set is called the \textit{null
-    space of $A$}. Since $\vec{x} = \vec{0}$ satisfies
-  $A\vec{x} = \vec{0}$ no matter what $A$ is, the null space of $A$
-  always contains the zero vector and so is never empty.
-\item[Case: $\vec{b} \neq \vec{0}$.] On the other hand, if
-  $\vec{b} \neq \vec{0}$, the system $A\vec{x} = \vec{b}$ may not have a
-  solution at all. The existence of solution depends on whether
-  $\vec{b}$ lies in the \textit{column space of $A$}.
+\item[Case: $\vec{b} = \vec{0}$.] In the special case where $\vec{b} = \vec{0}$,
+  the system is said to be \dfn{homogeneous}. Since a homogeneous system is
+  fully characterized by its coefficients, the solution set is called the
+  \textit{null space of $A$}. Since $\vec{x} = \vec{0}$ satisfies $A\vec{x} =
+  \vec{0}$ no matter what $A$ is, the null space of $A$ always contains the zero
+  vector and so is never empty.
+\item[Case: $\vec{b} \neq \vec{0}$.] On the other hand, if $\vec{b} \neq
+  \vec{0}$, the system $A\vec{x} = \vec{b}$ may not have a solution at all. The
+  existence of solution depends on whether $\vec{b}$ lies in the \textit{range}
+  or \textit{column space of $A$}.
 \end{description}
 
-The two jargons introduced above, the null space and the column space
-of $A$, both contain the word \textit{space}. This comes from the fact
-that they are special and very fundamental examples of the
-mathematical structure called the vector (sub)space. We will introduce
-the notion of vector space in the context of solving system of linear
-equations. Then we will revisit these ideas from `higher ground', and
-introduce the notion of an abstract vector space.
+The two jargons introduced above, the null space and the column space of $A$,
+both contain the word \textit{space}. This comes from the fact that they are
+sets of points. These sets of points will have the additional mathematical
+structure called the vector (sub)space. We will introduce the notion of vector
+space in the context of solving system of linear equations. Then we will revisit
+these ideas from `higher ground', and introduce the notion of an abstract vector
+space.
 
 \section{Homogeneous equations and the null space}
 Suppose we have a system of equations:
@@ -112,29 +111,15 @@ learn about the solutions to this system of equations if we
   a_2 x + b_2 y + c_2 z &= 0  \\
   a_3 x + b_3 y + c_3 z &= 0
 \end{align*}
-Equations of this form are called \dfn{homogeneous equations}. We call
-them \textit{homogeneous} because all the (nonzero) terms are
-multiplied by the same \textbf{powers of variables}.
-%% TK: I am not sure if I follow this explanation about why they are
-%% called homogeneous, because I am not sure whether we can consider
-%% the nonlinear system
-%%
-%%   a_i x^2 + b_i y^2 + c_i z^2 = k, i = 1, 2, 3
-%%
-%% as homogeneous. The homogeneity in the case of linear systems
-%% are due to 1) linearity and 2) zero constant terms. In
-%% particular, because of this, it follows that if x is a solution
-%% of Ax = 0, then any scalar multiple of x is also a solution. As a
-%% consequence, ker(A) is a subspace.
+A system of linear equations of this form are called \dfn{homogeneous equations}. We call
+them \textit{homogeneous} because they are linear and the constant terms are zero.
 
-%% Maybe, it was meant to be written as ``because all the
-%% (nonconstant) terms are multiplied by ...''?
 
 \begin{question}
   Which of the following equations are homogeneous?
   \begin{selectAll}
     \choice{$2x^3 + y^2 - 3z = 0$}
-    \choice[correct]{$2x^3 + xy^2 - 3y^2z = 0$} % nonlinear, homogeneous
+    \choice[correct]{$2y + z= 0$} % linear, homogeneous
     \choice{$2x + y - 3 = 0$}
     \choice[correct]{$2x + y - 3z = 0$} % linear, homogeneous
   \end{selectAll}
@@ -174,7 +159,7 @@ multiplied by the same \textbf{powers of variables}.
 
 
 
-\section{Column space}
+\section{The Span and the column space}
 
 Given a matrix (not necessarily square)
 \[

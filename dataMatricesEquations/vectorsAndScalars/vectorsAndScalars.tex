@@ -1102,8 +1102,9 @@ vector obtained by normalizing an arbitrary vector is usually denoted
 with a hat. The subscript indicates which norm was used for
 normalization. Due to the commonality of the $2$-norm, the subscript
 of 2 is often omitted, that is, $\hat{\vec{v}} =
-\hat{\vec{v}}_2$. This notational convention will be used consistently
-through the remainder of this textbook.
+\hat{\vec{v}}_2$.
+% This notational convention will be used consistently through the
+% remainder of this textbook.
 
 There is an interesting connection between the $2$-norm and the dot product:
 \[
@@ -1118,37 +1119,68 @@ Consequently, we have
   Recall that the \textit{MOOCulus Lighting Company} produces an
   color-changing LED table lamp, whose colors run through the RGB
   spectrum
-    \[
-    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},
-    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},
-    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},
-    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},
-    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},
+  \[
+    \underset{\text{red}}{\begin{pmatrix}255\\0\\0\end{pmatrix}},\,
+    \underset{\text{yellow}}{\begin{pmatrix}255\\255\\0\end{pmatrix}},\,
+    \underset{\text{green}}{\begin{pmatrix}0\\255\\0\end{pmatrix}},\,
+    \underset{\text{cyan}}{\begin{pmatrix}0\\255\\255\end{pmatrix}},\,
+    \underset{\text{blue}}{\begin{pmatrix}0\\0\\255\end{pmatrix}},\,
     \underset{\text{magenta}}{\begin{pmatrix}255\\0\\255\end{pmatrix}}
+  \]
+  changing colors linearly every minute. However, after consumer
+  reviews, it is discovered that the lamp suffers from a small flaw:
+  As the colors change, their intensity changes too. In particular,
+  yellow, cyan, and magenta, all seem much brighter than red, blue
+  and green.
+  \begin{center}
+    \begin{tikzpicture}
+      \definecolor{rgbyellow}{RGB}{255,255,,0}
+      \definecolor{rgbcyan}{RGB}{0,255,255}
+      \definecolor{rgbmagenta}{RGB}{255,0,255}
+      \draw[draw=none,fill={rgb:red,1;green,0;blue,0}] (0,0) rectangle (1,1);
+      \draw[draw=none,fill=rgbyellow] (1,0) rectangle (2,1);
+      \draw[draw=none,fill={rgb:red,0;green,1;blue,0}] (2,0) rectangle (3,1);
+      \draw[draw=none,fill=rgbcyan] (3,0) rectangle (4,1);
+      \draw[draw=none,fill={rgb:red,0;green,0;blue,1}] (4,0) rectangle (5,1);
+      \draw[draw=none,fill=rgbmagenta] (5,0) rectangle (6,1);
+    \end{tikzpicture}
+  \end{center}
+  Normalize the intensities of the colors so that the
+  intensity is constant.
+  \begin{explanation}
+    To start, we should point out that this is a difficult problem;
+    however what we will present is a ``reasonable start'' to
+    a solution.  Our plan is to normalize the vectors representing
+    yellow, cyan, and magenta by their Euclidean norm, then make
+    these vectors, unit vectors, then scale back to RGB color space,
+    where the entries are between $0$ and $255$.
+
+    First note that
+    \[
+      \underset{\vec{y}}{\left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\|} =  \underset{\vec{c}}{\left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\|} =  \underset{\vec{m}}{\left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\|} = \answer[given]{360.624},
     \]
-    changing colors linearly every minute. However, after consumer
-    reviews, it is discovered that the lamp suffers from a small flaw:
-    As the colors change, their intensity changes too. In particular,
-    yellow, cyan, and magenta, all seem much brighter than red, blue
-    and green. Normalize the intensities of the colors so that the
-    intensity is constant.
-    \begin{explanation}
-      To start, we should point out that this is a difficult problem;
-      however what we will present is a ``reasonable start'' to
-      a solution.  Our plan is to normalize the vectors representing
-      yellow, cyan, and magenta by their Euclidean norm, then make
-      these vectors, unit vectors, then scale back to RGB color space,
-      where the entries are between $0$ and $255$. First note:
-   \[
-   \underset{\vec{y}}{\left\|\begin{pmatrix}255\\255\\0\end{pmatrix}\right\|} =  \underset{\vec{c}}{\left\|\begin{pmatrix}0\\255\\255\end{pmatrix}\right\|} =  \underset{\vec{m}}{\left\|\begin{pmatrix}255\\0\\255\end{pmatrix}\right\|} = \answer[given]{360.624}
-   \]
-   Naming the vectors above $\vec{y}$, $\vec{c}$, $\vec{m}$, we can find unit vectors
-   \begin{align*}
-     \hat{\vec y} &= \begin{pmatrix}\answer[given]{181}\\\answer[given]{181}\\\answer[given]{0}\end{pmatrix}\\
-     \hat{\vec c} &= \begin{pmatrix}\answer[given]{0}\\\answer[given]{181}\\\answer[given]{181}\end{pmatrix}\\
-     \hat{\vec m} &= \begin{pmatrix}\answer[given]{181}\\\answer[given]{0}\\\answer[given]{181}\end{pmatrix}
-   \end{align*}
-    Here are the actual new colors:
+    while
+    \[
+      \underset{\vec{r}}{\left\|\begin{pmatrix}255\\0\\0\end{pmatrix}\right\|} =  \underset{\vec{g}}{\left\|\begin{pmatrix}0\\255\\0\end{pmatrix}\right\|} =  \underset{\vec{b}}{\left\|\begin{pmatrix}0\\0\\255\end{pmatrix}\right\|} = \answer[given]{255}.
+    \]
+    Considering the $2$-norm of an RGB vector as a measure of the
+    \textit{total intensity}, we can see why yellow, cyan, and magenta
+    appear brighter than red, green, and blue. In order to scale down
+    the brightness of the three colors so that they have the same
+    $2$-norms as red, green, and blue, we first find their respective
+    unit vectors corresponding to $\vec{y}$, $\vec{c}$, and $\vec{m}$:
+    \begin{equation*}
+      \hat{\vec y} &= \begin{pmatrix}\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{0}\end{pmatrix},\quad
+      \hat{\vec c} &= \begin{pmatrix}\answer[given]{0}\\\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{\frac{1}{\sqrt{2}}}\end{pmatrix},\quad
+      \hat{\vec m} &= \begin{pmatrix}\answer[given]{\frac{1}{\sqrt{2}}}\\\answer[given]{0}\\\answer[given]{\frac{1}{\sqrt{2}}}\end{pmatrix}.
+    \end{equation*}
+    Multiplying each of these by $255$, we obtain (rounded to the nearest whole numbers)
+    \begin{equation*}
+      \vec y_{\text{new}} &= \begin{pmatrix}\answer[given]{181}\\\answer[given]{181}\\\answer[given]{0}\end{pmatrix},\quad
+      \vec c_{\text{new}} &= \begin{pmatrix}\answer[given]{0}\\\answer[given]{181}\\\answer[given]{181}\end{pmatrix},\quad
+      \vec m_{\text{new}} &= \begin{pmatrix}\answer[given]{181}\\\answer[given]{0}\\\answer[given]{181}\end{pmatrix}.
+    \end{equation*}
+    Here is the new color palette:
     \begin{center}
       \begin{tikzpicture}
         \definecolor{rgbyellow}{RGB}{181,181,0}
@@ -1215,34 +1247,37 @@ components. This method ensures that the sum of the vector components
 is $1$. This idea is succintly captured by normalization with respect
 to the $1$-norm:
 \[
-  \hat{\vec{v}}_1 = \frac{\vec{v}}{\|\vec{v}\|_1} = \frac{\vec{v}}{\sum_{i=1}^n |v_i|}.
+  % \hat{\vec{v}}_1 =
+  \frac{\vec{v}}{\|\vec{v}\|_1} = \frac{\vec{v}}{\sum_{i=1}^n |v_i|}.
 \]
-Again, the hat indicates that this is a unit vector obtained by a
-normalization. The subscript 1 indicates that the normalization was
-done using the $1$-norm.
+% Again, the hat indicates that this is a unit vector obtained by a
+% normalization. The subscript 1 indicates that the normalization was
+% done using the $1$-norm.
 
 \begin{example}[Population Counts]
-Consider the population vector for Ohio:
-\[
-  \vec{p}_{\texttt{OH}}
-  = (9394878, 1442655, 20442, 268527, 3907, 544866)^\transpose.
-\]
+  Consider the population counts for Ohio, now expressed as a column
+  vector:
+  \[
+    \vec{p}_{\texttt{OH}}
+    = (9394878, 1442655, 20442, 268527, 3907, 544866)^\transpose.
+  \]
 
-Since population counts are always non-negative, the $1$-norm of
-$\vec{p}_{\mathtt{OH}}$ equals the sum of the
-components:
-\[
-  \left\| \vec{p}_{\mathtt{OH}} \right\|_1
-  = \vec{1}\dotp\vec{p}_{\texttt{OH}}
-  = \answer[given]{11675275}.
-\]
+  Since population counts are always non-negative, the $1$-norm of
+  $\vec{p}_{\mathtt{OH}}$ equals the sum of the components, which can be
+  expressed as a dot product:
+  \[
+    % \left\| \vec{p}_{\mathtt{OH}} \right\|_1 =
+    \vec{1}\dotp\vec{p}_{\texttt{OH}}
+    = \answer[given]{11675275}.
+  \]
 
-The normalized vector is:
-\[
-  \hat{\vec{p}_{\texttt{OH}}}_1
-  = \frac{\vec{p}_{\texttt{OH}}}{\vec{1}\dotp\vec{p}_{\texttt{OH}}}
-  = \left(\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05}\right)^\transpose.
-\]
+  The normalized vector
+  \[
+    % \hat{\vec{p}_{\texttt{OH}}}_1 =
+    \frac{\vec{p}_{\texttt{OH}}}{\vec{1}\dotp\vec{p}_{\texttt{OH}}}
+    = \left(\answer[given]{0.8}, \answer[given]{0.12}, \answer[given]{0}, \answer[given]{0.02}, \answer[given]{0}, \answer[given]{0.05}\right)^\transpose
+  \]
+  presents the percentages of demographics.
 \end{example}
 
 
@@ -1254,8 +1289,8 @@ maximum component value. This is useful in cases where you want all
 components to be scaled relative to the largest component.
 
 \[
-  \hat{\vec{v}}_\infty
-  = \frac{\vec{v}}{\|\vec{v}\|_\infty} = \frac{\vec{v}}{\max(|v_i|)}.
+  % \hat{\vec{v}}_\infty =
+  \frac{\vec{v}}{\|\vec{v}\|_\infty} = \frac{\vec{v}}{\max(|v_i|)}.
 \]
 
 \begin{example}[Student Data]

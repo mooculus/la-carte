@@ -160,6 +160,28 @@ Consider the following matrix
 \item Explain why if $\vec{v}$ and $\vec{w}$ are vectors in the null space, then $\vec{v} + \vec{w}$ is also in the null space.
   \end{enumerate} 
 \begin{explanation}
+  First note that the null space corresponds to all solutions to the equations $A\vec{x} = \vec{0}$:
+  \begin{align*}
+    x + 2y + 3z &= 0 \\
+    2x +4y + 6z &= 0 \\
+    3x + 5y + 9z &=0
+  \end{align*}
+  To solve this system of equations, we consider the augmented matrix $(A|\vec{0})$, and transform to echelon form. Write with me:
+\[
+  \begin{pmatrix}
+    1 & 2 & 3 & 0\\
+    2 & 4 & 6 & 0\\
+    3 & 5 & 9 & 0
+  \end{pmatrix}
+\begin{matrix}    \scriptstyle 2R_1-R_2\rightarrow R_2\\\Longrightarrow
+  \end{matrix}
+  \begin{pmatrix}
+    1 & 2 & 3 & 0\\
+    0 & 0 & 0 & 0\\
+    3 & 5 & 9 & 0
+  \end{pmatrix}
+\]    
+
 \end{explanation}
 \end{example}
 

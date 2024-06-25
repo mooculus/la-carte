@@ -18,6 +18,16 @@ xourse.cls
 *.synctex.gz
 *.fdb_latexmk
 *.fls
+*.html.bak
+*.idv
+*.log
+*.tmp
+*.xref
+*.4tc
+*.4ct
+*.idv
+
+
 
 # Ignore all `auto'-generated directories
 auto/

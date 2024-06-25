@@ -26,7 +26,18 @@ xourse.cls
 *.4tc
 *.4ct
 *.idv
-
+*.dpth
+*.md5
+*.png
+*.svg
+*.xbb
+*.auxlock
+*.dvi
+*.html
+*.lg
+*.jason
+mypdflatex
+*#
 
 
 # Ignore all `auto'-generated directories

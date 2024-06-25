@@ -53,7 +53,7 @@ It is not enough to simply solve these equations; we must understand
 the solutions in a more abstract way. Let us first write the system
 above compactly as a matrix equation $A \vec{x} = \vec{b}$, where $A$
 is the $n \times n$ matrix of coefficients, $\vec{x}$ is the
-$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the constants on the 
+$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the constants on the
 right-hand side of the equations:
 \[
   A =
@@ -144,20 +144,107 @@ them \textit{homogeneous} because they are linear and the constant terms are zer
 \end{remark}
 
 
-\begin{example}
-  Consider the following homogenous system of equations.
-
-  Explain why the null space has 0
-
-  The sum
-
-  scalar multiples
-
+\begin{example}[Null Space of a Matrix]
+Consider the following matrix
+  \[
+    A = \begin{pmatrix}
+      1 & 2 & 3 \\
+      2 & 4 & 6 \\
+      3 & 5 & 9
+    \end{pmatrix}
+  \]
+  \begin{enumerate}
+\item Interprert and compute (by giving explict relations) the null space of $A$.
+\item Explain why $\vec{0}$ is an element of the null space.
+\item Explain why if $\vec{v}$ is a vectors in the null space, then $s\cdot \vec{v}$ is also in the null space.
+\item Explain why if $\vec{v}$ and $\vec{w}$ are vectors in the null space, then $\vec{v} + \vec{w}$ is also in the null space.
+  \end{enumerate} 
+\begin{explanation}
+\end{explanation}
 \end{example}
 
 
 
+\begin{example}[Neural Network]
+  Recall the example of a camera attached to a computer to detect if
+  a simple pattern of circles
+  \begin{center}
+    \begin{tikzpicture}[scale = .3]
+      \draw[ultra thick] (0,0) circle (1cm);
+      \draw[ultra thick] (3,0) circle (1cm);
+      \draw[ultra thick] (6,0) circle (1cm);
+    \end{tikzpicture}
+  \end{center}
+  is shaded like this:
+  \begin{center}
+    \begin{tikzpicture}[scale = .3]
+      \draw[ultra thick,fill=black] (0,0) circle (1cm);
+      \draw[ultra thick] (3,0) circle (1cm);
+      \draw[ultra thick] (6,0) circle (1cm);
+    \end{tikzpicture}
+  \end{center}
+  and also check that the pattern is not unshaded or shaded in any
+  other way. 
 
+
+
+  Since the marks are incomplete, we visualize the input as continuous
+  random variables $X_1$, $X_2$, and $X_3$; where a value of $1$ for
+  $X_i$ would represent ``completely shaded'' and a value of $0$ for
+  $X_i$ would represent completely unshaded. We can express these random
+  variables as a column vector $\vec{X}$. Moreover, we may write the
+  ``answer'' of whether the pattern is shaded correctly, using a column
+  vector $\vec{Y}$, with two entries, also random variables $Y_1$ and
+  $Y_2$, where $Y_1$ is the probability that the circles are filled in
+  correctly, and $Y_2$ is the probability they are not.
+  \[
+    \vec{X} = \begin{pmatrix} X_1 \\ X_2 \\ X_3 \end{pmatrix} \qquad \vec{Y} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+  \]
+  A matrix $H$ represents the neural network, say
+  \[
+    H = \begin{pmatrix}
+      0.375 & -0.125 & -0.125 \\
+      0.125 & 0.625 & 0.625
+    \end{pmatrix},
+  \]
+  and we find $\vec{Y}$ by
+  \[
+    \vec{Y} =
+    H\vec{X} =
+    \begin{pmatrix}
+      0.288 \\
+      0.163
+    \end{pmatrix},
+  \]
+  for some $X$. Interpret this result and represent this matrix
+  equation as a system of equations.
+  \begin{explanation}
+    Since vector
+    \[
+      \vec{Y} =
+      \begin{pmatrix}
+        \answer[given]{0.288} \\
+        \answer[given]{0.163}
+      \end{pmatrix},
+    \]
+    we see that the drawn pattern, represented by $X_1$, $X_2$, and
+    $X_3$, is likely the
+    \wordChoice{\choice[correct]{correct}\choice{incorrect}} pattern.
+    Writing
+    \[
+      H\vec{X} =
+      \begin{pmatrix}
+        0.288 \\
+        0.163
+      \end{pmatrix}
+    \]
+    corresponds to the system of equations:
+    \begin{align*}
+      \left(\answer[given]{0.375}\right)X_1 + \left(\answer[given]{-0.125}\right) X_2 + \left(\answer[given]{-0.125}\right) X_3 &= 0.288 \\
+      \left(\answer[given]{0.125}\right)X_1 + \left(\answer[given]{0.625}\right) X_2 + \left(\answer[given]{0.625}\right)X_3 &= 0.163
+    \end{align*}
+  \end{explanation}
+\end{example}
 
 \section{The Span and the column space}
 

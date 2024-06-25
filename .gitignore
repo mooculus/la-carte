@@ -36,9 +36,14 @@ xourse.cls
 *.html
 *.lg
 *.jason
-mypdflatex
 *#
+*.py
+*.sout
+*.scmd
 
+
+mypdflatex
+gpgkey
 
 # Ignore all `auto'-generated directories
 auto/

@@ -42,8 +42,10 @@ xourse.cls
 *.scmd
 
 
+build.sh
 mypdflatex
 gpgkey
+
 
 # Ignore all `auto'-generated directories
 auto/

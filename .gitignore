@@ -35,7 +35,7 @@ xourse.cls
 *.dvi
 *.html
 *.lg
-*.jason
+*.json
 *#
 *.py
 *.sout

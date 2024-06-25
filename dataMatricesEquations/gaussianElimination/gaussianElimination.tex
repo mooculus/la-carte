@@ -64,7 +64,7 @@ Any time we have a \dfn{system of equations} we may represent it with a
     -3x  & -  & 9y  & -  & 11z  & =  & 0
   \end{array}
   \qquad\Longrightarrow\qquad
-  \begin{pmatrix}[ccc|c]
+  \begin{pmatrix}[rrr|r]
     0 &   3 & -3 & -3 \\
     1 &   3 & -3 & 2  \\
     -3& -9  & 11 & 0
@@ -73,20 +73,20 @@ Any time we have a \dfn{system of equations} we may represent it with a
 This is an example of a matrix used to store data. Some folks call
 this an \dfn{augmented matrix}, and they write stuff like this:
 \[
-A = \underbrace{\begin{pmatrix}
+A = \underbrace{\begin{pmatrix}[rrr]
   0 & 3 & -3  \\
   1 &  3  & -3 \\
  -3 & -9 & 11
 \end{pmatrix}}_{\text{the coefficients}},
 \quad
 \vec{b} =
-\underbrace{\begin{pmatrix}
+\underbrace{\begin{pmatrix}[r]
  -3\\ 2 \\ 0
 \end{pmatrix}}_{\begin{smallmatrix}\text{right-hand} \\
   \text{sides} \end{smallmatrix}},
 % \text{right-hand side}
 \quad
-\left(A|B\right) = \underbrace{\begin{pmatrix}[ccc|c]
+\left(A|\vec{b}\right) = \underbrace{\begin{pmatrix}[rrr|r]
   0 &   3 & -3 & -3 \\
   1 &   3 & -3 & 2  \\
   -3& -9  & 11 & 0
@@ -113,27 +113,25 @@ or simply \dfn{elimination}. To do this, we're going to introduce
 form of the matrix \emph{without changing the solutions}. The idea is
 this we start with a big matrix,
 \[
-\begin{pmatrix}
-  \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet \\
-  \bullet & \bullet & \bullet & \bullet
-\end{pmatrix}
-\quad
-\Rightarrow
-\quad
-\begin{pmatrix}
-  \bullet & \bullet & \bullet & \bullet \\
-     0   & \bullet & \bullet & \bullet \\
-     0  &    0 & \bullet & \bullet
-\end{pmatrix}
-\quad
-\Rightarrow
-\quad
-\begin{pmatrix}
-  1 & 0 & 0  & \bullet \\
-     0   & 1  &  0 & \bullet \\
-     0  &    0 & 1 & \bullet
-\end{pmatrix}
+  \begin{pmatrix}
+    \bullet & \bullet & \bullet & \bullet \\
+    \bullet & \bullet & \bullet & \bullet \\
+    \bullet & \bullet & \bullet & \bullet
+  \end{pmatrix}
+  % \quad \Rightarrow \quad
+  \quad \longrightarrow \quad
+  \begin{pmatrix}
+    \bullet & \bullet & \bullet & \bullet \\
+    0 & \bullet & \bullet & \bullet \\
+    0 & 0 & \bullet & \bullet
+  \end{pmatrix}
+  % \quad \Rightarrow \quad
+  \quad \longrightarrow \quad
+  \begin{pmatrix}
+    1 & 0 & 0 & \bullet \\
+    0 & 1 & 0 & \bullet \\
+    0 & 0 & 1 & \bullet
+  \end{pmatrix}
 \]
 and transform it into a form where we can simply ``read-off'' the
 information about the system of equations, including the solutions.  We
@@ -141,11 +139,13 @@ discuss the row operations that allow such a transformation below.
 
 
 
-\subsection{Swapping two rows} Since swapping the order of the equations in a
-  system of equations does not change the solutions, we may swap rows
-  in an augmented matrix. We denote swapping the $i$th row with the
-  $j$th row by $R_i\leftrightarrow R_j$. As an example, we can swap
-  the first and second rows of the matrix below:
+\subsection{Swapping two rows}
+
+Since swapping the order of the equations in a
+system of equations does not change the solutions, we may swap rows
+in an augmented matrix. We denote swapping the $i$th row with the
+$j$th row by $R_i\leftrightarrow R_j$. As an example, we can swap
+the first and second rows of the matrix below:
  \[
 \begin{pmatrix}[ccc|c]
   0 &   3 & -3 & -3 \\
@@ -153,9 +153,10 @@ discuss the row operations that allow such a transformation below.
   -3& -9  & 11 & 0
 \end{pmatrix}
 \qquad
-\begin{array}{c}
-  \scriptstyle R_1\leftrightarrow R_2\\\Longrightarrow
-\end{array}
+% \begin{array}{c}
+%   \scriptstyle R_1\leftrightarrow R_2\\\Longrightarrow
+% \end{array}
+\xrightarrow{R_1 \leftrightarrow R_2}
 \qquad
 \begin{pmatrix}[ccc|c]
   1 &   3 & -3 & 2  \\
@@ -167,22 +168,22 @@ discuss the row operations that allow such a transformation below.
 \begin{question}
   Some row swapping operation was done below:
   \[
-  \begin{pmatrix}
--3 & 2 & 4 & -1 \\
-1 & -5 & 3 & 2 \\
-0 & -2 & 5 & 3
-  \end{pmatrix}
-  \Rightarrow
-  \begin{pmatrix}
-0 & -2 & 5 & 3 \\
-1 & -5 & 3 & 2 \\
--3 & 2 & 4 & -1
-\end{pmatrix}
+    \begin{pmatrix}
+      -3 & 2 & 4 & -1 \\
+      1 & -5 & 3 & 2 \\
+      0 & -2 & 5 & 3
+    \end{pmatrix}
+    \qquad\xrightarrow{\phantom{R_1 \leftrightarrow R_3}}\qquad
+    \begin{pmatrix}
+      0 & -2 & 5 & 3 \\
+      1 & -5 & 3 & 2 \\
+      -3 & 2 & 4 & -1
+    \end{pmatrix}
   \]
   Which row operation was performed?
   \begin{prompt}
     \[
-    R_{\answer{1}} \leftrightarrow R_{\answer{3}}
+      R_{\answer{1}} \leftrightarrow R_{\answer{3}}
     \]
     The smaller answer must appear on the left.
   \end{prompt}
@@ -200,16 +201,17 @@ third row (you could have chosen either of the summands).
     0 &   3 & -3 & -3 \\
     -3& -9  & 11 & 0
   \end{pmatrix}
-\qquad
-\begin{array}{c}
-  \scriptstyle 3R_1+R_3\rightarrow R_3\\\Longrightarrow
-\end{array}
-\qquad
-\begin{pmatrix}[ccc|c]
-  1 &   3 & -3 & 2  \\
-  0 &   3 & -3 & -3 \\
-  0& 0  & 2 & 6
-\end{pmatrix}.
+  % \qquad
+  % \begin{array}{c}
+  %   \scriptstyle 3R_1+R_3\rightarrow R_3\\\Longrightarrow
+  % \end{array}
+  % \qquad
+  \qquad\xrightarrow{3R_1+R_3\rightarrow R_3}\qquad
+  \begin{pmatrix}[ccc|c]
+    1 &   3 & -3 & 2  \\
+    0 &   3 & -3 & -3 \\
+    0& 0  & 2 & 6
+  \end{pmatrix}.
 \]
 
 \begin{question}
@@ -421,9 +423,9 @@ can imagine this algorithm working as follows:
   0       & \bullet & \bullet & \bullet \\
   0       &  0  & \bullet & \bullet \\
   };
-  \node at (1.5,0) {$\Rightarrow$};
-  \node at (4.5,0) {$\Rightarrow$};
-  \node at (7.5,0) {$\Rightarrow$};
+  \node at (1.5,0) {$\rightarrow$};
+  \node at (4.5,0) {$\rightarrow$};
+  \node at (7.5,0) {$\rightarrow$};
   \node[below] at (0,-1) {\begin{minipage}{2.5cm}\small\center Top leftmost entry is nonzero.\end{minipage}};
   \node[below] at (3,-1) {\begin{minipage}{2.5cm}\small\center Zero all entries below.\end{minipage}};
   \node[below] at (6,-1) {\begin{minipage}{2.5cm}\small\center Repeat with each submatrix.\end{minipage}};
@@ -570,9 +572,10 @@ operations to continue to reduce it to the following form:
      0   & \bullet & \bullet & \bullet \\
      0  &    0 & \bullet & \bullet
 \end{pmatrix}
-\quad
-\Rightarrow
-\quad
+% \quad
+% \Rightarrow
+% \quad
+\qquad\longrightarrow\qquad
 \begin{pmatrix}
   1 & 0 & 0  & \bullet \\
      0   & 1  &  0 & \bullet \\
@@ -655,19 +658,20 @@ Our goal is to convert our matrix to row echelon form. We'll use
 Gaussian eliminiation. Since the top left most entry is nonzero we
 make the entires below this one zero using row operations.
 \[
-\begin{pmatrix}
-  2 & 3 & 1 & 5 \\
-  1 &  -2 & 2 &-9 \\
-  3 &  1 & -3 & 14
-\end{pmatrix}
-\begin{array}{c}
-  \scriptstyle(-0.5) R_1+R+2\to R_2\\ \Longrightarrow\\  \scriptstyle(-1.5) R_1+R+3\to R_3
-\end{array}
-\begin{pmatrix}
-  2 & 3 & 1 & 5 \\
-  0 & -3.5 & 1.5 &-11.5 \\
-  0 & -3.5 & -4.5 & 6.5
-\end{pmatrix}
+  \begin{pmatrix}
+    2 & 3 & 1 & 5 \\
+    1 &  -2 & 2 &-9 \\
+    3 &  1 & -3 & 14
+  \end{pmatrix}
+  % \begin{array}{c}
+  %   \scriptstyle(-0.5) R_1+R+2\to R_2\\ \Longrightarrow\\  \scriptstyle(-1.5) R_1+R+3\to R_3
+  % \end{array}
+  \quad\xrightarrow[(-1.5) R_1 + R_3 \to R_3]{(-0.5) R_1 + R_2 \to R_2}\quad
+  \begin{pmatrix}
+    2 & 3 & 1 & 5 \\
+    0 & -3.5 & 1.5 &-11.5 \\
+    0 & -3.5 & -4.5 & 6.5
+  \end{pmatrix}
 \]
 Now we work with the submatrix:
 \begin{center}
@@ -684,34 +688,36 @@ Now we work with the submatrix:
 \end{center}
 Again we make all rows less than the submatrix's top most entry zero:
 \[
-\begin{pmatrix}
-  2 & 3 & 1 & 5 \\
-  0 & -3.5 & 1.5 &-11.5 \\
-  0 & -3.5 & -4.5 & 6.5
-\end{pmatrix}
-\begin{array}{c}
-  \scriptstyle(-1) R_2+R_3\to R_3\\ \Longrightarrow
-\end{array}
-\begin{pmatrix}
-  2 & 3 & 1 & 5 \\
-  0 & -3.5 & 1.5 &-11.5 \\
-  0 & 0    & -6 & 18
-\end{pmatrix}
+  \begin{pmatrix}
+    2 & 3 & 1 & 5 \\
+    0 & -3.5 & 1.5 &-11.5 \\
+    0 & -3.5 & -4.5 & 6.5
+  \end{pmatrix}
+  % \begin{array}{c}
+  %   \scriptstyle(-1) R_2+R_3\to R_3\\ \Longrightarrow
+  % \end{array}
+  \qquad\xrightarrow{(-1) R_2+R_3\to R_3}\qquad
+  \begin{pmatrix}
+    2 & 3 & 1 & 5 \\
+    0 & -3.5 & 1.5 &-11.5 \\
+    0 & 0    & -6 & 18
+  \end{pmatrix}
 \]
 Now we see
-
 \[
-  \begin{pmatrix}[ccc|c]
+  \begin{pmatrix}[rrr|r]
     2 & 3 & 1 & 5 \\
     0 & -3.5 & 1.5 &-11.5 \\
     0 & 0    & -6 & 18
   \end{pmatrix}
   \qquad\Longrightarrow\qquad
-  \begin{array}{ccccccc}
-    2x  &+ & 3y &+& z &=& 5 \\
-        &  &-3.5y&+&1.5z&=&-11.5\\
-        & & & &-6z&=&18
-  \end{array}
+  \left\{\;
+    \begin{array}{rcrcrcr}
+      2x  &+ & 3y &+& z &=& 5 \\
+          &  &-3.5y&+&1.5z&=&-11.5\\
+          & & & &-6z&=&18
+    \end{array}
+  \right.
 \]
 It is now time to use back substitution to solve for $z$, then $y$, then $x$:
 \begin{align*}
@@ -868,22 +874,23 @@ First we'll represent this system of equations as an augmented matrix:
 
 Now we will use Gaussian elimination to transform this matrix to row echelon form. Start by zeroing the column below the $(1,1)$-entry:
 \[
-\begin{pmatrix}
-   {2/5}&  {3/10} & {0} &{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} & -3/2\\
-  {3/5}&  {0} & {2/5} &{0} &2\\
-  {0}&  {6} & {0} &{-3/2} &-9
-\end{pmatrix}
-\begin{matrix}
-  \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-  \Longrightarrow
-\end{matrix}
-\begin{pmatrix}
-   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} & -3/2\\
-  \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
-  {0}&  {6} & {0} &{-3/2} &-9
-\end{pmatrix}
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    {3/5}&  {0} & {2/5} &{0} &2\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+  %   \Longrightarrow
+  % \end{matrix}
+  \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
 \]
 Now we work with the submatrix:
 \begin{center}
@@ -901,23 +908,24 @@ Now we work with the submatrix:
 \end{center}
 We will zero the columns below the $(2,2)$-entry:
 \[
-\begin{pmatrix}
-      {2/5}&  {3/10} & {0} &{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} &\frac{-3}{2}\\
-  {0}&  {-9/20} & {2/5} &{0} &-10\\
-  {0}&  {6} & {0} &{-3/2} &-9
-\end{pmatrix}
-\begin{matrix}
-  \scriptstyle (9/20) R_2 + R_3\to R_3\\
-  \Longrightarrow \\
-  \scriptstyle(-6) R_2+R_4\to R_4
-\end{matrix}
-\begin{pmatrix}
-   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} & -3/2\\
-  \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
-  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
-\end{pmatrix}
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    {0}&  {-9/20} & {2/5} &{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  %   \Longrightarrow \\
+  %   \scriptstyle(-6) R_2+R_4\to R_4
+  % \end{matrix}
+  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
+  \end{pmatrix}
 \]
 and we are now in row echelon form. However, we have a row of zeros.
 Here the row of zeros imply
@@ -999,42 +1007,45 @@ First we'll represent this system of equations as an augmented matrix:
 Again, we will use Gaussian elimination to transform this matrix to
 row echelon form. The first step is essentially the same as before:
 \[
-\begin{pmatrix}
-   {2/5}&  {3/10} & {0} &{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} & 5\\
-  {3/5}&  {0} & {2/5} &{0} &2\\
-  {0}&  {6} & {0} &{-3/2} &-9
-\end{pmatrix}
-\begin{matrix}
-  \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-  \Longrightarrow
-\end{matrix}
-\begin{pmatrix}
-   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} & 5\\
-  \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
-  {0}&  {6} & {0} &{-3/2} &-9
-\end{pmatrix}
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & 5\\
+    {3/5}&  {0} & {2/5} &{0} &2\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+  %   \Longrightarrow
+  % \end{matrix}
+  \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+  \end{matrix}
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & 5\\
+    \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
 \]
 However, when we zero the columns below the $(2,2)$-entry
 \[
-\begin{pmatrix}
-      {2/5}&  {3/10} & {0} &{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} & 5\\
-  {0}&  {-9/20} & {2/5} &{0} &-10\\
-  {0}&  {6} & {0} &{-3/2} &-9
-\end{pmatrix}
-\begin{matrix}
-  \scriptstyle (9/20) R_2 + R_3\to R_3\\
-  \Longrightarrow \\
-  \scriptstyle(-6) R_2+R_4\to R_4
-\end{matrix}
-\begin{pmatrix}
-   \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-  {0}&  {1} & {0} &{-1/4} & -3/2\\
-  \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{49/4}\\
-  \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-36}
-\end{pmatrix}
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & 5\\
+    {0}&  {-9/20} & {2/5} &{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  %   \Longrightarrow \\
+  %   \scriptstyle(-6) R_2+R_4\to R_4
+  % \end{matrix}
+  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{49/4}\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-36}
+  \end{pmatrix}
 \]
 but now, the last row translates to
 \[
@@ -1067,7 +1078,9 @@ no $(x,y,z,w)$ that makes every equation in the system hold true.
     \]
     Apply the following row operations:
     \[
-      \begin{matrix}\scriptstyle-3R_{1}+R_{3}\rightarrow R_{3}\\\Longrightarrow\\\scriptstyle-2R_{1} + R_{2}\rightarrow R_{2}\end{matrix}
+      % \begin{matrix}\scriptstyle-3R_{1}+R_{3}\rightarrow
+      %   R_{3}\\\Longrightarrow\\\scriptstyle-2R_{1} + R_{2}\rightarrow R_{2}\end{matrix}
+      \xrightarrow[-2R_{1} + R_{2}\rightarrow R_{2}]{-3R_{1}+R_{3}\rightarrow R_{3}}\qquad
       \begin{pmatrix}[ccc|c]
         \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
         \answer[given]{0} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{0} \\

@@ -50,7 +50,7 @@ A \dfn{matrix} is simply a rectangular array of numbers
 \]
 We give the \dfn{dimensions of a matrix} by stating its number of rows
 and number of columns. The number of rows comes first and the number
-of columns second, so $M$ above is a $(4\times 5)$-matrix.
+of columns second, so $A$ above is a $(4\times 5)$-matrix.
 \begin{question}
   Which of the following matrices are $3\times 2$ matrices?
   \begin{selectAll}
@@ -126,8 +126,9 @@ of columns second, so $M$ above is a $(4\times 5)$-matrix.
 
   Component indices are denoted by subscripts, usually $i$ through
   $n$. For example, the $i$th entry of a vector $\vec{v}$ is denoted
-  by $v_i$ and the $(i,j)$-entry of a matrix $A$ is denoted by
-  $a_{i,j}$ or simply $a_{ij}$.
+  by $v_i$ or $\left[ \vec{v} \right]_i$. The $(i,j)$-entry of a
+  matrix $A$ is denoted by $a_{i,j}$, $a_{ij}$, or
+  $\left[ A \right]_{ij}$.
 \end{concept}
 
 
@@ -269,11 +270,11 @@ vertically.
   $\vec c_5$ and movies will coorespond to the first, second and third
   entries of the vectors $\vec v_i$:
   \begin{align*}
-    \vec v_{1} &= \begin{pmatrix}0 & 1 & 2\end{pmatrix}\\
-    \vec v_{2} &= \begin{pmatrix}1 & 0 & 1\end{pmatrix}\\
-    \vec v_{3} &= \begin{pmatrix}3 & 1 & 0\end{pmatrix}\\
-    \vec v_{4} &= \begin{pmatrix}1 & 0 & 0\end{pmatrix}\\
-    \vec v_{5} &= \begin{pmatrix}0 & 6 & 0\end{pmatrix}
+    \vec v_{1}^\transpose &= \begin{pmatrix}0 & 1 & 2\end{pmatrix}\\
+    \vec v_{2}^\transpose &= \begin{pmatrix}1 & 0 & 1\end{pmatrix}\\
+    \vec v_{3}^\transpose &= \begin{pmatrix}3 & 1 & 0\end{pmatrix}\\
+    \vec v_{4}^\transpose &= \begin{pmatrix}1 & 0 & 0\end{pmatrix}\\
+    \vec v_{5}^\transpose &= \begin{pmatrix}0 & 6 & 0\end{pmatrix}
   \end{align*}
   Here, for each vector, the first value is the number of times the
   consumer watched \textit{Time Bandits}, the second value is the
@@ -311,8 +312,148 @@ vertically.
 
 \section{Multiplying matrices and vectors}
 
+% %% TK suggestion %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Below is inspired, among many others, by Golub and van Loan. They
+%% call it a ``row/column partitioning'' of a matrix. In the numerical
+%% linear algebra community, they use M(i,:), M(:,j) for your row_i(M)
+%% and col_j(M), respectively.
+
+% \hrulefill
+
+% Let $A$ be an $m \times n$ matrix
+% \[
+%   A =
+%   \begin{pmatrix}
+%     a_{11} & a_{12} & \cdots & a_{1n} \\
+%     a_{21} & a_{22} & \cdots & a_{2n} \\
+%     \vdots & \vdots & \ddots & \vdots \\
+%     a_{m1} & a_{m2} & \cdots & a_{mn}
+%   \end{pmatrix}.
+% \]
+% Instead of thinking of or expressing $A$ in terms of its components as
+% above, we can think at the level of vectors. That is, $A$ can be
+% viewed as a concatenation of $n$ column vectors
+% \[
+%   A =
+%   \begin{pmatrix}
+%     \vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n
+%   \end{pmatrix},\quad\text{where}\quad
+%   \vec{a}_1 =
+%   \begin{pmatrix}
+%     a_{11} \\ a_{21} \\ \vdots \\ a_{m1}
+%   \end{pmatrix},\,
+%   \vec{a}_2 =
+%   \begin{pmatrix}
+%     a_{12} \\ a_{22} \\ \vdots \\ a_{m2}
+%   \end{pmatrix},\,\cdots,\,
+%   \vec{a}_n =
+%   \begin{pmatrix}
+%     a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
+%   \end{pmatrix};
+% \]
+% or as a stack of $m$ row vectors
+% \[
+%   A =
+%   \begin{pmatrix}
+%     \vec{\boldsymbol \alpha}_1^\transpose \\
+%     \vec{\boldsymbol \alpha}_2^\transpose \\
+%     \vdots \\
+%     \vec{\boldsymbol \alpha}_m^\transpose
+%   \end{pmatrix},\quad\text{where}\quad
+%   \vec{\boldsymbol \alpha}_1 =
+%   \begin{pmatrix}
+%     a_{11} \\ a_{12} \\ \vdots \\ a_{1n}
+%   \end{pmatrix},\,
+%   \vec{\boldsymbol \alpha}_2 =
+%   \begin{pmatrix}
+%     a_{21} \\ a_{22} \\ \vdots \\ a_{2n}
+%   \end{pmatrix},\,\cdots,\,
+%   \vec{\boldsymbol \alpha}_m =
+%   \begin{pmatrix}
+%     a_{m1} \\ a_{m2} \\ \vdots \\ a_{mn}
+%   \end{pmatrix}.
+% \]
+% With this vector-level perspective, we can develop a meaningful way to
+% multiply matrices and vectors based on the dot product.
+
+% Recall that the dot product of two vectors is given by
+% \begin{align*}
+%   \vec{a} \dotp \vec{b} & = a_1b_1 + a_2b_2 +\dots+a_nb_n.
+% \end{align*}
+
+% \subsection{Multiplying a matrix by a column vector}
+% Let $A$ be an $m \times n$ matrix and $\vec{x}$ be an $n$-vector. Then the
+% product $A \vec{x}$ is an allowed operation producing a column
+% $m$-vector given by
+% \[
+%   A \vec{x} =
+%   \begin{pmatrix}
+%     \vec{\boldsymbol \alpha}_1^\transpose \\
+%     \vec{\boldsymbol \alpha}_2^\transpose \\
+%     \vdots \\
+%     \vec{\boldsymbol \alpha}_m^\transpose
+%   \end{pmatrix} \vec{x}
+%   =
+%   \begin{pmatrix}
+%     \vec{\boldsymbol \alpha}_1 \dotp \vec{x} \\
+%     \vec{\boldsymbol \alpha}_2 \dotp \vec{x} \\
+%     \vdots \\
+%     \vec{\boldsymbol \alpha}_m \dotp \vec{x}
+%   \end{pmatrix}.
+% \]
+% The product can also be viewed as
+% \[
+%   A \vec{x} =
+%   \begin{pmatrix}
+%     \vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n
+%   \end{pmatrix}
+%   \begin{pmatrix}
+%     x_1 \\ x_2 \\ \vdots \\ x_n
+%   \end{pmatrix}
+%   = \vec{a}_1 x_1 + \vec{a}_2 x_2 + \cdots + \vec{a}_n x_n.
+% \]
+
+% \subsection{Multiplying a row vector by a matrix}
+% Let $A$ be an $m \times n$ matrix and $\vec{y}$ be an $m$-vector. Then the
+% product $\vec{y}^\transpose A$ is an allowed operation producing a row
+% $n$-vector given by
+% \[
+%   \vec{y}^\transpose A =
+%   \vec{y}^\transpose
+%   \begin{pmatrix}
+%     \vec{a}_1 & \vec{a}_2 & \cdots & \vec{a}_n
+%   \end{pmatrix}
+%   =
+%   \begin{pmatrix}[c|c|c|c]
+%     \vec{y}^\transpose \dotp \vec{a}_1
+%     & \vec{y}^\transpose \dotp \vec{a}_2
+%     & \cdots
+%     & \vec{y}^\transpose \dotp \vec{a}_n
+%   \end{pmatrix}.
+% \]
+% Alternately, the product can be viewed as
+% \[
+%   \vec{y}^\transpose A =
+%   \begin{pmatrix}
+%     y_1 & y_2 & \cdots & y_m
+%   \end{pmatrix}
+%   \begin{pmatrix}
+%     \vec{\boldsymbol \alpha}_1^\transpose \\
+%     \vec{\boldsymbol \alpha}_2^\transpose \\
+%     \vdots \\
+%     \vec{\boldsymbol \alpha}_m^\transpose
+%   \end{pmatrix}
+%   = y_1 \vec{\boldsymbol \alpha}_1^\transpose
+%   + y_2 \vec{\boldsymbol \alpha}_2^\transpose
+%   + \cdots
+%   + y_m \vec{\boldsymbol \alpha}_m^\transpose.
+% \]
+% \hrulefill
+% %% End of TK suggestion %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 We can define a meaningful way to multiply matrices and vectors based
-on the dot product.  Recall the dot product of two vectors:
+on the dot product. Recall that the dot product of two vectors is
+given by
 \begin{align*}
   \begin{pmatrix}
     a_1\\
@@ -329,17 +470,19 @@ on the dot product.  Recall the dot product of two vectors:
   \end{pmatrix}
   &=\begin{pmatrix} a_1 & a_2 & \cdots & a_n\end{pmatrix}\dotp\begin{pmatrix} b_1 & b_2 & \cdots & b_n\end{pmatrix}\\
   &= \sum_{i=1}^n a_ib_i\\
-  &= a_1b_1 + a_2b_2 +\dots+a_nb_n
+  & = a_1b_1 + a_2b_2 +\dots+a_nb_n.
 \end{align*}
 We can extend this idea to multiplying matrices by vectors and to
 multiplying vectors by matrices.
 
 \subsection{Multiplying a matrix by a column vector}
-
-Given a $m\times n$ matrix $M$ and $\vec{a}$, an $n$-vector expressed
-as a column, \textbf{the number of colmuns of the matrix must equal
-  the number of entries of the vector} and we can compute the product
-$M\vec{a}$, defining
+% Given an $m\times n$ matrix $M$ and an $n$-vector $\vec{a}$, \textbf{the
+%   number of columns of the matrix equals the number of entries of
+%   the vector} and we can compute the product $M\vec{a}$, defining
+Let $M$ be an $m\times n$ matrix and $\vec{a}$ be a column $n$-vector. In
+this case, \textbf{the number of columns of the matrix equals the
+  number of entries of the vector}, and the product $M\vec{a}$ is
+defined by
 \[
   M \vec{a} =
   \begin{pmatrix}
@@ -347,10 +490,11 @@ $M\vec{a}$, defining
     \row_2(M)^\transpose \dotp \vec{a} \\
     \vdots \\
     \row_m(M)^\transpose \dotp \vec{a}
-  \end{pmatrix}
+  \end{pmatrix},
 \]
-Where $\row_i(M)$ represents the $i$th row of $M$. Note, $M\vec{a}$ is
-a column vector and in this case we have:
+where $\row_i(M)$ represents the $i$th row of $M$. Note that
+$M\vec{a}$ is a column $m$-vector. Below schematically depicts the
+nature of the matrix-vector product:
 \[
   \begin{matrix}
     \begin{pmatrix}
@@ -388,20 +532,26 @@ a column vector and in this case we have:
 
 
 \subsection{Multiplying a row vector by a matrix}
-If on the other hand, $M$ is still a $m\times n$ matrix, but now
-$\vec{b}$ is an $m$-vector expressed as a row, \textbf{the number of
-  entries of the vector must equal the number of rows of the matrix}
-and we can compute the product $\vec{b}M$, defining
+% If on the other hand, $M$ is still a $m\times n$ matrix, but now
+% $\vec{b}$ is an $m$-vector expressed as a row, \textbf{the number of
+%   entries of the vector must equal the number of rows of the matrix}
+% and we can compute the product $\vec{b}M$, defining
+If, on the other hand, $M$ is still an $m\times n$ matrix, but now
+$\vec{b}$ is a row $m$-vector, \textbf{the number of entries of the
+  vector equals the number of rows of the matrix}, and the product
+$\vec{b} M$ is defined by
 \[
   \vec{b} M =
   \begin{pmatrix}
-    \vec{b}\dotp \col_1(M)^\transpose \\
-    \vec{b}\dotp \col_2(M)^\transpose \\
-    \vdots \\
+    \vec{b}\dotp \col_1(M)^\transpose &
+    \vec{b}\dotp \col_2(M)^\transpose &
+    \cdots &
     \vec{b}\dotp \col_n(M)^\transpose
-  \end{pmatrix}
+  \end{pmatrix},
 \]
-Where $\col_i(M)$ represents the $i$th column of $M$. Note, $\vec{b}M$ is a row vector and in this case we have:
+where $\col_i(M)$ represents the $i$th column of $M$. Note that
+$\vec{b} M$ is a row $n$-vector. Below is a schematic of
+the vector-matrix product:
 \[
   \begin{matrix}
     \begin{pmatrix}
@@ -543,8 +693,6 @@ Our next proposition relates the transpose and the dot product.
 \end{proposition}
 
 
-
-
 \begin{example}[Grayscale Image]%% https://commons.wikimedia.org/wiki/File:Cat_face_closeup.jpg
   Here is a grayscale image of a cat:
   \begin{image}
@@ -572,6 +720,7 @@ Our next proposition relates the transpose and the dot product.
     \[
       \vec c_j = \left.
         \begin{pmatrix} 0 \\ \vdots  \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+        \quad
       \right\}
       \quad
       \begin{matrix}
@@ -1044,10 +1193,10 @@ We attempt to describe the structure of this product in the diagram below:
 Above the strange symbols
 ``$\boldsymbol{-}^\transpose\dotp\boldsymbol{|}$'' are supposed to
 represent the transpose of the rows of $A$ being dotted with the
-columns of $B$. Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n\times
-\l$ matrix, and $C = AB$ is a $m\times \l$ matrix, then
+columns of $B$. Quite generally, if $A$ is an $m\times n$ matrix and
+$B$ is a $n\times \l$ matrix, then $C = AB$ is a $m\times \l$ matrix and
 \[
-  C_{i,j} = \row_i(A)^\transpose\dotp \col_j(B).
+  c_{ij} = \row_i(A)^\transpose\dotp \col_j(B).
 \]
 \begin{question} If
   \[
@@ -1064,10 +1213,10 @@ columns of $B$. Quite generally, if $A$ is an $m\times n$ matrix and $B$ is a $n
       -1 & 2 & 1
     \end{pmatrix}
   \]
-  and $C = AB$, what is $C_{2,3}$?
+  and $C = AB$, what is $c_{2,3}$?
   \begin{prompt}
     \[
-      C_{2,3} = \answer{41}
+      c_{2,3} = \answer{41}
     \]
   \end{prompt}
 \end{question}
@@ -1344,7 +1493,8 @@ to vectors too. Suppose $\vec{x}$ and $\vec y$ are column $n$-vectors.
   row vector multiplied by an $n \times 1$ matrix. Either case results
   in a $1 \times 1$ matrix, that is, a scalar. This form of a vector
   product in which a row vector is multiplied by a column vector
-  producing a scalar is called the \dfn{inner product}.
+  producing a scalar is called the \dfn{inner product}. This is
+  another name for the familiar dot product.
 \item[Outer product.] The product $\vec{x} \vec{y}^\transpose$ can be
   inteperted as either a $n\times 1$ matrix multiplied by a row vector or a
   column vector multipled by a $1\times n$ matrix. In either case the
@@ -1417,14 +1567,14 @@ We'll use the outer product in our next example.
       \end{scope}
     \end{tikzpicture}
   \end{center}
-  Let $P = \vec{n}\vec{s}^\transpose$. Compute $P_{6,7}$ and interpret
+  Let $P = \vec{n}\vec{s}^\transpose$. Compute $p_{6,7}$ and interpret
   the matrix $P$ itself.
   \begin{explanation}
     Viewing $\vec{n}$ as a $11\times 1$ matrix and
     $\vec{s}^\transpose$ as a $1 \times 11$ matrix, the (outer) product
     $\vec{n}\vec{s}^\transpose$ will be an
     $\answer[given]{11}\times\answer[given]{11}$ matrix, and have
-    $\answer[given]{121}$ entries. $P_{6,7}$ is
+    $\answer[given]{121}$ entries. $p_{6,7}$ is
     $\answer[given]{0.92}$.
 
     The product $P$ is now a distribution of two variables, and can be
@@ -1535,7 +1685,7 @@ transform data.
   Y\\
   C_B\\
   C_R
-  \end{pmatrix}
+  \end{pmatrix}.
   \]
   Observe, when we do this transformation to the image of our cat
   above:
@@ -1589,8 +1739,8 @@ transform data.
 Remember, vectors consist of data that can be ``added.'' It turns out
 that we have some wiggle room with respect to our defintion of
 adding. In particular, believe it or not, sometimes it makes sense to
-``add'' words. Here's how, yuo imagine the letters of the alphabet on
-a wheel:
+``add'' words. Here's how you imagine the letters of the alphabet on a
+wheel:
 \begin{center}
 \begin{tikzpicture}
   \tikzmath{\xx = 26; \rr = 3; \dd = .4;}
@@ -1617,11 +1767,11 @@ a wheel:
  \draw[thick] (0,0) circle (\rr);
 \end{tikzpicture}
 \end{center}
-Now by `adding' letters on the wheel, we say outragious things like
+Now by ``adding'' letters on the wheel, we say outragious things like
 \[
-\texttt{A}+ \texttt{B} \equiv \texttt{B}, \quad \texttt{M}+\texttt{R} \equiv \texttt{E}, \qquad 13\cdot \texttt{B} \equiv \texttt{N}
+\texttt{A}+ \texttt{B} \equiv \texttt{B}, \quad \texttt{M}+\texttt{R} \equiv \texttt{E}, \quad 13\cdot \texttt{B} \equiv \texttt{N}.
 \]
-this is technically called \link[modular arithmetic]{https://en.wikipedia.org/wiki/Modular_arithmetic}, and
+This is technically called \link[modular arithmetic]{https://en.wikipedia.org/wiki/Modular_arithmetic}, and
 is extemely useful in code making and code breaking.
 
 \begin{question}
@@ -1638,27 +1788,27 @@ is extemely useful in code making and code breaking.
 Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
 
 \begin{example}[Cryptography]
-  Suppose you want to encypt the message: \texttt{MATH}
+  Suppose you want to encypt the message: \texttt{MATH}.
 
 
   One way to do this is with a \link[Hill
     Cypher]{https://en.wikipedia.org/wiki/Hill_cipher}. We'll encode
   our message as a column vector and use the cypher matrix $C$ below:
   \[
-  \vec{m} =
-  \begin{pmatrix}
-    \texttt M\\
-    \texttt A\\
-    \texttt T\\
-    \texttt H
-  \end{pmatrix}
-  \qquad
-  C= \begin{pmatrix}
- 1 & 0 & 3 & 1 \\
- 2 & 3 & 0 & 1 \\
- 0 & 3 & 1 & 0 \\
- 2 & 3 & 2 & 2
-  \end{pmatrix}
+    \vec{m} =
+    \begin{pmatrix}
+      \texttt M\\
+      \texttt A\\
+      \texttt T\\
+      \texttt H
+    \end{pmatrix},
+    \qquad
+    C= \begin{pmatrix}
+      1 & 0 & 3 & 1 \\
+      2 & 3 & 0 & 1 \\
+      0 & 3 & 1 & 0 \\
+      2 & 3 & 2 & 2
+    \end{pmatrix}.
   \]
  Compute $C\vec{m}$, thus encoding the message.
  \begin{explanation}
@@ -1750,8 +1900,10 @@ A^{\transpose} = \begin{pmatrix}
 \]
 \begin{definition} The \dfn{transpose} of a $m\times n$ matrix $A$, is denoted $A^\transpose$ where:
   \[
-  A^\transpose_{i,j} = A_{j,i}
+    \left[ A^\transpose \right]_{i,j} = \left[ A \right]_{j,i}.
   \]
+  %% TK: The notation A_{i,j}^\transpose is misleading because A_{i,j}
+  %% is a scalar and the transpose of a scalar is itself.
  Thus, the first row of $A$ becomes the first column of
   $A^{\transpose}$ and the second row of $A$ becomes the second column
  of $A^{\transpose}$ and so on.
@@ -1808,19 +1960,39 @@ Thus, their order changes after taking the transpose of each.
 \begin{proposition}[Transpose matrix multiplication]
   Suppose we have a $m\times n$ matrix $A$ and an $n\times \l$ matrix $B$. In this case:
   \[
-  (BA)^\transpose = A^\transpose B^\transpose
+    %% TK: BA is not % defined unless \l = m.
+    % (BA)^\transpose = A^\transpose B^\transpose
+    (AB)^\transpose = B^\transpose A^\transpose.
   \]
   \begin{explanation}
-    Using the dot product interpretation of matrix multiplication, we can write
+    We need to show that the two matrices are equal element by
+    element, meaning
     \[
-      (BA)_{i,j} = \row_i(B)^\transpose \dotp \col_j(A)
+      \left[ (AB)^\transpose \right]_{ij} = \left[ B^\transpose
+        A^\transpose \right]_{ij}, \quad\text{for all $i$ and $j$}.
     \]
+    Recall that, using the dot product interpretation of matrix
+    multiplication, we can write
+    \[
+      % (BA)_{i,j} = \row_i(B)^\transpose \dotp \col_j(A)
+      \left[ AB \right]_{ij} = \row_i(A)^\transpose \dotp \col_j(B).
+    \]
+
     Now, write with me (you have to write along to really understand)
+    % \begin{align*}
+    %   (BA)_{i,j}^\transpose &= \row_j(B)^\transpose \dotp \col_i(A) & & (\text{transpose swaps $i$ and $j$})\\
+    %   &= \col_j(B^\transpose)^\transpose \dotp \row_i(A^\transpose) & & (\text{transpose swaps rows and columns})\\
+    %   &= \row_i(A^\transpose)^\transpose \dotp \col_j(B^\transpose) & & (\vec x^\transpose \dotp \vec y = \vec x\dotp \vec y^\transpose)\\
+    %   &= A^\transpose B^\transpose.
+    % \end{align*}
     \begin{align*}
-      (BA)_{i,j}^\transpose &= \row_j(B)^\transpose \dotp \col_i(A) & & (\text{transpose swaps $i$ and $j$})\\
-      &= \col_j(B^\transpose)^\transpose \dotp \row_i(A^\transpose) & & (\text{transpose swaps rows and columns})\\
-      &= \row_i(A^\transpose)^\transpose \dotp \col_j(B^\transpose) & & (\vec x^\transpose \dotp \vec y = \vec x\dotp \vec y^\transpose)\\
-      &= A^\transpose B^\transpose.
+      \left[ (AB)^\transpose \right]_{ij}
+      & = \left[ AB \right]_{ji} \tag{definition of transpose} \\
+      & = \row_j(A)^\transpose \dotp \col_i(B) \tag{dot product interpretation} \\
+      & = \col_i(B) \dotp \row_j(A)^\transpose \tag{commutativity} \\
+      & = \row_i(B^\transpose)^\transpose \dotp \col_j(A^\transpose)
+        \tag{transpose swaps rows and columns} \\
+      & = \left[ B^\transpose A^\transpose \right]_{ij}.
     \end{align*}
   \end{explanation}
 \end{proposition}
@@ -1830,132 +2002,145 @@ Let us explore some types of matrices that usually are used in linear
 algebra. The zero matrix, usually denoted as $\textbf{O}_{m \times n}$ is
 an $m \times n$ matrix with each of its entries being zero. For example,
 \[
-\textbf{O}_{2\times 3} = \left(\begin{array}{ccc}
-0 & 0 &0 \\
-0 & 0 & 0
-\end{array}\right), \hspace{.5cm} \textbf{O}_{4\times 2} = \left(\begin{array}{cc}
-0 & 0 \\
-0 & 0 \\
-0 & 0\\
-0 & 0
-\end{array}\right)\]
-It is not hard to see that the zero matrix multiplied by a matrix gives a zero matrix:
-\[
-\left(\begin{array}{ccc}
-2 & -1 & 0 \\
-3 & 4 & 3\\
-1 & -2 & 7
-\end{array}\right) \left(\begin{array}{ccc}
-0 &0 &0 \\
-0 &0 &0 \\
-0 &0 &0
-\end{array}\right) = \left(\begin{array}{ccc}
-0 &0 &0 \\
-0 &0 &0 \\
-0 &0 &0
-\end{array}\right)
+  \textbf{O}_{2\times 3} =
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix},
+  \quad
+  \textbf{O}_{4\times 2} =
+  \begin{pmatrix}
+    0 & 0 \\
+    0 & 0 \\
+    0 & 0 \\
+    0 & 0
+  \end{pmatrix}.
 \]
-and $\textbf{O}_{3\times 3} A = \textbf{O}_{3 \times 3}$.
+Any product involving a zero matrix returns another zero matrix. That
+is, for any $m \times n$ matrix $A$, $A \mathbf{O}_{n \times p} = \mathbf{O}_{m
+  \times p}$ and $\mathbf{O}_{q \times m} A = \mathbf{O}_{q \times n}$.
+% It is not hard to see that the zero matrix multiplied by a matrix gives a zero matrix:
+% \[
+% \left(\begin{array}{ccc}
+% 2 & -1 & 0 \\
+% 3 & 4 & 3\\
+% 1 & -2 & 7
+% \end{array}\right) \left(\begin{array}{ccc}
+% 0 &0 &0 \\
+% 0 &0 &0 \\
+% 0 &0 &0
+% \end{array}\right) = \left(\begin{array}{ccc}
+% 0 &0 &0 \\
+% 0 &0 &0 \\
+% 0 &0 &0
+% \end{array}\right)
+% \]
+% and $\textbf{O}_{3\times 3} A = \textbf{O}_{3 \times 3}$.
 
 
-Another important type of matrix is the identity matrix, denoted as
-$I_{m \times n}$. It is a matrix whose diagonal entries are $1$ and its
-every other entry is zero. In particular, when $m = n$,
-$I_{n \times n}$ is often denoted simply as $I_n$, and this square matrix
-is called the \dfn{identity matrix}. For example,
+% Another important type of matrix is the identity matrix, denoted as
+% $I_{m \times n}$. It is a matrix whose diagonal entries are $1$ and its
+% every other entry is zero.
+Another important type of matrix is the \dfn{identity matrix}, denoted as
+$I_{n \times n}$ or simply $I_n$. It is an $n \times n$ matrix with ones on the
+main diagonal and zeros elsewhere. For example,
 \[
-  I_{2\times 2}=
-  \left(\begin{array}{cc}
+  I_2 =
+  \begin{pmatrix}
     1 & 0 \\
     0 & 1
-  \end{array}\right), \hspace{.5cm}  I_{4\times 4} = \left(\begin{array}{cccc}
+  \end{pmatrix},
+  \quad
+  I_4 =
+  \begin{pmatrix}
     1 & 0 & 0 & 0 \\
-    0 & 1 & 0& 0 \\
-    0& 0 & 1 & 0\\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
     0 & 0 & 0 & 1
-  \end{array}\right)
+  \end{pmatrix}.
 \]
 % Note that the identity matrix is a square matrix ( has the same number
 % of rows as columns).
 The fundamental property of the identity matrix is that it acts as $1$
-as in regular multiplication. That is, $AI = A$ and $IA= A$. For
-example, one can check that
-\[
-\left(\begin{array}{cc}
-a_{1} & a_{2}\\
-a_{3} & a_{4}
-\end{array}\right) \left(\begin{array}{cc}
-1 & 0\\
-0 &1
-\end{array}\right) = \left(\begin{array}{cc}
-a_{1} & a_{2}\\
-a_{3} & a_{4}
-\end{array}\right)
-\]
-and
-\[\left(\begin{array}{cc}
-1 & 0\\
-0 &1
-\end{array}\right)\left(\begin{array}{cc}
-a_{1} & a_{2}\\
-a_{3} & a_{4}
-\end{array}\right)= \left(\begin{array}{cc}
-a_{1} & a_{2}\\
-a_{3} & a_{4}
-\end{array}\right) \]
+as in regular multiplication. That is, $AI = A$ and $IA= A$.
 
-\begin{question}
-Write down the $3 \times 3$ identity matrix and show that $AI = IA = A$ for
-\[A =  \left(\begin{array}{ccc}
-2 & 3 & 4\\
-0  & 1 & -1\\
-5 & 7 & 9
-\end{array}\right)
-\]
+% For example, one can check that
+% \[
+% \left(\begin{array}{cc}
+% a_{1} & a_{2}\\
+% a_{3} & a_{4}
+% \end{array}\right) \left(\begin{array}{cc}
+% 1 & 0\\
+% 0 &1
+% \end{array}\right) = \left(\begin{array}{cc}
+% a_{1} & a_{2}\\
+% a_{3} & a_{4}
+% \end{array}\right)
+% \]
+% and
+% \[\left(\begin{array}{cc}
+% 1 & 0\\
+% 0 &1
+% \end{array}\right)\left(\begin{array}{cc}
+% a_{1} & a_{2}\\
+% a_{3} & a_{4}
+% \end{array}\right)= \left(\begin{array}{cc}
+% a_{1} & a_{2}\\
+% a_{3} & a_{4}
+% \end{array}\right) \]
 
-\begin{prompt}
-\[
-I_{3\times 3} = \left(\begin{array}{ccc}
-\answer[given]{1} & \answer[given]{0} & \answer[given]{0}\\
-\answer[given]{0} & \answer[given]{1} & \answer[given]{0}\\
-\answer[given]{0} & \answer[given]{0} & \answer[given]{1}
-\end{array}\right)
-\]
-Then,
-\[
-AI = \left(\begin{array}{ccc}
-2 & 3 & 4\\
-0  & 1 & -1\\
-5 & 7 & 9
-\end{array}\right)\left(\begin{array}{ccc}
-\answer[given]{1} & \answer[given]{0} & \answer[given]{0}\\
-\answer[given]{0} & \answer[given]{1} & \answer[given]{0}\\
-\answer[given]{0} & \answer[given]{0} & \answer[given]{1}
-\end{array}\right)= \left(\begin{array}{ccc}
-\answer[given]{2} & \answer[given]{3} & \answer[given]{4}\\
-\answer[given]{0} & \answer[given]{1} & \answer[given]{-1}\\
-\answer[given]{5} & \answer[given]{7} & \answer[given]{9}
-\end{array}\right)\]
-and
-\[
-IA = \left(\begin{array}{ccc}
-\answer[given]{1} & \answer[given]{0} & \answer[given]{0}\\
-\answer[given]{0} & \answer[given]{1} & \answer[given]{0}\\
-\answer[given]{0} & \answer[given]{0} & \answer[given]{1}
-\end{array}\right)\left(\begin{array}{ccc}
-2 & 3 & 4\\
-0  & 1 & -1\\
-5 & 7 & 9
-\end{array}\right)= \left(\begin{array}{ccc}
-\answer[given]{2} & \answer[given]{3} & \answer[given]{4}\\
-\answer[given]{0} & \answer[given]{1} & \answer[given]{-1}\\
-\answer[given]{5} & \answer[given]{7} & \answer[given]{9}
-\end{array}\right)\]
-\end{prompt}
-\end{question}
+% \begin{question}
+% Write down the $3 \times 3$ identity matrix and show that $AI = IA = A$ for
+% \[A =  \left(\begin{array}{ccc}
+% 2 & 3 & 4\\
+% 0  & 1 & -1\\
+% 5 & 7 & 9
+% \end{array}\right)
+% \]
+
+% \begin{prompt}
+% \[
+% I_{3\times 3} = \left(\begin{array}{ccc}
+% \answer[given]{1} & \answer[given]{0} & \answer[given]{0}\\
+% \answer[given]{0} & \answer[given]{1} & \answer[given]{0}\\
+% \answer[given]{0} & \answer[given]{0} & \answer[given]{1}
+% \end{array}\right)
+% \]
+% Then,
+% \[
+% AI = \left(\begin{array}{ccc}
+% 2 & 3 & 4\\
+% 0  & 1 & -1\\
+% 5 & 7 & 9
+% \end{array}\right)\left(\begin{array}{ccc}
+% \answer[given]{1} & \answer[given]{0} & \answer[given]{0}\\
+% \answer[given]{0} & \answer[given]{1} & \answer[given]{0}\\
+% \answer[given]{0} & \answer[given]{0} & \answer[given]{1}
+% \end{array}\right)= \left(\begin{array}{ccc}
+% \answer[given]{2} & \answer[given]{3} & \answer[given]{4}\\
+% \answer[given]{0} & \answer[given]{1} & \answer[given]{-1}\\
+% \answer[given]{5} & \answer[given]{7} & \answer[given]{9}
+% \end{array}\right)\]
+% and
+% \[
+% IA = \left(\begin{array}{ccc}
+% \answer[given]{1} & \answer[given]{0} & \answer[given]{0}\\
+% \answer[given]{0} & \answer[given]{1} & \answer[given]{0}\\
+% \answer[given]{0} & \answer[given]{0} & \answer[given]{1}
+% \end{array}\right)\left(\begin{array}{ccc}
+% 2 & 3 & 4\\
+% 0  & 1 & -1\\
+% 5 & 7 & 9
+% \end{array}\right)= \left(\begin{array}{ccc}
+% \answer[given]{2} & \answer[given]{3} & \answer[given]{4}\\
+% \answer[given]{0} & \answer[given]{1} & \answer[given]{-1}\\
+% \answer[given]{5} & \answer[given]{7} & \answer[given]{9}
+% \end{array}\right)\]
+% \end{prompt}
+% \end{question}
 
 
-Yet another useful type of matrix is the matrix of all ones which is
+Yet another useful type of matrix is a matrix of all ones which is
 often denoted by $J_{m \times n}$. For example,
 \[
   J_{3} = J_{3 \times 3} =
@@ -1985,18 +2170,18 @@ Even though $J$ does not satisfy neat algebraic properties such as
 $A \vec{O} = \vec{O}$ or $AI = IA = A$, this all-ones matrix arises in
 many fields of applications such as graph theory and statistics.
 
-\begin{remark}[Computational notes]
-  The three types of matrices introduced above are very commonly used
-  in applications, so many numerical programming languages offer
-  utilities that generate these matrices with ease. For instance, in
-  MATLAB, each of $\vec{O}_{m \times n}$, $J_{m \times n}$, and $I_{m \times n}$ can be
-  constructed in one line of code:
-\begin{verbatim}
-  >> zeros(m, n)
-  >> ones(m, n)
-  >> eye(m, n)
-\end{verbatim}
-\end{remark}
+% \begin{remark}[Computational notes]
+%   The three types of matrices introduced above are very commonly used
+%   in applications, so many numerical programming languages offer
+%   utilities that generate these matrices with ease. For instance, in
+%   MATLAB, each of $\vec{O}_{m \times n}$, $J_{m \times n}$, and $I_{m \times n}$ can be
+%   constructed in one line of code:
+% \begin{verbatim}
+%   >> zeros(m, n)
+%   >> ones(m, n)
+%   >> eye(m, n)
+% \end{verbatim}
+% \end{remark}
 
 \begin{example}[Data Analysis (revisited) -- Computing Variances]
   This is continuation of the data analysis example in which we
@@ -2035,73 +2220,91 @@ many fields of applications such as graph theory and statistics.
   \item The deviations from the average, $x_1 - \mu$, $x_2 - \mu$, \ldots, $x_n
     - \mu$, can be packaged into a column vector, say $\overline{\vec{x}}$,
     by
-    \begin{align*}
-      \overline{\vec{x}}
-      & =
-        \begin{pmatrix}
-          x_1 - \mu \\ x_2 - \mu \\ \vdots \\ x_n - \mu
-        \end{pmatrix} \\
-      & =
-        \begin{pmatrix}
-        x_1 \\ x_2 \\ \vdots \\ x_n
-        \end{pmatrix}
-        - \mu
-        \begin{pmatrix}
-          1 \\ 1 \\ \vdots \\ 1
-        \end{pmatrix} \\
-      & = \vec{x} - \mu \vec{1}.
-    \end{align*}
-    Using the property of the identity matrix, we can write $\vec{x}$
-    as $I \vec{x}$. Furthermore, since $\mu \vec{1} = \vec{1} \mu$, we can
-    write simplify the last line as
-    \begin{align*}
-      \overline{\vec{x}}
-      & = I \vec{x} - \vec{1} \left( \frac{1}{n} \vec{1}^\transpose
-        \vec{x} \right) \\
-      & = \bigl( I - \frac{1}{n} \underbrace{\vec{1} \vec{1}^\transpose}_{=J} \bigr) \vec{x}.
-      % & = \underbrace{\left( I - \frac{1}{n} \vec{1}
-      %   \vec{1}^\transpose \right)}_{=H} \vec{x} = H \vec{x}.
-    \end{align*}
-    Note that the product $\vec{1} \vec{1}^\transpose$ is in the form
-    of a row vector followed by a column vector, which results in a
-    square matrix of all ones, that is, $J = J_{n}$. The upshot is
-    that if we define a new matrix $H$ by
-    \[
-      H = I - \frac{1}{n} J =
+    % \begin{align*}
+    %   \overline{\vec{x}}
+    %   & =
+    %     \begin{pmatrix}
+    %       x_1 - \mu \\ x_2 - \mu \\ \vdots \\ x_n - \mu
+    %     \end{pmatrix} \\
+    %   & =
+    %     \begin{pmatrix}
+    %     x_1 \\ x_2 \\ \vdots \\ x_n
+    %     \end{pmatrix}
+    %     - \mu
+    %     \begin{pmatrix}
+    %       1 \\ 1 \\ \vdots \\ 1
+    %     \end{pmatrix} \\
+    %   & = \vec{x} - \mu \vec{1}.
+    % \end{align*}
+    \begin{equation*}
+      \overline{\vec{x}} =
       \begin{pmatrix}
-        1-\frac{1}{n} & -\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
-        -\frac{1}{n} & 1-\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
-        -\frac{1}{n} & -\frac{1}{n} & 1-\frac{1}{n} & \cdots & -\frac{1}{n} \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        -\frac{1}{n} & -\frac{1}{n} & -\frac{1}{n} & \cdots & 1-\frac{1}{n}
-      \end{pmatrix},
-    \]
-    then the vector $\overline{\vec{x}}$ of deviations or centered
-    data is obtained simply by the matrix-vector product
+        x_1 - \mu \\ x_2 - \mu \\ \vdots \\ x_n - \mu
+      \end{pmatrix}
+      = \vec{x} - \mu \vec{1}.
+    \end{equation*}
+    % Using the property of the identity matrix, we can write $\vec{x}$
+    % as $I \vec{x}$. Furthermore, since $\mu \vec{1} = \vec{1} \mu$, we can
+    % simplify the last line as
+    % \begin{align*}
+    %   \overline{\vec{x}}
+    %   & = I \vec{x} - \vec{1} \left( \frac{1}{n} \vec{1}^\transpose
+    %     \vec{x} \right) \\
+    %   & = \bigl( I - \frac{1}{n} \underbrace{\vec{1} \vec{1}^\transpose}_{=J} \bigr) \vec{x}.
+    %   % & = \underbrace{\left( I - \frac{1}{n} \vec{1}
+    %   %   \vec{1}^\transpose \right)}_{=H} \vec{x} = H \vec{x}.
+    % \end{align*}
+    % Note that the product $\vec{1} \vec{1}^\transpose$ is in the form
+    % of a row vector followed by a column vector, which results in a
+    % square matrix of all ones, that is, $J = J_{n}$. The upshot is
+    % that if we define a new matrix $H$ by
+    % \[
+    %   H = I - \frac{1}{n} J =
+    %   \begin{pmatrix}
+    %     1-\frac{1}{n} & -\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
+    %     -\frac{1}{n} & 1-\frac{1}{n} & -\frac{1}{n} & \cdots & -\frac{1}{n} \\
+    %     -\frac{1}{n} & -\frac{1}{n} & 1-\frac{1}{n} & \cdots & -\frac{1}{n} \\
+    %     \vdots & \vdots & \vdots & \ddots & \vdots \\
+    %     -\frac{1}{n} & -\frac{1}{n} & -\frac{1}{n} & \cdots & 1-\frac{1}{n}
+    %   \end{pmatrix},
+    % \]
+    % then the vector $\overline{\vec{x}}$ of deviations or centered
+    % data is obtained simply by the matrix-vector product
+    % \[
+    %   \overline{\vec{x}} = H\vec{x}.
+    % \]
+    Using a property of the identity matrix and substituting $\mu =
+    (1/n) \vec{1}^\transpose \vec{x}$, we can further simplify the
+    expression for $\overline{\vec{x}}$ as follows
     \[
-      \overline{\vec{x}} = H\vec{x}.
+      \overline{\vec{x}}
+      = \underbrace{\left( I - \frac{1}{n}J \right)}_{=H} \vec{x} = H \vec{x}.
     \]
   \item The average of the squared deviations, commonly known as the
     variance and denoted by $\sigma^2$, of the final exam scores is
     computed by
-    \begin{align*}
+    % \begin{align*}
+    %   \sigma^2
+    %   & = \frac{1}{n} \sum_{i=1}^n \overline{x}_i^2 \\
+    %   & = \frac{1}{n}
+    %     \begin{pmatrix}
+    %       \overline{x}_1 & \overline{x}_2 & \cdots & \overline{x}_n
+    %     \end{pmatrix}
+    %     \begin{pmatrix}
+    %       \overline{x}_1 \\ \overline{x}_2 \\ \vdots \\ \overline{x}_n
+    %     \end{pmatrix} \\
+    %   & = \frac{1}{n} \overline{\vec{x}}^\transpose \overline{\vec{x}}.
+    % \end{align*}
+    \begin{equation*}
       \sigma^2
-      & = \frac{1}{n} \sum_{i=1}^n \overline{x}_i^2 \\
-      & = \frac{1}{n}
-        \begin{pmatrix}
-          \overline{x}_1 & \overline{x}_2 & \cdots & \overline{x}_n
-        \end{pmatrix}
-        \begin{pmatrix}
-          \overline{x}_1 \\ \overline{x}_2 \\ \vdots \\ \overline{x}_n
-        \end{pmatrix} \\
-      & = \frac{1}{n} \overline{\vec{x}}^\transpose \overline{\vec{x}}.
-    \end{align*}
+      = \frac{1}{n} \sum_{i=1}^n \overline{x}_i^2
+      = \frac{1}{n} \overline{\vec{x}}^\transpose \overline{\vec{x}}.
+    \end{equation*}
     Note that the variance is a sum of squares and, by now, it is no
-    surprise to us that it can be expressed as a dot product! In fact,
-    we have already seen the dot product of the form
-    $\overline{\vec{x}}^\transpose \overline{\vec{x}}$ in the
-    definition of the Euclidean norm.
-
+    surprise to us that it is expressed as an inner product!
+    % In fact, we have already seen the dot product of the form
+    % $\overline{\vec{x}}^\transpose \overline{\vec{x}}$ in the
+    % definition of the Euclidean norm.
     One can go a step further and substitute
     $\overline{\vec{x}} = H \vec{x}$ in the last line to obtain
     \[
@@ -2117,6 +2320,8 @@ many fields of applications such as graph theory and statistics.
     branches of mathematics, not just linear algebra, and many fields
     of applications.
   \end{enumerate}
+  The tools of linear algebra enable us to express these statistics
+  formulas in a very compact manner.
 \end{example}
 
 

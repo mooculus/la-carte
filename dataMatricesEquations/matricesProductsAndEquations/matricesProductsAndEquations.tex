@@ -1987,11 +1987,11 @@ Thus, their order changes after taking the transpose of each.
     % \end{align*}
     \begin{align*}
       \left[ (AB)^\transpose \right]_{ij}
-      & = \left[ AB \right]_{ji} \tag{definition of transpose} \\
-      & = \row_j(A)^\transpose \dotp \col_i(B) \tag{dot product interpretation} \\
-      & = \col_i(B) \dotp \row_j(A)^\transpose \tag{commutativity} \\
+      & = \left[ AB \right]_{ji} && \text{(definition of transpose)} \\
+      & = \row_j(A)^\transpose \dotp \col_i(B) && \text{(dot product interpretation)} \\
+      & = \col_i(B) \dotp \row_j(A)^\transpose && \text{(commutativity)} \\
       & = \row_i(B^\transpose)^\transpose \dotp \col_j(A^\transpose)
-        \tag{transpose swaps rows and columns} \\
+        && \text{(transpose swaps rows and columns)} \\
       & = \left[ B^\transpose A^\transpose \right]_{ij}.
     \end{align*}
   \end{explanation}
@@ -1999,16 +1999,16 @@ Thus, their order changes after taking the transpose of each.
 
 
 Let us explore some types of matrices that usually are used in linear
-algebra. The zero matrix, usually denoted as $\textbf{O}_{m \times n}$ is
+algebra. The zero matrix, usually denoted as $\mathbf{O}_{m \times n}$ is
 an $m \times n$ matrix with each of its entries being zero. For example,
 \[
-  \textbf{O}_{2\times 3} =
+  \mathbf{O}_{2\times 3} =
   \begin{pmatrix}
     0 & 0 & 0 \\
     0 & 0 & 0
   \end{pmatrix},
   \quad
-  \textbf{O}_{4\times 2} =
+  \mathbf{O}_{4\times 2} =
   \begin{pmatrix}
     0 & 0 \\
     0 & 0 \\

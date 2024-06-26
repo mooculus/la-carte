@@ -500,12 +500,13 @@ We then introduce a couple of convenient notation.
   Let $n$ be a positive integer and let $A$ be an $n \times n$
   matrix.
   \begin{itemize}
-  \item The $(i,j)$ submatrix of $A$, denoted $A_{ij}$, is the $(n-1) \times
+    %% TK: New notation for submatrix suggested by Bart
+  \item The $(i,j)$ submatrix of $A$, denoted $A_{\hat{i}\hat{j}}$, is the $(n-1) \times
     (n-1)$ matrix obtained by removing the $i$th row and the $j$th
     column of $A$.
   \item The $(i,j)$ cofactor of $A$, denoted $C_{ij}$, is defined by
     \[
-      C_{ij} = (-1)^{i+j} \det(A_{ij}).
+      C_{ij} = (-1)^{i+j} \det(A_{\hat{i}\hat{j}}).
     \]
   \end{itemize}
 \end{definition}
@@ -522,19 +523,19 @@ For example, for a $3 \times 3$ matrix
 three of the nine possible cofactors are
 \begin{align*}
   C_{11}
-  & = (-1)^{1+1} \det A_{11}
+  & = (-1)^{1+1} \det A_{\hat{1}\hat{1}}
     = +
     \begin{vmatrix}
       a_{22} & a_{23} \\ a_{32} & a_{33}
     \end{vmatrix}, \\
   C_{12}
-  & = (-1)^{1+2} \det A_{12}
+  & = (-1)^{1+2} \det A_{\hat{1}\hat{2}}
     = -
     \begin{vmatrix}
       a_{21} & a_{23} \\ a_{31} & a_{33}
     \end{vmatrix}, \\
   C_{13}
-  & = (-1)^{1+3} \det A_{13}
+  & = (-1)^{1+3} \det A_{\hat{1}\hat{3}}
     = +
     \begin{vmatrix}
       a_{21} & a_{22} \\ a_{31} & a_{32}
@@ -1170,14 +1171,14 @@ upcoming calculations.
   \item If one row of $A$ is multiplied by $k$ to produce $B$, then
     $\det(B) = k \det(A)$. That is,
     \[
-      A \xrightarrow{R_i \to k R_i} B
+      A \xrightarrow{k R_i \to R_i} B
       \quad\Longrightarrow\quad
       \det(B) = k\det(A).
     \]
   \item If a multiple of one row of $A$ is added to another row to
     produce $B$, then $\det(B) = \det(A)$. That is,
     \[
-      A \xrightarrow{R_i \to R_i + c R_j} B
+      A \xrightarrow{R_i + c R_j \to R_i} B
       \quad\Longrightarrow\quad
       \det(B) = \det(A).
     \]

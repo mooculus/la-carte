@@ -786,25 +786,25 @@ First we'll represent this system of equations as an augmented matrix:
 \]
 
 Now we will use Gaussian elimination to transform this matrix to row echelon form. Start by zeroing the column below the $(1,1)$-entry:
-\[
-  \begin{pmatrix}
-    {2/5}&  {3/10} & {0} &{0} &8 \\
-    {0}&  {1} & {0} &{-1/4} & -3/2\\
-    {3/5}&  {0} & {2/5} &{0} &2\\
-    {0}&  {6} & {0} &{-3/2} &-9
-  \end{pmatrix}
-  % \begin{matrix}
-  %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-  %   \Longrightarrow
-  % \end{matrix}
-  \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
-  \begin{pmatrix}
-    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-    {0}&  {1} & {0} &{-1/4} & -3/2\\
-    \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
-    {0}&  {6} & {0} &{-3/2} &-9
-  \end{pmatrix}
-\]
+%% \[
+%%   \begin{pmatrix}
+%%     {2/5}&  {3/10} & {0} &{0} &8 \\
+%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
+%%     {3/5}&  {0} & {2/5} &{0} &2\\
+%%     {0}&  {6} & {0} &{-3/2} &-9
+%%   \end{pmatrix}
+%%   % \begin{matrix}
+%%   %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+%%   %   \Longrightarrow
+%%   % \end{matrix}
+%%   \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+%%   \begin{pmatrix}
+%%     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
+%%     \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+%%     {0}&  {6} & {0} &{-3/2} &-9
+%%   \end{pmatrix}
+%% \]
 Now we work with the submatrix:
 %% \begin{center}
 %% \begin{tikzpicture}

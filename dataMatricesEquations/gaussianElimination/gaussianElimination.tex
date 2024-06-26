@@ -758,260 +758,106 @@ Finally, you must check your work!
     \left(\answer[given]{-3}\right) -2\left(\answer[given]{2}\right)+ 2\left(\answer[given]{1}\right) &=\answer[given]{-9}\\
     3\left(\answer[given]{-3}\right) +\left(\answer[given]{2}\right)- 3\left(\answer[given]{1}\right) &=\answer[given]{14}
   \end{align*}
-
-%% Noting that changing the order of equations
-%% does not affect the solutions of the system of equations, we note that
-%% neither does swapping the rows of the augmented matrix. So we write:
-%% \[
-%% \left(\begin{array}{ccc|c}
-%%   2 & 3 & 1 & 5 \\
-%%   1 &  -2 & 2 &-9 \\
-%%   3 &  1 & -3 & 14
-%% \end{array}\right)
-%% \begin{array}{c}
-%%   R_1\leftrightarrow R_2\\\Longrightarrow
-%% \end{array}
-%% \left(\begin{array}{ccc|c}
-%%   1 &  -2 & 2 &-9 \\
-%%   2 & 3 & 1 & 5 \\
-%%   3 &  1 & -3 & 14
-%% \end{array}\right)
-%% \]
-%% Now, multiplying the first equation by $-2$ and adding it to the
-%% second equation, and then replacing the second equation
-
-%% Afterwards, we multiply the first equation by $-3$ and add
-%% it to the third equation:
-%% \[
-%% \begin{array}{ccccccccc}
-%%      (-2)&&(x& -&2y&+&2z&=&-9)\\
-%%      +&& 2x &+& 3y &+& z &=& 5 \\
-%%      &&-&-&-&-&-&-&-\\
-%%      \Rightarrow&& & &7y&-&3z&=&23
-%% \end{array}
-%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
-%% \left(\begin{array}{ccc|c}
-%%   1 &  -2 & 2 &-9 \\
-%%   0 & 7 & -3 & 23 \\
-%%   3 &  1 & -3 & 14
-%% \end{array}\right),
-%% \]
-%% and
-%% \[
-%% \begin{array}{ccccccccc}
-%%      (-3)&&(x& -&2y&+&2z&=&-9)\\
-%%      +&& 3x &+& y &-& 3z &=& 14 \\
-%%      &&-&-&-&-&-&-&-\\
-%%      \Rightarrow&& & &7y&-&9z&=&41
-%% \end{array}
-%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
-%% \left(\begin{array}{ccc|c}
-%%   1 &  -2 & 2 &-9 \\
-%%   0 & 7 & -3 & 23 \\
-%%   0 &  7 & -9 & 41
-%% \end{array}\right).
-%% \]
-%% The above operations can be written in condensed form as $-2R_1 + R_2$ and $-3R_1 + R_3$, respectively. Observe that the row that is multiplied by a number does not change. For example, the first row above stayed the same and the row that it was added to changed. It is convenient to multiply each entry of row one by the appropriate number and write it above the row as side work and erase the numbers after adding them to the other row. It is important not to change the row itself. \\
-%% Now we see that both $y$ variables have $7$ as the coefficient. Thus, the best way to proceed is to eliminate the $y$ variable:
-%% \[
-%% \begin{array}{ccccccc}
-%%      (-1)&&(7y&-&3z&=&23)\\
-%%      +&& 7y &-& 9z &=& 41 \\
-%%      &&-&-&-&-&-\\
-%%      \Rightarrow&& &-&6z&=&18
-%% \end{array}
-%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
-%% \left(\begin{array}{ccc|c}
-%%   1 &  -2 & 2 &-9 \\
-%%   0 & 7 & -3 & 23 \\
-%%   0 &  0 & -6 & 18
-%% \end{array}\right).
-%% \]
-%% It is now natural to solve for $z$ and obtain:
-%% \[
-%% \begin{array}{ccc}
-%%      &&z = -3\\
-%%      \text{ also } &&7y- 3z=23  \hspace{.3cm}\Rightarrow\hspace{.3cm} y- \frac{3}{7}z = \frac{23}{7}
-%% \end{array}
-%% \hspace{.2cm}\Rightarrow \hspace{.2cm}
-%% \left(\begin{array}{ccc|c}
-%%   1 &  -2 & 2 &-9 \\
-%%   0 & 1 & -3/7 & 23/7 \\
-%%   0 &  0 & 1 & -3
-%% \end{array}\right),
-%% \]
-%% where the operations translate to $R_{3}/(-6)$ and $R_{2}/7$, respectively. By substitution, we obtain,\\
-
-%% \hspace{.5cm} $z = -3   \hspace{.5cm}\Rightarrow \hspace{.5cm} y- \frac{3}{7}(-3) = \frac{23}{7} \hspace{.5cm}\Rightarrow \hspace{.5cm} y= \frac{23-9}{7}= 2,$
-%% \\ \\ \hspace{.5cm} then putting $y$ and $z$ in the first equation gives $x -2(2)+2(-3)=-9$ from which we obtain, $x= 1$.
-
-%% The same process may be applied to matrices by converting the rows back to equations and then using substitution. The matrix we obtained in which the diagonal entries are 1 and every entry below them is zero is said to be in row-echelon form. If one also makes the entries above the diagonal to become zero then the matrix is said to be in reduced row-echelon form. In example above, we may first make the entry above entry $a_{22}$ be zero:
-%% \[
-%% \left(\begin{array}{ccc|c}
-%%   1 &  -2 & 2 &-9 \\
-%%   0 & 1 & -3/7 & 23/7 \\
-%%   0 &  0 & 1 & -3
-%% \end{array}\right)
-%% \hspace{.2cm}\xrightarrow{2R_{2}+R_{1}} \hspace{.2cm}
-%% \left(\begin{array}{ccc|c}
-%%   1 &  0 & 8/7 &-17/7 \\
-%%   0 & 1 & -3/7 & 23/7 \\
-%%   0 &  0 & 1 & -3
-%% \end{array}\right),
-%% \]
-%% Then we use the 1 in row three to make the entries above it zero:
-%% \[
-%% \left(\begin{array}{ccc|c}
-%%   1 &  0 & 8/7 &-17/7 \\
-%%   0 & 1 & -3/7 & 23/7 \\
-%%   0 &  0 & 1 & -3
-%% \end{array}\right)
-%% \hspace{.2cm}\xrightarrow[(3/7)R_{3}+R_{2}]{(-8/7)R_{3}+R_{1}} \hspace{.2cm}
-%% \left(\begin{array}{ccc|c}
-%%   1 &  0 & 0 &1 \\
-%%   0 & 1 & 0& 2 \\
-%%   0 &  0 & 1 & -3
-%% \end{array}\right),
-%% \]
-%% which automatically leads to $z=-3$ and $y=2$ and $x=1$.
 \end{explanation}
 \end{example}
 
 Now let's see an example where there are an infinite number of solutions.
 
 
-%% \begin{example}[Infinite solutions]
-%%   Describe the solutions of the following system of equations:
-%% \begin{align*}
-%% \left(\frac{2}{5}\right)x + \left(\frac{3}{10}\right) y &= 8\\
-%% y -\left(\frac{1}{4}\right)w &= \frac{-3}{2}\\
-%% \left(\frac{3}{5}\right)x + \left(\frac{2}{5}\right)z &= 2\\
-%% 6y - \left(\frac{3}{2}\right)w &= -9
-%% \end{align*}
-%% \begin{explanation}
-%% First we'll represent this system of equations as an augmented matrix:
-%% \[
-%%   \left(
-%%     \begin{array}{cccc|c}
-%%       \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-%%       \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & -3/2\\
-%%       \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
-%%       \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
-%%     \end{array}
-%%   \right)
-%% \]
+\begin{example}[Infinite solutions]
+  Describe the solutions of the following system of equations:
+\begin{align*}
+\left(\frac{2}{5}\right)x + \left(\frac{3}{10}\right) y &= 8\\
+y -\left(\frac{1}{4}\right)w &= \frac{-3}{2}\\
+\left(\frac{3}{5}\right)x + \left(\frac{2}{5}\right)z &= 2\\
+6y - \left(\frac{3}{2}\right)w &= -9
+\end{align*}
+\begin{explanation}
+First we'll represent this system of equations as an augmented matrix:
+\[
+  \left(
+    \begin{array}{cccc|c}
+      \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+      \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & -3/2\\
+      \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+      \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+    \end{array}
+  \right)
+\]
 
-%% Now we will use Gaussian elimination to transform this matrix to row echelon form. Start by zeroing the column below the $(1,1)$-entry:
-%% \[
-%%   \begin{pmatrix}
-%%     {2/5}&  {3/10} & {0} &{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%     {3/5}&  {0} & {2/5} &{0} &2\\
-%%     {0}&  {6} & {0} &{-3/2} &-9
-%%   \end{pmatrix}
-%%   % \begin{matrix}
-%%   %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-%%   %   \Longrightarrow
-%%   % \end{matrix}
-%%   \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
-%%   \begin{pmatrix}
-%%     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%     \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
-%%     {0}&  {6} & {0} &{-3/2} &-9
-%%   \end{pmatrix}
-%% \]
-%% Now we work with the submatrix:
-%% \begin{center}
-%% \begin{tikzpicture}
-%%   \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=),
-%%     column sep=0.3em, row sep=0.1em] at (6,0){
-%%    {2/5}&  {3/10} & {0} &{0} &8 \\
-%%   {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%   {0}&  {-9/20} & {2/5} &{0} &-10\\
-%%   {0}&  {6} & {0} &{-3/2} &-9\\
-%%   };
-%%   % Draw the rectangle around the submatrix
-%%   \draw[black!30!white,thick] ([xshift=-1em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
-%% \end{tikzpicture}
-%% \end{center}
-%% We will zero the columns below the $(2,2)$-entry:
-%% \[
-%%   \begin{pmatrix}
-%%     {2/5}&  {3/10} & {0} &{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%     {0}&  {-9/20} & {2/5} &{0} &-10\\
-%%     {0}&  {6} & {0} &{-3/2} &-9
-%%   \end{pmatrix}
-%%   % \begin{matrix}
-%%   %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
-%%   %   \Longrightarrow \\
-%%   %   \scriptstyle(-6) R_2+R_4\to R_4
-%%   % \end{matrix}
-%%   \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
-%%   \begin{pmatrix}
-%%     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
-%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
-%%   \end{pmatrix}
-%% \]
-%% and we are now in row echelon form. However, we have a row of zeros.
-%% Here the row of zeros imply
-%% \[
-%% 0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
-%% \]
-%% which is true for all numbers $x,y,z,w$. Hence, immediately we see
-%% that there are an infinte number of solutions.
+Now we will use Gaussian elimination to transform this matrix to row echelon form. Start by zeroing the column below the $(1,1)$-entry:
+\[
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    {3/5}&  {0} & {2/5} &{0} &2\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+  %   \Longrightarrow
+  % \end{matrix}
+  \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+\]
+Now we work with the submatrix:
+\begin{center}
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=),
+    column sep=0.3em, row sep=0.1em] at (6,0){
+   {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
+  {0}&  {-9/20} & {2/5} &{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9\\
+  };
+  % Draw the rectangle around the submatrix
+  \draw[black!30!white,thick] ([xshift=-1em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
+\end{tikzpicture}
+\end{center}
+We will zero the columns below the $(2,2)$-entry:
+\[
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    {0}&  {-9/20} & {2/5} &{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  %   \Longrightarrow \\
+  %   \scriptstyle(-6) R_2+R_4\to R_4
+  % \end{matrix}
+  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
+  \end{pmatrix}
+\]
+and we are now in row echelon form. However, we have a row of zeros.
+Here the row of zeros imply
+\[
+0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
+\]
+which is true for all numbers $x,y,z,w$. Hence, immediately we see
+that there are an infinte number of solutions.
 
-%% You may be tempted to stop here, but this problem isn't finished with
-%% us yet. In particular, we see $w$ can be any real number. Hence we can
-%% \textit{still} use back substitution to write:
-%% \begin{align*}
-%%  \left(\frac{2}{5}\right) z + \left(\frac{-9}{80}\right)z  &= -427/40   &\Rightarrow & & z &= \frac{9 w-854}{32} \\
-%%   y+\left(\frac{1}{4}\right)w &=\frac{-3}{2} &\Rightarrow & & y &= \frac{w-6}{4}\\
-%%   \left(\frac{2}{5}\right)x  +  \left(\frac{3}{10}\right)y  &= 8 &\Rightarrow & & x &= \frac{338-3w}{16}
-%% \end{align*}
-%% %% \[
-%% %% \left(\begin{array}{ccccc|c}
-%% %%    1&  0 & 2 &5 &10 \\
-%% %%   0&  0 & 0 &0 &0\\
-%% %%   0&  0 & 0 &0 &0\\
-%% %%   0&  0 & 0 &0 &0\\
-%% %% \end{array}\right),
-%% %% \]
-%% %% then we let $w=r, z=s, y=k$, where $r,s,k$ are arbitrary real numbers and solve for x: $ x= \answer[given]{-5}r + \answer[given]{-2}s +\answer[given]{10}$. \\
-%% %% Now let us study when these cases occur. Recall that graphically the solution is the intersection point of the equations. Consider the equations,
-%% %% \[
-%% %% \begin{array}{ccccc}
-%% %%      2x& -&4y&=&16\\
-%% %%      16x &-& 32y&=& 12
-%% %% \end{array}
-%% %% \hspace{.2cm}\Rightarrow \hspace{.2cm}
-%% %% \begin{array}{ccccc}
-%% %%      y&=&\frac{1}{2}x&+&4\\
-%% %%      y &=& \frac{1}{2}x&-& \frac{3}{8}
-%% %% \end{array},
-%% %% \]
-%% %% we may notice that they have the same slope and different y-intercepts, implying that the two lines are parallel and have no intersection points and thus the system has no solutions. Note that the second equation above has coefficients that are $8$ times those of the first equation. Also going back to system \eqref{system}, note that the coefficients of the fourth equation were a constant multiple of those of the second equation and since the constants were not also a multiple of each other then we had no solutions, the same here. Furthermore, if we consider,
-%% %% \[
-%% %% \begin{array}{ccccc}
-%% %%      2x& -&4y&=&16\\
-%% %%      16x &-& 32y&=& 128
-%% %% \end{array}
-%% %% \hspace{.2cm}\Rightarrow \hspace{.2cm}
-%% %% \begin{array}{ccccc}
-%% %%      y&=&\frac{1}{2}x&+&4\\
-%% %%      y &=& \frac{1}{2}x&+& 4
-%% %% \end{array},
-%% %% \]
-%% %% then we have the two equations representing the same line causing an overlap. Therefore, this leads to infinitely many solutions with each point on this line being a solution of the system, since it is an intersection point of the two equations. This may also be observed in system \eqref{system} when the second equation was replaced by
-%% %% \begin{equation*}
-%% %% y-\frac{1}{4}w= -\frac{3}{2},
-%% %% \end{equation*}
-%% %% leading to every entry of a row being a constant multiple of another row giving a row of zeros, which implies that the system has infinitely many solutions. In summary when solving a system by matrices, if every entry of a row is a constant multiple of another row then there are infinitely many solutions. If every entry of a row in the coefficient matrix is a multiple of another row while their constants are not multiple of one another then there is no solution.
-%% \end{explanation}
-%% \end{example}
+You may be tempted to stop here, but this problem isn't finished with
+us yet. In particular, we see $w$ can be any real number. Hence we can
+\textit{still} use back substitution to write:
+\begin{align*}
+ \left(\frac{2}{5}\right) z + \left(\frac{-9}{80}\right)z  &= -427/40   &\Rightarrow & & z &= \frac{9 w-854}{32} \\
+  y+\left(\frac{1}{4}\right)w &=\frac{-3}{2} &\Rightarrow & & y &= \frac{w-6}{4}\\
+  \left(\frac{2}{5}\right)x  +  \left(\frac{3}{10}\right)y  &= 8 &\Rightarrow & & x &= \frac{338-3w}{16}
+\end{align*}
+\end{explanation}
+\end{example}
 
 %% Now let's see a system of linear equations with no solutions. Note how similar the equations are to the last example! As we will see, a small change in the equations can lead to a big change in the behavior of the solutions.
 

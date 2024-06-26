@@ -821,178 +821,178 @@ Now we work with the submatrix:
 \end{center}
 
 We will zero the columns below the $(2,2)$-entry:
-%% \[
-%%   \begin{pmatrix}
-%%     {2/5}&  {3/10} & {0} &{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%     {0}&  {-9/20} & {2/5} &{0} &-10\\
-%%     {0}&  {6} & {0} &{-3/2} &-9
-%%   \end{pmatrix}
-%%   % \begin{matrix}
-%%   %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
-%%   %   \Longrightarrow \\
-%%   %   \scriptstyle(-6) R_2+R_4\to R_4
-%%   % \end{matrix}
-%%   \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
-%%   \begin{pmatrix}
-%%     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
-%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
-%%   \end{pmatrix}
-%% \]
-%% and we are now in row echelon form. However, we have a row of zeros.
-%% Here the row of zeros imply
-%% \[
-%% 0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
-%% \]
-%% which is true for all numbers $x,y,z,w$. Hence, immediately we see
-%% that there are an infinte number of solutions.
+\[
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    {0}&  {-9/20} & {2/5} &{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  %   \Longrightarrow \\
+  %   \scriptstyle(-6) R_2+R_4\to R_4
+  % \end{matrix}
+  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
+  \end{pmatrix}
+\]
+and we are now in row echelon form. However, we have a row of zeros.
+Here the row of zeros imply
+\[
+0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
+\]
+which is true for all numbers $x,y,z,w$. Hence, immediately we see
+that there are an infinte number of solutions.
 
-%% You may be tempted to stop here, but this problem isn't finished with
-%% us yet. In particular, we see $w$ can be any real number. Hence we can
-%% \textit{still} use back substitution to write:
-%% \begin{align*}
-%%  \left(\frac{2}{5}\right) z + \left(\frac{-9}{80}\right)z  &= -427/40   &\Rightarrow & & z &= \frac{9 w-854}{32} \\
-%%   y+\left(\frac{1}{4}\right)w &=\frac{-3}{2} &\Rightarrow & & y &= \frac{w-6}{4}\\
-%%   \left(\frac{2}{5}\right)x  +  \left(\frac{3}{10}\right)y  &= 8 &\Rightarrow & & x &= \frac{338-3w}{16}
-%% \end{align*}
+You may be tempted to stop here, but this problem isn't finished with
+us yet. In particular, we see $w$ can be any real number. Hence we can
+\textit{still} use back substitution to write:
+\begin{align*}
+ \left(\frac{2}{5}\right) z + \left(\frac{-9}{80}\right)z  &= -427/40   &\Rightarrow & & z &= \frac{9 w-854}{32} \\
+  y+\left(\frac{1}{4}\right)w &=\frac{-3}{2} &\Rightarrow & & y &= \frac{w-6}{4}\\
+  \left(\frac{2}{5}\right)x  +  \left(\frac{3}{10}\right)y  &= 8 &\Rightarrow & & x &= \frac{338-3w}{16}
+\end{align*}
 \end{explanation}
 \end{example}
 
-%% Now let's see a system of linear equations with no solutions. Note how similar the equations are to the last example! As we will see, a small change in the equations can lead to a big change in the behavior of the solutions.
+Now let's see a system of linear equations with no solutions. Note how similar the equations are to the last example! As we will see, a small change in the equations can lead to a big change in the behavior of the solutions.
 
-%% \begin{example}[No solutions]
-%%   Describe the solutions of the following system of equations:
-%%   \begin{align*}
-%% \left(\frac{2}{5}\right)x + \left(\frac{3}{10}\right) y &= 8\\
-%% y -\left(\frac{1}{4}\right)w &= 5\\
-%% \left(\frac{3}{5}\right)x + \left(\frac{2}{5}\right)z &= 2\\
-%% 6y - \left(\frac{3}{2}\right)w &= -9
-%% \end{align*}
-%% \begin{explanation}
-%% First we'll represent this system of equations as an augmented matrix:
-%% \[
-%%   \left(
-%%     \begin{array}{cccc|c}
-%%       \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-%%       \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & 5\\
-%%       \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
-%%       \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
-%%     \end{array}
-%%   \right)
-%% \]
-%% Again, we will use Gaussian elimination to transform this matrix to
-%% row echelon form. The first step is essentially the same as before:
-%% \[
-%%   \begin{pmatrix}
-%%     {2/5}&  {3/10} & {0} &{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & 5\\
-%%     {3/5}&  {0} & {2/5} &{0} &2\\
-%%     {0}&  {6} & {0} &{-3/2} &-9
-%%   \end{pmatrix}
-%%   % \begin{matrix}
-%%   %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-%%   %   \Longrightarrow
-%%   % \end{matrix}
-%%   \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
-%%   \begin{pmatrix}
-%%     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & 5\\
-%%     \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
-%%     {0}&  {6} & {0} &{-3/2} &-9
-%%   \end{pmatrix}
-%% \]
-%% However, when we zero the columns below the $(2,2)$-entry
-%% \[
-%%   \begin{pmatrix}
-%%     {2/5}&  {3/10} & {0} &{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & 5\\
-%%     {0}&  {-9/20} & {2/5} &{0} &-10\\
-%%     {0}&  {6} & {0} &{-3/2} &-9
-%%   \end{pmatrix}
-%%   % \begin{matrix}
-%%   %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
-%%   %   \Longrightarrow \\
-%%   %   \scriptstyle(-6) R_2+R_4\to R_4
-%%   % \end{matrix}
-%%   \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
-%%   \begin{pmatrix}
-%%     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{49/4}\\
-%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-36}
-%%   \end{pmatrix}
-%% \]
-%% but now, the last row translates to
-%% \[
-%% 0\cdot x+0\cdot y+0\cdot z+0\cdot w=-36
-%% \]
-%% but $0\ne -36$. This means that the system has no solution. There is
-%% no $(x,y,z,w)$ that makes every equation in the system hold true.
-%% \end{explanation}
-%% \end{example}
+\begin{example}[No solutions]
+  Describe the solutions of the following system of equations:
+  \begin{align*}
+\left(\frac{2}{5}\right)x + \left(\frac{3}{10}\right) y &= 8\\
+y -\left(\frac{1}{4}\right)w &= 5\\
+\left(\frac{3}{5}\right)x + \left(\frac{2}{5}\right)z &= 2\\
+6y - \left(\frac{3}{2}\right)w &= -9
+\end{align*}
+\begin{explanation}
+First we'll represent this system of equations as an augmented matrix:
+\[
+  \left(
+    \begin{array}{cccc|c}
+      \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+      \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & 5\\
+      \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+      \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+    \end{array}
+  \right)
+\]
+Again, we will use Gaussian elimination to transform this matrix to
+row echelon form. The first step is essentially the same as before:
+\[
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & 5\\
+    {3/5}&  {0} & {2/5} &{0} &2\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+  %   \Longrightarrow
+  % \end{matrix}
+  \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & 5\\
+    \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+\]
+However, when we zero the columns below the $(2,2)$-entry
+\[
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & 5\\
+    {0}&  {-9/20} & {2/5} &{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+  % \begin{matrix}
+  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
+  %   \Longrightarrow \\
+  %   \scriptstyle(-6) R_2+R_4\to R_4
+  % \end{matrix}
+  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{49/4}\\
+    \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{-36}
+  \end{pmatrix}
+\]
+but now, the last row translates to
+\[
+0\cdot x+0\cdot y+0\cdot z+0\cdot w=-36
+\]
+but $0\ne -36$. This means that the system has no solution. There is
+no $(x,y,z,w)$ that makes every equation in the system hold true.
+\end{explanation}
+\end{example}
 
-%% %Example 2.5.4 from
-%% %https://linearalgebra.math.umanitoba.ca/math1220/section-12.html
-%% \begin{example}[None, one, many]
-%%   Consider the system of linear equations:
-%%   \begin{align*}
-%%     x+y+z &=  1\\
-%%     2x+y+z &=  2\\
-%%     3x+ay+bz &= c
-%%   \end{align*}
-%%   Find the smallest positive whole number values of $a$, $b$ and $c$
-%%   for which there are no solutions, one solution, or many solutions.
-%%   \begin{explanation}
-%%     Here's the augmented matrix:
-%%     \[
-%% % <<<<<<< HEAD
-%% %       \begin{pmatrix}[ccc|c]
-%% %         \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
-%% %         \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
-%% %         \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c} \\
-%% %       \end{pmatrix}
-%% % =======
-%%       \left(
-%%         \begin{array}{ccc|c}
-%%           \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
-%%           \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
-%%           \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c}
-%%         \end{array}
-%%       \right)
-%% % >>>>>>> a805d57 (GE: revert back from {pmatrix}[opts] to {array}{opts})
-%%     \]
-%%     Apply the following row operations:
-%%     \[
-%%       % \begin{matrix}\scriptstyle-3R_{1}+R_{3}\rightarrow
-%%       %   R_{3}\\\Longrightarrow\\\scriptstyle-2R_{1} + R_{2}\rightarrow R_{2}\end{matrix}
-%%       \xrightarrow[-2R_{1} + R_{2}\rightarrow R_{2}]{-3R_{1}+R_{3}\rightarrow R_{3}}\qquad
-%%       \left(
-%%         \begin{array}{ccc|c}
-%%           \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
-%%           \answer[given]{0} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{0} \\
-%%           \answer[given]{0} &  \answer[given]{a-3} &  \answer[given]{b-3} &  \answer[given]{c-3}
-%%         \end{array}
-%%       \right)
-%%     \]
-%%     Based on our work above, and the fact that we are looking for the
-%%     smallest positive whole number in each case, for the system of
-%%     equations to have no solutions we set:
-%%     \[
-%%     a = \answer[given]{4}, \quad b = \answer[given]{4}, \quad c = \answer[given]{1}
-%%     \]
-%%     For the system of equations to have infinitely many solutions,
-%%     set:
-%%     \[
-%%     a = \answer[given]{4}, \quad b = \answer[given]{4}, \quad c = \answer[given]{3}
-%%     \]
-%%     For the system of equations to have one solution, set:
-%%     \[
-%%     a = \answer[given]{1}, \quad b = \answer[given]{1}, \quad c = \answer[given]{1}
-%%     \]
-%%   \end{explanation}
-%% \end{example}
+%Example 2.5.4 from
+%https://linearalgebra.math.umanitoba.ca/math1220/section-12.html
+\begin{example}[None, one, many]
+  Consider the system of linear equations:
+  \begin{align*}
+    x+y+z &=  1\\
+    2x+y+z &=  2\\
+    3x+ay+bz &= c
+  \end{align*}
+  Find the smallest positive whole number values of $a$, $b$ and $c$
+  for which there are no solutions, one solution, or many solutions.
+  \begin{explanation}
+    Here's the augmented matrix:
+    \[
+% <<<<<<< HEAD
+%       \begin{pmatrix}[ccc|c]
+%         \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
+%         \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
+%         \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c} \\
+%       \end{pmatrix}
+% =======
+      \left(
+        \begin{array}{ccc|c}
+          \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
+          \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
+          \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c}
+        \end{array}
+      \right)
+% >>>>>>> a805d57 (GE: revert back from {pmatrix}[opts] to {array}{opts})
+    \]
+    Apply the following row operations:
+    \[
+      % \begin{matrix}\scriptstyle-3R_{1}+R_{3}\rightarrow
+      %   R_{3}\\\Longrightarrow\\\scriptstyle-2R_{1} + R_{2}\rightarrow R_{2}\end{matrix}
+      \xrightarrow[-2R_{1} + R_{2}\rightarrow R_{2}]{-3R_{1}+R_{3}\rightarrow R_{3}}\qquad
+      \left(
+        \begin{array}{ccc|c}
+          \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
+          \answer[given]{0} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{0} \\
+          \answer[given]{0} &  \answer[given]{a-3} &  \answer[given]{b-3} &  \answer[given]{c-3}
+        \end{array}
+      \right)
+    \]
+    Based on our work above, and the fact that we are looking for the
+    smallest positive whole number in each case, for the system of
+    equations to have no solutions we set:
+    \[
+    a = \answer[given]{4}, \quad b = \answer[given]{4}, \quad c = \answer[given]{1}
+    \]
+    For the system of equations to have infinitely many solutions,
+    set:
+    \[
+    a = \answer[given]{4}, \quad b = \answer[given]{4}, \quad c = \answer[given]{3}
+    \]
+    For the system of equations to have one solution, set:
+    \[
+    a = \answer[given]{1}, \quad b = \answer[given]{1}, \quad c = \answer[given]{1}
+    \]
+  \end{explanation}
+\end{example}
 
 
 For some interesting extra reading check out:

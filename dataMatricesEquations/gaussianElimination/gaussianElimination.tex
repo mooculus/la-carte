@@ -64,33 +64,36 @@ Any time we have a \dfn{system of equations} we may represent it with a
     -3x  & -  & 9y  & -  & 11z  & =  & 0
   \end{array}
   \qquad\Longrightarrow\qquad
-  \begin{pmatrix}[rrr|r]
-    0 &   3 & -3 & -3 \\
-    1 &   3 & -3 & 2  \\
-    -3& -9  & 11 & 0
-  \end{pmatrix}.
+  \left(
+    \begin{array}{rrr|r}
+      0 &   3 & -3 & -3 \\
+      1 &   3 & -3 & 2  \\
+      -3& -9  & 11 & 0
+    \end{array}
+  \right).
 \]
 This is an example of a matrix used to store data. Some folks call
 this an \dfn{augmented matrix}, and they write stuff like this:
 \[
-A = \underbrace{\begin{pmatrix}[rrr]
-  0 & 3 & -3  \\
-  1 &  3  & -3 \\
- -3 & -9 & 11
-\end{pmatrix}}_{\text{the coefficients}},
+  A = \underbrace{\left( \begin{array}{rrr}
+    0 & 3 & -3  \\
+    1 &  3  & -3 \\
+    -3 & -9 & 11
+  \end{array} \right)}_{\text{the coefficients}},
 \quad
 \vec{b} =
-\underbrace{\begin{pmatrix}[r]
- -3\\ 2 \\ 0
-\end{pmatrix}}_{\begin{smallmatrix}\text{right-hand} \\
+\underbrace{\left( \begin{array}{r}
+  -3\\ 2 \\ 0
+\end{array} \right)}_{\begin{smallmatrix}\text{right-hand} \\
   \text{sides} \end{smallmatrix}},
 % \text{right-hand side}
 \quad
-\left(A|\vec{b}\right) = \underbrace{\begin{pmatrix}[rrr|r]
+\left(A \mid \vec{b}\right) = % \mid for proper spacing
+\underbrace{\left( \begin{array}{rrr|r}
   0 &   3 & -3 & -3 \\
   1 &   3 & -3 & 2  \\
   -3& -9  & 11 & 0
-\end{pmatrix}}_{\text{augmented matrix}}.
+\end{array} \right)}_{\text{augmented matrix}}.
 \]
 
 \begin{question}
@@ -99,9 +102,11 @@ A = \underbrace{\begin{pmatrix}[rrr]
   Write the augmented matrix for this system of equations.
   \begin{prompt}
     \[
-      \begin{pmatrix}[ccc|c]
-        \answer{} & \answer{} & \answer{} & \answer{}
-      \end{pmatrix}
+      \left(
+        \begin{array}{ccc|c}
+          \answer{} & \answer{} & \answer{} & \answer{}
+        \end{array}
+      \right)
     \]
   \end{prompt}
 \end{question}
@@ -146,23 +151,27 @@ system of equations does not change the solutions, we may swap rows
 in an augmented matrix. We denote swapping the $i$th row with the
 $j$th row by $R_i\leftrightarrow R_j$. As an example, we can swap
 the first and second rows of the matrix below:
- \[
-\begin{pmatrix}[ccc|c]
-  0 &   3 & -3 & -3 \\
-  1 &   3 & -3 & 2  \\
-  -3& -9  & 11 & 0
-\end{pmatrix}
-\qquad
-% \begin{array}{c}
-%   \scriptstyle R_1\leftrightarrow R_2\\\Longrightarrow
-% \end{array}
-\xrightarrow{R_1 \leftrightarrow R_2}
-\qquad
-\begin{pmatrix}[ccc|c]
-  1 &   3 & -3 & 2  \\
-  0 &   3 & -3 & -3 \\
-  -3& -9  & 11 & 0
-\end{pmatrix}
+\[
+  \left(
+    \begin{array}{ccc|c}
+      0 &   3 & -3 & -3 \\
+      1 &   3 & -3 & 2  \\
+      -3& -9  & 11 & 0
+    \end{array}
+  \right)
+  \qquad
+  % \begin{array}{c}
+  %   \scriptstyle R_1\leftrightarrow R_2\\\Longrightarrow
+  % \end{array}
+  \xrightarrow{R_1 \leftrightarrow R_2}
+  \qquad
+  \left(
+    \begin{array}{ccc|c}
+      1 &   3 & -3 & 2  \\
+      0 &   3 & -3 & -3 \\
+      -3& -9  & 11 & 0
+    \end{array}
+  \right)
 \]
 
 \begin{question}
@@ -196,22 +205,26 @@ We may multiply equations by nonzero constants and add equations together
 row by $3$ and add it to the third row, storing the answer in the
 third row (you could have chosen either of the summands).
 \[
-  \begin{pmatrix}[ccc|c]
-    1 &   3 & -3 & 2  \\
-    0 &   3 & -3 & -3 \\
-    -3& -9  & 11 & 0
-  \end{pmatrix}
+  \left(
+    \begin{array}{ccc|c}
+      1 &   3 & -3 & 2  \\
+      0 &   3 & -3 & -3 \\
+      -3& -9  & 11 & 0
+    \end{array}
+  \right)
   % \qquad
   % \begin{array}{c}
   %   \scriptstyle 3R_1+R_3\rightarrow R_3\\\Longrightarrow
   % \end{array}
   % \qquad
   \qquad\xrightarrow{3R_1+R_3\rightarrow R_3}\qquad
-  \begin{pmatrix}[ccc|c]
-    1 &   3 & -3 & 2  \\
-    0 &   3 & -3 & -3 \\
-    0& 0  & 2 & 6
-  \end{pmatrix}.
+  \left(
+    \begin{array}{ccc|c}
+      1 &   3 & -3 & 2  \\
+      0 &   3 & -3 & -3 \\
+      0& 0  & 2 & 6
+    \end{array}.
+  \right)
 \]
 
 \begin{question}
@@ -453,32 +466,36 @@ like the one above that are optimized and built-in.
 Let's think about our original system of equations. We've shown that
 this corresponds to a matrix in row echelon form:
 \[
-\begin{array}{ccccccc}
-       & & 3y &-& 3z &=& 2 \\
-     x& +&3y&-&3z&=&-3\\
-     -3x& -&9y&-&11z&=&0
-\end{array}
-\qquad\Longrightarrow\qquad
-\begin{pmatrix}[ccc|c]
-  1 &   3 & -3 & 2  \\
-  0 &   3 & -3 & -3 \\
-  0& 0  & 2 & 6
-\end{pmatrix}
+  \begin{array}{ccccccc}
+    & & 3y &-& 3z &=& 2 \\
+    x& +&3y&-&3z&=&-3\\
+    -3x& -&9y&-&11z&=&0
+  \end{array}
+  \qquad\Longrightarrow\qquad
+  \left(
+    \begin{array}{ccc|c}
+      1 &   3 & -3 & 2  \\
+      0 &   3 & -3 & -3 \\
+      0& 0  & 2 & 6
+    \end{array}
+  \right)
 \]
 But this final matrix that we obtained from row operations, (directly)
 corresponds to the following system of equations:
 \[
-  \begin{pmatrix}[ccc|c]
-    1 &   3 & -3 & 2  \\
-    0 &   3 & -3 & -3 \\
-    0& 0  & 2 & 6
-  \end{pmatrix}
-\qquad\Longrightarrow\qquad
-\begin{array}{ccccccc}
-     x  &+ & 3y &-& 3z &=& 2 \\
-     &  &3y&-&3z&=&-3\\
-     & & & &2z&=&6
-\end{array}
+  \left(
+    \begin{array}{ccc|c}
+      1 &   3 & -3 & 2  \\
+      0 &   3 & -3 & -3 \\
+      0& 0  & 2 & 6
+    \end{array}
+  \right)
+  \qquad\Longrightarrow\qquad
+  \begin{array}{ccccccc}
+    x  &+ & 3y &-& 3z &=& 2 \\
+       &  &3y&-&3z&=&-3\\
+       & & & &2z&=&6
+  \end{array}
 \]
 Hence at this point we see
 \begin{align*}
@@ -502,11 +519,13 @@ echelon form will \textbf{tell us about the solutions, without
 Sometimes after we transform to row echelon form, we have a row (or
 several!) of zeros like this:
 \[
-  \begin{pmatrix}[ccc|c]
-    \bullet &   \bullet & \bullet & \bullet  \\
-    0 &   \bullet & \bullet & \bullet \\
-    0& 0  & 0 & 0
-  \end{pmatrix}
+  \left(
+    \begin{array}{ccc|c}
+      \bullet &   \bullet & \bullet & \bullet  \\
+      0 &   \bullet & \bullet & \bullet \\
+      0& 0  & 0 & 0
+    \end{array}
+  \right)
   \qquad\Longrightarrow\qquad
   \begin{aligned}
     \bullet x +  \bullet y + \bullet z &= \bullet \\
@@ -526,11 +545,13 @@ in a case like this, there are an \dfn{infinite number of solutions}.
 Sometimes after we transform to row echelon form, we have a matrix
 that looks something like this:
 \[
-  \begin{pmatrix}[ccc|c]
-    \bullet &   \bullet & \bullet & \bullet  \\
-    0 &   0 & \bullet & \bullet \\
-    0& 0  &  0 & \bullet
-  \end{pmatrix}
+  \left(
+    \begin{array}{ccc|c}
+      \bullet &   \bullet & \bullet & \bullet  \\
+      0 &   0 & \bullet & \bullet \\
+      0& 0  &  0 & \bullet
+    \end{array}
+  \right)
   \qquad\Longrightarrow\qquad
   \begin{aligned}
     \bullet x  + \bullet z &= \bullet & \\
@@ -584,11 +605,13 @@ operations to continue to reduce it to the following form:
 \]
 The advantage here is that this final form corresponds to a very nice system of equations:
 \[
-  \begin{pmatrix}[ccc|c]
-    1 &   0 & 0 & \bullet  \\
-    0 &   1 & 0 & \bullet \\
-    0& 0  &  1 & \bullet
-  \end{pmatrix}
+  \left(
+    \begin{array}{ccc|c}
+      1 &   0 & 0 & \bullet  \\
+      0 &   1 & 0 & \bullet \\
+      0& 0  &  1 & \bullet
+    \end{array}
+  \right)
   \qquad\Longrightarrow\qquad
   \begin{aligned}
     x &= \bullet  \\
@@ -648,11 +671,13 @@ Now let's try our hand at some example problems.
 \begin{explanation}
 First we'll represent this system of equations as an augmented matrix:
 \[
-  \begin{pmatrix}[ccc|c]
-    2 & 3 & 1 & 5 \\
-    1 &  -2 & 2 &-9 \\
-    3 &  1 & -3 & 14
-  \end{pmatrix}
+  \left(
+    \begin{array}{ccc|c}
+      2 & 3 & 1 & 5 \\
+      1 &  -2 & 2 &-9 \\
+      3 &  1 & -3 & 14
+    \end{array}
+  \right)
 \]
 Our goal is to convert our matrix to row echelon form. We'll use
 Gaussian eliminiation. Since the top left most entry is nonzero we
@@ -705,11 +730,13 @@ Again we make all rows less than the submatrix's top most entry zero:
 \]
 Now we see
 \[
-  \begin{pmatrix}[rrr|r]
-    2 & 3 & 1 & 5 \\
-    0 & -3.5 & 1.5 &-11.5 \\
-    0 & 0    & -6 & 18
-  \end{pmatrix}
+  \left(
+    \begin{array}{rrr|r}
+      2 & 3 & 1 & 5 \\
+      0 & -3.5 & 1.5 &-11.5 \\
+      0 & 0    & -6 & 18
+    \end{array}
+  \right)
   \qquad\Longrightarrow\qquad
   \left\{\;
     \begin{array}{rcrcrcr}
@@ -864,12 +891,14 @@ y -\left(\frac{1}{4}\right)w &= \frac{-3}{2}\\
 \begin{explanation}
 First we'll represent this system of equations as an augmented matrix:
 \[
-  \begin{pmatrix}[cccc|c]
-    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-    \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & -3/2\\
-    \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
-    \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
-  \end{pmatrix}
+  \left(
+    \begin{array}{cccc|c}
+      \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+      \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & -3/2\\
+      \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+      \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+    \end{array}
+  \right)
 \]
 
 Now we will use Gaussian elimination to transform this matrix to row echelon form. Start by zeroing the column below the $(1,1)$-entry:
@@ -997,12 +1026,14 @@ y -\left(\frac{1}{4}\right)w &= 5\\
 \begin{explanation}
 First we'll represent this system of equations as an augmented matrix:
 \[
-  \begin{pmatrix}[cccc|c]
-    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-    \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & 5\\
-    \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
-    \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
-  \end{pmatrix}
+  \left(
+    \begin{array}{cccc|c}
+      \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+      \answer[given]{0}&  \answer[given]{1} & \answer[given]{0} &\answer[given]{-1/4} & 5\\
+      \answer[given]{3/5}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{0} &2\\
+      \answer[given]{0}&  \answer[given]{6} & \answer[given]{0} &\answer[given]{-3/2} &-9
+    \end{array}
+  \right)
 \]
 Again, we will use Gaussian elimination to transform this matrix to
 row echelon form. The first step is essentially the same as before:
@@ -1069,22 +1100,34 @@ no $(x,y,z,w)$ that makes every equation in the system hold true.
   \begin{explanation}
     Here's the augmented matrix:
     \[
+<<<<<<< HEAD
       \begin{pmatrix}[ccc|c]
         \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
         \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
         \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c} \\
       \end{pmatrix}
+=======
+      \left(
+        \begin{array}{ccc|c}
+          \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
+          \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
+          \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c}
+        \end{array}
+      \right)
+>>>>>>> a805d57 (GE: revert back from {pmatrix}[opts] to {array}{opts})
     \]
     Apply the following row operations:
     \[
       % \begin{matrix}\scriptstyle-3R_{1}+R_{3}\rightarrow
       %   R_{3}\\\Longrightarrow\\\scriptstyle-2R_{1} + R_{2}\rightarrow R_{2}\end{matrix}
       \xrightarrow[-2R_{1} + R_{2}\rightarrow R_{2}]{-3R_{1}+R_{3}\rightarrow R_{3}}\qquad
-      \begin{pmatrix}[ccc|c]
-        \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
-        \answer[given]{0} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{0} \\
-        \answer[given]{0} &  \answer[given]{a-3} &  \answer[given]{b-3} &  \answer[given]{c-3}
-      \end{pmatrix}
+      \left(
+        \begin{array}{ccc|c}
+          \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
+          \answer[given]{0} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{0} \\
+          \answer[given]{0} &  \answer[given]{a-3} &  \answer[given]{b-3} &  \answer[given]{c-3}
+        \end{array}
+      \right)
     \]
     Based on our work above, and the fact that we are looking for the
     smallest positive whole number in each case, for the system of

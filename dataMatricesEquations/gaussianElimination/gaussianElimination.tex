@@ -7,6 +7,10 @@
 %% https://www.cis.upenn.edu/~cis6100/Notices-06-11-Gausselim.pdf
 %% https://www.sciencedirect.com/science/article/pii/S0315086010000376
 
+%% TK: Note to self
+%% Search for `COMEBACK' to go straight to places that I marked for
+%% later edits.
+
 \input{../../preamble.tex}
 
 \author{Parisa Fatheddin \and Bart Snapp}
@@ -814,6 +818,27 @@ Now we will use Gaussian elimination to transform this matrix to row echelon for
     {0}&  {6} & {0} &{-3/2} &-9
   \end{pmatrix}
 \]
+%% TK: How about breaking this into two lines? The `multline'
+%% environment appears to be supported by MathJax
+\begin{multline*}
+  \begin{pmatrix}
+    {2/5}&  {3/10} & {0} &{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    {3/5}&  {0} & {2/5} &{0} &2\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix} \\
+  \begin{matrix}
+    \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+    \Longrightarrow
+  \end{matrix}
+  % \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+  \begin{pmatrix}
+    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+    {0}&  {1} & {0} &{-1/4} & -3/2\\
+    \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
+    {0}&  {6} & {0} &{-3/2} &-9
+  \end{pmatrix}
+\end{multline*}
 Now we work with the submatrix:
 \begin{center}
 \begin{tikzpicture}
@@ -830,6 +855,7 @@ Now we work with the submatrix:
 \end{center}
 
 We will zero the columns below the $(2,2)$-entry:
+%% TK: multi-line environment (COMEBACK)
 \[
   \begin{pmatrix}
     {2/5}&  {3/10} & {0} &{0} &8 \\
@@ -893,6 +919,7 @@ First we'll represent this system of equations as an augmented matrix:
 \]
 Again, we will use Gaussian elimination to transform this matrix to
 row echelon form. The first step is essentially the same as before:
+%% TK: multi-line environment (COMEBACK)
 \[
   \begin{pmatrix}
     {2/5}&  {3/10} & {0} &{0} &8 \\
@@ -913,6 +940,7 @@ row echelon form. The first step is essentially the same as before:
   \end{pmatrix}
 \]
 However, when we zero the columns below the $(2,2)$-entry
+%% TK: multi-line environment (COMEBACK)
 \[
   \begin{pmatrix}
     {2/5}&  {3/10} & {0} &{0} &8 \\

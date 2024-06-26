@@ -819,43 +819,44 @@ Now we work with the submatrix:
   \draw[black!30!white,thick] ([xshift=-1em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
 \end{tikzpicture}
 \end{center}
-We will zero the columns below the $(2,2)$-entry:
-\[
-  \begin{pmatrix}
-    {2/5}&  {3/10} & {0} &{0} &8 \\
-    {0}&  {1} & {0} &{-1/4} & -3/2\\
-    {0}&  {-9/20} & {2/5} &{0} &-10\\
-    {0}&  {6} & {0} &{-3/2} &-9
-  \end{pmatrix}
-  % \begin{matrix}
-  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
-  %   \Longrightarrow \\
-  %   \scriptstyle(-6) R_2+R_4\to R_4
-  % \end{matrix}
-  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
-  \begin{pmatrix}
-    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-    {0}&  {1} & {0} &{-1/4} & -3/2\\
-    \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
-    \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
-  \end{pmatrix}
-\]
-and we are now in row echelon form. However, we have a row of zeros.
-Here the row of zeros imply
-\[
-0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
-\]
-which is true for all numbers $x,y,z,w$. Hence, immediately we see
-that there are an infinte number of solutions.
 
-You may be tempted to stop here, but this problem isn't finished with
-us yet. In particular, we see $w$ can be any real number. Hence we can
-\textit{still} use back substitution to write:
-\begin{align*}
- \left(\frac{2}{5}\right) z + \left(\frac{-9}{80}\right)z  &= -427/40   &\Rightarrow & & z &= \frac{9 w-854}{32} \\
-  y+\left(\frac{1}{4}\right)w &=\frac{-3}{2} &\Rightarrow & & y &= \frac{w-6}{4}\\
-  \left(\frac{2}{5}\right)x  +  \left(\frac{3}{10}\right)y  &= 8 &\Rightarrow & & x &= \frac{338-3w}{16}
-\end{align*}
+We will zero the columns below the $(2,2)$-entry:
+%% \[
+%%   \begin{pmatrix}
+%%     {2/5}&  {3/10} & {0} &{0} &8 \\
+%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
+%%     {0}&  {-9/20} & {2/5} &{0} &-10\\
+%%     {0}&  {6} & {0} &{-3/2} &-9
+%%   \end{pmatrix}
+%%   % \begin{matrix}
+%%   %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
+%%   %   \Longrightarrow \\
+%%   %   \scriptstyle(-6) R_2+R_4\to R_4
+%%   % \end{matrix}
+%%   \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+%%   \begin{pmatrix}
+%%     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
+%%     {0}&  {1} & {0} &{-1/4} & -3/2\\
+%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{2/5} &\answer[given]{-9/80} &\answer[given]{-427/40}\\
+%%     \answer[given]{0}&  \answer[given]{0} & \answer[given]{0} &\answer[given]{0} &\answer[given]{0}
+%%   \end{pmatrix}
+%% \]
+%% and we are now in row echelon form. However, we have a row of zeros.
+%% Here the row of zeros imply
+%% \[
+%% 0\cdot x+0\cdot y+0\cdot z+0\cdot w=0
+%% \]
+%% which is true for all numbers $x,y,z,w$. Hence, immediately we see
+%% that there are an infinte number of solutions.
+
+%% You may be tempted to stop here, but this problem isn't finished with
+%% us yet. In particular, we see $w$ can be any real number. Hence we can
+%% \textit{still} use back substitution to write:
+%% \begin{align*}
+%%  \left(\frac{2}{5}\right) z + \left(\frac{-9}{80}\right)z  &= -427/40   &\Rightarrow & & z &= \frac{9 w-854}{32} \\
+%%   y+\left(\frac{1}{4}\right)w &=\frac{-3}{2} &\Rightarrow & & y &= \frac{w-6}{4}\\
+%%   \left(\frac{2}{5}\right)x  +  \left(\frac{3}{10}\right)y  &= 8 &\Rightarrow & & x &= \frac{338-3w}{16}
+%% \end{align*}
 \end{explanation}
 \end{example}
 

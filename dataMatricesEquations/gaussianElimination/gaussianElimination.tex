@@ -806,19 +806,19 @@ Now we will use Gaussian elimination to transform this matrix to row echelon for
 %%   \end{pmatrix}
 %% \]
 Now we work with the submatrix:
-%% \begin{center}
-%% \begin{tikzpicture}
-%%   \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=),
-%%     column sep=0.3em, row sep=0.1em] at (6,0){
-%%    {2/5}&  {3/10} & {0} &{0} &8 \\
-%%   {0}&  {1} & {0} &{-1/4} & -3/2\\
-%%   {0}&  {-9/20} & {2/5} &{0} &-10\\
-%%   {0}&  {6} & {0} &{-3/2} &-9\\
-%%   };
-%%   % Draw the rectangle around the submatrix
-%%   \draw[black!30!white,thick] ([xshift=-1em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
-%% \end{tikzpicture}
-%% \end{center}
+\begin{center}
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, left delimiter=(, right delimiter=),
+    column sep=0.3em, row sep=0.1em] at (6,0){
+   {2/5}&  {3/10} & {0} &{0} &8 \\
+  {0}&  {1} & {0} &{-1/4} & -3/2\\
+  {0}&  {-9/20} & {2/5} &{0} &-10\\
+  {0}&  {6} & {0} &{-3/2} &-9\\
+  };
+  % Draw the rectangle around the submatrix
+  \draw[black!30!white,thick] ([xshift=-1em] m-2-2.north west) rectangle ([xshift=0.5em] m-4-5.south east);
+\end{tikzpicture}
+\end{center}
 
 We will zero the columns below the $(2,2)$-entry:
 %% \[

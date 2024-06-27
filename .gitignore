@@ -14,6 +14,7 @@ xourse.cls
 *.blg
 *.toc
 *.cls
+# Xake stuff
 *.synctex\(busy\) 
 *.synctex.gz
 *.fdb_latexmk
@@ -41,11 +42,9 @@ xourse.cls
 *.sout
 *.scmd
 
-
+# Ignore deploy scripts
 build.sh
-mypdflatex
 gpgkey
-
-
+mypdflatex
 # Ignore all `auto'-generated directories
 auto/

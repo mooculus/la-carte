@@ -13,7 +13,7 @@
 
 \input{../../preamble.tex}
 
-\author{Parisa Fatheddin \and Bart Snapp}
+\author{Parisa Fatheddin \and Tae Eun Kim \and Bart Snapp}
 
 
 \title{Gaussian elimination}
@@ -67,7 +67,7 @@ Any time we have a \dfn{system of equations} we may represent it with a
   \begin{array}{r@{}c@{}r@{}c@{}r@{}c@{}r}
          &        & 3y  & {}-{}  & 3z   & {}={}  & -3 \\
     x    & {}+{}  & 3y  & {}-{}  & 3z   & {}={}  & 2 \\
-    -3x  & {}-{}  & 9y  & {}-{}  & 11z  & {}={}  & 0
+    -3x  & {}-{}  & 9y  & {}+{}  & 11z  & {}={}  & 0
   \end{array}
   %% Below produces a similar outcome with proper alignment and spacing.
   % \begin{alignedat}{4}
@@ -112,39 +112,69 @@ this an \dfn{augmented matrix}, and they write stuff like this:
 
 \begin{question}
   Consider the following system of equations:
-
+  \[
+    \begin{array}{*{4}{r@{}c@{}}r}
+      x_1 & {}-{} & 2x_2 & {}-{} & 3x_3 & {}+{} & 2x_4 & {}={} & 0 \\
+      2x_1 & {}-{} & 3x_2 &  &  & {}+{} & x_4 & {}={} & 7 \\
+      5x_1 &  &  & {}-{} & 5x_3 &  &  & {}={} & -3
+    \end{array}
+  \]
   Write the augmented matrix for this system of equations.
   \begin{prompt}
     \[
       \left(
-        \begin{array}{ccc|c}
-          \answer{} & \answer{} & \answer{} & \answer{}
+        \begin{array}{rrrr|r}
+          \answer{1} & \answer{-2} & \answer{-3} & \answer{2} & \answer{0} \\
+          \answer{2} & \answer{-3} & \answer{0} & \answer{1} & \answer{7} \\
+          \answer{5} & \answer{0} & \answer{-5} & \answer{0} & \answer{-3}
         \end{array}
       \right)
     \]
   \end{prompt}
 \end{question}
 
-We are going to use matrices to solve this system of equations. The
-method we describe below is often called \dfn{Gaussian elimination}
-or simply \dfn{elimination}. To do this, we're going to introduce
-\dfn{row operations}. The row operations will allow us to change the
-form of the matrix \emph{without changing the solutions}. The idea is
-this we start with a big matrix,
+Two systems of linear equations are considered \textit{equivalent} if
+they share the same set of solutions. This equivalence can be
+maintained through a set of operations known as \textit{elementary
+  operations}:
+\begin{itemize}
+\item Swapping two equations,
+\item Multiplying an equation by a nonzero scalar,
+\item Adding a scalar multiple of one equation to another.
+\end{itemize}
+These operations have analogous counterparts for matrices, termed
+\textit{elementary row operations}:
+\begin{itemize}
+\item Swapping two rows,
+\item Multiplying a row by a nonzero scalar,
+\item Adding a scalar multiple of one row to another.
+\end{itemize}
+Applying elementary row operations to an augmented matrix results in a
+\textit{row equivalent} matrix, which represents an equivalent system.
+
+The process of solving systems of linear equations can be
+significantly streamlined through the use of matrices, particularly
+through \textit{Gaussian elimination} or \textit{row reduction}. This
+method employs elementary row operations to transform a matrix into a
+more interpretable form:
+% We are going to use matrices to solve this system of equations.  The
+% method we describe below is often called \dfn{Gaussian elimination}
+% or simply \dfn{elimination}. To do this, we're going to introduce
+% \dfn{row operations}. The row operations will allow us to change the
+% form of the matrix \emph{without changing the solutions}.
+% The idea is this we start with a big matrix,
 \[
   \begin{pmatrix}
     \bullet & \bullet & \bullet & \bullet \\
     \bullet & \bullet & \bullet & \bullet \\
     \bullet & \bullet & \bullet & \bullet
   \end{pmatrix}
-  % \quad \Rightarrow \quad
   \quad \longrightarrow \quad
   \begin{pmatrix}
     \bullet & \bullet & \bullet & \bullet \\
     0 & \bullet & \bullet & \bullet \\
     0 & 0 & \bullet & \bullet
   \end{pmatrix}
-  % \quad \Rightarrow \quad
   \quad \longrightarrow \quad
   \begin{pmatrix}
     1 & 0 & 0 & \bullet \\
@@ -152,10 +182,12 @@ this we start with a big matrix,
     0 & 0 & 1 & \bullet
   \end{pmatrix}
 \]
-and transform it into a form where we can simply ``read-off'' the
-information about the system of equations, including the solutions.  We
-discuss the row operations that allow such a transformation below.
-
+Each arrow represents a sequence of elementary row operations that
+simplify the matrix to a form where the solutions to the original
+system of equations can be readily identified.
+% and transform it into a form where we can simply ``read-off'' the
+% information about the system of equations, including the solutions.  We
+% discuss the row operations that allow such a transformation below.
 
 
 \subsection{Swapping two rows}

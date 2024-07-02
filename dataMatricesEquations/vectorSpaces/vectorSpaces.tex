@@ -98,17 +98,108 @@ sides:
 
 The two jargons introduced above, the null space and the column space of $A$,
 both contain the word \textit{space}. This comes from the fact that they are
-(can be)
-sets of points. These sets of points will have the additional mathematical
-structure called the a vector (sub)space. We will introduce the notion of
-vector
-space in the context of solving system of linear equations. Then we will
-revisit
-these ideas from `higher ground', and introduce the notion of an abstract
-vector
-space.
+(can be) sets of points. These sets of points will have the additional
+mathematical structure called the a vector (sub)space. We will introduce the
+notion of a vector space in the context of solving system of linear equations.
+Then we will revisit these ideas from `higher ground', and introduce the notion
+of an abstract vector space.
 
-\section{Homogeneous equations and the null space}
+\section{Span of vectors}
+
+When discussing a \textit{space} of vectors, we seek to think of all linear
+combinations of vectors with scalars and other vectors. If we have a single
+vector $\vec{v}$, it's span is simply that vector and all scalar multiples
+$\vec{v}$.
+
+\begin{example}[Span of RGB Red]
+  In RGB color space, the color red can be represented by the vector
+  \[
+    \vec{r} = \begin{pmatrix}
+      255 \\ 0 \\ 0
+    \end{pmatrix}
+  \]
+  We can visualize the span of red, as a gradient of colors:
+  \begin{center}
+    \begin{tikzpicture}
+      \foreach \i in {0,17,...,255} {
+          \definecolor{rgbred}{RGB}{\i,0,0}
+          \fill[fill=rgbred] ({\i/255*7},0) rectangle ++(.5,1);
+        }
+      \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) --
+      (7.6,-.5);
+      \node[left] at (0,-.5) {$(0,0,0)$};
+      \node[right] at (7.6,-.5) {$(255,0,0)$};
+    \end{tikzpicture}
+  \end{center}
+  Explain why the span of $\vec{r}$ is identical to the span of $\hat{\vec{r}}
+    = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$.
+  \begin{explanation}
+  \end{explanation}
+\end{example}
+
+\begin{example}[Span of RGB Red and Blue]
+
+  \begin{center}
+    \begin{tikzpicture}
+      \foreach \j in {0,17,...,255} {
+          \foreach \i in {0,17,...,255} {
+              \definecolor{rgbcolor}{RGB}{\i,0,\j}
+              \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
+            }}
+      \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) --
+      (4.3,-.5);
+      \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) --
+      (-.5,4.3);
+      \node at (-.6,-.5) {$(0,0,0)$};
+      \node[right] at (4.3,-.5) {$(255,0,0)$};
+      \node[above] at (-.5,4.3) {$(0,0,255)$};
+    \end{tikzpicture}
+  \end{center}
+\end{example}
+
+% Span of red and green
+
+% \begin{center}
+%   \begin{tikzpicture}[scale=1]
+%     \foreach \j in {0,17,...,255} {
+%         \foreach \i in {0,17,...,255} {
+%             \definecolor{rgbcolor}{RGB}{\i,\j,0}
+%             \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
+%           }}
+%     \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4.3,-.5);
+%     \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (-.5,0) -- (-.5,4.3);
+%     \node at (-.6,-.5) {$(0,0,0)$};
+%     \node[right] at (4.3,-.5) {$(255,0,0)$};
+%     \node[above] at (-.5,4.3) {$(0,255,0)$};
+%   \end{tikzpicture}
+% \end{center}
+
+% Span of blue and green
+
+% \begin{center}
+%   \begin{tikzpicture}
+%     \foreach \j in {0,17,...,255} {
+%         \foreach \i in {0,17,...,255} {
+%             \definecolor{rgbcolor}{RGB}{0,\i,\j}
+%             \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
+%           }}
+%     \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (0,-.5) -- (4.3,-.5);
+%     \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4.3);
+%     \node at (-.6,-.5) {$(0,0,0)$};
+%     \node[right] at (4.3,-.5) {$(0,255,0)$};
+%     \node[above] at (-.5,4.3) {$(0,0,255)$};
+%   \end{tikzpicture}
+% \end{center}
+
+\begin{definition}
+  Given a set of vectors $V$, the \dfn{span} of the vectors in $V$ is
+  \[
+    \Span(V) = \left\{\sum_{i=1}^n a_i\vec{v}_i:\text{$n\in \N$,
+      $\vec{v}_i\in V$, and $a_i\in \R$}\right\}.
+  \]
+\end{definition}
+
+\subsection{Homogeneous equations and the null space}
 Suppose we have a system of equations:
 \begin{align*}
   a_1 x + b_1 y + c_1 z & = d_1 \\
@@ -260,7 +351,7 @@ zero.
   \end{explanation}
 \end{example}
 
-\section{The Span and the column space}
+\subsection{The image and the column space}
 
 Given a matrix (not necessarily square)
 \[
@@ -296,91 +387,88 @@ The set of the vectors $\vec{d}$ is called the \textit{column space} or
   Column space
 \end{example}
 
-\section{Linear combinatrions of vectors}
+% Getting somewhere
+% \begin{center}
+%   \begin{tikzpicture}
+%     \foreach \k in {0,17,...,255} {
+%         \foreach \j in {0,17,...,255} {
+%             \definecolor{rgbcolor}{RGB}{0,\j,\k}
+%             \fill[fill=rgbcolor] ({\j/255*4*(.8)},{\k/255*4+(\j)/255*4*(-.37)})
+%             circle (.2);
+%           }}
+%     \foreach \k in {0,17,...,255} {
+%         \foreach \i in {0,17,...,255} {
+%             \definecolor{rgbcolor}{RGB}{\i,0,\k}
+%             \fill[fill=rgbcolor]
+%             ({\i/255*4*(-.8)},{\k/255*4+(\i)/255*4*(-.37)})
+%             circle (.2);
+%           }}
+%     \foreach \j in {0,17,...,255} {
+%         \foreach \i in {0,17,...,255} {
+%             \definecolor{rgbcolor}{RGB}{\i,\j,0}
+%             \fill[fill=rgbcolor]
+%             ({\i/255*4*(-.8)+\j/255*4*(.8)},{(\i+\j)/255*4*(-.37)}) circle
+%             (.2);
+%           }}
+%   \end{tikzpicture}
+% \end{center}
 
-\subsection{Span of vectors}
 
-\begin{example}[RGB Color Space]
-  Span of the color red
 
-  \begin{center}
-    \begin{tikzpicture}
-      \foreach \i in {0,17,...,255} {
-          \definecolor{rgbred}{RGB}{\i,0,0}
-          \fill[fill=rgbred] ({\i/255*7},0) rectangle ++(.5,1);
-        }
-      \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) --
-      (7.6,-.5);
-      \node[left] at (0,-.5) {$(0,0,0)$};
-      \node[right] at (7.6,-.5) {$(255,0,0)$};
-    \end{tikzpicture}
-  \end{center}
 
-\end{example}
 
-Span of red and blue
+\section{Vector spaces}
 
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \j in {0,17,...,255} {
-        \foreach \i in {0,17,...,255} {
-            \definecolor{rgbcolor}{RGB}{\i,0,\j}
-            \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
-          }}
-    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4.3,-.5);
-    \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) --
-    (-.5,4.3);
-    \node at (-.6,-.5) {$(0,0,0)$};
-    \node[right] at (4.3,-.5) {$(255,0,0)$};
-    \node[above] at (-.5,4.3) {$(0,0,255)$};
-  \end{tikzpicture}
-\end{center}
 
-Span of red and green
-
-\begin{center}
-  \begin{tikzpicture}[scale=1]
-    \foreach \j in {0,17,...,255} {
-        \foreach \i in {0,17,...,255} {
-            \definecolor{rgbcolor}{RGB}{\i,\j,0}
-            \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle ++(.3,.3);
-          }}
-    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (4.3,-.5);
-    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (-.5,0) -- (-.5,4.3);
-    \node at (-.6,-.5) {$(0,0,0)$};
-    \node[right] at (4.3,-.5) {$(255,0,0)$};
-    \node[above] at (-.5,4.3) {$(0,255,0)$};
-  \end{tikzpicture}
-\end{center}
-
-Span of blue and green
-
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \j in {0,17,...,255} {
-        \foreach \i in {0,17,...,255} {
-            \definecolor{rgbcolor}{RGB}{0,\i,\j}
-            \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
-          }}
-    \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (0,-.5) -- (4.3,-.5);
-    \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,0) -- (-.5,4.3);
-    \node at (-.6,-.5) {$(0,0,0)$};
-    \node[right] at (4.3,-.5) {$(0,255,0)$};
-    \node[above] at (-.5,4.3) {$(0,0,255)$};
-  \end{tikzpicture}
-\end{center}
-
-\begin{definition}
-  Given a set of vectors $S$, in a $K$-vector space, $V$, the
-  \dfn{span} of the vectors in $S$ is
-  \[
-    \Span(S) = \left\{\sum_{i=1}^n a_i\sigma_i:\text{$n\in \N$,
-      $\sigma_i\in S$, and $a_i\in K$}\right\}.
-  \]
-  If $\Span(S) = V$, then we say $S$ is a \dfn{spanning set}.
+\begin{definition}\index{K-vector space@$K$-vector space}\index{vector
+    space@$K$-vector space}
+  A \textbf{$\boldsymbol{K}$-vector space} is an Abelian group $(V,+)$
+  with identity $\vec{0}$, along with a field $K$ such that we may
+  multiply group elements by field elements, meaning that there is a
+  binary operation $-\cdot-: K\times V \to V$ such that if $\nu,\mu\in
+    V$ and $a,b,\in K$ we have:
+  \begin{description}
+    \item[Compatibility with scalars] $(ab)\cdot \nu = a\cdot (b\cdot \nu)$.
+    \item[Vectors distribute over scalars] $(a+b)\cdot \nu =
+        a\cdot\nu + b\cdot \nu$.
+    \item[Scalars distribute over vectors] $a\cdot (\nu+\mu) =
+        a\cdot \nu + a\cdot \mu$.
+    \item[Identity is respected] $1_K\cdot \nu = \nu$.
+  \end{description}
+  In this case, elements of the group $V$ are called \dfn{vectors} and
+  elements of the field $K$ are called \dfn{scalars}.
 \end{definition}
 
-\subsection{Linear indendence of vectors}
+\begin{lemma}[Subspace criterion]\index{subspace criterion}
+  Let $V$ be a $K$-vector space. $W\subset V$ is a subspace of $V$ if
+  and only if
+  \begin{enumerate}
+    \item $W\ne \emptyset$.
+    \item $W$ is closed under multiplication by scalars.
+    \item $W$ is closed under vector addition.
+  \end{enumerate}
+\end{lemma}
+
+
+
+
+
+\subsection{Bases for vector spaces}
+
+\begin{definition}
+  Given a $K$-vector space $V$, a finite set of vectors
+  \[
+    \{\lambda_1,\dots,\lambda_n\}
+  \]
+  is said to be \dfn{linearly independent} if
+  \[
+    a_1\lambda_1 + a_2\lambda_2 +\cdots + a_n\lambda_n = 0\quad \Rightarrow
+    \quad
+    a_1= \cdots =a_n = 0.
+  \]
+  A finite set of vectors is set to be \dfn{linearly dependent} if
+  they are not linearly independent.
+\end{definition}
 
 Red is independent from blue in green, as red is not in the span of blue and
 green:
@@ -421,77 +509,7 @@ in the span.
   \end{tikzpicture}
 \end{center}
 
-Getting somewhere
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \k in {0,17,...,255} {
-        \foreach \j in {0,17,...,255} {
-            \definecolor{rgbcolor}{RGB}{0,\j,\k}
-            \fill[fill=rgbcolor] ({\j/255*4*(.8)},{\k/255*4+(\j)/255*4*(-.37)})
-            circle (.2);
-          }}
-    \foreach \k in {0,17,...,255} {
-        \foreach \i in {0,17,...,255} {
-            \definecolor{rgbcolor}{RGB}{\i,0,\k}
-            \fill[fill=rgbcolor]
-            ({\i/255*4*(-.8)},{\k/255*4+(\i)/255*4*(-.37)})
-            circle (.2);
-          }}
-    \foreach \j in {0,17,...,255} {
-        \foreach \i in {0,17,...,255} {
-            \definecolor{rgbcolor}{RGB}{\i,\j,0}
-            \fill[fill=rgbcolor]
-            ({\i/255*4*(-.8)+\j/255*4*(.8)},{(\i+\j)/255*4*(-.37)}) circle
-            (.2);
-          }}
-  \end{tikzpicture}
-\end{center}
 
-\begin{definition}
-  Given a $K$-vector space $V$, a finite set of vectors
-  \[
-    \{\lambda_1,\dots,\lambda_n\}
-  \]
-  is said to be \dfn{linearly independent} if
-  \[
-    a_1\lambda_1 + a_2\lambda_2 +\cdots + a_n\lambda_n = 0\quad \Rightarrow
-    \quad
-    a_1= \cdots =a_n = 0.
-  \]
-  A finite set of vectors is set to be \dfn{linearly dependent} if
-  they are not linearly independent.
-\end{definition}
-
-\section{Four fundamental vector spaces}
-
-\begin{definition}\index{K-vector space@$K$-vector space}\index{vector
-    space@$K$-vector space}
-  A \textbf{$\boldsymbol{K}$-vector space} is an Abelian group $(V,+)$
-  with identity $\vec{0}$, along with a field $K$ such that we may
-  multiply group elements by field elements, meaning that there is a
-  binary operation $-\cdot-: K\times V \to V$ such that if $\nu,\mu\in
-    V$ and $a,b,\in K$ we have:
-  \begin{description}
-    \item[Compatibility with scalars] $(ab)\cdot \nu = a\cdot (b\cdot \nu)$.
-    \item[Vectors distribute over scalars] $(a+b)\cdot \nu =
-        a\cdot\nu + b\cdot \nu$.
-    \item[Scalars distribute over vectors] $a\cdot (\nu+\mu) =
-        a\cdot \nu + a\cdot \mu$.
-    \item[Identity is respected] $1_K\cdot \nu = \nu$.
-  \end{description}
-  In this case, elements of the group $V$ are called \dfn{vectors} and
-  elements of the field $K$ are called \dfn{scalars}.
-\end{definition}
-
-\begin{lemma}[Subspace criterion]\index{subspace criterion}
-  Let $V$ be a $K$-vector space. $W\subset V$ is a subspace of $V$ if
-  and only if
-  \begin{enumerate}
-    \item $W\ne \emptyset$.
-    \item $W$ is closed under multiplication by scalars.
-    \item $W$ is closed under vector addition.
-  \end{enumerate}
-\end{lemma}
 
 Here is a picture that attempts to convey the situation:
 \[
@@ -512,6 +530,8 @@ Here is a picture that attempts to convey the situation:
 The cone above $B$ are all sets of vectors that span $V$. The cone
 below $B$ are all sets of vectors that are linearly independent.
 
+\subsection{Four fundamental subspaces}
+
 \begin{center}
   \begin{tikzpicture}[scale=.5]
     \begin{scope}[rotate=45]
@@ -519,9 +539,11 @@ below $B$ are all sets of vectors that are linearly independent.
           \foreach \i in {0,17,...,255} {
               \definecolor{rgbcolor}{RGB}{0,\i,\j}
               \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
-            }}    
-            \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (1,-.5) -- (4.3,-.5);
-            \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,1) -- (-.5,4.3);
+            }}
+      \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (1,-.5) --
+      (4.3,-.5);
+      \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,1) --
+      (-.5,4.3);
     \end{scope}
     \begin{scope}[rotate=-135]
       \foreach \j in {0,17,...,255} {
@@ -530,15 +552,18 @@ below $B$ are all sets of vectors that are linearly independent.
               \definecolor{rgbcolor}{RGB}{\k,0,0}
               \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
             }}
-            \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (1,-.5) -- (4.3,-.5);
-            \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (-.5,1) -- (-.5,4.3);
+      \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (1,-.5) --
+      (4.3,-.5);
+      \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (-.5,1) --
+      (-.5,4.3);
     \end{scope}
     \filldraw (0,0) circle (10pt);
     \filldraw (16,0) circle (10pt);
 
     \node at (8,5) {$A = \begin{pmatrix} 0 & 1 & 1 \\ 0 & 0 & 1 \\ 0 & 1 &
                    0\end{pmatrix}$};
-    \node at (8,-5) {$A^\transpose = \begin{pmatrix} 0 & 0 & 0 \\ 1 & 0 & 1 \\ 1 &
+    \node at (8,-5) {$A^\transpose = \begin{pmatrix} 0 & 0 & 0 \\ 1 & 0 & 1 \\
+                1 &
                 1 & 0\end{pmatrix}$};
 
     \begin{scope}[xshift=16cm]
@@ -552,10 +577,10 @@ below $B$ are all sets of vectors that are linearly independent.
                 \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle
                 +(.3,.3);
               }}
-              \definecolor{rgbyellow}{RGB}{255,255,0}
-              \definecolor{rgbmagenta}{RGB}{255,0,255}
-              \draw[->,ultra thick,draw=rgbmagenta] (1,-.5) -- (4.3,-.5);
-              \draw[->,ultra thick,draw=rgbyellow] (-.5,1) -- (-.5,4.3);
+        \definecolor{rgbyellow}{RGB}{255,255,0}
+        \definecolor{rgbmagenta}{RGB}{255,0,255}
+        \draw[->,ultra thick,draw=rgbmagenta] (1,-.5) -- (4.3,-.5);
+        \draw[->,ultra thick,draw=rgbyellow] (-.5,1) -- (-.5,4.3);
       \end{scope}
       \begin{scope}[rotate=-135]
         \foreach \j in {0,17,...,255} {
@@ -567,12 +592,13 @@ below $B$ are all sets of vectors that are linearly independent.
                 \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle
                 +(.3,.3);
               }}
-              \definecolor{rgbdkblue}{RGB}{127.5,127.5,255}
-              \draw[->,ultra thick,draw=rgbdkblue] (1,-.5) -- (4.3,-.5);
-              \draw[->,ultra thick,draw=rgbdkblue] (-.5,1) -- (-.5,4.3);
+        \definecolor{rgbdkblue}{RGB}{127.5,127.5,255}
+        \draw[->,ultra thick,draw=rgbdkblue] (1,-.5) -- (4.3,-.5);
+        \draw[->,ultra thick,draw=rgbdkblue] (-.5,1) -- (-.5,4.3);
       \end{scope}
     \end{scope}
   \end{tikzpicture}
 \end{center}
+
 
 \end{document}

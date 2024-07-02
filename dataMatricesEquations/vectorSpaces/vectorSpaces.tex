@@ -239,13 +239,14 @@ zero.
   A matrix $H$ represents the neural network, and we may represent this
   situtation by a matrix equation $H\vec{X} = \vec{Y}$ where
   \[
-  H = \begin{pmatrix}
-    0.375 & -0.125 & -0.125 \\
-    0.125 & 0.625  & 0.625
-  \end{pmatrix}.
+    H = \begin{pmatrix}
+      0.375 & -0.125 & -0.125 \\
+      0.125 & 0.625  & 0.625
+    \end{pmatrix}.
   \]
   \begin{enumerate}
-    \item Interprert and compute (by giving explict relations) the null space of
+    \item Interprert and compute (by giving explict relations) the null space
+          of
           $H$.
     \item Explain why $\vec{0}$ is an element of the null space.
     \item Explain why if $\vec{v}$ is a vectors in the null space, then $s\cdot
@@ -277,55 +278,45 @@ we can think of all possible vectors $\vec{d}$ such that
 where $\vec{a} = (a_1~a_2~a_3)^\transpose$, $\vec{b} =
   (b_1~b_2~b_3)^\transpose$, $\vec{c} = (c_1~c_2~c_3)^\transpose$, and vectors
 $\vec{x} = (x~y~z)^\transpose\in\R^3$.
-The set of the vectors $\vec{d}$ is called the \textit{column space} or \textit{range} of $A$.
-
+The set of the vectors $\vec{d}$ is called the \textit{column space} or
+\textit{range} of $A$.
 
 \begin{definition}
   The \dfn{column space} (or \dfn{range}) of an $m \times n$ matrix $M$ is
-  the set of all vectors $\vec{b}$ such that $M\vec{x} = \vec{b}$. We can express
+  the set of all vectors $\vec{b}$ such that $M\vec{x} = \vec{b}$. We can
+  express
   this as
   \[
-    \Col(M) = \{ \vec{b}\in\R^n: M\vec{x} = \vec{b}\text{~for all~}\vec{x}\in\R^n\}.
+    \Col(M) = \{ \vec{b}\in\R^n: M\vec{x} = \vec{b}\text{~for
+      all~}\vec{x}\in\R^n\}.
   \]
 \end{definition}
-
 
 \begin{example}[Neural Network]
   Column space
 \end{example}
 
-
-
-
-
-
-
-
-
-
 \section{Linear combinatrions of vectors}
-
-
 
 \subsection{Span of vectors}
 
 \begin{example}[RGB Color Space]
   Span of the color red
 
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \i in {0,17,...,255} {
-        \definecolor{rgbred}{RGB}{\i,0,0}
-        \fill[fill=rgbred] ({\i/255*7},0) rectangle ++(.5,1);
-      }
-    \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) -- (7.6,-.5);
-    \node[left] at (0,-.5) {$(0,0,0)$};
-    \node[right] at (7.6,-.5) {$(255,0,0)$};
-  \end{tikzpicture}
-\end{center}
+  \begin{center}
+    \begin{tikzpicture}
+      \foreach \i in {0,17,...,255} {
+          \definecolor{rgbred}{RGB}{\i,0,0}
+          \fill[fill=rgbred] ({\i/255*7},0) rectangle ++(.5,1);
+        }
+      \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (0,-.5) --
+      (7.6,-.5);
+      \node[left] at (0,-.5) {$(0,0,0)$};
+      \node[right] at (7.6,-.5) {$(255,0,0)$};
+    \end{tikzpicture}
+  \end{center}
 
 \end{example}
-
 
 Span of red and blue
 
@@ -471,54 +462,117 @@ Getting somewhere
   they are not linearly independent.
 \end{definition}
 
-
 \section{Four fundamental vector spaces}
 
-
 \begin{definition}\index{K-vector space@$K$-vector space}\index{vector
-  space@$K$-vector space}
-A \textbf{$\boldsymbol{K}$-vector space} is an Abelian group $(V,+)$
-with identity $\vec{0}$, along with a field $K$ such that we may
-multiply group elements by field elements, meaning that there is a
-binary operation $-\cdot-: K\times V \to V$ such that if $\nu,\mu\in
-  V$ and $a,b,\in K$ we have:
-\begin{description}
-  \item[Compatibility with scalars] $(ab)\cdot \nu = a\cdot (b\cdot \nu)$.
-  \item[Vectors distribute over scalars] $(a+b)\cdot \nu =
-      a\cdot\nu + b\cdot \nu$.
-  \item[Scalars distribute over vectors] $a\cdot (\nu+\mu) =
-      a\cdot \nu + a\cdot \mu$.
-  \item[Identity is respected] $1_K\cdot \nu = \nu$.
-\end{description}
-In this case, elements of the group $V$ are called \dfn{vectors} and
-elements of the field $K$ are called \dfn{scalars}.
+    space@$K$-vector space}
+  A \textbf{$\boldsymbol{K}$-vector space} is an Abelian group $(V,+)$
+  with identity $\vec{0}$, along with a field $K$ such that we may
+  multiply group elements by field elements, meaning that there is a
+  binary operation $-\cdot-: K\times V \to V$ such that if $\nu,\mu\in
+    V$ and $a,b,\in K$ we have:
+  \begin{description}
+    \item[Compatibility with scalars] $(ab)\cdot \nu = a\cdot (b\cdot \nu)$.
+    \item[Vectors distribute over scalars] $(a+b)\cdot \nu =
+        a\cdot\nu + b\cdot \nu$.
+    \item[Scalars distribute over vectors] $a\cdot (\nu+\mu) =
+        a\cdot \nu + a\cdot \mu$.
+    \item[Identity is respected] $1_K\cdot \nu = \nu$.
+  \end{description}
+  In this case, elements of the group $V$ are called \dfn{vectors} and
+  elements of the field $K$ are called \dfn{scalars}.
 \end{definition}
 
 \begin{lemma}[Subspace criterion]\index{subspace criterion}
-Let $V$ be a $K$-vector space. $W\subset V$ is a subspace of $V$ if
-and only if
-\begin{enumerate}
-  \item $W\ne \emptyset$.
-  \item $W$ is closed under multiplication by scalars.
-  \item $W$ is closed under vector addition.
-\end{enumerate}
+  Let $V$ be a $K$-vector space. $W\subset V$ is a subspace of $V$ if
+  and only if
+  \begin{enumerate}
+    \item $W\ne \emptyset$.
+    \item $W$ is closed under multiplication by scalars.
+    \item $W$ is closed under vector addition.
+  \end{enumerate}
 \end{lemma}
 
 Here is a picture that attempts to convey the situation:
 \[
-\begin{tikzpicture}
-  \draw[white,thin,shading = axis, top color = white, bottom color = gray] (-2,2) -- (0,0)-- (2,2) -- (-2,2) -- cycle;
-  \draw[white,thin,shading = axis, bottom color = white, top color = gray] (-2,-2) -- (0,0)-- (2,-2) -- (-2,-2) -- cycle;
-  \filldraw (0,0) circle (3pt);
-  \node[right] at (0,0) {$B$ is linearly independent and spans};
-  \node at (0,1.5) {$\scriptstyle \Span(B) = V$};
-  \node at (0,-1.5) {\tiny $B$  is linearly independent};
-  \draw[->,ultra thick] (-3,-2) -- (-3,2);
-  \node[left] at (-3,-1.5) {\text{\tiny $|B|$ is smaller}};
-  \node[left] at (-3,1.5) {\text{\tiny $|B|$ is larger}};
-\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[white,thin,shading = axis, top color = white, bottom color = gray]
+    (-2,2) -- (0,0)-- (2,2) -- (-2,2) -- cycle;
+    \draw[white,thin,shading = axis, bottom color = white, top color = gray]
+    (-2,-2) -- (0,0)-- (2,-2) -- (-2,-2) -- cycle;
+    \filldraw (0,0) circle (3pt);
+    \node[right] at (0,0) {$B$ is linearly independent and spans};
+    \node at (0,1.5) {$\scriptstyle \Span(B) = V$};
+    \node at (0,-1.5) {\tiny $B$	is linearly independent};
+    \draw[->,ultra thick] (-3,-2) -- (-3,2);
+    \node[left] at (-3,-1.5) {\text{\tiny $|B|$ is smaller}};
+    \node[left] at (-3,1.5) {\text{\tiny $|B|$ is larger}};
+  \end{tikzpicture}
 \]
 The cone above $B$ are all sets of vectors that span $V$. The cone
 below $B$ are all sets of vectors that are linearly independent.
+
+\begin{center}
+  \begin{tikzpicture}[scale=.5]
+    \begin{scope}[rotate=45]
+      \foreach \j in {0,17,...,255} {
+          \foreach \i in {0,17,...,255} {
+              \definecolor{rgbcolor}{RGB}{0,\i,\j}
+              \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
+            }}    
+            \draw[->,ultra thick,draw={rgb:red,0;green,1;blue,0}] (1,-.5) -- (4.3,-.5);
+            \draw[->,ultra thick,draw={rgb:red,0;green,0;blue,1}] (-.5,1) -- (-.5,4.3);
+    \end{scope}
+    \begin{scope}[rotate=-135]
+      \foreach \j in {0,17,...,255} {
+          \foreach \i in {0,17,...,255} {
+              \pgfmathtruncatemacro{\k}{(\i+\j)/2}
+              \definecolor{rgbcolor}{RGB}{\k,0,0}
+              \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle +(.3,.3);
+            }}
+            \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (1,-.5) -- (4.3,-.5);
+            \draw[->,ultra thick,draw={rgb:red,1;green,0;blue,0}] (-.5,1) -- (-.5,4.3);
+    \end{scope}
+    \filldraw (0,0) circle (10pt);
+    \filldraw (16,0) circle (10pt);
+
+    \node at (8,5) {$A = \begin{pmatrix} 0 & 1 & 1 \\ 0 & 0 & 1 \\ 0 & 1 &
+                   0\end{pmatrix}$};
+    \node at (8,-5) {$A^\transpose = \begin{pmatrix} 0 & 0 & 0 \\ 1 & 0 & 1 \\ 1 &
+                1 & 0\end{pmatrix}$};
+
+    \begin{scope}[xshift=16cm]
+      \begin{scope}[rotate=45]
+        \foreach \j in {0,17,...,255} {
+            \foreach \i in {0,17,...,255} {
+                \pgfmathtruncatemacro{\r}{max(\j,\i)}
+                \pgfmathtruncatemacro{\g}{\j}
+                \pgfmathtruncatemacro{\b}{\i}
+                \definecolor{rgbcolor}{RGB}{\r,\g,\b}
+                \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle
+                +(.3,.3);
+              }}
+              \definecolor{rgbyellow}{RGB}{255,255,0}
+              \definecolor{rgbmagenta}{RGB}{255,0,255}
+              \draw[->,ultra thick,draw=rgbmagenta] (1,-.5) -- (4.3,-.5);
+              \draw[->,ultra thick,draw=rgbyellow] (-.5,1) -- (-.5,4.3);
+      \end{scope}
+      \begin{scope}[rotate=-135]
+        \foreach \j in {0,17,...,255} {
+            \foreach \i in {0,17,...,255} {
+                \pgfmathtruncatemacro{\r}{(\i+\j)/4}
+                \pgfmathtruncatemacro{\g}{(\i+\j)/4}
+                \pgfmathtruncatemacro{\b}{(\i+\j)/2}
+                \definecolor{rgbcolor}{RGB}{\r,\g,\b}
+                \fill[fill=rgbcolor] ({\i/255*4},{\j/255*4}) rectangle
+                +(.3,.3);
+              }}
+              \definecolor{rgbdkblue}{RGB}{127.5,127.5,255}
+              \draw[->,ultra thick,draw=rgbdkblue] (1,-.5) -- (4.3,-.5);
+              \draw[->,ultra thick,draw=rgbdkblue] (-.5,1) -- (-.5,4.3);
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
 
 \end{document}

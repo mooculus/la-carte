@@ -22,14 +22,6 @@
   \hfill ---T.S.\ Eliot
 \end{quote}
 
-Data and their associated systems of equations are complicated. It is
-not enough to simply solve these equations, we must understand the
-solutions in a more abstract way. In this chapter we will introduce
-various sets (or in this case, vector spaces) of vectors in the
-context of solving equations. Then we will revisit these ideas from
-`higher ground,' and introduce the notion of a vector space.
-
-%% TK: my take on this
 A fundamental task in linear algebra is to solve a system of linear
 equations associated with certain data:
 \begin{equation*}
@@ -52,13 +44,14 @@ equations associated with certain data:
   \end{array}
   \, \right.
 \end{equation*}
-It is not enough to simply solve these equations; we must understand
-the solutions in a more abstract way. Let us first write the system
-above compactly as a matrix equation $A \vec{x} = \vec{b}$, where $A$
-is the $n \times n$ matrix of coefficients, $\vec{x}$ is the
-$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the constants on
+It may be tempting to think that we already know all we need to handel such a
+situation. However, in actuality the system of equations may have infinitely many
+solutions or none at all. Here we must strive to understand solutions to systems of equations in a more
+abstract way. Let us first write the system above compactly as a matrix equation $A \vec{x} =
+  \vec{b}$, where $A$ is the $n \times n$ matrix of coefficients, $\vec{x}$ is
 the
-right-hand side of the equations:
+$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the constants on
+the right-hand side of the equations:
 \[
   A =
   \begin{bmatrix}
@@ -413,12 +406,7 @@ The set of the vectors $\vec{d}$ is called the \textit{column space} or
 %   \end{tikzpicture}
 % \end{center}
 
-
-
-
-
 \section{Vector spaces}
-
 
 \begin{definition}\index{K-vector space@$K$-vector space}\index{vector
     space@$K$-vector space}
@@ -448,10 +436,6 @@ The set of the vectors $\vec{d}$ is called the \textit{column space} or
     \item $W$ is closed under vector addition.
   \end{enumerate}
 \end{lemma}
-
-
-
-
 
 \subsection{Bases for vector spaces}
 
@@ -508,8 +492,6 @@ in the span.
     \node[below] at (8,1) {$(0,102,153)$};
   \end{tikzpicture}
 \end{center}
-
-
 
 Here is a picture that attempts to convey the situation:
 \[
@@ -599,6 +581,5 @@ below $B$ are all sets of vectors that are linearly independent.
     \end{scope}
   \end{tikzpicture}
 \end{center}
-
 
 \end{document}

@@ -282,6 +282,33 @@ third row (you could have chosen either of the summands).
 \]
 
 \begin{question}
+  In the following transformation,
+  \[
+    \begin{pmatrix}
+      2 & \bullet & \bullet & \bullet \\
+      6 & \bullet & \bullet & \bullet \\
+      -4 & \bullet & \bullet & \bullet
+    \end{pmatrix}
+    % \begin{matrix}
+    %   \scriptstyle \ell_1 R_1 + R_2 \to R_2\\
+    %   \longrightarrow \\
+    %   \scriptstyle \ell_2 R_1 + R_3 \to R_3
+    % \end{matrix}
+    \quad\longrightarrow\quad
+    \begin{pmatrix}
+      2 & \bullet & \bullet & \bullet \\
+      0 & \bullet & \bullet & \bullet \\
+      0 & \bullet & \bullet & \bullet
+    \end{pmatrix}
+  \]
+  zeros were introduced below the $(1,1)$-entry using two row
+  operations, $\ell_1 R_1 + R_2 \to R_2$ and
+  $\ell_2 R_1 + R_3 \to R_3$. Determine $\ell_1$ and $\ell_2$.
+  \begin{prompt}
+    \[
+      \ell_1 = \answer{-3}, \quad \ell_2 = \answer{2}.
+    \]
+  \end{prompt}
 \end{question}
 
 
@@ -433,9 +460,56 @@ Such an $M_{i,j}$ is called a \dfn{pivot} of $M$.
 \end{definition}
 
 \begin{question}
-  id in REF and id pivots
+  Let
+  \[
+    A =
+    \begin{pmatrix}
+      2 & 4 & 6 & 8 \\
+      0 & 5 & 7 & 9 \\
+      0 & 0 & 1 & 3
+    \end{pmatrix}, \quad
+    B =
+    \begin{pmatrix}
+      1 & 2 & 4 \\
+      0 & 3 & 5 \\
+      0 & 6 & 7
+    \end{pmatrix}, \quad
+    C =
+    \begin{pmatrix}
+      0 & 0 & 0 \\
+      0 & 0 & 9 \\
+      0 & 8 & 7 \\
+      6 & 5 & 4
+    \end{pmatrix}, \quad
+    D =
+    \begin{pmatrix}
+      1 & 3 & 0 & 0 \\
+      0 & 0 & 0 & 1
+    \end{pmatrix}.
+  \]
+  Which of these are in REF.
+  \begin{selectAll}
+    \choice[correct]{$A$}
+    \choice{$B$}
+    \choice{$C$}
+    \choice[correct]{$D$}
+  \end{selectAll}
 \end{question}
 
+\begin{question}
+  The following matrix is in REF and has three pivots.
+  \[
+    \begin{pmatrix}
+      1 & 0 & 2 & 0 & 3 \\
+      0 & 4 & 5 & 0 & 6 \\
+      0 & 0 & 0 & 7 & 8
+    \end{pmatrix}
+  \]
+  Identify all three pivot elements.
+  \[
+    \answer[given]{1},\, \answer[given]{4},\, \answer[given]{7}.
+  \]
+\end{question}
 
 
 \subsection{An algorithm for row echelon form}

@@ -1847,43 +1847,6 @@ Once you are comfortable ``adding'' letters on a wheel, we can make a cypher.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Special matrices}
 Earlier, we introduced the transpose of a vector. The same concept
 also applies to any matrix.
@@ -2000,9 +1963,23 @@ Thus, their order changes after taking the transpose of each.
 \end{proposition}
 
 
-Let us explore some types of matrices that usually are used in linear
-algebra. The zero matrix, usually denoted as $\mathbf{O}_{m \times n}$ is
-an $m \times n$ matrix with each of its entries being zero. For example,
+Let us explore some types of matrices that are commonly used in linear algebra.
+
+\begin{definition}
+  The \dfn{zero matrix}, denoted $\mathbf{O}_{m \times n}$, is an
+  $m \times n$ matrix with each of its entries being zero.
+  % That is,
+  % \[
+  %   \left[ \mathbf{O}_{m \times n} \right]_{ij} = 0, \quad\text{for any $i,j$.}
+  % \]
+  The \dfn{matrix of ones}, denoted $J_{m \times n}$, is an $m \times n$ matrix
+  with each of its entries being ones.
+  % That is,
+  % \[
+  %   \left[ J_{m \times n} \right]_{ij} = 1, \quad\text{for any $i,j$}.
+  % \]
+\end{definition}
+For example,
 \[
   \mathbf{O}_{2\times 3} =
   \begin{pmatrix}
@@ -2016,11 +1993,63 @@ an $m \times n$ matrix with each of its entries being zero. For example,
     0 & 0 \\
     0 & 0 \\
     0 & 0
+  \end{pmatrix},
+\]
+and
+\[
+  J_{3 \times 3} =
+  \begin{pmatrix}
+    1 & 1 & 1 \\
+    1 & 1 & 1 \\
+    1 & 1 & 1
+  \end{pmatrix}, \qquad
+  J_{4 \times 2} =
+  \begin{pmatrix}
+    1 & 1 \\
+    1 & 1 \\
+    1 & 1 \\
+    1 & 1
+  \end{pmatrix}, \qquad
+  J_{5 \times 1} =
+  \begin{pmatrix}
+    1 \\ 1 \\ 1 \\ 1 \\ 1 \\
   \end{pmatrix}.
 \]
+Note that $J_{5 \times 1} = \vec{1} \in \R^5$.
+
 Any product involving a zero matrix returns another zero matrix. That
 is, for any $m \times n$ matrix $A$, $A \mathbf{O}_{n \times p} = \mathbf{O}_{m
-  \times p}$ and $\mathbf{O}_{q \times m} A = \mathbf{O}_{q \times n}$.
+  \times p}$ and $\mathbf{O}_{q \times m} A = \mathbf{O}_{q \times n}$. In other
+words, $\mathbf{O}$ behaves just like 0 in normal multiplication.
+
+A common misconception is that the all-ones matrix
+$J = J_{m \times n}$ plays a role similar to $1$ in ordinary
+multiplication, namely, $J A = A J = A$, but this is not true.
+% For example,
+% \[
+%   \begin{pmatrix}
+%     1 & 2 \\
+%     3 & 4
+%   \end{pmatrix}
+%   \begin{pmatrix}
+%     1 & 1 \\
+%     1 & 1
+%   \end{pmatrix}
+%   =
+%   \begin{pmatrix}
+%     3 & 3 \\
+%     7 & 7
+%   \end{pmatrix}
+%   \neq
+%   \begin{pmatrix}
+%     1 & 2 \\
+%     3 & 4
+%   \end{pmatrix}.
+% \]
+
+Nonetheless, the all-ones matrices are found useful in many fields of
+applications such as graph theory and statistics.
+
 % It is not hard to see that the zero matrix multiplied by a matrix gives a zero matrix:
 % \[
 % \left(\begin{array}{ccc}
@@ -2043,17 +2072,32 @@ is, for any $m \times n$ matrix $A$, $A \mathbf{O}_{n \times p} = \mathbf{O}_{m
 % Another important type of matrix is the identity matrix, denoted as
 % $I_{m \times n}$. It is a matrix whose diagonal entries are $1$ and its
 % every other entry is zero.
-Another important type of matrix is the \dfn{identity matrix}, denoted as
-$I_{n \times n}$ or simply $I_n$. It is an $n \times n$ matrix with ones on the
-main diagonal and zeros elsewhere. For example,
+
+\begin{definition}
+  The \dfn{identity matrix}, denoted $I_{n \times n}$ or simply $I_n$, is
+  an $n \times n$ matrix with ones on the main diagonal and zeros
+  elsewhere.
+  % That is,
+  % \[
+  %   \left[ I_{n \times n} \right]_{ij} =
+  %   \begin{cases}
+  %     1 & \text{if $i = j$} \\
+  %     0 & \text{if $i \neq j$}
+  %   \end{cases}
+  % \]
+\end{definition}
+% Another important type of matrix is the \dfn{identity matrix}, denoted as
+% $I_{n \times n}$ or simply $I_n$. It is an $n \times n$ matrix with ones on the
+% main diagonal and zeros elsewhere.
+For example,
 \[
-  I_2 =
+  I_{2 \times 2} =
   \begin{pmatrix}
     1 & 0 \\
     0 & 1
   \end{pmatrix},
   \quad
-  I_4 =
+  I_{4 \times 2} =
   \begin{pmatrix}
     1 & 0 & 0 & 0 \\
     0 & 1 & 0 & 0 \\
@@ -2141,36 +2185,6 @@ as in regular multiplication. That is, $AI = A$ and $IA= A$.
 % \end{prompt}
 % \end{question}
 
-
-Yet another useful type of matrix is a matrix of all ones which is
-often denoted by $J_{m \times n}$. For example,
-\[
-  J_{3} = J_{3 \times 3} =
-  \begin{pmatrix}
-    1 & 1 & 1 \\
-    1 & 1 & 1 \\
-    1 & 1 & 1
-  \end{pmatrix}, \qquad
-  J_{4 \times 2} =
-  \begin{pmatrix}
-    1 & 1 \\
-    1 & 1 \\
-    1 & 1 \\
-    1 & 1
-  \end{pmatrix}, \qquad
-  J_{5 \times 1} = \vec{1}_5 =
-  \begin{pmatrix}
-    1 \\ 1 \\ 1 \\ 1 \\ 1 \\
-  \end{pmatrix}.
-\]
-Recall that we have already introduced the notation $\vec{1}$ for the
-column vector of all ones in the data analysis example. This can be
-thought of as a special type of all-ones matrix that has only one
-column.
-
-Even though $J$ does not satisfy neat algebraic properties such as
-$A \vec{O} = \vec{O}$ or $AI = IA = A$, this all-ones matrix arises in
-many fields of applications such as graph theory and statistics.
 
 % \begin{remark}[Computational notes]
 %   The three types of matrices introduced above are very commonly used

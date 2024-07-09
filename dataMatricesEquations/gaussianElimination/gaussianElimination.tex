@@ -164,7 +164,7 @@ The process of solving systems of linear equations can be
 significantly streamlined through the use of matrices, particularly
 through \textit{Gaussian elimination} or \textit{row reduction}. This
 method employs elementary row operations to transform a matrix into a
-more interpretable form:
+more interpretable form \emph{without changing the solutions}:
 % We are going to use matrices to solve this system of equations.  The
 % method we describe below is often called \dfn{Gaussian elimination}
 % or simply \dfn{elimination}. To do this, we're going to introduce
@@ -254,10 +254,13 @@ the first and second rows of the matrix below:
 
 
 \subsection{Multiply by a nonzero constant and add different rows}
-We may multiply equations by nonzero constants and add equations together
-\emph{without affecting the solution.} Hence we may multiply the first
-row by $3$ and add it to the third row, storing the answer in the
-third row (you could have chosen either of the summands).
+We may multiply equations by nonzero constants and add equations
+together \emph{without affecting the solution.} We denote by
+$c R_i + R_j \to R_j$ the row operation in which $c \neq 0$ times the
+$i$th row is added to the $j$th row. (The notation should be
+understood as $c R_i + R_j$ replacing $R_j$.) Hence we may multiply
+the first row by $3$ and add it to the third row, storing the answer
+in the third row (you could have chosen either of the summands).
 \[
   \left(
     \begin{array}{ccc|c}
@@ -362,15 +365,31 @@ of equations that have a common solution. For example:
 are all different matrices representing the same solution to the
 system of equations:
 \[
+  % \begin{array}{ccccccc}
+  %   & & 3y &-& 3z &=& 2 \\
+  %   x& +&3y&-&3z&=&-3\\
+  %   -3x& -&9y&-&11z&=&0
+  % \end{array}
   \begin{array}{ccccccc}
-    & & 3y &-& 3z &=& 2 \\
-    x& +&3y&-&3z&=&-3\\
-    -3x& -&9y&-&11z&=&0
+    & & 3y &-& 3z &=& -3 \\
+    x& +&3y&-&3z&=&2\\
+    -3x& -&9y&+&11z&=&0
   \end{array}
 \]
+%% TK: Though REF is necessarily upper triangular, the converse is not
+%% true. I believe REF is not synomymous to upper-triangularity, and
+%% juxtaposing REF with triangular form is incorrect and can be
+%% misleading. My suggestion is either drop ``triangular form'' all
+%% together, or explain the difference between the two.
 Some ``forms'' of these matrices are more convenient than others. One
-useful form is called \dfn{row echelon form} or \dfn{triangular
-  form}. An \textit{echelon} is a military term meaning a formation
+useful form is called \dfn{row echelon form}.
+%% TK: If you want to explain the difference between the two,
+%% uncomment the paragraph below.
+% Note that while a matrix in row echelon form is necessarily upper
+% triangular, the converse is not true. Row echelon form imposes
+% additional structure on the leading entries of the rows beyond simply
+% having zeros below the main diagonal.
+An \textit{echelon} is a military term meaning a formation
 (of soldiers, vehicles, and so on) that makes a ``stair step''
 shape. All of the matrices below are in row echelon form:
 
@@ -449,14 +468,25 @@ shape. All of the matrices below are in row echelon form:
 We've highlighted the \textit{echelon} pattern in each of the matrices
 above. Now let's give a definition.
 
+%% TK: I like how pivots are characterized in the definition below,
+%% but according to the current version, the following non-REF is
+%% falsely considered REF
+%%
+%%  ( 0 0 0 )
+%%  ( * * * )
+%%  ( 0 * * )
+%%
+%% because it currently doesn't have any restrictions on the entries
+%% above pivot elements.
 \begin{definition}
-We say a matrix $M$ is in \dfn{row echelon form} if every nonzero row
-contains a nonzero entry $M_{i,j}\ne 0$ such that
-\begin{itemize}
-\item Every entry below $M_{i,j}$ is zero, $M_{k,\l}=0$ whenever $k> i$.
-\item Every entry to the left of $M_{i,j}$ is zero, $M_{k,\l}=0$ whenever $\l < j$.
-\end{itemize}
-Such an $M_{i,j}$ is called a \dfn{pivot} of $M$.
+  We say a matrix $M$ is in \dfn{row echelon form} if all rows
+  consisting entirely of zeros are grouped at the bottom of $M$ and
+  every nonzero row contains a nonzero entry $M_{i,j}\ne 0$ such that
+  \begin{itemize}
+  \item Every entry below $M_{i,j}$ is zero, $M_{k,\l}=0$ whenever $k> i$.
+  \item Every entry to the left of $M_{i,j}$ is zero, $M_{k,\l}=0$ whenever $\l < j$.
+  \end{itemize}
+  Such an $M_{i,j}$ is called a \dfn{pivot} of $M$.
 \end{definition}
 
 \begin{question}
@@ -523,9 +553,10 @@ something like the following algorithm for computing row echelon form
   Here we explain a general algorithm for reducing a matrix to row
   echelon form in plain terms.
   \begin{enumerate}
-  \item Determine the leftmost column containing a nonzero entry use
-    row operations to move this entry to the first row.
-  \item Use row operations to make the entries below this nonzero entry equal to zero.
+  \item Determine the leftmost column containing a nonzero entry. If
+    necessary, swap rows to move this entry to the first row.
+  \item Use row operations to make the entries below this nonzero
+    entry equal to zero.
   \item Repeat the previous steps on the submatrix consisting of all
     except the first row, until reaching the end of the rows.
   \end{enumerate}
@@ -583,7 +614,7 @@ strength. Computers, do not (yet!) understand anything, they just
 crunch numbers very quickly. Hence, the fact that no understanding is
 needed to do the algorithm is a bonus in this case. Many computer
 languages have the notion of `vectors' and `matrices' and algorithms
-like the one above that are optimized and built-in.
+like the one above are optimized and built-in.
 
 
 
@@ -593,10 +624,15 @@ like the one above that are optimized and built-in.
 Let's think about our original system of equations. We've shown that
 this corresponds to a matrix in row echelon form:
 \[
+  % \begin{array}{rcrcrcr}
+  %   & & 3y &-& 3z &=& 2 \\
+  %   x& +&3y&-&3z&=&-3\\
+  %   -3x& -&9y&-&11z&=&0
+  % \end{array}
   \begin{array}{rcrcrcr}
-    & & 3y &-& 3z &=& 2 \\
-    x& +&3y&-&3z&=&-3\\
-    -3x& -&9y&-&11z&=&0
+    & & 3y &-& 3z &=& -3 \\
+    x& +&3y&-&3z&=&2\\
+    -3x& -&9y&+&11z&=&0
   \end{array}
   \qquad\Longrightarrow\qquad
   \left(
@@ -628,7 +664,7 @@ Hence at this point we see
 \begin{align*}
   2z &= 6 &\Rightarrow  & & z &= 3\\
   3y-3\cdot 3 &= -3 &\Rightarrow  & & y &= 2\\
-  x + 3\cdot 2 - 3\cdot 3 &= 2  &\Rightarrow & & x &= 1
+  x + 3\cdot 2 - 3\cdot 3 &= 2  &\Rightarrow & & x &= 5
 \end{align*}
 And we have solved our system of equations. The method we used,
 solving for $z$, then $y$, then $x$ is called \dfn{back
@@ -659,13 +695,14 @@ several!) of zeros like this:
     \bullet y + \bullet z&= \bullet
   \end{aligned}
 \]
-In this case, we have a system of equations with more variables than
-equations! This means (assuming no columns of zeros) that the system
-of equations is \dfn{underdetermined}. Note that if we try to solve
-for $x$ and $y$, we will always have a function of $z$ for each. Hence
-in a case like this, there are an \dfn{infinite number of solutions}.
-
-
+% In this case, we have a system of equations with more variables than
+% equations!
+In this case, we have reduced the original system to one with more
+variables than equations!  This means (assuming no columns of zeros)
+that the reduced system of equations is \dfn{underdetermined}. Note
+that if we try to solve for $x$ and $y$, we will always have a
+function of $z$ for each. Hence in a case like this, there are an
+\dfn{infinite number of solutions}.
 
 \paragraph{No solutions}
 
@@ -686,16 +723,28 @@ that looks something like this:
     0 &=\bullet & \textbf{(VERY PROBLEMATIC)}
   \end{aligned}
 \]
-Again, we have a system of equations but this time we have $0 =
-\bullet$ where we're assuming $\bullet$ is not zero.  This means that
-the system of equations is \dfn{overdetermined} also known as
-\dfn{inconsistent}. In a case like this, there are \dfn{no solutions.}
+Again, we have a system of equations but this time we have
+$0 = \bullet$ where we're assuming $\bullet$ is not zero. In a case like this,
+there are \dfn{no solutions}. A system of equations without a solution
+is said to be \dfn{inconsistent}.
+% This means that the system of equations is \dfn{overdetermined} also
+% known as \dfn{inconsistent}. In a case like this, there are \dfn{no
+%   solutions.}
+%%
+%% TK: A system is said to be overdetermined when there are more
+%% equations than there are unknowns. An overdetermined system may
+%% have a unique solution, infinitely many solution, or no
+%% solutions. In other words, an overdetermined system may or may not
+%% be consistent.
 
 
 
 \paragraph{Summary}
 
 As we have seen, simply having the augmented matrix in row echelon form can immediately tell us if a system of equations:
+
+%% TK: The following needs to be REVISED as it is not true, even in
+%% its non-subtle description.
 \begin{description}
 \item[Has a unique solution] This happens when there are \textbf{no rows/columns of zeros.}
 \item[Has infinitely many solutions] When there are \textbf{rows of
@@ -768,7 +817,8 @@ The advantage here is that this final form corresponds to a very nice system of 
 While \textit{reduced} row echelon form may seem like a good idea,
 there are some issues.  Usually row echelon form is sufficient, and
 the additional computations are not worth the effort.  If working by
-hand, it is usually best to use back substitution to solve the system of equations.
+hand, it is usually best to use back substitution to solve the system
+of equations.
 
 
 

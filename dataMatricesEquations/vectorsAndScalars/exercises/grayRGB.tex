@@ -8,7 +8,7 @@
 \begin{exercise}
   The following column $3$-vector $\vec{g}$ represents the
   \link[official gray color]{https://bux.osu.edu/color/primary-colors}
-  of the Ohio State University, in RGB 
+  of the Ohio State University, in RGB:
   \[
     \vec{g} = \begin{pmatrix}
       167\\ 177\\ 183
@@ -23,7 +23,7 @@
     Create two shades of gray, one that is $50\%$ lighter than
     $\vec{g}$ and one that is $75\%$ lighter than $\vec{g}$.
     \begin{prompt}
-      Recalling that white is represented by
+      Recall that white is represented by
       \[
       \vec{w} = \begin{pmatrix}
         255\\ 255\\ 255
@@ -39,9 +39,8 @@
       the difference between white and our color, and add various
       fractions of this difference to $\vec{g}$.
 
-      
-      First, compute the differences of RGB intensities between white and the OSU
-      gray.
+      First, compute the differences of RGB intensities between white
+      and the OSU gray.
       \[
       \vec{d} = \vec{w} - \vec{g} =
       \begin{pmatrix}
@@ -50,7 +49,8 @@
         \answer{72}
       \end{pmatrix}
       \]
-      Generate a lighter gray by adding $50\%$ of $\vec{d}$ to $\vec{g}$.
+      Generate a lighter gray by adding $50\%$ of $\vec{d}$ to
+      $\vec{g}$.
       \[
       \vec{g}_1 = \vec{g} + \left(\answer{0.5}\right)\vec{d} =
       \begin{pmatrix}
@@ -61,20 +61,20 @@
       \]
       Generate an even lighter gray by adding $75\%$ of $\vec{d}$
       onto $\vec{g}$.
-  \[
-    \vec{g}_2 = \vec{g} + \left(\answer{0.75}\right)\vec{d} =
-    \begin{pmatrix}
-      \answer{233}\\
-      \answer{235.5}\\
-      \answer{237}
-    \end{pmatrix}
-    \]
-    
-    \begin{feedback}[correct]
-      Use an online RGB color picker such as
-    \link[this]{https://rgbcolorpicker.com} for visual confirmation of
-    your work!
-    \end{feedback}
+      \[
+        \vec{g}_2 = \vec{g} + \left(\answer{0.75}\right)\vec{d} =
+        \begin{pmatrix}
+          \answer{233}\\
+          \answer{235.5}\\
+          \answer{237}
+        \end{pmatrix}
+      \]
+
+      \begin{feedback}[correct]
+        Use an online RGB color picker such as
+        \link[this]{https://rgbcolorpicker.com} for visual confirmation of
+        your work!
+      \end{feedback}
     \end{prompt}
 %% MATLAB script for this problem
 % p = [167 177 183]';

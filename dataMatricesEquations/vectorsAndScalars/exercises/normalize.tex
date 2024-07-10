@@ -7,26 +7,46 @@
 \begin{document}
 \begin{exercise}
 
-Normalize the following vector using Euclidean norm, 1-norm and infinity norm. Round your answers to two decimal places.
-\[ \textbf{u} = \begin{pmatrix} 2 & -3& 4 & -8 & 0\end{pmatrix}
-\]
+  Normalize the following vector using Euclidean norm, 1-norm and infinity norm. Round your answers to two decimal places.
+  \[
+    \vec{u} = \begin{pmatrix} 2 & -3& 4 & -8 & 0\end{pmatrix}
+  \]
 
-\begin{prompt}
-Normalizing by Euclidean norm:
-\[ \begin{pmatrix}
-\answer{.21} & \answer{-.31} & \answer{.41} & \answer{-.83} & \answer{0}
-\end{pmatrix}\]
+  \begin{prompt}
+    Normalizing by Euclidean norm:
+    \[
+      \begin{pmatrix}
+        \answer{.21} & \answer{-.31} & \answer{.41} & \answer{-.83} & \answer{0}
+      \end{pmatrix}
+    \]
 
-Normalizing by 1-norm:
-\[
-\begin{pmatrix}
-\answer{.12} & \answer{-.18} & \answer{.24} & \answer{-.47} & \answer{0}
-\end{pmatrix}\]
+    Normalizing by 1-norm:
+    \[
+      \begin{pmatrix}
+        \answer{.12} & \answer{-.18} & \answer{.24} & \answer{-.47} & \answer{0}
+      \end{pmatrix}
+    \]
 
-Normalizing by $\infty$-norm:
-\[ \begin{pmatrix}
-\answer{.25} & \answer{-.38} & \answer{.5} & \answer{-1} & \answer{0}
-\end{pmatrix}\]
-\end{prompt}
+    Normalizing by $\infty$-norm:
+    \[
+      \begin{pmatrix}
+        \answer{.25} & \answer{-.38} & \answer{.5} & \answer{-1} & \answer{0}
+      \end{pmatrix}
+    \]
+  \end{prompt}
 \end{exercise}
-\end{document} 
+\end{document}
+
+%% MATLAB script to confirm
+% u = [2 -3 4 -8 0];                      % given vector
+% p_ = {2, 1, 'inf'};                     % norms to be used
+% for i = 1:length(p_)                    % iterate
+%   u_hat = u/norm(u,p_{i});              % normalize w.r.t. p-norm
+%   fprintf('p = %3s: u_hat = (%5.2f %5.2f %5.2f %5.2f %5.2f )\n',...
+%            num2str(p_{i}), u_hat)
+% end
+%
+% >> output
+%     p =   2: u_hat = ( 0.21 -0.31  0.41 -0.83  0.00  )
+%     p =   1: u_hat = ( 0.12 -0.18  0.24 -0.47  0.00  )
+%     p = inf: u_hat = ( 0.25 -0.38  0.50 -1.00  0.00  )

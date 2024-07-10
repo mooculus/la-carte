@@ -11,26 +11,43 @@ true bearing $53^\circ$ at $20$ knots until 5:00pm, when it reaches
 its destination, then what are its coordinates at the end of the trip?
 Round your answers to two decimal places.
 \begin{prompt}
-  We start by converting the bearing and speed into cartesian coordinates. Write with me:
+  We start by converting the bearing and speed into cartesian
+  coordinates. Since we want to round our final answers to two decimal
+  places, we will round this intermediate results to three decimal
+  places.  Write with me:
   \begin{align*}
     \vec{c} &=
     \begin{pmatrix}
-      \left(\answer{20}\right)\cdot\sin\left(\answer{180}\right)\\
-      \left(\answer{20}\right)\cdot\cos\left(\answer{180}\right)
+      \left(\answer{20}\right)\cdot\sin\left(\answer{53}^\circ\right)\\
+      \left(\answer{20}\right)\cdot\cos\left(\answer{53}^\circ\right)
     \end{pmatrix}\\
     &=\begin{pmatrix}
-      \answer{15.97} \\
-    \answer{20.04}
+      \answer{15.973} \\
+    \answer{12.036}
   \end{pmatrix}
   \end{align*}
   The number of hours between 7:00am and 5:00pm is $\answer{10}$ hours.
-  Hence we are at the coordiantes:
+  Hence we are at the coordiantes (in nautical miles):
   \[
 10 \cdot \vec{c} = \begin{pmatrix}
-      \answer{159.7} \\
-    \answer{200.4}
+      \answer{159.73} \\
+    \answer{120.36}
   \end{pmatrix}
   \]
 \end{prompt}
 \end{exercise}
-\end{document} 
+\end{document}
+
+%% MATLAB script for confirmation:
+% spd = 20;                               % speed in knots
+% th = 53;                                % true bearing in degrees
+% T = 10;                                 % elapsed time in hours
+% vel = spd*[sind(th); cosd(th)];         % velocity in Cart. coord.
+% pos = T*vel;                            % final position
+%
+% >> round(vel, 3) =
+%      15.973
+%      12.036
+% >> round(pos, 2) =
+%      159.73
+%      120.36

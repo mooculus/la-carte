@@ -6,33 +6,56 @@
 
 \begin{document}
 \begin{exercise}
-
-
-Suppose an airplane is scheduled to fly from Columbus to Cincinnati, a
-flight that takes $40$ minutes.  If the initial bearing of the plane
-is $235^{\circ}$ at $435$ knots, what are its coordinates when it
-reaches Cincinnati?
-\begin{prompt}
-We start by converting the bearing and speed into cartesian coordinates. Write with me:
-  \begin{align*}
-    \vec{p} &=
-    \begin{pmatrix}
-      \left(\answer{435}\right)\cdot\sin\left(\answer{235}\right)\\
-      \left(\answer{435}\right)\cdot\cos\left(\answer{235}\right)
-    \end{pmatrix}\\
-    &=\begin{pmatrix}
-      \answer{-192.5} \\
-    \answer{-134.79}
-  \end{pmatrix}
-  \end{align*}
-  Since the flight takes $\answer{40}$ minutes, and $\answer{40}$
-  minutes is $\answer{2/3}$ hours, the coordinates at the end of the flight are:
-  \[
-\answer{2/3} \cdot \vec{p} = \begin{pmatrix}
-      \answer{-128.33} \\
-    \answer{-89.86}
-  \end{pmatrix}
-  \]
-\end{prompt}
+  Suppose an airplane is scheduled to fly from Columbus to Cincinnati, a
+  flight that takes $40$ minutes.  If the initial bearing of the plane
+  is $235^{\circ}$ at $435$ knots, what are its coordinates when it
+  reaches Cincinnati? Round your answers to two decimal places.
+  \begin{prompt}
+    We start by converting the bearing and speed into cartesian
+    coordinates. Write with me:
+    \begin{align*}
+      \vec{p} &=
+                \begin{pmatrix}
+                  \left(\answer{435}\right)\cdot\sin\left(\answer{235}^\circ\right)\\
+                  \left(\answer{435}\right)\cdot\cos\left(\answer{235}^\circ\right)
+                \end{pmatrix}\\
+              &=\begin{pmatrix}
+                % \answer{-192.5} \\
+                % \answer{-134.79}
+                \answer{-356.33} \\
+                \answer{-249.51}
+              \end{pmatrix}
+    \end{align*}
+    Since the flight takes $\answer{40}$ minutes,
+    which equals $\answer{2/3}$ hours,
+    % and $\answer{40}$ minutes is $\answer{2/3}$ hours,
+    the coordinates at the end of the
+    flight are:
+    \[
+      \answer{2/3} \cdot \vec{p} = \begin{pmatrix}
+        % \answer{-128.33} \\
+        % \answer{-89.86}
+        \answer{-237.55} \\
+        \answer{-166.34}
+      \end{pmatrix}
+    \]
+  \end{prompt}
 \end{exercise}
-\end{document} 
+\end{document}
+
+%% TK: I am getting very different answers; see my script below. Can
+%% someone double check this computation?
+
+%% MATLAB script for confirmation:
+% spd = 435;                              % speed in knots
+% th = 235;                               % true bearing in degrees
+% T = 2/3;                                % elapsed time in hours
+% vel = spd*[sind(th); cosd(th)];         % velocity in Cart. coord.
+% pos = T*vel;                            % final position
+%
+% >> round(vel, 3) =
+%      -356.331
+%      -249.506
+% >> round(pos, 2) =
+%      -237.55
+%      -166.34

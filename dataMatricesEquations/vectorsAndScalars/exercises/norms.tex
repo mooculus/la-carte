@@ -6,56 +6,84 @@
 
 \begin{document}
 \begin{exercise}
-For the vectors:
-\[\vec{u}= \begin{pmatrix}
-2\\
--3\\
--4
-\end{pmatrix}, \quad \vec{v} = \begin{pmatrix} -5\\ 0\\ 1 \end{pmatrix}, \quad 
-\vec{w} = \begin{pmatrix} 3 \\ 1 \\ -4 \end{pmatrix}\] find the
-following. Round answers to two decimal places, writing ``NA'' if it is not possible.
-\begin{enumerate}
-  \pdfOnly{\begin{multicols}{3}}
-\item $\|\vec{u}\| + \|\vec{u}\|_{1} + \|\vec{u}\|_{\infty}$
-\begin{prompt}
-$=\answer{18.39}$
-\end{prompt}
-\item $2 \|\vec{v}\|_{\infty} \|\vec{w}\|_{\infty}$
-\begin{prompt}
-$=\answer{40}$
-\end{prompt}\\
-\item $\frac{\vec{u}}{\|\vec{v}\|_{1} \|\vec{w}\|_{1}}$
-\begin{prompt}
-$=\begin{pmatrix} \answer{.04} \\
-\answer{-.06} \\
-\answer{-.08}
-\end{pmatrix}$
-\end{prompt}
-\item $\|\vec{u}\| \dotp \|\vec{w}\|$
-\begin{prompt}
-$=\answer{27.46}$
-\end{prompt} 
-\item $\|\vec{v}\| \dotp \vec{v}$
-\begin{prompt}
-$=\answer[format=string]{NA}$
-\end{prompt}
-\item $\|\vec{w}\|_{1} \|\vec{v}\|_{\infty}$
-\begin{prompt}
-$=\answer{40}$
-\end{prompt}
-\item $\vec{u} \dotp \vec{v} + \|\vec{w}\|$
-\begin{prompt}
-$=\answer{-8.9}$
-\end{prompt} 
-\item $\|\vec{v}\|_{1} \|\vec{w}\|_{\infty} \dotp \vec{u}$
-\begin{prompt}
-$=\answer[format=string]{NA}$
-\end{prompt}
-\item $\|\vec{v}\|_{\infty} \dotp \|\vec{u}\|_{\infty}$
-\begin{prompt}
-$=\answer{20}$
-\end{prompt}
-    \pdfOnly{\end{multicols}}
-\end{enumerate}
+  For the vectors
+  \[
+    \vec{u} = \begin{pmatrix} 2\\ -3\\ -4 \end{pmatrix}, \quad
+    \vec{v} = \begin{pmatrix} -5\\ 0\\ 1 \end{pmatrix}, \quad
+    \vec{w} = \begin{pmatrix} 3 \\ 1 \\ -4 \end{pmatrix},
+  \]
+  find the following. Round answers to two decimal places, writing
+  ``NA'' if it is not possible.
+  \begin{enumerate}
+    \pdfOnly{\begin{multicols}{3}}
+    \item $\|\vec{u}\| + \|\vec{u}\|_{1} + \|\vec{u}\|_{\infty}$
+      \begin{prompt}
+        $=\answer{18.39}$
+      \end{prompt}
+    \item $2 \|\vec{v}\|_{\infty} \|\vec{w}\|_{\infty}$
+      \begin{prompt}
+        $=\answer{40}$
+      \end{prompt}
+    \item $\frac{\vec{u}}{\|\vec{v}\|_{1} \|\vec{w}\|_{1}}$
+      \begin{prompt}
+        $=\begin{pmatrix}
+          \answer{.04} \\
+          \answer{-.06} \\
+          \answer{-.08}
+        \end{pmatrix}$
+      \end{prompt}
+    \item $\|\vec{u}\| \dotp \|\vec{w}\|$ % dot product of two scalars = product of the scalars
+      \begin{prompt}
+        $=\answer{27.46}$
+      \end{prompt}
+    \item $\|\vec{v}\| \dotp \vec{v}$
+      \begin{prompt}
+        $=\answer[format=string]{NA}$
+      \end{prompt}
+    \item $\|\vec{w}\|_{1} \|\vec{v}\|_{\infty}$
+      \begin{prompt}
+        $=\answer{40}$
+      \end{prompt}
+    \item $\vec{u} \dotp \vec{v} + \|\vec{w}\|$
+      \begin{prompt}
+        $=\answer{-8.9}$
+      \end{prompt}
+    \item $\|\vec{v}\|_{1} \|\vec{w}\|_{\infty} \dotp \vec{u}$
+      \begin{prompt}
+        $=\answer[format=string]{NA}$
+      \end{prompt}
+    \item $\|\vec{v}\|_{\infty} \dotp \|\vec{u}\|_{\infty}$
+      \begin{prompt}
+        $=\answer{20}$
+      \end{prompt}
+      \pdfOnly{\end{multicols}}
+  \end{enumerate}
 \end{exercise}
-\end{document} 
+\end{document}
+
+%% MATLAB script to confirm
+% u = [2 -3 -4]';
+% v = [-5 0 1]';
+% w = [3 1 -4]';
+%
+% >> norm(u) + norm(u,1) + norm(u,'inf')
+% = 18.385
+% >> 2 * norm(v,'inf') * norm(w,'inf')
+% = 40
+% >> u/(norm(v,1) * norm(w,1))
+% =
+% 0.041667
+% -0.0625
+% -0.083333
+% >> norm(u) * norm(w)
+% =
+% 27.459
+% >> norm(w,1) * norm(v,'inf')
+% =
+% 40
+% >> u'*v + norm(w)
+% =
+% -8.901
+% >> norm(v,'inf') * norm(u,'inf')
+% =
+% 20

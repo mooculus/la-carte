@@ -213,12 +213,11 @@ the first and second rows of the matrix below:
       -3& -9  & 11 & 0
     \end{array}
   \right)
-  \qquad
-  % \begin{array}{c}
-  %   \scriptstyle R_1\leftrightarrow R_2\\\Longrightarrow
-  % \end{array}
-  \xrightarrow{R_1 \leftrightarrow R_2}
-  \qquad
+  \quad
+  \begin{array}{c}
+    \scriptstyle R_1\leftrightarrow R_2\\\longrightarrow
+  \end{array}
+  \quad
   \left(
     \begin{array}{ccc|c}
       1 &   3 & -3 & 2  \\
@@ -236,7 +235,7 @@ the first and second rows of the matrix below:
       1 & -5 & 3 & 2 \\
       0 & -2 & 5 & 3
     \end{pmatrix}
-    \qquad\xrightarrow{\phantom{R_1 \leftrightarrow R_3}}\qquad
+    \qquad\longrightarrow\qquad
     \begin{pmatrix}
       0 & -2 & 5 & 3 \\
       1 & -5 & 3 & 2 \\
@@ -269,12 +268,11 @@ in the third row (you could have chosen either of the summands).
       -3& -9  & 11 & 0
     \end{array}
   \right)
-  % \qquad
-  % \begin{array}{c}
-  %   \scriptstyle 3R_1+R_3\rightarrow R_3\\\Longrightarrow
-  % \end{array}
-  % \qquad
-  \qquad\xrightarrow{3R_1+R_3\rightarrow R_3}\qquad
+  \quad
+  \begin{array}{c}
+    \scriptstyle 3R_1+R_3\rightarrow R_3\\\longrightarrow
+  \end{array}
+  \quad
   \left(
     \begin{array}{ccc|c}
       1 &   3 & -3 & 2  \\
@@ -292,11 +290,6 @@ in the third row (you could have chosen either of the summands).
       6 & \bullet & \bullet & \bullet \\
       -4 & \bullet & \bullet & \bullet
     \end{pmatrix}
-    % \begin{matrix}
-    %   \scriptstyle \ell_1 R_1 + R_2 \to R_2\\
-    %   \longrightarrow \\
-    %   \scriptstyle \ell_2 R_1 + R_3 \to R_3
-    % \end{matrix}
     \quad\longrightarrow\quad
     \begin{pmatrix}
       2 & \bullet & \bullet & \bullet \\
@@ -874,10 +867,11 @@ make the entries below this one zero using row operations.
     1 &  -2 & 2 &-9 \\
     3 &  1 & -3 & 14
   \end{pmatrix}
-  % \begin{array}{c}
-  %   \scriptstyle(-0.5) R_1+R+2\to R_2\\ \Longrightarrow\\  \scriptstyle(-1.5) R_1+R+3\to R_3
-  % \end{array}
-  \quad\xrightarrow[(-1.5) R_1 + R_3 \to R_3]{(-0.5) R_1 + R_2 \to R_2}\quad
+  \quad
+  \begin{array}{c}
+    \scriptstyle(-0.5) R_1+R_2\to R_2\\ \longrightarrow\\  \scriptstyle(-1.5) R_1+R_3\to R_3
+  \end{array}
+  \quad
   \begin{pmatrix}
     2 & 3 & 1 & 5 \\
     0 & -3.5 & 1.5 &-11.5 \\
@@ -904,10 +898,11 @@ Again we make all rows less than the submatrix's top most entry zero:
     0 & -3.5 & 1.5 &-11.5 \\
     0 & -3.5 & -4.5 & 6.5
   \end{pmatrix}
-  % \begin{array}{c}
-  %   \scriptstyle(-1) R_2+R_3\to R_3\\ \Longrightarrow
-  % \end{array}
-  \qquad\xrightarrow{(-1) R_2+R_3\to R_3}\qquad
+  \quad
+  \begin{array}{c}
+    \scriptstyle(-1) R_2+R_3\to R_3\\ \longrightarrow
+  \end{array}
+  \quad
   \begin{pmatrix}
     2 & 3 & 1 & 5 \\
     0 & -3.5 & 1.5 &-11.5 \\
@@ -984,11 +979,12 @@ Now we will use Gaussian elimination to transform this matrix to row echelon for
     {3/5}&  {0} & {2/5} &{0} &2\\
     {0}&  {6} & {0} &{-3/2} &-9
   \end{pmatrix}
+  \quad
   \begin{matrix}
     \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-    \Longrightarrow
+    \longrightarrow
   \end{matrix}
-  %\qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+  \quad
   \begin{pmatrix}
     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
     {0}&  {1} & {0} &{-1/4} & -3/2\\
@@ -996,27 +992,6 @@ Now we will use Gaussian elimination to transform this matrix to row echelon for
     {0}&  {6} & {0} &{-3/2} &-9
   \end{pmatrix}
 \]
-%% TK: How about breaking this into two lines? The `multline'
-%% environment appears to be supported by MathJax
-\begin{multline*}
-  \begin{pmatrix}
-    {2/5}&  {3/10} & {0} &{0} &8 \\
-    {0}&  {1} & {0} &{-1/4} & -3/2\\
-    {3/5}&  {0} & {2/5} &{0} &2\\
-    {0}&  {6} & {0} &{-3/2} &-9
-  \end{pmatrix} \\
-  \begin{matrix}
-    \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-    \Longrightarrow
-  \end{matrix}
-  % \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
-  \begin{pmatrix}
-    \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
-    {0}&  {1} & {0} &{-1/4} & -3/2\\
-    \answer[given]{0}&  \answer[given]{-9/20} & \answer[given]{2/5} &\answer[given]{0} &-10\\
-    {0}&  {6} & {0} &{-3/2} &-9
-  \end{pmatrix}
-\end{multline*}
 Now we work with the submatrix:
 \begin{center}
 \begin{tikzpicture}
@@ -1041,12 +1016,13 @@ We will zero the columns below the $(2,2)$-entry:
     {0}&  {-9/20} & {2/5} &{0} &-10\\
     {0}&  {6} & {0} &{-3/2} &-9
   \end{pmatrix}
-  % \begin{matrix}
-  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
-  %   \Longrightarrow \\
-  %   \scriptstyle(-6) R_2+R_4\to R_4
-  % \end{matrix}
-  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+  \quad
+  \begin{matrix}
+    \scriptstyle (9/20) R_2 + R_3\to R_3\\
+    \longrightarrow \\
+    \scriptstyle(-6) R_2+R_4\to R_4
+  \end{matrix}
+  \quad
   \begin{pmatrix}
     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
     {0}&  {1} & {0} &{-1/4} & -3/2\\
@@ -1105,11 +1081,12 @@ row echelon form. The first step is essentially the same as before:
     {3/5}&  {0} & {2/5} &{0} &2\\
     {0}&  {6} & {0} &{-3/2} &-9
   \end{pmatrix}
-  % \begin{matrix}
-  %   \scriptstyle(-3/2) R_1 + R_3\to R_3\\
-  %   \Longrightarrow
-  % \end{matrix}
-  \qquad\xrightarrow{(-3/2) R_1 + R_3\to R_3}\qquad
+  \quad
+  \begin{matrix}
+    \scriptstyle(-3/2) R_1 + R_3\to R_3\\
+    \longrightarrow
+  \end{matrix}
+  \quad
   \begin{pmatrix}
     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
     {0}&  {1} & {0} &{-1/4} & 5\\
@@ -1126,12 +1103,13 @@ However, when we zero the columns below the $(2,2)$-entry
     {0}&  {-9/20} & {2/5} &{0} &-10\\
     {0}&  {6} & {0} &{-3/2} &-9
   \end{pmatrix}
-  % \begin{matrix}
-  %   \scriptstyle (9/20) R_2 + R_3\to R_3\\
-  %   \Longrightarrow \\
-  %   \scriptstyle(-6) R_2+R_4\to R_4
-  % \end{matrix}
-  \qquad\xrightarrow[(-6) R_2+R_4\to R_4]{(9/20) R_2 + R_3\to R_3}\qquad
+  \quad
+  \begin{matrix}
+    \scriptstyle (9/20) R_2 + R_3\to R_3\\
+    \longrightarrow \\
+    \scriptstyle(-6) R_2+R_4\to R_4
+  \end{matrix}
+  \quad
   \begin{pmatrix}
     \answer[given]{2/5}&  \answer[given]{3/10} & \answer[given]{0} &\answer[given]{0} &8 \\
     {0}&  {1} & {0} &{-1/4} & -3/2\\
@@ -1162,13 +1140,6 @@ no $(x,y,z,w)$ that makes every equation in the system hold true.
   \begin{explanation}
     Here's the augmented matrix:
     \[
-% <<<<<<< HEAD
-%       \begin{pmatrix}[ccc|c]
-%         \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
-%         \answer[given]{2} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{2} \\
-%         \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c} \\
-%       \end{pmatrix}
-% =======
       \left(
         \begin{array}{ccc|c}
           \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\
@@ -1176,13 +1147,15 @@ no $(x,y,z,w)$ that makes every equation in the system hold true.
           \answer[given]{3} &  \answer[given]{a} &  \answer[given]{b} &  \answer[given]{c}
         \end{array}
       \right)
-% >>>>>>> a805d57 (GE: revert back from {pmatrix}[opts] to {array}{opts})
     \]
     Apply the following row operations:
     \[
-      % \begin{matrix}\scriptstyle-3R_{1}+R_{3}\rightarrow
-      %   R_{3}\\\Longrightarrow\\\scriptstyle-2R_{1} + R_{2}\rightarrow R_{2}\end{matrix}
-      \xrightarrow[-2R_{1} + R_{2}\rightarrow R_{2}]{-3R_{1}+R_{3}\rightarrow R_{3}}\qquad
+      \begin{matrix}
+        \scriptstyle -3R_{1}+R_{3}\rightarrow R_{3}\\
+        \longrightarrow \\
+        \scriptstyle -2R_{1} + R_{2}\rightarrow R_{2}
+      \end{matrix}
+      \quad
       \left(
         \begin{array}{ccc|c}
           \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} &  \answer[given]{1} \\

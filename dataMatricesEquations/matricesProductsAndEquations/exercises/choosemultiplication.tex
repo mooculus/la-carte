@@ -7,101 +7,140 @@
 \begin{document}
 \begin{exercise}
 
-Which of the following multiplications are possible?
+  Which of the following multiplications are possible?
 
-\begin{multipleChoice}
-\choice[correct]{\begin{equation*}
-\left(\begin{array}{cc}
-2& 1\\
--1& 0\\
-1 & 0
-\end{array}\right) \left(\begin{array}{cc}
-5 & 0 \\
-2 & 1
-\end{array}\right)
-\end{equation*}}
+  % \begin{multipleChoice}
+  %   \choice[correct]{\begin{equation*}
+  %     \left(\begin{array}{cc}
+  %         2& 1\\
+  %         -1& 0\\
+  %         1 & 0
+  %       \end{array}\right) \left(\begin{array}{cc}
+  %         5 & 0 \\
+  %         2 & 1
+  %       \end{array}\right)
+  %   \end{equation*}}
 
-\choice{\begin{equation*}
-\left(\begin{array}{ccc}
--1 & 0 & 1\\
-3 & 0 & 0
-\end{array}\right)\left(\begin{array}{cccc}
-8 & 0 & 1& 3\\
-9 & 5 & 2 & 0
-\end{array}\right)\end{equation*}}
+  %   \choice{\begin{equation*}
+  %     \left(\begin{array}{ccc}
+  %         -1 & 0 & 1\\
+  %         3 & 0 & 0
+  %       \end{array}\right)\left(\begin{array}{cccc}
+  %         8 & 0 & 1& 3\\
+  %         9 & 5 & 2 & 0
+  %       \end{array}\right)\end{equation*}}
 
-\choice{\begin{equation*}
-\left(\begin{array}{cc}
-4 & 10\\
-11 & 0 \\
-0 & 1
-\end{array}\right) \left(\begin{array}{ccc}
-1 & 2 & 8
-\end{array}\right)
-\end{equation*}}
+  %   \choice{\begin{equation*}
+  %     \left(\begin{array}{cc}
+  %         4 & 10\\
+  %         11 & 0 \\
+  %         0 & 1
+  %       \end{array}\right) \left(\begin{array}{ccc}
+  %         1 & 2 & 8
+  %       \end{array}\right)
+  %   \end{equation*}}
 
-\choice[correct]{\begin{equation*}
-\left(\begin{array}{ccc}
-1 & 0 & 3\\
-5 & 0 & 2 \\
-0 & 0 & 1
-\end{array}\right) \left(\begin{array}{ccccc}
-0 & 1 & 2 & 10 & 8\\
--1 & 5 & 8 & -1 & 2\\
-4 & 0 & 9 & 0 & 5
-\end{array}\right)\end{equation*}}
+  %   \choice[correct]{\begin{equation*}
+  %     \left(\begin{array}{ccc}
+  %         1 & 0 & 3\\
+  %         5 & 0 & 2 \\
+  %         0 & 0 & 1
+  %       \end{array}\right) \left(\begin{array}{ccccc}
+  %         0 & 1 & 2 & 10 & 8\\
+  %         -1 & 5 & 8 & -1 & 2\\
+  %         4 & 0 & 9 & 0 & 5
+  %       \end{array}\right)\end{equation*}}
 
-\choice[correct]{\begin{equation*}
-\left(\begin{array}{cccc}
--2 & -4 & 5 & 8\\
-3 & 0 & 1 & -1
-\end{array}\right)^{T} \left(\begin{array}{cc} 0 & 3\\
--5 & -1
-\end{array}\right)\end{equation*}}
+  %   \choice[correct]{\begin{equation*}
+  %     \left(\begin{array}{cccc}
+  %         -2 & -4 & 5 & 8\\
+  %         3 & 0 & 1 & -1
+  %       \end{array}\right)^\transpose \left(\begin{array}{cc} 0 & 3\\
+  %         -5 & -1
+  %       \end{array}\right)\end{equation*}}
 
-\choice{\begin{equation*}
-\left(\begin{array}{cccc} 2 & -1 & 3 & 8\\
-0 & 1 & 5 & -7\\
--3 & 0 & 1 & 0
-\end{array}\right)^{T} \left(\begin{array}{cc}
-0 & 7\\
-2 & -3\\
--1 & 4\\
-0 & 0
-\end{array}\right)\end{equation*}}
+  %   \choice{\begin{equation*}
+  %     \left(\begin{array}{cccc} 2 & -1 & 3 & 8\\
+  %         0 & 1 & 5 & -7\\
+  %         -3 & 0 & 1 & 0
+  %       \end{array}\right)^{T} \left(\begin{array}{cc}
+  %         0 & 7\\
+  %         2 & -3\\
+  %         -1 & 4\\
+  %         0 & 0
+  %       \end{array}\right)\end{equation*}}
 
-\end{multipleChoice}
+  % \end{multipleChoice}
 
+  \begin{selectAll}
+    \choice[correct]{$\displaystyle
+      \begin{pmatrix}
+        2& 1\\
+        -1& 0\\
+        1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        5 & 0 \\
+        2 & 1
+      \end{pmatrix}$}
 
+    \choice{$\displaystyle
+      \begin{pmatrix}
+        -1 & 0 & 1\\
+        3 & 0 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        8 & 0 & 1& 3\\
+        9 & 5 & 2 & 0
+      \end{pmatrix}$}
 
+    \choice{$\displaystyle
+      \begin{pmatrix}
+        4 & 10\\
+        11 & 0 \\
+        0 & 1
+      \end{pmatrix}
+      \begin{pmatrix}
+        1 & 2 & 8
+      \end{pmatrix}$}
 
+    \choice[correct]{$\displaystyle
+      \begin{pmatrix}
+        1 & 0 & 3\\
+        5 & 0 & 2 \\
+        0 & 0 & 1
+      \end{pmatrix}
+      \begin{pmatrix}
+        0 & 1 & 2 & 10 & 8\\
+        -1 & 5 & 8 & -1 & 2\\
+        4 & 0 & 9 & 0 & 5
+      \end{pmatrix}$}
 
+    \choice[correct]{$\displaystyle
+      \begin{pmatrix}
+        -2 & -4 & 5 & 8\\
+        3 & 0 & 1 & -1
+      \end{pmatrix} ^\transpose
+      \begin{pmatrix}
+        0 & 3\\
+        -5 & -1
+      \end{pmatrix}$}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    \choice{$\displaystyle
+      \begin{pmatrix}
+        2 & -1 & 3 & 8\\
+        0 & 1 & 5 & -7\\
+        -3 & 0 & 1 & 0
+      \end{pmatrix}^\transpose
+      \begin{pmatrix}
+        0 & 7\\
+        2 & -3\\
+        -1 & 4\\
+        0 & 0
+      \end{pmatrix}$}
+  \end{selectAll}
 
 \end{exercise}
 
 
-
-
-\end{document} 
+\end{document}

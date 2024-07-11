@@ -16,7 +16,7 @@
       |&|&&|
     \end{pmatrix}
   \]
-  where the $j$-th column $\vec{s}_j$ contains the data of the $j$-th
+  where the $j$th column $\vec{s}_j$ contains the data of the $j$-th
   student:
   \[
     \vec{s}_j =
@@ -48,19 +48,24 @@
   with $w_1 + w_2 + w_3 = 1$. Which of the following expressions
   correctly calculates the weighted averages of all 35 students?
   \begin{multipleChoice}
+    \pdfOnly{\begin{multicols}{4}}
     \choice{$S \vec{w}$}
     \choice{$S \vec{w}^\transpose$}
     \choice{$\vec{w} S$}
     \choice[correct]{$\vec{w}^\transpose S$}
+    \pdfOnly{\end{multicols}}
   \end{multipleChoice}
-  \begin{feedback}[incorrect]
-    \textcolor{blue}{why does it say incorrect? This statement is correct} Recall that matrix-matrix multiplication makes sense only when the
-    number of columns of the first \textcolor{blue}{matrix} equals the number of rows of the
-    second \textcolor{blue}{matrix}.
-  \end{feedback}
+  \begin{hint}
+    % Recall that a matrix-matrix product makes sense only when the
+    % number of columns of the first matrix equals the number of rows of
+    % the second matrix.
+    The weighted average of the $j$th student is computed by computing
+    the dot product of the two vectors $\vec{s}_j$ and $\vec{w}$.
+  \end{hint}
   \begin{prompt}
-    The outcome of the calculation is a \textcolor{blue}{(changed this to wordchoice since answer row was not compiling)} \wordChoice{\choice[correct]{row} \choice{column}} vector containing
-    35 weighted averages.
+    The outcome of the calculation is a
+    \wordChoice{\choice[correct]{row} \choice{column}} vector
+    containing 35 weighted averages.
   \end{prompt}
 \end{exercise}
 \end{document}

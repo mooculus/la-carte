@@ -6,81 +6,114 @@
 
 \begin{document}
 \begin{exercise}
-
-For
-\begin{equation*}
-A = \left(\begin{array}{ccc}
-3 & 0 & -1\\
-0 & 0 & 2\\
--2 & 0 & 5
-\end{array}\right), \hspace{.4cm}
-B = \left(\begin{array}{ccc}
-5 & 1 & 0\\
-6 & 0 & 3\\
--4 & 1 & 0
-\end{array}\right), \hspace{.4cm}
-C = \left(\begin{array}{ccc}
-2 & -1 & 0\\
-0 & 3 & 0 \\
-0 & 0 & 1
-\end{array}\right)
+  For
+  \begin{equation*}
+    A =
+    \begin{pmatrix}
+      3 & 0 & -1\\
+      0 & 0 & 2\\
+      -2 & 0 & 5
+    \end{pmatrix},\quad
+    B =
+    \begin{pmatrix}
+    5 & 1 & 0\\
+    6 & 0 & 3\\
+    -4 & 1 & 0
+  \end{pmatrix},\quad
+  C =
+  \begin{pmatrix}
+  2 & -1 & 0\\
+  0 & 3 & 0 \\
+  0 & 0 & 1
+\end{pmatrix}
 \end{equation*}
 
 Compute the following.
+\begin{enumerate}
+\item $A^\transpose B$
+  \begin{prompt} $\displaystyle =
+    \begin{pmatrix}
+      \answer{24} & \answer{1} & \answer{0}\\
+      \answer{0} & \answer{0} & \answer{0}\\
+      \answer{-13} & \answer{4} & \answer{6}
+    \end{pmatrix}$
+  \end{prompt}
 
-a. $A^{T} B $ \begin{prompt}$ = \left(\begin{array}{ccc}
-\answer{24} & \answer{1} & \answer{0}\\
-\answer{0} & \answer{0} & \answer{0}\\
-\answer{-13} & \answer{4} & \answer{6}
-\end{array}\right)$
-\end{prompt}\\
+\item $2C + CA$
+  \begin{prompt} $\displaystyle =
+    \begin{pmatrix}
+      \answer{10} & \answer{-2} & \answer{-4}\\
+      \answer{0} & \answer{6} & \answer{6}\\
+      \answer{-2} & \answer{0} & \answer{7}
+    \end{pmatrix}$
+  \end{prompt}
 
-b. $2C + CA$ \begin{prompt} $ = \left(\begin{array}{ccc}
-\answer{10} & \answer{-2} & \answer{-4}\\
-\answer{0} & \answer{6} & \answer{6}\\
-\answer{-2} & \answer{0} & \answer{7}
-\end{array}\right)$
-\end{prompt}\\
+\item $\left( C^\transposeB  \right)^\transpose$
+  \begin{prompt} $\displaystyle =
+    \begin{pmatrix}
+      \answer{10} & \answer{13} & \answer{-4}\\
+      \answer{2} & \answer{-1} & \answer{1}\\
+      \answer{0} & \answer{9} & \answer{0}
+    \end{pmatrix}$
+  \end{prompt}
 
-c. $\left(C^{T}B\right)^{T}$ \begin{prompt} $ = \left(\begin{array}{ccc}
-\answer{10} & \answer{13} & \answer{-4}\\
-\answer{2} & \answer{-1} & \answer{1}\\
-\answer{0} & \answer{9} & \answer{0}
-\end{array}\right)$
-\end{prompt}\\
-
-d. $\left(A + B + C\right)^{T} $ \begin{prompt} $ = \left(\begin{array}{ccc}
-\answer{10} & \answer{6} & \answer{-6}\\
-\answer{0} & \answer{3} & \answer{1}\\
-\answer{-1} & \answer{5} & \answer{6}
-\end{array}\right)$
-\end{prompt}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\item $\left(A + B + C\right)^\transpose $
+  \begin{prompt} $\displaystyle =
+    \begin{pmatrix}
+      \answer{10} & \answer{6} & \answer{-6}\\
+      \answer{0} & \answer{3} & \answer{1}\\
+      \answer{-1} & \answer{5} & \answer{6}
+    \end{pmatrix}$
+  \end{prompt}
+\end{enumerate}
 \end{exercise}
-\end{document} 
+\end{document}
+
+% For
+% \begin{equation*}
+% A = \left(\begin{array}{ccc}
+% 3 & 0 & -1\\
+% 0 & 0 & 2\\
+% -2 & 0 & 5
+% \end{array}\right), \hspace{.4cm}
+% B = \left(\begin{array}{ccc}
+% 5 & 1 & 0\\
+% 6 & 0 & 3\\
+% -4 & 1 & 0
+% \end{array}\right), \hspace{.4cm}
+% C = \left(\begin{array}{ccc}
+% 2 & -1 & 0\\
+% 0 & 3 & 0 \\
+% 0 & 0 & 1
+% \end{array}\right)
+% \end{equation*}
+
+% Compute the following.
+
+% a. $A^{T} B $ \begin{prompt}$ = \left(\begin{array}{ccc}
+% \answer{24} & \answer{1} & \answer{0}\\
+% \answer{0} & \answer{0} & \answer{0}\\
+% \answer{-13} & \answer{4} & \answer{6}
+% \end{array}\right)$
+% \end{prompt}\\
+
+% b. $2C + CA$ \begin{prompt} $ = \left(\begin{array}{ccc}
+% \answer{10} & \answer{-2} & \answer{-4}\\
+% \answer{0} & \answer{6} & \answer{6}\\
+% \answer{-2} & \answer{0} & \answer{7}
+% \end{array}\right)$
+% \end{prompt}\\
+
+% c. $\left(C^{T}B\right)^{T}$ \begin{prompt} $ = \left(\begin{array}{ccc}
+% \answer{10} & \answer{13} & \answer{-4}\\
+% \answer{2} & \answer{-1} & \answer{1}\\
+% \answer{0} & \answer{9} & \answer{0}
+% \end{array}\right)$
+% \end{prompt}\\
+
+% d. $\left(A + B + C\right)^{T} $ \begin{prompt} $ = \left(\begin{array}{ccc}
+% \answer{10} & \answer{6} & \answer{-6}\\
+% \answer{0} & \answer{3} & \answer{1}\\
+% \answer{-1} & \answer{5} & \answer{6}
+% \end{array}\right)$
+% \end{prompt}

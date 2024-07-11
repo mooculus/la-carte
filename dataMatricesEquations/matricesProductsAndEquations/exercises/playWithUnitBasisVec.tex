@@ -9,7 +9,8 @@
 
 \begin{document}
 \begin{exercise}
-  Let $\vec{e}_1, \vec{e}_2, \vec{e}_3, \vec{e}_4$ be defined by
+  Let
+  % $\vec{e}_1, \vec{e}_2, \vec{e}_3, \vec{e}_4$ be defined by
   \[
     \vec{e}_1 =
     \begin{pmatrix}
@@ -28,10 +29,11 @@
       0\\ 0\\ 0\\ 1
     \end{pmatrix}.
   \]
-  In words, $\vec{e}_j$ is the column vector whose $j$-th component is
-  one and the rest are all zeros. These vectors $\vec{e}_j$'s are often
-  called the \textit{standard unit basis vectors}.
-
+  These are columns of $I_{4 \times 4}$ and are called \textit{standard
+    unit basis vectors}.
+  % In words, $\vec{e}_j$ is the column vector whose $j$-th component is
+  % one and the rest are all zeros. These vectors $\vec{e}_j$'s are often
+  % called the \textit{standard unit basis vectors}.
   Let $\vec{v}$ be a column 4-vector:
   \[
     \vec{v} =
@@ -40,52 +42,56 @@
     \end{pmatrix}.
   \]
 
-  What is the result of $\vec{e}_2^\transpose \vec{v}$?
-  \begin{multipleChoice}
-    \choice{$v_1$}
-    \choice[correct]{$v_2$}
-    \choice{$v_3$}
-    \choice{$v_4$}
-  \end{multipleChoice}
-  \begin{feedback}[correct]
-    In general, the operation $\vec{e}_j^\transpose \vec{v}$ extracts
-    the $j$-th component of $\vec{v}$.
-  \end{feedback}
+  \begin{enumerate}
+  \item What is the result of $\vec{e}_2^\transpose \vec{v}$?
+    \begin{multipleChoice}
+      \choice{$v_1$}
+      \choice[correct]{$v_2$}
+      \choice{$v_3$}
+      \choice{$v_4$}
+    \end{multipleChoice}
+    \begin{feedback}[correct]
+      In general, the operation $\vec{e}_j^\transpose \vec{v}$ extracts
+      the $j$th component of $\vec{v}$.
+    \end{feedback}
 
-  Stacking transposed unit basis vectors, we form a matrix which
-  consists only of 0's and 1's, with only one 1 appearing on each row. For
-  example, the matrix $S$ defined by
-  \[
-    S =
-    \begin{pmatrix}
-    \rvx{\vec{e}_1^\transpose}\\
-      \rvx{\vec{e}_2^\transpose}\\
-      \rvx{\vec{e}_3^\transpose}\\
-      \rvx{\vec{e}_4^\transpose}
-    \end{pmatrix}
-  \]
-  is a $3 \times 4$ matrix. Write out the elements of $S$.
-  \[
-    S =
-    \begin{pmatrix}
-      \answer{0} & \answer{1} & \answer{0} & \answer{0} \\
-      \answer{0} & \answer{0} & \answer{1} & \answer{0} \\
-      \answer{0} & \answer{0} & \answer{0} & \answer{1}
-    \end{pmatrix}.
-  \]
+    % Stacking transposed unit basis vectors, we form a matrix which
+    % consists only of 0's and 1's, with only one 1 appearing on each row.
 
-  Now, which of the following is the result of $S \vec{v}$?
-  \begin{multipleChoice}
-    \choice{$\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$}
-    \choice{$\begin{pmatrix} 0 \\ v_1 \\ v_2 \\ v_3 \end{pmatrix}$}
-    \choice[correct]{$\begin{pmatrix} v_2 \\ v_3 \\ v_4 \end{pmatrix}$}
-    \choice{$\begin{pmatrix} 0 \\ v_2 \\ v_3 \\ v_4 \end{pmatrix}$}
-  \end{multipleChoice}
+  \item Let $S$ the $3 \times 4$ matrix be defined by
+    \[
+      S =
+      \begin{pmatrix}
+        \rvx{\vec{e}_2^\transpose}\\[0.5em]
+        \rvx{\vec{e}_3^\transpose}\\[0.5em]
+        \rvx{\vec{e}_4^\transpose}
+      \end{pmatrix}.
+    \]
+    Write out the elements of $S$.
+    \begin{prompt}
+      \[
+        S =
+        \begin{pmatrix}
+          \answer{0} & \answer{1} & \answer{0} & \answer{0} \\
+          \answer{0} & \answer{0} & \answer{1} & \answer{0} \\
+          \answer{0} & \answer{0} & \answer{0} & \answer{1}
+        \end{pmatrix}.
+      \]
+    \end{prompt}
 
-  \begin{feedback}[correct]
-    In general, the matrix-vector multiplication $S \vec{v}$
-    rearranges the elements of $\vec{v}$ according to the arrangement
-    of the unit basis vectors forming $S$.
-  \end{feedback}
+  \item  Now, which of the following is the result of $S \vec{v}$?
+    \begin{multipleChoice}
+      \choice{$\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$}
+      \choice{$\begin{pmatrix} 0 \\ v_1 \\ v_2 \\ v_3 \end{pmatrix}$}
+      \choice[correct]{$\begin{pmatrix} v_2 \\ v_3 \\ v_4 \end{pmatrix}$}
+      \choice{$\begin{pmatrix} 0 \\ v_2 \\ v_3 \\ v_4 \end{pmatrix}$}
+    \end{multipleChoice}
+
+    \begin{feedback}[correct]
+      In words, left-multiplying $\vec{v}$ by $S$ rearranges
+      rearranges the elements of $\vec{v}$ according to the
+      arrangement of the unit basis vectors in $S$.
+    \end{feedback}
+  \end{enumerate}
 \end{exercise}
 \end{document}

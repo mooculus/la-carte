@@ -1183,6 +1183,173 @@ no $(x,y,z,w)$ that makes every equation in the system hold true.
 \end{example}
 
 
+%% TK: Below are application scenarios that I cooked up and I suggest
+%% we add somewhere in this chapter. This is in the context of
+%% analyzing exam scores. Please take a look and feel free to add,
+%% remove, or modify parts or all of it as you see fit. In particular,
+%% I think the entire example can be reduced by turning some parts
+%% into questions, but I wrote out all details in this draft to share
+%% with you exactly what I have in mind.
+%%
+%% I have a couple more ideas of application scenarios (RGB color
+%% mixing and streaming service data analysis), but the one below is
+%% already lengthy, so I will refrain from developing them for now.
+\begin{example}[Figuring out unknown weights using RREF]
+  The linear algebra class from a previous example had three exams
+  throughout the semester: Midterm 1, Midterm 2, and Final Exam, and
+  the semester total was determined by a weighted average of these
+  three exams:
+  \[
+    (\text{Semester total})
+    = w_1\,(\text{Midterm 1}) + w_2\,(\text{Midterm 2}) + w_3\,(\text{Final Exam}),
+  \]
+  where $w_1, w_2, w_3$ are the weights of the three exams,
+  respectively. In particular, $0 < w_i < 1$ for each $i$, and
+  $w_1 + w_2 + w_3 = 1$.
+
+  But the professor never revealed these weights, and some of the
+  students wondered how their semester totals were computed.
+
+  \begin{description}
+  \item[Scenario 1.] Three students got together and agreed to share
+    their exam scores and semester totals. Equipped with the knowledge
+    of linear algebra, they were confident that they could figure out
+    the unpublicized weights. The first thing they did was encode
+    their exams scores in a matrix $S$ and their weighted semester
+    totals in a vector $\vec{t}$:
+    \[
+      S =
+      \begin{pmatrix}
+        80 & 75 & 90 \\
+        50 & 80 & 88 \\
+        80 & 75 & 90
+      \end{pmatrix},\quad
+      \vec{t} =
+      \begin{pmatrix}
+        83.0 \\ 76.1 \\ 83.0
+      \end{pmatrix}.
+    \]
+    Each row documents the exam scores and the weighted total of an
+    individual student. The goal is now clear: find the unknown vector
+    $\vec{w} = (w_1, w_2, w_3)^\transpose$ which satisfies
+    $S\vec{w} = \vec{t}$. They understood that this could be solved
+    using Gaussian elimination, so they instantly form the augmented
+    matrix $[S \,|\, \vec{t}]$:
+    \[
+      [S \,|\, \vec{t}] =
+      \left(
+        \begin{array}{ccc|c}
+          80 & 75 & 90 & 83.0 \\
+          50 & 80 & 88 & 76.1 \\
+          80 & 75 & 90 & 83.0
+        \end{array}
+      \right).
+    \]
+    Luckily, one of the students knew how to use a numerical software
+    with a built-in function to compute the RREF of a given matrix. In
+    the blink of an eye, the computer gave the following result as the
+    RREF of the augmented matrix:
+    \[
+      \left(
+        \begin{array}{ccc|c}
+          1 & 0 & 0.2264 & 0.3519 \\
+          0 & 1 & 0.9585 & 0.7313 \\
+          0 & 0 & 0 & 0
+        \end{array}
+      \right).
+    \]
+    The form suggests there are infinitely many solutions because
+    there is a column in the (reduced) coefficient matrix without a
+    pivot. This initially seemed nonsensical, but then they quickly
+    realized that the first and third students had identical scores on
+    all exams, making one set of data redundant. (The linear algebra
+    term for this type of redundancy in data is \textit{linear
+      dependence}, which will be discussed in a later chapter.)
+
+  \item[Scenario 2.] Fortunately, another student agreed to share
+    their scores in the hope of figuring out the weights. This
+    student's data replaced the third row of $S$ and $\vec{t}$, and
+    the new augmented matrix turned out to be:
+    \[
+      [S \,|\, \vec{t}] =
+      \left(
+        \begin{array}{ccc|c}
+          80 & 75 & 90 & 83.0 \\
+          50 & 80 & 88 & 76.1 \\
+          80 & 75 & 90 & 85.0
+        \end{array}
+      \right).
+    \]
+    What are the odds that this student also earned the same scores as
+    the first student! But wait, their weighted averages are different
+    even when they performed identically on all the
+    exams. Unsurprisingly, the RREF of this augmented matrix catches
+    this inconsistency as well:
+    \[
+      \left(
+        \begin{array}{ccc|c}
+          1 & 0 & 0.2264 & 0 \\
+          0 & 1 & 0.9585 & 0 \\
+          0 & 0 & 0 & 1
+        \end{array}
+      \right)
+    \]
+    This inconsistency is evident from the bottom row
+    $(0 \; 0 \; 0 \,|\, 1)$.
+
+    It turned out that the new student was in another section of
+    linear algebra with a different professor who had not revealed the
+    weights either.
+
+  \item[Scenario 3.] From the previous two trials, the group learned
+    valuable lessons and exercised extra caution in recruiting a new
+    member. It turned out that several more students were eager to
+    uncover the mystery. Consequently, they had to process a slightly
+    larger augmented matrix:
+    \[
+      [S \,|\, \vec{t}] =
+      \left(
+        \begin{array}{ccc|c}
+          80 & 75 & 90 & 83.00 \\
+          50 & 80 & 88 & 76.10 \\
+          90 & 100 & 98 & 96.60 \\
+          36 & 82 & 60 & 60.60 \\
+          95 & 65 & 47 & 64.40 \\
+          54 & 85 & 57 & 64.65 \\
+          52 & 38 & 89 & 64.45 \\
+          30 & 73 & 76 & 63.60 \\
+          46 & 63 & 40 & 48.40 \\
+          46 & 46 & 75 & 59.05
+        \end{array}
+      \right).
+    \]
+    With the added data, they were confident that they could precisely
+    determine the weights. Using the computer again, they
+    obtained the following RREF almost instantly:
+    \[
+      \left(
+        \begin{array}{ccc|c}
+          1 & 0 & 0 & 0.25 \\
+          0 & 1 & 0 & 0.30 \\
+          0 & 0 & 1 & 0.45 \\
+          0 & 0 & 0 & 0 \\
+          \vdots & \vdots & \vdots & \vdots \\
+          0 & 0 & 0 & 0
+        \end{array}
+      \right).
+    \]
+    The first three nonzero terms on the rightmost column, $0.25$,
+    $0.30$, and $0.45$, are the weights!
+
+    To find three unknowns, three non-redundant (which will be termed
+    as \textit{linearly independent} later) data sets are all that's
+    needed. The echelon form clearly arranges the redundant data as
+    all-zero rows and stacks them at the bottom of the reduced matrix.
+  \end{description}
+\end{example}
+%% TK: End of the example
+
+
 For some interesting extra reading check out:
 \begin{itemize}
 \item \link[\textit{How ordinary elimination became Gaussian elimination},  Historica Mathematica Volume 38, Issue 2, May 2011, Page 163--218.]{https://go.osu.edu/reg-gauss}

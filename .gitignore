@@ -45,6 +45,7 @@ xourse.cls
 # Ignore deploy scripts
 build.sh
 gpgkey
+.gpgkey
 mypdflatex
 # Ignore all `auto'-generated directories
 auto/

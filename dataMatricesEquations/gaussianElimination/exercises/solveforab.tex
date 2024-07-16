@@ -18,25 +18,31 @@
 (4a)x + \frac{2}{3}z &= 1\\
 \frac{3}{7} y + bz &= 11
 \end{align*}
-Find values for $a,b$ make this system of equations have:
+Determine the values of $a,b$ for which the given system has:
 \begin{enumerate}
-\item No real solutions.
+\item No solutions.
 \item Infinitely many solutions.
 \end{enumerate}
-In either case, write NA if there are no such values.
+In either case, write ``DNE'' if there are no such values.
 \begin{prompt}
   \begin{enumerate}
-  \item  There are no real solutions:
+    %% TK: The answers below do not seem correct to me. What I have
+    %% found is that if a = -10/(147*b) for any nonzero b \neq 1030/147,
+    %% the system has no solutions. Please review.
+  \item  There are no solutions:
     \[
     a = \left(\answer{-15/21}\right)k,\quad  b= \left(\answer{2/21}\right)k,
     \]
     where $k$ is any number.
+
+    %% TK: The system permits infinitely many solutions
+    %% for a = -1/103, b = 1030/147. Please review.
   \item There are infinitely many solutions:
     \[
-    a = \answer[format=string]{NA},\quad b= \answer[format=string]{NA}.
+    a = \answer[format=string]{DNE},\quad b= \answer[format=string]{DNE}.
     \]
 \begin{hint}
-Writing the system in matrix form and transforming the entries in the first and third rows to integers gives,
+Writing down the system in matrix form and transforming the entries in the first and third rows to integers gives,
 \[
 \left(\begin{array}{ccc|c}
   \answer{20} &  \answer{21} & \answer{0} &\answer{24} \\
@@ -44,7 +50,8 @@ Writing the system in matrix form and transforming the entries in the first and 
   \answer{0} &  \answer{3} & \answer{7b} & \answer{77}
 \end{array}\right)
 \]
-Then after applying the operations $\frac{R_{1}}{20}$ and $-4a R_{1} + R_{2}$ solve for $a$ and $b$.
+Then carry out $\frac{R_{1}}{20} \to R_1$ and
+$-4a R_{1} + R_{2} \to R_2$. Finally, solve for $a$ and $b$.
 \end{hint}
   \end{enumerate}
 \end{prompt}

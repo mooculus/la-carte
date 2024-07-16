@@ -13,7 +13,7 @@
 
 
 
-\begin{exercise} Consider the system of equations,
+\begin{exercise} Consider the following system of equations:
 \begin{align*}
 \frac{2}{3}x + \frac{1}{6}y -2z &= 5\\
 -4x -y+12z &= -30\\
@@ -22,8 +22,8 @@
 \end{align*}
 
 \begin{enumerate}
-\item\label{infman:a} Express the augmented matrix for this system of equations matrix
-  in row echelon form.
+\item Express the augmented matrix for this system of equations in row
+  echelon form. Ensure that each pivot is scaled to one.
 \begin{prompt}
 Noting that the third row in the augmented matrix has the most number
 of zeros, begin by applying $R_{1}\leftrightarrow R_{3}$. We find the
@@ -38,13 +38,18 @@ row echelon form:
 \]
 \end{prompt}
 \item Solve the system of equations.
-\begin{prompt}
-Based on part (\ref{infman:a}), the system has \wordChoice{\choice{no solutions} \choice{$x=0, y=0, z=0, w=0$} \choice[correct]{infinitely many solutions}\choice{$x=4, y=12, z=$ undefined, $w=$ undefined}} and using $w$ and $z$ we have,
-\begin{align*}
-y &= \left(\answer{-16}\right)w + \left(\answer{12}\right)z + \answer{-2}\\
-x&= \left(\answer{4}\right) w + \left(\answer{0}\right)z + \answer{8}
-\end{align*}
-\end{prompt}
+  \begin{prompt}
+    Based on the previous part, the system has \wordChoice{\choice{no
+        solutions} \choice{the unique solution $x=0, y=0, z=0, w=0$}
+      \choice[correct]{infinitely many solutions}
+      \choice{$x=4, y=12, z=$ undefined, $w=$ undefined}}. Proceeding
+    by back substitution, we can write
+    \begin{align*}
+      y &= \left(\answer{-16}\right)w + \left(\answer{12}\right)z + \answer{-2}\\
+      x &= \left(\answer{4}\right) w + \left(\answer{0}\right)z + \answer{8}
+    \end{align*}
+    where $w$ and $z$ are arbitrary.
+  \end{prompt}
 \end{enumerate}
 \end{exercise}
 \end{document}

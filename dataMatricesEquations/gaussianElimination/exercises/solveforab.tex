@@ -58,3 +58,26 @@ $-4a R_{1} + R_{2} \to R_2$. Finally, solve for $a$ and $b$.
 \end{exercise}
 
 \end{document}
+
+%% TK: Below is a short Maple script I wrote to check my computation
+%% above.
+
+% with(LinearAlgebra):
+% A := Matrix([[5/3, 7/4, 0, 2], [0, 3/7, b, 11], [4*a, 0, 2/3, 1]]):
+% A := GaussianElimination(A);
+%
+% # Condition to have infinitely many solutions:
+% solve({A[3,3]=0, A[3,4]=0}, {a,b});
+%
+% # Conditions to have no solutions:
+% solve({A[3,3]=0, A[3,4]<>0}, {a,b});
+%
+% # This last result should not be taken naively; it has to be
+% interpreted more carefully. From the condition A[3,3]=0, we first note
+% that a and b must be nonzero. Then we solve for a = -10/(147*b), which
+% is justified because b is nonzero. Then we substitute the expression
+% for a just obtained in the "non-equation" A[3,4]<>0, which simplifies
+% to b<>1030/147.
+%
+% a_soln := solve(A[3,3]=0, a);
+% b_soln := solve(subs(a=a_soln, A[3,4]<>0), b)[1];

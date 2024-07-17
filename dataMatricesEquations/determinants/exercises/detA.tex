@@ -9,44 +9,53 @@
 
 \begin{document}
 \begin{exercise}
-  Suppose for a $5\times 5$ matrix $A$, $\det(A)=10$. Find the following:
+  Suppose that $A$ is a $5\times 5$ matrix such that $\det(A)=10$. Find the following:
   \begin{enumerate}
-  \item $det(2A)$
+  \item $\det(2A)$
     \begin{prompt}
       \begin{hint}
         Note that here each row is multiplied by $2$.
       \end{hint}
       \[ \det(2A)= \answer{320}\]
     \end{prompt}
-  \item $\det(B)$ where $B$ is obtained by applying the following operations on matrix $A$:
+  \item $\det(B)$, where $B$ is obtained by applying the following row
+    operations on $A$:
     \begin{enumerate}
-    \item $R_{3} \leftrightarrow R_{5}$
-    \item $8R_{2}$
-    \item $7 R_{3}$
-    \item $3R_{1}+ R_{2} \to R_{2}$
+      \pdfOnly{\begin{multicols}{2}}
+      \item $R_{3} \leftrightarrow R_{5}$
+      \item $8R_{2} \to R_2$
+      \item $7 R_{3} \to R_3$
+      \item $3R_{1}+ R_{2} \to R_{2}$
+      \pdfOnly{\end{multicols}}
     \end{enumerate}
     \begin{prompt}
-      $\det(B)= \answer{-560}$
+      \[\det(B)= \answer{-560}\]
     \end{prompt}
-  \item $\det(C)$ where $C$ is obtained by:
+  \item $\det(C)$, where $C$ is obtained by applying the following row
+    operations on $A$:
     \begin{enumerate}
-    \item $R_{1}\leftrightarrow R_{4}$
-    \item $R_{2} \leftrightarrow R_{5}$
-    \item $2R_{1} + R_{5} \to R_{5}$
-    \item $4R_{2} + R_{4} \to R_{4}$
-    \item $3R_{1}$
-    \item $(1/4) R_{3}$
+      \pdfOnly{\begin{multicols}{2}}
+      \item $R_{1}\leftrightarrow R_{4}$
+      \item $R_{2} \leftrightarrow R_{5}$
+      \item $2R_{1} + R_{5} \to R_{5}$
+      \item $4R_{2} + R_{4} \to R_{4}$
+      \item $3R_{1} \to R_1$
+      \item $(1/4) R_{3} \to R_3$
+      \pdfOnly{\end{multicols}}
     \end{enumerate}
     \begin{prompt}
-      \begin{hint}
-        Note that dividing a row by $k$ is the same as factoring out $k$ from that row.
-      \end{hint}
-      $\det(C) = \answer{120}$
+      % \begin{hint}
+      %   Note that dividing a row by $k$ is the same as factoring out $k$ from that row.
+      % \end{hint}
+      %% TK: Not sure what it is meant by above. Dividing a row by $k$
+      %% is equivalent to multiplying the row by $1/k$.
+      \[\det(C) = \answer{30/4}\]
     \end{prompt}
-  \item $\frac{det(2A) + det (A^T)}{det(C)} + det(2B)$
+  \item $\frac{\det(2A) + \det (A^\transpose)}{\det(C)} + \det(2B)$
     \begin{prompt}
-      \[ = \answer{-17917.25}\]
+      \[ = \answer{-17876}\]
+      % \[ = \answer{-17917.25}\]
     \end{prompt}
   \end{enumerate}
 \end{exercise}
-\end{document} 
+\end{document}

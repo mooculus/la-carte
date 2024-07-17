@@ -11,58 +11,41 @@
 \begin{exercise}
 
 
-Find the determinant using row operations to convert to a triangular matrix.
-\[
-A = \begin{pmatrix}
-2 & 0 & 4\\
--1 & 0 & -3\\
-1 & 1 & 2
-\end{pmatrix}
-\]
+  Find the determinant of $A$ using row operations.
+  % to convert to a triangular matrix.
+  \[
+    A = \begin{pmatrix}
+      2 & 0 & 4\\
+      -1 & 0 & -3\\
+      1 & 1 & 2
+    \end{pmatrix}
+  \]
 
-\begin{prompt}
-The triangular matrix is:
-\[\begin{pmatrix}
-1 & \answer{1} & \answer{2}\\
-\answer{0} & 1 & \answer{-1}\\
-\answer{0} & \answer{0} & -2
-\end{pmatrix}\]
-giving,
-\[det(A) = \answer{2}\]
-\end{prompt}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  \begin{prompt}
+    Using the following row operations
+    \begin{enumerate}
+    \item $R_1 \leftrightarrow R_3$
+    \item $R_1 + R_2 \to R_2$
+    \item $-2R_1 + R_3 \to R_3$
+    \item  $2R_2 + R_3 \to R_3$
+    \end{enumerate}
+    in the given order, $A$ reduces to the following upper triangular
+    matrix $U$:
+    \[
+      U =
+      \begin{pmatrix}
+        1 & \answer{1} & \answer{2}\\
+        \answer{0} & 1 & \answer{-1}\\
+        \answer{0} & \answer{0} & -2
+      \end{pmatrix}
+    \]
+    Since the determinant of a triangular matrix is the product of its
+    diagonal entries, $\det(U) = \answer{-2}$. All the row operations
+    used do not change the determinant except for the row swap
+    $R_1 \leftrightarrow R_3$, which reverses the sign of the
+    determinant. Therefore, $\det(A) = -\det(U) = \answer{2}$.
+  \end{prompt}
 
 
 \end{exercise}
-\end{document} 
+\end{document}

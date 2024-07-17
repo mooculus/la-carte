@@ -11,62 +11,80 @@
 \begin{exercise}
 
 
-Determine the determinant of the following matrix.
+Determine the determinant of the following matrix:
 \[
 A= \begin{pmatrix}
 1 & -4 & 3\\
 -2 & 0 & 2\\
 3 & 0 & 1
 \end{pmatrix}
-\]\\
+\]
 
-a. by cofactor expansion. \\
+\begin{enumerate}
+\item Using cofactor expansion.
 
-\begin{prompt}
-The best row or column to use for cofactor expansion for this problem is:
-\begin{multipleChoice}
-\choice{first row}
-\choice{second row}
-\choice{third row}
-\choice{first column}
-\choice[correct]{second column}
-\choice{third column}
-\end{multipleChoice}
+  \begin{prompt}
+    It is most advantageous to expand along
+    % The best row or column to use for cofactor expansion for this problem is:
+    \begin{multipleChoice}
+      \choice{first row}
+      \choice{second row}
+      \choice{third row}
+      \choice{first column}
+      \choice[correct]{second column}
+      \choice{third column}
+    \end{multipleChoice}
+    The cofactor expansion along this row or column gives $\det(A) =
+    \answer{-32}$.
+    \begin{feedback}
+      Expand along another row or column and check that you get the same answer.
+    \end{feedback}
+  \end{prompt}
 
-The determinant by cofactor expansion along this row or column gives: $\answer{-32}$. Use another row or column and check that you get the same answer.
+\item Using row operations.
+
+  \begin{prompt}
+    Using the following row operations
+    \begin{enumerate}
+    \item $2R_1 + R_2 \to R_2$
+    \item $-3R_1 + R_3 \to R_3$
+    \item $-(1/8) R_2 \to R_2$
+    \item $-12R_2 + R_3 \to R_3$
+    \end{enumerate}
+    in the given order, $A$ reduces to the following upper triangular
+    matrix $U$:
+    \[
+      U =
+      \begin{pmatrix}
+        \answer{1} & \answer{-4} & \answer{3}\\
+        \answer{0} & 1 & \answer{-1}\\
+        \answer{0} & \answer{0} & \answer{4}
+      \end{pmatrix}.
+    \]
+    Since the determinant of a triangular matrix is the product of its
+    diagonal entries, $\det(U) = \answer{4}$. All the row operations
+    used leaves the determinant unchanged except for the row scaling
+    $-(1/8) R_2 \to R_2$, which scales the determinant of $A$
+    accordingly. Thus,
+    \[
+      \det(U) = \left( -\frac{1}{8} \right) \, \det(A),
+    \]
+    which implies that $\det(A) = (\answer{-8}) \, \det(U) = \answer{-32}$.
+
+    % The matrix in triangular form is:
+    % \[\begin{pmatrix}
+    %   \answer{1} & \answer{-4} & \answer{3}\\
+    %   \answer{0} & 1 & \answer{-1}\\
+    %   \answer{0} & \answer{0} & \answer{4}
+    % \end{pmatrix}\]
+    % where we took out a factor of $\answer{-8}$ from the second row to
+    % obtain the above. Thus,
+    % $det(A) = \answer{-8} \times \answer{4} = \answer{-32}$.
+    %% The above is not ideal. What if a student fill in 4 then -8,
+    %% instead of -8 then 4?
 \end{prompt}
 
 
-b. by row operations and converting to a triangular matrix.
-
-\begin{prompt}
-The matrix in triangular form is:
-\[\begin{pmatrix}
-\answer{1} & \answer{-4} & \answer{3}\\
-\answer{0} & 1 & \answer{-1}\\
-\answer{0} & \answer{0} & \answer{4}
-\end{pmatrix}\]
-where we took out a factor of $\answer{-8}$ from the second row to obtain the above. Thus, $det(A) = \answer{-8} \times \answer{4} =  \answer{-32}$.
-\end{prompt}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\end{enumerate}
 \end{exercise}
-\end{document} 
+\end{document}

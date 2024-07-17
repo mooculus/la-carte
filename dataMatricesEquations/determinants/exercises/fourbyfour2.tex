@@ -23,29 +23,32 @@ A = \begin{pmatrix}
 \]
 
 \begin{prompt}
-The triangular matrix that is formed is:
-\[
-\begin{pmatrix}
-\answer{1} & \answer{0} & \answer{3} & \answer{1}\\
-\answer{0} & 2& \answer{0} & \answer{-1/2}\\
-\answer{0} & \answer{0} & \answer{6} & 4\\
-\answer{0} & \answer{0} & \answer{0} & \answer{7/3}
-\end{pmatrix}
-\]
-Thus, $det(A) = \answer{28}$.
-\end{prompt} 
-
-
-
-
-
-
-
-
-
-
-
-
+  Applying $2R_1 + R_3 \to R_3$ and then $(1/3)R_3 + R_4 \to R_4$, $A$ is
+  reduced to the following upper triangular matrix $U$:
+  \[
+    U =
+    \begin{pmatrix}
+      \answer{1} & \answer{0} & \answer{3} & \answer{1}\\
+      \answer{0} & 2& \answer{0} & \answer{-1}\\
+      \answer{0} & \answer{0} & \answer{6} & 4\\
+      \answer{0} & \answer{0} & \answer{0} & \answer{7/3}
+    \end{pmatrix}.
+  \]
+  Since the determinant of a triangular matrix is the product of its
+  diagonal entries, $\det(U) = \answer{28}$. But both row operations
+  used above leave the determinant unchanged, so
+  $\det(A) = \det(U) = \answer{28}$.
+% The triangular matrix that is formed is:
+% \[
+% \begin{pmatrix}
+% \answer{1} & \answer{0} & \answer{3} & \answer{1}\\
+%   \answer{0} & 2& \answer{0} & \answer{-1/2}\\ %% <-- TK: the last one
+% \answer{0} & \answer{0} & \answer{6} & 4\\
+% \answer{0} & \answer{0} & \answer{0} & \answer{7/3}
+% \end{pmatrix}
+% \]
+% Thus, $det(A) = \answer{28}$.
+\end{prompt}
 
 \end{exercise}
-\end{document} 
+\end{document}

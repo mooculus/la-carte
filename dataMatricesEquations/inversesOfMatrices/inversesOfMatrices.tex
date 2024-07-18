@@ -71,7 +71,10 @@
 \section{Inverses of matrices}
 
 
-We learned how to add, subtract or multiply matrices. As for division, one cannot write $\frac{A}{B}$ for matrices $A$ and $B$. We need to introduce the inverse of a matrix. For a matrix $A: n\times n$, its inverse, denoted as $A^{-1}: n\times n$ is a matrix such that
+We learned how to add, subtract or multiply matrices. As for division,
+one cannot write $\frac{A}{B}$ for matrices $A$ and $B$. We need to
+introduce the inverse of a matrix. For a matrix $A \in \RR^{n\times n}$, its
+inverse, denoted as $A^{-1} \in \RR^{n\times n}$ is a matrix such that
 \begin{equation}\label{inverse}
 AA^{-1}= A^{-1}A = I.
 \end{equation}
@@ -80,52 +83,58 @@ Using this property, if for example, for matrices $A, B, C$, we have $AB = C$, a
 A^{-1}AB= A^{-1}C \hspace{1cm} \Rightarrow \hspace{1cm} B = A^{-1}C.
 \end{equation*}
 
-Question: Which of the following is the inverse of
-\begin{equation*}
-A= \left(\begin{array}{cc}
-  2 & 3   \\
-  1 &  4
-\end{array}\right)
-\end{equation*}
-\begin{multipleChoice}
-\choice{\[ \left(\begin{array}{cc}
-  1 & 4  \\
-  0 &  -5
-\end{array}\right)
-\]}
+\begin{question}
+  Which of the following is the inverse of
+  \begin{equation*}
+    A= \left(
+      \begin{array}{cc}
+        2 & 3   \\
+        1 &  4
+      \end{array}
+    \right)
+  \end{equation*}
+  \begin{multipleChoice}
+    \pdfOnly{\begin{multicols}{3}}
+    \choice{
+      $\left(\begin{array}{cc}
+        1 & 4  \\
+        0 &  -5
+      \end{array}\right)$}
+    \choice{$
+      \left(\begin{array}{cc}
+        2 & -3   \\
+        -1 &  2
+      \end{array}\right)$}
+    \choice{$
+      \left(\begin{array}{cc}
+        -1 &   \\
+        2 &
+      \end{array}\right)$}
+    \choice[correct]{$
+      \frac{1}{4} \left(\begin{array}{cc}
+        2 & -3/2  \\
+        1/2 &  1
+      \end{array}\right)$}
+    \choice{$
+      \frac{1}{2} \left(\begin{array}{cc}
+        3 & 2  \\
+        4 &  1
+      \end{array}\right)$}
+    \pdfOnly{\end{multicols}}
+  \end{multipleChoice}
+\end{question}
 
-\choice{\[ \left(\begin{array}{cc}
-  2 & -3   \\
-  -1 &  2
-\end{array}\right)
-\]}
+If a matrix has an inverse then we say it is invertible. Note that
+there can be only one inverse for any given matrix, making the inverse
+of a matrix be unique.
 
-\choice{\[ \left(\begin{array}{cc}
-  -1 &   \\
-  2 &
-\end{array}\right)
-\]}
-
-
-\choice[correct]{ \[\frac{1}{4} \left(\begin{array}{cc}
-  2 & -3/2  \\
-  1/2 &  1
-\end{array}\right)
-\]}
-
-\choice{\[ \frac{1}{2} \left(\begin{array}{cc}
-  3 & 2  \\
-  4 &  1
-\end{array}\right)
-\]}
-\end{multipleChoice}
-
-If a matrix has an inverse then we say it is invertible. Note that there can be only one inverse for any given matrix, making the inverse of a matrix be unique. \\
-The inverse of a $2\times 2$ matrix,
-\[ \left(\begin{array}{cc}
-  a & b  \\
-  a &  d
-\end{array}\right),
+The inverse of a $2\times 2$ matrix
+\[
+  A =
+  \left(\begin{array}{cc}
+    a & b  \\
+    a &  d
+  \end{array}\right),
 \]
 is given by
 \[
@@ -134,48 +143,65 @@ A^{-1}=  \frac{1}{ad-bc} \left(\begin{array}{cc}
   -c &  a
 \end{array}\right).
 \]
-Thus, we find the determinant, $ad-bc$ by cross multiplying and we change the entries inside $A$ by switching entries $a_{11}$ and $a_{22}$ and making $a_{12}$ and $a_{21}$ negative.
+Thus, we find the determinant, $ad-bc$ by cross multiplying and we change the entries inside $A$ by switching entries $a_{11}$ and $a_{22}$ and negating $a_{12}$ and $a_{21}$.
 
-Question: Find the inverse of
-\[ \left(\begin{array}{cc}
-  4 & -1 \\
-  2 & -3
-\end{array}\right)
-\]
-and then verify that the matrix found is the inverse.
-\begin{prompt}
-Based on \eqref{inverse}, we find,
-\[
-A^{-1}=  \frac{1}{-12-\answer[given]{-2}} \left(\begin{array}{cc}
-  \answer[given]{-3} &  \answer[given]{1} \\
-  \answer[given]{-2} &  \answer[given]{4}
-\end{array}\right)= \left(\begin{array}{cc}
-  3/10 &  \answer[given]{-1/10} \\
-  \answer[given]{1/5} &  \answer[given]{-2/5}
-\end{array}\right)
-\]
-Since,
-\[
-AA^{-1}= \left(\begin{array}{cc}
-  \answer[given]{1} &  \answer[given]{0} \\
-  \answer[given]{0} &  \answer[given]{1}
-\end{array}\right), \hspace{1cm} \text{and} \hspace{1cm}
-A^{-1}A= \left(\begin{array}{cc}
-  \answer[given]{1} &  \answer[given]{0} \\
-  \answer[given]{0} &  \answer[given]{1}
-\end{array}\right),
-\]
-then $A^{-1}$ is the inverse of $A$.
-\end{prompt}
+\begin{question}
+  Find the inverse of
+  \[
+    \left(
+      \begin{array}{cc}
+        4 & -1 \\
+        2 & -3
+      \end{array}
+    \right)
+  \]
+  and then verify that the matrix found is indeed the inverse.
+  \begin{prompt}
+    % Based on \eqref{inverse},
+    Using the given formula, we find that
+    \[
+      A^{-1}=  \frac{1}{-12-\answer[given]{-2}}
+      \left(
+        \begin{array}{cc}
+          \answer[given]{-3} &  \answer[given]{1} \\
+          \answer[given]{-2} &  \answer[given]{4}
+        \end{array}
+      \right)
+      = \left(
+        \begin{array}{cc}
+          3/10 &  \answer[given]{-1/10} \\
+          \answer[given]{1/5} &  \answer[given]{-2/5}
+        \end{array}
+      \right).
+    \]
+    Since
+    \[
+      AA^{-1}= \left(
+        \begin{array}{cc}
+          \answer[given]{1} &  \answer[given]{0} \\
+          \answer[given]{0} &  \answer[given]{1}
+        \end{array}
+      \right)
+      \quad\text{and}\quad
+      A^{-1}A= \left(
+        \begin{array}{cc}
+          \answer[given]{1} &  \answer[given]{0} \\
+          \answer[given]{0} &  \answer[given]{1}
+        \end{array}
+      \right),
+    \]
+    we see that $A^{-1}$ is indeed the inverse of $A$.
+  \end{prompt}
+\end{question}
 
-Consider the matrix,
+Consider the matrix
 \[
 A= \left(\begin{array}{cc}
   5 &  1 \\
   -2 &  0
-\end{array}\right),
+\end{array}\right).
 \]
-then based on the formula discussed above,
+Using the formula discussed above, we find that
 \begin{equation}\label{Amatrix}
 A^{-1}= \frac{1}{\answer[given]{2}} \left(\begin{array}{cc}
   \answer[given]{0} &  \answer[given]{-1} \\
@@ -195,18 +221,24 @@ One can also find this inverse by using the definition of the inverse: find entr
   0 &  1
 \end{array}\right)
 \]
-which translates to $AA^{-1}=I$. Hence we need to solve the system,
-\begin{eqnarray*}
-5x_{1}+x_{3}&=&1\\
-5x_{2} + x_{\answer[given]{4}} &=& \answer[given]{0}\\
--2x_{1}&=& \answer[given]{0}\\
--2x_{2} &=& \answer[given]{1}
-\end{eqnarray*}
-leading to,
+which translates to $AA^{-1}=I$. Hence we need to solve the system
+\begin{align*}
+5x_{1}+x_{3}&=1\\
+5x_{2} + x_{\answer[given]{4}} &= \answer[given]{0}\\
+-2x_{1}&= \answer[given]{0}\\
+-2x_{2} &= \answer[given]{1}
+\end{align*}
+leading to
 \begin{equation*}
-x_{1} = \answer[given]{0}, x_{2} =\answer[given]{-1/2}, x_{3} = \answer[given]{1}, x_{4} = \answer[given]{5/2},
+  x_{1} = \answer[given]{0}, \quad
+  x_{2} =\answer[given]{-1/2}, \quad
+  x_{3} = \answer[given]{1}, \quad
+  x_{4} = \answer[given]{5/2},
 \end{equation*}
-which correspond to the entries we obtained in \eqref{Amatrix}. This method becomes more involved for a $3\times 3$ matrix. For example, for the matrix,
+which is consistent with the answer obtained above.
+% which correspond to the entries we obtained in \eqref{Amatrix}.
+
+This method becomes more involved for a $3\times 3$ matrix. For example, for the matrix
 \[
 \left(\begin{array}{ccc}
   2 &  0 & 1 \\
@@ -214,7 +246,7 @@ which correspond to the entries we obtained in \eqref{Amatrix}. This method beco
   1 & -1 & -2
 \end{array}\right),
 \]
- we set up,
+ we set up
  \[
 \left(\begin{array}{ccc}
   2 &  0 & 1 \\
@@ -229,10 +261,11 @@ which correspond to the entries we obtained in \eqref{Amatrix}. This method beco
   1 &  0 & 0 \\
   0 &  1 & 0 \\
   0 & 0 & 1
-\end{array}\right)
+\end{array}\right),
 \]
-which gives a system of nine equations to solve. To avoid such long calculations we use the following more direct method for finding the inverse of an $n\times n$ matrix for $n>2$. \\
-Begin by forming the matrix $(A|I)$, where the identity matrix $I$ has the same size as $A$. Then apply row operations to convert $(A|I)$ to $(I|B)$. That is to covert $A$ to the identity matrix and apply every row operation in the process to the entire row including the adjacent identity matrix. Then the matrix $B$ is the inverse of $A$. In short,
+which gives a system of nine equations to solve. To avoid such long calculations we use the following more direct method for finding the inverse of an $n\times n$ matrix for $n>2$.
+
+Begin by forming the matrix $(A\,|\,I)$, where the identity matrix $I$ has the same size as $A$. Then apply row operations to convert $(A\,|\,I)$ to $(I\,|\,B)$. That is to covert $A$ to the identity matrix and apply every row operation in the process to the entire row including the adjacent identity matrix. Then the matrix $B$ is the inverse of $A$. In short,
 \begin{equation}\label{method}
   (A \,|\, I)
   \quad
@@ -243,7 +276,7 @@ Begin by forming the matrix $(A|I)$, where the identity matrix $I$ has the same 
   (I \,|\, A^{-1}).
 \end{equation}
 
- \begin{example}
+ \begin{example}[Inverse of a $3 \times 3$ matrix]
 Find the inverse of
  \[A= \left(\begin{array}{ccc}
   1 &  -1 & 0 \\
@@ -253,9 +286,9 @@ Find the inverse of
 \]
 and verify your answer.
 \begin{prompt}
-We begin by forming,
+We begin by forming
 \[
-(A|I)= \left(\begin{array}{ccc|ccc}
+(A\,|\,I)= \left(\begin{array}{ccc|ccc}
   1 &  -1 & 0 & 1 &0 &0 \\
   2 &  0 & 3 & 0 &1 &0\\
   1 & -2 & 0 & 0 &0 &1
@@ -263,39 +296,46 @@ We begin by forming,
 \]
 \end{prompt}
 \end{example}
-\section*{Properties of inverses}
-Recall that the inverse matrix $A^{-1}$ is the matrix that satisfies,
+
+\section{Properties of inverses}
+Recall that the inverse matrix $A^{-1}$ is the matrix that satisfies
 \begin{equation*}
-AA^{-1}= A^{-1}A= I
+AA^{-1}= A^{-1}A= I.
 \end{equation*}
 Note that for $A$ to be invertible, it must be a square matrix and cannot have a row or column of zeros. For example,
  \[B= \left(\begin{array}{ccc}
   2 &  3 & 0 \\
   4 &  1 & 8
-\end{array}\right), \hspace{1cm} C= \left(\begin{array}{ccc}
+\end{array}\right), \quad C= \left(\begin{array}{ccc}
   1 &  2 & 5 \\
   2 &  0 & 1 \\
   0 & 0& 0
-\end{array}\right), \hspace{1cm} D = \left(\begin{array}{ccc}
+\end{array}\right), \quad D = \left(\begin{array}{ccc}
   3 &  0 & 9 \\
   2 &  0 & -1 \\
   0 & 0& 3
 \end{array}\right)
 \]
-cannot have an inverse since there are no matrices $B^{-1}, C^{-1}, D^{-1}$ that may be multiplied by $B,C,D$ to give, $BB^{-1}= CC^{-1}=D^{-1}D=I$. One may also observe that by method given in \eqref{method}, the above matrices cannot be transformed into identity matrices.
+cannot have an inverse since there are no matrices
+$B^{-1}, C^{-1}, D^{-1}$ that may be multiplied by $B,C,D$ to give
+$BB^{-1}= CC^{-1}=D^{-1}D=I$. One may also observe that by the
+\textit{row-operation-based} method presented earlier
+% in \eqref{method},
+the above matrices cannot be transformed into suitably sized identity matrices.
 
-Question: Which of the following is invertible.
-\begin{multipleChoice}
-\choice{\[\left(\begin{array}{cccc}
-  0 &  -1 & 0 &0 \\
-  -1 &  5 & 3 &0 \\
-  0 & -3& 4 &1
-\end{array}\right)\]}
+\begin{question}
+  Which of the following is invertible?
+  \begin{multipleChoice}
+    \choice{\[\left(\begin{array}{cccc}
+      0 &  -1 & 0 &0 \\
+      -1 &  5 & 3 &0 \\
+      0 & -3& 4 &1
+    \end{array}\right)\]}
 \choice{\[\left(\begin{array}{cccc}
   7 &  -1 & 0 &8 \\
   11 &  -3 & 0 &0 \\
   -5 & 0& 0 &2\\
-   0& 0&0&1
+  0& 0&0&1
 \end{array}\right)\]}
 \choice[correct]{\[\left(\begin{array}{ccc}
   1 &  0& 0  \\
@@ -303,8 +343,8 @@ Question: Which of the following is invertible.
   0 & 0& 1
 \end{array}\right)\]}
 \choice{\[\left(\begin{array}{cc}
-8 & 0\\
-0 &0
+  8 & 0\\
+  0 &0
 \end{array}\right)\]}
 \choice[correct]
 {\[\left(\begin{array}{cccc}
@@ -321,6 +361,8 @@ Question: Which of the following is invertible.
   7&-5&0&3
 \end{array}\right)\]}
 \end{multipleChoice}
+\end{question}
+
 Now we study properties of inverses by going through examples.
 \begin{example}\label{example1}
 Consider the matrix,

@@ -106,9 +106,9 @@ A^{-1}AB= A^{-1}C \hspace{1cm} \Rightarrow \hspace{1cm} B = A^{-1}C.
         -1 &  2
       \end{array}\right)$}
     \choice{$
-      \left(\begin{array}{cc}
-        -1 &   \\
-        2 &
+      \left(\begin{array}{c}
+        -1 \\
+        2
       \end{array}\right)$}
     \choice[correct]{$
       \frac{1}{4} \left(\begin{array}{cc}
@@ -160,17 +160,17 @@ Thus, we find the determinant, $ad-bc$ by cross multiplying and we change the en
     % Based on \eqref{inverse},
     Using the given formula, we find that
     \[
-      A^{-1}=  \frac{1}{-12-\answer[given]{-2}}
+      A^{-1}=  \frac{1}{-12-\answer{-2}}
       \left(
         \begin{array}{cc}
-          \answer[given]{-3} &  \answer[given]{1} \\
-          \answer[given]{-2} &  \answer[given]{4}
+          \answer{-3} &  \answer{1} \\
+          \answer{-2} &  \answer{4}
         \end{array}
       \right)
       = \left(
         \begin{array}{cc}
-          3/10 &  \answer[given]{-1/10} \\
-          \answer[given]{1/5} &  \answer[given]{-2/5}
+          3/10 &  \answer{-1/10} \\
+          \answer{1/5} &  \answer{-2/5}
         \end{array}
       \right).
     \]
@@ -178,15 +178,15 @@ Thus, we find the determinant, $ad-bc$ by cross multiplying and we change the en
     \[
       AA^{-1}= \left(
         \begin{array}{cc}
-          \answer[given]{1} &  \answer[given]{0} \\
-          \answer[given]{0} &  \answer[given]{1}
+          \answer{1} &  \answer{0} \\
+          \answer{0} &  \answer{1}
         \end{array}
       \right)
       \quad\text{and}\quad
       A^{-1}A= \left(
         \begin{array}{cc}
-          \answer[given]{1} &  \answer[given]{0} \\
-          \answer[given]{0} &  \answer[given]{1}
+          \answer{1} &  \answer{0} \\
+          \answer{0} &  \answer{1}
         \end{array}
       \right),
     \]
@@ -203,9 +203,9 @@ A= \left(\begin{array}{cc}
 \]
 Using the formula discussed above, we find that
 \begin{equation}\label{Amatrix}
-A^{-1}= \frac{1}{\answer[given]{2}} \left(\begin{array}{cc}
-  \answer[given]{0} &  \answer[given]{-1} \\
-  \answer[given]{2} &  \answer[given]{5}
+A^{-1}= \frac{1}{\answer{2}} \left(\begin{array}{cc}
+  \answer{0} &  \answer{-1} \\
+  \answer{2} &  \answer{5}
 \end{array}\right).
 \end{equation}
 One can also find this inverse by using the definition of the inverse: find entries $x_{1}, x_{2}, x_{3}, x_{4}$ that make the following hold:
@@ -224,16 +224,16 @@ One can also find this inverse by using the definition of the inverse: find entr
 which translates to $AA^{-1}=I$. Hence we need to solve the system
 \begin{align*}
 5x_{1}+x_{3}&=1\\
-5x_{2} + x_{\answer[given]{4}} &= \answer[given]{0}\\
--2x_{1}&= \answer[given]{0}\\
--2x_{2} &= \answer[given]{1}
+5x_{2} + x_{\answer{4}} &= \answer{0}\\
+-2x_{1}&= \answer{0}\\
+-2x_{2} &= \answer{1}
 \end{align*}
 leading to
 \begin{equation*}
-  x_{1} = \answer[given]{0}, \quad
-  x_{2} =\answer[given]{-1/2}, \quad
-  x_{3} = \answer[given]{1}, \quad
-  x_{4} = \answer[given]{5/2},
+  x_{1} = \answer{0}, \quad
+  x_{2} =\answer{-1/2}, \quad
+  x_{3} = \answer{1}, \quad
+  x_{4} = \answer{5/2},
 \end{equation*}
 which is consistent with the answer obtained above.
 % which correspond to the entries we obtained in \eqref{Amatrix}.
@@ -326,106 +326,160 @@ the above matrices cannot be transformed into suitably sized identity matrices.
 \begin{question}
   Which of the following is invertible?
   \begin{multipleChoice}
-    \choice{\[\left(\begin{array}{cccc}
-      0 &  -1 & 0 &0 \\
-      -1 &  5 & 3 &0 \\
-      0 & -3& 4 &1
-    \end{array}\right)\]}
-\choice{\[\left(\begin{array}{cccc}
-  7 &  -1 & 0 &8 \\
-  11 &  -3 & 0 &0 \\
-  -5 & 0& 0 &2\\
-  0& 0&0&1
-\end{array}\right)\]}
-\choice[correct]{\[\left(\begin{array}{ccc}
-  1 &  0& 0  \\
-  0 &  1 & 0 \\
-  0 & 0& 1
-\end{array}\right)\]}
-\choice{\[\left(\begin{array}{cc}
-  8 & 0\\
-  0 &0
-\end{array}\right)\]}
-\choice[correct]
-{\[\left(\begin{array}{cccc}
-  0 &  0& 4&0  \\
-  9 &  0 & 0 &0 \\
-  0 & 0& 0&8\\
-  0&2&0&0
-\end{array}\right)\]}
-\choice[correct]
-{\[\left(\begin{array}{cccc}
-  -2 &  -1& 0&0  \\
-  0 &  8 & 0 &1 \\
-  10 & -3& 9&-4\\
-  7&-5&0&3
-\end{array}\right)\]}
-\end{multipleChoice}
+      \pdfOnly{\begin{multicols}{3}}
+      \choice{$\left(
+          \begin{array}{cccc}
+            0 &  -1 & 0 &0 \\
+            -1 &  5 & 3 &0 \\
+            0 & -3& 4 &1
+          \end{array}
+        \right)$}
+      \choice{$\left(
+          \begin{array}{cccc}
+            7 &  -1 & 0 &8 \\
+            11 &  -3 & 0 &0 \\
+            -5 & 0& 0 &2\\
+            0& 0&0&1
+          \end{array}
+        \right)$}
+      \choice[correct]{$\left(
+          \begin{array}{ccc}
+            1 &  0& 0  \\
+            0 &  1 & 0 \\
+            0 & 0& 1
+          \end{array}
+        \right)$}
+      \choice{$\left(
+          \begin{array}{cc}
+            8 & 0\\
+            0 &0
+          \end{array}
+        \right)$}
+      \choice[correct]{$\left(
+          \begin{array}{cccc}
+            0 &  0& 4&0  \\
+            9 &  0 & 0 &0 \\
+            0 & 0& 0&8\\
+            0&2&0&0
+          \end{array}
+        \right)$}
+      \choice[correct]{$\left(
+          \begin{array}{cccc}
+            -2 &  -1& 0&0  \\
+            0 &  8 & 0 &1 \\
+            10 & -3& 9&-4\\
+            7&-5&0&3
+          \end{array}
+        \right)$}
+      \pdfOnly{\end{multicols}}
+  \end{multipleChoice}
 \end{question}
 
 Now we study properties of inverses by going through examples.
-\begin{example}\label{example1}
-Consider the matrix,
-\[A= \left(\begin{array}{cc}
-  2 &  -1  \\
-   7&  4
-\end{array}\right)\]
+\begin{example}[$2 \times 2$ inverse matrices]\label{example1}
+  Let
+  \[
+    A= \left(
+      \begin{array}{cc}
+        2 &  -1  \\
+        7&  4
+      \end{array}
+    \right)
+    \quad\text{and}\quad
+    B=
+    \left(
+      \begin{array}{cc}
+        \answer{1} &  \answer{-3}  \\
+        \answer{5}&  \answer{-2}
+      \end{array}
+    \right).
+  \]
 
-a. Find $A^{-1}$.
-\begin{prompt}
-\[A^{-1}= \frac{1}{\answer[given]{8}- \answer[given]{-7}}\left(\begin{array}{cc}
-  \answer[given]{4} &  \answer[given]{1}  \\
-   \answer[given]{-7}&  \answer[given]{2}
-\end{array}\right)= \left(\begin{array}{cc}
-  \answer[given]{4/15} &  \answer[given]{1/15}  \\
-   \answer[given]{-7/15}&  \answer[given]{2/15}
-\end{array}\right)
-\]
-\end{prompt}
-b. Determine the inverse of $A^{-1}$.
-\begin{prompt}
-\[A^{-1}= \frac{1}{\answer[given]{8/225}- \answer[given]{7/225}}\left(\begin{array}{cc}
-  \answer[given]{2/15} &  \answer[given]{-1/15}  \\
-   \answer[given]{7/15}&  \answer[given]{4/15}
-\end{array}\right)= \left(\begin{array}{cc}
-  \answer[given]{2} &  \answer[given]{-1}  \\
-   \answer[given]{7}&  \answer[given]{4}
-\end{array}\right)
-\]
-\end{prompt}
-c. What is $\left(A^{T}\right)^{-1}$?
-\begin{prompt}
-\[A^{T}= \left(\begin{array}{cc}
-  \answer[given]{2} &  \answer[given]{7}  \\
-   \answer[given]{-1}&  \answer[given]{4}
-\end{array}\right)
-\]
-Therefore,
-\[\left(A^{T}\right)^{-1}= \frac{1}{\answer[given]{15}}\left(\begin{array}{cc}
-  \answer[given]{4} &  \answer[given]{-7}  \\
-   \answer[given]{1}&  \answer[given]{2}
-\end{array}\right) = \left(\begin{array}{cc}
-  \answer[given]{4/15} &  \answer[given]{-7/15}  \\
-   \answer[given]{1/15}&  \answer[given]{2/15}
-\end{array}\right) \]
-\end{prompt}
-d. Using your answer in part a, determine $\left(A^{-1}\right)^{T}$.
-
-e. What is $(kA)^{-1}$, where $k$ is any arbitrary number.
-f. If
-\[B= \left(\begin{array}{cc}
-  \answer[given]{1} &  \answer[given]{-3}  \\
-   \answer[given]{5}&  \answer[given]{-2}
-\end{array}\right)
-\]
-find $B^{-1}$.
-g. What is $(AB)^{-1}$?
+  \begin{enumerate}
+  \item Find $A^{-1}$.
+    \begin{prompt}
+      \[
+        A^{-1}=
+        \frac{1}{\answer{8}- \answer{-7}}
+        \left(
+          \begin{array}{cc}
+            \answer{4} &  \answer{1}  \\
+            \answer{-7}&  \answer{2}
+          \end{array}
+        \right) =
+        \left(
+          \begin{array}{cc}
+            \answer{4/15} &  \answer{1/15}  \\
+            \answer{-7/15}&  \answer{2/15}
+          \end{array}
+        \right).
+      \]
+    \end{prompt}
+  \item Determine the inverse of $A^{-1}$.
+    \begin{prompt}
+      \[
+        \left(A^{-1}\right)^{-1}=
+        \frac{1}{\answer{8/225} + \answer{7/225}} % TK: sign error fixed
+        \left(
+          \begin{array}{cc}
+            \answer{2/15} &  \answer{-1/15}  \\
+            \answer{7/15}&  \answer{4/15}
+          \end{array}
+        \right) =
+        \left(
+          \begin{array}{cc}
+            \answer{2} &  \answer{-1}  \\
+            \answer{7}&  \answer{4}
+          \end{array}
+        \right).
+      \]
+    \end{prompt}
+  \item What is $\left(A^\transpose\right)^{-1}$?
+    \begin{prompt}
+      \[
+        A^\transpose=
+        \left(
+          \begin{array}{cc}
+            \answer{2} &  \answer{7}  \\
+            \answer{-1}&  \answer{4}
+          \end{array}
+        \right).
+      \]
+      Therefore,
+      \[
+        \left(A^\transpose\right)^{-1}=
+        \frac{1}{\answer{15}}
+        \left(
+          \begin{array}{cc}
+            \answer{4} &  \answer{-7}  \\
+            \answer{1}&  \answer{2}
+          \end{array}
+        \right) =
+        \left(
+          \begin{array}{cc}
+            \answer{4/15} &  \answer{-7/15}  \\
+            \answer{1/15}&  \answer{2/15}
+          \end{array}
+        \right)
+      \]
+    \end{prompt}
+  \item Using your answer in part (a), determine $\left(A^{-1}\right)^{T}$.
+  \item What is $(kA)^{-1}$, where $k$ is a nonzero scalar.
+  \item Find $B^{-1}$.
+  \item What is $(AB)^{-1}$?
+  \end{enumerate}
 \end{example}
 
-The example above illustrates the following facts about inverses. \\
-$\left(A^{-1}\right)^{-1}=A$ \hspace{2cm} see parts a, b in example \ref{example1}\\
-$\left(A^{T}\right)^{-1}= \left(A^{-1}\right)^{T}$ \hspace{2cm} see parts c, d, \\
-$\left(kA\right)^{-1}= \frac{1}{k}A^{-1}$ \hspace{2cm} see part e,\\
-$(AB)^{-1}= B^{-1}A^{-1}$ \hspace{2cm} see part f.
+The example above illustrates the following general facts about inverses.
+
+\begin{theorem}[Properties of inverse matrices]
+  Let $A, B \in \R^{n \times n}$ be invertible. Then:
+  \begin{enumerate}
+  \item $\left(A^{-1}\right)^{-1}=A$
+  \item $\left(A^\transpose\right)^{-1}= \left(A^{-1}\right)^\transpose$
+  \item $\left(kA\right)^{-1}= \frac{1}{k}A^{-1}$, where $k \neq 0$
+  \item $(AB)^{-1}= B^{-1}A^{-1}$
+  \end{enumerate}
+\end{theorem}
 
 \end{document}

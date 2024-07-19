@@ -7,114 +7,121 @@
 
 \begin{document}
 \begin{exercise}
-For the matrix
-\[A= \left(\begin{array}{cc}
--2 & 4 \\
-0 & 5
-\end{array}\right)
-\]
-a. Find $A^{-1}$ by applying the formula for the inverse of a $2\times 2$ matrix.\\
-b. Find $A^{-1}$ by setting up $(A \hspace{.08cm}|\hspace{.08cm} I)$. \\
-c. Find $A^{-1}$ by using $AA^{-1}= A^{-1}A=I$ and finding what entries of $A^{-1}$ would make this true. 
+  Let
+  \[
+    A= \left(
+      \begin{array}{cc}
+        -2 & 4 \\
+        0 & 5
+      \end{array}
+    \right).
+  \]
+  \begin{enumerate}
+  \item Find $A^{-1}$ by applying the formula for the inverse of a $2\times
+    2$ matrix.
+    \begin{prompt}
+      \[
+        A^{-1} = \left(
+          \begin{array}{cc} \answer{-1/2} & \answer{2/5}\\
+            \answer{0} & \answer{1/5}
+          \end{array}
+        \right)
+      \]
+    \end{prompt}
 
-\begin{prompt}
-a. \[
-A^{-1} = \left(\begin{array}{cc} \answer{-1/2} & \answer{2/5}\\
-\answer{0} & \answer{1/5}
-\end{array}\right)
-\]
+  \item Find $A^{-1}$ by setting up $(A \,|\, I)$.
+    \begin{prompt}
+      \[
+        (A \,|\, I ) = \left(
+          \begin{array}{cc|cc}
+            \answer{-2} & \answer{4} & \answer{1} & \answer{0}\\
+            \answer{0} & \answer{5} & \answer{0} & \answer{1}\\
+          \end{array}
+        \right)
+        \quad \to \quad
+        \left(
+          \begin{array}{cc|cc}
+            1 & \answer{0} & \answer{-1/2} & \answer{2/5}\\
+            \answer{0} & 1 & \answer{0} & \answer{1/5}
+          \end{array}
+        \right).
+      \]
+      It follows that
+      \[
+        A^{-1} = \left(
+          \begin{array}{cc}
+            \answer{-1/2} & \answer{2/5}\\
+            \answer{0} & \answer{1/5}
+          \end{array}
+        \right)
+      \]
+    \end{prompt}
+  \item Find $A^{-1}$ by using $AA^{-1}= A^{-1}A=I$ and finding what
+    entries of $A^{-1}$ would make this true.
+    \begin{prompt}
+      \[
+        \left(
+          \begin{array}{cc}
+            \answer{-2} & \answer{4}\\
+            \answer{0} & \answer{5}
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{cc}
+            x_{1} & x_{2}\\
+            x_{3} & x_{4}
+          \end{array}
+        \right) = \left(
+          \begin{array}{cc}
+            \answer{1} & \answer{0}\\
+            \answer{0} & \answer{1}
+          \end{array}
+        \right)
+      \]
+      which leads to
+      \begin{align*}
+        \answer{-2}x_{1} + \answer{4}x_{3} &= \answer{1}\\
+        \answer{-2}x_{2} + \answer{4}x_{4} &= \answer{0}\\
+        \answer{0}x_{1} + \answer{5}x_{3} &= \answer{0}\\
+        \answer{0}x_{2} + \answer{5}x_{4} &= \answer{1}
+      \end{align*}
+      It follows that
+      \begin{equation*}
+        x_{1} = \answer{-1/2}, \quad
+        x_{2} = \answer{2/5}, \quad
+        x_{3} = \answer{0}, \quad
+        x_{4} = \answer{1/5}.
+      \end{equation*}
+      That is,
+      \[
+        A^{-1} = \left(
+          \begin{array}{cc}
+            \answer{-1/2} & \answer{2/5}\\
+            \answer{0} & \answer{1/5}
+          \end{array}
+        \right).
+      \]
 
-b.
-\[ (A \hspace{.08cm}|\hspace{.08cm} I ) = \left(\begin{array}{cc|cc}
-\answer{-2} & \answer{4} & \answer{1} & \answer{0}\\
-\answer{0} & \answer{5} & \answer{0} & \answer{1}\\
-\end{array} \right)
-\hspace{.2cm} \rightarrow \hspace{.2cm}
-\left(\begin{array}{cc|cc}
-1 & \answer{0} & \answer{-1/2} & \answer{2/5}\\
-\answer{0} & 1 & \answer{0} & \answer{1/5}
-\end{array} \right)
-\]
-giving,
-\[A^{-1} = \left(\begin{array}{cc}
-\answer{-1/2} & \answer{2/5}\\
-\answer{0} & \answer{1/5}
-\end{array} \right)\]
-
-c. \[
-\left(\begin{array}{cc}
-\answer{-2} & \answer{4}\\
-\answer{0} & \answer{5}
-\end{array}\right) \left(\begin{array}{cc}
-x_{1} & x_{2}\\
-x_{3} & x_{4}
-\end{array}\right) = \left(\begin{array}{cc}
-\answer{1} & \answer{0}\\
-\answer{0} & \answer{1}
-\end{array} \right)
-\]
-leading to,
-\begin{eqnarray*}
-\answer{-2}x_{1} + \answer{4}x_{3} = \answer{1}\\
-\answer{-2}x_{2} + \answer{4}x_{4} = \answer{0}\\
-\answer{0}x_{1} + \answer{5}x_{3} = \answer{0}\\
-\answer{0}x_{2} + \answer{5}x_{4} = \answer{1}
-\end{eqnarray*}
-giving, \\
-\begin{equation*}
-x_{1} = \answer{-1/2}, \hspace{.1cm} x_{2} = \answer{2/5},\hspace{.1cm} x_{3} = \answer{0}, \hspace{.1cm} x_{4} = \answer{1/5}
-\end{equation*}
-That is,
-\[
-A^{-1} = \left(\begin{array}{cc}
-\answer{-1/2} & \answer{2/5}\\
-\answer{0} & \answer{1/5}
-\end{array}\right)\]
-
-Also check:
-\[A^{-1}A = \left(\begin{array}{cc}
-\answer{-1/2} & \answer{2/5}\\
-\answer{0} & \answer{1/5}
-\end{array}\right)\left(\begin{array}{cc}
--2 & 4\\
-0& 5
-\end{array}\right)= \left(\begin{array}{cc}
-\answer{1} & \answer{0}\\
-\answer{0} & \answer{1}
-\end{array}\right)
-\]
-
-
-
-
-\end{prompt}
+      Confirmation:
+      \[
+        A^{-1}A = \left(
+          \begin{array}{cc}
+            \answer{-1/2} & \answer{2/5}\\
+            \answer{0} & \answer{1/5}
+          \end{array}
+        \right)\left(
+          \begin{array}{cc}
+            -2 & 4\\
+            0& 5
+          \end{array}
+        \right)= \left(
+          \begin{array}{cc}
+            \answer{1} & \answer{0}\\
+            \answer{0} & \answer{1}
+          \end{array}
+        \right)
+      \]
+    \end{prompt}
+  \end{enumerate}
 \end{exercise}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \end{document}

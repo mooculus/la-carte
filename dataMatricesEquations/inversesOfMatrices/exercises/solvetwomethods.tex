@@ -9,105 +9,113 @@
 
 \begin{document}
 \begin{exercise}
-Consider the following system of equations,
-\begin{eqnarray*}
-2x-3y&=& 10\\
-4z -2x &=& 2\\
-y+2z &=& -4
-\end{eqnarray*}
-a. Solve using Gaussian elimination.\\
-b. Solve using the inverse of the coefficient matrix.
+  Consider the following system of equations,
+  \begin{align*}
+    2x-3y&= 10\\
+    4z -2x &= 2\\
+    y+2z &= -4
+  \end{align*}
 
-\begin{prompt}
-a. The augmented matrix is
-\[  \left(\begin{array}{ccc|c}
-  \answer{2} & \answer{-3} & \answer{0} & \answer{10}  \\
-  \answer{-2} & \answer{0} & \answer{4} & \answer{2}  \\
-  \answer{0} & \answer{1} & \answer{2} & \answer{-4}
-\end{array}\right)
-\hspace{.2cm} \rightarrow \hspace{.2cm}
-\left(\begin{array}{ccc|c}
-  1 & \answer{-3/2} & \answer{0} & 5  \\
-  0 &-3 & \answer{4} & \answer{12}  \\
-  0 & 1 & \answer{2} & \answer{-4}
-\end{array}\right)
-\]
-\[
-\hspace{.2cm} \rightarrow \hspace{.2cm}
-\left(\begin{array}{ccc|c}
-  1 & \answer{-3/2} & \answer{0} & 5  \\
-  0 &1 & 2& -4  \\
-  0 & 0 & 1 & \answer{0}
-\end{array}\right)
-\]
-giving, $x = \answer{-1}, \hspace{.1cm} y= \answer{-4}, \hspace{.1cm} z= \answer{0}$ \hspace{.08cm}(if there is no solution write N/A).
+  \begin{enumerate}
+  \item Solve using Gaussian elimination.
+    \begin{prompt}
+      The augmented matrix is
+      \[
+        \left(
+          \begin{array}{ccc|c}
+            \answer{2} & \answer{-3} & \answer{0} & \answer{10}  \\
+            \answer{-2} & \answer{0} & \answer{4} & \answer{2}  \\
+            \answer{0} & \answer{1} & \answer{2} & \answer{-4}
+          \end{array}
+        \right)
+        \quad \rightarrow \quad
+        \left(
+          \begin{array}{ccc|c}
+            1 & \answer{-3/2} & \answer{0} & 5  \\
+            0 &-3 & \answer{4} & \answer{12}  \\
+            0 & 1 & \answer{2} & \answer{-4}
+          \end{array}
+        \right)
+      \]
+      \[
+        \quad \rightarrow \quad
+        \left(
+          \begin{array}{ccc|c}
+            1 & \answer{-3/2} & \answer{0} & 5  \\
+            0 &1 & 2& -4  \\
+            0 & 0 & 1 & \answer{0}
+          \end{array}
+        \right)
+      \]
+      giving $x = \answer{-1}, y= \answer{-4}, z= \answer{0}$.
+      % \quad(if there is no solution write N/A).
+    \end{prompt}
 
-b.
-\[ (A \hspace{.08cm} | \hspace{.08cm} I) = \left(\begin{array}{ccc|ccc}
-  \answer{2} & \answer{-3} & \answer{0} &  \answer{1} & \answer{0} & \answer{0}  \\
-  \answer{-2} & \answer{0} & \answer{4} & \answer{0} & \answer{1} & \answer{0}\\
-  \answer{0} & \answer{1} & \answer{2} &\answer{0} & \answer{0} & \answer{1}
-\end{array}\right)
-\]
-\[
-\hspace{.2cm} \rightarrow \hspace{.2cm}
-\left(\begin{array}{ccc|ccc}
-  1 & \answer{-3/2} & \answer{0} &  \answer{1/2} & \answer{0} & \answer{0}  \\
-  0 & -3 & \answer{4} & \answer{1} & \answer{1} & \answer{0}\\
-  0 & \answer{1} & \answer{2} &\answer{0} & \answer{0} & \answer{1}
-\end{array}\right)
-\]
-\[
-\hspace{.2cm} \rightarrow \hspace{.2cm}
-\left(\begin{array}{ccc|ccc}
-  1 & 0 & \answer{3} &  \answer{1/2} & \answer{0} & \answer{3/2}  \\
-  0 & 1 & 2 & \answer{0} & \answer{0} & \answer{1}\\
-  0 & 0 & 10 &\answer{1} & \answer{1} & \answer{3}
-\end{array}\right)
-\]
-\[
-\hspace{.2cm} \rightarrow \hspace{.2cm}
-\left(\begin{array}{ccc|ccc}
-  1 & 0 & 0 &  \answer{1/5} & \answer{-3/10} & \answer{3/5}  \\
-  0 & 1 & 0 & \answer{-1/5} & \answer{-1/5} & \answer{2/5}\\
-  0 & 0 &1 &\answer{1/10} & \answer{1/10} & \answer{3/10}
-\end{array}\right)
-\]
-Thus,
-\[
-A^{-1} = \left(\begin{array}{ccc}
-  \answer{1/5} & \answer{-3/10} & \answer{3/5}  \\
-  \answer{-1/5} & \answer{-1/5} & \answer{2/5}  \\
-  \answer{1/10} & \answer{1/10} & \answer{3/10}
-\end{array}\right)
-\]
-We find
-\[\textbf{x} = \begin{pmatrix}
-\answer{2}+\answer{-3/5} + \answer{-12/5}\\
-\answer{-2}+\answer{-2/5} + \answer{-8/5}\\
-\answer{1}+\answer{1/5} + \answer{-6/5}
-\end{pmatrix}= \begin{pmatrix}
-\answer{-1}\\
-\answer{-4}\\
-\answer{0}
-\end{pmatrix}
-\]
-Thus, $x= \answer{-1}, \hspace{.1cm} y= \answer{-4},\hspace{.1cm} z= \answer{0}$.
-\end{prompt}
+  \item Solve using the inverse of the coefficient matrix.
+    \begin{prompt}
+      \[
+        (A \, | \, I) = \left(
+          \begin{array}{ccc|ccc}
+            \answer{2} & \answer{-3} & \answer{0} &  \answer{1} & \answer{0} & \answer{0}  \\
+            \answer{-2} & \answer{0} & \answer{4} & \answer{0} & \answer{1} & \answer{0}\\
+            \answer{0} & \answer{1} & \answer{2} &\answer{0} & \answer{0} & \answer{1}
+          \end{array}
+        \right)
+      \]
+      \[
+        \quad \rightarrow \quad
+        \left(
+          \begin{array}{ccc|ccc}
+            1 & \answer{-3/2} & \answer{0} &  \answer{1/2} & \answer{0} & \answer{0}  \\
+            0 & -3 & \answer{4} & \answer{1} & \answer{1} & \answer{0}\\
+            0 & \answer{1} & \answer{2} &\answer{0} & \answer{0} & \answer{1}
+          \end{array}
+        \right)
+      \]
+      \[
+        \quad \rightarrow \quad
+        \left(
+          \begin{array}{ccc|ccc}
+            1 & 0 & \answer{3} &  \answer{1/2} & \answer{0} & \answer{3/2}  \\
+            0 & 1 & 2 & \answer{0} & \answer{0} & \answer{1}\\
+            0 & 0 & 10 &\answer{1} & \answer{1} & \answer{3}
+          \end{array}
+        \right)
+      \]
+      \[
+        \quad \rightarrow \quad
+        \left(
+          \begin{array}{ccc|ccc}
+            1 & 0 & 0 &  \answer{1/5} & \answer{-3/10} & \answer{3/5}  \\
+            0 & 1 & 0 & \answer{-1/5} & \answer{-1/5} & \answer{2/5}\\
+            0 & 0 &1 &\answer{1/10} & \answer{1/10} & \answer{3/10}
+          \end{array}
+        \right)
+      \]
+      Thus,
+      \[
+        A^{-1} = \left(
+          \begin{array}{ccc}
+            \answer{1/5} & \answer{-3/10} & \answer{3/5}  \\
+            \answer{-1/5} & \answer{-1/5} & \answer{2/5}  \\
+            \answer{1/10} & \answer{1/10} & \answer{3/10}
+          \end{array}
+        \right)
+      \]
+      We find
+      \[
+        \textbf{x} = \begin{pmatrix}
+          \answer{2}+\answer{-3/5} + \answer{-12/5}\\
+          \answer{-2}+\answer{-2/5} + \answer{-8/5}\\
+          \answer{1}+\answer{1/5} + \answer{-6/5}
+        \end{pmatrix}= \begin{pmatrix}
+          \answer{-1}\\
+          \answer{-4}\\
+          \answer{0}
+        \end{pmatrix}
+      \]
+      Thus, $x= \answer{-1}, y= \answer{-4}, z= \answer{0}$.
+    \end{prompt}
+  \end{enumerate}
 \end{exercise}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \end{document}

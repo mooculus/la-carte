@@ -27,30 +27,20 @@ equations associated with certain data:
 \begin{equation*}
   \left\{ \,
   \begin{array}{*{9}{@{}c@{}}}
-    a_{11} x_1      & {}+{} & a_{12} x_2 & {}+{} & \cdots & {}+{} & a_{1n} x_n
-                    &
-    {}\mathrel{=}{} & b_1
-    \\
-    a_{21} x_1      & {}+{} & a_{22} x_2 & {}+{} & \cdots & {}+{} & a_{2n} x_n
-                    &
-    {}\mathrel{=}{} & b_2
-    \\
-    \vdots          &       & \vdots     &       &        &       & \vdots
-                    &       & \vdots
-    \\
-    a_{n1} x_1      & {}+{} & a_{n2} x_2 & {}+{} & \cdots & {}+{} & a_{nn} x_n
-                    &
-    {}\mathrel{=}{} & b_n
+    a_{11} x_1      & {}+{} & a_{12} x_2 & {}+{} & \cdots & {}+{} & a_{1n} x_n & {}\mathrel{=}{} & b_1 \\
+    a_{21} x_1      & {}+{} & a_{22} x_2 & {}+{} & \cdots & {}+{} & a_{2n} x_n & {}\mathrel{=}{} & b_2 \\
+    \vdots          &       & \vdots     &       &        &       & \vdots &       & \vdots \\
+    a_{m1} x_1      & {}+{} & a_{m2} x_2 & {}+{} & \cdots & {}+{} & a_{mn} x_n & {}\mathrel{=}{} & b_m
   \end{array}
   \, \right.
 \end{equation*}
-It may be tempting to think that we already know all we need to handel such a
+It may be tempting to think that we already know all we need to handle such a
 situation. However, in actuality the system of equations may have infinitely many
 solutions or none at all. Here we must strive to understand solutions to systems of equations in a more
 abstract way. Let us first write the system above compactly as a matrix equation $A \vec{x} =
-  \vec{b}$, where $A$ is the $n \times n$ matrix of coefficients, $\vec{x}$ is
+  \vec{b}$, where $A$ is the $m \times n$ matrix of coefficients, $\vec{x}$ is
 the
-$n$-vector of the unknowns, and $\vec{b}$ is the $n$-vector of the constants on
+$n$-vector of the unknowns, and $\vec{b}$ is the $m$-vector of the constants on
 the right-hand side of the equations:
 \[
   A =
@@ -58,7 +48,7 @@ the right-hand side of the equations:
     a_{11} & a_{12} & \cdots & a_{1n} \\
     a_{21} & a_{22} & \cdots & a_{2n} \\
     \vdots & \vdots & \ddots & \vdots \\
-    a_{n1} & a_{n2} & \cdots & a_{nn}
+    a_{m1} & a_{m2} & \cdots & a_{mn}
   \end{bmatrix}, \quad
   \vec{x} =
   \begin{bmatrix}
@@ -66,27 +56,25 @@ the right-hand side of the equations:
   \end{bmatrix}, \quad
   \vec{b} =
   \begin{bmatrix}
-    b_1 \\ b_2 \\ \vdots \\ b_n
+    b_1 \\ b_2 \\ \vdots \\ b_m
   \end{bmatrix}.
 \]
 
 We then consider two scenarios depending on the zero-ness of the right-hand
 sides:
 \begin{description}
-  \item[Case: $\vec{b} = \vec{0}$.] In the special case where $\vec{b} =
-      \vec{0}$,
-    the system is said to be \dfn{homogeneous}. Since a homogeneous system is
-    fully characterized by its coefficients, the solution set is called the
-    \textit{null space of $A$}. Since $\vec{x} = \vec{0}$ satisfies $A\vec{x} =
-      \vec{0}$ no matter what $A$ is, the null space of $A$ always contains the
-    zero
-    vector and so it is \textbf{never empty}.
-  \item[Case: $\vec{b} \neq \vec{0}$.] On the other hand, if $\vec{b} \neq
-      \vec{0}$, the system $A\vec{x} = \vec{b}$ may not have a solution at all.
-    The
-    existence of solution depends on whether $\vec{b}$ lies in the
-    \textit{range}
-    or the \textit{column space of $A$}.
+\item[Case: $\vec{b} = \vec{0}$.] In the special case where
+  $\vec{b} = \vec{0}$, the system is said to be \dfn{homogeneous}, and
+  % Since a homogeneous system is fully characterized by its coefficients,
+  the solution set is called the \textit{null space of $A$}. Since
+  $\vec{x} = \vec{0}$ satisfies $A\vec{x} = \vec{0}$ no matter what
+  $A$ is, the null space of $A$ always contains the zero vector and so
+  it is \textbf{never empty}.
+\item[Case: $\vec{b} \neq \vec{0}$.] On the other hand, if
+  $\vec{b} \neq \vec{0}$, the system $A\vec{x} = \vec{b}$ may not have a
+  solution at all.  The existence of solution depends on whether
+  $\vec{b}$ lies in the \textit{range} or the \textit{column space of
+    $A$}.
 \end{description}
 
 The two jargons introduced above, the null space and the column space of $A$,
@@ -94,15 +82,15 @@ both contain the word \textit{space}. This comes from the fact that they are
 (can be) sets of points. These sets of points will have the additional
 mathematical structure called the a vector (sub)space. We will introduce the
 notion of a vector space in the context of solving system of linear equations.
-Then we will revisit these ideas from `higher ground', and introduce the notion
+Then we will revisit these ideas from ``higher ground'', and introduce the notion
 of an abstract vector space.
 
 \section{Span of vectors}
 
 When discussing a \textit{space} of vectors, we seek to think of all linear
 combinations of vectors with scalars and other vectors. If we have a single
-vector $\vec{v}$, it's span is simply that vector and all scalar multiples
-$\vec{v}$.
+vector $\vec{v}$, its span is simply that vector and all scalar
+multiples of $\vec{v}$.
 
 \begin{example}[Span of RGB Red]
   In RGB color space, the color red can be represented by the vector
@@ -131,7 +119,8 @@ $\vec{v}$.
 \end{example}
 
 \begin{example}[Span of RGB Red and Blue]
-
+  Below is a visualization of the span of red $(255, 0, 0)$ and blue
+  $(0, 0, 255)$:
   \begin{center}
     \begin{tikzpicture}
       \foreach \j in {0,17,...,255} {
@@ -185,7 +174,10 @@ $\vec{v}$.
 % \end{center}
 
 \begin{definition}
-  Given a set of vectors $V$, the \dfn{span} of the vectors in $V$ is
+  % Given a set of vectors $V$, the \dfn{span} of the vectors in $V$ is
+  Given a nonempty set $V$ of vectors, the \dfn{span} of $V$, denoted
+  $\Span(V)$, is the set of all linear combinations of the vectors in
+  $V$. That is,
   \[
     \Span(V) = \left\{\sum_{i=1}^n a_i\vec{v}_i:\text{$n\in \N$,
       $\vec{v}_i\in V$, and $a_i\in \R$}\right\}.
@@ -238,7 +230,7 @@ zero.
   with the number of columns of $M$.
 \end{remark}
 
-\begin{example}[Null Space of a Matrix]
+\begin{example}[Null space of a matrix]
   Consider the following matrix
   \[
     A = \begin{pmatrix}
@@ -248,48 +240,155 @@ zero.
     \end{pmatrix}
   \]
   \begin{enumerate}
-    \item Interprert and compute (by giving explict relations) the null space
-          of
-          $A$.
+    \item Interpret and compute (by giving explict relations) the null space
+          of $A$.
     \item Explain why $\vec{0}$ is an element of the null space.
-    \item Explain why if $\vec{v}$ is a vectors in the null space, then $s\cdot
-            \vec{v}$ is also in the null space.
+    \item Explain why if $\vec{v}$ is a vector in the null space, then $s\cdot
+            \vec{v}$ is also in the null space for any scalar $s$.
     \item Explain why if $\vec{v}$ and $\vec{w}$ are vectors in the null space,
           then $\vec{v} + \vec{w}$ is also in the null space.
   \end{enumerate}
   \begin{explanation}
-    First note that the null space corresponds to all solutions to the
-    equations
-    $A\vec{x} = \vec{0}$:
-    \begin{align*}
-      x + 2y + 3z  & = 0 \\
-      2x +4y + 6z  & = 0 \\
-      3x + 5y + 9z & =0
-    \end{align*}
-    To solve this system of equations, we consider the augmented matrix
-    $(A|\vec{0})$, and transform to echelon form. Write with me:
-    \[
-      \begin{pmatrix}
-        1 & 2 & 3 & 0 \\
-        2 & 4 & 6 & 0 \\
-        3 & 5 & 9 & 0
-      \end{pmatrix}
-      \quad
-      \begin{matrix}
-        \scriptstyle 2R_1-R_2\rightarrow R_2
-        \\
-        \longrightarrow
-      \end{matrix}
-      \quad
-      \begin{pmatrix}
-        1 & 2 & 3 & 0 \\
-        0 & 0 & 0 & 0 \\
-        3 & 5 & 9 & 0
-      \end{pmatrix}
-    \]
-    Now swap row $2$ with row $3$ and write
+    \begin{enumerate}
+    \item First note that the null space $\Null(A)$ corresponds to all
+      solutions to the equations $A\vec{x} = \vec{0}$:
+      \begin{align*}
+        x + 2y + 3z  & = 0 \\
+        2x +4y + 6z  & = 0 \\
+        3x + 5y + 9z & =0
+      \end{align*}
+      To solve this system of equations, we consider the augmented matrix
+      $(A\,|\,\vec{0})$, and transform to echelon form. Write with me:
+      \begin{align*}
+        \begin{pmatrix}
+          1 & 2 & 3 & 0 \\
+          2 & 4 & 6 & 0 \\
+          3 & 5 & 9 & 0
+        \end{pmatrix}
+        & \quad
+        \begin{matrix}
+          \scriptstyle 2R_1-R_2\rightarrow R_2 \\
+          \longrightarrow
+        \end{matrix}
+        \quad
+        \begin{pmatrix}
+          1 & 2 & 3 & 0 \\
+          0 & 0 & 0 & 0 \\
+          3 & 5 & 9 & 0
+        \end{pmatrix} \\
+        & \quad
+        \begin{matrix}
+          \scriptstyle 3R_1 - R_3 \to R_3 \\
+          \longrightarrow
+        \end{matrix}
+        \quad
+        \begin{pmatrix}
+          1 & 2 & 3 & 0 \\
+          0 & 0 & 0 & 0 \\
+          0 & -1 & 0 & 0
+        \end{pmatrix} \\
+        \intertext{Now swap row $2$ with row $3$ to obtain a row echelon form:}
+        & \quad
+        \begin{matrix}
+          \scriptstyle R_2 \leftrightarrow R_3 \\
+          \longrightarrow
+        \end{matrix}
+        \quad
+        \begin{pmatrix}
+          1 & 2 & 3 & 0 \\
+          0 & -1 & 0 & 0 \\
+          0 & 0 & 0 & 0
+        \end{pmatrix}
+      \end{align*}
 
+      %% TK: If the above does not render well on the web, uncomment
+      %% the following.
+      % \[
+      %   \begin{pmatrix}
+      %     1 & 2 & 3 & 0 \\
+      %     2 & 4 & 6 & 0 \\
+      %     3 & 5 & 9 & 0
+      %   \end{pmatrix}
+      %   \quad
+      %   \begin{matrix}
+      %     \scriptstyle 2R_1-R_2\rightarrow R_2 \\
+      %     \longrightarrow \\
+      %     \scriptstyle 3R_1 - R_3 \to R_3
+      %   \end{matrix}
+      %   \quad
+      %   \begin{pmatrix}
+      %     1 & 2 & 3 & 0 \\
+      %     0 & 0 & 0 & 0 \\
+      %     0 & -1 & 0 & 0
+      %   \end{pmatrix}
+      % \]
+      % Now swap row $2$ with row $3$ to obtain a row echelon form:
+      % \[
+      %   \begin{matrix}
+      %     \scriptstyle R_2 \leftrightarrow R_3 \\
+      %     \longrightarrow
+      %   \end{matrix}
+      %   \begin{pmatrix}
+      %     1 & 2 & 3 & 0 \\
+      %     0 & -1 & 0 & 0 \\
+      %     0 & 0 & 0 & 0
+      %   \end{pmatrix}
+      % \]
+      Since the third column of the reduced coefficient matrix is
+      pivotless, $z$ is a free variable, so let's set $z = t$, where
+      $t$ is arbitrary. Then back substitution yields
+      \[
+        x = \answer{-3}\,t,\quad y = \answer{0}\,t,\quad z = t.
+      \]
+      Written in vector form,
+      \[
+        \vec{x} =
+        \begin{pmatrix}
+          x \\ y \\ z
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          -3t \\ 0 \\ t
+        \end{pmatrix}
+        = t
+        \begin{pmatrix}
+          -3 \\ 0 \\ 1
+        \end{pmatrix}.
+      \]
+      Let $\vec{u} = (-3\, 0\, 1)^\transpose$. Then it follows that
+      \[
+        \Null(A) = \left\{ t\,\vec{u} : t \in \R \right\},
+      \]
+      that is, the null space of $A$ is the collection of all scalar
+      multiples of $\vec{u}$.
+    \item Note that $x = y = z = 0$ is a trivial solution to the given
+      homogeneous system. So $\vec{0}$ is an element of
+      $\Null(A)$. Alternately, by the previous part, any vector of the
+      form $t\, \vec{u}$ is a member of $\Null(A)$, in particular, $0
+      \vec{u} = \vec{0}$ is one.
+    \item If $\vec{v} \in \Null(A)$, then $\vec{v} = t\, \vec{u}$ for some
+      $t$. For any $s$,
+      \[
+        s\, \vec{v} = s\, (t\, \vec{u}) = \underbrace{(st)}_{\text{scalar}} \vec{u},
+      \]
+      so $s\vec{v}$ is a scalar multiple of $\vec{u}$, thus it is also
+      an element of $\Null(A)$.
+    \item If $\vec{v}, \vec{w} \in \Null(A)$, then $\vec{v} = t_1
+      \vec{u}$ and $\vec{w} = t_2 \vec{u}$ for some $t_1, t_2$. It
+      follows that
+      \[
+        \vec{v} + \vec{w} = (\underbrace{t_1 + t_2}_{\text{scalar}})\, \vec{u},
+      \]
+      that is, $\vec{v} + \vec{w}$ is a scalar multiple of $\vec{u}$,
+      thus an element of $\Null(A)$.
+    \end{enumerate}
   \end{explanation}
+  \begin{remark}[Operations on unaugmented matrices]
+    In the row reduction process, the rightmost column of all zeros
+    was unaffected by any of the row operations. So it is customary to
+    operate on $A$ alone rather than on the augmented matrix
+    $(A \,|\, \vec{0})$ when handling a homogenenous system.
+  \end{remark}
 \end{example}
 
 \begin{example}[Neural Network]
@@ -379,6 +478,9 @@ The set of the vectors $\vec{d}$ is called the \textit{column space} or
       all~}\vec{x}\in\R^n\}.
   \]
 \end{definition}
+
+An alternate viewpoint is that $\Col(M)$ is the span of the columns of
+$M$.
 
 \begin{example}[Neural Network]
   Column space
